@@ -213,46 +213,8 @@ div.donate-button a img {
   width: 100%;
   border-radius: 4px;
 }
+
 /*end styling the donate button */
-
-/* responsiveness of the popup */
-@media only screen and (max-width: 830px) {
-  .leaflet-popup-content-wrapper {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 119px;
-    width: 320px;
-    border-radius: 10px;
-    float: left;
-    position: fixed;
-    bottom: 32px;
-    top: auto;
-    right: 10px;
-  }
-
-  div.leaflet-popup-content-wrapper div div {
-    width: 280px;
-  }
-
-  div.leaflet-popup-content {
-    width: auto;
-  }
-
-  div.copied-link-message {
-    width: 350px;
-    left: 40px;
-  }
-
-  div.donate-button {
-    bottom: 43px;
-  }
-
-  div.about-text-popup{
-    top: 190px;
-  }
-
-  /* end of responsiveness of the popup */
-}
 
 .leaflet-top.leaflet-left {
   top: 52px;
@@ -281,3 +243,91 @@ hr {
     color: #fff;
 }
 
+/* responsiveness of the popup */
+@media only screen and (max-width: 830px) {
+  .leaflet-popup-content-wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 119px;
+    width: 350px;
+    border-radius: 10px;
+    float: left;
+    position: fixed;
+    bottom: 32px;
+    top: auto;
+    right: 10px;
+  }
+
+  div.leaflet-popup-content-wrapper div div {
+    width: 310px;
+  }
+
+  div.leaflet-popup-content {
+    width: auto;
+  }
+
+  div.copied-link-message {
+    width: 350px;
+    left: 40px;
+  }
+
+  div.donate-button {
+    bottom: 43px;
+  }
+
+  div.about-text-popup{
+    top: 190px;
+  }
+
+  /* end of responsiveness of the popup */
+}
+
+@media only screen and (max-width: 625px) {
+  div.banners {
+    height: 65px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  div.banner-title {
+    font-size: 16px;
+  }
+
+  fieldset#tier-dropdown {
+    position: absolute;
+    left: 10px;
+    top: 35px;
+    z-index: 2005;
+  }
+
+  fieldset#tier-dropdown label {
+    font-size: 14px;
+  }
+
+  #city-choice {
+    font-size: 14px;
+    padding: 0;
+  }
+
+  .leaflet-top.leaflet-left {
+    top: 62px;
+  }
+
+  #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
+    top: 162px !important;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  div.donate-button a img {
+    width: 70%;
+  }
+
+  .leaflet-popup-content-wrapper {
+    width: 280px;
+    bottom: 40px;
+  }
+
+  div.leaflet-popup-content-wrapper div div {
+    width: 240px;
+  }
+}
