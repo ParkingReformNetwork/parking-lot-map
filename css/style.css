@@ -1,14 +1,5 @@
-@font-face {
-  font-family: helveticaNeueRegular;
-  src: url(HelveticaNeue\ Regular.ttf);
-}
-
-@font-face {
-  font-family: helveticaNeueBold;
-  src: url(HelveticaNeue\ Bold.ttf);
-}
-
 body {
+  font-family: Helvetica,Arial,sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -20,17 +11,13 @@ body,
 }
 
 fieldset#tier-dropdown {
-  font-family: Helvetica,Arial,sans-serif;
-  background-color: #ffffff;
   position: absolute;
-
-  left: 50px;
-  top: 52px;
-  z-index: 2001;
-  margin: 10px 0 0 12px;
+  right: 90px;
+  top: 5px;
+  z-index: 2005;
 }
 #city-choice {
-  font-size: 25px;
+  font-size: 20px;
   padding: 5px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 5px;
@@ -65,7 +52,6 @@ fieldset#tier-dropdown {
   top: 62px;
 }
 .leaflet-popup-content {
-  font-family: Helvetica,Arial,sans-serif;
   width: 330px;
 }
 div.leaflet-popup-content-wrapper div div {
@@ -130,13 +116,10 @@ div.popup-button a:hover {
 /*styling the two banners */
 
 div.banners {
-    font-family: Helvetica,Arial,sans-serif;
-    font-weight: bold;
     background-color: #4d4d4d;
     position: absolute;
     top: 0;
     z-index: 2001;
-    font-size: 20px;
     text-align: center;
     width: 100%;
     left: 0;
@@ -144,10 +127,20 @@ div.banners {
   }
   div.banner-title,
   div.banner-about {
+    font-weight: bold;
     border: none;
+    font-size: 20px;
     background-color: #4d4d4d;
     color: #ffffff;
     float: right;
+  }
+
+  #tier-dropdown label {
+    font-weight: bold;
+    border: none;
+    font-size: 20px;
+    background-color: #4d4d4d;
+    color: #ffffff;
   }
 
   div.banner-title {
@@ -207,7 +200,6 @@ div.copied-link-message {
 
 /*styling the donate button */
 div.donate-button {
-  font-family: Helvetica,Arial,sans-serif;
   /* background-color: #ffffff; */
   position: absolute;
   border-radius: 5px;

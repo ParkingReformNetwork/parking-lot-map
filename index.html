@@ -38,7 +38,7 @@
 <body>
 
     <fieldset id="tier-dropdown">
-        <!-- <label for="city-choice">City: </label> -->
+        <label for="city-choice">Select a city: </label>
         <select name="city-choice" id="city-choice">
             <option value="ALL">Select a city</option>
             <!-- <option value="Austin">Austin</option>
@@ -73,17 +73,9 @@
     <div id="map"></div>
     <script type="text/javascript" src="js/script.js"></script>
     <script>
-    $(document).ready(function() {
+    $(window).on('load', function() {
       $('#city-choice').val('Columbus, OH').change();
-    });    
-
-    var element = $("#city-choice");
-
-    element.on('change', function() {
-        localStorage.setItem('#city-choice', "Columbus, OH");
     });
-
-    element.val(localStorage.getItem('#city-choice') || "Columbus, OH");
     </script>
 </body>
 
