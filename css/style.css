@@ -236,6 +236,10 @@ div.donate-button a img {
     top: auto;
     left: 10px;
   }
+  
+ div.banner-title {
+    width: 200px;
+  }
 
 
 div.banners {
