@@ -237,18 +237,39 @@ div.donate-button a img {
     left: 10px;
   }
   
- div.banner-title {
-    width: 200px;
+  div.banners {
+    font-family: helveticaNeueRegular;
+    background-color: #000000;
+    position: absolute;
+    top: 0;
+    height: 60px;
+    z-index: 2001;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    left: 0;
   }
-  
-   div.banner-about {
+
+  div.banner-title,
+  div.banner-about {
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  div.banner-title {
+    left: 4px;
+    width: 200px;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  div.banner-about {
     right: 2px;
   }
-
-
-div.banners {
-    height: 60px;
-  }
+  
   /*styling layers button */
   #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
     top: 65px !important;
