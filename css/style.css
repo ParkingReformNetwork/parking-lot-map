@@ -124,38 +124,38 @@ div.popup-button a:hover {
 /* end popup styling */
 
 /*styling the two banners */
-div.banner-title,
-div.banner-about {
-  font-family: helveticaNeueRegular;
-  /* background-color: #ffffff; */
-  position: absolute;
-  border-radius: 5px;
-  top: 12px;
-  z-index: 2001;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-}
 
-div.banner-title {
-  width: 153px;
-  float: left;
-  left: 62px;
-  background-color: #ffffff;
-  padding: 5px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-}
-div.banner-about {
-  width: 75px;
-  float: right;
-  right: 9px;
-  background-color: #ffffff;
-  padding: 3px;
-  border: 2px solid rgba(0, 0, 0, 0.2);
-}
-div.banner-about:hover {
-  cursor: pointer;
-}
+div.banners {
+    font-family: helveticaNeueRegular;
+    background-color: #000000;
+    position: absolute;
+    top: 0;
+    height: 60px;
+    z-index: 2001;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    left: 0;
+  }
+  div.banner-title,
+  div.banner-about {
+    border: none;
+    background-color: #000000;
+    color: #ffffff;
+    letter-spacing: 1px;
+  }
+
+  div.banner-title {
+    left: 4px;
+    width: 200px;
+    text-align: left;
+    padding-left: 10px;
+  }
+
+  div.banner-about {
+    right: 2px;
+  }
 
 div.about-text-popup {
   position: absolute;
@@ -236,38 +236,7 @@ div.donate-button a img {
     left: 10px;
   }
 
-  div.banners {
-    font-family: helveticaNeueRegular;
-    background-color: #000000;
-    position: absolute;
-    top: 0;
-    height: 60px;
-    z-index: 2001;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    width: 100%;
-    left: 0;
-  }
 
-  div.banner-title,
-  div.banner-about {
-    border: none;
-    background-color: #000000;
-    color: #ffffff;
-    letter-spacing: 1px;
-  }
-
-  div.banner-title {
-    left: 4px;
-    width: 200px;
-    text-align: left;
-    padding-left: 10px;
-  }
-
-  div.banner-about {
-    right: 2px;
-  }
 
   /*styling layers button */
   #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
