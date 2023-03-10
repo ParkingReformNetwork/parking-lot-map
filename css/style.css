@@ -227,22 +227,23 @@ div.donate-button a img {
 @media only screen and (max-width: 830px) {
   .leaflet-popup-content-wrapper {
     overflow-y: scroll;
+    overflow-x: hidden;
     height: 119px;
-    width: 365px;
+    width: 320px;
     border-radius: 10px;
     float: left;
     position: fixed;
-    bottom: 97px;
+    bottom: 32px;
     top: auto;
-    left: 10px;
-  }
-  
-  #map > div.leaflet-control-container > div.leaflet-top.leaflet-left {
-    top: 65px;
+    right: 10px;
   }
 
-  fieldset#tier-dropdown {
-    top: 65px;
+  div.leaflet-popup-content-wrapper div div {
+    width: 280px;
+  }
+
+  div.leaflet-popup-content {
+    width: auto;
   }
 
   div.copied-link-message {
