@@ -130,7 +130,6 @@ div.banners {
     background-color: #000000;
     position: absolute;
     top: 0;
-    height: 40px;
     z-index: 2001;
     font-size: 20px;
     font-weight: bold;
@@ -202,7 +201,7 @@ div.copied-link-message {
 
 /*styling layers button */
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 45px !important;
+  top: 65px !important;
 }
 /* end styling layers button*/
 
