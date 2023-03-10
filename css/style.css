@@ -3,6 +3,11 @@
   src: url(HelveticaNeue\ Regular.ttf);
 }
 
+@font-face {
+  font-family: helveticaNeueBold;
+  src: url(HelveticaNeue\ Bold.ttf);
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -126,59 +131,52 @@ div.popup-button a:hover {
 /*styling the two banners */
 
 div.banners {
-    font-family: helveticaNeueRegular;
-    background-color: #000000;
+    font-family: helveticaNeueBold;
+    background-color: #4d4d4d;
     position: absolute;
     top: 0;
     z-index: 2001;
     font-size: 20px;
-    font-weight: bold;
     text-align: center;
     width: 100%;
     left: 0;
+    padding: 10px 15px;
   }
   div.banner-title,
   div.banner-about {
     border: none;
-    background-color: #000000;
+    background-color: #4d4d4d;
     color: #ffffff;
-    letter-spacing: 1px;
     float: right;
-    padding-right: 10px;
   }
 
   div.banner-title {
     left: 4px;
     text-align: left;
-    padding-left: 10px;
     float: left;
   }
 
   div.banner-about {
     right: 2px;
+    cursor: pointer;
   }
 
 div.about-text-popup {
   position: absolute;
   z-index: 2001;
-  border-radius: 5px;
-  /* top: 200px; */
-  /* width: 500px; */
-  text-align: center;
   background-color: #ffffff;
-  /* left: 100px; */
   font-size: 24px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgba(186, 186, 186, 0.7);
   display: none;
-  left: 1%;
+  left: 10%;
   height: 60%;
-  width: 98%;
+  width: 80%;
   top: 120px;
 }
 
-body > div.about-text-popup > iframe {
-  width: 100%;
-  height: 100%;
+div.about-text-container {
+  padding: 20px;
+
 }
 
 /*end styling the two banners*/
@@ -201,7 +199,7 @@ div.copied-link-message {
 
 /*styling layers button */
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 65px !important;
+  top: 52px !important;
 }
 /* end styling layers button*/
 
@@ -237,7 +235,7 @@ div.donate-button a img {
     left: 10px;
   }
   
-  div.banners {
+/*  div.banners {
     font-family: helveticaNeueRegular;
     background-color: #000000;
     position: absolute;
@@ -268,12 +266,12 @@ div.donate-button a img {
 
   div.banner-about {
     right: 2px;
-  }
+  }*/
   
   /*styling layers button */
-  #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
+/*  #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
     top: 65px !important;
-  }
+  }*/
   /* end styling layers button*/
 
   #map > div.leaflet-control-container > div.leaflet-top.leaflet-left {
@@ -299,3 +297,23 @@ div.donate-button a img {
 
   /* end of responsiveness of the popup */
 }
+
+.leaflet-left {
+  top: 52px;
+}
+
+.fa, .fas {
+  font-family: "Font Awesome 5 Pro";
+  font-weight: 900;
+}
+
+.fa-info-circle:before {
+    content: "\f05a";
+    margin-right: 10px;
+}
+
+.fa-external-link-alt:before {
+    content: "\f35d";
+    color: #fff;
+}
+
