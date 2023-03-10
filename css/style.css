@@ -116,6 +116,7 @@ div.popup-button a {
   font-weight: bold;
   text-decoration: none;
   border: 1px solid #21ccb9;
+  display: inline-block;
 }
 div.popup-button a:hover {
   background-color: #ffffff;
@@ -263,7 +264,13 @@ div.donate-button a img {
   top: 52px;
 }
 
+.leaflet-grab {
+  cursor: unset;
+}
 
+hr {
+  margin: 10px 0;
+}
 
 .fa, .fas {
   font-family: "Font Awesome 5 Pro";
