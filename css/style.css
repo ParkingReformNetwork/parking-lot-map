@@ -240,6 +240,10 @@ div.donate-button a img {
  div.banner-title {
     width: 200px;
   }
+  
+   div.banner-about {
+    right: 2px;
+  }
 
 
 div.banners {
