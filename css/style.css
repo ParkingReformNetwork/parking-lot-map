@@ -130,7 +130,7 @@ div.banners {
     background-color: #000000;
     position: absolute;
     top: 0;
-    height: 60px;
+    height: 40px;
     z-index: 2001;
     font-size: 20px;
     font-weight: bold;
@@ -144,13 +144,15 @@ div.banners {
     background-color: #000000;
     color: #ffffff;
     letter-spacing: 1px;
+    float: right;
+    padding-right: 10px;
   }
 
   div.banner-title {
     left: 4px;
-    width: 200px;
     text-align: left;
     padding-left: 10px;
+    float: left;
   }
 
   div.banner-about {
@@ -237,7 +239,9 @@ div.donate-button a img {
   }
 
 
-
+div.banners {
+    height: 60px;
+  }
   /*styling layers button */
   #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
     top: 65px !important;
