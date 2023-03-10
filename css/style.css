@@ -62,7 +62,7 @@ fieldset#tier-dropdown {
   float: right;
   position: fixed;
   right: 11px;
-  top: 99px;
+  top: 62px;
 }
 .leaflet-popup-content {
   font-family: helveticaNeueRegular;
@@ -199,7 +199,9 @@ div.copied-link-message {
 
 /*styling layers button */
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 52px !important;
+  top: 152px !important;
+  margin-left: 9px;
+  right: auto;
 }
 /* end styling layers button*/
 
@@ -298,9 +300,11 @@ div.donate-button a img {
   /* end of responsiveness of the popup */
 }
 
-.leaflet-left {
+.leaflet-top.leaflet-left {
   top: 52px;
 }
+
+
 
 .fa, .fas {
   font-family: "Font Awesome 5 Pro";
