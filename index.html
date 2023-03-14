@@ -74,7 +74,9 @@
     <script type="text/javascript" src="js/script.js"></script>
     <script>
     $(window).on('load', function() {
+      $.ajaxSetup({cache:false});
       $('#city-choice').val('Columbus, OH').change();
+      console.log('Set default value');
     });
     </script>
 </body>
