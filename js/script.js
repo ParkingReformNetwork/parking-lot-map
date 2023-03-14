@@ -202,6 +202,9 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
   if (urlAddress.indexOf("#parking-reform-map") === -1) {
     map.fitBounds(citiesPolygons.getBounds());
   }
+}).then(function () {
+  // Select default city
+  $('#city-choice').val('Columbus, OH').change();
 });
 // 1. end Cities Polygons layer
 
