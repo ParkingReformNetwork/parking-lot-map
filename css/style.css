@@ -165,6 +165,7 @@ div.about-text-popup {
   height: 60%;
   width: 80%;
   top: 120px;
+  overflow: auto;
 }
 
 div.about-text-container {
