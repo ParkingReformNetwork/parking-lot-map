@@ -10,6 +10,10 @@ body,
   width: 100%;
 }
 
+dd { 
+  margin-bottom: 10px;
+}
+
 fieldset#tier-dropdown {
   position: absolute;
   right: 90px;
