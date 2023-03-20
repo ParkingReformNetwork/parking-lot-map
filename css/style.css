@@ -177,6 +177,11 @@ div.about-text-container {
 
 }
 
+.about-close {
+  float: right;
+  cursor: pointer;
+}
+
 /*end styling the two banners*/
 
 /*styling the copied link message */
@@ -246,6 +251,11 @@ hr {
 .fa-external-link-alt:before {
     content: "\f35d";
     color: #fff;
+}
+
+.fa-circle-xmark:before {
+    content: "\f057";
+    color: #4d4d4d;
 }
 
 /* responsiveness of the popup */

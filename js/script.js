@@ -26,6 +26,12 @@ $(".banner-about").click(function () {
   }
 });
 
+$(".about-close").click(function () {
+  if ($(".about-text-popup").css("display") === "block") {
+    $(".about-text-popup").css("display", "none");
+  }
+});
+
 var map = L.map("map", {
   zoomControl: false,
   layers: [stamenToner],
