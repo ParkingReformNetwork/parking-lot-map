@@ -1,0 +1,17 @@
+{
+  "name": "parking-lot-map",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "http-server",
+    "test": "jest",
+    "fmt": "prettier --write __tests__/; eslint --fix __tests__/",
+    "lint": "prettier --check __tests__/; eslint __tests__/"
+  },
+  "devDependencies": {
+    "eslint": "^8.37.0",
+    "http-server": "^14.1.1",
+    "jest": "^29.5.0",
+    "prettier": "^2.8.7",
+    "puppeteer": "^19.8.2"
+  }
+}
