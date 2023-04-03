@@ -54,12 +54,9 @@ test("every city is in the toggle", async () => {
 
   const toggleValues = await page.evaluate(() => {
     const select = document.querySelector("#city-choice");
-    const options = select.querySelectorAll("option");
-    const values = [];
-    for (let i = 0; i < options.length; i++) {
-      values.push(options[i].textContent.trim());
-    }
-    return values;
+    return Array.from(select.querySelectorAll("option")).map((opt) =>
+      opt.textContent.trim()
+    );
   });
   await browser.close();
 
