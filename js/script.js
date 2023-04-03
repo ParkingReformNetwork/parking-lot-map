@@ -169,7 +169,7 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
   }
 }).then(function () {
   // Select default city
-  $('#city-choice').val('Columbus, OH').change();
+  $("#city-choice").val("Columbus, OH").change();
 });
 // 1. end Cities Polygons layer
 
@@ -178,7 +178,7 @@ $.getJSON("data/parking-lots.geojson", function (data) {
   L.geoJson(data, {
     style: function () {
       return parkingLotsStyle;
-    }
+    },
   }).addTo(map);
 });
 // 2. end Parking Lots layer
@@ -221,8 +221,7 @@ function generatePopupContent(feature) {
       $(".copied-link-message").css("display", "block");
       setTimeout(() => {
         $(".copied-link-message").css("display", "none");
-      }, "1000")
-      
+      }, "1000");
     });
   });
 

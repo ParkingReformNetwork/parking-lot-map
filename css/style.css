@@ -1,5 +1,5 @@
 body {
-  font-family: Helvetica,Arial,sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -10,7 +10,7 @@ body,
   width: 100%;
 }
 
-dd { 
+dd {
   margin-bottom: 10px;
 }
 
@@ -120,43 +120,43 @@ div.popup-button a:hover {
 /*styling the two banners */
 
 div.banners {
-    background-color: #4d4d4d;
-    position: absolute;
-    top: 0;
-    z-index: 2001;
-    text-align: center;
-    width: 100%;
-    left: 0;
-    padding: 10px 15px;
-  }
-  div.banner-title,
-  div.banner-about {
-    font-weight: bold;
-    border: none;
-    font-size: 20px;
-    background-color: #4d4d4d;
-    color: #ffffff;
-    float: right;
-  }
+  background-color: #4d4d4d;
+  position: absolute;
+  top: 0;
+  z-index: 2001;
+  text-align: center;
+  width: 100%;
+  left: 0;
+  padding: 10px 15px;
+}
+div.banner-title,
+div.banner-about {
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+  background-color: #4d4d4d;
+  color: #ffffff;
+  float: right;
+}
 
-  #tier-dropdown label {
-    font-weight: bold;
-    border: none;
-    font-size: 20px;
-    background-color: #4d4d4d;
-    color: #ffffff;
-  }
+#tier-dropdown label {
+  font-weight: bold;
+  border: none;
+  font-size: 20px;
+  background-color: #4d4d4d;
+  color: #ffffff;
+}
 
-  div.banner-title {
-    left: 4px;
-    text-align: left;
-    float: left;
-  }
+div.banner-title {
+  left: 4px;
+  text-align: left;
+  float: left;
+}
 
-  div.banner-about {
-    right: 2px;
-    cursor: pointer;
-  }
+div.banner-about {
+  right: 2px;
+  cursor: pointer;
+}
 
 div.about-text-popup {
   position: absolute;
@@ -174,7 +174,6 @@ div.about-text-popup {
 
 div.about-text-container {
   padding: 20px;
-
 }
 
 .about-close {
@@ -238,24 +237,25 @@ hr {
   margin: 10px 0;
 }
 
-.fa, .fas {
+.fa,
+.fas {
   font-family: "Font Awesome 5 Pro";
   font-weight: 900;
 }
 
 .fa-info-circle:before {
-    content: "\f05a";
-    margin-right: 10px;
+  content: "\f05a";
+  margin-right: 10px;
 }
 
 .fa-external-link-alt:before {
-    content: "\f35d";
-    color: #fff;
+  content: "\f35d";
+  color: #fff;
 }
 
 .fa-circle-xmark:before {
-    content: "\f057";
-    color: #4d4d4d;
+  content: "\f057";
+  color: #4d4d4d;
 }
 
 /* responsiveness of the popup */
@@ -290,7 +290,7 @@ hr {
     bottom: 43px;
   }
 
-  div.about-text-popup{
+  div.about-text-popup {
     top: 190px;
   }
 
