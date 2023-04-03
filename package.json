@@ -4,7 +4,7 @@
   "scripts": {
     "start": "http-server",
     "test": "jest",
-    "fmt": "prettier --write __tests__/; eslint --fix __tests__/",
+    "fmt": "prettier --write __tests__/",
     "lint": "prettier --check __tests__/; eslint __tests__/"
   },
   "devDependencies": {
