@@ -5,10 +5,14 @@
     "start": "http-server",
     "test": "jest",
     "fmt": "prettier --write __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/",
+    "fix": "prettier --write __tests__/; eslint --fix __tests__/ js/script.js",
     "lint": "prettier --check __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/; eslint __tests__/ js/script.js"
   },
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
     "eslint": "^8.37.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.8.0",
     "http-server": "^14.1.1",
     "jest": "^29.5.0",
     "prettier": "^2.8.7",

@@ -6,7 +6,7 @@ const googleMapsSatellite = L.tileLayer(
   }
 );
 
-var stamenToner = L.tileLayer(
+const stamenToner = L.tileLayer(
   "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
   {
     attribution:
@@ -18,7 +18,7 @@ var stamenToner = L.tileLayer(
   }
 );
 
-$(".banner-about").click(function () {
+$(".banner-about").click(() => {
   if ($(".about-text-popup").css("display") === "none") {
     $(".about-text-popup").css("display", "block");
   } else {
@@ -26,23 +26,23 @@ $(".banner-about").click(function () {
   }
 });
 
-$(".about-close").click(function () {
+$(".about-close").click(() => {
   if ($(".about-text-popup").css("display") === "block") {
     $(".about-text-popup").css("display", "none");
   }
 });
 
-var map = L.map("map", {
+const map = L.map("map", {
   zoomControl: false,
   layers: [stamenToner],
 });
 
-var attribution = map.attributionControl;
+const attribution = map.attributionControl;
 attribution.setPrefix(
   'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" target="_blank" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
 );
 
-var baseLayers = {
+const baseLayers = {
   Light: stamenToner,
   "Google Maps": googleMapsSatellite,
 };
@@ -52,21 +52,21 @@ L.control.layers(baseLayers).addTo(map);
 // We need to set `pane`, which comes from Leaflet.
 pane = map.createPane("fixed", document.getElementById("map"));
 
-var currentTier = $("#tier-dropdown option:selected").text();
+let currentTier = $("#tier-dropdown option:selected").text();
 
 // added initial zoom
-var zoomHome = L.Control.zoomHome();
+const zoomHome = L.Control.zoomHome();
 zoomHome.setHomeCoordinates([39.440556, -98.697222]);
 zoomHome.setHomeZoom(4);
 zoomHome.addTo(map);
 
-var citiesPolygonsStyle = {
+const citiesPolygonsStyle = {
   fillColor: "##c84041",
   color: "#c84041",
   weight: 4,
   fillOpacity: 0,
 };
-var parkingLotsStyle = {
+const parkingLotsStyle = {
   fillColor: "#FF0000",
   color: "#FF0000",
   weight: 1,
@@ -74,44 +74,40 @@ var parkingLotsStyle = {
 };
 
 // adding URL tags
-var locationTag = "";
+let locationTag = "";
 
-var urlAddress = window.location.href;
-
+const urlAddress = window.location.href;
 if (urlAddress.indexOf("#parking-reform-map") > -1) {
-  var splitAdressArray = urlAddress.split("#");
-  if (splitAdressArray[1].indexOf("parking-reform-map") > -1) {
-    // if the tag is "parking-reform-map=....."
+  const [, splitAddressFragment] = urlAddress.split("#");
+  // If the tag is "parking-reform-map=....."
+  if (splitAddressFragment.indexOf("parking-reform-map") > -1) {
     $("#toggle-projects-by-tag").css("display", "none");
-    var locationTagUrlArray = splitAdressArray[1].split("=");
-    locationTag = locationTagUrlArray[1];
+    const [, locationTagFromUrl] = splitAddressFragment.split("=");
+    locationTag = locationTagFromUrl;
   }
 }
 
-var locationTagArray = locationTag.split("%20");
-if (locationTagArray.length > 1) {
-  locationTag = locationTagArray[0];
-  for (let i = 1; i < locationTagArray.length; i++) {
-    locationTag += " " + locationTagArray[i];
-  }
+const [firstTag, ...remainingTags] = locationTag.split("%20");
+if (remainingTags.length > 0) {
+  locationTag = `${firstTag} ${remainingTags.join(" ")}`;
 }
 // end adding URL tags
 
 // 1. start Cities Polygons layer
-$.getJSON("data/cities-polygons.geojson", function (data) {
-  var citiesArray = [];
-  var citiesPolygons = L.geoJson(data, {
-    style: function () {
+$.getJSON("data/cities-polygons.geojson", (data) => {
+  const citiesArray = [];
+  const citiesPolygons = L.geoJson(data, {
+    style() {
       return citiesPolygonsStyle;
     },
-    onEachFeature: function (feature, layer) {
-      $("#tier-dropdown").change(function () {
+    onEachFeature(feature, layer) {
+      $("#tier-dropdown").change(() => {
         currentTier = $("#tier-dropdown option:selected").text();
 
         if (currentTier === feature.properties.Name) {
           map.fitBounds(layer.getBounds());
-          var popupContent = generatePopupContent(feature);
-          var popup = L.popup({
+          const popupContent = generatePopupContent(feature);
+          const popup = L.popup({
             pane: "fixed",
             className: "popup-fixed",
             autoPan: false,
@@ -121,13 +117,11 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
       });
 
       // checking for the URL tag
-      var cityAndStateName = feature.properties.Name;
-      var cityAndStateArray = cityAndStateName.split(", ");
-      var cityNameOnly = cityAndStateArray[0];
-      if (cityNameOnly.toLowerCase() === locationTag.toLowerCase()) {
-        var popupContent = generatePopupContent(feature);
+      const [cityName] = feature.properties.Name.split(", ");
+      if (cityName.toLowerCase() === locationTag.toLowerCase()) {
+        const popupContent = generatePopupContent(feature);
 
-        var popup = L.popup({
+        const popup = L.popup({
           pane: "fixed",
           className: "popup-fixed",
           autoPan: false,
@@ -143,9 +137,9 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
       citiesArray.push(feature.properties.Name);
 
       layer.on({
-        click: function () {
-          var popupContent = generatePopupContent(feature);
-          var popup = L.popup({
+        click() {
+          const popupContent = generatePopupContent(feature);
+          const popup = L.popup({
             pane: "fixed",
             className: "popup-fixed",
             autoPan: false,
@@ -167,16 +161,16 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
   if (urlAddress.indexOf("#parking-reform-map") === -1) {
     map.fitBounds(citiesPolygons.getBounds());
   }
-}).then(function () {
+}).then(() => {
   // Select default city
   $("#city-choice").val("Columbus, OH").change();
 });
 // 1. end Cities Polygons layer
 
 // 2. start Parking Lots layer
-$.getJSON("data/parking-lots.geojson", function (data) {
+$.getJSON("data/parking-lots.geojson", (data) => {
   L.geoJson(data, {
-    style: function () {
+    style() {
       return parkingLotsStyle;
     },
   }).addTo(map);
@@ -184,35 +178,28 @@ $.getJSON("data/parking-lots.geojson", function (data) {
 // 2. end Parking Lots layer
 
 function generatePopupContent(feature) {
-  var popupContent =
-    "<div class='title'>" +
-    feature.properties["Name"] +
-    "</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>";
+  let popupContent = `<div class='title'>${feature.properties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
   // copy the URL for the current city
-  var cityAndStateName = feature.properties.Name;
-  var cityAndStateArray = cityAndStateName.split(", ");
-  var cityNameOnly = cityAndStateArray[0];
-  cityNameOnly = cityNameOnly.toLowerCase();
-  var currentLocationUrl = urlAddress;
+  let currentLocationUrl = urlAddress;
+  const [cityName] = feature.properties.Name.toLowerCase().split(", ");
   if (currentLocationUrl.indexOf("#parking-reform-map=") > -1) {
-    var urlTagArray = currentLocationUrl.split("#parking-reform-map=");
-    var urlTagCityName = urlTagArray[1];
+    const urlTagArray = currentLocationUrl.split("#parking-reform-map=");
+    const urlTagCityName = urlTagArray[1];
     currentLocationUrl = currentLocationUrl.replace(
-      "#parking-reform-map=" + urlTagCityName,
+      `#parking-reform-map=${urlTagCityName}`,
       ""
     );
   }
-  currentLocationUrl =
-    currentLocationUrl + "#parking-reform-map=" + cityNameOnly;
+  currentLocationUrl = `${currentLocationUrl}#parking-reform-map=${cityName}`;
   if (currentLocationUrl.indexOf(" ") > -1) {
     currentLocationUrl = currentLocationUrl.replace(" ", "%20");
   }
   // end copying the URL for the current city
 
-  map.on("popupopen", function () {
-    $("div.url-copy-button > a").click(function () {
-      var dummy = document.createElement("textarea");
+  map.on("popupopen", () => {
+    $("div.url-copy-button > a").click(() => {
+      const dummy = document.createElement("textarea");
       document.body.appendChild(dummy);
       dummy.value = currentLocationUrl;
       dummy.select();
@@ -225,32 +212,14 @@ function generatePopupContent(feature) {
     });
   });
 
-  popupContent +=
-    "<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>" +
-    feature.properties["Percentage"] +
-    "</span></div>";
-  popupContent +=
-    "<div><span class='details-title'>Population: </span><span class='details-value'>" +
-    feature.properties["Population"] +
-    "</span></div>";
-  popupContent +=
-    "<div><span class='details-title'>Metro Population: </span><span class='details-value'>" +
-    feature.properties["Metro Population"] +
-    "</span></div>";
-  popupContent +=
-    "<div><span class='details-title'>Parking Score: </span><span class='details-value'>" +
-    feature.properties["Parking Score"] +
-    "</span></div>";
-  popupContent +=
-    "<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>" +
-    feature.properties["Reforms"] +
-    "</span></div>";
+  popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${feature.properties.Percentage}</span></div>`;
+  popupContent += `<div><span class='details-title'>Population: </span><span class='details-value'>${feature.properties.Population}</span></div>`;
+  popupContent += `<div><span class='details-title'>Metro Population: </span><span class='details-value'>${feature.properties["Metro Population"]}</span></div>`;
+  popupContent += `<div><span class='details-title'>Parking Score: </span><span class='details-value'>${feature.properties["Parking Score"]}</span></div>`;
+  popupContent += `<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>${feature.properties.Reforms}</span></div>`;
 
   if (feature.properties["Website URL"]) {
-    popupContent +=
-      "<hr><div class='popup-button'><a target='_blank' href='" +
-      feature.properties["Website URL"] +
-      "'>View more</a></div>";
+    popupContent += `<hr><div class='popup-button'><a target='_blank' href='${feature.properties["Website URL"]}'>View more</a></div>`;
   }
   return popupContent;
 }
