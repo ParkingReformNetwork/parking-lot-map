@@ -5,7 +5,7 @@
     "start": "http-server",
     "test": "jest",
     "fmt": "prettier --write __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/",
-    "lint": "prettier --check __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/; eslint __tests__/"
+    "lint": "prettier --check __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/; eslint __tests__/ js/script.js"
   },
   "devDependencies": {
     "eslint": "^8.37.0",
