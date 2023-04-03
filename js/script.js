@@ -89,7 +89,7 @@ if (urlAddress.indexOf("#parking-reform-map") > -1) {
 
 const [firstTag, ...remainingTags] = locationTag.split("%20");
 if (remainingTags.length > 0) {
-  locationTag = `${firstTag} ${remainingTags.join(' ')}`;
+  locationTag = `${firstTag} ${remainingTags.join(" ")}`;
 }
 // end adding URL tags
 
@@ -97,10 +97,10 @@ if (remainingTags.length > 0) {
 $.getJSON("data/cities-polygons.geojson", (data) => {
   const citiesArray = [];
   const citiesPolygons = L.geoJson(data, {
-    style () {
+    style() {
       return citiesPolygonsStyle;
     },
-    onEachFeature (feature, layer) {
+    onEachFeature(feature, layer) {
       $("#tier-dropdown").change(() => {
         currentTier = $("#tier-dropdown option:selected").text();
 
@@ -117,7 +117,7 @@ $.getJSON("data/cities-polygons.geojson", (data) => {
       });
 
       // checking for the URL tag
-      const [cityName,] = feature.properties.Name.split(", ");
+      const [cityName] = feature.properties.Name.split(", ");
       if (cityName.toLowerCase() === locationTag.toLowerCase()) {
         const popupContent = generatePopupContent(feature);
 
@@ -137,7 +137,7 @@ $.getJSON("data/cities-polygons.geojson", (data) => {
       citiesArray.push(feature.properties.Name);
 
       layer.on({
-        click () {
+        click() {
           const popupContent = generatePopupContent(feature);
           const popup = L.popup({
             pane: "fixed",
@@ -163,39 +163,35 @@ $.getJSON("data/cities-polygons.geojson", (data) => {
   }
 }).then(() => {
   // Select default city
-  $('#city-choice').val('Columbus, OH').change();
+  $("#city-choice").val("Columbus, OH").change();
 });
 // 1. end Cities Polygons layer
 
 // 2. start Parking Lots layer
 $.getJSON("data/parking-lots.geojson", (data) => {
   L.geoJson(data, {
-    style () {
+    style() {
       return parkingLotsStyle;
-    }
+    },
   }).addTo(map);
 });
 // 2. end Parking Lots layer
 
 function generatePopupContent(feature) {
-  let popupContent =
-    `<div class='title'>${ 
-    feature.properties.Name 
-    }</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
+  let popupContent = `<div class='title'>${feature.properties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
   // copy the URL for the current city
   let currentLocationUrl = urlAddress;
-  const [cityName,] = feature.properties.Name.toLowerCase().split(", ");
+  const [cityName] = feature.properties.Name.toLowerCase().split(", ");
   if (currentLocationUrl.indexOf("#parking-reform-map=") > -1) {
     const urlTagArray = currentLocationUrl.split("#parking-reform-map=");
     const urlTagCityName = urlTagArray[1];
     currentLocationUrl = currentLocationUrl.replace(
-      `#parking-reform-map=${  urlTagCityName}`,
+      `#parking-reform-map=${urlTagCityName}`,
       ""
     );
   }
-  currentLocationUrl =
-    `${currentLocationUrl  }#parking-reform-map=${  cityName}`;
+  currentLocationUrl = `${currentLocationUrl}#parking-reform-map=${cityName}`;
   if (currentLocationUrl.indexOf(" ") > -1) {
     currentLocationUrl = currentLocationUrl.replace(" ", "%20");
   }
@@ -212,37 +208,18 @@ function generatePopupContent(feature) {
       $(".copied-link-message").css("display", "block");
       setTimeout(() => {
         $(".copied-link-message").css("display", "none");
-      }, "1000")
-      
+      }, "1000");
     });
   });
 
-  popupContent +=
-    `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${ 
-    feature.properties.Percentage 
-    }</span></div>`;
-  popupContent +=
-    `<div><span class='details-title'>Population: </span><span class='details-value'>${ 
-    feature.properties.Population 
-    }</span></div>`;
-  popupContent +=
-    `<div><span class='details-title'>Metro Population: </span><span class='details-value'>${ 
-    feature.properties["Metro Population"] 
-    }</span></div>`;
-  popupContent +=
-    `<div><span class='details-title'>Parking Score: </span><span class='details-value'>${ 
-    feature.properties["Parking Score"] 
-    }</span></div>`;
-  popupContent +=
-    `<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>${ 
-    feature.properties.Reforms 
-    }</span></div>`;
+  popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${feature.properties.Percentage}</span></div>`;
+  popupContent += `<div><span class='details-title'>Population: </span><span class='details-value'>${feature.properties.Population}</span></div>`;
+  popupContent += `<div><span class='details-title'>Metro Population: </span><span class='details-value'>${feature.properties["Metro Population"]}</span></div>`;
+  popupContent += `<div><span class='details-title'>Parking Score: </span><span class='details-value'>${feature.properties["Parking Score"]}</span></div>`;
+  popupContent += `<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>${feature.properties.Reforms}</span></div>`;
 
   if (feature.properties["Website URL"]) {
-    popupContent +=
-      `<hr><div class='popup-button'><a target='_blank' href='${ 
-      feature.properties["Website URL"] 
-      }'>View more</a></div>`;
+    popupContent += `<hr><div class='popup-button'><a target='_blank' href='${feature.properties["Website URL"]}'>View more</a></div>`;
   }
   return popupContent;
 }

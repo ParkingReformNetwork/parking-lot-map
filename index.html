@@ -1,123 +1,246 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-
+  <head>
     <title>Parking Lot Map - Parking Reform Network</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5MFS4ZVMY3"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-5MFS4ZVMY3"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-    
-      gtag('config', 'G-5MFS4ZVMY3');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-5MFS4ZVMY3");
     </script>
 
-
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore how much land cities dedicate to parking in over 50 cities included on the map below. Click the drop-down icon in the upper right corner to select a&#8230;" />
-    <meta property="og:image" content="https://parkingreform.org/wp-content/uploads/2023/03/lotmapbanner.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore how much land cities dedicate to parking in over 50 cities included on the map below. Click the drop-down icon in the upper right corner to select a&#8230;"
+    />
+    <meta
+      property="og:image"
+      content="https://parkingreform.org/wp-content/uploads/2023/03/lotmapbanner.png"
+    />
     <meta property="og:image:width" content="1600" />
     <meta property="og:image:height" content="900" />
-    <meta property="og:image:alt" content="Background image is a map showing where the parking lots are in Columbus. The banner Reads &quot;PARKING LOT MAPS&quot; and has a logo for the Parking Reform Network in the corner." />
+    <meta
+      property="og:image:alt"
+      content='Background image is a map showing where the parking lots are in Columbus. The banner Reads "PARKING LOT MAPS" and has a logo for the Parking Reform Network in the corner.'
+    />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Parking Lot Map &#x2d; Parking Reform Network" />
-    <meta property="og:description" content="Explore how much land cities dedicate to parking in over 50 cities included on the map below. Click the drop-down icon in the upper right corner to select a city and use the popup info card on the&#8230;" />
-    <meta property="og:url" content="https://parkingreform.org/resources/parking-lot-map/" />
+    <meta
+      property="og:title"
+      content="Parking Lot Map &#x2d; Parking Reform Network"
+    />
+    <meta
+      property="og:description"
+      content="Explore how much land cities dedicate to parking in over 50 cities included on the map below. Click the drop-down icon in the upper right corner to select a city and use the popup info card on the&#8230;"
+    />
+    <meta
+      property="og:url"
+      content="https://parkingreform.org/resources/parking-lot-map/"
+    />
     <meta property="og:site_name" content="Parking Reform Network" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Parking Lot Map &#x2d; Parking Reform Network" />
-    <meta name="twitter:description" content="Explore how much land cities dedicate to parking in over 50 cities included on the map below. Click the drop-down icon in the upper right corner to select a city and use the popup info card on the&#8230;" />
-    <meta name="twitter:image" content="https://parkingreform.org/wp-content/uploads/2023/03/lotmapbanner.png" />
-    <meta name="twitter:image:alt" content="Background image is a map showing where the parking lots are in Columbus. The banner Reads &quot;PARKING LOT MAPS&quot; and has a logo for the Parking Reform Network in the corner." />
+    <meta
+      name="twitter:title"
+      content="Parking Lot Map &#x2d; Parking Reform Network"
+    />
+    <meta
+      name="twitter:description"
+      content="Explore how much land cities dedicate to parking in over 50 cities included on the map below. Click the drop-down icon in the upper right corner to select a city and use the popup info card on the&#8230;"
+    />
+    <meta
+      name="twitter:image"
+      content="https://parkingreform.org/wp-content/uploads/2023/03/lotmapbanner.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content='Background image is a map showing where the parking lots are in Columbus. The banner Reads "PARKING LOT MAPS" and has a logo for the Parking Reform Network in the corner.'
+    />
 
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
+      integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="lib/easy-button/easy-button.css" />
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css"
-        integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-        crossorigin="" />
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="lib/easy-button/easy-button.css">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/leaflet.zoomhome.css">
-    <link rel="stylesheet" href="css/leaflet-measure.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="css/leaflet.zoomhome.css" />
+    <link rel="stylesheet" href="css/leaflet-measure.css" />
 
     <link rel="stylesheet" href="css/style.css" />
 
     <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
-    <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
-        integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
-        crossorigin=""></script>
+    <script
+      src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
+      integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
+      crossorigin=""
+    ></script>
     <script src="js/leaflet.zoomhome.min.js"></script>
-    <script src="https://unpkg.com/esri-leaflet@2.3.0/dist/esri-leaflet.js"
-        integrity="sha512-1tScwpjXwwnm6tTva0l0/ZgM3rYNbdyMj5q6RSQMbNX6EUMhYDE3pMRGZaT41zHEvLoWEK7qFEJmZDOoDMU7/Q=="
-        crossorigin=""></script>
+    <script
+      src="https://unpkg.com/esri-leaflet@2.3.0/dist/esri-leaflet.js"
+      integrity="sha512-1tScwpjXwwnm6tTva0l0/ZgM3rYNbdyMj5q6RSQMbNX6EUMhYDE3pMRGZaT41zHEvLoWEK7qFEJmZDOoDMU7/Q=="
+      crossorigin=""
+    ></script>
 
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
     <script src="lib/easy-button/easy-button.js"></script>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <fieldset id="tier-dropdown">
-        <label for="city-choice">Select a city: </label>
-        <select name="city-choice" id="city-choice">
-            <option value="ALL">Select a city</option>
-        </select>
+      <label for="city-choice">Select a city: </label>
+      <select name="city-choice" id="city-choice">
+        <option value="ALL">Select a city</option>
+      </select>
     </fieldset>
 
     <div class="banners">
-        <div class="banner-title">Parking Lot Map</div>
+      <div class="banner-title">Parking Lot Map</div>
 
-        <div class="banner-about"><i class="expand-icon fas fa-info-circle" title="View fullscreen"></i>
-            <a href="https://parkingreform.org/parking-lot-map/" target="_blank">
-            <i class="expand-icon fas fa-external-link-alt" title="View fullscreen"></i>
-          </a>
-        </div>
+      <div class="banner-about">
+        <i class="expand-icon fas fa-info-circle" title="View fullscreen"></i>
+        <a href="https://parkingreform.org/parking-lot-map/" target="_blank">
+          <i
+            class="expand-icon fas fa-external-link-alt"
+            title="View fullscreen"
+          ></i>
+        </a>
+      </div>
     </div>
 
-    <div class="about-text-popup"><div class="about-text-container">
-        <div class="about-close"><i class="close-icon fas fa-circle-xmark" title="Close fullscreen"></i></div>
+    <div class="about-text-popup">
+      <div class="about-text-container">
+        <div class="about-close">
+          <i
+            class="close-icon fas fa-circle-xmark"
+            title="Close fullscreen"
+          ></i>
+        </div>
         <h2>Parking Lot Coverage Map</h2>
-        
+
         <ul>
-            <li><a href="https://parkingreform.org/resources/parking-lot-map/" target="_blank">Detailed methodology and key takeaways.</a></li>
-            <li><a href="https://parkingreform.org/resources/mandates-map" target="_blank">PRN's Parking Mandates Map</a></li>
-            <li><a href="https://parkingreform.org/support/" target="_blank">Support this project with a donation.</a></li>
+          <li>
+            <a
+              href="https://parkingreform.org/resources/parking-lot-map/"
+              target="_blank"
+              >Detailed methodology and key takeaways.</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://parkingreform.org/resources/mandates-map"
+              target="_blank"
+              >PRN's Parking Mandates Map</a
+            >
+          </li>
+          <li>
+            <a href="https://parkingreform.org/support/" target="_blank"
+              >Support this project with a donation.</a
+            >
+          </li>
         </ul>
         <h3>FAQ</h3>
         <dl>
-            <dt>What is the Parking Score?</dt>
-            <dd>Parking Score measures how a city’s parking lot land use compares to other cities of a similar size. All red highlighted area on the map indicates an area where the land that’s primary purpose is parking passenger vehicles. A low parking score means the city devotes much less land in its central neighborhoods to parking than the average. Conversely, a high score translates to more land dedicated to parking compared to the average for a city of that size. This scoring system was created to evaluate cities on an equal basis and should not be used outside of this context.</dd>
-            <dt>What is included on this map?</dt>
-            <dd>This map generally includes surface parking and above ground parking structures which are marked on OpenStreetMap and/or visible in Google Maps imagery. It does not include underground or podium parking (parking lots that take up the first several floors of a building).</dd>
-            <dt>What does “Central City” mean?</dt>
-            <dd>“Central City” is a term invented for this map to encompass the densest, most centrally located, and most valuable real estate in a metropolitan area. “Central City” is a blanket term for a city’s Central Business District, Downtown, Financial District, or adjacent connecting neighborhoods of interest. For example, New Orleans’s Central Business District seamlessly connects with the World Renown French Quarter Neighborhood. These areas were combined into the Central City of New Orleans. For details on each city boundary <a href="https://parkingreform.org/resources/parking-lot-map/parking-lot-map-boundary-methodology/" target="_blank">see this detailed methodology</a>.
-            </dd>
+          <dt>What is the Parking Score?</dt>
+          <dd>
+            Parking Score measures how a city’s parking lot land use compares to
+            other cities of a similar size. All red highlighted area on the map
+            indicates an area where the land that’s primary purpose is parking
+            passenger vehicles. A low parking score means the city devotes much
+            less land in its central neighborhoods to parking than the average.
+            Conversely, a high score translates to more land dedicated to
+            parking compared to the average for a city of that size. This
+            scoring system was created to evaluate cities on an equal basis and
+            should not be used outside of this context.
+          </dd>
+          <dt>What is included on this map?</dt>
+          <dd>
+            This map generally includes surface parking and above ground parking
+            structures which are marked on OpenStreetMap and/or visible in
+            Google Maps imagery. It does not include underground or podium
+            parking (parking lots that take up the first several floors of a
+            building).
+          </dd>
+          <dt>What does “Central City” mean?</dt>
+          <dd>
+            “Central City” is a term invented for this map to encompass the
+            densest, most centrally located, and most valuable real estate in a
+            metropolitan area. “Central City” is a blanket term for a city’s
+            Central Business District, Downtown, Financial District, or adjacent
+            connecting neighborhoods of interest. For example, New Orleans’s
+            Central Business District seamlessly connects with the World Renown
+            French Quarter Neighborhood. These areas were combined into the
+            Central City of New Orleans. For details on each city boundary
+            <a
+              href="https://parkingreform.org/resources/parking-lot-map/parking-lot-map-boundary-methodology/"
+              target="_blank"
+              >see this detailed methodology</a
+            >.
+          </dd>
         </dl>
-        <hr/>
+        <hr />
         <h3>Acknowledgments</h3>
         <div>
-            This map was developed by <a href="https://www.linkedin.com/in/thomas-carpenito/" target="_blank">Thomas Carpenito</a> with the assistance of <a href="https://www.geocadder.bg/en/" target="_blank">Geocadder</a>, <a href="https://www.linkedin.com/in/pameeela/" target="_blank">Pamela Barone</a>, <a href="https://www.linkedin.com/in/tony-jordan-pdx/" target="_blank">Tony Jordan</a>, <a href="https://nathanwyand.com/" target="_blank">Nathan Wyand</a>, and <a href="https://www.linkedin.com/in/justin-sawyer-59b0525/" target="_blank">Justin Sawyer</a>.
+          This map was developed by
+          <a
+            href="https://www.linkedin.com/in/thomas-carpenito/"
+            target="_blank"
+            >Thomas Carpenito</a
+          >
+          with the assistance of
+          <a href="https://www.geocadder.bg/en/" target="_blank">Geocadder</a>,
+          <a href="https://www.linkedin.com/in/pameeela/" target="_blank"
+            >Pamela Barone</a
+          >,
+          <a href="https://www.linkedin.com/in/tony-jordan-pdx/" target="_blank"
+            >Tony Jordan</a
+          >,
+          <a href="https://nathanwyand.com/" target="_blank">Nathan Wyand</a>,
+          and
+          <a
+            href="https://www.linkedin.com/in/justin-sawyer-59b0525/"
+            target="_blank"
+            >Justin Sawyer</a
+          >.
         </div>
-        <br/>
-        <div>
-            Copyright 2023 Parking Reform Network - All Rights Reserved
-        </div>
-    </div></div>
+        <br />
+        <div>Copyright 2023 Parking Reform Network - All Rights Reserved</div>
+      </div>
+    </div>
 
-    <div class="donate-button"><a target='_blank' href='https://parkingreform.org/support/'><img
-                src="icons/parking-reform-network.png"></a></div>
+    <div class="donate-button">
+      <a target="_blank" href="https://parkingreform.org/support/"
+        ><img src="icons/parking-reform-network.png"
+      /></a>
+    </div>
 
     <div class="copied-link-message">The link is copied</div>
 
     <div id="map"></div>
     <script type="text/javascript" src="js/script.js"></script>
-</body>
-
+  </body>
 </html>

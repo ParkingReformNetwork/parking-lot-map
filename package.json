@@ -4,9 +4,9 @@
   "scripts": {
     "start": "http-server",
     "test": "jest",
-    "fmt": "prettier --write __tests__/",
+    "fmt": "prettier --write __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/",
     "fix": "prettier --write __tests__/; eslint --fix __tests__/ js/script.js",
-    "lint": "prettier --check __tests__/; eslint __tests__/ js/script.js"
+    "lint": "prettier --check __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/; eslint __tests__/ js/script.js"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
