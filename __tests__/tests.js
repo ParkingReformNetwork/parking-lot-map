@@ -99,9 +99,7 @@ test("correctly load the city score card", async () => {
     detailsTitles.forEach((title, index) => {
       details[title] = detailsValues[index];
     });
-    return {
-      ...details,
-    };
+    return details;
   });
   await browser.close();
 
