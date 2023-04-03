@@ -77,23 +77,19 @@ const parkingLotsStyle = {
 let locationTag = "";
 
 const urlAddress = window.location.href;
-
 if (urlAddress.indexOf("#parking-reform-map") > -1) {
-  const splitAdressArray = urlAddress.split("#");
-  if (splitAdressArray[1].indexOf("parking-reform-map") > -1) {
-    // if the tag is "parking-reform-map=....."
+  const [, splitAddressFragment] = urlAddress.split("#");
+  // If the tag is "parking-reform-map=....."
+  if (splitAddressFragment.indexOf("parking-reform-map") > -1) {
     $("#toggle-projects-by-tag").css("display", "none");
-    const locationTagUrlArray = splitAdressArray[1].split("=");
-    locationTag = locationTagUrlArray[1];
+    const [, locationTagFromUrl] = splitAddressFragment.split("=");
+    locationTag = locationTagFromUrl;
   }
 }
 
-const locationTagArray = locationTag.split("%20");
-if (locationTagArray.length > 1) {
-  locationTag = locationTagArray[0];
-  for (let i = 1; i < locationTagArray.length; i++) {
-    locationTag += ` ${  locationTagArray[i]}`;
-  }
+const [firstTag, ...remainingTags] = locationTag.split("%20");
+if (remainingTags.length > 0) {
+  locationTag = `${firstTag} ${remainingTags.join(' ')}`;
 }
 // end adding URL tags
 
@@ -121,10 +117,8 @@ $.getJSON("data/cities-polygons.geojson", (data) => {
       });
 
       // checking for the URL tag
-      const cityAndStateName = feature.properties.Name;
-      const cityAndStateArray = cityAndStateName.split(", ");
-      const cityNameOnly = cityAndStateArray[0];
-      if (cityNameOnly.toLowerCase() === locationTag.toLowerCase()) {
+      const [cityName,] = feature.properties.Name.split(", ");
+      if (cityName.toLowerCase() === locationTag.toLowerCase()) {
         const popupContent = generatePopupContent(feature);
 
         const popup = L.popup({
@@ -190,11 +184,8 @@ function generatePopupContent(feature) {
     }</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
   // copy the URL for the current city
-  const cityAndStateName = feature.properties.Name;
-  const cityAndStateArray = cityAndStateName.split(", ");
-  let cityNameOnly = cityAndStateArray[0];
-  cityNameOnly = cityNameOnly.toLowerCase();
   let currentLocationUrl = urlAddress;
+  const [cityName,] = feature.properties.Name.toLowerCase().split(", ");
   if (currentLocationUrl.indexOf("#parking-reform-map=") > -1) {
     const urlTagArray = currentLocationUrl.split("#parking-reform-map=");
     const urlTagCityName = urlTagArray[1];
@@ -204,7 +195,7 @@ function generatePopupContent(feature) {
     );
   }
   currentLocationUrl =
-    `${currentLocationUrl  }#parking-reform-map=${  cityNameOnly}`;
+    `${currentLocationUrl  }#parking-reform-map=${  cityName}`;
   if (currentLocationUrl.indexOf(" ") > -1) {
     currentLocationUrl = currentLocationUrl.replace(" ", "%20");
   }
