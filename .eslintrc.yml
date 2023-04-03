@@ -1,6 +1,7 @@
 env:
   browser: true
   commonjs: true
+  jquery: true
 extends: eslint:recommended
 overrides: []
 parserOptions:
@@ -9,3 +10,6 @@ parserOptions:
 rules: {
   "no-unexpected-multiline": "off",
 }
+globals:
+  L: readonly  # Defined by Leaflet.
+  pane: writable  # Defined by Leaflet.

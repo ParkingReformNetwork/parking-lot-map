@@ -1,4 +1,4 @@
-googleMapsSatellite = L.tileLayer(
+const googleMapsSatellite = L.tileLayer(
   "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
   {
     attribution: "Google Maps",
@@ -49,7 +49,8 @@ var baseLayers = {
 
 L.control.layers(baseLayers).addTo(map);
 
-var pane = map.createPane("fixed", document.getElementById("map"));
+// We need to set `pane`, which comes from Leaflet.
+pane = map.createPane("fixed", document.getElementById("map"));
 
 var currentTier = $("#tier-dropdown option:selected").text();
 
@@ -59,33 +60,14 @@ zoomHome.setHomeCoordinates([39.440556, -98.697222]);
 zoomHome.setHomeZoom(4);
 zoomHome.addTo(map);
 
-const southWest = L.latLng(25.085598897064752, -125.41992187499999);
-const northEast = L.latLng(50.56928286558243, -60.8203125);
-const searchBounds = L.latLngBounds(southWest, northEast);
-
-// 1. Cities Polygons styling
 var citiesPolygonsStyle = {
   fillColor: "##c84041",
   color: "#c84041",
   weight: 4,
   fillOpacity: 0,
 };
-var citiesPolygonsHoverStyle = {
-  fillColor: "##c84041",
-  color: "##c84041",
-  weight: 5,
-  fillOpacity: 0.2,
-};
-
-// 1. Parking Lots styling
 var parkingLotsStyle = {
   fillColor: "#FF0000",
-  color: "#FF0000",
-  weight: 1,
-  fillOpacity: 0.6,
-};
-var parkingLotsHoverStyle = {
-  fillColor: "#FFFFFF",
   color: "#FF0000",
   weight: 1,
   fillOpacity: 0.6,
@@ -98,9 +80,6 @@ var urlAddress = window.location.href;
 
 if (urlAddress.indexOf("#parking-reform-map") > -1) {
   var splitAdressArray = urlAddress.split("#");
-  var currentUrlTag = splitAdressArray[splitAdressArray.length - 1];
-  var projectUrlTagFull = currentUrlTag.replace("/", "");
-
   if (splitAdressArray[1].indexOf("parking-reform-map") > -1) {
     // if the tag is "parking-reform-map=....."
     $("#toggle-projects-by-tag").css("display", "none");
@@ -112,7 +91,7 @@ if (urlAddress.indexOf("#parking-reform-map") > -1) {
 var locationTagArray = locationTag.split("%20");
 if (locationTagArray.length > 1) {
   locationTag = locationTagArray[0];
-  for (i = 1; i < locationTagArray.length; i++) {
+  for (let i = 1; i < locationTagArray.length; i++) {
     locationTag += " " + locationTagArray[i];
   }
 }
@@ -122,7 +101,7 @@ if (locationTagArray.length > 1) {
 $.getJSON("data/cities-polygons.geojson", function (data) {
   var citiesArray = [];
   var citiesPolygons = L.geoJson(data, {
-    style: function (feature) {
+    style: function () {
       return citiesPolygonsStyle;
     },
     onEachFeature: function (feature, layer) {
@@ -164,7 +143,7 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
       citiesArray.push(feature.properties.Name);
 
       layer.on({
-        click: function (e) {
+        click: function () {
           var popupContent = generatePopupContent(feature);
           var popup = L.popup({
             pane: "fixed",
@@ -196,13 +175,12 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
 
 // 2. start Parking Lots layer
 $.getJSON("data/parking-lots.geojson", function (data) {
-  var parkingLots = L.geoJson(data, {
-    style: function (feature) {
+  L.geoJson(data, {
+    style: function () {
       return parkingLotsStyle;
     }
   }).addTo(map);
 });
-
 // 2. end Parking Lots layer
 
 function generatePopupContent(feature) {
@@ -233,7 +211,7 @@ function generatePopupContent(feature) {
   // end copying the URL for the current city
 
   map.on("popupopen", function () {
-    $("div.url-copy-button > a").click(function (e) {
+    $("div.url-copy-button > a").click(function () {
       var dummy = document.createElement("textarea");
       document.body.appendChild(dummy);
       dummy.value = currentLocationUrl;
