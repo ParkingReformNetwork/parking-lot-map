@@ -43,8 +43,8 @@ test("no console errors and warnings", async () => {
 
 test("every city is in the toggle", async () => {
   const data = fs.readFileSync("data/cities-polygons.geojson");
-  const expectedCities = JSON.parse(data)["features"].map(
-    (entry) => entry["properties"]["Name"]
+  const expectedCities = JSON.parse(data).features.map(
+    (entry) => entry.properties.Name
   );
   expectedCities.push("Select a city");
 
@@ -68,10 +68,8 @@ test("every city is in the toggle", async () => {
 test("correctly load the city score card", async () => {
   const data = fs.readFileSync("data/cities-polygons.geojson");
   const anchorageEntries = JSON.parse(data)
-    ["features"].filter(
-      (entry) => entry["properties"]["Name"] === "Anchorage, AK"
-    )
-    .map((entry) => entry["properties"]);
+    .features.filter((entry) => entry.properties.Name === "Anchorage, AK")
+    .map((entry) => entry.properties);
   expect(anchorageEntries).toHaveLength(1);
   const anchorageExpected = anchorageEntries[0];
 
@@ -104,9 +102,9 @@ test("correctly load the city score card", async () => {
   await browser.close();
 
   expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
-    anchorageExpected["Percentage"]
+    anchorageExpected.Percentage
   );
-  expect(content["Population: "]).toEqual(anchorageExpected["Population"]);
+  expect(content["Population: "]).toEqual(anchorageExpected.Population);
   expect(content["Metro Population: "]).toEqual(
     anchorageExpected["Metro Population"]
   );
@@ -114,6 +112,6 @@ test("correctly load the city score card", async () => {
     anchorageExpected["Parking Score"]
   );
   expect(content["Parking Mandate Reforms: "]).toEqual(
-    anchorageExpected["Reforms"]
+    anchorageExpected.Reforms
   );
 });
