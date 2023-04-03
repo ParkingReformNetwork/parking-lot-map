@@ -210,7 +210,7 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
   }
 }).then(function () {
   // Select default city
-  $('#city-choice').val('Columbus, OH').change();
+  $("#city-choice").val("Columbus, OH").change();
 });
 // 1. end Cities Polygons layer
 
@@ -281,8 +281,7 @@ function generatePopupContent(feature) {
       $(".copied-link-message").css("display", "block");
       setTimeout(() => {
         $(".copied-link-message").css("display", "none");
-      }, "1000")
-      
+      }, "1000");
     });
   });
 
