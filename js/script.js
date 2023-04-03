@@ -49,6 +49,7 @@ var baseLayers = {
 
 L.control.layers(baseLayers).addTo(map);
 
+// We need to set `pane`, which comes from Leaflet.
 pane = map.createPane("fixed", document.getElementById("map"));
 
 var currentTier = $("#tier-dropdown option:selected").text();
