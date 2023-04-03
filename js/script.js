@@ -35,8 +35,6 @@ $(".about-close").click(function () {
 var map = L.map("map", {
   zoomControl: false,
   layers: [stamenToner],
-  // center: [40.1, -85.681389],
-  // zoom: 6
 });
 
 var attribution = map.attributionControl;
@@ -94,7 +92,6 @@ var parkingLotsHoverStyle = {
 };
 
 // adding URL tags
-// var urlAddress = 'http://127.0.0.1:5500/#parking-reform-map=baltimore'
 var locationTag = "";
 
 var urlAddress = window.location.href;
@@ -134,20 +131,13 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
 
         if (currentTier === feature.properties.Name) {
           map.fitBounds(layer.getBounds());
-          // map.flyToBounds(layer.getBounds(), { duration: 2 });
-
           var popupContent = generatePopupContent(feature);
-
-          // map.on('zoomend', function() {
           var popup = L.popup({
             pane: "fixed",
             className: "popup-fixed",
             autoPan: false,
           }).setContent(popupContent);
           layer.bindPopup(popup).openPopup();
-
-          // layer.bindPopup(popupContent).openPopup();
-          // });
         }
       });
 
@@ -168,24 +158,14 @@ $.getJSON("data/cities-polygons.geojson", function (data) {
         layer.once("add", () => {
           layer.bindPopup(popup).openPopup();
         });
-        // layer.bindPopup(popup).openPopup();
       }
       // end checking for the URL tag
 
       citiesArray.push(feature.properties.Name);
 
       layer.on({
-        // mouseout: function (e) {
-        //   e.target.setStyle(citiesPolygonsStyle);
-        // },
-        // mouseover: function (e) {
-        //   e.target.setStyle(citiesPolygonsHoverStyle);
-        // },
         click: function (e) {
-          // This zooms the map to the clicked polygon
-          // map.fitBounds(e.target.getBounds());
           var popupContent = generatePopupContent(feature);
-
           var popup = L.popup({
             pane: "fixed",
             className: "popup-fixed",
@@ -220,25 +200,7 @@ $.getJSON("data/parking-lots.geojson", function (data) {
     style: function (feature) {
       return parkingLotsStyle;
     },
-    onEachFeature: function (feature, layer) {
-      layer.on({
-        // mouseout: function (e) {
-        //   e.target.setStyle(parkingLotsStyle);
-        // },
-        // mouseover: function (e) {
-        //   e.target.setStyle(parkingLotsHoverStyle);
-        // },
-        // click: function (e) {
-        //   // This zooms the map to the clicked polygon
-        //   // map.fitBounds(e.target.getBounds());
-        //   var popupContent = "<b>" + feature.properties["Name"] + "</b>";
-        //   layer.bindPo#location=pup(popupContent).openPopup();
-        // },
-      });
-    },
   }).addTo(map);
-
-  // map.fitBounds(paringLots.getBounds());
 });
 
 // 2. end Parking Lots layer
