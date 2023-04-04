@@ -230,4 +230,6 @@ function generatePopupContent(map, feature) {
   return popupContent;
 }
 
-setUpSite();
+module.exports = {
+  setUpSite,
+};
