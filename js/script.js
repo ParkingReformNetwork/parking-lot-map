@@ -110,76 +110,69 @@ const determineShareUrl = (windowUrl, jsonCityName) => {
   return `${baseUrl}#parking-reform-map=${cityName}`;
 };
 
-const setUpCitiesLayer = (map, locationTag) => {
-  let currentTier = $("#tier-dropdown option:selected").text();
-  $.getJSON("data/cities-polygons.geojson", (data) => {
-    const citiesArray = [];
-    const citiesPolygons = L.geoJson(data, {
-      style() {
-        return citiesPolygonsStyle;
-      },
-      onEachFeature(feature, layer) {
-        $("#tier-dropdown").change(() => {
-          currentTier = $("#tier-dropdown option:selected").text();
+/**
+ * Move the map to the city boundaries and set its score card.
+ *
+ * @param map: The Leaflet map instance.
+ * @param city: An object with a `layout` key (Leaflet value) and keys representing the
+ *    score card properties stored in the Geojson files.
+ */
+const setMapToCity = (map, city) => {
+  const { layer } = city;
+  map.fitBounds(layer.getBounds());
+  const popupContent = generatePopupContent(map, city);
+  const popup = L.popup({
+    pane: "fixed",
+    className: "popup-fixed",
+    autoPan: false,
+  }).setContent(popupContent);
+  layer.bindPopup(popup).openPopup();
+};
 
-          if (currentTier === feature.properties.Name) {
-            map.fitBounds(layer.getBounds());
-            const popupContent = generatePopupContent(map, feature);
-            const popup = L.popup({
-              pane: "fixed",
-              className: "popup-fixed",
-              autoPan: false,
-            }).setContent(popupContent);
-            layer.bindPopup(popup).openPopup();
-          }
-        });
+/**
+ * Load the cities from GeoJson and set up an event listener to change cities when the user
+ * toggles the city selection.
+ *
+ * @param map: The Leaflet map instance.
+ * @param string initialCity: the lower-case city name to initially load.
+ */
+const setUpCitiesLayer = (map, initialCity) => {
+  fetch("./data/cities-polygons.geojson")
+    .then((response) => response.json())
+    // Add the GeoJSON to the map & store the parsed data.
+    .then((data) => {
+      const cities = {};
+      L.geoJson(data, {
+        style() {
+          return citiesPolygonsStyle;
+        },
+        onEachFeature(feature, layer) {
+          const key = parseCityName(feature.properties.Name);
+          cities[key] = { layer, ...feature.properties };
+        },
+      }).addTo(map);
+      return cities;
+    })
+    .then((cities) => {
+      // Set map to update when city selection changes.
+      const cityToggleElement = document.getElementById("city-choice");
+      cityToggleElement.addEventListener("change", () => {
+        setMapToCity(map, cities[cityToggleElement.value]);
+      });
 
-        // checking for the URL tag
-        if (parseCityName(feature.properties.Name) === locationTag) {
-          const popupContent = generatePopupContent(map, feature);
-          const popup = L.popup({
-            pane: "fixed",
-            className: "popup-fixed",
-            autoPan: false,
-          }).setContent(popupContent);
-          map.fitBounds(layer.getBounds());
-          layer.once("add", () => {
-            layer.bindPopup(popup).openPopup();
-          });
-        }
-        // end checking for the URL tag
+      // Add each city to the city selection toggle and set the initial city.
+      const cityKeys = Object.keys(cities).sort();
+      cityKeys.forEach((key) => {
+        const option = document.createElement("option");
+        option.value = key;
+        option.textContent = cities[key].Name;
+        cityToggleElement.appendChild(option);
+      });
 
-        citiesArray.push(feature.properties.Name);
-
-        layer.on({
-          click() {
-            const popupContent = generatePopupContent(map, feature);
-            const popup = L.popup({
-              pane: "fixed",
-              className: "popup-fixed",
-              autoPan: false,
-            }).setContent(popupContent);
-            layer.bindPopup(popup).openPopup();
-            layer.bindPopup(popupContent).openPopup();
-          },
-        });
-      },
-    }).addTo(map);
-
-    citiesArray.sort((a, b) => a.localeCompare(b));
-    citiesArray.forEach((city) =>
-      $("#city-choice").append(
-        $("<option></option>").attr("value", city).text(city)
-      )
-    );
-
-    if (window.location.href.indexOf("#parking-reform-map") === -1) {
-      map.fitBounds(citiesPolygons.getBounds());
-    }
-  }).then(() => {
-    // Select default city
-    $("#city-choice").val("Columbus, OH").change();
-  });
+      // Set initial city.
+      cityToggleElement.value = initialCity;
+      setMapToCity(map, cities[initialCity]);
+    });
 };
 
 const setUpParkingLotsLayer = (map) => {
@@ -195,22 +188,15 @@ const setUpParkingLotsLayer = (map) => {
 const setUpSite = () => {
   setUpAbout();
   const map = createMap();
-  const locationTag = extractLocationTag(window.location.href);
-  if (locationTag) {
-    $("#toggle-projects-by-tag").css("display", "none");
-  }
-
-  setUpCitiesLayer(map, locationTag);
+  const initialCity = extractLocationTag(window.location.href) || "columbus";
+  setUpCitiesLayer(map, initialCity);
   setUpParkingLotsLayer(map);
 };
 
-function generatePopupContent(map, feature) {
-  let popupContent = `<div class='title'>${feature.properties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
+function generatePopupContent(map, cityProperties) {
+  let popupContent = `<div class='title'>${cityProperties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
-  const shareUrl = determineShareUrl(
-    window.location.href,
-    feature.properties.Name
-  );
+  const shareUrl = determineShareUrl(window.location.href, cityProperties.Name);
   map.on("popupopen", () => {
     $("div.url-copy-button > a").click(() => {
       const dummy = document.createElement("textarea");
@@ -226,14 +212,14 @@ function generatePopupContent(map, feature) {
     });
   });
 
-  popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${feature.properties.Percentage}</span></div>`;
-  popupContent += `<div><span class='details-title'>Population: </span><span class='details-value'>${feature.properties.Population}</span></div>`;
-  popupContent += `<div><span class='details-title'>Metro Population: </span><span class='details-value'>${feature.properties["Metro Population"]}</span></div>`;
-  popupContent += `<div><span class='details-title'>Parking Score: </span><span class='details-value'>${feature.properties["Parking Score"]}</span></div>`;
-  popupContent += `<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>${feature.properties.Reforms}</span></div>`;
+  popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${cityProperties.Percentage}</span></div>`;
+  popupContent += `<div><span class='details-title'>Population: </span><span class='details-value'>${cityProperties.Population}</span></div>`;
+  popupContent += `<div><span class='details-title'>Metro Population: </span><span class='details-value'>${cityProperties["Metro Population"]}</span></div>`;
+  popupContent += `<div><span class='details-title'>Parking Score: </span><span class='details-value'>${cityProperties["Parking Score"]}</span></div>`;
+  popupContent += `<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>${cityProperties.Reforms}</span></div>`;
 
-  if (feature.properties["Website URL"]) {
-    popupContent += `<hr><div class='popup-button'><a target='_blank' href='${feature.properties["Website URL"]}'>View more</a></div>`;
+  if (cityProperties["Website URL"]) {
+    popupContent += `<hr><div class='popup-button'><a target='_blank' href='${cityProperties["Website URL"]}'>View more</a></div>`;
   }
   return popupContent;
 }
