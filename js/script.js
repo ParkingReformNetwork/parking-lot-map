@@ -14,7 +14,7 @@ const setUpAbout = () => {
   });
 };
 
-const createBaseLayers = () => ({
+const defineBaseLayers = () => ({
   Light: L.tileLayer(
     "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
     {
@@ -37,7 +37,7 @@ const createBaseLayers = () => ({
 });
 
 const createMap = () => {
-  const baseLayers = createBaseLayers();
+  const baseLayers = defineBaseLayers();
   const map = L.map("map", {
     zoomControl: false,
     layers: [baseLayers.Light],
