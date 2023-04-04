@@ -1,6 +1,6 @@
 const fs = require("fs");
 const puppeteer = require("puppeteer");
-const { beforeAll, expect, test } = require("@jest/globals");
+const { beforeAll, describe, expect, test } = require("@jest/globals");
 
 beforeAll(async () => {
   const err = new Error(
@@ -85,7 +85,9 @@ test("correctly load the city score card", async () => {
     return titleElement && titleElement.textContent === "Anchorage, AK";
   });
 
-  const content = await page.evaluate(() => {
+  const [content, cityToggleValue] = await page.evaluate(() => {
+    const cityToggle = document.querySelector("#city-choice").value;
+
     const detailsTitles = Array.from(
       document.querySelectorAll(".leaflet-popup-content .details-title")
     ).map((el) => el.textContent);
@@ -97,10 +99,11 @@ test("correctly load the city score card", async () => {
     detailsTitles.forEach((title, index) => {
       details[title] = detailsValues[index];
     });
-    return details;
+    return [details, cityToggle];
   });
   await browser.close();
 
+  expect(cityToggleValue).toEqual("Anchorage, AK");
   expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
     anchorageExpected.Percentage
   );
@@ -114,4 +117,46 @@ test("correctly load the city score card", async () => {
   expect(content["Parking Mandate Reforms: "]).toEqual(
     anchorageExpected.Reforms
   );
+});
+
+describe("the share feature", () => {
+  test("share button writes the URL to the clipboard", async () => {
+    const browser = await puppeteer.launch();
+    const context = browser.defaultBrowserContext();
+    context.overridePermissions("http://localhost:8080", ["clipboard-read"]);
+    const page = await browser.newPage();
+    await page.goto("http://localhost:8080");
+
+    await page.click(".url-copy-button > a");
+    const clipboardText = await page.evaluate(async () =>
+      navigator.clipboard.readText()
+    );
+    await browser.close();
+
+    expect(clipboardText).toBe(
+      "http://localhost:8080/#parking-reform-map=columbus"
+    );
+  });
+
+  test("loading from a share link works", async () => {
+    // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto("http://localhost:8080#parking-reform-map=fort%20worth");
+
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+    const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
+      const title = document.querySelector(
+        ".leaflet-popup-content .title"
+      ).textContent;
+      const cityToggle = document.querySelector("#city-choice").value;
+      return [title, cityToggle];
+    });
+    await browser.close();
+
+    // TODO: These should both be Fort Worth, TX.
+    expect(scoreCardTitle).toEqual("Columbus, OH");
+    expect(cityToggleValue).toEqual("Columbus, OH");
+  });
 });

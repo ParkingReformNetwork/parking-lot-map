@@ -69,24 +69,45 @@ const parkingLotsStyle = {
   fillOpacity: 0.6,
 };
 
-const determineAndSetUpLocationTag = (url) => {
-  let result = "";
-
-  if (url.indexOf("#parking-reform-map") > -1) {
-    const [, splitAddressFragment] = url.split("#");
-    // If the tag is "parking-reform-map=....."
-    if (splitAddressFragment.indexOf("parking-reform-map") > -1) {
-      $("#toggle-projects-by-tag").css("display", "none");
-      const [, locationTagFromUrl] = splitAddressFragment.split("=");
-      result = locationTagFromUrl;
-    }
+/**
+ * Extract the city name from the URL's `#`, if present.
+ *
+ * @param string windowUrl: the current page's URL
+ * @return string: Returns empty string if not present
+ */
+const extractLocationTag = (windowUrl) => {
+  if (windowUrl.indexOf("#parking-reform-map=") === -1) {
+    return "";
   }
+  const rawValue = windowUrl.split("#")[1].split("=")[1];
+  const [firstWord, ...remainingWords] = rawValue.split("%20");
+  const result =
+    remainingWords.length > 0
+      ? `${firstWord} ${remainingWords.join(" ")}`
+      : firstWord;
+  return result.toLowerCase();
+};
 
-  const [firstTag, ...remainingTags] = result.split("%20");
-  if (remainingTags.length > 0) {
-    result = `${firstTag} ${remainingTags.join(" ")}`;
-  }
-  return result;
+/**
+ * Parse the city name from the geojson's `Name` property.
+ *
+ * @param string jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
+ * @return string: the city name, lowercased.
+ */
+const parseCityName = (jsonCityName) =>
+  jsonCityName.toLowerCase().split(", ")[0];
+
+/**
+ * Determine what URL to use to share the current city.
+ *
+ * @param string windowUrl: the current page's URL
+ * @param string jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
+ * @return string: the URL to share
+ */
+const determineShareUrl = (windowUrl, jsonCityName) => {
+  const cityName = parseCityName(jsonCityName).replace(/ /g, "%20");
+  const [baseUrl] = windowUrl.split("#");
+  return `${baseUrl}#parking-reform-map=${cityName}`;
 };
 
 const setUpCitiesLayer = (map, locationTag) => {
@@ -114,16 +135,13 @@ const setUpCitiesLayer = (map, locationTag) => {
         });
 
         // checking for the URL tag
-        const [cityName] = feature.properties.Name.split(", ");
-        if (cityName.toLowerCase() === locationTag.toLowerCase()) {
+        if (parseCityName(feature.properties.Name) === locationTag) {
           const popupContent = generatePopupContent(map, feature);
-
           const popup = L.popup({
             pane: "fixed",
             className: "popup-fixed",
             autoPan: false,
           }).setContent(popupContent);
-
           map.fitBounds(layer.getBounds());
           layer.once("add", () => {
             layer.bindPopup(popup).openPopup();
@@ -177,7 +195,11 @@ const setUpParkingLotsLayer = (map) => {
 const setUpSite = () => {
   setUpAbout();
   const map = createMap();
-  const locationTag = determineAndSetUpLocationTag(window.location.href);
+  const locationTag = extractLocationTag(window.location.href);
+  if (locationTag) {
+    $("#toggle-projects-by-tag").css("display", "none");
+  }
+
   setUpCitiesLayer(map, locationTag);
   setUpParkingLotsLayer(map);
 };
@@ -185,28 +207,15 @@ const setUpSite = () => {
 function generatePopupContent(map, feature) {
   let popupContent = `<div class='title'>${feature.properties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
-  // copy the URL for the current city
-  let currentLocationUrl = window.location.href;
-  const [cityName] = feature.properties.Name.toLowerCase().split(", ");
-  if (currentLocationUrl.indexOf("#parking-reform-map=") > -1) {
-    const urlTagArray = currentLocationUrl.split("#parking-reform-map=");
-    const urlTagCityName = urlTagArray[1];
-    currentLocationUrl = currentLocationUrl.replace(
-      `#parking-reform-map=${urlTagCityName}`,
-      ""
-    );
-  }
-  currentLocationUrl = `${currentLocationUrl}#parking-reform-map=${cityName}`;
-  if (currentLocationUrl.indexOf(" ") > -1) {
-    currentLocationUrl = currentLocationUrl.replace(" ", "%20");
-  }
-  // end copying the URL for the current city
-
+  const shareUrl = determineShareUrl(
+    window.location.href,
+    feature.properties.Name
+  );
   map.on("popupopen", () => {
     $("div.url-copy-button > a").click(() => {
       const dummy = document.createElement("textarea");
       document.body.appendChild(dummy);
-      dummy.value = currentLocationUrl;
+      dummy.value = shareUrl;
       dummy.select();
       document.execCommand("copy");
       document.body.removeChild(dummy);
@@ -230,5 +239,8 @@ function generatePopupContent(map, feature) {
 }
 
 module.exports = {
+  extractLocationTag,
+  determineShareUrl,
+  parseCityName,
   setUpSite,
 };
