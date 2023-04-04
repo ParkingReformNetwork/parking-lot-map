@@ -174,7 +174,6 @@ const setUpParkingLotsLayer = (map) => {
   });
 };
 
-// eslint-disable-next-line import/prefer-default-export
 const setUpSite = () => {
   setUpAbout();
   const map = createMap();
