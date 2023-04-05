@@ -1,31 +1,47 @@
 const fs = require("fs");
 const puppeteer = require("puppeteer");
-const { beforeAll, describe, expect, test } = require("@jest/globals");
+const {
+  afterAll,
+  beforeAll,
+  describe,
+  expect,
+  test,
+} = require("@jest/globals");
+
+let browser;
 
 beforeAll(async () => {
-  const err = new Error(
-    "Server is not running at http://localhost:8080. In a new terminal tab, run `npm start`."
-  );
-  const browser = await puppeteer.launch();
+  browser = await puppeteer.launch();
+  const context = browser.defaultBrowserContext();
+  context.overridePermissions("http://localhost:8080", ["clipboard-read"]);
+
+  const err = async () => {
+    await browser.close();
+    throw new Error(
+      "Server is not running at http://localhost:8080. In a new terminal tab, run `npm start`."
+    );
+  };
   try {
     const page = await browser.newPage();
     const response = await page.goto("http://localhost:8080", {
       timeout: 1000,
     });
-    await browser.close();
+    await page.close();
 
     const isServerRunning = response !== null && response.status() < 400;
     if (!isServerRunning) {
-      throw err;
+      await err();
     }
   } catch (error) {
-    await browser.close();
-    throw err;
+    await err();
   }
 });
 
+afterAll(async () => {
+  await browser.close();
+});
+
 test("no console errors and warnings", async () => {
-  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   const errors = [];
@@ -36,7 +52,7 @@ test("no console errors and warnings", async () => {
   });
 
   await page.goto("http://localhost:8080");
-  await browser.close();
+  await page.close();
 
   expect(errors).toHaveLength(0);
 });
@@ -48,9 +64,11 @@ test("every city is in the toggle", async () => {
   );
   expectedCities.push("Select a city");
 
-  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto("http://localhost:8080");
+
+  // Wait a second to make sure the site is fully loaded.
+  await page.waitForTimeout(1000);
 
   const toggleValues = await page.evaluate(() => {
     const select = document.querySelector("#city-choice");
@@ -58,7 +76,7 @@ test("every city is in the toggle", async () => {
       opt.textContent.trim()
     );
   });
-  await browser.close();
+  await page.close();
 
   toggleValues.sort();
   expectedCities.sort();
@@ -73,7 +91,6 @@ test("correctly load the city score card", async () => {
   expect(anchorageEntries).toHaveLength(1);
   const anchorageExpected = anchorageEntries[0];
 
-  const browser = await puppeteer.launch();
   const page = await browser.newPage();
   await page.goto("http://localhost:8080");
 
@@ -101,7 +118,7 @@ test("correctly load the city score card", async () => {
     });
     return [details, cityToggle];
   });
-  await browser.close();
+  await page.close();
 
   expect(cityToggleValue).toEqual("anchorage");
   expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
@@ -121,26 +138,41 @@ test("correctly load the city score card", async () => {
 
 describe("the share feature", () => {
   test("share button writes the URL to the clipboard", async () => {
-    const browser = await puppeteer.launch();
-    const context = browser.defaultBrowserContext();
-    context.overridePermissions("http://localhost:8080", ["clipboard-read"]);
     const page = await browser.newPage();
     await page.goto("http://localhost:8080");
 
     await page.click(".url-copy-button > a");
-    const clipboardText = await page.evaluate(async () =>
+    const firstCityClipboardText = await page.evaluate(async () =>
       navigator.clipboard.readText()
     );
-    await browser.close();
 
-    expect(clipboardText).toBe(
+    // Check that the share button works when changing the city, too.
+    // This is a regression test.
+    await page.select("#city-choice", "anchorage");
+    await page.waitForFunction(() => {
+      const titleElement = document.querySelector(
+        ".leaflet-popup-content .title"
+      );
+      return titleElement && titleElement.textContent === "Anchorage, AK";
+    });
+
+    await page.click(".url-copy-button > a");
+    const secondCityClipboardText = await page.evaluate(async () =>
+      navigator.clipboard.readText()
+    );
+
+    await page.close();
+
+    expect(firstCityClipboardText).toBe(
       "http://localhost:8080/#parking-reform-map=columbus"
+    );
+    expect(secondCityClipboardText).toBe(
+      "http://localhost:8080/#parking-reform-map=anchorage"
     );
   });
 
   test("loading from a share link works", async () => {
     // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
-    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.goto("http://localhost:8080#parking-reform-map=fort%20worth");
 
@@ -153,9 +185,45 @@ describe("the share feature", () => {
       const cityToggle = document.querySelector("#city-choice").value;
       return [title, cityToggle];
     });
-    await browser.close();
+    await page.close();
 
     expect(scoreCardTitle).toEqual("Fort Worth, TX");
     expect(cityToggleValue).toEqual("fort worth");
   });
+});
+
+test("about popup can be opened and closed", async () => {
+  const page = await browser.newPage();
+  await page.goto("http://localhost:8080");
+
+  const aboutIcon = ".banner-about";
+
+  const aboutIsVisible = async (expected) => {
+    const isVisible = await page.$eval(
+      ".about-text-popup",
+      (el) => el.style.display === "block"
+    );
+    return isVisible === expected;
+  };
+
+  const validBeforeClick = await aboutIsVisible(false);
+
+  await page.click(aboutIcon);
+  const validFirstClick = await aboutIsVisible(true);
+
+  await page.click(aboutIcon);
+  const validSecondClick = await aboutIsVisible(false);
+
+  await page.click(aboutIcon);
+  const validThirdClick = await aboutIsVisible(true);
+
+  await page.click(".about-close");
+  const validFourthClick = await aboutIsVisible(false);
+  await page.close();
+
+  expect(validBeforeClick).toBe(true);
+  expect(validFirstClick).toBe(true);
+  expect(validSecondClick).toBe(true);
+  expect(validThirdClick).toBe(true);
+  expect(validFourthClick).toBe(true);
 });
