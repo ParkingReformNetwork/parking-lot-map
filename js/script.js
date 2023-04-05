@@ -1,16 +1,14 @@
 const setUpAbout = () => {
-  $(".banner-about").click(() => {
-    if ($(".about-text-popup").css("display") === "none") {
-      $(".about-text-popup").css("display", "block");
-    } else {
-      $(".about-text-popup").css("display", "none");
-    }
+  const aboutElement = document.querySelector(".about-text-popup");
+  document.querySelector(".banner-about").addEventListener("click", () => {
+    aboutElement.style.display =
+      aboutElement.style.display !== "block" ? "block" : "none";
   });
 
-  $(".about-close").click(() => {
-    if ($(".about-text-popup").css("display") === "block") {
-      $(".about-text-popup").css("display", "none");
-    }
+  // Note that the close element will only render when the about text popup is rendered.
+  // So, it only ever makes sense for a click to close.
+  document.querySelector(".about-close").addEventListener("click", () => {
+    aboutElement.style.display = "none";
   });
 };
 
@@ -149,75 +147,76 @@ const setMapToCity = (map, cityId, cityProperties) => {
  * @param string initialCityId: e.g. `columbus-oh` or an empty string if none was set. Will
  *    default to `columbus-oh`.
  */
-const setUpCitiesLayer = (map, initialCityId) => {
-  fetch("./data/cities-polygons.geojson")
-    .then((response) => response.json())
-    // Add the GeoJSON to the map & store the parsed data.
-    .then((data) => {
-      const cities = {};
-      L.geoJson(data, {
-        style() {
-          return citiesPolygonsStyle;
-        },
-        onEachFeature(feature, layer) {
-          const key = parseCityIdFromJson(feature.properties.Name);
-          cities[key] = { layer, ...feature.properties };
-        },
-      }).addTo(map);
-      return cities;
-    })
-    .then((cities) => {
-      // Set map to update when city selection changes.
-      const cityToggleElement = document.getElementById("city-choice");
-      cityToggleElement.addEventListener("change", () => {
+const setUpCitiesLayer = async (map, initialCityId) => {
+  const response = await fetch("./data/cities-polygons.geojson");
+  const data = await response.json();
+
+  const cities = {};
+  L.geoJson(data, {
+    style() {
+      return citiesPolygonsStyle;
+    },
+    onEachFeature(feature, layer) {
+      const key = parseCityIdFromJson(feature.properties.Name);
+      cities[key] = { layer, ...feature.properties };
+    },
+  }).addTo(map);
+
+  // Set map to update when city selection changes.
+  const cityToggleElement = document.getElementById("city-choice");
+  cityToggleElement.addEventListener("change", () => {
         const cityId = cityToggleElement.value;
-        setMapToCity(map, cityId, cities[cityId]);
-      });
+    setMapToCity(map, cityId, cities[cityId]);
+  });
 
-      // Add each city to the city selection toggle and set the initial city.
-      const cityKeys = Object.keys(cities).sort();
-      cityKeys.forEach((key) => {
-        const option = document.createElement("option");
-        option.value = key;
-        option.textContent = cities[key].Name;
-        cityToggleElement.appendChild(option);
-      });
+  // Add each city to the city selection toggle and set the initial city.
+  const cityKeys = Object.keys(cities).sort();
+  cityKeys.forEach((key) => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = cities[key].Name;
+    cityToggleElement.appendChild(option);
+  });
 
-      // Set initial city.
-      const validatedInitialCityId =
+  // Set initial city.
+  const validatedInitialCityId =
         initialCityId in cities ? initialCityId : "columbus-oh";
       cityToggleElement.value = validatedInitialCityId;
-      setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
-    });
+  setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
 };
 
-const setUpParkingLotsLayer = (map) => {
-  $.getJSON("data/parking-lots.geojson", (data) => {
-    L.geoJson(data, {
-      style() {
-        return parkingLotsStyle;
-      },
-    }).addTo(map);
-  });
+const setUpParkingLotsLayer = async (map) => {
+  const response = await fetch("./data/parking-lots.geojson");
+  const data = await response.json();
+  L.geoJSON(data, {
+    style() {
+      return parkingLotsStyle;
+    },
+  }).addTo(map);
 };
 
-const setUpSite = () => {
+const setUpSite = async () => {
   setUpAbout();
   const map = createMap();
   const initialCityId =
     extractCityIdFromUrl(window.location.href) || "columbus-oh";
-  setUpCitiesLayer(map, initialCityId);
-  setUpParkingLotsLayer(map);
+  await Promise.all([
+    setUpCitiesLayer(map, initialCityId),
+    setUpParkingLotsLayer(map),
+  ]);
 };
 
 function generatePopupContent(map, cityId, cityProperties) {
   let popupContent = `<div class='title'>${cityProperties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
-  const shareUrl = determineShareUrl(window.location.href, cityId);
-  map.on("popupopen", () => {
-    $("div.url-copy-button > a").click(() => {
+  // We put the event listener on `map` because it is never erased, unlike the copy button
+  // being recreated every time the score card changes. This is called "event delegation".
+  document.querySelector("#map").addEventListener("click", (event) => {
+    const targetElement = event.target.closest("div.url-copy-button > a");
+    if (targetElement) {
+      const shareUrl = determineShareUrl(window.location.href, cityId);
       copyToClipboard(shareUrl);
-    });
+    }
   });
 
   popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${cityProperties.Percentage}</span></div>`;

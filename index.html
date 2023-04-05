@@ -88,7 +88,6 @@
 
     <link rel="stylesheet" href="css/style.css" />
 
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script
       src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js"
       integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA=="
@@ -243,7 +242,9 @@
     <div id="map"></div>
     <script type="text/javascript" src="js/script.js"></script>
     <script>
-      setUpSite();
+      (async () => {
+        await setUpSite();
+      })();
     </script>
   </body>
 </html>

@@ -1,7 +1,6 @@
 env:
   browser: true
   commonjs: true
-  jquery: true
 extends:
   - eslint:recommended
   - airbnb-base
