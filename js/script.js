@@ -102,6 +102,26 @@ const determineShareUrl = (windowUrl, cityId) => {
 };
 
 /**
+ * Copy `value` to the user's clipboard and show the copied link message.
+ */
+const copyToClipboard = (value) => {
+  const dummy = document.createElement("textarea");
+  document.body.appendChild(dummy);
+  dummy.value = value;
+  dummy.select();
+  document.execCommand("copy");
+  document.body.removeChild(dummy);
+
+  const copiedLinkMessageElement = document.querySelector(
+    ".copied-link-message"
+  );
+  copiedLinkMessageElement.style.display = "block";
+  setTimeout(() => {
+    copiedLinkMessageElement.style.display = "none";
+  }, 1000);
+};
+
+/**
  * Move the map to the city boundaries and set its score card.
  *
  * @param map: The Leaflet map instance.
@@ -196,16 +216,7 @@ function generatePopupContent(map, cityId, cityProperties) {
   const shareUrl = determineShareUrl(window.location.href, cityId);
   map.on("popupopen", () => {
     $("div.url-copy-button > a").click(() => {
-      const dummy = document.createElement("textarea");
-      document.body.appendChild(dummy);
-      dummy.value = shareUrl;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
-      $(".copied-link-message").css("display", "block");
-      setTimeout(() => {
-        $(".copied-link-message").css("display", "none");
-      }, "1000");
+      copyToClipboard(shareUrl);
     });
   });
 
