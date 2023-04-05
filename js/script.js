@@ -1,19 +1,27 @@
-const setUpAbout = () => {
-  const aboutElement = document.querySelector(".about-text-popup");
-  document.querySelector(".banner-about").addEventListener("click", () => {
+/**
+ * Set up event listeners to open and close the about popup.
+ *
+ * @param docObj: The `document` global
+ */
+const setUpAbout = (docObj) => {
+  const aboutElement = docObj.querySelector(".about-text-popup");
+  docObj.querySelector(".banner-about").addEventListener("click", () => {
     aboutElement.style.display =
       aboutElement.style.display !== "block" ? "block" : "none";
   });
 
   // Note that the close element will only render when the about text popup is rendered.
   // So, it only ever makes sense for a click to close.
-  document.querySelector(".about-close").addEventListener("click", () => {
+  docObj.querySelector(".about-close").addEventListener("click", () => {
     aboutElement.style.display = "none";
   });
 };
 
-const defineBaseLayers = () => ({
-  Light: L.tileLayer(
+/**
+ * @param leaflet: The `L` global
+ */
+const defineBaseLayers = (leaflet) => ({
+  Light: leaflet.tileLayer(
     "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
     {
       attribution:
@@ -24,7 +32,7 @@ const defineBaseLayers = () => ({
       ext: "png",
     }
   ),
-  "Google Maps": L.tileLayer(
+  "Google Maps": leaflet.tileLayer(
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
       attribution: "Google Maps",
@@ -34,24 +42,33 @@ const defineBaseLayers = () => ({
   ),
 });
 
-const createMap = () => {
-  const baseLayers = defineBaseLayers();
-  const map = L.map("map", {
+/**
+ * Create the initial map and pane objects.
+ *
+ * This sets up Google Maps vs. Light mode, attribution, and zoom.
+ *
+ * @param docObj: The `document` global
+ * @param leaflet: The `L` global
+ * @returns: The map and pane instances.
+ */
+const createMapAndPane = (docObj, leaflet) => {
+  const baseLayers = defineBaseLayers(leaflet);
+  const map = leaflet.map("map", {
     zoomControl: false,
     layers: [baseLayers.Light],
   });
   map.attributionControl.setPrefix(
     'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" target="_blank" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
   );
-  L.control.layers(baseLayers).addTo(map);
-  // We need to set `pane`, which comes from Leaflet.
-  pane = map.createPane("fixed", document.getElementById("map"));
+  leaflet.control.layers(baseLayers).addTo(map);
 
-  const zoomHome = L.Control.zoomHome();
+  const pane = map.createPane("fixed", docObj.getElementById("map"));
+
+  const zoomHome = leaflet.Control.zoomHome();
   zoomHome.setHomeCoordinates([39.440556, -98.697222]);
   zoomHome.setHomeZoom(4);
   zoomHome.addTo(map);
-  return map;
+  return [map, pane];
 };
 
 const citiesPolygonsStyle = {
@@ -70,7 +87,7 @@ const parkingLotsStyle = {
 /**
  * Extract the city ID from the URL's `#`, if present.
  *
- * @param string windowUrl: the current page's URL
+ * @param string windowUrl: The `window.location.href` global
  * @return string: Returns e.g. `saint-louis-mo` if present, else the empty string
  */
 const extractCityIdFromUrl = (windowUrl) =>
@@ -101,18 +118,19 @@ const determineShareUrl = (windowUrl, cityId) => {
 
 /**
  * Copy `value` to the user's clipboard and show the copied link message.
+ *
+ * @param docObj: The `document` global
+ * @param string value
  */
-const copyToClipboard = (value) => {
-  const dummy = document.createElement("textarea");
-  document.body.appendChild(dummy);
+const copyToClipboard = (docObj, value) => {
+  const dummy = docObj.createElement("textarea");
+  docObj.body.appendChild(dummy);
   dummy.value = value;
   dummy.select();
-  document.execCommand("copy");
-  document.body.removeChild(dummy);
+  docObj.execCommand("copy");
+  docObj.body.removeChild(dummy);
 
-  const copiedLinkMessageElement = document.querySelector(
-    ".copied-link-message"
-  );
+  const copiedLinkMessageElement = docObj.querySelector(".copied-link-message");
   copiedLinkMessageElement.style.display = "block";
   setTimeout(() => {
     copiedLinkMessageElement.style.display = "none";
@@ -122,15 +140,17 @@ const copyToClipboard = (value) => {
 /**
  * Add an event listener for the share button to copy the link to the clipboard.
  *
+ * @param docObj: The `document` global
+ * @param windowUrl: The `window.location.href` global
  * @param string cityId: e.g. `saint-louis-mo`
  */
-const setUpShareUrlClickListener = (cityId) => {
+const setUpShareUrlClickListener = (docObj, windowUrl, cityId) => {
   // We put the event listener on `map` because it is never erased, unlike the copy button
   // being recreated every time the score card changes. This is called "event delegation".
-  document.querySelector("#map").addEventListener("click", (event) => {
+  docObj.querySelector("#map").addEventListener("click", (event) => {
     const targetElement = event.target.closest("div.url-copy-button > a");
     if (targetElement) {
-      const shareUrl = determineShareUrl(window.location.href, cityId);
+      const shareUrl = determineShareUrl(windowUrl, cityId);
       copyToClipboard(shareUrl);
     }
   });
@@ -174,21 +194,33 @@ const generateScorecard = (cityProperties) => {
 /**
  * Move the map to the city boundaries and set its score card.
  *
+ * @param docObj: The `document` global
+ * @param windowUrl: The `window.location.href` global
+ * @param leaflet: The `L` global
  * @param map: The Leaflet map instance.
  * @param string cityId: e.g. `saint-louis-mo`
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in the Geojson files.
  */
-const setMapToCity = (map, cityId, cityProperties) => {
+const setMapToCity = (
+  docObj,
+  windowUrl,
+  leaflet,
+  map,
+  cityId,
+  cityProperties
+) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
   const scorecard = generateScorecard(cityProperties);
-  setUpShareUrlClickListener(cityId);
-  const popup = L.popup({
-    pane: "fixed",
-    className: "popup-fixed",
-    autoPan: false,
-  }).setContent(scorecard);
+  setUpShareUrlClickListener(docObj, windowUrl, cityId);
+  const popup = leaflet
+    .popup({
+      pane: "fixed",
+      className: "popup-fixed",
+      autoPan: false,
+    })
+    .setContent(scorecard);
   layer.bindPopup(popup).openPopup();
 };
 
@@ -196,36 +228,47 @@ const setMapToCity = (map, cityId, cityProperties) => {
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
  *
+ * @param docObj: The `document` global
+ * @param windowUrl: The `window.location.href` global
+ * @param leaflet: The `L` global
  * @param map: The Leaflet map instance.
  * @param string initialCityId: e.g. `columbus-oh` or an empty string if none was set. Will
  *    default to `columbus-oh`.
  */
-const setUpCitiesLayer = async (map, initialCityId) => {
+const setUpCitiesLayer = async (
+  docObj,
+  windowUrl,
+  leaflet,
+  map,
+  initialCityId
+) => {
   const response = await fetch("./data/cities-polygons.geojson");
   const data = await response.json();
 
   const cities = {};
-  L.geoJson(data, {
-    style() {
-      return citiesPolygonsStyle;
-    },
-    onEachFeature(feature, layer) {
-      const key = parseCityIdFromJson(feature.properties.Name);
-      cities[key] = { layer, ...feature.properties };
-    },
-  }).addTo(map);
+  leaflet
+    .geoJson(data, {
+      style() {
+        return citiesPolygonsStyle;
+      },
+      onEachFeature(feature, layer) {
+        const key = parseCityIdFromJson(feature.properties.Name);
+        cities[key] = { layer, ...feature.properties };
+      },
+    })
+    .addTo(map);
 
   // Set map to update when city selection changes.
-  const cityToggleElement = document.getElementById("city-choice");
+  const cityToggleElement = docObj.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
-        const cityId = cityToggleElement.value;
-    setMapToCity(map, cityId, cities[cityId]);
+    const cityId = cityToggleElement.value;
+    setMapToCity(docObj, leaflet, windowUrl, map, cityId, cities[cityId]);
   });
 
   // Add each city to the city selection toggle and set the initial city.
   const cityKeys = Object.keys(cities).sort();
   cityKeys.forEach((key) => {
-    const option = document.createElement("option");
+    const option = docObj.createElement("option");
     option.value = key;
     option.textContent = cities[key].Name;
     cityToggleElement.appendChild(option);
@@ -233,29 +276,57 @@ const setUpCitiesLayer = async (map, initialCityId) => {
 
   // Set initial city.
   const validatedInitialCityId =
-        initialCityId in cities ? initialCityId : "columbus-oh";
-      cityToggleElement.value = validatedInitialCityId;
-  setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
+    initialCityId in cities ? initialCityId : "columbus-oh";
+  cityToggleElement.value = validatedInitialCityId;
+  setMapToCity(
+    docObj,
+    leaflet,
+    windowUrl,
+    map,
+    validatedInitialCityId,
+    cities[validatedInitialCityId]
+  );
 };
 
-const setUpParkingLotsLayer = async (map) => {
+/**
+ * Load the parking lot data into the map.
+ *
+ * @param leaflet: The `L` global
+ * @param map: The Leaflet map instance.
+ */
+const setUpParkingLotsLayer = async (leaflet, map) => {
   const response = await fetch("./data/parking-lots.geojson");
   const data = await response.json();
-  L.geoJSON(data, {
-    style() {
-      return parkingLotsStyle;
-    },
-  }).addTo(map);
+  leaflet
+    .geoJSON(data, {
+      style() {
+        return parkingLotsStyle;
+      },
+    })
+    .addTo(map);
 };
 
+/** Update index.html with the map and interactivity.
+ *
+ * This is the only function that can directly access globals like `document`. It
+ * then passes those to the relevant helper functions.
+ */
 const setUpSite = async () => {
-  setUpAbout();
-  const map = createMap();
-  const initialCityId =
-    extractCityIdFromUrl(window.location.href) || "columbus-oh";
+  /* eslint-disable no-undef */
+  const docObj = document;
+  const windowUrl = window.location.href;
+  const leaflet = L;
+  /* eslint-enable no-undef */
+
+  setUpAbout(docObj);
+  const [map, paneResult] = createMapAndPane(docObj, leaflet);
+  // We must set the global `pane` for Leaflet to work.
+  pane = paneResult; // eslint-disable-line no-undef
+
+  const initialCityId = extractCityIdFromUrl(windowUrl);
   await Promise.all([
-    setUpCitiesLayer(map, initialCityId),
-    setUpParkingLotsLayer(map),
+    setUpCitiesLayer(docObj, windowUrl, leaflet, map, initialCityId),
+    setUpParkingLotsLayer(leaflet, map),
   ]);
 };
 
