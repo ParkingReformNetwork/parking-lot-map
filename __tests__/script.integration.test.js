@@ -141,6 +141,9 @@ describe("the share feature", () => {
     const page = await browser.newPage();
     await page.goto("http://localhost:1234");
 
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+
     await page.click(".url-copy-button > a");
     const firstCityClipboardText = await page.evaluate(async () =>
       navigator.clipboard.readText()
