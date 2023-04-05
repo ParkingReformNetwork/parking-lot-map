@@ -67,6 +67,9 @@ test("every city is in the toggle", async () => {
   const page = await browser.newPage();
   await page.goto("http://localhost:8080");
 
+  // Wait a second to make sure the site is fully loaded.
+  await page.waitForTimeout(1000);
+
   const toggleValues = await page.evaluate(() => {
     const select = document.querySelector("#city-choice");
     return Array.from(select.querySelectorAll("option")).map((opt) =>
