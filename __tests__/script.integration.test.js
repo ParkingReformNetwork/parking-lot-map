@@ -77,7 +77,7 @@ test("correctly load the city score card", async () => {
   const page = await browser.newPage();
   await page.goto("http://localhost:8080");
 
-  await page.select("#city-choice", "Anchorage, AK");
+  await page.select("#city-choice", "anchorage");
   await page.waitForFunction(() => {
     const titleElement = document.querySelector(
       ".leaflet-popup-content .title"
@@ -103,7 +103,7 @@ test("correctly load the city score card", async () => {
   });
   await browser.close();
 
-  expect(cityToggleValue).toEqual("Anchorage, AK");
+  expect(cityToggleValue).toEqual("anchorage");
   expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
     anchorageExpected.Percentage
   );
@@ -155,8 +155,7 @@ describe("the share feature", () => {
     });
     await browser.close();
 
-    // TODO: These should both be Fort Worth, TX.
-    expect(scoreCardTitle).toEqual("Columbus, OH");
-    expect(cityToggleValue).toEqual("Columbus, OH");
+    expect(scoreCardTitle).toEqual("Fort Worth, TX");
+    expect(cityToggleValue).toEqual("fort worth");
   });
 });
