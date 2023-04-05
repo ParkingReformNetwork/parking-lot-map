@@ -1,8 +1,15 @@
 {
   "name": "parking-lot-map",
   "version": "1.0.0",
+  "source": [
+    "index.html",
+    "icons/share-url-button.png",
+    "data/cities-polygons.geojson",
+    "data/parking-lots.geojson"
+  ],
   "scripts": {
-    "start": "http-server",
+    "start": "parcel",
+    "build": "rm -rf dist; parcel build",
     "test": "jest",
     "fmt": "prettier --write __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/",
     "fix": "prettier --write __tests__/ js/script.js; eslint --fix __tests__/ js/script.js",
@@ -13,8 +20,8 @@
     "eslint": "^8.37.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
-    "http-server": "^14.1.1",
     "jest": "^29.5.0",
+    "parcel": "^2.8.3",
     "prettier": "^2.8.7",
     "puppeteer": "^19.8.2"
   }
