@@ -21,9 +21,9 @@ To run the below commands, open your terminal app. Make sure you have `git clone
 ❯ npm start
 ```
 
-Then open http://127.0.0.1:8080 in a browser. Hit `CTRL-C` to stop the server.
+Then open http://127.0.0.1:1234 in a browser. Hit `CTRL-C` to stop the server.
 
-When the server is running, you can make any changes you want to the project. Reload the page in the browser to see those changes.
+When the server is running, you can make any changes you want to the project. Reload the page in the browser to see those changes. (You may need to force reload, e.g. hold the shift key while reloading on macOS.)
 
 ## Run tests
 
@@ -46,6 +46,14 @@ You must first have the server running in a tab of your terminal by running `npm
 ```bash
 ❯ npm run lint
 ```
+
+## Build for a release
+
+```bash
+❯ npm run build
+```
+
+Then copy the `dist/` folder to the server. We want to serve the file `dist/index.html`.
 
 ## Make a contribution
 
