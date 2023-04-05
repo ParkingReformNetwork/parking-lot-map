@@ -1,72 +1,69 @@
 const { describe, expect, test } = require("@jest/globals");
 const {
-  extractLocationTag,
+  extractCityIdFromUrl,
   determineShareUrl,
-  parseCityName,
+  parseCityIdFromJson,
 } = require("../js/script");
 
-describe("extractLocationTag()", () => {
+describe("extractCityIdFromUrl()", () => {
   test("returns empty when no relevant # fragment", () => {
-    expect(extractLocationTag("")).toEqual("");
-    expect(extractLocationTag("https://parking.org")).toEqual("");
-    expect(extractLocationTag("https://parking.org#shoup")).toEqual("");
+    expect(extractCityIdFromUrl("")).toEqual("");
+    expect(extractCityIdFromUrl("https://parking.org")).toEqual("");
+    expect(extractCityIdFromUrl("https://parking.org#shoup")).toEqual("");
     expect(
-      extractLocationTag("https://parking.org#parking-reform-map")
+      extractCityIdFromUrl("https://parking.org#parking-reform-map")
     ).toEqual("");
   });
 
-  test("extracts one-word cities", () => {
+  test("extracts the city id", () => {
     expect(
-      extractLocationTag("https://parking.org#parking-reform-map=city")
+      extractCityIdFromUrl("https://parking.org#parking-reform-map=city")
     ).toEqual("city");
     expect(
-      extractLocationTag("https://parking.org#parking-reform-map=CITY")
+      extractCityIdFromUrl("https://parking.org#parking-reform-map=CITY")
     ).toEqual("city");
-  });
-
-  test("extracts multi-word cities", () => {
     expect(
-      extractLocationTag(
-        "https://parking.org#parking-reform-map=city%20of%20shoup"
+      extractCityIdFromUrl(
+        "https://parking.org#parking-reform-map=city-of-shoup"
       )
-    ).toEqual("city of shoup");
+    ).toEqual("city-of-shoup");
     expect(
-      extractLocationTag(
-        "https://parking.org#parking-reform-map=CITY%20OF%20SHOUP"
+      extractCityIdFromUrl(
+        "https://parking.org#parking-reform-map=CITY-OF-SHOUP"
       )
-    ).toEqual("city of shoup");
+    ).toEqual("city-of-shoup");
   });
 });
 
-test("parseCityName() extracts the city", () => {
-  expect(parseCityName("City, AZ")).toEqual("city");
-  expect(parseCityName("CITY, AZ")).toEqual("city");
-  expect(parseCityName("Saint Shoup Village, AZ")).toEqual(
-    "saint shoup village"
+test("parseCityIdFromJson() extracts the city", () => {
+  expect(parseCityIdFromJson("City, AZ")).toEqual("city-az");
+  expect(parseCityIdFromJson("CITY, AZ")).toEqual("city-az");
+  expect(parseCityIdFromJson("Saint Shoup Village, AZ")).toEqual(
+    "saint-shoup-village-az"
   );
 });
 
 describe("determineShareUrl()", () => {
   test("adds #parking-reform-map= if not yet present", () => {
-    expect(determineShareUrl("https://parking.org", "City, AZ")).toEqual(
-      "https://parking.org#parking-reform-map=city"
+    expect(determineShareUrl("https://parking.org", "city-az")).toEqual(
+      "https://parking.org#parking-reform-map=city-az"
     );
     expect(
-      determineShareUrl("https://parking.org", "Saint Shoup Village, AZ")
-    ).toEqual("https://parking.org#parking-reform-map=saint%20shoup%20village");
+      determineShareUrl("https://parking.org", "saint-shoup-village-az")
+    ).toEqual("https://parking.org#parking-reform-map=saint-shoup-village-az");
   });
 
   test("replaces any existing # in the URL", () => {
     // We may want to make this more intelligent to preserve existing hashes. But we currently
     // don't have any use for hashes other than pre-defining the city. So this is simpler.
     expect(
-      determineShareUrl("https://parking.org#already-hash", "City, AZ")
-    ).toEqual("https://parking.org#parking-reform-map=city");
+      determineShareUrl("https://parking.org#already-hash", "city-az")
+    ).toEqual("https://parking.org#parking-reform-map=city-az");
     expect(
       determineShareUrl(
-        "https://parking.org#parking-reform-map=another%20city",
-        "City, AZ"
+        "https://parking.org#parking-reform-map=another-city-ny",
+        "city-az"
       )
-    ).toEqual("https://parking.org#parking-reform-map=city");
+    ).toEqual("https://parking.org#parking-reform-map=city-az");
   });
 });
