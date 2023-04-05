@@ -1,16 +1,14 @@
 const setUpAbout = () => {
-  $(".banner-about").click(() => {
-    if ($(".about-text-popup").css("display") === "none") {
-      $(".about-text-popup").css("display", "block");
-    } else {
-      $(".about-text-popup").css("display", "none");
-    }
+  const aboutElement = document.querySelector(".about-text-popup");
+  document.querySelector(".banner-about").addEventListener("click", () => {
+    aboutElement.style.display =
+      aboutElement.style.display !== "block" ? "block" : "none";
   });
 
-  $(".about-close").click(() => {
-    if ($(".about-text-popup").css("display") === "block") {
-      $(".about-text-popup").css("display", "none");
-    }
+  // Note that the close element will only render when the about text popup is rendered.
+  // So, it only ever makes sense for a click to close.
+  document.querySelector(".about-close").addEventListener("click", () => {
+    aboutElement.style.display = "none";
   });
 };
 
@@ -196,13 +194,15 @@ const setUpCitiesLayer = (map, initialCity) => {
 };
 
 const setUpParkingLotsLayer = (map) => {
-  $.getJSON("data/parking-lots.geojson", (data) => {
-    L.geoJson(data, {
-      style() {
-        return parkingLotsStyle;
-      },
-    }).addTo(map);
-  });
+  fetch("./data/parking-lots.geojson")
+    .then((response) => response.json())
+    .then((data) => {
+      L.geoJSON(data, {
+        style() {
+          return parkingLotsStyle;
+        },
+      }).addTo(map);
+    });
 };
 
 const setUpSite = () => {
@@ -216,11 +216,17 @@ const setUpSite = () => {
 function generatePopupContent(map, cityProperties) {
   let popupContent = `<div class='title'>${cityProperties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
-  const shareUrl = determineShareUrl(window.location.href, cityProperties.Name);
-  map.on("popupopen", () => {
-    $("div.url-copy-button > a").click(() => {
+  // We put the event listener on `map` because it is never erased, unlike the copy button
+  // being recreated every time the score card changes. This is called "event delegation".
+  document.querySelector("#map").addEventListener("click", (event) => {
+    const targetElement = event.target.closest("div.url-copy-button > a");
+    if (targetElement) {
+      const shareUrl = determineShareUrl(
+        window.location.href,
+        cityProperties.Name
+      );
       copyToClipboard(shareUrl);
-    });
+    }
   });
 
   popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${cityProperties.Percentage}</span></div>`;
