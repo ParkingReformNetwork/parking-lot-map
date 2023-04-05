@@ -1514,10 +1514,10 @@
       "type": "Feature",
       "properties": {
         "Name": "Detroit, MI",
-        "Percentage": "33%",
+        "Percentage": "30%",
         "Population": "639,614",
         "Metro Population": "4,392,041",
-        "Parking Score": "94",
+        "Parking Score": "85",
         "Reforms": "Implemented",
         "Website URL": "https://parkingreform.org/mandates-map/city_detail/Detroit_MI.html"
       },
