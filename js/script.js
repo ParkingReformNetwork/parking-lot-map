@@ -200,67 +200,63 @@ const setMapToCity = (map, cityId, cityProperties) => {
  * @param string initialCityId: e.g. `columbus-oh` or an empty string if none was set. Will
  *    default to `columbus-oh`.
  */
-const setUpCitiesLayer = (map, initialCityId) => {
-  fetch("./data/cities-polygons.geojson")
-    .then((response) => response.json())
-    // Add the GeoJSON to the map & store the parsed data.
-    .then((data) => {
-      const cities = {};
-      L.geoJson(data, {
-        style() {
-          return citiesPolygonsStyle;
-        },
-        onEachFeature(feature, layer) {
-          const key = parseCityIdFromJson(feature.properties.Name);
-          cities[key] = { layer, ...feature.properties };
-        },
-      }).addTo(map);
-      return cities;
-    })
-    .then((cities) => {
-      // Set map to update when city selection changes.
-      const cityToggleElement = document.getElementById("city-choice");
-      cityToggleElement.addEventListener("change", () => {
+const setUpCitiesLayer = async (map, initialCityId) => {
+  const response = await fetch("./data/cities-polygons.geojson");
+  const data = await response.json();
+
+  const cities = {};
+  L.geoJson(data, {
+    style() {
+      return citiesPolygonsStyle;
+    },
+    onEachFeature(feature, layer) {
+      const key = parseCityIdFromJson(feature.properties.Name);
+      cities[key] = { layer, ...feature.properties };
+    },
+  }).addTo(map);
+
+  // Set map to update when city selection changes.
+  const cityToggleElement = document.getElementById("city-choice");
+  cityToggleElement.addEventListener("change", () => {
         const cityId = cityToggleElement.value;
-        setMapToCity(map, cityId, cities[cityId]);
-      });
+    setMapToCity(map, cityId, cities[cityId]);
+  });
 
-      // Add each city to the city selection toggle and set the initial city.
-      const cityKeys = Object.keys(cities).sort();
-      cityKeys.forEach((key) => {
-        const option = document.createElement("option");
-        option.value = key;
-        option.textContent = cities[key].Name;
-        cityToggleElement.appendChild(option);
-      });
+  // Add each city to the city selection toggle and set the initial city.
+  const cityKeys = Object.keys(cities).sort();
+  cityKeys.forEach((key) => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = cities[key].Name;
+    cityToggleElement.appendChild(option);
+  });
 
-      // Set initial city.
-      const validatedInitialCityId =
+  // Set initial city.
+  const validatedInitialCityId =
         initialCityId in cities ? initialCityId : "columbus-oh";
       cityToggleElement.value = validatedInitialCityId;
-      setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
-    });
+  setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
 };
 
-const setUpParkingLotsLayer = (map) => {
-  fetch("./data/parking-lots.geojson")
-    .then((response) => response.json())
-    .then((data) => {
-      L.geoJSON(data, {
-        style() {
-          return parkingLotsStyle;
-        },
-      }).addTo(map);
-    });
+const setUpParkingLotsLayer = async (map) => {
+  const response = await fetch("./data/parking-lots.geojson");
+  const data = await response.json();
+  L.geoJSON(data, {
+    style() {
+      return parkingLotsStyle;
+    },
+  }).addTo(map);
 };
 
-const setUpSite = () => {
+const setUpSite = async () => {
   setUpAbout();
   const map = createMap();
   const initialCityId =
     extractCityIdFromUrl(window.location.href) || "columbus-oh";
-  setUpCitiesLayer(map, initialCityId);
-  setUpParkingLotsLayer(map);
+  await Promise.all([
+    setUpCitiesLayer(map, initialCityId),
+    setUpParkingLotsLayer(map),
+  ]);
 };
 
 module.exports = {

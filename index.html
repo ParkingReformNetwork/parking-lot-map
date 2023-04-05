@@ -242,7 +242,9 @@
     <div id="map"></div>
     <script type="text/javascript" src="js/script.js"></script>
     <script>
-      setUpSite();
+      (async () => {
+        await setUpSite();
+      })();
     </script>
   </body>
 </html>
