@@ -120,6 +120,58 @@ const copyToClipboard = (value) => {
 };
 
 /**
+ * Add an event listener for the share button to copy the link to the clipboard.
+ *
+ * @param string cityId: e.g. `saint-louis-mo`
+ */
+const setUpShareUrlClickListener = (cityId) => {
+  // We put the event listener on `map` because it is never erased, unlike the copy button
+  // being recreated every time the score card changes. This is called "event delegation".
+  document.querySelector("#map").addEventListener("click", (event) => {
+    const targetElement = event.target.closest("div.url-copy-button > a");
+    if (targetElement) {
+      const shareUrl = determineShareUrl(window.location.href, cityId);
+      copyToClipboard(shareUrl);
+    }
+  });
+};
+
+/**
+ * Generate the HTML for the score card.
+ *
+ * @param cityProperties: The keys from the geoJSON files.
+ * @returns string: The HTML represented as a string.
+ */
+const generateScorecard = (cityProperties) => {
+  const {
+    Name,
+    Percentage,
+    Population,
+    "Metro Population": MetroPopulation,
+    "Parking Score": ParkingScore,
+    Reforms,
+    "Website URL": WebsiteURL,
+  } = cityProperties;
+  let result = `
+    <div class="title">${Name}</div>
+    <div class="url-copy-button"><a href="#"><img src="icons/share-url-button.png"></a></div>
+    <hr>
+    <div><span class="details-title">Percent of Central City Devoted to Parking: </span><span class="details-value">${Percentage}</span></div>
+    <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
+    <div><span class="details-title">Metro Population: </span><span class="details-value">${MetroPopulation}</span></div>
+    <div><span class="details-title">Parking Score: </span><span class="details-value">${ParkingScore}</span></div>
+    <div><span class="details-title">Parking Mandate Reforms: </span><span class="details-value">${Reforms}</span></div>
+  `;
+  if (WebsiteURL) {
+    result += `
+    <hr>
+    <div class="popup-button"><a target="_blank" href="${WebsiteURL}">View more</a></div>
+  `;
+  }
+  return result;
+};
+
+/**
  * Move the map to the city boundaries and set its score card.
  *
  * @param map: The Leaflet map instance.
@@ -130,12 +182,13 @@ const copyToClipboard = (value) => {
 const setMapToCity = (map, cityId, cityProperties) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
-  const popupContent = generatePopupContent(map, cityId, cityProperties);
+  const scorecard = generateScorecard(cityProperties);
+  setUpShareUrlClickListener(cityId);
   const popup = L.popup({
     pane: "fixed",
     className: "popup-fixed",
     autoPan: false,
-  }).setContent(popupContent);
+  }).setContent(scorecard);
   layer.bindPopup(popup).openPopup();
 };
 
@@ -209,31 +262,6 @@ const setUpSite = () => {
   setUpCitiesLayer(map, initialCityId);
   setUpParkingLotsLayer(map);
 };
-
-function generatePopupContent(map, cityId, cityProperties) {
-  let popupContent = `<div class='title'>${cityProperties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
-
-  // We put the event listener on `map` because it is never erased, unlike the copy button
-  // being recreated every time the score card changes. This is called "event delegation".
-  document.querySelector("#map").addEventListener("click", (event) => {
-    const targetElement = event.target.closest("div.url-copy-button > a");
-    if (targetElement) {
-      const shareUrl = determineShareUrl(window.location.href, cityId);
-      copyToClipboard(shareUrl);
-    }
-  });
-
-  popupContent += `<div><span class='details-title'>Percent of Central City Devoted to Parking: </span><span class='details-value'>${cityProperties.Percentage}</span></div>`;
-  popupContent += `<div><span class='details-title'>Population: </span><span class='details-value'>${cityProperties.Population}</span></div>`;
-  popupContent += `<div><span class='details-title'>Metro Population: </span><span class='details-value'>${cityProperties["Metro Population"]}</span></div>`;
-  popupContent += `<div><span class='details-title'>Parking Score: </span><span class='details-value'>${cityProperties["Parking Score"]}</span></div>`;
-  popupContent += `<div><span class='details-title'>Parking Mandate Reforms: </span><span class='details-value'>${cityProperties.Reforms}</span></div>`;
-
-  if (cityProperties["Website URL"]) {
-    popupContent += `<hr><div class='popup-button'><a target='_blank' href='${cityProperties["Website URL"]}'>View more</a></div>`;
-  }
-  return popupContent;
-}
 
 module.exports = {
   extractCityIdFromUrl,
