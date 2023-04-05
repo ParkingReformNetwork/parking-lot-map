@@ -68,44 +68,35 @@ const parkingLotsStyle = {
 };
 
 /**
- * Extract the city name from the URL's `#`, if present.
+ * Extract the city ID from the URL's `#`, if present.
  *
  * @param string windowUrl: the current page's URL
- * @return string: Returns empty string if not present
+ * @return string: Returns e.g. `saint-louis-mo` if present, else the empty string
  */
-const extractLocationTag = (windowUrl) => {
-  if (windowUrl.indexOf("#parking-reform-map=") === -1) {
-    return "";
-  }
-  const rawValue = windowUrl.split("#")[1].split("=")[1];
-  const [firstWord, ...remainingWords] = rawValue.split("%20");
-  const result =
-    remainingWords.length > 0
-      ? `${firstWord} ${remainingWords.join(" ")}`
-      : firstWord;
-  return result.toLowerCase();
-};
+const extractCityIdFromUrl = (windowUrl) =>
+  windowUrl.indexOf("#parking-reform-map=") === -1
+    ? ""
+    : windowUrl.split("#")[1].split("=")[1].toLowerCase();
 
 /**
- * Parse the city name from the geojson's `Name` property.
+ * Parse the geojson's `Name` property into the city ID.
  *
  * @param string jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
- * @return string: the city name, lowercased.
+ * @return string: the city ID, e.g. `saint-louis-mo`.
  */
-const parseCityName = (jsonCityName) =>
-  jsonCityName.toLowerCase().split(", ")[0];
+const parseCityIdFromJson = (jsonCityName) =>
+  jsonCityName.toLowerCase().replace(/ /g, "-").replace(/,/g, "");
 
 /**
  * Determine what URL to use to share the current city.
  *
  * @param string windowUrl: the current page's URL
- * @param string jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
+ * @param string cityId: e.g. `saint-louis-mo`
  * @return string: the URL to share
  */
-const determineShareUrl = (windowUrl, jsonCityName) => {
-  const cityName = parseCityName(jsonCityName).replace(/ /g, "%20");
+const determineShareUrl = (windowUrl, cityId) => {
   const [baseUrl] = windowUrl.split("#");
-  return `${baseUrl}#parking-reform-map=${cityName}`;
+  return `${baseUrl}#parking-reform-map=${cityId}`;
 };
 
 /**
@@ -132,13 +123,14 @@ const copyToClipboard = (value) => {
  * Move the map to the city boundaries and set its score card.
  *
  * @param map: The Leaflet map instance.
- * @param city: An object with a `layout` key (Leaflet value) and keys representing the
- *    score card properties stored in the Geojson files.
+ * @param string cityId: e.g. `saint-louis-mo`
+ * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
+ *    representing the score card properties stored in the Geojson files.
  */
-const setMapToCity = (map, city) => {
-  const { layer } = city;
+const setMapToCity = (map, cityId, cityProperties) => {
+  const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
-  const popupContent = generatePopupContent(map, city);
+  const popupContent = generatePopupContent(map, cityId, cityProperties);
   const popup = L.popup({
     pane: "fixed",
     className: "popup-fixed",
@@ -152,9 +144,10 @@ const setMapToCity = (map, city) => {
  * toggles the city selection.
  *
  * @param map: The Leaflet map instance.
- * @param string initialCity: the lower-case city name to initially load.
+ * @param string initialCityId: e.g. `columbus-oh` or an empty string if none was set. Will
+ *    default to `columbus-oh`.
  */
-const setUpCitiesLayer = (map, initialCity) => {
+const setUpCitiesLayer = (map, initialCityId) => {
   fetch("./data/cities-polygons.geojson")
     .then((response) => response.json())
     // Add the GeoJSON to the map & store the parsed data.
@@ -165,7 +158,7 @@ const setUpCitiesLayer = (map, initialCity) => {
           return citiesPolygonsStyle;
         },
         onEachFeature(feature, layer) {
-          const key = parseCityName(feature.properties.Name);
+          const key = parseCityIdFromJson(feature.properties.Name);
           cities[key] = { layer, ...feature.properties };
         },
       }).addTo(map);
@@ -175,7 +168,8 @@ const setUpCitiesLayer = (map, initialCity) => {
       // Set map to update when city selection changes.
       const cityToggleElement = document.getElementById("city-choice");
       cityToggleElement.addEventListener("change", () => {
-        setMapToCity(map, cities[cityToggleElement.value]);
+        const cityId = cityToggleElement.value;
+        setMapToCity(map, cityId, cities[cityId]);
       });
 
       // Add each city to the city selection toggle and set the initial city.
@@ -188,8 +182,10 @@ const setUpCitiesLayer = (map, initialCity) => {
       });
 
       // Set initial city.
-      cityToggleElement.value = initialCity;
-      setMapToCity(map, cities[initialCity]);
+      const validatedInitialCityId =
+        initialCityId in cities ? initialCityId : "columbus-oh";
+      cityToggleElement.value = validatedInitialCityId;
+      setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
     });
 };
 
@@ -208,12 +204,13 @@ const setUpParkingLotsLayer = (map) => {
 const setUpSite = () => {
   setUpAbout();
   const map = createMap();
-  const initialCity = extractLocationTag(window.location.href) || "columbus";
-  setUpCitiesLayer(map, initialCity);
+  const initialCityId =
+    extractCityIdFromUrl(window.location.href) || "columbus-oh";
+  setUpCitiesLayer(map, initialCityId);
   setUpParkingLotsLayer(map);
 };
 
-function generatePopupContent(map, cityProperties) {
+function generatePopupContent(map, cityId, cityProperties) {
   let popupContent = `<div class='title'>${cityProperties.Name}</div><div class='url-copy-button'><a href='#'><img src='icons/share-url-button.png'></a></div><hr>`;
 
   // We put the event listener on `map` because it is never erased, unlike the copy button
@@ -221,10 +218,7 @@ function generatePopupContent(map, cityProperties) {
   document.querySelector("#map").addEventListener("click", (event) => {
     const targetElement = event.target.closest("div.url-copy-button > a");
     if (targetElement) {
-      const shareUrl = determineShareUrl(
-        window.location.href,
-        cityProperties.Name
-      );
+      const shareUrl = determineShareUrl(window.location.href, cityId);
       copyToClipboard(shareUrl);
     }
   });
@@ -242,8 +236,8 @@ function generatePopupContent(map, cityProperties) {
 }
 
 module.exports = {
-  extractLocationTag,
+  extractCityIdFromUrl,
   determineShareUrl,
-  parseCityName,
+  parseCityIdFromJson,
   setUpSite,
 };

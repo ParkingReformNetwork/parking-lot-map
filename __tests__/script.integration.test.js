@@ -94,7 +94,7 @@ test("correctly load the city score card", async () => {
   const page = await browser.newPage();
   await page.goto("http://localhost:8080");
 
-  await page.select("#city-choice", "anchorage");
+  await page.select("#city-choice", "anchorage-ak");
   await page.waitForFunction(() => {
     const titleElement = document.querySelector(
       ".leaflet-popup-content .title"
@@ -120,7 +120,7 @@ test("correctly load the city score card", async () => {
   });
   await page.close();
 
-  expect(cityToggleValue).toEqual("anchorage");
+  expect(cityToggleValue).toEqual("anchorage-ak");
   expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
     anchorageExpected.Percentage
   );
@@ -148,7 +148,7 @@ describe("the share feature", () => {
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
-    await page.select("#city-choice", "anchorage");
+    await page.select("#city-choice", "anchorage-ak");
     await page.waitForFunction(() => {
       const titleElement = document.querySelector(
         ".leaflet-popup-content .title"
@@ -164,17 +164,17 @@ describe("the share feature", () => {
     await page.close();
 
     expect(firstCityClipboardText).toBe(
-      "http://localhost:8080/#parking-reform-map=columbus"
+      "http://localhost:8080/#parking-reform-map=columbus-oh"
     );
     expect(secondCityClipboardText).toBe(
-      "http://localhost:8080/#parking-reform-map=anchorage"
+      "http://localhost:8080/#parking-reform-map=anchorage-ak"
     );
   });
 
   test("loading from a share link works", async () => {
     // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
     const page = await browser.newPage();
-    await page.goto("http://localhost:8080#parking-reform-map=fort%20worth");
+    await page.goto("http://localhost:8080#parking-reform-map=fort-worth-tx");
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
@@ -188,7 +188,26 @@ describe("the share feature", () => {
     await page.close();
 
     expect(scoreCardTitle).toEqual("Fort Worth, TX");
-    expect(cityToggleValue).toEqual("fort worth");
+    expect(cityToggleValue).toEqual("fort-worth-tx");
+  });
+
+  test("loading from a bad share link falls back to Columbus", async () => {
+    const page = await browser.newPage();
+    await page.goto("http://localhost:8080#parking-reform-map=bad-city");
+
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+    const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
+      const title = document.querySelector(
+        ".leaflet-popup-content .title"
+      ).textContent;
+      const cityToggle = document.querySelector("#city-choice").value;
+      return [title, cityToggle];
+    });
+    await page.close();
+
+    expect(scoreCardTitle).toEqual("Columbus, OH");
+    expect(cityToggleValue).toEqual("columbus-oh");
   });
 });
 
