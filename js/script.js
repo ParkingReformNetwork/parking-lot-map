@@ -151,7 +151,7 @@ const setUpShareUrlClickListener = (docObj, windowUrl, cityId) => {
     const targetElement = event.target.closest("div.url-copy-button > a");
     if (targetElement) {
       const shareUrl = determineShareUrl(windowUrl, cityId);
-      copyToClipboard(shareUrl);
+      copyToClipboard(docObj, shareUrl);
     }
   });
 };
@@ -262,7 +262,7 @@ const setUpCitiesLayer = async (
   const cityToggleElement = docObj.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
-    setMapToCity(docObj, leaflet, windowUrl, map, cityId, cities[cityId]);
+    setMapToCity(docObj, windowUrl, leaflet, map, cityId, cities[cityId]);
   });
 
   // Add each city to the city selection toggle and set the initial city.
@@ -280,8 +280,8 @@ const setUpCitiesLayer = async (
   cityToggleElement.value = validatedInitialCityId;
   setMapToCity(
     docObj,
-    leaflet,
     windowUrl,
+    leaflet,
     map,
     validatedInitialCityId,
     cities[validatedInitialCityId]
