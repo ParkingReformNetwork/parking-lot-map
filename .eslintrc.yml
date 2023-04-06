@@ -1,6 +1,3 @@
-env:
-  browser: true
-  commonjs: true
 extends:
   - eslint:recommended
   - airbnb-base
@@ -11,6 +8,3 @@ parserOptions:
   sourceType: module
 rules:
   no-unexpected-multiline: off
-globals:
-  L: readonly  # Defined by Leaflet.
-  pane: writable  # Defined by Leaflet.
