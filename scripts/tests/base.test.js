@@ -6,43 +6,41 @@ const {
   expect,
   test,
 } = require("@jest/globals");
-const { determineArgs, updateGeoJSON } = require("../update-lots");
+const { determineArgs, updateCoordinates } = require("../base");
 
 describe("determineArgs()", () => {
   test("detects whether --add is set", () => {
-    let result = determineArgs(["My City"]);
+    let result = determineArgs("my-script", ["My City"]);
     expect(result.value).toEqual({ cityName: "My City", addFlag: false });
 
-    result = determineArgs(["My City", "--add"]);
+    result = determineArgs("my-script", ["My City", "--add"]);
     expect(result.value).toEqual({ cityName: "My City", addFlag: true });
 
-    result = determineArgs(["--add", "My City"]);
+    result = determineArgs("my-script", ["--add", "My City"]);
     expect(result.value).toEqual({ cityName: "My City", addFlag: true });
   });
 
   test("requires the city to be specified", () => {
-    let result = determineArgs([]);
+    let result = determineArgs("my-script", []);
     expect(result.error).toContain("provide a city/state name");
 
-    result = determineArgs(["--add"]);
+    result = determineArgs("my-script", ["--add"]);
     expect(result.error).toContain("provide a city/state name");
   });
 
   test("errors if unrecognized arguments", () => {
-    let result = determineArgs(["My City", "--bad"]);
+    let result = determineArgs("my-script", ["My City", "--bad"]);
     expect(result.error).toContain("Unexpected arguments");
 
-    result = determineArgs(["My City", "--add", "bad"]);
+    result = determineArgs("my-script", ["My City", "--add", "bad"]);
     expect(result.error).toContain("Unexpected arguments");
   });
 });
 
-describe("updateGeoJSON()", () => {
+describe("updateCoordinates()", () => {
   let originalData;
-  const originalFilePath =
-    "scripts/tests/data/parking-lots/original-data.geojson";
-  const validUpdateFilePath =
-    "scripts/tests/data/parking-lots/valid-update.geojson";
+  const originalFilePath = "scripts/tests/data/original-data.geojson";
+  const validUpdateFilePath = "scripts/tests/data/valid-update.geojson";
 
   beforeAll(async () => {
     // Save the original data for reverting the changes.
@@ -58,7 +56,8 @@ describe("updateGeoJSON()", () => {
     const updateFilePath = validUpdateFilePath;
 
     const cityName = "Shoup Ville, AZ";
-    const result = await updateGeoJSON(
+    const result = await updateCoordinates(
+      "my-script",
       cityName,
       false,
       originalFilePath,
@@ -69,7 +68,7 @@ describe("updateGeoJSON()", () => {
 
     const rawUpdateData = await fs.readFile(updateFilePath, "utf8");
     const updateData = JSON.parse(rawUpdateData);
-    const updateCoordinates = updateData.features[0].geometry.coordinates;
+    const updatedCoordinates = updateData.features[0].geometry.coordinates;
 
     const rawResultData = await fs.readFile(originalFilePath, "utf8");
     const resultData = JSON.parse(rawResultData);
@@ -77,14 +76,15 @@ describe("updateGeoJSON()", () => {
     const cityTargetData = resultData.features.find(
       (feature) => feature.properties.Name === cityName
     );
-    expect(cityTargetData.geometry.coordinates).toEqual(updateCoordinates);
+    expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
   });
 
   test("adds a new city when `--add` used", async () => {
     const updateFilePath = validUpdateFilePath;
 
     const cityName = "Parking Reform Now, NY";
-    const result = await updateGeoJSON(
+    const result = await updateCoordinates(
+      "my-script",
       cityName,
       true,
       originalFilePath,
@@ -95,7 +95,7 @@ describe("updateGeoJSON()", () => {
 
     const rawUpdateData = await fs.readFile(updateFilePath, "utf8");
     const updateData = JSON.parse(rawUpdateData);
-    const updateCoordinates = updateData.features[0].geometry.coordinates;
+    const updatedCoordinates = updateData.features[0].geometry.coordinates;
 
     const rawResultData = await fs.readFile(originalFilePath, "utf8");
     const resultData = JSON.parse(rawResultData);
@@ -103,11 +103,12 @@ describe("updateGeoJSON()", () => {
     const cityTargetData = resultData.features.find(
       (feature) => feature.properties.Name === cityName
     );
-    expect(cityTargetData.geometry.coordinates).toEqual(updateCoordinates);
+    expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
   });
 
   test("errors if city cannot be found in the original data and `--add` not set", async () => {
-    const result = await updateGeoJSON(
+    const result = await updateCoordinates(
+      "my-script",
       "Bad City",
       false,
       originalFilePath,
@@ -117,25 +118,28 @@ describe("updateGeoJSON()", () => {
   });
 
   test("validates the update file has exactly one `feature`", async () => {
-    let result = await updateGeoJSON(
+    let result = await updateCoordinates(
+      "my-script",
       "Shoup Ville, AZ",
       false,
       originalFilePath,
-      "scripts/tests/data/parking-lots/too-many-updates.geojson"
+      "scripts/tests/data/too-many-updates.geojson"
     );
     expect(result.error).toContain("expects exactly one entry in `features`");
 
-    result = await updateGeoJSON(
+    result = await updateCoordinates(
+      "my-script",
       "Shoup Ville, AZ",
       false,
       originalFilePath,
-      "scripts/tests/data/parking-lots/empty-update.geojson"
+      "scripts/tests/data/empty-update.geojson"
     );
     expect(result.error).toContain("expects exactly one entry in `features`");
   });
 
   test("errors gracefully if update file not found", async () => {
-    const result = await updateGeoJSON(
+    const result = await updateCoordinates(
+      "my-script",
       "Shoup Ville, AZ",
       false,
       originalFilePath,
@@ -145,7 +149,8 @@ describe("updateGeoJSON()", () => {
   });
 
   test("errors gracefully if original data file not found", async () => {
-    const result = await updateGeoJSON(
+    const result = await updateCoordinates(
+      "my-script",
       "Shoup Ville, AZ",
       false,
       "scripts/tests/data/does-not-exist",
