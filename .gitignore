@@ -2,3 +2,5 @@
 /.idea/
 /dist/
 /.parcel-cache/
+
+/parking-lots-update.geojson
