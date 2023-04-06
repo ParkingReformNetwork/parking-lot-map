@@ -18,6 +18,6 @@ jobs:
     - name: Start server
       run: |
         npm start &
-        sleep 5 # give server some time to start
+        sleep 8 # give server some time to start
     - name: Run tests
       run: npm test
