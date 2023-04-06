@@ -73,13 +73,27 @@ Then, save your changes in Git (in a new branch) and open a pull request. See th
 
 ## Update city score card and boundaries
 
-For now, you have to manually make edits to `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`.
+Directly edit the score card in `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. Be careful to not change the key names.
 
-Directly edit the score card values. Be careful to not change the key names.
+To update the boundaries, export the geoJSON file and save it as the file `city-update.geojson` in the root of this repository. If the file already exists, overwrite it with your new data.
 
-To update the boundaries, delete the `coordinates` section and replace with the `coordinates` entry from your updated GeoJSON file.
+Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `Saint Louis, MO`.
 
-Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
+Now, run the below but replace the last part with the city/state name (in single quotes!):
+
+```bash
+❯ npm run update-city-boundaries -- 'My City, AZ'
+```
+
+If the city is brand new, add the flag `--add`:
+
+```bash
+❯ npm run update-city-boundaries -- 'My City, AZ' --add
+```
+
+When adding a new city, first run the script, then open up `data/cities-polygons.geojson` and manually update the score card values.
+
+Regardless of whether what you updated, start the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
 
 Finally, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
 

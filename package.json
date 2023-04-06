@@ -14,6 +14,7 @@
     "fmt": "prettier --write .",
     "fix": "prettier --write scripts/ src/js; eslint --fix scripts/ src/js/script.js src/tests",
     "lint": "prettier --check . && eslint scripts/ src/js/script.js src/tests",
+    "update-city-boundaries": "node scripts/update-city.js",
     "update-lots": "node scripts/update-lots.js"
   },
   "devDependencies": {
