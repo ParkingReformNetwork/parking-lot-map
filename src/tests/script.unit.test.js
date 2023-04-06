@@ -3,7 +3,7 @@ const {
   extractCityIdFromUrl,
   determineShareUrl,
   parseCityIdFromJson,
-} = require("../src/js/script");
+} = require("../js/script");
 
 describe("extractCityIdFromUrl()", () => {
   test("returns empty when no relevant # fragment", () => {
