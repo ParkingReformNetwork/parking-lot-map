@@ -2,13 +2,17 @@
 
 const fs = require("fs").promises;
 
-const updateGeoJSON = async (cityName) => {
-  try {
-    const jsonStringNewData = await fs.readFile(
-      "parking-lots-update.geojson",
-      "utf8"
+const updateGeoJSON = async (cityName, originalFilePath, updateFilePath) => {
+  if (!cityName) {
+    console.error(
+      "Please provide a city/state name as an argument, e.g. `npm run update-lots -- 'Columbus, OH'`"
     );
-    const newData = JSON.parse(jsonStringNewData);
+    return;
+  }
+
+  try {
+    const rawNewData = await fs.readFile(updateFilePath, "utf8");
+    const newData = JSON.parse(rawNewData);
 
     if (!Array.isArray(newData.features) || newData.features.length !== 1) {
       console.error(
@@ -19,16 +23,12 @@ const updateGeoJSON = async (cityName) => {
 
     const newCoordinates = newData.features[0].geometry.coordinates;
 
-    const jsonStringOriginalData = await fs.readFile(
-      "data/parking-lots.geojson",
-      "utf8"
-    );
-    const originalData = JSON.parse(jsonStringOriginalData);
+    const rawOriginalData = await fs.readFile(originalFilePath, "utf8");
+    const originalData = JSON.parse(rawOriginalData);
 
     const cityOriginalData = originalData.features.find(
       (feature) => feature.properties.Name === cityName
     );
-
     if (!cityOriginalData) {
       console.error(
         "The program only works on cities currently in the data set."
@@ -38,10 +38,7 @@ const updateGeoJSON = async (cityName) => {
 
     cityOriginalData.geometry.coordinates = newCoordinates;
 
-    await fs.writeFile(
-      "data/parking-lots.geojson",
-      JSON.stringify(originalData, null, 2)
-    );
+    await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
     console.log(
       "File updated successfully! Now, run `npm run fmt`. Then, `npm start` and see if the site is what you expect"
     );
@@ -50,11 +47,17 @@ const updateGeoJSON = async (cityName) => {
   }
 };
 
-const cityName = process.argv[2];
-if (!cityName) {
-  console.error(
-    "Please provide a city/state name as an argument, e.g. `npm run update-lots -- 'Columbus, OH'`"
+const main = async () => {
+  const cityName = process.argv[2];
+  await updateGeoJSON(
+    cityName,
+    "data/parking-lots.geojson",
+    "parking-lots-update.geojson"
   );
-  process.exit(1);
+};
+
+if (require.main === module) {
+  (async () => {
+    await main();
+  })();
 }
-updateGeoJSON(cityName);
