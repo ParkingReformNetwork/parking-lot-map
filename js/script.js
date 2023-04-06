@@ -218,7 +218,7 @@ const setUpCitiesLayer = async (map, initialCityId) => {
   // Set map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
-        const cityId = cityToggleElement.value;
+    const cityId = cityToggleElement.value;
     setMapToCity(map, cityId, cities[cityId]);
   });
 
@@ -233,8 +233,8 @@ const setUpCitiesLayer = async (map, initialCityId) => {
 
   // Set initial city.
   const validatedInitialCityId =
-        initialCityId in cities ? initialCityId : "columbus-oh";
-      cityToggleElement.value = validatedInitialCityId;
+    initialCityId in cities ? initialCityId : "columbus-oh";
+  cityToggleElement.value = validatedInitialCityId;
   setMapToCity(map, validatedInitialCityId, cities[validatedInitialCityId]);
 };
 
