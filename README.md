@@ -6,12 +6,12 @@ The code is fairly simple and we intentionally are not using fancy frameworks li
 
 # How tos
 
-All the commands take place in a _terminal_, a text-based interface for interacting with your computer. On macOS, you can open the "Terminal" app. On Windows, you can use "Git Bash", which will be installed when you install Git below. 
+All the commands take place in a _terminal_, a text-based interface for interacting with your computer. On macOS, you can open the "Terminal" app. On Windows, you can use "Git Bash", which will be installed when you install Git below.
 
 You will also need to install:
 
-* Git, which we use for "version control": https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-* NPM, which is how we run JavaScript and our tests. Use the LTS at https://nodejs.dev/en/download/
+- Git, which we use for "version control": https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+- NPM, which is how we run JavaScript and our tests. Use the LTS at https://nodejs.dev/en/download/
 
 To run the below commands, open your terminal app. Make sure you have `git clone`d the fork of your repository somewhere on your machine. Then, use `cd <directory>` to navigate there, e.g. `cd code/parking-lot-map`.
 
@@ -51,7 +51,7 @@ You must first have the server running in a tab of your terminal by running `npm
 
 We have a script that will update `data/parking-lots.geojson` for you.
 
-First, export the geoJSON file and save it as the file `parking-lots-update.geojson`  in the root of this repository. If the file already exists, overwrite it with your new data.
+First, export the geoJSON file and save it as the file `parking-lots-update.geojson` in the root of this repository. If the file already exists, overwrite it with your new data.
 
 Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `Saint Louis, MO`.
 
@@ -67,7 +67,7 @@ Then, save your changes in Git (in a new branch) and open a pull request. See th
 
 ## Update city score card and boundaries
 
-For now, you have to manually make edits to `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. 
+For now, you have to manually make edits to `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`.
 
 Directly edit the score card values. Be careful to not change the key names.
 

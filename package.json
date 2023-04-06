@@ -11,9 +11,9 @@
     "start": "parcel",
     "build": "rm -rf dist; parcel build",
     "test": "jest",
-    "fmt": "prettier --write index.html  __tests__/ scripts/ js/ css/ data/",
+    "fmt": "prettier --write ./",
     "fix": "prettier --write __tests__/ scripts/ js/script.js; eslint --fix __tests__/ scripts/ js/script.js",
-    "lint": "prettier --check index.html  __tests__/ scripts/ js/ css/ data/ && eslint __tests__/ scripts/ js/script.js",
+    "lint": "prettier --check . && eslint __tests__/ scripts/ js/script.js",
     "update-lots": "node scripts/update-lots.js"
   },
   "devDependencies": {
