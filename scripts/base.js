@@ -40,14 +40,20 @@ const determineArgs = (scriptCommand, processArgv) => {
  * @param string scriptCommand - i.e. `update-lots` or `update-city-boundaries`.
  * @param string cityName - e.g. 'My City, AZ'
  * @param boolean addCity - what to do if the city is missing
+ * @param string geometryType - either `Polygon` or `MultiPolygon`
+ * @param object additionalPropertiesForNewCity - any additional keys and filler values to add
+      to Properties when creating a new city.
  * @param string originalFilePath - what will be updated
  * @param string updatedFilePath - where to get the new coordinates
- * @return either an `error` or `value` object, both with a string to console log.
+ * @return either an `error` or `value` object. The `value` does not include follow up
+      instructions, which you should log.
  */
 const updateCoordinates = async (
   scriptCommand,
   cityName,
   addCity,
+  geometryType,
+  additionalPropertiesForNewCity,
   originalFilePath,
   updateFilePath
 ) => {
@@ -82,8 +88,8 @@ const updateCoordinates = async (
   if (addCity) {
     const newEntry = {
       type: "Feature",
-      properties: { Name: cityName },
-      geometry: { type: "MultiPolygon", coordinates: newCoordinates },
+      properties: { Name: cityName, ...additionalPropertiesForNewCity },
+      geometry: { type: geometryType, coordinates: newCoordinates },
     };
     originalData.features.push(newEntry);
   } else {
@@ -99,9 +105,7 @@ const updateCoordinates = async (
   }
 
   await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
-  return Ok(
-    "File updated successfully! Now, run `npm run fmt`. Then, `npm start` and see if the site is what you expect"
-  );
+  return Ok("File updated successfully!");
 };
 
 module.exports = {

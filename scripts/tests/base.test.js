@@ -60,6 +60,8 @@ describe("updateCoordinates()", () => {
       "my-script",
       cityName,
       false,
+      "Polygon",
+      {},
       originalFilePath,
       updateFilePath
     );
@@ -87,15 +89,17 @@ describe("updateCoordinates()", () => {
       "my-script",
       cityName,
       true,
+      "MyShape",
+      { MyProperty: "Fill me in" },
       originalFilePath,
       updateFilePath
     );
     expect(result.error).toBeUndefined();
     expect(result.value).toBeDefined();
 
-    const rawUpdateData = await fs.readFile(updateFilePath, "utf8");
-    const updateData = JSON.parse(rawUpdateData);
-    const updatedCoordinates = updateData.features[0].geometry.coordinates;
+    const rawUpdatedData = await fs.readFile(updateFilePath, "utf8");
+    const updatedData = JSON.parse(rawUpdatedData);
+    const updatedCoordinates = updatedData.features[0].geometry.coordinates;
 
     const rawResultData = await fs.readFile(originalFilePath, "utf8");
     const resultData = JSON.parse(rawResultData);
@@ -103,6 +107,11 @@ describe("updateCoordinates()", () => {
     const cityTargetData = resultData.features.find(
       (feature) => feature.properties.Name === cityName
     );
+    expect(cityTargetData.properties).toEqual({
+      Name: cityName,
+      MyProperty: "Fill me in",
+    });
+    expect(cityTargetData.geometry.type).toEqual("MyShape");
     expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
   });
 
@@ -111,6 +120,8 @@ describe("updateCoordinates()", () => {
       "my-script",
       "Bad City",
       false,
+      "Polygon",
+      {},
       originalFilePath,
       validUpdateFilePath
     );
@@ -122,6 +133,8 @@ describe("updateCoordinates()", () => {
       "my-script",
       "Shoup Ville, AZ",
       false,
+      "Polygon",
+      {},
       originalFilePath,
       "scripts/tests/data/too-many-updates.geojson"
     );
@@ -131,6 +144,8 @@ describe("updateCoordinates()", () => {
       "my-script",
       "Shoup Ville, AZ",
       false,
+      "Polygon",
+      {},
       originalFilePath,
       "scripts/tests/data/empty-update.geojson"
     );
@@ -142,6 +157,8 @@ describe("updateCoordinates()", () => {
       "my-script",
       "Shoup Ville, AZ",
       false,
+      "Polygon",
+      {},
       originalFilePath,
       "scripts/tests/data/does-not-exist"
     );
@@ -153,6 +170,8 @@ describe("updateCoordinates()", () => {
       "my-script",
       "Shoup Ville, AZ",
       false,
+      "Polygon",
+      {},
       "scripts/tests/data/does-not-exist",
       validUpdateFilePath
     );

@@ -13,6 +13,8 @@ const main = async () => {
     "update-lots",
     cityName,
     addFlag,
+    "MultiPolygon",
+    {},
     "data/parking-lots.geojson",
     "parking-lots-update.geojson"
   );
@@ -22,7 +24,11 @@ const main = async () => {
     console.error("Error:", result.error);
     process.exit(1);
   } else {
-    console.log("Success:", result.value);
+    console.log(
+      `${result.value} Now, run 'npm run fmt'. Then, 'npm start' and
+      see if the site is what you expect.
+    `
+    );
   }
   /* eslint-enable no-console */
 };
