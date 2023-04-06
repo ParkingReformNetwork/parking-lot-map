@@ -47,6 +47,36 @@ You must first have the server running in a tab of your terminal by running `npm
 ❯ npm run lint
 ```
 
+## Update parking lot data
+
+We have a script that will update `data/parking-lots.geojson` for you.
+
+First, export the geoJSON file and save it as the file `parking-lots-update.geojson`  in the root of this repository. If the file already exists, overwrite it with your new data.
+
+Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `Saint Louis, MO`.
+
+Now, run the below but replace the last part with the city/state name:
+
+```bash
+❯ npm run update-lots -- 'My City, AZ'
+```
+
+Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
+
+Then, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
+
+## Update city score card and boundaries
+
+For now, you have to manually make edits to `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. 
+
+Directly edit the score card values. Be careful to not change the key names.
+
+To update the boundaries, delete the `coordinates` section and replace with the `coordinates` entry from your updated GeoJSON file.
+
+Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
+
+Finally, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
+
 ## Build for a release
 
 ```bash

@@ -11,9 +11,10 @@
     "start": "parcel",
     "build": "rm -rf dist; parcel build",
     "test": "jest",
-    "fmt": "prettier --write __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/",
-    "fix": "prettier --write __tests__/ js/script.js; eslint --fix __tests__/ js/script.js",
-    "lint": "prettier --check __tests__/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/; eslint __tests__/ js/script.js"
+    "fmt": "prettier --write __tests__/ scripts/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/",
+    "fix": "prettier --write __tests__/ scripts/ js/script.js parking-lots-update.geojson; eslint --fix __tests__/ scripts/ js/script.js",
+    "lint": "prettier --check __tests__/ scripts/ js/script.js index.html css/leaflet.zoomhome.css css/leaflet-search.src.css css/style.css data/ && eslint __tests__/ scripts/ js/script.js",
+    "update-lots": "node scripts/update-lots.js"
   },
   "devDependencies": {
     "@jest/globals": "^29.5.0",
