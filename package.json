@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "source": [
     "index.html",
-    "icons/share-url-button.png",
+    "assets/images/share-url-button.png",
     "data/cities-polygons.geojson",
     "data/parking-lots.geojson"
   ],
@@ -12,8 +12,8 @@
     "build": "rm -rf dist; parcel build",
     "test": "jest",
     "fmt": "prettier --write ./",
-    "fix": "prettier --write __tests__/ scripts/ js/script.js; eslint --fix __tests__/ scripts/ js/script.js",
-    "lint": "prettier --check . && eslint __tests__/ scripts/ js/script.js",
+    "fix": "prettier --write __tests__/ scripts/ src/js; eslint --fix __tests__/ scripts/ src/js/script.js",
+    "lint": "prettier --check . && eslint __tests__/ scripts/ src/js/script.js",
     "update-lots": "node scripts/update-lots.js"
   },
   "devDependencies": {
