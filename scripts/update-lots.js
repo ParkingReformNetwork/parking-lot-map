@@ -5,13 +5,34 @@ const fs = require("fs").promises;
 const Ok = (value) => ({ value });
 const Err = (error) => ({ error });
 
-const updateGeoJSON = async (cityName, originalFilePath, updateFilePath) => {
+const determineArgs = (processArgv) => {
+  let cityName;
+  let addFlag = false;
+  for (let i = 0; i < processArgv.length; i += 1) {
+    if (processArgv[i] === "--add") {
+      addFlag = true;
+    } else if (!cityName) {
+      cityName = processArgv[i];
+    } else {
+      return Err(`Unexpected arguments: ${processArgv}`);
+    }
+  }
+
   if (!cityName) {
     return Err(
-      "Please provide a city/state name as an argument, e.g. `npm run update-lots -- 'Columbus, OH'`"
+      "Please provide a city/state name, e.g. `npm run update-lots -- 'Columbus, OH'`"
     );
   }
 
+  return Ok({ cityName, addFlag });
+};
+
+const updateGeoJSON = async (
+  cityName,
+  addCity,
+  originalFilePath,
+  updateFilePath
+) => {
   let newData;
   try {
     const rawNewData = await fs.readFile(updateFilePath, "utf8");
@@ -40,14 +61,24 @@ const updateGeoJSON = async (cityName, originalFilePath, updateFilePath) => {
     );
   }
 
-  const cityOriginalData = originalData.features.find(
-    (feature) => feature.properties.Name === cityName
-  );
-  if (!cityOriginalData) {
-    return Err("The program only works on cities currently in the data set.");
+  if (addCity) {
+    const newEntry = {
+      type: "Feature",
+      properties: { Name: cityName },
+      geometry: { type: "MultiPolygon", coordinates: newCoordinates },
+    };
+    originalData.features.push(newEntry);
+  } else {
+    const cityOriginalData = originalData.features.find(
+      (feature) => feature.properties.Name === cityName
+    );
+    if (!cityOriginalData) {
+      return Err(
+        `To add a new city, run again with the '--add' flag, e.g. npm update-lots -- '${cityName}' --add`
+      );
+    }
+    cityOriginalData.geometry.coordinates = newCoordinates;
   }
-
-  cityOriginalData.geometry.coordinates = newCoordinates;
 
   await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
   return Ok(
@@ -56,9 +87,17 @@ const updateGeoJSON = async (cityName, originalFilePath, updateFilePath) => {
 };
 
 const main = async () => {
-  const cityName = process.argv[2];
+  const args = determineArgs(process.argv.slice(2));
+  if (args.error) {
+    // eslint-disable-next-line no-console
+    console.error("Argument error:", args.error);
+    process.exit(1);
+  }
+
+  const { cityName, addFlag } = args.value;
   const result = await updateGeoJSON(
     cityName,
+    addFlag,
     "data/parking-lots.geojson",
     "parking-lots-update.geojson"
   );
@@ -79,4 +118,4 @@ if (require.main === module) {
   })();
 }
 
-module.exports = updateGeoJSON;
+module.exports = { determineArgs, updateGeoJSON };

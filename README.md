@@ -55,10 +55,16 @@ First, export the geoJSON file and save it as the file `parking-lots-update.geoj
 
 Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `Saint Louis, MO`.
 
-Now, run the below but replace the last part with the city/state name:
+Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
 ❯ npm run update-lots -- 'My City, AZ'
+```
+
+If the city is brand new, add the flag `--add`:
+
+```bash
+❯ npm run update-lots -- 'My City, AZ' --add
 ```
 
 Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
