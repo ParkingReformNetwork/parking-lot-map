@@ -43,15 +43,15 @@ const defineBaseLayers = (leaflet) => ({
 });
 
 /**
- * Create the initial map and pane objects.
+ * Create the initial map object.
  *
  * This sets up Google Maps vs. Light mode, attribution, and zoom.
  *
  * @param docObj: The `document` global
  * @param leaflet: The `L` global
- * @returns: The map and pane instances.
+ * @returns: The map instance.
  */
-const createMapAndPane = (docObj, leaflet) => {
+const createMap = (docObj, leaflet) => {
   const baseLayers = defineBaseLayers(leaflet);
   const map = leaflet.map("map", {
     zoomControl: false,
@@ -62,13 +62,13 @@ const createMapAndPane = (docObj, leaflet) => {
   );
   leaflet.control.layers(baseLayers).addTo(map);
 
-  const pane = map.createPane("fixed", docObj.getElementById("map"));
+  map.createPane("fixed", docObj.getElementById("map"));
 
   const zoomHome = leaflet.Control.zoomHome();
   zoomHome.setHomeCoordinates([39.440556, -98.697222]);
   zoomHome.setHomeZoom(4);
   zoomHome.addTo(map);
-  return [map, pane];
+  return map;
 };
 
 const citiesPolygonsStyle = {
@@ -174,7 +174,7 @@ const generateScorecard = (cityProperties) => {
   } = cityProperties;
   let result = `
     <div class="title">${Name}</div>
-    <div class="url-copy-button"><a href="#"><i class="fas fa-link fa-lg" style="color: #21ccb9;"></i></a></div>
+    <div class="url-copy-button"><a href="#"><img src="assets/images/share-url-button.png"></a></div>
     <hr>
     <div><span class="details-title">Percent of Central City Devoted to Parking: </span><span class="details-value">${Percentage}</span></div>
     <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
@@ -319,9 +319,7 @@ const setUpSite = async () => {
   /* eslint-enable no-undef */
 
   setUpAbout(docObj);
-  const [map, paneResult] = createMapAndPane(docObj, leaflet);
-  // We must set the global `pane` for Leaflet to work.
-  pane = paneResult; // eslint-disable-line no-undef
+  const map = createMap(docObj, leaflet);
 
   const initialCityId = extractCityIdFromUrl(windowUrl);
   await Promise.all([
