@@ -58,7 +58,7 @@ const createMapAndPane = (docObj, leaflet) => {
     layers: [baseLayers.Light],
   });
   map.attributionControl.setPrefix(
-    'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" target="_blank" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
+    'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
   );
   leaflet.control.layers(baseLayers).addTo(map);
 
@@ -185,7 +185,7 @@ const generateScorecard = (cityProperties) => {
   if (WebsiteURL) {
     result += `
     <hr>
-    <div class="popup-button"><a target="_blank" href="${WebsiteURL}">View more</a></div>
+    <div class="popup-button"><a href="${WebsiteURL}">View more</a></div>
   `;
   }
   return result;
