@@ -29,5 +29,5 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_PRIVATE_KEY }}
-          source: dist/
+          source: dist/*
           target: /var/www/parkingreform.org/plm-staging
