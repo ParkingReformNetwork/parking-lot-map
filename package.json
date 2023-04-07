@@ -1,11 +1,7 @@
 {
   "name": "parking-lot-map",
   "version": "1.0.0",
-  "source": [
-    "index.html",
-    "data/cities-polygons.geojson",
-    "data/parking-lots.geojson"
-  ],
+  "source": "index.html",
   "scripts": {
     "start": "parcel",
     "build": "rm -rf dist; parcel build",
@@ -15,6 +11,9 @@
     "lint": "prettier --check . && eslint scripts/ src/",
     "update-city-boundaries": "node scripts/update-city.js",
     "update-lots": "node scripts/update-lots.js"
+  },
+  "dependencies": {
+    "leaflet": "~1.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",

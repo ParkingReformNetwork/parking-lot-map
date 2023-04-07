@@ -1,3 +1,15 @@
+import * as L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+import {
+  determineShareUrl,
+  extractCityIdFromUrl,
+  parseCityIdFromJson,
+} from "./cityId";
+import { createZoomHome } from "./vendor/leaflet.zoomhome";
+import citiesData from "../../data/cities-polygons.geojson";
+import parkingLotsData from "../../data/parking-lots.geojson";
+
 /**
  * Set up event listeners to open and close the about popup.
  *
@@ -64,7 +76,7 @@ const createMap = (docObj, leaflet) => {
 
   map.createPane("fixed", docObj.getElementById("map"));
 
-  const zoomHome = leaflet.Control.zoomHome();
+  const zoomHome = createZoomHome();
   zoomHome.setHomeCoordinates([39.440556, -98.697222]);
   zoomHome.setHomeZoom(4);
   zoomHome.addTo(map);
@@ -82,38 +94,6 @@ const parkingLotsStyle = {
   color: "#FF0000",
   weight: 1,
   fillOpacity: 0.6,
-};
-
-/**
- * Extract the city ID from the URL's `#`, if present.
- *
- * @param string windowUrl: The `window.location.href` global
- * @return string: Returns e.g. `saint-louis-mo` if present, else the empty string
- */
-const extractCityIdFromUrl = (windowUrl) =>
-  windowUrl.indexOf("#parking-reform-map=") === -1
-    ? ""
-    : windowUrl.split("#")[1].split("=")[1].toLowerCase();
-
-/**
- * Parse the geojson's `Name` property into the city ID.
- *
- * @param string jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
- * @return string: the city ID, e.g. `saint-louis-mo`.
- */
-const parseCityIdFromJson = (jsonCityName) =>
-  jsonCityName.toLowerCase().replace(/ /g, "-").replace(/,/g, "");
-
-/**
- * Determine what URL to use to share the current city.
- *
- * @param string windowUrl: the current page's URL
- * @param string cityId: e.g. `saint-louis-mo`
- * @return string: the URL to share
- */
-const determineShareUrl = (windowUrl, cityId) => {
-  const [baseUrl] = windowUrl.split("#");
-  return `${baseUrl}#parking-reform-map=${cityId}`;
 };
 
 /**
@@ -235,19 +215,10 @@ const setMapToCity = (
  * @param string initialCityId: e.g. `columbus-oh` or an empty string if none was set. Will
  *    default to `columbus-oh`.
  */
-const setUpCitiesLayer = async (
-  docObj,
-  windowUrl,
-  leaflet,
-  map,
-  initialCityId
-) => {
-  const response = await fetch("./data/cities-polygons.geojson");
-  const data = await response.json();
-
+const setUpCitiesLayer = (docObj, windowUrl, leaflet, map, initialCityId) => {
   const cities = {};
   leaflet
-    .geoJson(data, {
+    .geoJson(citiesData, {
       style() {
         return citiesPolygonsStyle;
       },
@@ -294,11 +265,9 @@ const setUpCitiesLayer = async (
  * @param leaflet: The `L` global
  * @param map: The Leaflet map instance.
  */
-const setUpParkingLotsLayer = async (leaflet, map) => {
-  const response = await fetch("./data/parking-lots.geojson");
-  const data = await response.json();
+const setUpParkingLotsLayer = (leaflet, map) => {
   leaflet
-    .geoJSON(data, {
+    .geoJSON(parkingLotsData, {
       style() {
         return parkingLotsStyle;
       },
@@ -311,7 +280,7 @@ const setUpParkingLotsLayer = async (leaflet, map) => {
  * This is the only function that can directly access globals like `document`. It
  * then passes those to the relevant helper functions.
  */
-const setUpSite = async () => {
+const setUpSite = () => {
   /* eslint-disable no-undef */
   const docObj = document;
   const windowUrl = window.location.href;
@@ -322,15 +291,8 @@ const setUpSite = async () => {
   const map = createMap(docObj, leaflet);
 
   const initialCityId = extractCityIdFromUrl(windowUrl);
-  await Promise.all([
-    setUpCitiesLayer(docObj, windowUrl, leaflet, map, initialCityId),
-    setUpParkingLotsLayer(leaflet, map),
-  ]);
+  setUpCitiesLayer(docObj, windowUrl, leaflet, map, initialCityId);
+  setUpParkingLotsLayer(leaflet, map);
 };
 
-module.exports = {
-  extractCityIdFromUrl,
-  determineShareUrl,
-  parseCityIdFromJson,
-  setUpSite,
-};
+export default setUpSite;
