@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "source": [
     "index.html",
-    "assets/images/share-url-button.png",
     "data/cities-polygons.geojson",
     "data/parking-lots.geojson"
   ],
