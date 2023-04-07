@@ -40,7 +40,6 @@ const determineArgs = (scriptCommand, processArgv) => {
  * @param string scriptCommand - i.e. `update-lots` or `update-city-boundaries`.
  * @param string cityName - e.g. 'My City, AZ'
  * @param boolean addCity - what to do if the city is missing
- * @param string geometryType - either `Polygon` or `MultiPolygon`
  * @param object additionalPropertiesForNewCity - any additional keys and filler values to add
       to Properties when creating a new city.
  * @param string originalFilePath - what will be updated
@@ -52,7 +51,6 @@ const updateCoordinates = async (
   scriptCommand,
   cityName,
   addCity,
-  geometryType,
   additionalPropertiesForNewCity,
   originalFilePath,
   updateFilePath
@@ -74,6 +72,7 @@ const updateCoordinates = async (
   }
 
   const newCoordinates = newData.features[0].geometry.coordinates;
+  const newGeometryType = newData.features[0].geometry.type;
 
   let originalData;
   try {
@@ -89,7 +88,7 @@ const updateCoordinates = async (
     const newEntry = {
       type: "Feature",
       properties: { Name: cityName, ...additionalPropertiesForNewCity },
-      geometry: { type: geometryType, coordinates: newCoordinates },
+      geometry: { type: newGeometryType, coordinates: newCoordinates },
     };
     originalData.features.push(newEntry);
   } else {
