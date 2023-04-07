@@ -23,7 +23,7 @@ const main = async () => {
     addFlag,
     "Polygon",
     newCityProperties,
-    "data/city-polygons.geojson",
+    "data/cities-polygons.geojson",
     "city-update.geojson"
   );
 
