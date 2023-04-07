@@ -1,6 +1,7 @@
 {
   "extends": "@parcel/config-default",
   "transformers": {
-    "*.geojson": ["@parcel/transformer-raw"]
+    "*.geojson": ["@parcel/transformer-raw"],
+    "*.js": ["@parcel/transformer-js"]
   }
 }

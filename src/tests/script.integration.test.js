@@ -146,7 +146,7 @@ describe("the share feature", () => {
     await page.waitForTimeout(1000);
 
     await page.click(".url-copy-button > a");
-    const firstCityClipboardText = await page.evaluate(async () =>
+    const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
 
@@ -161,7 +161,7 @@ describe("the share feature", () => {
     });
 
     await page.click(".url-copy-button > a");
-    const secondCityClipboardText = await page.evaluate(async () =>
+    const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
 
