@@ -4,7 +4,7 @@
   "source": "index.html",
   "scripts": {
     "start": "parcel",
-    "build": "rm -rf dist; parcel build",
+    "build": "rm -rf dist; parcel build --detailed-report",
     "test": "jest",
     "fmt": "prettier --write .",
     "fix": "prettier --write scripts/ src/js/ src/tests; eslint --fix scripts/ src/",
