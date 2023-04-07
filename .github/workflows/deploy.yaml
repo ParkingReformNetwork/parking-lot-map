@@ -1,7 +1,9 @@
-name: Tests
-on: [pull_request]
+name: Deploy site
+on:
+  push:
+    branches: [main]
 jobs:
-  test:
+  deploy:
     if: github.repository_owner == 'ParkingReformNetwork'
     runs-on: ubuntu-latest
     steps:
@@ -13,11 +15,11 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm ci
-      - name: Lint
-        run: npm run lint
-      - name: Start server
+      - name: Build
+        run: npm run build
+      - name: Serve dist/ folder
         run: |
-          npm start &
+          npm run serve-dist &
           sleep 8 # give server some time to start
-      - name: Run tests
-        run: npm test
+      - name: Run tests on dist/
+        run: npm run test-dist
