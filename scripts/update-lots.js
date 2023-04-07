@@ -13,7 +13,6 @@ const main = async () => {
     "update-lots",
     cityName,
     addFlag,
-    "MultiPolygon",
     {},
     "data/parking-lots.geojson",
     "parking-lots-update.geojson"

@@ -21,7 +21,6 @@ const main = async () => {
     "update-city-boundaries",
     cityName,
     addFlag,
-    "Polygon",
     newCityProperties,
     "data/cities-polygons.geojson",
     "city-update.geojson"
