@@ -174,7 +174,7 @@ const generateScorecard = (cityProperties) => {
   } = cityProperties;
   let result = `
     <div class="title">${Name}</div>
-    <div class="url-copy-button"><a href="#"><img src="assets/images/share-url-button.png"></a></div>
+    <div class="url-copy-button"><a href="#"><i class="fas fa-link fa-lg" style="color: #21ccb9;"></i></a></div>
     <hr>
     <div><span class="details-title">Percent of Central City Devoted to Parking: </span><span class="details-value">${Percentage}</span></div>
     <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
