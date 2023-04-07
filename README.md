@@ -97,13 +97,13 @@ Regardless of whether what you updated, start the site with `npm start` and make
 
 Finally, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
 
-## Build for a release
+## Build to preview a release
 
-```bash
-❯ npm run build
-```
+We use continuous deployment, meaning that we re-deploy the site every time we merge a pull request.
 
-Then copy the `dist/` folder to the server. We want to serve the file `dist/index.html`.
+You can preview what a build will look like by running `npm run build`. Then use `npm run serve-dist` to start the server.
+
+You can also run our integration tests on built dist folder. Run `npm run serve-dist` in one terminal, then `npm run test-dist` in another.
 
 ## Make a contribution
 
