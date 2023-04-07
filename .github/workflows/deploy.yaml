@@ -30,4 +30,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SERVER_PRIVATE_KEY }}
           source: dist/
-          target: /var/www/parkingreform.org/parking-lot-map/
+          target: /var/www/parkingreform.org/plm-staging
