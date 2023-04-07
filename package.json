@@ -11,13 +11,16 @@
     "build": "rm -rf dist; parcel build",
     "test": "jest",
     "fmt": "prettier --write .",
-    "fix": "prettier --write scripts/ src/js; eslint --fix scripts/ src/js/script.js src/tests",
-    "lint": "prettier --check . && eslint scripts/ src/js/script.js src/tests",
+    "fix": "prettier --write scripts/ src/js; eslint --fix scripts/ src/",
+    "lint": "prettier --check . && eslint scripts/ src/",
     "update-city-boundaries": "node scripts/update-city.js",
     "update-lots": "node scripts/update-lots.js"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
     "@jest/globals": "^29.5.0",
+    "babel-jest": "^29.5.0",
     "eslint": "^8.37.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
@@ -30,5 +33,10 @@
     "default": {
       "publicUrl": "./"
     }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }

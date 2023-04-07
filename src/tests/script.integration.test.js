@@ -146,9 +146,7 @@ describe("the share feature", () => {
     await page.waitForTimeout(1000);
 
     await page.click(".url-copy-button > a");
-    const firstCityClipboardText = await page.evaluate(async () =>
-      navigator.clipboard.readText()
-    );
+    const firstCityClipboardText = await page.evaluate(() => navigator.clipboard.readText());
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
@@ -161,9 +159,7 @@ describe("the share feature", () => {
     });
 
     await page.click(".url-copy-button > a");
-    const secondCityClipboardText = await page.evaluate(async () =>
-      navigator.clipboard.readText()
-    );
+    const secondCityClipboardText = await page.evaluate(() => navigator.clipboard.readText());
 
     await page.close();
 
