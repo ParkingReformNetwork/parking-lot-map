@@ -68,17 +68,6 @@
 
     <link
       rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-      integrity="sha256-BPfK9M5v34c2XP6p0cxVz1mUQLst0gTLk0mlc7kuodA="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-      integrity="sha256-yDc0eil8GjWFKqN1OSzHSVCiuGghTosZCcRje4tj7iQ="
-      crossorigin=""
-    ></script>
-    <link
-      rel="stylesheet"
       href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
       integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
       crossorigin="anonymous"
@@ -86,7 +75,6 @@
     <link rel="stylesheet" href="src/css/vendor/bootstrap.css" />
     <link rel="stylesheet" href="src/css/vendor/leaflet.zoomhome.css" />
     <link rel="stylesheet" href="src/css/style.css" />
-    <script src="src/js/vendor/leaflet.zoomhome.js"></script>
   </head>
 
   <body>
@@ -220,11 +208,10 @@
     <div class="copied-link-message">The link is copied</div>
 
     <div id="map"></div>
-    <script type="text/javascript" src="src/js/script.js"></script>
-    <script>
-      (async () => {
-        await setUpSite();
-      })();
+    <script type="module">
+      import setUpSite from "./src/js/setUpSite";
+
+      setUpSite();
     </script>
   </body>
 </html>
