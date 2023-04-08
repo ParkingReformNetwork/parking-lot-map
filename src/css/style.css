@@ -142,6 +142,9 @@ div.banner-about {
   color: #ffffff;
   float: right;
   right: 2px;
+}
+
+div.banner-about {
   cursor: pointer;
 }
 
