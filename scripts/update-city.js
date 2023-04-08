@@ -1,4 +1,4 @@
-const { determineArgs, updateCoordinates } = require("./base");
+import { determineArgs, updateCoordinates } from "./base.js";
 
 const main = async () => {
   const args = determineArgs("update-city-boundaries", process.argv.slice(2));
@@ -42,8 +42,4 @@ const main = async () => {
   /* eslint-enable no-console */
 };
 
-if (require.main === module) {
-  (async () => {
-    await main();
-  })();
-}
+main();
