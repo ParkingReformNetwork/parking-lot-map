@@ -7,6 +7,17 @@ import { createZoomHome } from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
 
+const addCitiesToToggle = (initialCityId) => {
+  const cityToggleElement = document.getElementById("city-choice");
+  citiesData.features.forEach(({properties: {id, Name}}) => {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = Name;
+    cityToggleElement.appendChild(option);
+  });
+  cityToggleElement.value = initialCityId;
+}
+
 /**
  * Set up event listeners to open and close the about popup.
  */
@@ -183,12 +194,8 @@ const setMapToCity = (map, cityProperties) => {
 /**
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
- *
- * @param map: The Leaflet map instance.
- * @param string initialCityId: e.g. `columbus-oh` or an empty string if none was set. Will
- *    default to `columbus-oh`.
  */
-const setUpCitiesLayer = (map, initialCityId) => {
+const setUpCitiesLayer = (map) => {
   const cities = {};
   L.geoJson(citiesData, {
     style() {
@@ -199,26 +206,15 @@ const setUpCitiesLayer = (map, initialCityId) => {
     },
   }).addTo(map);
 
-  // Set map to update when city selection changes.
+  // Set up map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
     setMapToCity(map, cities[cityId]);
   });
 
-  // Add each city to the city selection toggle.
-  Object.entries(cities).forEach(([cityId, properties]) => {
-    const option = document.createElement("option");
-    option.value = cityId;
-    option.textContent = properties.Name;
-    cityToggleElement.appendChild(option);
-  });
-
-  // Set initial city.
-  const validatedInitialCityId =
-    initialCityId in cities ? initialCityId : "columbus-oh";
-  cityToggleElement.value = validatedInitialCityId;
-  setMapToCity(map, cities[validatedInitialCityId]);
+  // Load initial city.
+  setMapToCity(map, cities[cityToggleElement.value]);
 };
 
 const setUpParkingLotsLayer = (map) => {
@@ -230,11 +226,12 @@ const setUpParkingLotsLayer = (map) => {
 };
 
 const setUpSite = () => {
+  const initialCityId = extractCityIdFromUrl(window.location.href) || "columbus-oh";
+  addCitiesToToggle(initialCityId);
   setUpAbout();
-  const map = createMap();
 
-  const initialCityId = extractCityIdFromUrl(window.location.href);
-  setUpCitiesLayer(map, initialCityId);
+  const map = createMap();
+  setUpCitiesLayer(map);
   setUpParkingLotsLayer(map);
 };
 
