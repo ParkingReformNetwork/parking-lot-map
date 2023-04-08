@@ -9,14 +9,14 @@ import parkingLotsData from "../../data/parking-lots.geojson";
 
 const addCitiesToToggle = (initialCityId) => {
   const cityToggleElement = document.getElementById("city-choice");
-  citiesData.features.forEach(({properties: {id, Name}}) => {
+  citiesData.features.forEach(({ properties: { id, Name } }) => {
     const option = document.createElement("option");
     option.value = id;
     option.textContent = Name;
     cityToggleElement.appendChild(option);
   });
   cityToggleElement.value = initialCityId;
-}
+};
 
 /**
  * Set up event listeners to open and close the about popup.
@@ -226,7 +226,8 @@ const setUpParkingLotsLayer = (map) => {
 };
 
 const setUpSite = () => {
-  const initialCityId = extractCityIdFromUrl(window.location.href) || "columbus-oh";
+  const initialCityId =
+    extractCityIdFromUrl(window.location.href) || "columbus-oh";
   addCitiesToToggle(initialCityId);
   setUpAbout();
 
