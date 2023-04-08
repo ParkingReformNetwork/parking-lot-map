@@ -11,18 +11,22 @@
 
 import * as L from "leaflet";
 
-L.Control.ZoomHome = L.Control.Zoom.extend({
-  options: {
-    position: "topleft",
-    zoomInText: "+",
-    zoomInTitle: "Zoom in",
-    zoomOutText: "-",
-    zoomOutTitle: "Zoom out",
-    zoomHomeIcon: "home",
-    zoomHomeTitle: "Home",
-    homeCoordinates: null,
-    homeZoom: null,
-  },
+class ZoomHome extends L.Control.Zoom {
+  constructor(options) {
+    super(options);
+    this.options = {
+      position: "topleft",
+      zoomInText: "+",
+      zoomInTitle: "Zoom in",
+      zoomOutText: "-",
+      zoomOutTitle: "Zoom out",
+      zoomHomeIcon: "home",
+      zoomHomeTitle: "Home",
+      homeCoordinates: null,
+      homeZoom: null,
+      ...options,
+    };
+  }
 
   onAdd(map) {
     const controlName = "leaflet-control-zoomhome";
@@ -63,7 +67,7 @@ L.Control.ZoomHome = L.Control.Zoom.extend({
     map.on("zoomend zoomlevelschange", this._updateDisabled, this);
 
     return container;
-  },
+  }
 
   setHomeBounds(bounds) {
     if (bounds === undefined) {
@@ -73,35 +77,33 @@ L.Control.ZoomHome = L.Control.Zoom.extend({
     }
     this.options.homeZoom = this._map.getBoundsZoom(bounds);
     this.options.homeCoordinates = bounds.getCenter();
-  },
+  }
 
   setHomeCoordinates(coordinates) {
     if (coordinates === undefined) {
       coordinates = this._map.getCenter();
     }
     this.options.homeCoordinates = coordinates;
-  },
+  }
 
   setHomeZoom(zoom) {
     if (zoom === undefined) {
       zoom = this._map.getZoom();
     }
     this.options.homeZoom = zoom;
-  },
+  }
 
   getHomeZoom() {
     return this.options.homeZoom;
-  },
+  }
 
   getHomeCoordinates() {
     return this.options.homeCoordinates;
-  },
+  }
 
   _zoomHome() {
     this._map.setView(this.options.homeCoordinates, this.options.homeZoom);
-  },
-});
+  }
+}
 
-const createZoomHome = (options) => new L.Control.ZoomHome(options);
-
-export default createZoomHome;
+export default ZoomHome;
