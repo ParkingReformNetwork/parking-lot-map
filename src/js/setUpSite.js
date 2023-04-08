@@ -6,7 +6,6 @@ import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import ZoomHome from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
-import parkingLotsData from "../../data/parking-lots.geojson";
 
 const BASE_LAYERS = {
   Light: new TileLayer(
@@ -224,11 +223,13 @@ const setUpCitiesLayer = (map) => {
 };
 
 const setUpParkingLotsLayer = (map) => {
-  geoJSON(parkingLotsData, {
-    style() {
-      return STYLES.parkingLots;
-    },
-  }).addTo(map);
+  import("../../data/parking-lots.geojson").then((parkingLotsData) => {
+    geoJSON(parkingLotsData, {
+      style() {
+        return STYLES.parkingLots;
+      },
+    }).addTo(map);
+  });
 };
 
 const setUpSite = () => {
