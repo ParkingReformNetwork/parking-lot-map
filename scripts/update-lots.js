@@ -8,10 +8,10 @@ const main = async () => {
     process.exit(1);
   }
 
-  const { cityName, addFlag } = args.value;
+  const { cityId, addFlag } = args.value;
   const result = await updateCoordinates(
     "update-lots",
-    cityName,
+    cityId,
     addFlag,
     {},
     "data/parking-lots.geojson",

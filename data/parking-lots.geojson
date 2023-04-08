@@ -11,7 +11,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Honolulu, HI"
+        "id": "honolulu-hi"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -1697,7 +1697,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Mesa, AZ"
+        "id": "mesa-az"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2739,7 +2739,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Minneapolis, MN"
+        "id": "minneapolis-mn"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -3934,7 +3934,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Anaheim, CA"
+        "id": "anaheim-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -5018,7 +5018,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Anchorage, AK"
+        "id": "anchorage-ak"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -7486,7 +7486,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Arlington, TX"
+        "id": "arlington-tx"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -10461,7 +10461,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Atlanta, GA"
+        "id": "atlanta-ga"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -12866,7 +12866,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Austin, TX"
+        "id": "austin-tx"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -16475,7 +16475,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Baltimore, MD"
+        "id": "baltimore-md"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -17625,7 +17625,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Boston, MA"
+        "id": "boston-ma"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -19326,7 +19326,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Charlotte, NC"
+        "id": "charlotte-nc"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -20175,7 +20175,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Chicago, IL"
+        "id": "chicago-il"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -20578,7 +20578,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Cincinnati, OH"
+        "id": "cincinnati-oh"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -22222,7 +22222,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Cleveland, OH"
+        "id": "cleveland-oh"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -24833,7 +24833,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Columbus, OH"
+        "id": "columbus-oh"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -29629,7 +29629,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Dallas, TX"
+        "id": "dallas-tx"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -31841,7 +31841,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Denver, CO"
+        "id": "denver-co"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -32890,7 +32890,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Detroit, MI"
+        "id": "detroit-mi"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -35148,7 +35148,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Fort Worth, TX"
+        "id": "fort-worth-tx"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -36961,7 +36961,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Houston, TX"
+        "id": "houston-tx"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -39132,7 +39132,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Indianapolis, IN"
+        "id": "indianapolis-in"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -41275,7 +41275,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Jersey City, NJ"
+        "id": "jersey-city-nj"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -42327,7 +42327,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Kansas City, MO"
+        "id": "kansas-city-mo"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -44409,7 +44409,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Las Vegas, NV"
+        "id": "las-vegas-nv"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -47878,7 +47878,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Long Beach, CA"
+        "id": "long-beach-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -49310,7 +49310,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Los Angeles, CA"
+        "id": "los-angeles-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -50528,7 +50528,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Louisville, KY"
+        "id": "louisville-ky"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -54472,7 +54472,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Lubbock, TX"
+        "id": "lubbock-tx"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -57016,7 +57016,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Miami, FL"
+        "id": "miami-fl"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -59124,7 +59124,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Nashville, TN"
+        "id": "nashville-tn"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -60369,7 +60369,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "New Orleans, LA"
+        "id": "new-orleans-la"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -63318,7 +63318,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "New York, NY"
+        "id": "new-york-ny"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -63579,7 +63579,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Newark, NJ"
+        "id": "newark-nj"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -65026,7 +65026,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Oakland, CA"
+        "id": "oakland-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -67378,7 +67378,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Orlando, FL"
+        "id": "orlando-fl"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -68597,7 +68597,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Philadelphia, PA"
+        "id": "philadelphia-pa"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -70279,7 +70279,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Phoenix, AZ"
+        "id": "phoenix-az"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -74312,7 +74312,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Pittsburgh, PA"
+        "id": "pittsburgh-pa"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -75458,7 +75458,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Portland, OR"
+        "id": "portland-or"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -77092,7 +77092,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Riverside, CA"
+        "id": "riverside-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -78690,7 +78690,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Sacramento, CA"
+        "id": "sacramento-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -80449,7 +80449,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Saint Paul, MN"
+        "id": "saint-paul-mn"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -81853,7 +81853,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "San Antonio"
+        "id": "san-antonio"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -85646,7 +85646,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "San Diego, CA"
+        "id": "san-diego-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -87274,7 +87274,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "San Francisco, CA"
+        "id": "san-francisco-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -87876,7 +87876,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "San Jose, CA"
+        "id": "san-jose-ca"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -89209,7 +89209,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Seattle, WA"
+        "id": "seattle-wa"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -90590,7 +90590,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Saint Louis, MO"
+        "id": "saint-louis-mo"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -92257,7 +92257,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Tulsa, OK"
+        "id": "tulsa-ok"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -95129,7 +95129,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Tampa, FL"
+        "id": "tampa-fl"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -97038,7 +97038,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Washington, DC"
+        "id": "washington-dc"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -99506,7 +99506,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Birmingham, AL"
+        "id": "birmingham-al"
       },
       "geometry": {
         "type": "MultiPolygon",

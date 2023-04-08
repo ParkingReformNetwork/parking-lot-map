@@ -11,7 +11,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Honolulu, HI"
+        "id": "honolulu-hi"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -28,7 +28,7 @@
     {
       "type": "Feature",
       "properties": {
-        "Name": "Shoup Ville, AZ"
+        "id": "shoup-ville-az"
       },
       "geometry": {
         "type": "MultiPolygon",
