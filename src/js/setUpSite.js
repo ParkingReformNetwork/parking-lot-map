@@ -3,7 +3,7 @@ import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
-import { createZoomHome } from "./vendor/leaflet.zoomhome";
+import createZoomHome from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
 
