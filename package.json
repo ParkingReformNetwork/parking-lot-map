@@ -8,7 +8,7 @@
     "build": "rm -rf dist; parcel build --detailed-report",
     "test": "jest",
     "fmt": "prettier --write .",
-    "fix": "prettier --write scripts/ src/js/ src/tests; eslint --fix scripts/ src/",
+    "fix": "prettier --write scripts/ src/; eslint --fix scripts/ src/",
     "lint": "prettier --check . && eslint scripts/ src/",
     "update-city-boundaries": "node scripts/update-city.js",
     "update-lots": "node scripts/update-lots.js",
