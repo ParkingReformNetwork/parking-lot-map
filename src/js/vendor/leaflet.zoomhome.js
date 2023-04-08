@@ -20,7 +20,7 @@ class ZoomHome extends Control.Zoom {
       zoomInTitle: "Zoom in",
       zoomOutText: "-",
       zoomOutTitle: "Zoom out",
-      zoomHomeIcon: "home",
+      zoomHomeIcon: "earth-americas",
       zoomHomeTitle: "Home",
       homeCoordinates: null,
       homeZoom: null,
