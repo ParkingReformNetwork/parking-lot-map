@@ -224,11 +224,10 @@ const setUpCitiesLayer = (docObj, windowUrl, leaflet, map, initialCityId) => {
   });
 
   // Add each city to the city selection toggle.
-  const cityKeys = Object.keys(cities).sort();
-  cityKeys.forEach((key) => {
+  Object.entries(cities).forEach(([cityId, properties]) => {
     const option = docObj.createElement("option");
-    option.value = key;
-    option.textContent = cities[key].Name;
+    option.value = cityId;
+    option.textContent = properties.Name;
     cityToggleElement.appendChild(option);
   });
 

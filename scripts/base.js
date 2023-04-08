@@ -105,6 +105,17 @@ const updateCoordinates = async (
     cityOriginalData.geometry.coordinates = newCoordinates;
   }
 
+  // Make sure the data is still sorted.
+  originalData.features.sort((a, b) => {
+    if (a.properties.id < b.properties.id) {
+      return -1;
+    }
+    if (a.properties.id > b.properties.id) {
+      return 1;
+    }
+    return 0;
+  });
+
   await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
   return Ok("File updated successfully!");
 };
