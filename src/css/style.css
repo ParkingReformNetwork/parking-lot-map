@@ -85,6 +85,7 @@ div.leaflet-popup-content-wrapper > div > div.title {
   display: inline-block;
   width: 50%;
 }
+
 div.leaflet-popup-content-wrapper > div > div.url-copy-button {
   float: right;
   width: 0%;
@@ -94,8 +95,8 @@ div.leaflet-popup-content-wrapper > div > div.url-copy-button:hover {
   cursor: pointer;
 }
 
-div.leaflet-popup-content-wrapper > div > div.url-copy-button > a > img {
-  width: 20px;
+div.leaflet-popup-content-wrapper > div > div.url-copy-button svg.fa-link {
+  color: #21ccb9;
 }
 
 div.popup-button a {
@@ -137,6 +138,16 @@ div.banner-about {
   background-color: #4d4d4d;
   color: #ffffff;
   float: right;
+  right: 2px;
+  cursor: pointer;
+}
+
+div.banner-about svg {
+  color: #ffffff;
+}
+
+div.banner-about svg.fa-circle-info {
+  margin-right: 10px;
 }
 
 #tier-dropdown label {
@@ -153,11 +164,6 @@ div.banner-title {
   float: left;
 }
 
-div.banner-about {
-  right: 2px;
-  cursor: pointer;
-}
-
 div.about-text-popup {
   position: absolute;
   z-index: 2001;
@@ -170,6 +176,10 @@ div.about-text-popup {
   width: 80%;
   top: 120px;
   overflow: auto;
+}
+
+div.about-text-popup svg.fa-circle-xmark {
+  color: #4d4d4d;
 }
 
 div.about-text-container {
@@ -235,27 +245,6 @@ div.donate-button a img {
 
 hr {
   margin: 10px 0;
-}
-
-.fa,
-.fas {
-  font-family: "Font Awesome 5 Pro";
-  font-weight: 900;
-}
-
-.fa-info-circle:before {
-  content: "\f05a";
-  margin-right: 10px;
-}
-
-.fa-external-link-alt:before {
-  content: "\f35d";
-  color: #fff;
-}
-
-.fa-circle-xmark:before {
-  content: "\f057";
-  color: #4d4d4d;
 }
 
 /* responsiveness of the popup */

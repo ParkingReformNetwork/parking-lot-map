@@ -47,7 +47,7 @@ class ZoomHome extends Control.Zoom {
       container,
       this._zoomIn.bind(this)
     );
-    const zoomHomeText = `<i class="fa fa-${options.zoomHomeIcon}" style="line-height:1.65;"></i>`;
+    const zoomHomeText = `<i class="fa-solid fa-${options.zoomHomeIcon}" style="line-height:1.65;"></i>`;
     this._zoomHomeButton = this._createButton(
       zoomHomeText,
       options.zoomHomeTitle,

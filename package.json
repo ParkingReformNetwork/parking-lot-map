@@ -16,6 +16,8 @@
     "test-dist": "PORT=8080 jest setUpSite"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "leaflet": "~1.7.1"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@ import { Control, Map, Popup, TileLayer, geoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
+import setUpIcons from "./fontAwesome";
 import ZoomHome from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
@@ -159,7 +160,7 @@ const generateScorecard = (cityProperties) => {
   } = cityProperties;
   let result = `
     <div class="title">${Name}</div>
-    <div class="url-copy-button"><a href="#"><i class="fas fa-link fa-lg" style="color: #21ccb9;"></i></a></div>
+    <div class="url-copy-button"><a href="#"><i class="fa-solid fa-link fa-lg" style="color: #21ccb9;"></i></a></div>
     <hr>
     <div><span class="details-title">Percent of Central City Devoted to Parking: </span><span class="details-value">${Percentage}</span></div>
     <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
@@ -231,6 +232,8 @@ const setUpParkingLotsLayer = (map) => {
 };
 
 const setUpSite = () => {
+  setUpIcons();
+
   const initialCityId = extractCityIdFromUrl(window.location.href);
   addCitiesToToggle(initialCityId, "columbus-oh");
   setUpAbout();
