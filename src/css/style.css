@@ -1,5 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 body {
-  font-family: Helvetica, Arial, sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -8,6 +9,11 @@ body,
 #map {
   height: 100%;
   width: 100%;
+}
+
+body,
+.leaflet-container {
+  font-family: Poppins, Helvetica, Arial, sans-serif;
 }
 
 dd {
@@ -22,9 +28,9 @@ fieldset#tier-dropdown {
 }
 #city-choice {
   font-size: 20px;
-  padding: 5px;
+  padding: 3px 5px;
   border: 2px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .leaflet-touch .leaflet-control-layers-toggle {
