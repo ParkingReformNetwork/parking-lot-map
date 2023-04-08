@@ -3,7 +3,7 @@ import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
-import createZoomHome from "./vendor/leaflet.zoomhome";
+import ZoomHome from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
 
@@ -95,7 +95,7 @@ const createMap = () => {
 
   map.createPane("fixed", document.getElementById("map"));
 
-  const zoomHome = createZoomHome();
+  const zoomHome = new ZoomHome();
   zoomHome.setHomeCoordinates([39.440556, -98.697222]);
   zoomHome.setHomeZoom(4);
   zoomHome.addTo(map);
