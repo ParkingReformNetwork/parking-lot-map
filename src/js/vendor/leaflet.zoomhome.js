@@ -9,9 +9,9 @@
 
 /* eslint-disable no-underscore-dangle, no-param-reassign */
 
-import * as L from "leaflet";
+import { Control, DomUtil, latLngBounds } from "leaflet";
 
-class ZoomHome extends L.Control.Zoom {
+class ZoomHome extends Control.Zoom {
   constructor(options) {
     super(options);
     this.options = {
@@ -30,7 +30,7 @@ class ZoomHome extends L.Control.Zoom {
 
   onAdd(map) {
     const controlName = "leaflet-control-zoomhome";
-    const container = L.DomUtil.create("div", `${controlName} leaflet-bar`);
+    const container = DomUtil.create("div", `${controlName} leaflet-bar`);
     const { options } = this;
 
     if (options.homeCoordinates === null) {
@@ -73,7 +73,7 @@ class ZoomHome extends L.Control.Zoom {
     if (bounds === undefined) {
       bounds = this._map.getBounds();
     } else if (typeof bounds.getCenter !== "function") {
-      bounds = L.latLngBounds(bounds);
+      bounds = latLngBounds(bounds);
     }
     this.options.homeZoom = this._map.getBoundsZoom(bounds);
     this.options.homeCoordinates = bounds.getCenter();
