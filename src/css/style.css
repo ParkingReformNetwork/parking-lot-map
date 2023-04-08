@@ -212,6 +212,15 @@ div.copied-link-message {
   margin-left: 9px;
   right: auto;
 }
+
+.leaflet-control-zoom-home {
+  font-size: 18px;
+}
+
+.leaflet-control-layers {
+  font-size: 12px;
+}
+
 /* end styling layers button*/
 
 /*styling the donate button */
