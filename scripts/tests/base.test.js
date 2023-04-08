@@ -11,13 +11,25 @@ const { determineArgs, updateCoordinates } = require("../base");
 describe("determineArgs()", () => {
   test("detects whether --add is set", () => {
     let result = determineArgs("my-script", ["My City"]);
-    expect(result.value).toEqual({ cityName: "My City", addFlag: false });
+    expect(result.value).toEqual({
+      cityName: "My City",
+      cityId: "my-city",
+      addFlag: false,
+    });
 
     result = determineArgs("my-script", ["My City", "--add"]);
-    expect(result.value).toEqual({ cityName: "My City", addFlag: true });
+    expect(result.value).toEqual({
+      cityName: "My City",
+      cityId: "my-city",
+      addFlag: true,
+    });
 
     result = determineArgs("my-script", ["--add", "My City"]);
-    expect(result.value).toEqual({ cityName: "My City", addFlag: true });
+    expect(result.value).toEqual({
+      cityName: "My City",
+      cityId: "my-city",
+      addFlag: true,
+    });
   });
 
   test("requires the city to be specified", () => {
@@ -55,10 +67,10 @@ describe("updateCoordinates()", () => {
   test("updates the coordinates for an existing city", async () => {
     const updateFilePath = validUpdateFilePath;
 
-    const cityName = "Shoup Ville, AZ";
+    const cityId = "shoup-ville-az";
     const result = await updateCoordinates(
       "my-script",
-      cityName,
+      cityId,
       false,
       {},
       originalFilePath,
@@ -75,7 +87,7 @@ describe("updateCoordinates()", () => {
     const resultData = JSON.parse(rawResultData);
 
     const cityTargetData = resultData.features.find(
-      (feature) => feature.properties.Name === cityName
+      (feature) => feature.properties.id === cityId
     );
     expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
   });
@@ -83,10 +95,10 @@ describe("updateCoordinates()", () => {
   test("adds a new city when `--add` used", async () => {
     const updateFilePath = validUpdateFilePath;
 
-    const cityName = "Parking Reform Now, NY";
+    const cityId = "parking-reform-now";
     const result = await updateCoordinates(
       "my-script",
-      cityName,
+      cityId,
       true,
       { MyProperty: "Fill me in" },
       originalFilePath,
@@ -102,11 +114,16 @@ describe("updateCoordinates()", () => {
     const rawResultData = await fs.readFile(originalFilePath, "utf8");
     const resultData = JSON.parse(rawResultData);
 
+    const resultCityIds = resultData.features.map(
+      (feature) => feature.properties.id
+    );
+    expect(resultCityIds).toEqual(["honolulu-hi", cityId, "shoup-ville-az"]);
+
     const cityTargetData = resultData.features.find(
-      (feature) => feature.properties.Name === cityName
+      (feature) => feature.properties.id === cityId
     );
     expect(cityTargetData.properties).toEqual({
-      Name: cityName,
+      id: cityId,
       MyProperty: "Fill me in",
     });
     expect(cityTargetData.geometry.type).toEqual("MultiPolygon");
@@ -116,7 +133,7 @@ describe("updateCoordinates()", () => {
   test("errors if city cannot be found in the original data and `--add` not set", async () => {
     const result = await updateCoordinates(
       "my-script",
-      "Bad City",
+      "bad-city",
       false,
       {},
       originalFilePath,
@@ -128,7 +145,7 @@ describe("updateCoordinates()", () => {
   test("validates the update file has exactly one `feature`", async () => {
     let result = await updateCoordinates(
       "my-script",
-      "Shoup Ville, AZ",
+      "shoup-ville-az",
       false,
       {},
       originalFilePath,
@@ -138,7 +155,7 @@ describe("updateCoordinates()", () => {
 
     result = await updateCoordinates(
       "my-script",
-      "Shoup Ville, AZ",
+      "shoup-ville-az",
       false,
       {},
       originalFilePath,
@@ -150,7 +167,7 @@ describe("updateCoordinates()", () => {
   test("errors gracefully if update file not found", async () => {
     const result = await updateCoordinates(
       "my-script",
-      "Shoup Ville, AZ",
+      "shoup-ville-az",
       false,
       {},
       originalFilePath,
@@ -162,7 +179,7 @@ describe("updateCoordinates()", () => {
   test("errors gracefully if original data file not found", async () => {
     const result = await updateCoordinates(
       "my-script",
-      "Shoup Ville, AZ",
+      "shoup-ville-az",
       false,
       {},
       "scripts/tests/data/does-not-exist",

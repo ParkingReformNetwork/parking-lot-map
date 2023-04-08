@@ -2,9 +2,12 @@ extends:
   - eslint:recommended
   - airbnb-base
   - prettier
+ignorePatterns:
+  - "**/vendor/*.js"
 overrides: []
 parserOptions:
   ecmaVersion: latest
   sourceType: module
 rules:
   no-unexpected-multiline: off
+  import/extensions: off

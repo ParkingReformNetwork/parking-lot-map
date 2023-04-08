@@ -3,7 +3,7 @@ const {
   extractCityIdFromUrl,
   determineShareUrl,
   parseCityIdFromJson,
-} = require("../js/script");
+} = require("../js/cityId");
 
 describe("extractCityIdFromUrl()", () => {
   test("returns empty when no relevant # fragment", () => {
@@ -41,6 +41,7 @@ test("parseCityIdFromJson() extracts the city", () => {
   expect(parseCityIdFromJson("Saint Shoup Village, AZ")).toEqual(
     "saint-shoup-village-az"
   );
+  expect(parseCityIdFromJson("No state")).toEqual("no-state");
 });
 
 describe("determineShareUrl()", () => {

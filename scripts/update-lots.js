@@ -1,4 +1,4 @@
-const { determineArgs, updateCoordinates } = require("./base");
+import { determineArgs, updateCoordinates } from "./base.js";
 
 const main = async () => {
   const args = determineArgs("update-lots", process.argv.slice(2));
@@ -8,10 +8,10 @@ const main = async () => {
     process.exit(1);
   }
 
-  const { cityName, addFlag } = args.value;
+  const { cityId, addFlag } = args.value;
   const result = await updateCoordinates(
     "update-lots",
-    cityName,
+    cityId,
     addFlag,
     {},
     "data/parking-lots.geojson",
@@ -32,8 +32,4 @@ const main = async () => {
   /* eslint-enable no-console */
 };
 
-if (require.main === module) {
-  (async () => {
-    await main();
-  })();
-}
+main();

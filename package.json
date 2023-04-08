@@ -1,27 +1,32 @@
 {
   "name": "parking-lot-map",
   "version": "1.0.0",
-  "source": [
-    "index.html",
-    "assets/images/share-url-button.png",
-    "data/cities-polygons.geojson",
-    "data/parking-lots.geojson"
-  ],
+  "source": "index.html",
+  "type": "module",
   "scripts": {
     "start": "parcel",
-    "build": "rm -rf dist; parcel build",
+    "build": "rm -rf dist; parcel build --detailed-report",
     "test": "jest",
     "fmt": "prettier --write .",
-    "fix": "prettier --write scripts/ src/js; eslint --fix scripts/ src/js/script.js src/tests",
-    "lint": "prettier --check . && eslint scripts/ src/js/script.js src/tests",
+    "fix": "prettier --write scripts/ src/js/ src/tests; eslint --fix scripts/ src/",
+    "lint": "prettier --check . && eslint scripts/ src/",
     "update-city-boundaries": "node scripts/update-city.js",
-    "update-lots": "node scripts/update-lots.js"
+    "update-lots": "node scripts/update-lots.js",
+    "serve-dist": "cd dist; http-server",
+    "test-dist": "PORT=8080 jest setUpSite"
+  },
+  "dependencies": {
+    "leaflet": "~1.7.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
     "@jest/globals": "^29.5.0",
+    "babel-jest": "^29.5.0",
     "eslint": "^8.37.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
+    "http-server": "^14.1.1",
     "jest": "^29.5.0",
     "parcel": "^2.8.3",
     "prettier": "^2.8.7",
@@ -31,5 +36,10 @@
     "default": {
       "publicUrl": "./"
     }
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   }
 }

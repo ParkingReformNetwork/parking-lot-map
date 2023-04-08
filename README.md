@@ -2,7 +2,7 @@
 
 The code behind https://parkingreform.org/parking-lot-map/.
 
-The code is fairly simple and we intentionally are not using fancy frameworks like React or Svelte. The main files are `index.html`, `js/script.js`, and `data/*.geojson`. `js/script.js` will load the `.geojson` files to dynamically update `index.html` with all our data.
+The code is fairly simple and we do not use fancy frameworks like React or Svelte. The main files are `index.html`, `src/js/setUpSite.js`, and `data/*.geojson`. `setUpSite.js` will load the `.geojson` files to dynamically update `index.html` with all our data.
 
 # How tos
 
@@ -73,7 +73,7 @@ Then, save your changes in Git (in a new branch) and open a pull request. See th
 
 ## Update city score card and boundaries
 
-Directly edit the score card in `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. Be careful to not change the key names.
+To change the score card, directly edit it in `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. Be careful to not change the key names.
 
 To update the boundaries, export the geoJSON file and save it as the file `city-update.geojson` in the root of this repository. If the file already exists, overwrite it with your new data.
 
@@ -97,14 +97,24 @@ Regardless of whether what you updated, start the site with `npm start` and make
 
 Finally, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
 
-## Build for a release
-
-```bash
-❯ npm run build
-```
-
-Then copy the `dist/` folder to the server. We want to serve the file `dist/index.html`.
-
 ## Make a contribution
 
 We use the typical forking model to make contributions by opening Pull Requests. See https://docs.github.com/en/get-started/quickstart/contributing-to-projects.
+
+## Releases
+
+### Try out a build locally
+
+You can preview what a build will look like by running `npm run build`. Then use `npm run serve-dist` to start the server.
+
+You can also run our integration tests on built dist folder. Run `npm run serve-dist` in one terminal, then `npm run test-dist` in another.
+
+### Staging
+
+We use continuous deployment, meaning that we re-deploy the site every time we merge a pull request to staging at https://parkingreform.org/plm-staging/. You can check how the site renders about ~1-2 minutes after your change merges.
+
+### Production
+
+After you've confirmed staging looks good at https://parkingreform.org/plm-staging/, you can manually trigger a deploy.
+
+Go to https://github.com/ParkingReformNetwork/parking-lot-map/actions and open the "Deploy to prod" workflow. Initiate a build.

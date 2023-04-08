@@ -9,22 +9,25 @@ const {
   test,
 } = require("@jest/globals");
 
+const port = process.env.PORT || 1234;
+const url = `http://localhost:${port}`;
+
 let browser;
 
 beforeAll(async () => {
   browser = await puppeteer.launch();
   const context = browser.defaultBrowserContext();
-  context.overridePermissions("http://localhost:1234", ["clipboard-read"]);
+  context.overridePermissions(url, ["clipboard-read"]);
 
   const err = async () => {
     await browser.close();
     throw new Error(
-      "Server is not running at http://localhost:1234. In a new terminal tab, run `npm start`."
+      `Server is not running at ${url}. In a new terminal tab, run 'npm start'.`
     );
   };
   try {
     const page = await browser.newPage();
-    const response = await page.goto("http://localhost:1234", {
+    const response = await page.goto(url, {
       timeout: 1000,
     });
     await page.close();
@@ -52,7 +55,7 @@ test("no console errors and warnings", async () => {
     }
   });
 
-  await page.goto("http://localhost:1234");
+  await page.goto(url);
   await page.close();
 
   expect(errors).toHaveLength(0);
@@ -63,10 +66,9 @@ test("every city is in the toggle", async () => {
   const expectedCities = JSON.parse(data).features.map(
     (entry) => entry.properties.Name
   );
-  expectedCities.push("Select a city");
 
   const page = await browser.newPage();
-  await page.goto("http://localhost:1234");
+  await page.goto(url);
 
   // Wait a second to make sure the site is fully loaded.
   await page.waitForTimeout(1000);
@@ -79,7 +81,6 @@ test("every city is in the toggle", async () => {
   });
   await page.close();
 
-  toggleValues.sort();
   expectedCities.sort();
   expect(toggleValues).toEqual(expectedCities);
 });
@@ -93,7 +94,7 @@ test("correctly load the city score card", async () => {
   const anchorageExpected = anchorageEntries[0];
 
   const page = await browser.newPage();
-  await page.goto("http://localhost:1234");
+  await page.goto(url);
 
   await page.select("#city-choice", "anchorage-ak");
   await page.waitForFunction(() => {
@@ -140,13 +141,13 @@ test("correctly load the city score card", async () => {
 describe("the share feature", () => {
   test("share button writes the URL to the clipboard", async () => {
     const page = await browser.newPage();
-    await page.goto("http://localhost:1234");
+    await page.goto(url);
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
 
     await page.click(".url-copy-button > a");
-    const firstCityClipboardText = await page.evaluate(async () =>
+    const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
 
@@ -161,24 +162,24 @@ describe("the share feature", () => {
     });
 
     await page.click(".url-copy-button > a");
-    const secondCityClipboardText = await page.evaluate(async () =>
+    const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
 
     await page.close();
 
     expect(firstCityClipboardText).toBe(
-      "http://localhost:1234/#parking-reform-map=columbus-oh"
+      `${url}/#parking-reform-map=columbus-oh`
     );
     expect(secondCityClipboardText).toBe(
-      "http://localhost:1234/#parking-reform-map=anchorage-ak"
+      `${url}/#parking-reform-map=anchorage-ak`
     );
   });
 
   test("loading from a share link works", async () => {
     // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
     const page = await browser.newPage();
-    await page.goto("http://localhost:1234#parking-reform-map=fort-worth-tx");
+    await page.goto(`${url}#parking-reform-map=fort-worth-tx`);
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
@@ -197,7 +198,7 @@ describe("the share feature", () => {
 
   test("loading from a bad share link falls back to Columbus", async () => {
     const page = await browser.newPage();
-    await page.goto("http://localhost:1234#parking-reform-map=bad-city");
+    await page.goto(`${url}#parking-reform-map=bad-city`);
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
@@ -217,7 +218,7 @@ describe("the share feature", () => {
 
 test("about popup can be opened and closed", async () => {
   const page = await browser.newPage();
-  await page.goto("http://localhost:1234");
+  await page.goto(url);
 
   const aboutIcon = ".banner-about";
 
