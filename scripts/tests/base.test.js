@@ -114,6 +114,11 @@ describe("updateCoordinates()", () => {
     const rawResultData = await fs.readFile(originalFilePath, "utf8");
     const resultData = JSON.parse(rawResultData);
 
+    const resultCityIds = resultData.features.map(
+      (feature) => feature.properties.id
+    );
+    expect(resultCityIds).toEqual(["honolulu-hi", cityId, "shoup-ville-az"]);
+
     const cityTargetData = resultData.features.find(
       (feature) => feature.properties.id === cityId
     );

@@ -66,7 +66,6 @@ test("every city is in the toggle", async () => {
   const expectedCities = JSON.parse(data).features.map(
     (entry) => entry.properties.Name
   );
-  expectedCities.push("Select a city");
 
   const page = await browser.newPage();
   await page.goto(url);
@@ -82,8 +81,8 @@ test("every city is in the toggle", async () => {
   });
   await page.close();
 
-  toggleValues.sort();
   expectedCities.sort();
+  expectedCities.splice(0, 0, "Select a city");
   expect(toggleValues).toEqual(expectedCities);
 });
 
