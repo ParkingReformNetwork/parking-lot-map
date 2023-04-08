@@ -1,11 +1,7 @@
 import * as L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-import {
-  determineShareUrl,
-  extractCityIdFromUrl,
-  parseCityIdFromJson,
-} from "./cityId";
+import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import { createZoomHome } from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
@@ -178,7 +174,6 @@ const generateScorecard = (cityProperties) => {
  * @param windowUrl: The `window.location.href` global
  * @param leaflet: The `L` global
  * @param map: The Leaflet map instance.
- * @param string cityId: e.g. `saint-louis-mo`
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in the Geojson files.
  */
@@ -187,13 +182,12 @@ const setMapToCity = (
   windowUrl,
   leaflet,
   map,
-  cityId,
   cityProperties
 ) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
   const scorecard = generateScorecard(cityProperties);
-  setUpShareUrlClickListener(docObj, windowUrl, cityId);
+  setUpShareUrlClickListener(docObj, windowUrl, cityProperties.id);
   const popup = leaflet
     .popup({
       pane: "fixed",
@@ -223,8 +217,7 @@ const setUpCitiesLayer = (docObj, windowUrl, leaflet, map, initialCityId) => {
         return citiesPolygonsStyle;
       },
       onEachFeature(feature, layer) {
-        const key = parseCityIdFromJson(feature.properties.Name);
-        cities[key] = { layer, ...feature.properties };
+        cities[feature.properties.id] = { layer, ...feature.properties };
       },
     })
     .addTo(map);
@@ -233,10 +226,10 @@ const setUpCitiesLayer = (docObj, windowUrl, leaflet, map, initialCityId) => {
   const cityToggleElement = docObj.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
-    setMapToCity(docObj, windowUrl, leaflet, map, cityId, cities[cityId]);
+    setMapToCity(docObj, windowUrl, leaflet, map, cities[cityId]);
   });
 
-  // Add each city to the city selection toggle and set the initial city.
+  // Add each city to the city selection toggle.
   const cityKeys = Object.keys(cities).sort();
   cityKeys.forEach((key) => {
     const option = docObj.createElement("option");
@@ -249,14 +242,7 @@ const setUpCitiesLayer = (docObj, windowUrl, leaflet, map, initialCityId) => {
   const validatedInitialCityId =
     initialCityId in cities ? initialCityId : "columbus-oh";
   cityToggleElement.value = validatedInitialCityId;
-  setMapToCity(
-    docObj,
-    windowUrl,
-    leaflet,
-    map,
-    validatedInitialCityId,
-    cities[validatedInitialCityId]
-  );
+  setMapToCity(docObj, windowUrl, leaflet, map, cities[validatedInitialCityId]);
 };
 
 /**

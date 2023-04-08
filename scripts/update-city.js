@@ -8,8 +8,9 @@ const main = async () => {
     process.exit(1);
   }
 
-  const { cityName, addFlag } = args.value;
+  const { cityName, cityId, addFlag } = args.value;
   const newCityProperties = {
+    Name: cityName,
     Percentage: "FILL ME IN, e.g. 23%",
     Population: "FILL ME IN, e.g. 346,824",
     "Metro Population": "FILL ME IN, e.g. 13,200,998",
@@ -19,7 +20,7 @@ const main = async () => {
   };
   const result = await updateCoordinates(
     "update-city-boundaries",
-    cityName,
+    cityId,
     addFlag,
     newCityProperties,
     "data/cities-polygons.geojson",

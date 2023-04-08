@@ -11,6 +11,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "anaheim-ca",
         "Name": "Anaheim, CA",
         "Percentage": "23%",
         "Population": "346,824",
@@ -43,6 +44,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "anchorage-ak",
         "Name": "Anchorage, AK",
         "Percentage": "30%",
         "Population": "291,247",
@@ -96,6 +98,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "arlington-tx",
         "Name": "Arlington, TX",
         "Percentage": "42%",
         "Population": "394,218",
@@ -130,6 +133,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "atlanta-ga",
         "Name": "Atlanta, GA",
         "Percentage": "25%",
         "Population": "386,241",
@@ -215,6 +219,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "austin-tx",
         "Name": "Austin, TX",
         "Percentage": "17%",
         "Population": "959,549",
@@ -271,6 +276,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "baltimore-md",
         "Name": "Baltimore, MD",
         "Percentage": "11%",
         "Population": "585,708",
@@ -382,6 +388,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "boston-ma",
         "Name": "Boston, MA",
         "Percentage": "6%",
         "Population": "676,216",
@@ -901,6 +908,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "charlotte-nc",
         "Name": "Charlotte, NC",
         "Percentage": "18%",
         "Population": "874,541",
@@ -938,6 +946,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "chicago-il",
         "Name": "Chicago, IL",
         "Percentage": "4%",
         "Population": "2,747,231",
@@ -1023,6 +1032,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "cincinnati-oh",
         "Name": "Cincinnati, OH",
         "Percentage": "21%",
         "Population": "309,317",
@@ -1085,6 +1095,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "cleveland-oh",
         "Name": "Cleveland, OH",
         "Percentage": "26%",
         "Population": "373,091",
@@ -1187,6 +1198,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "columbus-oh",
         "Name": "Columbus, OH",
         "Percentage": "27%",
         "Population": "905,672",
@@ -1342,6 +1354,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "dallas-tx",
         "Name": "Dallas, TX",
         "Percentage": "24%",
         "Population": "1,304,442",
@@ -1448,6 +1461,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "denver-co",
         "Name": "Denver, CO",
         "Percentage": "11%",
         "Population": "715,522",
@@ -1515,6 +1529,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "detroit-mi",
         "Name": "Detroit, MI",
         "Percentage": "30%",
         "Population": "639,614",
@@ -1587,6 +1602,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "fort-worth-tx",
         "Name": "Fort Worth, TX",
         "Percentage": "27%",
         "Population": "918,377",
@@ -1690,6 +1706,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "honolulu-hi",
         "Name": "Honolulu, HI",
         "Percentage": "15%",
         "Population": "350,964",
@@ -1763,6 +1780,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "houston-tx",
         "Name": "Houston, TX",
         "Percentage": "26%",
         "Population": "2,302,792",
@@ -1902,6 +1920,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "jersey-city-nj",
         "Name": "Jersey City, NJ",
         "Percentage": "20%",
         "Population": "292,449",
@@ -2122,6 +2141,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "kansas-city-mo",
         "Name": "Kansas City, MO",
         "Percentage": "29%",
         "Population": "507,969",
@@ -2201,6 +2221,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "las-vegas-nv",
         "Name": "Las Vegas, NV",
         "Percentage": "32%",
         "Population": "641,825",
@@ -2251,6 +2272,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "long-beach-ca",
         "Name": "Long Beach, CA",
         "Percentage": "18%",
         "Population": "466,302",
@@ -2369,6 +2391,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "los-angeles-ca",
         "Name": "Los Angeles, CA",
         "Percentage": "12%",
         "Population": "3,893,986",
@@ -2410,6 +2433,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "louisville-ky",
         "Name": "Louisville, KY",
         "Percentage": "28%",
         "Population": "632,689",
@@ -2513,6 +2537,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "lubbock-tx",
         "Name": "Lubbock, TX",
         "Percentage": "35%",
         "Population": "257,141",
@@ -2546,6 +2571,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "mesa-az",
         "Name": "Mesa, AZ",
         "Percentage": "32%",
         "Population": "504,500",
@@ -2571,6 +2597,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "miami-fl",
         "Name": "Miami, FL",
         "Percentage": "17%",
         "Population": "442,265",
@@ -2664,6 +2691,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "minneapolis-mn",
         "Name": "Minneapolis, MN",
         "Percentage": "18%",
         "Population": "428,403",
@@ -2728,6 +2756,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "nashville-tn",
         "Name": "Nashville, TN",
         "Percentage": "18%",
         "Population": "689,504",
@@ -2815,6 +2844,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "new-orleans-la",
         "Name": "New Orleans, LA",
         "Percentage": "18%",
         "Population": "383,997",
@@ -2879,6 +2909,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "new-york-ny",
         "Name": "New York, NY",
         "Percentage": "1%",
         "Population": "8,804,190",
@@ -2903,6 +2934,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "newark-nj",
         "Name": "Newark, NJ",
         "Percentage": "24%",
         "Population": "311,549",
@@ -2950,6 +2982,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "oakland-ca",
         "Name": "Oakland, CA",
         "Percentage": "12%",
         "Population": "439,349",
@@ -3081,6 +3114,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "orlando-fl",
         "Name": "Orlando, FL",
         "Percentage": "29%",
         "Population": "307,573",
@@ -3180,6 +3214,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "philadelphia-pa",
         "Name": "Philadelphia, PA",
         "Percentage": "13%",
         "Population": "1,603,797",
@@ -3212,6 +3247,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "phoenix-az",
         "Name": "Phoenix, AZ",
         "Percentage": "20%",
         "Population": "1,607,739",
@@ -3243,6 +3279,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "pittsburgh-pa",
         "Name": "Pittsburgh, PA",
         "Percentage": "18%",
         "Population": "302,971",
@@ -3323,6 +3360,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "portland-or",
         "Name": "Portland, OR",
         "Percentage": "11%",
         "Population": "652,089",
@@ -3432,6 +3470,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "riverside-ca",
         "Name": "Riverside, CA",
         "Percentage": "34%",
         "Population": "317,610",
@@ -3472,6 +3511,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "sacramento-ca",
         "Name": "Sacramento, CA",
         "Percentage": "16%",
         "Population": "522,754",
@@ -3524,6 +3564,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "saint-louis-mo",
         "Name": "Saint Louis, MO",
         "Percentage": "21%",
         "Population": "301,578",
@@ -3561,6 +3602,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "saint-paul-mn",
         "Name": "Saint Paul, MN",
         "Percentage": "16%",
         "Population": "311,527",
@@ -3638,6 +3680,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "san-antonio",
         "Name": "San Antonio",
         "Percentage": "26%",
         "Population": "1,434,270",
@@ -3749,6 +3792,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "san-diego-ca",
         "Name": "San Diego, CA",
         "Percentage": "14%",
         "Population": "1,385,922",
@@ -3845,6 +3889,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "san-francisco-ca",
         "Name": "San Francisco, CA",
         "Percentage": "4%",
         "Population": "873,965",
@@ -3908,6 +3953,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "san-jose-ca",
         "Name": "San Jose, CA",
         "Percentage": "14%",
         "Population": "1,014,545",
@@ -3999,6 +4045,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "seattle-wa",
         "Name": "Seattle, WA",
         "Percentage": "10%",
         "Population": "735,157",
@@ -4077,6 +4124,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "tulsa-ok",
         "Name": "Tulsa, OK",
         "Percentage": "28%",
         "Population": "413,066",
@@ -4177,6 +4225,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "washington-dc",
         "Name": "Washington, DC",
         "Percentage": "3%",
         "Population": "689,545",
@@ -4207,6 +4256,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "tampa-fl",
         "Name": "Tampa, FL",
         "Percentage": "30%",
         "Population": "382,769",
@@ -4284,6 +4334,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "indianapolis-in",
         "Name": "Indianapolis, IN",
         "Percentage": "25%",
         "Population": "887,752",
@@ -4308,6 +4359,7 @@
     {
       "type": "Feature",
       "properties": {
+        "id": "birmingham-al",
         "Name": "Birmingham, AL",
         "Percentage": "26%",
         "Population": "200,733",
