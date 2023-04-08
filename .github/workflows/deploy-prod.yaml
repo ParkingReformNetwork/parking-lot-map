@@ -5,13 +5,13 @@ jobs:
     if: github.repository_owner == 'ParkingReformNetwork'
     runs-on: ubuntu-latest
     steps:
-    - name: Copy from staging to production
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SERVER_HOST }}
-        username: ${{ secrets.SERVER_USERNAME }}
-        key: ${{ secrets.SERVER_PRIVATE_KEY }}
-        script: |
-          rsync --archive --verbose --compress --delete \
-            /var/www/${{ secrets.SERVER_HOST }}/plm-staging/ \
-            /var/www/${{ secrets.SERVER_HOST }}/parking-lot-map/
+      - name: Copy from staging to production
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SERVER_PRIVATE_KEY }}
+          script: |
+            rsync --archive --verbose --compress --delete \
+              /var/www/${{ secrets.SERVER_HOST }}/plm-staging/ \
+              /var/www/${{ secrets.SERVER_HOST }}/parking-lot-map/
