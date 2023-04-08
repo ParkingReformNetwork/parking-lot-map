@@ -7,6 +7,43 @@ import { createZoomHome } from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
 
+const BASE_LAYERS = {
+  Light: L.tileLayer(
+    "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
+    {
+      attribution:
+        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      subdomains: "abcd",
+      minZoom: 0,
+      maxZoom: 20,
+      ext: "png",
+    }
+  ),
+  "Google Maps": L.tileLayer(
+    "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+    {
+      attribution: "Google Maps",
+      // Max value is 24 but I set it to 20 because the Stamen Toner style has value of 20 as max value.
+      maxZoom: 20,
+    }
+  ),
+};
+
+const STYLES = {
+  cities: {
+    fillColor: "##c84041",
+    color: "#c84041",
+    weight: 4,
+    fillOpacity: 0,
+  },
+  parkingLots: {
+    fillColor: "#FF0000",
+    color: "#FF0000",
+    weight: 1,
+    fillOpacity: 0.6,
+  },
+};
+
 const addCitiesToToggle = (initialCityId, fallbackCityId) => {
   const cityToggleElement = document.getElementById("city-choice");
   let validInitialId = false;
@@ -39,28 +76,6 @@ const setUpAbout = () => {
   });
 };
 
-const defineBaseLayers = () => ({
-  Light: L.tileLayer(
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
-    {
-      attribution:
-        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      subdomains: "abcd",
-      minZoom: 0,
-      maxZoom: 20,
-      ext: "png",
-    }
-  ),
-  "Google Maps": L.tileLayer(
-    "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    {
-      attribution: "Google Maps",
-      // Max value is 24 but I set it to 20 because the Stamen Toner style has value of 20 as max value.
-      maxZoom: 20,
-    }
-  ),
-});
-
 /**
  * Create the initial map object.
  *
@@ -69,15 +84,14 @@ const defineBaseLayers = () => ({
  * @returns: The map instance.
  */
 const createMap = () => {
-  const baseLayers = defineBaseLayers();
   const map = L.map("map", {
     zoomControl: false,
-    layers: [baseLayers.Light],
+    layers: [BASE_LAYERS.Light],
   });
   map.attributionControl.setPrefix(
     'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" target="_blank" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
   );
-  L.control.layers(baseLayers).addTo(map);
+  L.control.layers(BASE_LAYERS).addTo(map);
 
   map.createPane("fixed", document.getElementById("map"));
 
@@ -86,19 +100,6 @@ const createMap = () => {
   zoomHome.setHomeZoom(4);
   zoomHome.addTo(map);
   return map;
-};
-
-const citiesPolygonsStyle = {
-  fillColor: "##c84041",
-  color: "#c84041",
-  weight: 4,
-  fillOpacity: 0,
-};
-const parkingLotsStyle = {
-  fillColor: "#FF0000",
-  color: "#FF0000",
-  weight: 1,
-  fillOpacity: 0.6,
 };
 
 /**
@@ -203,7 +204,7 @@ const setUpCitiesLayer = (map) => {
   const cities = {};
   L.geoJson(citiesData, {
     style() {
-      return citiesPolygonsStyle;
+      return STYLES.cities;
     },
     onEachFeature(feature, layer) {
       cities[feature.properties.id] = { layer, ...feature.properties };
@@ -224,7 +225,7 @@ const setUpCitiesLayer = (map) => {
 const setUpParkingLotsLayer = (map) => {
   L.geoJSON(parkingLotsData, {
     style() {
-      return parkingLotsStyle;
+      return STYLES.parkingLots;
     },
   }).addTo(map);
 };
