@@ -73,7 +73,7 @@ Then, save your changes in Git (in a new branch) and open a pull request. See th
 
 ## Update city score card and boundaries
 
-Directly edit the score card in `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. Be careful to not change the key names.
+To change the score card, directly edit it in `data/cities-polygons.geojson`. Search for your city name, like `Saint Louis, Mo`. Be careful to not change the key names.
 
 To update the boundaries, export the geoJSON file and save it as the file `city-update.geojson` in the root of this repository. If the file already exists, overwrite it with your new data.
 
