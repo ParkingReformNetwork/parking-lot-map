@@ -36,9 +36,6 @@ fieldset#tier-dropdown {
 
 .popup-fixed {
   position: fixed;
-  /* top: 121px;
-  bottom: 0 !important;
-  left: 12px !important; */
   transform: none !important;
   margin: 0;
 }
