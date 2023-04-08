@@ -1,5 +1,5 @@
 /* global document, window */
-import * as L from "leaflet";
+import { Control, Map, Popup, TileLayer, geoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
@@ -8,7 +8,7 @@ import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
 
 const BASE_LAYERS = {
-  Light: L.tileLayer(
+  Light: new TileLayer(
     "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
     {
       attribution:
@@ -19,7 +19,7 @@ const BASE_LAYERS = {
       ext: "png",
     }
   ),
-  "Google Maps": L.tileLayer(
+  "Google Maps": new TileLayer(
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
       attribution: "Google Maps",
@@ -84,15 +84,15 @@ const setUpAbout = () => {
  * @returns: The map instance.
  */
 const createMap = () => {
-  const map = L.map("map", {
+  const map = new Map("map", {
     zoomControl: false,
     layers: [BASE_LAYERS.Light],
   });
   map.attributionControl.setPrefix(
     'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
   );
-  L.control.layers(BASE_LAYERS).addTo(map);
 
+  new Control.Layers(BASE_LAYERS).addTo(map);
   map.createPane("fixed", document.getElementById("map"));
 
   const zoomHome = new ZoomHome();
@@ -188,7 +188,7 @@ const setMapToCity = (map, cityProperties) => {
   map.fitBounds(layer.getBounds());
   const scorecard = generateScorecard(cityProperties);
   setUpShareUrlClickListener(cityProperties.id);
-  const popup = L.popup({
+  const popup = new Popup({
     pane: "fixed",
     className: "popup-fixed",
     autoPan: false,
@@ -202,7 +202,7 @@ const setMapToCity = (map, cityProperties) => {
  */
 const setUpCitiesLayer = (map) => {
   const cities = {};
-  L.geoJson(citiesData, {
+  geoJSON(citiesData, {
     style() {
       return STYLES.cities;
     },
@@ -223,7 +223,7 @@ const setUpCitiesLayer = (map) => {
 };
 
 const setUpParkingLotsLayer = (map) => {
-  L.geoJSON(parkingLotsData, {
+  geoJSON(parkingLotsData, {
     style() {
       return STYLES.parkingLots;
     },
