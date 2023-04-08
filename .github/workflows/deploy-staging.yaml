@@ -1,9 +1,9 @@
-name: Deploy site
+name: Deploy to staging
 on:
   push:
     branches: [main]
 jobs:
-  deploy:
+  deploy_staging:
     if: github.repository_owner == 'ParkingReformNetwork'
     runs-on: ubuntu-latest
     steps:
@@ -20,7 +20,7 @@ jobs:
       - name: Serve dist/ folder
         run: |
           npm run serve-dist &
-          sleep 8 # give server some time to start
+          sleep 10 # give server some time to start
       - name: Run tests on dist/
         run: npm run test-dist
       - name: Archive dist/ contents
