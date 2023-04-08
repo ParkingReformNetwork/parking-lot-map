@@ -7,15 +7,19 @@ import { createZoomHome } from "./vendor/leaflet.zoomhome";
 import citiesData from "../../data/cities-polygons.geojson";
 import parkingLotsData from "../../data/parking-lots.geojson";
 
-const addCitiesToToggle = (initialCityId) => {
+const addCitiesToToggle = (initialCityId, fallbackCityId) => {
   const cityToggleElement = document.getElementById("city-choice");
+  let validInitialId = false;
   citiesData.features.forEach(({ properties: { id, Name } }) => {
+    if (id === initialCityId) {
+      validInitialId = true;
+    }
     const option = document.createElement("option");
     option.value = id;
     option.textContent = Name;
     cityToggleElement.appendChild(option);
   });
-  cityToggleElement.value = initialCityId;
+  cityToggleElement.value = validInitialId ? initialCityId : fallbackCityId;
 };
 
 /**
@@ -226,9 +230,8 @@ const setUpParkingLotsLayer = (map) => {
 };
 
 const setUpSite = () => {
-  const initialCityId =
-    extractCityIdFromUrl(window.location.href) || "columbus-oh";
-  addCitiesToToggle(initialCityId);
+  const initialCityId = extractCityIdFromUrl(window.location.href);
+  addCitiesToToggle(initialCityId, "columbus-oh");
   setUpAbout();
 
   const map = createMap();
