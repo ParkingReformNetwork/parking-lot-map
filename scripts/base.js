@@ -1,4 +1,4 @@
-const fs = require("fs").promises;
+import fs from "fs/promises";
 
 // Rather than using `try/catch`, we return either `Ok` or `Err`.
 // This emulates Rust's `Result` type.
@@ -107,9 +107,4 @@ const updateCoordinates = async (
   return Ok("File updated successfully!");
 };
 
-module.exports = {
-  Ok,
-  Err,
-  determineArgs,
-  updateCoordinates,
-};
+export { Ok, Err, determineArgs, updateCoordinates };

@@ -2,6 +2,7 @@
   "name": "parking-lot-map",
   "version": "1.0.0",
   "source": "index.html",
+  "type": "module",
   "scripts": {
     "start": "parcel",
     "build": "rm -rf dist; parcel build --detailed-report",
