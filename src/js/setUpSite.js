@@ -177,13 +177,7 @@ const generateScorecard = (cityProperties) => {
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in the Geojson files.
  */
-const setMapToCity = (
-  docObj,
-  windowUrl,
-  leaflet,
-  map,
-  cityProperties
-) => {
+const setMapToCity = (docObj, windowUrl, leaflet, map, cityProperties) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
   const scorecard = generateScorecard(cityProperties);
