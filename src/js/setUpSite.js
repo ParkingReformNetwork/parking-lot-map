@@ -222,17 +222,16 @@ const setUpCitiesLayer = (map) => {
   setMapToCity(map, cities[cityToggleElement.value]);
 };
 
-const setUpParkingLotsLayer = (map) => {
-  import("../../data/parking-lots.geojson").then((parkingLotsData) => {
-    geoJSON(parkingLotsData, {
-      style() {
-        return STYLES.parkingLots;
-      },
-    }).addTo(map);
-  });
+const setUpParkingLotsLayer = async (map) => {
+  const parkingLotsData = await import("../../data/parking-lots.geojson");
+  geoJSON(parkingLotsData, {
+    style() {
+      return STYLES.parkingLots;
+    },
+  }).addTo(map);
 };
 
-const setUpSite = () => {
+const setUpSite = async () => {
   setUpIcons();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
@@ -241,7 +240,7 @@ const setUpSite = () => {
 
   const map = createMap();
   setUpCitiesLayer(map);
-  setUpParkingLotsLayer(map);
+  await setUpParkingLotsLayer(map);
 };
 
 export default setUpSite;
