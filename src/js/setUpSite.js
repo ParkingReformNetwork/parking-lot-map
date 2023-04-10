@@ -241,6 +241,10 @@ const setUpSite = async () => {
   const map = createMap();
   setUpCitiesLayer(map);
   await setUpParkingLotsLayer(map);
+
+  // There have been some issues on Safari with the map only rendering the top 20%
+  // on the first page load. This is meant to address that.
+  map.invalidateSize();
 };
 
 export default setUpSite;

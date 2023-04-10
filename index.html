@@ -189,9 +189,9 @@
     <script type="module">
       import setUpSite from "./src/js/setUpSite";
 
-      (async () => {
+      window.onload = async () => {
         await setUpSite();
-      })();
+      };
     </script>
   </body>
 </html>
