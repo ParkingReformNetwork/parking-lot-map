@@ -189,7 +189,9 @@
     <script type="module">
       import setUpSite from "./src/js/setUpSite";
 
-      setUpSite();
+      (async () => {
+        await setUpSite();
+      })();
     </script>
   </body>
 </html>
