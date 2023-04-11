@@ -9,43 +9,23 @@ const {
 const { determineArgs, updateCoordinates } = require("../base");
 
 describe("determineArgs()", () => {
-  test("detects whether --add is set", () => {
-    let result = determineArgs("my-script", ["My City"]);
+  test("returns the city name and ID", () => {
+    const result = determineArgs("my-script", ["My City"]);
     expect(result.value).toEqual({
       cityName: "My City",
       cityId: "my-city",
-      addFlag: false,
-    });
-
-    result = determineArgs("my-script", ["My City", "--add"]);
-    expect(result.value).toEqual({
-      cityName: "My City",
-      cityId: "my-city",
-      addFlag: true,
-    });
-
-    result = determineArgs("my-script", ["--add", "My City"]);
-    expect(result.value).toEqual({
-      cityName: "My City",
-      cityId: "my-city",
-      addFlag: true,
     });
   });
 
-  test("requires the city to be specified", () => {
+  test("requires exactly 1 argument", () => {
     let result = determineArgs("my-script", []);
-    expect(result.error).toContain("provide a city/state name");
+    expect(result.error).toContain("exactly one argument");
 
-    result = determineArgs("my-script", ["--add"]);
-    expect(result.error).toContain("provide a city/state name");
-  });
+    result = determineArgs("my-script", ["My City", "--bad"]);
+    expect(result.error).toContain("exactly one argument");
 
-  test("errors if unrecognized arguments", () => {
-    let result = determineArgs("my-script", ["My City", "--bad"]);
-    expect(result.error).toContain("Unexpected arguments");
-
-    result = determineArgs("my-script", ["My City", "--add", "bad"]);
-    expect(result.error).toContain("Unexpected arguments");
+    result = determineArgs("my-script", ["My City", "AZ"]);
+    expect(result.error).toContain("exactly one argument");
   });
 });
 
@@ -72,7 +52,6 @@ describe("updateCoordinates()", () => {
       "my-script",
       cityId,
       false,
-      {},
       originalFilePath,
       updateFilePath
     );
@@ -92,7 +71,7 @@ describe("updateCoordinates()", () => {
     expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
   });
 
-  test("adds a new city when `--add` used", async () => {
+  test("adds a new city when add is set", async () => {
     const updateFilePath = validUpdateFilePath;
 
     const cityId = "parking-reform-now";
@@ -100,7 +79,6 @@ describe("updateCoordinates()", () => {
       "my-script",
       cityId,
       true,
-      { MyProperty: "Fill me in" },
       originalFilePath,
       updateFilePath
     );
@@ -124,18 +102,16 @@ describe("updateCoordinates()", () => {
     );
     expect(cityTargetData.properties).toEqual({
       id: cityId,
-      MyProperty: "Fill me in",
     });
     expect(cityTargetData.geometry.type).toEqual("MultiPolygon");
     expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
   });
 
-  test("errors if city cannot be found in the original data and `--add` not set", async () => {
+  test("errors if city cannot be found in the original data and add not set", async () => {
     const result = await updateCoordinates(
       "my-script",
       "bad-city",
       false,
-      {},
       originalFilePath,
       validUpdateFilePath
     );
@@ -147,7 +123,6 @@ describe("updateCoordinates()", () => {
       "my-script",
       "shoup-ville-az",
       false,
-      {},
       originalFilePath,
       "scripts/tests/data/too-many-updates.geojson"
     );
@@ -157,7 +132,6 @@ describe("updateCoordinates()", () => {
       "my-script",
       "shoup-ville-az",
       false,
-      {},
       originalFilePath,
       "scripts/tests/data/empty-update.geojson"
     );
@@ -169,7 +143,6 @@ describe("updateCoordinates()", () => {
       "my-script",
       "shoup-ville-az",
       false,
-      {},
       originalFilePath,
       "scripts/tests/data/does-not-exist"
     );
@@ -181,7 +154,6 @@ describe("updateCoordinates()", () => {
       "my-script",
       "shoup-ville-az",
       false,
-      {},
       "scripts/tests/data/does-not-exist",
       validUpdateFilePath
     );

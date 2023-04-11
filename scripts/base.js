@@ -7,33 +7,23 @@ const Ok = (value) => ({ value });
 const Err = (error) => ({ error });
 
 /**
- * Determine the city name, city ID, and if `--add` was set.
+ * Determine the city name and city ID.
  *
- * @param string scriptCommand - i.e. `update-lots` or `update-city-boundaries`.
+ * @param string scriptCommand - e.g. `update-lots` or `update-city-boundaries`.
  * @param list[string] processArgv - all argv after the first two elements.
  * @return either an `error` or `value` object.
  */
 const determineArgs = (scriptCommand, processArgv) => {
-  let cityName;
-  let addFlag = false;
-  for (let i = 0; i < processArgv.length; i += 1) {
-    if (processArgv[i] === "--add") {
-      addFlag = true;
-    } else if (!cityName) {
-      cityName = processArgv[i];
-    } else {
-      return Err(`Unexpected arguments: ${processArgv}`);
-    }
-  }
-
-  if (!cityName) {
+  if (processArgv.length !== 1) {
     return Err(
-      `Please provide a city/state name, e.g. npm run ${scriptCommand} -- 'Columbus, OH'`
+      `Must provide exactly one argument (the city/state name). For example,
+       npm run ${scriptCommand} -- 'Columbus, OH'
+       `
     );
   }
-
+  const cityName = processArgv[0];
   const cityId = parseCityIdFromJson(cityName);
-  return Ok({ cityName, cityId, addFlag });
+  return Ok({ cityName, cityId });
 };
 
 /**
@@ -42,8 +32,6 @@ const determineArgs = (scriptCommand, processArgv) => {
  * @param string scriptCommand - i.e. `update-lots` or `update-city-boundaries`.
  * @param string cityId - e.g. 'my-city-az'
  * @param boolean addCity - what to do if the city is missing
- * @param object additionalPropertiesForNewCity - any additional keys and filler values to add
-      to Properties when creating a new city.
  * @param string originalFilePath - what will be updated
  * @param string updatedFilePath - where to get the new coordinates
  * @return either an `error` or `value` object. The `value` does not include follow up
@@ -53,7 +41,6 @@ const updateCoordinates = async (
   scriptCommand,
   cityId,
   addCity,
-  additionalPropertiesForNewCity,
   originalFilePath,
   updateFilePath
 ) => {
@@ -89,7 +76,7 @@ const updateCoordinates = async (
   if (addCity) {
     const newEntry = {
       type: "Feature",
-      properties: { id: cityId, ...additionalPropertiesForNewCity },
+      properties: { id: cityId },
       geometry: { type: newGeometryType, coordinates: newCoordinates },
     };
     originalData.features.push(newEntry);

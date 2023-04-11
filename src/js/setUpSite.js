@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import ZoomHome from "./vendor/leaflet.zoomhome";
-import citiesData from "../../data/cities-polygons.geojson";
+import scoreCardsData from "../../data/score-cards.json";
 
 const BASE_LAYERS = {
   Light: new TileLayer(
@@ -47,7 +47,7 @@ const STYLES = {
 const addCitiesToToggle = (initialCityId, fallbackCityId) => {
   const cityToggleElement = document.getElementById("city-choice");
   let validInitialId = false;
-  citiesData.features.forEach(({ properties: { id, Name } }) => {
+  Object.entries(scoreCardsData).forEach(([id, { Name }]) => {
     if (id === initialCityId) {
       validInitialId = true;
     }
@@ -144,10 +144,10 @@ const setUpShareUrlClickListener = (cityId) => {
 /**
  * Generate the HTML for the score card.
  *
- * @param cityProperties: The keys from the geoJSON files.
+ * @param scoreCardEntry: An entry from score-cards.json.
  * @returns string: The HTML represented as a string.
  */
-const generateScorecard = (cityProperties) => {
+const generateScorecard = (scoreCardEntry) => {
   const {
     Name,
     Percentage,
@@ -156,7 +156,7 @@ const generateScorecard = (cityProperties) => {
     "Parking Score": ParkingScore,
     Reforms,
     "Website URL": WebsiteURL,
-  } = cityProperties;
+  } = scoreCardEntry;
   let result = `
     <div class="title">${Name}</div>
     <div class="url-copy-button"><a href="#"><i class="fa-solid fa-link fa-xl"></i></a></div>
@@ -180,14 +180,15 @@ const generateScorecard = (cityProperties) => {
  * Move the map to the city boundaries and set its score card.
  *
  * @param map: The Leaflet map instance.
+ * @param cityId: E.g. `columbus-oh`.
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
- *    representing the score card properties stored in the Geojson files.
+ *    representing the score card properties stored in `score-cards.json`.
  */
-const setMapToCity = (map, cityProperties) => {
+const setMapToCity = (map, cityId, cityProperties) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
   const scorecard = generateScorecard(cityProperties);
-  setUpShareUrlClickListener(cityProperties.id);
+  setUpShareUrlClickListener(cityId);
   const popup = new Popup({
     pane: "fixed",
     className: "popup-fixed",
@@ -200,14 +201,16 @@ const setMapToCity = (map, cityProperties) => {
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
  */
-const setUpCitiesLayer = (map) => {
+const setUpCitiesLayer = async (map) => {
   const cities = {};
-  geoJSON(citiesData, {
+  const cityBoundariesData = await import("../../data/city-boundaries.geojson");
+  geoJSON(cityBoundariesData, {
     style() {
       return STYLES.cities;
     },
     onEachFeature(feature, layer) {
-      cities[feature.properties.id] = { layer, ...feature.properties };
+      const cityId = feature.properties.id;
+      cities[cityId] = { layer, ...scoreCardsData[cityId] };
     },
   }).addTo(map);
 
@@ -215,11 +218,12 @@ const setUpCitiesLayer = (map) => {
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
-    setMapToCity(map, cities[cityId]);
+    setMapToCity(map, cityId, cities[cityId]);
   });
 
   // Load initial city.
-  setMapToCity(map, cities[cityToggleElement.value]);
+  const cityId = cityToggleElement.value;
+  setMapToCity(map, cityId, cities[cityId]);
 };
 
 const setUpParkingLotsLayer = async (map) => {
@@ -239,8 +243,7 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  setUpCitiesLayer(map);
-  await setUpParkingLotsLayer(map);
+  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map)]);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
