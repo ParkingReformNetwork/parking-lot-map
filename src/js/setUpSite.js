@@ -44,12 +44,6 @@ const STYLES = {
   },
 };
 
-// Temporary hack to allow removing the parking lot data.
-if (window.location.href.indexOf("#no-lots") !== -1) {
-  STYLES.parkingLots.weight = 0;
-  STYLES.parkingLots.fillOpacity = 0;
-}
-
 const addCitiesToToggle = (initialCityId, fallbackCityId) => {
   const cityToggleElement = document.getElementById("city-choice");
   let validInitialId = false;
