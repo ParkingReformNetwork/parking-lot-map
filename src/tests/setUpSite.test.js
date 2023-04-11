@@ -62,10 +62,9 @@ test("no console errors and warnings", async () => {
 });
 
 test("every city is in the toggle", async () => {
-  const data = fs.readFileSync("data/cities-polygons.geojson");
-  const expectedCities = JSON.parse(data).features.map(
-    (entry) => entry.properties.Name
-  );
+  const rawData = fs.readFileSync("data/score-cards.json");
+  const data = JSON.parse(rawData);
+  const expectedCities = Object.values(data).map((scoreCard) => scoreCard.Name);
 
   const page = await browser.newPage();
   await page.goto(url);
@@ -86,12 +85,8 @@ test("every city is in the toggle", async () => {
 });
 
 test("correctly load the city score card", async () => {
-  const data = fs.readFileSync("data/cities-polygons.geojson");
-  const anchorageEntries = JSON.parse(data)
-    .features.filter((entry) => entry.properties.Name === "Anchorage, AK")
-    .map((entry) => entry.properties);
-  expect(anchorageEntries).toHaveLength(1);
-  const anchorageExpected = anchorageEntries[0];
+  const rawData = fs.readFileSync("data/score-cards.json");
+  const anchorageExpected = JSON.parse(rawData)["anchorage-ak"];
 
   const page = await browser.newPage();
   await page.goto(url);

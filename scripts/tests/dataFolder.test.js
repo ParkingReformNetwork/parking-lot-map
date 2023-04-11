@@ -1,7 +1,7 @@
 const fs = require("fs").promises;
 const { expect, test } = require("@jest/globals");
 
-const assertSorted = async (filePath) => {
+const assertSortedGeojson = async (filePath) => {
   const rawData = await fs.readFile(filePath, "utf8");
   const data = JSON.parse(rawData);
   const sortedFeatures = [...data.features].sort((a, b) =>
@@ -11,9 +11,16 @@ const assertSorted = async (filePath) => {
 };
 
 test("cities-polygons.geojson features are sorted alphabetically", async () => {
-  await assertSorted("data/cities-polygons.geojson");
+  await assertSortedGeojson("data/city-boundaries.geojson");
 });
 
 test("parking-lots.geojson features are sorted alphabetically", async () => {
-  await assertSorted("data/parking-lots.geojson");
+  await assertSortedGeojson("data/parking-lots.geojson");
+});
+
+test("score-cards.json is sorted alphabetically", async () => {
+  const rawData = await fs.readFile("data/score-cards.json", "utf8");
+  const data = JSON.parse(rawData);
+  const sortedKeys = Object.keys(data).sort();
+  expect(Object.keys(data)).toEqual(sortedKeys);
 });

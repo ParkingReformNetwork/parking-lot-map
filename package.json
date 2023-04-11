@@ -10,7 +10,8 @@
     "fmt": "prettier --write .",
     "fix": "prettier --write scripts/ src/; eslint --fix scripts/ src/",
     "lint": "prettier --check . && eslint scripts/ src/",
-    "update-city-boundaries": "node scripts/update-city.js",
+    "add-city": "node scripts/add-city.js",
+    "update-city-boundaries": "node scripts/update-city-boundaries.js",
     "update-lots": "node scripts/update-lots.js",
     "serve-dist": "cd dist; http-server",
     "test-dist": "PORT=8080 jest setUpSite"

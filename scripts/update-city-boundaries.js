@@ -2,7 +2,7 @@
 import { determineArgs, updateCoordinates } from "./base.js";
 
 const main = async () => {
-  const args = determineArgs("update-lots", process.argv.slice(2));
+  const args = determineArgs("update-city-boundaries", process.argv.slice(2));
   if (args.error) {
     console.error("Argument error:", args.error);
     process.exit(1);
@@ -10,11 +10,11 @@ const main = async () => {
 
   const { cityId } = args.value;
   const result = await updateCoordinates(
-    "update-lots",
+    "update-city-boundaries",
     cityId,
     false,
-    "data/parking-lots.geojson",
-    "parking-lots-update.geojson"
+    "data/city-boundaries.geojson",
+    "city-update.geojson"
   );
 
   if (result.error) {
