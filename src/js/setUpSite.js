@@ -228,11 +228,19 @@ const setUpCitiesLayer = async (map) => {
 
 const setUpParkingLotsLayer = async (map) => {
   const parkingLotsData = await import("../../data/parking-lots.geojson");
-  geoJSON(parkingLotsData, {
+  const lotsLayer = geoJSON(parkingLotsData, {
     style() {
       return STYLES.parkingLots;
     },
   }).addTo(map);
+
+  // Hack to allow turning off lot data.
+  document.querySelector("#lot-data-on").addEventListener("click", () => {
+    lotsLayer.addData(parkingLotsData);
+  });
+  document.querySelector("#lot-data-off").addEventListener("click", () => {
+    lotsLayer.clearLayers();
+  });
 };
 
 const setUpSite = async () => {
