@@ -134,7 +134,7 @@ div.banners {
   padding: 10px 15px;
 }
 div.banner-title,
-div.banner-about {
+div.banner-icons {
   font-weight: bold;
   border: none;
   font-size: 20px;
@@ -144,15 +144,19 @@ div.banner-about {
   right: 2px;
 }
 
-div.banner-about {
+.banner-about-icon {
+  display: inline;
+}
+
+div.banner-icons {
   cursor: pointer;
 }
 
-div.banner-about svg {
+div.banner-icons svg {
   color: #ffffff;
 }
 
-div.banner-about svg.fa-circle-info {
+div.banner-icons svg.fa-circle-info {
   margin-right: 10px;
 }
 

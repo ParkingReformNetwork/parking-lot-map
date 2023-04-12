@@ -215,7 +215,7 @@ test("about popup can be opened and closed", async () => {
   const page = await browser.newPage();
   await page.goto(url);
 
-  const aboutIcon = ".banner-about";
+  const aboutIcon = ".banner-about-icon";
 
   const aboutIsVisible = async (expected) => {
     const isVisible = await page.$eval(
