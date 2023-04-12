@@ -234,13 +234,16 @@ const setUpParkingLotsLayer = async (map) => {
     },
   }).addTo(map);
 
-  // Hack to allow turning off lot data.
-  document.querySelector("#lot-data-on").addEventListener("click", () => {
-    lotsLayer.addData(parkingLotsData);
-  });
-  document.querySelector("#lot-data-off").addEventListener("click", () => {
-    lotsLayer.clearLayers();
-  });
+  // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
+  if (window.location.href.indexOf("#lots-toggle") !== -1) {
+    document.querySelector("#lots-toggle").style.display = "block";
+    document.querySelector("#lots-toggle-on").addEventListener("click", () => {
+      lotsLayer.addData(parkingLotsData);
+    });
+    document.querySelector("#lots-toggle-off").addEventListener("click", () => {
+      lotsLayer.clearLayers();
+    });
+  }
 };
 
 const setUpSite = async () => {
