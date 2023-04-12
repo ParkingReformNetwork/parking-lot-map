@@ -64,7 +64,7 @@ const addCitiesToToggle = (initialCityId, fallbackCityId) => {
  */
 const setUpAbout = () => {
   const aboutElement = document.querySelector(".about-text-popup");
-  document.querySelector(".banner-about").addEventListener("click", () => {
+  document.querySelector(".banner-about-icon").addEventListener("click", () => {
     aboutElement.style.display =
       aboutElement.style.display !== "block" ? "block" : "none";
   });
