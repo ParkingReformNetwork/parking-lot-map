@@ -1,7 +1,7 @@
 {
   "anaheim-ca": {
     "Name": "Anaheim, CA",
-    "Percentage": "23%",
+    "Percentage": "24%",
     "Population": "346,824",
     "Metro Population": "13,200,998",
     "Parking Score": "53",
@@ -26,7 +26,7 @@
   },
   "atlanta-ga": {
     "Name": "Atlanta, GA",
-    "Percentage": "25%",
+    "Percentage": "26%",
     "Population": "386,241",
     "Metro Population": "6,089,815",
     "Parking Score": "59",
@@ -35,7 +35,7 @@
   },
   "austin-tx": {
     "Name": "Austin, TX",
-    "Percentage": "17%",
+    "Percentage": "18%",
     "Population": "959,549",
     "Metro Population": "2,283,371",
     "Parking Score": "43",
@@ -62,7 +62,7 @@
   },
   "boston-ma": {
     "Name": "Boston, MA",
-    "Percentage": "6%",
+    "Percentage": "7%",
     "Population": "676,216",
     "Metro Population": "4,941,632",
     "Parking Score": "12",
@@ -89,7 +89,7 @@
   },
   "cincinnati-oh": {
     "Name": "Cincinnati, OH",
-    "Percentage": "21%",
+    "Percentage": "20%",
     "Population": "309,317",
     "Metro Population": "2,256,884",
     "Parking Score": "46",
@@ -142,7 +142,7 @@
   },
   "fort-worth-tx": {
     "Name": "Fort Worth, TX",
-    "Percentage": "27%",
+    "Percentage": "28%",
     "Population": "918,377",
     "Metro Population": "7,637,387",
     "Parking Score": "73",
@@ -169,7 +169,7 @@
   },
   "indianapolis-in": {
     "Name": "Indianapolis, IN",
-    "Percentage": "25%",
+    "Percentage": "24%",
     "Population": "887,752",
     "Metro Population": "2,111,040",
     "Parking Score": "66",
@@ -273,7 +273,7 @@
   },
   "new-orleans-la": {
     "Name": "New Orleans, LA",
-    "Percentage": "18%",
+    "Percentage": "19%",
     "Population": "383,997",
     "Metro Population": "1,271,845",
     "Parking Score": "31",
@@ -291,7 +291,7 @@
   },
   "newark-nj": {
     "Name": "Newark, NJ",
-    "Percentage": "24%",
+    "Percentage": "26%",
     "Population": "311,549",
     "Metro Population": "20,140,470",
     "Parking Score": "55",
@@ -326,7 +326,7 @@
   },
   "phoenix-az": {
     "Name": "Phoenix, AZ",
-    "Percentage": "20%",
+    "Percentage": "21%",
     "Population": "1,607,739",
     "Metro Population": "4,845,832",
     "Parking Score": "65",
@@ -335,7 +335,7 @@
   },
   "pittsburgh-pa": {
     "Name": "Pittsburgh, PA",
-    "Percentage": "18%",
+    "Percentage": "15%",
     "Population": "302,971",
     "Metro Population": "2,370,930",
     "Parking Score": "35",
@@ -387,7 +387,7 @@
   },
   "san-antonio": {
     "Name": "San Antonio",
-    "Percentage": "26%",
+    "Percentage": "28%",
     "Population": "1,434,270",
     "Metro Population": "2,558,143",
     "Parking Score": "81",
