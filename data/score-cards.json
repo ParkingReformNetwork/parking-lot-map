@@ -4,7 +4,7 @@
     "Percentage": "24%",
     "Population": "346,824",
     "Metro Population": "13,200,998",
-    "Parking Score": "53",
+    "Parking Score": "49",
     "Reforms": "No Reforms"
   },
   "anchorage-ak": {
@@ -12,7 +12,7 @@
     "Percentage": "30%",
     "Population": "291,247",
     "Metro Population": "398,328",
-    "Parking Score": "71",
+    "Parking Score": "69",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Anchorage_AK.html"
   },
@@ -29,7 +29,7 @@
     "Percentage": "26%",
     "Population": "386,241",
     "Metro Population": "6,089,815",
-    "Parking Score": "59",
+    "Parking Score": "55",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Atlanta_GA.html"
   },
@@ -38,7 +38,7 @@
     "Percentage": "18%",
     "Population": "959,549",
     "Metro Population": "2,283,371",
-    "Parking Score": "43",
+    "Parking Score": "44",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Austin_TX.html"
   },
@@ -47,7 +47,7 @@
     "Percentage": "14%",
     "Population": "585,708",
     "Metro Population": "2,844,510",
-    "Parking Score": "28",
+    "Parking Score": "34",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Baltimore_MD.html"
   },
@@ -56,7 +56,7 @@
     "Percentage": "26%",
     "Population": "200,733",
     "Metro Population": "1,115,289",
-    "Parking Score": "58",
+    "Parking Score": "57",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Birmingham_AL.html"
   },
@@ -65,16 +65,16 @@
     "Percentage": "7%",
     "Population": "676,216",
     "Metro Population": "4,941,632",
-    "Parking Score": "12",
+    "Parking Score": "14",
     "Reforms": "Passed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Boston_MA.html"
   },
   "charlotte-nc": {
     "Name": "Charlotte, NC",
-    "Percentage": "18%",
+    "Percentage": "19%",
     "Population": "874,541",
     "Metro Population": "2,660,329",
-    "Parking Score": "47",
+    "Parking Score": "48",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Charlotte_NC.html"
   },
@@ -83,7 +83,7 @@
     "Percentage": "4%",
     "Population": "2,747,231",
     "Metro Population": "9,618,502",
-    "Parking Score": "16",
+    "Parking Score": "15",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Chicago_IL.html"
   },
@@ -92,7 +92,7 @@
     "Percentage": "20%",
     "Population": "309,317",
     "Metro Population": "2,256,884",
-    "Parking Score": "46",
+    "Parking Score": "38",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Cincinnati_OH.html"
   },
@@ -101,7 +101,7 @@
     "Percentage": "26%",
     "Population": "373,091",
     "Metro Population": "2,088,251",
-    "Parking Score": "61",
+    "Parking Score": "56",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Cleveland_OH.html"
   },
@@ -110,7 +110,7 @@
     "Percentage": "27%",
     "Population": "905,672",
     "Metro Population": "2,138,926",
-    "Parking Score": "73",
+    "Parking Score": "70",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Columbus_OH.html"
   },
@@ -119,16 +119,16 @@
     "Percentage": "24%",
     "Population": "1,304,442",
     "Metro Population": "7,637,387",
-    "Parking Score": "75",
+    "Parking Score": "74",
     "Reforms": "Proposed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Dallas_TX.html"
   },
   "denver-co": {
     "Name": "Denver, CO",
-    "Percentage": "11%",
+    "Percentage": "13%",
     "Population": "715,522",
     "Metro Population": "2,963,821",
-    "Parking Score": "26",
+    "Parking Score": "31",
     "Reforms": "No Reforms"
   },
   "detroit-mi": {
@@ -136,7 +136,7 @@
     "Percentage": "30%",
     "Population": "639,614",
     "Metro Population": "4,392,041",
-    "Parking Score": "85",
+    "Parking Score": "83",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Detroit_MI.html"
   },
@@ -154,7 +154,7 @@
     "Percentage": "15%",
     "Population": "350,964",
     "Metro Population": "1,016,508",
-    "Parking Score": "28",
+    "Parking Score": "24",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Honolulu_HI.html"
   },
@@ -163,7 +163,7 @@
     "Percentage": "26%",
     "Population": "2,302,792",
     "Metro Population": "7,122,240",
-    "Parking Score": "82",
+    "Parking Score": "80",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Houston_TX.html"
   },
@@ -172,16 +172,16 @@
     "Percentage": "24%",
     "Population": "887,752",
     "Metro Population": "2,111,040",
-    "Parking Score": "66",
+    "Parking Score": "63",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Indianapolis_IN.html"
   },
   "jersey-city-nj": {
     "Name": "Jersey City, NJ",
-    "Percentage": "20%",
+    "Percentage": "24%",
     "Population": "292,449",
     "Metro Population": "20,140,470",
-    "Parking Score": "44",
+    "Parking Score": "49",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/JerseyCity_NJ.html"
   },
@@ -190,7 +190,7 @@
     "Percentage": "29%",
     "Population": "507,969",
     "Metro Population": "2,192,035",
-    "Parking Score": "81",
+    "Parking Score": "82",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/KansasCity_MO.html"
   },
@@ -199,7 +199,7 @@
     "Percentage": "32%",
     "Population": "641,825",
     "Metro Population": "2,265,461",
-    "Parking Score": "91",
+    "Parking Score": "88",
     "Reforms": "No Reforms"
   },
   "long-beach-ca": {
@@ -207,15 +207,15 @@
     "Percentage": "18%",
     "Population": "466,302",
     "Metro Population": "13,200,998",
-    "Parking Score": "49",
+    "Parking Score": "33",
     "Reforms": "No Reforms"
   },
   "los-angeles-ca": {
     "Name": "Los Angeles, CA",
-    "Percentage": "12%",
+    "Percentage": "13%",
     "Population": "3,893,986",
     "Metro Population": "13,200,998",
-    "Parking Score": "41",
+    "Parking Score": "42",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/LosAngeles_CA.html"
   },
@@ -233,7 +233,7 @@
     "Percentage": "35%",
     "Population": "257,141",
     "Metro Population": "321,368",
-    "Parking Score": "89",
+    "Parking Score": "83",
     "Reforms": "No Reforms"
   },
   "mesa-az": {
@@ -241,33 +241,33 @@
     "Percentage": "32%",
     "Population": "504,500",
     "Metro Population": "4,845,832",
-    "Parking Score": "90",
+    "Parking Score": "88",
     "Reforms": "No Reforms"
   },
   "miami-fl": {
     "Name": "Miami, FL",
-    "Percentage": "17%",
+    "Percentage": "18%",
     "Population": "442,265",
     "Metro Population": "6,138,333",
-    "Parking Score": "34",
+    "Parking Score": "33",
     "Reforms": "Repealed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Miami_FL.html"
   },
   "minneapolis-mn": {
     "Name": "Minneapolis, MN",
-    "Percentage": "18%",
+    "Percentage": "17%",
     "Population": "428,403",
     "Metro Population": "3,690,261",
-    "Parking Score": "35",
+    "Parking Score": "30",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Minneapolis_MN.html"
   },
   "nashville-tn": {
     "Name": "Nashville, TN",
-    "Percentage": "18%",
+    "Percentage": "19%",
     "Population": "689,504",
     "Metro Population": "1,989,519",
-    "Parking Score": "50",
+    "Parking Score": "52",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Nashville_TN.html"
   },
@@ -276,7 +276,7 @@
     "Percentage": "19%",
     "Population": "383,997",
     "Metro Population": "1,271,845",
-    "Parking Score": "31",
+    "Parking Score": "34",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/NewOrleans_LA.html"
   },
@@ -285,7 +285,7 @@
     "Percentage": "1%",
     "Population": "8,804,190",
     "Metro Population": "20,140,470",
-    "Parking Score": "7",
+    "Parking Score": "6",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/NewYorkCIty_NY.html"
   },
@@ -303,7 +303,7 @@
     "Percentage": "12%",
     "Population": "439,349",
     "Metro Population": "4,749,008",
-    "Parking Score": "17",
+    "Parking Score": "15",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Oakland_CA.html"
   },
@@ -312,7 +312,7 @@
     "Percentage": "29%",
     "Population": "307,573",
     "Metro Population": "2,673,376",
-    "Parking Score": "70",
+    "Parking Score": "66",
     "Reforms": "No Reforms"
   },
   "philadelphia-pa": {
@@ -329,7 +329,7 @@
     "Percentage": "21%",
     "Population": "1,607,739",
     "Metro Population": "4,845,832",
-    "Parking Score": "65",
+    "Parking Score": "66",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Phoenix_AZ.html"
   },
@@ -338,7 +338,7 @@
     "Percentage": "15%",
     "Population": "302,971",
     "Metro Population": "2,370,930",
-    "Parking Score": "35",
+    "Parking Score": "22",
     "Reforms": "No Reforms"
   },
   "portland-or": {
@@ -355,15 +355,15 @@
     "Percentage": "34%",
     "Population": "317,610",
     "Metro Population": "2,265,461",
-    "Parking Score": "85",
+    "Parking Score": "81",
     "Reforms": "No Reforms"
   },
   "sacramento-ca": {
     "Name": "Sacramento, CA",
-    "Percentage": "16%",
+    "Percentage": "17%",
     "Population": "522,754",
     "Metro Population": "2,397,382",
-    "Parking Score": "43",
+    "Parking Score": "44",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Sacramento_CA.html"
   },
@@ -372,7 +372,7 @@
     "Percentage": "21%",
     "Population": "301,578",
     "Metro Population": "2,820,253",
-    "Parking Score": "45",
+    "Parking Score": "41",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Louis_MO.html"
   },
@@ -381,7 +381,7 @@
     "Percentage": "16%",
     "Population": "311,527",
     "Metro Population": "3,690,261",
-    "Parking Score": "31",
+    "Parking Score": "26",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Paul_MN.html"
   },
@@ -390,16 +390,16 @@
     "Percentage": "28%",
     "Population": "1,434,270",
     "Metro Population": "2,558,143",
-    "Parking Score": "81",
+    "Parking Score": "87",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanAntonio_TX.html"
   },
   "san-diego-ca": {
     "Name": "San Diego, CA",
-    "Percentage": "14%",
+    "Percentage": "13%",
     "Population": "1,385,922",
     "Metro Population": "3,298,634",
-    "Parking Score": "46",
+    "Parking Score": "42",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanDiego_CA.html"
   },
@@ -408,16 +408,16 @@
     "Percentage": "4%",
     "Population": "873,965",
     "Metro Population": "4,749,008",
-    "Parking Score": "4",
+    "Parking Score": "2",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanFrancisco_CA.html"
   },
   "san-jose-ca": {
     "Name": "San Jose, CA",
-    "Percentage": "14%",
+    "Percentage": "15%",
     "Population": "1,014,545",
     "Metro Population": "2,000,468",
-    "Parking Score": "46",
+    "Parking Score": "48",
     "Reforms": "Passed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanJose_CA.html"
   },
@@ -435,7 +435,7 @@
     "Percentage": "30%",
     "Population": "382,769",
     "Metro Population": "3,175,275",
-    "Parking Score": "72",
+    "Parking Score": "68",
     "Reforms": "No Reforms",
     "Website URL": null
   },
@@ -444,7 +444,7 @@
     "Percentage": "29%",
     "Population": "413,066",
     "Metro Population": "1,015,331",
-    "Parking Score": "68",
+    "Parking Score": "65",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Tulsa_OK.html"
   },
@@ -453,7 +453,7 @@
     "Percentage": "3%",
     "Population": "689,545",
     "Metro Population": "6,385,162",
-    "Parking Score": "4",
+    "Parking Score": "3",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/WashingtonDC_DC.html"
   }
