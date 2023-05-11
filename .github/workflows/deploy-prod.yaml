@@ -8,10 +8,10 @@ jobs:
       - name: Copy from staging to production
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SERVER_PRIVATE_KEY }}
+          host: ${{ secrets.PRN_SERVER_HOST }}
+          username: ${{ secrets.PRN_SERVER_USERNAME }}
+          key: ${{ secrets.PRN_SERVER_PRIVATE_KEY }}
           script: |
             rsync --archive --verbose --compress --delete \
-              /var/www/${{ secrets.SERVER_HOST }}/plm-staging/ \
-              /var/www/${{ secrets.SERVER_HOST }}/parking-lot-map/
+              /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging/ \
+              /var/www/${{ secrets.PRN_SERVER_HOST }}/parking-lot-map/
