@@ -27,11 +27,11 @@ When the server is running, you can make any changes you want to the project. Re
 
 ## Run tests
 
-You must first have the server running in a tab of your terminal by running `npm start`. Then, in a new tab, you can run this:
-
 ```bash
 ❯ npm test
 ```
+
+If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try the tests again.
 
 ## Autoformat code
 

@@ -11,9 +11,9 @@ export default defineConfig({
   use: {
     baseURL,
   },
-//  webServer: {
-//    command: `npm run ${webServerCommand}`,
-//    url: baseURL,
-//    reuseExistingServer: !process.env.CI,
-//  },
+  webServer: {
+    command: `npm run ${webServerCommand}`,
+    url: baseURL,
+    reuseExistingServer: !process.env.CI,
+  },
 });
