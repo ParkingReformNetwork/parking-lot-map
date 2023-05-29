@@ -1,20 +1,13 @@
 /* global document, navigator */
-const fs = require("fs");
-const puppeteer = require("puppeteer");
-const {
-  afterAll,
-  beforeAll,
-  describe,
-  expect,
-  test,
-} = require("@jest/globals");
+import fs from "fs";
+import { expect, test } from "@playwright/test";
 
 const port = process.env.PORT || 1234;
 const url = `http://localhost:${port}`;
 
 let browser;
 
-beforeAll(async () => {
+test.beforeAll(async () => {
   browser = await puppeteer.launch();
   const context = browser.defaultBrowserContext();
   context.overridePermissions(url, ["clipboard-read"]);
@@ -41,7 +34,7 @@ beforeAll(async () => {
   }
 });
 
-afterAll(async () => {
+test.afterAll(async () => {
   await browser.close();
 });
 
@@ -133,7 +126,7 @@ test("correctly load the city score card", async () => {
   );
 });
 
-describe("the share feature", () => {
+test.describe("the share feature", () => {
   test("share button writes the URL to the clipboard", async () => {
     const page = await browser.newPage();
     await page.goto(url);

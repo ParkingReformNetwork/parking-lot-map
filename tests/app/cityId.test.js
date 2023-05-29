@@ -1,11 +1,11 @@
-const { describe, expect, test } = require("@jest/globals");
-const {
+import { expect, test } from "@playwright/test";
+import {
   extractCityIdFromUrl,
   determineShareUrl,
   parseCityIdFromJson,
-} = require("../js/cityId");
+} from "../../src/js/cityId";
 
-describe("extractCityIdFromUrl()", () => {
+test.describe("extractCityIdFromUrl()", () => {
   test("returns empty when no relevant # fragment", () => {
     expect(extractCityIdFromUrl("")).toEqual("");
     expect(extractCityIdFromUrl("https://parking.org")).toEqual("");
@@ -44,7 +44,7 @@ test("parseCityIdFromJson() extracts the city", () => {
   expect(parseCityIdFromJson("No state")).toEqual("no-state");
 });
 
-describe("determineShareUrl()", () => {
+test.describe("determineShareUrl()", () => {
   test("adds #parking-reform-map= if not yet present", () => {
     expect(determineShareUrl("https://parking.org", "city-az")).toEqual(
       "https://parking.org#parking-reform-map=city-az"

@@ -1,5 +1,5 @@
-const fs = require("fs").promises;
-const { expect, test } = require("@jest/globals");
+import fs from "fs/promises";
+import { expect, test } from "@playwright/test";
 
 const assertSortedGeojson = async (filePath) => {
   const rawData = await fs.readFile(filePath, "utf8");
