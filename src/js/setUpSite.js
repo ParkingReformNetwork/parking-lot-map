@@ -1,4 +1,4 @@
-/* global document, window */
+/* global document, navigator, window */
 import { Control, Map, Popup, TileLayer, geoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
@@ -107,13 +107,13 @@ const createMap = () => {
  *
  * @param string value
  */
-const copyToClipboard = (value) => {
-  const dummy = document.createElement("textarea");
-  document.body.appendChild(dummy);
-  dummy.value = value;
-  dummy.select();
-  document.execCommand("copy");
-  document.body.removeChild(dummy);
+const copyToClipboard = async (value) => {
+  try {
+    await navigator.clipboard.writeText(value);
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.error("Failed to write to clipboard: ", err);
+  }
 
   const copiedLinkMessageElement = document.querySelector(
     ".copied-link-message"
@@ -132,11 +132,11 @@ const copyToClipboard = (value) => {
 const setUpShareUrlClickListener = (cityId) => {
   // We put the event listener on `map` because it is never erased, unlike the copy button
   // being recreated every time the score card changes. This is called "event delegation".
-  document.querySelector("#map").addEventListener("click", (event) => {
+  document.querySelector("#map").addEventListener("click", async (event) => {
     const targetElement = event.target.closest("div.url-copy-button > a");
     if (targetElement) {
       const shareUrl = determineShareUrl(window.location.href, cityId);
-      copyToClipboard(shareUrl);
+      await copyToClipboard(shareUrl);
     }
   });
 };
