@@ -117,7 +117,7 @@ We use the typical forking model to make contributions by opening Pull Requests.
 
 You can preview what a build will look like by running `npm run build`. Then use `npm run serve-dist` to start the server.
 
-You can also run our integration tests on built dist folder. Run `npm run serve-dist` in one terminal, then `npm run test-dist` in another.
+You can also run our integration tests on built dist folder with `npm run test-dist` (make sure the server is not already running).
 
 ### Staging
 

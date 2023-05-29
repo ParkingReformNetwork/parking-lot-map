@@ -15,9 +15,5 @@ jobs:
         run: npm ci
       - name: Lint
         run: npm run lint
-      - name: Start server
-        run: |
-          npm start &
-          sleep 8 # give server some time to start
       - name: Run tests
         run: npm test

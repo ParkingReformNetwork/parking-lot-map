@@ -17,10 +17,6 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - name: Serve dist/ folder
-        run: |
-          npm run serve-dist &
-          sleep 10 # give server some time to start
       - name: Run tests on dist/
         run: npm run test-dist
       - name: Archive dist/ contents
