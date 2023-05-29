@@ -86,7 +86,7 @@ test("correctly load the city score card", async ({ page }) => {
 test.describe("the share feature", () => {
   test("share button writes the URL to the clipboard", async ({ browser }) => {
     const context = await browser.newContext();
-    await context.grantPermissions(["clipboard-read"]);
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     const page = await context.newPage();
     await page.goto("");
 

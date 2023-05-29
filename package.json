@@ -9,7 +9,7 @@
     "test": "playwright test",
     "fmt": "prettier --write .",
     "fix": "prettier --write scripts/ src/ tests/; eslint --fix scripts/ src/ tests/",
-    "lint": "prettier --check . && eslint scripts/ src/",
+    "lint": "prettier --check . && eslint scripts/ src/ tests/",
     "add-city": "node scripts/add-city.js",
     "update-city-boundaries": "node scripts/update-city-boundaries.js",
     "update-lots": "node scripts/update-lots.js",
