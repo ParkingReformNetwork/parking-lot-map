@@ -1,53 +1,8 @@
 /* global document, navigator */
-const fs = require("fs");
-const puppeteer = require("puppeteer");
-const {
-  afterAll,
-  beforeAll,
-  describe,
-  expect,
-  test,
-} = require("@jest/globals");
+import fs from "fs";
+import { expect, test } from "@playwright/test";
 
-const port = process.env.PORT || 1234;
-const url = `http://localhost:${port}`;
-
-let browser;
-
-beforeAll(async () => {
-  browser = await puppeteer.launch();
-  const context = browser.defaultBrowserContext();
-  context.overridePermissions(url, ["clipboard-read"]);
-
-  const err = async () => {
-    await browser.close();
-    throw new Error(
-      `Server is not running at ${url}. In a new terminal tab, run 'npm start'.`
-    );
-  };
-  try {
-    const page = await browser.newPage();
-    const response = await page.goto(url, {
-      timeout: 1000,
-    });
-    await page.close();
-
-    const isServerRunning = response !== null && response.status() < 400;
-    if (!isServerRunning) {
-      await err();
-    }
-  } catch (error) {
-    await err();
-  }
-});
-
-afterAll(async () => {
-  await browser.close();
-});
-
-test("no console errors and warnings", async () => {
-  const page = await browser.newPage();
-
+test("no console errors and warnings", async ({ page }) => {
   const errors = [];
   page.on("console", (message) => {
     if (message.type() === "error" || message.type() === "warn") {
@@ -55,19 +10,16 @@ test("no console errors and warnings", async () => {
     }
   });
 
-  await page.goto(url);
-  await page.close();
-
+  await page.goto("");
   expect(errors).toHaveLength(0);
 });
 
-test("every city is in the toggle", async () => {
+test("every city is in the toggle", async ({ page }) => {
   const rawData = fs.readFileSync("data/score-cards.json");
   const data = JSON.parse(rawData);
   const expectedCities = Object.values(data).map((scoreCard) => scoreCard.Name);
 
-  const page = await browser.newPage();
-  await page.goto(url);
+  await page.goto("");
 
   // Wait a second to make sure the site is fully loaded.
   await page.waitForTimeout(1000);
@@ -78,20 +30,19 @@ test("every city is in the toggle", async () => {
       opt.textContent.trim()
     );
   });
-  await page.close();
 
   expectedCities.sort();
   expect(toggleValues).toEqual(expectedCities);
 });
 
-test("correctly load the city score card", async () => {
+test("correctly load the city score card", async ({ page }) => {
   const rawData = fs.readFileSync("data/score-cards.json");
   const anchorageExpected = JSON.parse(rawData)["anchorage-ak"];
 
-  const page = await browser.newPage();
-  await page.goto(url);
+  await page.goto("");
 
-  await page.select("#city-choice", "anchorage-ak");
+  const selectElement = await page.$("#city-choice");
+  await selectElement.selectOption("anchorage-ak");
   await page.waitForFunction(() => {
     const titleElement = document.querySelector(
       ".leaflet-popup-content .title"
@@ -115,7 +66,6 @@ test("correctly load the city score card", async () => {
     });
     return [details, cityToggle];
   });
-  await page.close();
 
   expect(cityToggleValue).toEqual("anchorage-ak");
   expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
@@ -133,10 +83,12 @@ test("correctly load the city score card", async () => {
   );
 });
 
-describe("the share feature", () => {
-  test("share button writes the URL to the clipboard", async () => {
-    const page = await browser.newPage();
-    await page.goto(url);
+test.describe("the share feature", () => {
+  test("share button writes the URL to the clipboard", async ({ browser }) => {
+    const context = await browser.newContext();
+    await context.grantPermissions(["clipboard-read"]);
+    const page = await context.newPage();
+    await page.goto("");
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
@@ -145,10 +97,14 @@ describe("the share feature", () => {
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
+    expect(firstCityClipboardText).toContain(
+      "/#parking-reform-map=columbus-oh"
+    );
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
-    await page.select("#city-choice", "anchorage-ak");
+    const selectElement = await page.$("#city-choice");
+    await selectElement.selectOption("anchorage-ak");
     await page.waitForFunction(() => {
       const titleElement = document.querySelector(
         ".leaflet-popup-content .title"
@@ -160,24 +116,18 @@ describe("the share feature", () => {
     const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
-
-    await page.close();
-
-    expect(firstCityClipboardText).toBe(
-      `${url}/#parking-reform-map=columbus-oh`
-    );
-    expect(secondCityClipboardText).toBe(
-      `${url}/#parking-reform-map=anchorage-ak`
+    expect(secondCityClipboardText).toContain(
+      "/#parking-reform-map=anchorage-ak"
     );
   });
 
-  test("loading from a share link works", async () => {
+  test("loading from a share link works", async ({ page }) => {
     // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
-    const page = await browser.newPage();
-    await page.goto(`${url}#parking-reform-map=fort-worth-tx`);
+    await page.goto("#parking-reform-map=fort-worth-tx");
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
+
     const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
       const title = document.querySelector(
         ".leaflet-popup-content .title"
@@ -185,15 +135,15 @@ describe("the share feature", () => {
       const cityToggle = document.querySelector("#city-choice").value;
       return [title, cityToggle];
     });
-    await page.close();
 
     expect(scoreCardTitle).toEqual("Fort Worth, TX");
     expect(cityToggleValue).toEqual("fort-worth-tx");
   });
 
-  test("loading from a bad share link falls back to Columbus", async () => {
-    const page = await browser.newPage();
-    await page.goto(`${url}#parking-reform-map=bad-city`);
+  test("loading from a bad share link falls back to Columbus", async ({
+    page,
+  }) => {
+    await page.goto("#parking-reform-map=bad-city");
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
@@ -204,16 +154,14 @@ describe("the share feature", () => {
       const cityToggle = document.querySelector("#city-choice").value;
       return [title, cityToggle];
     });
-    await page.close();
 
     expect(scoreCardTitle).toEqual("Columbus, OH");
     expect(cityToggleValue).toEqual("columbus-oh");
   });
 });
 
-test("about popup can be opened and closed", async () => {
-  const page = await browser.newPage();
-  await page.goto(url);
+test("about popup can be opened and closed", async ({ page }) => {
+  await page.goto("");
 
   const aboutIcon = ".banner-about-icon";
 
@@ -238,7 +186,6 @@ test("about popup can be opened and closed", async () => {
 
   await page.click(".about-close");
   const validFourthClick = await aboutIsVisible(false);
-  await page.close();
 
   expect(validBeforeClick).toBe(true);
   expect(validFirstClick).toBe(true);

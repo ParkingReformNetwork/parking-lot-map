@@ -27,11 +27,11 @@ When the server is running, you can make any changes you want to the project. Re
 
 ## Run tests
 
-You must first have the server running in a tab of your terminal by running `npm start`. Then, in a new tab, you can run this:
-
 ```bash
 ❯ npm test
 ```
+
+If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try the tests again.
 
 ## Autoformat code
 
@@ -117,7 +117,7 @@ We use the typical forking model to make contributions by opening Pull Requests.
 
 You can preview what a build will look like by running `npm run build`. Then use `npm run serve-dist` to start the server.
 
-You can also run our integration tests on built dist folder. Run `npm run serve-dist` in one terminal, then `npm run test-dist` in another.
+You can also run our integration tests on built dist folder with `npm run test-dist` (make sure the server is not already running).
 
 ### Staging
 

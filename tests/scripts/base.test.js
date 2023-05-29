@@ -1,14 +1,8 @@
-const fs = require("fs").promises;
-const {
-  afterEach,
-  beforeAll,
-  describe,
-  expect,
-  test,
-} = require("@jest/globals");
-const { determineArgs, updateCoordinates } = require("../base");
+import fs from "fs/promises";
+import { expect, test } from "@playwright/test";
+import { determineArgs, updateCoordinates } from "../../scripts/base";
 
-describe("determineArgs()", () => {
+test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
     const result = determineArgs("my-script", ["My City"]);
     expect(result.value).toEqual({
@@ -29,17 +23,17 @@ describe("determineArgs()", () => {
   });
 });
 
-describe("updateCoordinates()", () => {
+test.describe("updateCoordinates()", () => {
   let originalData;
-  const originalFilePath = "scripts/tests/data/original-data.geojson";
-  const validUpdateFilePath = "scripts/tests/data/valid-update.geojson";
+  const originalFilePath = "tests/scripts/data/original-data.geojson";
+  const validUpdateFilePath = "tests/scripts/data/valid-update.geojson";
 
-  beforeAll(async () => {
+  test.beforeAll(async () => {
     // Save the original data for reverting the changes.
     originalData = await fs.readFile(originalFilePath, "utf8");
   });
 
-  afterEach(async () => {
+  test.afterEach(async () => {
     // Revert the changes.
     await fs.writeFile(originalFilePath, originalData);
   });
@@ -124,7 +118,7 @@ describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "scripts/tests/data/too-many-updates.geojson"
+      "tests/scripts/data/too-many-updates.geojson"
     );
     expect(result.error).toContain("expects exactly one entry in `features`");
 
@@ -133,7 +127,7 @@ describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "scripts/tests/data/empty-update.geojson"
+      "tests/scripts/data/empty-update.geojson"
     );
     expect(result.error).toContain("expects exactly one entry in `features`");
   });
@@ -144,9 +138,9 @@ describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "scripts/tests/data/does-not-exist"
+      "tests/scripts/data/does-not-exist"
     );
-    expect(result.error).toContain("scripts/tests/data/does-not-exist");
+    expect(result.error).toContain("tests/scripts/data/does-not-exist");
   });
 
   test("errors gracefully if original data file not found", async () => {
@@ -154,9 +148,9 @@ describe("updateCoordinates()", () => {
       "my-script",
       "shoup-ville-az",
       false,
-      "scripts/tests/data/does-not-exist",
+      "tests/scripts/data/does-not-exist",
       validUpdateFilePath
     );
-    expect(result.error).toContain("scripts/tests/data/does-not-exist");
+    expect(result.error).toContain("tests/scripts/data/does-not-exist");
   });
 });
