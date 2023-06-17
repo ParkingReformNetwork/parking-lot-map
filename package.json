@@ -31,8 +31,7 @@
     "http-server": "^14.1.1",
     "parcel": "^2.8.3",
     "playwright": "^1.34.3",
-    "prettier": "^2.8.7",
-    "puppeteer": "^19.8.2"
+    "prettier": "^2.8.7"
   },
   "targets": {
     "default": {
