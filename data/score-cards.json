@@ -421,6 +421,14 @@
     "Reforms": "Passed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanJose_CA.html"
   },
+  "santa-barbara-ca": {
+    "Name": "Santa Barbara, CA",
+    "Percentage": "27%",
+    "Population": "88,665",
+    "Metro Population": "446,475",
+    "Parking Score": "N/A",
+    "Reforms": "No Reforms"
+  },
   "seattle-wa": {
     "Name": "Seattle, WA",
     "Percentage": "10%",
