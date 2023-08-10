@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "Name_San Bernardino, CA",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "Name": "San Bernardino, CA", "description": "", "timestamp": null, "begin": null, "end": null, "altitudeMode": null, "tessellate": 0, "extrude": 0, "visibility": 0, "drawOrder": null, "icon": null, "OBJECTID": "", "State": "", "County": "", "City": "", "RegionID": "", "Shape_Length": "", "Shape_Area": "", "full_id": "", "osm_id": "", "osm_type": "", "amenity": "", "access": "", "Name_2": "", "description_2": "", "operator_type": "", "building": "", "operator": "", "parking": "", "surface": "", "opening_hours": "", "source_ref": "", "fee": "", "parking_orientation": "", "capacity": "", "capacity_disabled": "" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -117.301397, 34.1009495, 0.0 ], [ -117.2987953, 34.1009384, 0.0 ], [ -117.2852555, 34.1009295, 0.0 ], [ -117.2852662, 34.1028329, 0.0 ], [ -117.2838178, 34.1028262, 0.0 ], [ -117.2838205, 34.1045252, 0.0 ], [ -117.2852501, 34.1045141, 0.0 ], [ -117.2852608, 34.1111011, 0.0 ], [ -117.2874951, 34.1111011, 0.0 ], [ -117.2874951, 34.1120094, 0.0 ], [ -117.2909632, 34.1119983, 0.0 ], [ -117.290982, 34.113877, 0.0 ], [ -117.2963169, 34.1138614, 0.0 ], [ -117.2963223, 34.1101062, 0.0 ], [ -117.302089, 34.1101217, 0.0 ], [ -117.3020568, 34.1097398, 0.0 ], [ -117.301891, 34.1071765, 0.0 ], [ -117.3019071, 34.1068789, 0.0 ], [ -117.3017032, 34.1044492, 0.0 ], [ -117.3017086, 34.1041649, 0.0 ], [ -117.3015745, 34.1028946, 0.0 ], [ -117.3016013, 34.1009445, 0.0 ], [ -117.301397, 34.1009495, 0.0 ] ] ] } }
+]
+}
