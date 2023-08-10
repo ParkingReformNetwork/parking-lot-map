@@ -166,7 +166,7 @@ const generateScorecard = (scoreCardEntry) => {
   if (WebsiteURL) {
     result += `
     <hr>
-    <div class="popup-button"><a href="${WebsiteURL}">View more</a></div>
+    <div class="popup-button"><a href="${WebsiteURL}">View more about reforms</a></div>
   `;
   }
   return result;
