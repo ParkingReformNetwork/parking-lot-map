@@ -221,13 +221,9 @@ div.copied-link-message {
 
 /*styling layers button */
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 152px !important;
+  top: 130px;
   margin-left: 9px;
   right: auto;
-}
-
-.leaflet-control-zoom-home {
-  font-size: 18px;
 }
 
 .leaflet-control-layers {
@@ -336,7 +332,7 @@ hr {
   }
 
   #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-    top: 162px !important;
+    top: 140px;
   }
 }
 

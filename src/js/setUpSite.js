@@ -4,7 +4,6 @@ import "leaflet/dist/leaflet.css";
 
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
-import ZoomHome from "./vendor/leaflet.zoomhome";
 import scoreCardsData from "../../data/score-cards.json";
 
 const BASE_LAYERS = {
@@ -85,7 +84,6 @@ const setUpAbout = () => {
  */
 const createMap = () => {
   const map = new Map("map", {
-    zoomControl: false,
     layers: [BASE_LAYERS.Light],
   });
   map.attributionControl.setPrefix(
@@ -94,11 +92,6 @@ const createMap = () => {
 
   new Control.Layers(BASE_LAYERS).addTo(map);
   map.createPane("fixed", document.getElementById("map"));
-
-  const zoomHome = new ZoomHome();
-  zoomHome.setHomeCoordinates([39.440556, -98.697222]);
-  zoomHome.setHomeZoom(4);
-  zoomHome.addTo(map);
   return map;
 };
 
