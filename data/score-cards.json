@@ -1,4 +1,13 @@
 {
+  "albuquerque-nm": {
+    "Name": "Albuquerque, NM",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "anaheim-ca": {
     "Name": "Anaheim, CA",
     "Percentage": "24%",
@@ -32,6 +41,15 @@
     "Parking Score": "55",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Atlanta_GA.html"
+  },
+  "aurora-co": {
+    "Name": "Aurora, CO",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "austin-tx": {
     "Name": "Austin, TX",
