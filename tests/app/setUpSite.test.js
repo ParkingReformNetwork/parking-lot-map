@@ -97,9 +97,7 @@ test.describe("the share feature", () => {
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
-    expect(firstCityClipboardText).toContain(
-      "/#parking-reform-map=columbus-oh"
-    );
+    expect(firstCityClipboardText).toContain("/#parking-reform-map=atlanta-ga");
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
@@ -140,7 +138,7 @@ test.describe("the share feature", () => {
     expect(cityToggleValue).toEqual("fort-worth-tx");
   });
 
-  test("loading from a bad share link falls back to Columbus", async ({
+  test("loading from a bad share link falls back to default city", async ({
     page,
   }) => {
     await page.goto("#parking-reform-map=bad-city");
@@ -155,8 +153,8 @@ test.describe("the share feature", () => {
       return [title, cityToggle];
     });
 
-    expect(scoreCardTitle).toEqual("Columbus, OH");
-    expect(cityToggleValue).toEqual("columbus-oh");
+    expect(scoreCardTitle).toEqual("Atlanta, GA");
+    expect(cityToggleValue).toEqual("atlanta-ga");
   });
 });
 
