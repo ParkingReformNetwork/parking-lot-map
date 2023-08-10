@@ -1,8 +1,0 @@
-{
-"type": "FeatureCollection",
-"name": "Name_Santa Ana, CA",
-"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-"features": [
-{ "type": "Feature", "properties": { "Name": "Santa Ana, CA", "description": "", "timestamp": null, "begin": null, "end": null, "altitudeMode": null, "tessellate": 0, "extrude": 0, "visibility": 0, "drawOrder": null, "icon": null, "OBJECTID": "", "State": "", "County": "", "City": "", "RegionID": "", "Shape_Length": "", "Shape_Area": "", "full_id": "", "osm_id": "", "osm_type": "", "amenity": "", "access": "", "Name_2": "", "description_2": "", "operator_type": "", "building": "", "operator": "", "parking": "", "surface": "", "opening_hours": "", "source_ref": "", "fee": "", "parking_orientation": "", "capacity": "", "capacity_disabled": "" }, "geometry": { "type": "Polygon", "coordinates": [ [ [ -117.867794, 33.7456, 0.0 ], [ -117.867743, 33.746204, 0.0 ], [ -117.867724, 33.746387, 0.0 ], [ -117.867712, 33.750534, 0.0 ], [ -117.868297, 33.750538, 0.0 ], [ -117.868525, 33.75054, 0.0 ], [ -117.868842, 33.750607, 0.0 ], [ -117.869017, 33.750667, 0.0 ], [ -117.869597, 33.751042, 0.0 ], [ -117.86985, 33.751238, 0.0 ], [ -117.870007, 33.751329, 0.0 ], [ -117.87014, 33.751386, 0.0 ], [ -117.870372, 33.751448, 0.0 ], [ -117.870667, 33.751467, 0.0 ], [ -117.876375, 33.751445, 0.0 ], [ -117.876371, 33.751343, 0.0 ], [ -117.876395, 33.748938, 0.0 ], [ -117.876326, 33.748073, 0.0 ], [ -117.876308, 33.74779, 0.0 ], [ -117.876309, 33.747239, 0.0 ], [ -117.87634, 33.746966, 0.0 ], [ -117.87635, 33.746848, 0.0 ], [ -117.876367, 33.746338, 0.0 ], [ -117.876368, 33.745586, 0.0 ], [ -117.867875, 33.745588, 0.0 ], [ -117.867826, 33.745587, 0.0 ], [ -117.867794, 33.7456, 0.0 ] ] ] } }
-]
-}

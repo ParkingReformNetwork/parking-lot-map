@@ -13,7 +13,7 @@ def main():
     for city_name in city_names:
         os.rename(f"{city_name}.geojson", "parking-lots-update.geojson")
         os.rename(f"Name_{city_name}.geojson"   , "city-update.geojson")
-        subprocess.run(["npm", "run", "add-city", "--", f"'{city_name}'"])
+        subprocess.run(["npm", "run", "add-city", "--", city_name])
         print(f"Added city: {city_name}")
 
 

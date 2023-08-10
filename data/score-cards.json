@@ -60,6 +60,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Austin_TX.html"
   },
+  "bakersfield-ca": {
+    "Name": "Bakersfield, CA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "baltimore-md": {
     "Name": "Baltimore, MD",
     "Percentage": "14%",
@@ -86,6 +95,15 @@
     "Parking Score": "14",
     "Reforms": "Passed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Boston_MA.html"
+  },
+  "buffalo-ny": {
+    "Name": "Buffalo, NY",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "charlotte-nc": {
     "Name": "Charlotte, NC",
@@ -123,6 +141,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Cleveland_OH.html"
   },
+  "colorado-springs-co": {
+    "Name": "Colorado Springs, CO",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "columbus-oh": {
     "Name": "Columbus, OH",
     "Percentage": "27%",
@@ -131,6 +158,15 @@
     "Parking Score": "70",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Columbus_OH.html"
+  },
+  "corpus-christi-tx": {
+    "Name": "Corpus Christi, TX",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "dallas-tx": {
     "Name": "Dallas, TX",
@@ -158,6 +194,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Detroit_MI.html"
   },
+  "el-paso-tx": {
+    "Name": "El Paso, TX",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "fort-worth-tx": {
     "Name": "Fort Worth, TX",
     "Percentage": "28%",
@@ -166,6 +211,51 @@
     "Parking Score": "73",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/FortWorth_TX.html"
+  },
+  "fresno-ca": {
+    "Name": "Fresno, CA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "grand-rapids-mi": {
+    "Name": "Grand Rapids, MI",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "greensboro-nc": {
+    "Name": "Greensboro, NC",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "hartford-ct": {
+    "Name": "Hartford, CT",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "henderson-nv": {
+    "Name": "Henderson, NV",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "honolulu-hi": {
     "Name": "Honolulu, HI",
@@ -194,6 +284,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Indianapolis_IN.html"
   },
+  "jacksonville-fl": {
+    "Name": "Jacksonville, FL",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "jersey-city-nj": {
     "Name": "Jersey City, NJ",
     "Percentage": "24%",
@@ -219,6 +318,24 @@
     "Metro Population": "2,265,461",
     "Parking Score": "88",
     "Reforms": "No Reforms"
+  },
+  "lexington-ky": {
+    "Name": "Lexington, KY",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "lincoln-ne": {
+    "Name": "Lincoln, NE",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "long-beach-ca": {
     "Name": "Long Beach, CA",
@@ -254,6 +371,15 @@
     "Parking Score": "83",
     "Reforms": "No Reforms"
   },
+  "memphis-tn": {
+    "Name": "Memphis, TN",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "mesa-az": {
     "Name": "Mesa, AZ",
     "Percentage": "32%",
@@ -270,6 +396,15 @@
     "Parking Score": "33",
     "Reforms": "Repealed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Miami_FL.html"
+  },
+  "milwaukee-wi": {
+    "Name": "Milwaukee, WI",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "minneapolis-mn": {
     "Name": "Minneapolis, MN",
@@ -288,6 +423,15 @@
     "Parking Score": "52",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Nashville_TN.html"
+  },
+  "new-haven-ct": {
+    "Name": "New Haven, CT",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "new-orleans-la": {
     "Name": "New Orleans, LA",
@@ -316,6 +460,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Newark_NJ.html"
   },
+  "norfolk-va": {
+    "Name": "Norfolk, VA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "oakland-ca": {
     "Name": "Oakland, CA",
     "Percentage": "12%",
@@ -324,6 +477,24 @@
     "Parking Score": "15",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Oakland_CA.html"
+  },
+  "oklahoma-city-ok": {
+    "Name": "Oklahoma City, OK",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "omaha-ne": {
+    "Name": "Omaha, NE",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "orlando-fl": {
     "Name": "Orlando, FL",
@@ -368,6 +539,24 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Portland_OR.html"
   },
+  "providence-ri": {
+    "Name": "Providence, RI",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "raleigh-nc": {
+    "Name": "Raleigh, NC",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "riverside-ca": {
     "Name": "Riverside, CA",
     "Percentage": "34%",
@@ -375,6 +564,15 @@
     "Metro Population": "2,265,461",
     "Parking Score": "81",
     "Reforms": "No Reforms"
+  },
+  "rochester-ny": {
+    "Name": "Rochester, NY",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "sacramento-ca": {
     "Name": "Sacramento, CA",
@@ -403,6 +601,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Paul_MN.html"
   },
+  "salt-lake-city-ut": {
+    "Name": "Salt Lake City, UT",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "san-antonio-tx": {
     "Name": "San Antonio, TX",
     "Percentage": "28%",
@@ -411,6 +618,15 @@
     "Parking Score": "87",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanAntonio_TX.html"
+  },
+  "san-bernardino-ca": {
+    "Name": "San Bernardino, CA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "san-diego-ca": {
     "Name": "San Diego, CA",
@@ -439,6 +655,24 @@
     "Reforms": "Passed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanJose_CA.html"
   },
+  "san-juan-pr": {
+    "Name": "San Juan, PR",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "santa-ana-ca": {
+    "Name": "Santa Ana, CA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "santa-barbara-ca": {
     "Name": "Santa Barbara, CA",
     "Percentage": "27%",
@@ -456,6 +690,24 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Seattle_WA.html"
   },
+  "st.-petersburg-fl": {
+    "Name": "St. Petersburg, FL",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "stockton-ca": {
+    "Name": "Stockton, CA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "tampa-fl": {
     "Name": "Tampa, FL",
     "Percentage": "30%",
@@ -464,6 +716,15 @@
     "Parking Score": "68",
     "Reforms": "No Reforms",
     "Website URL": null
+  },
+  "tucson-az": {
+    "Name": "Tucson, AZ",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   },
   "tulsa-ok": {
     "Name": "Tulsa, OK",
@@ -474,6 +735,15 @@
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Tulsa_OK.html"
   },
+  "virginia-beach-va": {
+    "Name": "Virginia Beach, VA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
   "washington-dc": {
     "Name": "Washington, DC",
     "Percentage": "3%",
@@ -482,5 +752,23 @@
     "Parking Score": "3",
     "Reforms": "Implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/WashingtonDC_DC.html"
+  },
+  "wichita-ks": {
+    "Name": "Wichita, KS",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
+  },
+  "worcester-ma": {
+    "Name": "Worcester, MA",
+    "Percentage": "FILL ME IN, e.g. 23%",
+    "Population": "FILL ME IN, e.g. 346,824",
+    "Metro Population": "FILL ME IN, e.g. 13,200,998",
+    "Parking Score": "FILL ME IN, e.g. 53",
+    "Reforms": "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    "Website URL": "FILL ME IN OR DELETE ME"
   }
 }
