@@ -97,9 +97,7 @@ test.describe("the share feature", () => {
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
-    expect(firstCityClipboardText).toContain(
-      "/#parking-reform-map=atlanta-ga"
-    );
+    expect(firstCityClipboardText).toContain("/#parking-reform-map=atlanta-ga");
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
