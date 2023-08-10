@@ -250,7 +250,7 @@ const setUpSite = async () => {
   setUpIcons();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  addCitiesToToggle(initialCityId, "columbus-oh");
+  addCitiesToToggle(initialCityId, "atlanta-ga");
   setUpAbout();
 
   const map = createMap();
