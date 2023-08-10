@@ -143,6 +143,7 @@ const setUpShareUrlClickListener = (cityId) => {
 const generateScorecard = (scoreCardEntry) => {
   const {
     Name,
+    cityType,
     Percentage,
     Population,
     "Metro Population": MetroPopulation,
@@ -154,11 +155,13 @@ const generateScorecard = (scoreCardEntry) => {
     <div class="title">${Name}</div>
     <div class="url-copy-button"><a href="#"><i class="fa-solid fa-link fa-xl"></i></a></div>
     <hr>
-    <div><span class="details-title">Percent of Central City Devoted to Parking: </span><span class="details-value">${Percentage}</span></div>
+    <div><span class="details-title">Parking: </span><span class="details-value">${Percentage} of central city</span></div>
+    <div><span class="details-title">Parking score: </span><span class="details-value">${ParkingScore}</span></div>
+    <div><span class="details-title">Parking reform: </span><span class="details-value">${Reforms}</span></div>
+    <br />
+    <div><span class="details-title">City type: </span><span class="details-value">${cityType}</span></div>
     <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
-    <div><span class="details-title">Metro Population: </span><span class="details-value">${MetroPopulation}</span></div>
-    <div><span class="details-title">Parking Score: </span><span class="details-value">${ParkingScore}</span></div>
-    <div><span class="details-title">Parking Mandate Reforms: </span><span class="details-value">${Reforms}</span></div>
+    <div><span class="details-title">Metro population: </span><span class="details-value">${MetroPopulation}</span></div>
   `;
   if (WebsiteURL) {
     result += `
