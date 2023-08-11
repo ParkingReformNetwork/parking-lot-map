@@ -85,6 +85,7 @@ const setUpAbout = () => {
 const createMap = () => {
   const map = new Map("map", {
     layers: [BASE_LAYERS.Light],
+    closePopupOnClick: false,
   });
   map.attributionControl.setPrefix(
     'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
