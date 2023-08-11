@@ -6,10 +6,11 @@ const addScoreCard = async (cityId, cityName) => {
   const newEntry = {
     Name: cityName,
     Percentage: "FILL ME IN, e.g. 23%",
+    cityType: "FILL ME IN, e.g. Core City",
     Population: "FILL ME IN, e.g. 346,824",
     "Metro Population": "FILL ME IN, e.g. 13,200,998",
     "Parking Score": "FILL ME IN, e.g. 53",
-    Reforms: "FILL ME IN, either 'No Reforms' or 'Implemented'",
+    Reforms: "FILL ME IN, e.g. No Reforms or Implemented",
     "Website URL": "FILL ME IN OR DELETE ME",
   };
 

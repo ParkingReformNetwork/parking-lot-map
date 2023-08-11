@@ -68,19 +68,17 @@ test("correctly load the city score card", async ({ page }) => {
   });
 
   expect(cityToggleValue).toEqual("anchorage-ak");
-  expect(content["Percent of Central City Devoted to Parking: "]).toEqual(
-    anchorageExpected.Percentage
+  expect(content["Parking: "]).toEqual(
+    `${anchorageExpected.Percentage} of central city`
   );
   expect(content["Population: "]).toEqual(anchorageExpected.Population);
-  expect(content["Metro Population: "]).toEqual(
+  expect(content["Metro population: "]).toEqual(
     anchorageExpected["Metro Population"]
   );
-  expect(content["Parking Score: "]).toEqual(
+  expect(content["Parking score: "]).toEqual(
     anchorageExpected["Parking Score"]
   );
-  expect(content["Parking Mandate Reforms: "]).toEqual(
-    anchorageExpected.Reforms
-  );
+  expect(content["Parking reform: "]).toEqual(anchorageExpected.Reforms);
 });
 
 test.describe("the share feature", () => {
