@@ -1,3 +1,7 @@
+@use "donate";
+@use "header";
+@use "popup";
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 $teal: #21ccb9;
@@ -234,24 +238,6 @@ div.copied-link-message {
 
 /* end styling layers button*/
 
-/*styling the donate button */
-div.donate-button {
-  /* background-color: white; */
-  position: absolute;
-  border-radius: 5px;
-  left: 9px;
-  bottom: 19px;
-  z-index: 2001;
-  width: 100px;
-  /* margin: 10px 0 0 12px; */
-}
-div.donate-button a img {
-  width: 100%;
-  border-radius: 4px;
-}
-
-/*end styling the donate button */
-
 .leaflet-top.leaflet-left {
   top: 52px;
 }
@@ -290,10 +276,6 @@ hr {
   div.copied-link-message {
     width: 350px;
     left: 40px;
-  }
-
-  div.donate-button {
-    bottom: 43px;
   }
 
   div.about-text-popup {
@@ -339,10 +321,6 @@ hr {
 }
 
 @media only screen and (max-width: 480px) {
-  div.donate-button a img {
-    width: 70%;
-  }
-
   .leaflet-popup-content-wrapper {
     width: 280px;
     bottom: 40px;

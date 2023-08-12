@@ -1,0 +1,25 @@
+div.donate-button {
+  position: absolute;
+  border-radius: 5px;
+  left: 9px;
+  bottom: 19px;
+  z-index: 2001;
+  width: 100px;
+}
+
+div.donate-button a img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+@media only screen and (max-width: 830px) {
+  div.donate-button {
+    bottom: 43px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  div.donate-button a img {
+    width: 70%;
+  }
+}
