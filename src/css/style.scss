@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+$teal: #21ccb9;
+
 body {
   padding: 0;
   margin: 0;
@@ -66,7 +68,7 @@ div.leaflet-popup-content-wrapper div div {
 }
 
 div.leaflet-popup-content-wrapper > div > div.title {
-  color: #21ccb9;
+  color: $teal;
   font-weight: bold;
   font-size: 16px;
 }
@@ -78,11 +80,11 @@ div.leaflet-popup-content-wrapper div span.details-value {
 }
 
 div.leaflet-popup-content-wrapper span.details-value {
-  color: #21ccb9;
+  color: $teal;
 }
 
 div.leaflet-popup-content-wrapper > div > div.title {
-  color: #21ccb9;
+  color: $teal;
   font-weight: bold;
   font-size: 18px;
   display: inline-block;
@@ -99,24 +101,24 @@ div.leaflet-popup-content-wrapper > div > div.url-copy-button:hover {
 }
 
 div.leaflet-popup-content-wrapper > div > div.url-copy-button svg.fa-link {
-  color: #21ccb9;
+  color: $teal;
 }
 
 div.popup-button a {
-  background-color: #21ccb9;
+  background-color: $teal;
   padding: 10px;
   font-size: 16px;
-  color: #ffffff;
+  color: white;
   border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  border: 1px solid #21ccb9;
+  border: 1px solid $teal;
   display: inline-block;
 }
 div.popup-button a:hover {
-  background-color: #ffffff;
-  color: #21ccb9;
-  border: 1px solid #21ccb9;
+  background-color: white;
+  color: $teal;
+  border: 1px solid $teal;
 }
 
 /* end popup styling */
@@ -139,7 +141,7 @@ div.banner-icons {
   border: none;
   font-size: 20px;
   background-color: #4d4d4d;
-  color: #ffffff;
+  color: white;
   float: right;
   right: 2px;
 }
@@ -153,7 +155,7 @@ div.banner-icons {
 }
 
 div.banner-icons svg {
-  color: #ffffff;
+  color: white;
 }
 
 div.banner-icons svg.fa-circle-info {
@@ -165,7 +167,7 @@ div.banner-icons svg.fa-circle-info {
   border: none;
   font-size: 20px;
   background-color: #4d4d4d;
-  color: #ffffff;
+  color: white;
 }
 
 div.banner-title {
@@ -177,7 +179,7 @@ div.banner-title {
 div.about-text-popup {
   position: absolute;
   z-index: 2001;
-  background-color: #ffffff;
+  background-color: white;
   font-size: 18px;
   border: 1px solid rgba(186, 186, 186, 0.7);
   display: none;
@@ -211,10 +213,10 @@ div.copied-link-message {
   top: 200px;
   width: 500px;
   text-align: center;
-  background-color: #ffffff;
+  background-color: white;
   left: 100px;
   font-size: 24px;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid black;
   display: none;
 }
 /*end styling the copied link message */
@@ -234,7 +236,7 @@ div.copied-link-message {
 
 /*styling the donate button */
 div.donate-button {
-  /* background-color: #ffffff; */
+  /* background-color: white; */
   position: absolute;
   border-radius: 5px;
   left: 9px;
