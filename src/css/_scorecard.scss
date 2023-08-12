@@ -1,0 +1,118 @@
+$teal: #21ccb9;
+
+.popup-fixed {
+  position: fixed;
+  transform: none !important;
+  margin: 0;
+}
+
+.leaflet-popup-tip-container {
+  display: none;
+}
+
+.leaflet-popup-content-wrapper {
+  width: 365px;
+  border-radius: 10px;
+  float: right;
+  position: fixed;
+  right: 11px;
+  top: 62px;
+}
+
+.leaflet-popup-content {
+  width: 330px;
+}
+
+div.leaflet-popup-content-wrapper div div {
+  width: 342px;
+}
+
+div.leaflet-popup-content-wrapper > div > div.title {
+  color: $teal;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+div.leaflet-popup-content-wrapper div span.details-title,
+div.leaflet-popup-content-wrapper div span.details-value {
+  font-size: 14px;
+  color: black;
+}
+
+div.leaflet-popup-content-wrapper span.details-value {
+  color: $teal;
+}
+
+div.leaflet-popup-content-wrapper > div > div.title {
+  color: $teal;
+  font-weight: bold;
+  font-size: 18px;
+  display: inline-block;
+  width: 50%;
+}
+
+div.leaflet-popup-content-wrapper > div > div.url-copy-button {
+  float: right;
+  width: 0%;
+  display: inline-block;
+}
+
+div.leaflet-popup-content-wrapper > div > div.url-copy-button:hover {
+  cursor: pointer;
+}
+
+div.leaflet-popup-content-wrapper > div > div.url-copy-button svg.fa-link {
+  color: $teal;
+}
+
+div.popup-button a {
+  background-color: $teal;
+  padding: 10px;
+  font-size: 16px;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 1px solid $teal;
+  display: inline-block;
+}
+
+div.popup-button a:hover {
+  background-color: white;
+  color: $teal;
+  border: 1px solid $teal;
+}
+
+@media only screen and (max-width: 830px) {
+  .leaflet-popup-content-wrapper {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 119px;
+    width: 350px;
+    border-radius: 10px;
+    float: left;
+    position: fixed;
+    bottom: 32px;
+    top: auto;
+    right: 10px;
+  }
+
+  div.leaflet-popup-content-wrapper div div {
+    width: 310px;
+  }
+
+  div.leaflet-popup-content {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .leaflet-popup-content-wrapper {
+    width: 280px;
+    bottom: 40px;
+  }
+
+  div.leaflet-popup-content-wrapper div div {
+    width: 240px;
+  }
+}
