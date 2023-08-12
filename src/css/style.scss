@@ -1,5 +1,6 @@
 @use "about";
 @use "controls";
+@use "copied-link";
 @use "donate";
 @use "header";
 @use "scorecard";
@@ -108,19 +109,7 @@ div.popup-button a:hover {
 /* end popup styling */
 
 /*styling the copied link message */
-div.copied-link-message {
-  position: absolute;
-  z-index: 2001;
-  border-radius: 5px;
-  top: 200px;
-  width: 500px;
-  text-align: center;
-  background-color: white;
-  left: 100px;
-  font-size: 24px;
-  border: 1px solid black;
-  display: none;
-}
+
 /*end styling the copied link message */
 
 .leaflet-grab {
@@ -152,11 +141,6 @@ hr {
 
   div.leaflet-popup-content {
     width: auto;
-  }
-
-  div.copied-link-message {
-    width: 350px;
-    left: 40px;
   }
 }
 
