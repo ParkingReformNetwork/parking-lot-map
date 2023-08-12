@@ -1,4 +1,5 @@
 @use "about";
+@use "controls";
 @use "donate";
 @use "header";
 @use "scorecard";
@@ -21,15 +22,6 @@ body,
 body,
 .leaflet-container {
   font-family: Poppins, Helvetica, Arial, sans-serif;
-}
-
-dd {
-  margin-bottom: 10px;
-}
-
-.leaflet-touch .leaflet-control-layers-toggle {
-  width: 33px;
-  height: 33px;
 }
 
 /* popup styling */
@@ -131,23 +123,6 @@ div.copied-link-message {
 }
 /*end styling the copied link message */
 
-/*styling layers button */
-#map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 130px;
-  margin-left: 9px;
-  right: auto;
-}
-
-.leaflet-control-layers {
-  font-size: 12px;
-}
-
-/* end styling layers button*/
-
-.leaflet-top.leaflet-left {
-  top: 52px;
-}
-
 .leaflet-grab {
   cursor: unset;
 }
@@ -182,16 +157,6 @@ hr {
   div.copied-link-message {
     width: 350px;
     left: 40px;
-  }
-}
-
-@media only screen and (max-width: 625px) {
-  .leaflet-top.leaflet-left {
-    top: 62px;
-  }
-
-  #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-    top: 140px;
   }
 }
 
