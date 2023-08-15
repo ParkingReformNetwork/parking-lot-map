@@ -159,7 +159,7 @@ test.describe("the share feature", () => {
 test("about popup can be opened and closed", async ({ page }) => {
   await page.goto("");
 
-  const aboutIcon = ".banner-about-icon";
+  const aboutIcon = ".header-about-icon";
 
   const aboutIsVisible = async (expected) => {
     const isVisible = await page.$eval(
