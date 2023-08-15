@@ -1,93 +1,57 @@
-fieldset#tier-dropdown {
-  position: absolute;
-  right: 90px;
-  top: 5px;
-  z-index: 2005;
+header {
+  width: 100%;
+  padding: 0.25em 1em;
+
+  background-color: #4d4d4d;
+  color: white;
+  font-size: 1.4em;
+
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  @media only screen and (min-width: 48em) {
+    flex-direction: row;
+    font-size: 1.75em;
+  }
+}
+
+.site-title {
+  text-align: center;
+
+  @media only screen and (min-width: 48em) {
+    text-align: left;
+  }
+}
+
+.site-controls {
+  display: flex;
+  flex-direction: row;
+
+  label {
+    font-weight: normal;
+  }
 }
 
 #city-choice {
-  font-size: 20px;
-  padding: 3px 5px;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  color: black;
 }
 
-div.banners {
-  background-color: #4d4d4d;
-  position: absolute;
-  top: 0;
-  z-index: 2001;
-  text-align: center;
-  width: 100%;
-  left: 0;
-  padding: 10px 15px;
-}
-
-div.banner-title,
-div.banner-icons {
-  font-weight: bold;
-  border: none;
-  font-size: 20px;
-  background-color: #4d4d4d;
-  color: white;
-  float: right;
-  right: 2px;
-}
-
-.banner-about-icon {
+.header-about-icon {
   display: inline;
+
+  svg {
+    margin-right: 10px;
+  }
 }
 
-div.banner-icons {
+.header-icons {
   cursor: pointer;
-}
 
-div.banner-icons svg {
-  color: white;
-}
-
-div.banner-icons svg.fa-circle-info {
-  margin-right: 10px;
-}
-
-#tier-dropdown label {
-  font-weight: bold;
-  border: none;
-  font-size: 20px;
-  background-color: #4d4d4d;
-  color: white;
-}
-
-div.banner-title {
-  left: 4px;
-  text-align: left;
-  float: left;
-}
-
-@media only screen and (max-width: 625px) {
-  div.banners {
-    height: 65px;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-
-  div.banner-title {
-    font-size: 16px;
-  }
-
-  fieldset#tier-dropdown {
-    position: absolute;
-    left: 10px;
-    top: 35px;
-    z-index: 2005;
-  }
-
-  fieldset#tier-dropdown label {
-    font-size: 14px;
-  }
-
-  #city-choice {
-    font-size: 14px;
-    padding: 0;
+  svg {
+    color: white;
   }
 }
