@@ -1,28 +1,18 @@
 .leaflet-top.leaflet-left {
-  top: 52px;
+  top: 0.8rem;
 }
 
 .leaflet-touch .leaflet-control-layers-toggle {
-  width: 33px;
-  height: 33px;
+  width: 30px;
+  height: 30px;
 }
 
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 130px;
-  margin-left: 9px;
+  top: 8rem;
+  margin-left: 10px;
   right: auto;
 }
 
 .leaflet-control-layers {
   font-size: 12px;
-}
-
-@media only screen and (max-width: 625px) {
-  .leaflet-top.leaflet-left {
-    top: 62px;
-  }
-
-  #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-    top: 140px;
-  }
 }
