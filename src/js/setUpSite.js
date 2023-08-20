@@ -11,7 +11,7 @@ const BASE_LAYERS = {
     "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
     {
       attribution:
-        'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        'Map tiles: <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: 20,
@@ -21,7 +21,7 @@ const BASE_LAYERS = {
   "Google Maps": new TileLayer(
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
-      attribution: "Google Maps",
+      attribution: "Map tiles: Google Maps",
       // Max value is 24 but I set it to 20 because the Stamen Toner style has value of 20 as max value.
       maxZoom: 20,
     }
@@ -88,7 +88,7 @@ const createMap = () => {
     closePopupOnClick: false,
   });
   map.attributionControl.setPrefix(
-    'created by <a style="padding: 0 3px 0 3px; color:#fafafa; background-color: #21ccb9;" href=http://www.geocadder.bg/en/>GEOCADDER</a>'
+    'Map data: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
   );
 
   new Control.Layers(BASE_LAYERS).addTo(map);
