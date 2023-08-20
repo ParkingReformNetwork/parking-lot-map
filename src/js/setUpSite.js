@@ -6,6 +6,7 @@ import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
 
+const MAX_ZOOM = 18;
 const BASE_LAYERS = {
   Light: new TileLayer(
     "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
@@ -14,7 +15,7 @@ const BASE_LAYERS = {
         'Map tiles: <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
       subdomains: "abcd",
       minZoom: 0,
-      maxZoom: 20,
+      maxZoom: MAX_ZOOM,
       ext: "png",
     }
   ),
@@ -22,8 +23,7 @@ const BASE_LAYERS = {
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
       attribution: "Map tiles: Google Maps",
-      // Max value is 24 but I set it to 20 because the Stamen Toner style has value of 20 as max value.
-      maxZoom: 20,
+      maxZoom: MAX_ZOOM,
     }
   ),
 };
