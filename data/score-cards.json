@@ -60,7 +60,7 @@
     "Name": "Austin, TX",
     "Percentage": "17%",
     "cityType": "core city",
-    "Population": "402,907",
+    "Population": "961,855",
     "Metro Population": "2,283,371",
     "Parking Score": "42",
     "Reforms": "implemented",
@@ -602,6 +602,16 @@
     "Parking Score": "58",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Raleigh_NC.html"
+  },
+  "richmond-va": {
+    "Name": "Richmond, VA",
+    "Percentage": "21%",
+    "cityType": "Core City",
+    "Population": "226,610",
+    "Metro Population": "1,314,434",
+    "Parking Score": "37",
+    "Reforms": "Passed",
+    "Website URL": "https://parkingreform.org/mandates-map/city_detail/Richmond_VA.html"
   },
   "riverside-ca": {
     "Name": "Riverside, CA",
