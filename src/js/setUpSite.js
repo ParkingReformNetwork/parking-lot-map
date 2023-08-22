@@ -5,6 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
+import setUpAbout from "./about";
 
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
@@ -56,23 +57,6 @@ const addCitiesToToggle = (initialCityId, fallbackCityId) => {
     cityToggleElement.appendChild(option);
   });
   cityToggleElement.value = validInitialId ? initialCityId : fallbackCityId;
-};
-
-/**
- * Set up event listeners to open and close the about popup.
- */
-const setUpAbout = () => {
-  const aboutElement = document.querySelector(".about-text-popup");
-  document.querySelector(".header-about-icon").addEventListener("click", () => {
-    aboutElement.style.display =
-      aboutElement.style.display !== "block" ? "block" : "none";
-  });
-
-  // Note that the close element will only render when the about text popup is rendered.
-  // So, it only ever makes sense for a click to close.
-  document.querySelector(".about-close").addEventListener("click", () => {
-    aboutElement.style.display = "none";
-  });
 };
 
 /**
