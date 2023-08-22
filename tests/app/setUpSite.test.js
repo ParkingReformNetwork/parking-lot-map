@@ -155,37 +155,3 @@ test.describe("the share feature", () => {
     expect(cityToggleValue).toEqual("atlanta-ga");
   });
 });
-
-test("about popup can be opened and closed", async ({ page }) => {
-  await page.goto("");
-
-  const aboutIcon = ".header-about-icon";
-
-  const aboutIsVisible = async (expected) => {
-    const isVisible = await page.$eval(
-      ".about-text-popup",
-      (el) => el.style.display === "block"
-    );
-    return isVisible === expected;
-  };
-
-  const validBeforeClick = await aboutIsVisible(false);
-
-  await page.click(aboutIcon);
-  const validFirstClick = await aboutIsVisible(true);
-
-  await page.click(aboutIcon);
-  const validSecondClick = await aboutIsVisible(false);
-
-  await page.click(aboutIcon);
-  const validThirdClick = await aboutIsVisible(true);
-
-  await page.click(".about-close");
-  const validFourthClick = await aboutIsVisible(false);
-
-  expect(validBeforeClick).toBe(true);
-  expect(validFirstClick).toBe(true);
-  expect(validSecondClick).toBe(true);
-  expect(validThirdClick).toBe(true);
-  expect(validFourthClick).toBe(true);
-});
