@@ -87,7 +87,7 @@
   },
   "birmingham-al": {
     "Name": "Birmingham, AL",
-    "Percentage": "26%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "200,733",
     "Metro Population": "1,115,289",
@@ -137,7 +137,7 @@
   },
   "cincinnati-oh": {
     "Name": "Cincinnati, OH",
-    "Percentage": "21%",
+    "Percentage": "20%",
     "cityType": "core city",
     "Population": "309,317",
     "Metro Population": "2,256,884",
@@ -487,7 +487,7 @@
   },
   "newark-nj": {
     "Name": "Newark, NJ",
-    "Percentage": "24%",
+    "Percentage": "26%",
     "cityType": "satellite city",
     "Population": "311,549",
     "Metro Population": "20,140,470",
