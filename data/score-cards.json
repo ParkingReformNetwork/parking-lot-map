@@ -739,6 +739,15 @@
     "Parking Score": "57",
     "Reforms": "no reforms"
   },
+  "santa-barbara-ca": {
+    "Name": "Santa Barbara, CA",
+    "Percentage": "27%",
+    "cityType": "node city",
+    "Population": "88,665",
+    "Metro Population": "446,475",
+    "Parking Score": "N/A",
+    "Reforms": "No Reforms"
+  },
   "seattle-wa": {
     "Name": "Seattle, WA",
     "Percentage": "10%",
