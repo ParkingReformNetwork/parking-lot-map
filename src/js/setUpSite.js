@@ -10,10 +10,11 @@ import setUpAbout from "./about";
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
   Light: new TileLayer(
-    "https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}",
+    "tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png",
     {
-      attribution:
-        'Map tiles: <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>',
+      attribution: `Map tiles: &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>
+        &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a>
+        &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>`,
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: MAX_ZOOM,
