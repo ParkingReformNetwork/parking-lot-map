@@ -196,11 +196,11 @@
   },
   "denver-co": {
     "Name": "Denver, CO",
-    "Percentage": "11%",
+    "Percentage": "12%",
     "cityType": "core city",
     "Population": "715,522",
     "Metro Population": "2,963,821",
-    "Parking Score": "28",
+    "Parking Score": "25",
     "Reforms": "no reforms"
   },
   "detroit-mi": {
