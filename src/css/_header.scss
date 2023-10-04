@@ -41,12 +41,54 @@ header {
   }
 }
 
+#city-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 #city-dropdown label {
   font-weight: normal;
+  padding-right: 20px;
 }
 
 #city-choice {
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   color: black;
+}
+
+.choices, .is-open {
+  color: black;
+  font-weight: bold;
+  width: 300px;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.choices:last-child {
+  margin-bottom: auto;
+}
+
+@media only screen and (max-width: 900px) {
+  header {
+    height: auto;
+    max-height: 120px;
+    justify-content: space-between;
+  }
+
+  #city-dropdown {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+  }
+
+  .choices {
+    color: black;
+    font-weight: bold;
+    width: 200px;
+    border-radius: 10px;
+    z-index: 1000;
+  }
 }

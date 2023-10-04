@@ -6,6 +6,8 @@ import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
 import setUpAbout from "./about";
+import Choices from "choices.js";
+import "choices.js/public/assets/styles/choices.css";
 
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
@@ -236,11 +238,31 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map)]);
+  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map), setUpSearch(initialCityId, "atlanta-ga")]);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
   map.invalidateSize();
 };
+
+const setUpSearch = (initialCityId, fallbackCityId) => {
+  const element = document.getElementById("city-choice"); 
+    var choices = new Choices(element, {
+      maxItemCount: 1,
+      placeholder: true,
+      placeholderValue: "City Search",
+      itemSelectText: "Select",
+      searchEnabled: true,
+      position: "bottom"
+  }); 
+
+  // Set up map to update when city selection changes.
+  const cityToggleElement = document.getElementById("city-choice");
+  cityToggleElement.addEventListener("change", () => {
+     const cityId = cityToggleElement.value;
+     setMapToCity(map, cityId, cities[cityId]);
+  });
+}
+
 
 export default setUpSite;
