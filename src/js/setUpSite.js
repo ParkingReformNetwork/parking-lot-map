@@ -246,6 +246,7 @@ const setUpSite = async () => {
 };
 
 const setUpSearch = (initialCityId, fallbackCityId) => {
+  cities = {};
   const element = document.getElementById("city-choice"); 
     var choices = new Choices(element, {
       maxItemCount: 1,
@@ -253,14 +254,8 @@ const setUpSearch = (initialCityId, fallbackCityId) => {
       placeholderValue: "City Search",
       itemSelectText: "Select",
       searchEnabled: true,
-      position: "bottom"
-  }); 
-
-  // Set up map to update when city selection changes.
-  const cityToggleElement = document.getElementById("city-choice");
-  cityToggleElement.addEventListener("change", () => {
-     const cityId = cityToggleElement.value;
-     setMapToCity(map, cityId, cities[cityId]);
+      position: "bottom",
+      allowHTML: true,
   });
 }
 
