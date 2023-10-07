@@ -2,11 +2,11 @@
 import { Control, Map, Popup, TileLayer, geoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+import Choices from "choices.js";
 import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
 import setUpAbout from "./about";
-import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
 
 const MAX_ZOOM = 18;
@@ -230,6 +230,20 @@ const setUpParkingLotsLayer = async (map) => {
   }
 };
 
+const setUpSearch = () => {
+  const element = document.getElementById("city-choice");
+  // eslint-disable-next-line no-unused-vars
+  const cityChoices = new Choices(element, {
+    maxItemCount: 1,
+    placeholder: true,
+    placeholderValue: "City Search",
+    itemSelectText: "Select",
+    searchEnabled: true,
+    position: "bottom",
+    allowHTML: true,
+  });
+};
+
 const setUpSite = async () => {
   setUpIcons();
 
@@ -238,26 +252,15 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map), setUpSearch(initialCityId, "atlanta-ga")]);
+  await Promise.all([
+    setUpCitiesLayer(map),
+    setUpParkingLotsLayer(map),
+    setUpSearch(),
+  ]);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
   map.invalidateSize();
 };
-
-const setUpSearch = (initialCityId, fallbackCityId) => {
-  cities = {};
-  const element = document.getElementById("city-choice"); 
-    var choices = new Choices(element, {
-      maxItemCount: 1,
-      placeholder: true,
-      placeholderValue: "City Search",
-      itemSelectText: "Select",
-      searchEnabled: true,
-      position: "bottom",
-      allowHTML: true,
-  });
-}
-
 
 export default setUpSite;
