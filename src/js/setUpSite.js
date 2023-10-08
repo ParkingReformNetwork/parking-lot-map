@@ -231,16 +231,14 @@ const setUpParkingLotsLayer = async (map) => {
 };
 
 const setUpSearch = () => {
-  const element = document.getElementById("city-choice");
-  // eslint-disable-next-line no-unused-vars
-  const cityChoices = new Choices(element, {
+  // eslint-disable-next-line no-new
+  new Choices(document.getElementById("city-choice"), {
     maxItemCount: 1,
     placeholder: true,
     placeholderValue: "City Search",
     itemSelectText: "Select",
     searchEnabled: true,
     position: "bottom",
-    allowHTML: true,
   });
 };
 
