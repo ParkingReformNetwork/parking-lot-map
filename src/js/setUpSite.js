@@ -186,7 +186,7 @@ const setMapToCity = (map, cityId, cityProperties) => {
 const setUpCitiesLayer = async (map) => {
   const cities = {};
   const cityBoundariesData = await import("../../data/city-boundaries.geojson");
-  geoJSON(cityBoundariesData, {
+  const test = geoJSON(cityBoundariesData, {
     style() {
       return STYLES.cities;
     },
@@ -194,12 +194,21 @@ const setUpCitiesLayer = async (map) => {
       const cityId = feature.properties.id;
       cities[cityId] = { layer, ...scoreCardsData[cityId] };
     },
-  }).addTo(map);
+  });
+
+  test.addTo(map);
 
   // Set up map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
+    setMapToCity(map, cityId, cities[cityId]);
+  });
+
+  // Set up map to update when user clicks within a city's boundary
+  test.addEventListener("click", (e) => {
+    const cityId = e.sourceTarget.feature.properties.id;
+    cityToggleElement.value = cityId;
     setMapToCity(map, cityId, cities[cityId]);
   });
 
