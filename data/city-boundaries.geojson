@@ -571,7 +571,7 @@
         "id": "birmingham-al"
       },
       "geometry": {
-        "type": "LineString",
+        "type": "Polygon",
         "coordinates": [
           [-86.8152075, 33.5260146],
           [-86.8145478, 33.5250039],
