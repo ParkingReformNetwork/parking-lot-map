@@ -245,7 +245,9 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map)]);
+  // Adding layers in this order to ensure city boundaries is on the top
+  await setUpParkingLotsLayer(map);
+  await setUpCitiesLayer(map);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
