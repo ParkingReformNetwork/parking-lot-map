@@ -207,9 +207,12 @@ const setUpCitiesLayer = async (map) => {
 
   // Set up map to update when user clicks within a city's boundary
   allBoundaries.addEventListener("click", (e) => {
-    const cityId = e.sourceTarget.feature.properties.id;
-    cityToggleElement.value = cityId;
-    setMapToCity(map, cityId, cities[cityId]);
+    const currentZoom = map.getZoom();
+    if (currentZoom > 7) {
+      const cityId = e.sourceTarget.feature.properties.id;
+      cityToggleElement.value = cityId;
+      setMapToCity(map, cityId, cities[cityId]);
+    }
   });
 
   // Load initial city.
