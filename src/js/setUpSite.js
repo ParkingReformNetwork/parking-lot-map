@@ -193,6 +193,9 @@ const setUpCitiesLayer = async (map) => {
     onEachFeature(feature, layer) {
       const cityId = feature.properties.id;
       cities[cityId] = { layer, ...scoreCardsData[cityId] };
+      layer.on("add", () => {
+        layer.getElement().setAttribute("id", cityId);
+      });
     },
   });
 
