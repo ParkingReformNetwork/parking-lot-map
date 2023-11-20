@@ -9,5 +9,6 @@
   },
   "transformers": {
     "*.geojson": ["@parcel/transformer-json"]
-  }
+  },
+  "resolvers": ["@parcel/resolver-glob", "..."]
 }
