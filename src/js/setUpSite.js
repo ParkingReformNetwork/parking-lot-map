@@ -7,6 +7,8 @@ import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
 import setUpAbout from "./about";
 
+const parkingLots = import("../../data/parking-lots/*"); // eslint-disable-line
+
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
   Light: new TileLayer(
@@ -158,6 +160,18 @@ const generateScorecard = (scoreCardEntry) => {
   return result;
 };
 
+const loadParkingLot = async (cityId, lotsLayer) => {
+  let load = true;
+  lotsLayer.getLayers().forEach((loadedCity) => {
+    if (loadedCity.feature.properties.id === cityId) {
+      load = false;
+    }
+  });
+  if (load) {
+    lotsLayer.addData(await parkingLots[`${cityId}.geojson`]());
+  }
+};
+
 /**
  * Move the map to the city boundaries and set its score card.
  *
@@ -166,11 +180,12 @@ const generateScorecard = (scoreCardEntry) => {
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const setMapToCity = (map, cityId, cityProperties) => {
+const setMapToCity = async (map, cityId, cityProperties, lotsLayer) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
   const scorecard = generateScorecard(cityProperties);
   setUpShareUrlClickListener(cityId);
+  await loadParkingLot(cityId, lotsLayer);
   const popup = new Popup({
     pane: "fixed",
     className: "popup-fixed",
@@ -183,7 +198,7 @@ const setMapToCity = (map, cityId, cityProperties) => {
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
  */
-const setUpCitiesLayer = async (map) => {
+const setUpCitiesLayer = async (map, lotsLayer) => {
   const cities = {};
   const cityBoundariesData = await import("../../data/city-boundaries.geojson");
   geoJSON(cityBoundariesData, {
@@ -198,19 +213,18 @@ const setUpCitiesLayer = async (map) => {
 
   // Set up map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-choice");
-  cityToggleElement.addEventListener("change", () => {
+  cityToggleElement.addEventListener("change", async () => {
     const cityId = cityToggleElement.value;
-    setMapToCity(map, cityId, cities[cityId]);
+    await setMapToCity(map, cityId, cities[cityId], lotsLayer);
   });
 
   // Load initial city.
   const cityId = cityToggleElement.value;
-  setMapToCity(map, cityId, cities[cityId]);
+  await setMapToCity(map, cityId, cities[cityId], lotsLayer);
 };
 
 const setUpParkingLotsLayer = async (map) => {
-  const parkingLotsData = await import("../../data/parking-lots.geojson");
-  const lotsLayer = geoJSON(parkingLotsData, {
+  const lotsLayer = geoJSON(null, {
     style() {
       return STYLES.parkingLots;
     },
@@ -220,12 +234,13 @@ const setUpParkingLotsLayer = async (map) => {
   if (window.location.href.indexOf("#lots-toggle") !== -1) {
     document.querySelector("#lots-toggle").style.display = "block";
     document.querySelector("#lots-toggle-on").addEventListener("click", () => {
-      lotsLayer.addData(parkingLotsData);
+      lotsLayer.removeFrom(map);
     });
     document.querySelector("#lots-toggle-off").addEventListener("click", () => {
-      lotsLayer.clearLayers();
+      lotsLayer.addTo(map);
     });
   }
+  return lotsLayer;
 };
 
 const setUpSite = async () => {
@@ -236,7 +251,8 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map)]);
+  const lotsLayer = await setUpParkingLotsLayer(map);
+  await setUpCitiesLayer(map, lotsLayer);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
