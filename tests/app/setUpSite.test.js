@@ -155,3 +155,65 @@ test.describe("the share feature", () => {
     expect(cityToggleValue).toEqual("atlanta-ga");
   });
 });
+
+test.describe("auto-focus city", () => {
+  test("clicking on city boundary close view", async ({ page }) => {
+    await page.goto("");
+
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+
+    // Use this code to check map zoom value
+    // const scaleValue = await page.$eval('.leaflet-proxy', (leafletProxy) => {
+    //   const styleAttribute = leafletProxy.getAttribute('style');
+    //   const scaleMatch = styleAttribute.match(/scale\((.*?)\)/); // Use regex to extract the scale value
+    //   return scaleMatch ? parseFloat(scaleMatch[1]) : null;
+    // });
+    // console.log("Map Zoom before: " +(Math.log2(scaleValue)+1));
+
+    // Zoom out.
+    await page
+      .locator(".leaflet-control-zoom-out")
+      .click({ clickCount: 7, delay: 300 });
+    // Drag map to bring Birmingham into view.
+    await page.locator("#atlanta-ga").hover();
+    await page.mouse.move(-300, 0); // Avoid clicking on Atlanta boundary.
+    await page.mouse.down();
+    await page.mouse.move(500, 0);
+    await page.mouse.up();
+    // Click on Birmingham boundary.
+    const city = await page.locator("#birmingham-al");
+    await city.click({ force: true });
+
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+
+    const newScorecard = await page
+      .locator(".leaflet-popup-content .title")
+      .evaluate((node) => node.textContent);
+    await expect(newScorecard).toEqual("Birmingham, AL");
+    await expect(city).toBeVisible();
+  });
+  test("clicking on city boundary wide view", async ({ page }) => {
+    await page.goto("");
+
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+
+    // Zoom out.
+    await page
+      .locator(".leaflet-control-zoom-out")
+      .click({ clickCount: 10, delay: 300 });
+    // Click on Birmingham boundary.
+    const city = await page.locator("#birmingham-al");
+    await city.click({ force: true });
+
+    // Wait a second to make sure the site is fully loaded.
+    await page.waitForTimeout(1000);
+
+    const scorecard = await page
+      .locator(".leaflet-popup-content .title")
+      .evaluate((node) => node.textContent);
+    await expect(scorecard).toEqual("Atlanta, GA");
+  });
+});

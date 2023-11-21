@@ -186,21 +186,36 @@ const setMapToCity = (map, cityId, cityProperties) => {
 const setUpCitiesLayer = async (map) => {
   const cities = {};
   const cityBoundariesData = await import("../../data/city-boundaries.geojson");
-  geoJSON(cityBoundariesData, {
+  const allBoundaries = geoJSON(cityBoundariesData, {
     style() {
       return STYLES.cities;
     },
     onEachFeature(feature, layer) {
       const cityId = feature.properties.id;
       cities[cityId] = { layer, ...scoreCardsData[cityId] };
+      layer.on("add", () => {
+        layer.getElement().setAttribute("id", cityId);
+      });
     },
-  }).addTo(map);
+  });
+
+  allBoundaries.addTo(map);
 
   // Set up map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
     setMapToCity(map, cityId, cities[cityId]);
+  });
+
+  // Set up map to update when user clicks within a city's boundary
+  allBoundaries.addEventListener("click", (e) => {
+    const currentZoom = map.getZoom();
+    if (currentZoom > 7) {
+      const cityId = e.sourceTarget.feature.properties.id;
+      cityToggleElement.value = cityId;
+      setMapToCity(map, cityId, cities[cityId]);
+    }
   });
 
   // Load initial city.
@@ -236,7 +251,9 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  await Promise.all([setUpCitiesLayer(map), setUpParkingLotsLayer(map)]);
+  // Adding layers in this order to ensure city boundaries is on the top
+  await setUpParkingLotsLayer(map);
+  await setUpCitiesLayer(map);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
