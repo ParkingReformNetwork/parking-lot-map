@@ -197,6 +197,7 @@ const setUpAutoScorecard = (map, cities) => {
         }
       }
     });
+    document.getElementById("city-choice").value = centralCity;
     setMapToCity(map, centralCity, cities[centralCity], false);
   });
 };
