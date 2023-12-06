@@ -187,7 +187,7 @@ test.describe("auto-focus city", () => {
 
     // Drag map to bring Birmingham into view.
     await dragMap(page, 200);
-    // Click on Birmingham ;boundary.
+    // Click on Birmingham boundary.
     const city = await page.locator("#birmingham-al");
     await city.click({ force: true });
 
@@ -235,6 +235,7 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
     .locator(".leaflet-control-zoom-out")
     .click({ clickCount: 6, delay: 300 });
 
+  // Drag map to Birgminham
   await dragMap(page, 300);
   const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
     const title = document.querySelector(
