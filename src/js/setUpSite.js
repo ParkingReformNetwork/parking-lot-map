@@ -132,7 +132,7 @@ const generateScorecard = (scoreCardEntry) => {
     cityType,
     Percentage,
     Population,
-    "Metro Population": MetroPopulation,
+    urbanizedAreaPopulation,
     "Parking Score": ParkingScore,
     Reforms,
     "Website URL": WebsiteURL,
@@ -147,7 +147,7 @@ const generateScorecard = (scoreCardEntry) => {
     <br />
     <div><span class="details-title">City type: </span><span class="details-value">${cityType}</span></div>
     <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
-    <div><span class="details-title">Metro population: </span><span class="details-value">${MetroPopulation}</span></div>
+    <div><span class="details-title">Urbanized area population: </span><span class="details-value">${urbanizedAreaPopulation}</span></div>
   `;
   if (WebsiteURL) {
     result += `
