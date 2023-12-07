@@ -66,14 +66,13 @@ test("correctly load the city score card", async ({ page }) => {
     });
     return [details, cityToggle];
   });
-
   expect(cityToggleValue).toEqual("anchorage-ak");
   expect(content["Parking: "]).toEqual(
     `${anchorageExpected.Percentage} of central city`
   );
   expect(content["Population: "]).toEqual(anchorageExpected.Population);
-  expect(content["Metro population: "]).toEqual(
-    anchorageExpected["Metro Population"]
+  expect(content["Urbanized area population: "]).toEqual(
+    anchorageExpected.urbanizedAreaPopulation
   );
   expect(content["Parking score: "]).toEqual(
     anchorageExpected["Parking Score"]
