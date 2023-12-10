@@ -155,6 +155,15 @@ test.describe("the share feature", () => {
   });
 });
 
+const dragMap = async (page, distance) => {
+  await page.waitForTimeout(1000);
+  await page.mouse.move(600, 500);
+  await page.mouse.down();
+  await page.mouse.move(600 + distance, 500, { steps: 5 });
+  await page.mouse.up();
+  await page.waitForTimeout(2000);
+};
+
 test.describe("auto-focus city", () => {
   test("clicking on city boundary close view", async ({ page }) => {
     await page.goto("");
@@ -173,13 +182,10 @@ test.describe("auto-focus city", () => {
     // Zoom out.
     await page
       .locator(".leaflet-control-zoom-out")
-      .click({ clickCount: 7, delay: 300 });
+      .click({ clickCount: 6, delay: 300 });
+
     // Drag map to bring Birmingham into view.
-    await page.locator("#atlanta-ga").hover();
-    await page.mouse.move(-300, 0); // Avoid clicking on Atlanta boundary.
-    await page.mouse.down();
-    await page.mouse.move(500, 0);
-    await page.mouse.up();
+    await dragMap(page, 200);
     // Click on Birmingham boundary.
     const city = await page.locator("#birmingham-al");
     await city.click({ force: true });
@@ -215,4 +221,28 @@ test.describe("auto-focus city", () => {
       .evaluate((node) => node.textContent);
     await expect(scorecard).toEqual("Atlanta, GA");
   });
+});
+
+test("scorecard pulls up city closest to center", async ({ page }) => {
+  await page.goto("");
+
+  // Wait a second to make sure the site is fully loaded.
+  await page.waitForTimeout(1000);
+
+  // Zoom out.
+  await page
+    .locator(".leaflet-control-zoom-out")
+    .click({ clickCount: 6, delay: 300 });
+
+  // Drag map to Birgminham
+  await dragMap(page, 300);
+  const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
+    const title = document.querySelector(
+      ".leaflet-popup-content .title"
+    ).textContent;
+    const cityToggle = document.querySelector("#city-choice").value;
+    return [title, cityToggle];
+  });
+  await expect(scoreCardTitle).toEqual("Birmingham, AL");
+  await expect(cityToggleValue).toEqual("birmingham-al");
 });
