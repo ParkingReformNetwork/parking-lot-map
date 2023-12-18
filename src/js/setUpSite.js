@@ -132,7 +132,7 @@ const generateScorecard = (scoreCardEntry) => {
     cityType,
     Percentage,
     Population,
-    "Metro Population": MetroPopulation,
+    urbanizedAreaPopulation,
     "Parking Score": ParkingScore,
     Reforms,
     "Website URL": WebsiteURL,
@@ -147,7 +147,7 @@ const generateScorecard = (scoreCardEntry) => {
     <br />
     <div><span class="details-title">City type: </span><span class="details-value">${cityType}</span></div>
     <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
-    <div><span class="details-title">Metro population: </span><span class="details-value">${MetroPopulation}</span></div>
+    <div><span class="details-title">Urbanized area population: </span><span class="details-value">${urbanizedAreaPopulation}</span></div>
   `;
   if (WebsiteURL) {
     result += `
@@ -166,9 +166,11 @@ const generateScorecard = (scoreCardEntry) => {
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const setMapToCity = (map, cityId, cityProperties) => {
+const setMapToCity = (map, cityId, cityProperties, toFitBounds = true) => {
   const { layer } = cityProperties;
-  map.fitBounds(layer.getBounds());
+  if (toFitBounds) {
+    map.fitBounds(layer.getBounds());
+  }
   const scorecard = generateScorecard(cityProperties);
   setUpShareUrlClickListener(cityId);
   const popup = new Popup({
@@ -177,6 +179,29 @@ const setMapToCity = (map, cityId, cityProperties) => {
     autoPan: false,
   }).setContent(scorecard);
   layer.bindPopup(popup).openPopup();
+};
+
+const setUpAutoScorecard = (map, cities) => {
+  map.on("moveend", () => {
+    let centralCityDistance = null;
+    let centralCity;
+    Object.entries(cities).forEach((city) => {
+      const [cityName, details] = city;
+      const bounds = details.layer.getBounds();
+
+      if (map.getBounds().intersects(bounds)) {
+        const diff = map.getBounds().getCenter().distanceTo(bounds.getCenter());
+        if (centralCityDistance == null || diff < centralCityDistance) {
+          centralCityDistance = diff;
+          centralCity = cityName;
+        }
+      }
+    });
+    if (centralCity) {
+      document.getElementById("city-choice").value = centralCity;
+      setMapToCity(map, centralCity, cities[centralCity], false);
+    }
+  });
 };
 
 /**
@@ -221,6 +246,7 @@ const setUpCitiesLayer = async (map) => {
   // Load initial city.
   const cityId = cityToggleElement.value;
   setMapToCity(map, cityId, cities[cityId]);
+  setUpAutoScorecard(map, cities);
 };
 
 const setUpParkingLotsLayer = async (map) => {
