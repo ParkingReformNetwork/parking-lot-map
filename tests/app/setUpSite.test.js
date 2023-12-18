@@ -66,14 +66,13 @@ test("correctly load the city score card", async ({ page }) => {
     });
     return [details, cityToggle];
   });
-
   expect(cityToggleValue).toEqual("anchorage-ak");
   expect(content["Parking: "]).toEqual(
     `${anchorageExpected.Percentage} of central city`
   );
   expect(content["Population: "]).toEqual(anchorageExpected.Population);
-  expect(content["Metro population: "]).toEqual(
-    anchorageExpected["Metro Population"]
+  expect(content["Urbanized area population: "]).toEqual(
+    anchorageExpected.urbanizedAreaPopulation
   );
   expect(content["Parking score: "]).toEqual(
     anchorageExpected["Parking Score"]
@@ -222,4 +221,28 @@ test.describe("auto-focus city", () => {
       .evaluate((node) => node.textContent);
     await expect(scorecard).toEqual("Atlanta, GA");
   });
+});
+
+test("scorecard pulls up city closest to center", async ({ page }) => {
+  await page.goto("");
+
+  // Wait a second to make sure the site is fully loaded.
+  await page.waitForTimeout(1000);
+
+  // Zoom out.
+  await page
+    .locator(".leaflet-control-zoom-out")
+    .click({ clickCount: 6, delay: 300 });
+
+  // Drag map to Birgminham
+  await dragMap(page, 300);
+  const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
+    const title = document.querySelector(
+      ".leaflet-popup-content .title"
+    ).textContent;
+    const cityToggle = document.querySelector("#city-choice").value;
+    return [title, cityToggle];
+  });
+  await expect(scoreCardTitle).toEqual("Birmingham, AL");
+  await expect(cityToggleValue).toEqual("birmingham-al");
 });
