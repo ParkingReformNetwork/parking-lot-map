@@ -234,7 +234,7 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
     .locator(".leaflet-control-zoom-out")
     .click({ clickCount: 6, delay: 300 });
 
-  // Drag map to Birgminham
+  // Drag map to Birmingham
   await dragMap(page, 300);
   const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
     const title = document.querySelector(
@@ -245,4 +245,34 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
   });
   await expect(scoreCardTitle).toEqual("Birmingham, AL");
   await expect(cityToggleValue).toEqual("birmingham-al");
+});
+
+test("map only loads parking lots for visible cities", async ({ page }) => {
+  await page.goto("");
+
+  let birminghamLoaded = false;
+  page.route("**/*", (route) => {
+    const requestUrl = route.request().url();
+    if (requestUrl.includes("birmingham-al")) {
+      birminghamLoaded = true;
+    }
+    route.continue();
+  });
+
+  // Wait a second to make sure the site is fully loaded.
+  await page.waitForTimeout(1000);
+
+  // Zoom out.
+  await page
+    .locator(".leaflet-control-zoom-out")
+    .click({ clickCount: 6, delay: 300 });
+
+  // Check that Birmingham's parking lots are not loaded
+  expect(birminghamLoaded).toBe(false);
+
+  // Drag map to Birmingham
+  await dragMap(page, 300);
+
+  // Check that Birmingham's parking lots are not loaded
+  expect(birminghamLoaded).toBe(true);
 });
