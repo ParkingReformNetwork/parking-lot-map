@@ -175,26 +175,32 @@ const loadParkingLot = async (cityId, parkingLayer) => {
   });
   if (load) {
     parkingLayer.addData(await parkingLots[`${cityId}.geojson`]());
+    parkingLayer.bringToBack(); // Ensures city boundary is on top
   }
 };
 
 /**
- * Move the map to the city boundaries and set its score card.
+ * Centers view to city.
  *
  * @param map: The Leaflet map instance.
+ * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
+ *    representing the score card properties stored in `score-cards.json`.
+ */
+const snapToCity = async (map, cityProperties) => {
+  const { layer } = cityProperties;
+  map.fitBounds(layer.getBounds());
+};
+/**
+ * Sets scorecard to city.
+ *
  * @param cityId: E.g. `columbus-oh`.
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
- * @param parkingLayer: GeoJSON layer with parking lot data
  */
-const setMapToCity = async (map, cityId, cityProperties, parkingLayer, toFitBounds = true) => {
+const setScorecard = (cityId, cityProperties) => {
   const { layer } = cityProperties;
-  if (toFitBounds) {
-    map.fitBounds(layer.getBounds());
-  }
   const scorecard = generateScorecard(cityProperties);
   setUpShareUrlClickListener(cityId);
-  await loadParkingLot(cityId, parkingLayer);
   const popup = new Popup({
     pane: "fixed",
     className: "popup-fixed",
@@ -203,8 +209,16 @@ const setMapToCity = async (map, cityId, cityProperties, parkingLayer, toFitBoun
   layer.bindPopup(popup).openPopup();
 };
 
-const setUpAutoScorecard = (map, cities) => {
-  map.on("moveend", () => {
+/**
+ * Pulls up scorecard for the city closest to the center of view.
+ * Also, loads parking lot data of any city in view.
+ *
+ * @param map: The Leaflet map instance.
+ * @param cities: Dictionary of cities with layer and scorecard info.
+ * @param parkingLayer: GeoJSON layer with parking lot data
+ */
+const setUpAutoScorecard = async (map, cities, parkingLayer) => {
+  map.on("moveend", async () => {
     let centralCityDistance = null;
     let centralCity;
     Object.entries(cities).forEach((city) => {
@@ -213,6 +227,7 @@ const setUpAutoScorecard = (map, cities) => {
 
       if (map.getBounds().intersects(bounds)) {
         const diff = map.getBounds().getCenter().distanceTo(bounds.getCenter());
+        loadParkingLot(cityName, parkingLayer); // Load parking lot data on any city in view
         if (centralCityDistance == null || diff < centralCityDistance) {
           centralCityDistance = diff;
           centralCity = cityName;
@@ -221,7 +236,7 @@ const setUpAutoScorecard = (map, cities) => {
     });
     if (centralCity) {
       document.getElementById("city-choice").value = centralCity;
-      setMapToCity(map, centralCity, cities[centralCity], false);
+      setScorecard(centralCity, cities[centralCity]);
     }
   });
 };
@@ -252,7 +267,7 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", async () => {
     const cityId = cityToggleElement.value;
-    await setMapToCity(map, cityId, cities[cityId], parkingLayer);
+    snapToCity(map, cities[cityId]);
   });
 
   // Set up map to update when user clicks within a city's boundary
@@ -261,16 +276,23 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
     if (currentZoom > 7) {
       const cityId = e.sourceTarget.feature.properties.id;
       cityToggleElement.value = cityId;
-      setMapToCity(map, cityId, cities[cityId], parkingLayer);
+      snapToCity(map, cities[cityId]);
     }
   });
 
   // Load initial city.
   const cityId = cityToggleElement.value;
-  setMapToCity(map, cityId, cities[cityId], parkingLayer);
-  setUpAutoScorecard(map, cities);
+  setUpAutoScorecard(map, cities, parkingLayer);
+  snapToCity(map, cities[cityId]);
+  setScorecard(cityId, cities[cityId]);
 };
 
+/**
+ * Creates a GeoJSON layer to hold all parking lot polygons.
+ * Every cites' parking lots will be lazily added to this layer.
+ *
+ * @param map: The Leaflet map instance.
+ */
 const setUpParkingparkingLayer = async (map) => {
   const parkingLayer = geoJSON(null, {
     style() {
