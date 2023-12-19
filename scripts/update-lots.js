@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { determineArgs, updateCoordinates } from "./base.js";
+import { determineArgs, updateParkingLots } from "./base.js";
 
 const main = async () => {
   const args = determineArgs("update-lots", process.argv.slice(2));
@@ -9,13 +9,7 @@ const main = async () => {
   }
 
   const { cityId } = args.value;
-  const result = await updateCoordinates(
-    "update-lots",
-    cityId,
-    false,
-    "data/parking-lots.geojson",
-    "parking-lots-update.geojson"
-  );
+  const result = await updateParkingLots(cityId, false);
 
   if (result.error) {
     console.error("Error:", result.error);

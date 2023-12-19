@@ -1,6 +1,12 @@
 /* eslint-disable no-console */
 import fs from "fs/promises";
-import { Ok, Err, determineArgs, updateCoordinates } from "./base.js";
+import {
+  Ok,
+  Err,
+  determineArgs,
+  updateCoordinates,
+  updateParkingLots,
+} from "./base.js";
 
 const addScoreCard = async (cityId, cityName) => {
   const newEntry = {
@@ -57,13 +63,7 @@ const main = async () => {
     process.exit(1);
   }
 
-  const lotsResult = await updateCoordinates(
-    "add-city",
-    cityId,
-    true,
-    "data/parking-lots.geojson",
-    "parking-lots-update.geojson"
-  );
+  const lotsResult = await updateParkingLots(cityId, true);
   if (lotsResult.error) {
     console.error("Error:", lotsResult.error);
     process.exit(1);
