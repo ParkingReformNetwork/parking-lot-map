@@ -78,7 +78,7 @@
   },
   "austin-tx": {
     "Name": "Austin, TX",
-    "Percentage": "17%",
+    "Percentage": "15%",
     "cityType": "core city",
     "Population": "961,855",
     "urbanizedAreaPopulation": "1,809,888",
@@ -117,7 +117,7 @@
   },
   "birmingham-al": {
     "Name": "Birmingham, AL",
-    "Percentage": "27%",
+    "Percentage": "30%",
     "cityType": "core city",
     "Population": "200,733",
     "urbanizedAreaPopulation": "774,956",
@@ -177,7 +177,7 @@
   },
   "cincinnati-oh": {
     "Name": "Cincinnati, OH",
-    "Percentage": "20%",
+    "Percentage": "22%",
     "cityType": "core city",
     "Population": "309,317",
     "urbanizedAreaPopulation": "1,686,744",
@@ -236,7 +236,7 @@
   },
   "dallas-tx": {
     "Name": "Dallas, TX",
-    "Percentage": "24%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "1,304,442",
     "urbanizedAreaPopulation": "5,732,354",
@@ -256,7 +256,7 @@
   },
   "denver-co": {
     "Name": "Denver, CO",
-    "Percentage": "12%",
+    "Percentage": "17%",
     "cityType": "core city",
     "Population": "715,522",
     "urbanizedAreaPopulation": "2,686,147",
@@ -315,7 +315,7 @@
   },
   "fresno-ca": {
     "Name": "Fresno, CA",
-    "Percentage": "30%",
+    "Percentage": "34%",
     "cityType": "core city",
     "Population": "542,107",
     "urbanizedAreaPopulation": "717,589",
@@ -354,7 +354,7 @@
   },
   "hartford-ct": {
     "Name": "Hartford, CT",
-    "Percentage": "22%",
+    "Percentage": "26%",
     "cityType": "core city",
     "Population": "121,054",
     "urbanizedAreaPopulation": "977,158",
@@ -373,7 +373,7 @@
   },
   "honolulu-hi": {
     "Name": "Honolulu, HI",
-    "Percentage": "15%",
+    "Percentage": "18%",
     "cityType": "core city",
     "Population": "350,964",
     "urbanizedAreaPopulation": "853,252",
@@ -462,7 +462,7 @@
   },
   "lincoln-ne": {
     "Name": "Lincoln, NE",
-    "Percentage": "23%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "291,082",
     "urbanizedAreaPopulation": "291,217",
@@ -500,7 +500,7 @@
   },
   "louisville-ky": {
     "Name": "Louisville, KY",
-    "Percentage": "28%",
+    "Percentage": "30%",
     "cityType": "core city",
     "Population": "632,689",
     "urbanizedAreaPopulation": "974,397",
@@ -540,7 +540,7 @@
   },
   "memphis-tn": {
     "Name": "Memphis, TN",
-    "Percentage": "25%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "633,104",
     "urbanizedAreaPopulation": "1,056,190",
@@ -568,7 +568,7 @@
   },
   "milwaukee-wi": {
     "Name": "Milwaukee, WI",
-    "Percentage": "18%",
+    "Percentage": "20%",
     "cityType": "core city",
     "Population": "577,222",
     "urbanizedAreaPopulation": "1,306,795",
@@ -578,7 +578,7 @@
   },
   "minneapolis-mn": {
     "Name": "Minneapolis, MN",
-    "Percentage": "17%",
+    "Percentage": "19%",
     "cityType": "core city",
     "Population": "428,403",
     "urbanizedAreaPopulation": "2,914,866",
@@ -607,7 +607,7 @@
   },
   "new-orleans-la": {
     "Name": "New Orleans, LA",
-    "Percentage": "19%",
+    "Percentage": "21%",
     "cityType": "core city",
     "Population": "383,997",
     "urbanizedAreaPopulation": "963,212",
@@ -657,7 +657,7 @@
   },
   "oklahoma-city-ok": {
     "Name": "Oklahoma City, OK",
-    "Percentage": "28%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "681,054",
     "urbanizedAreaPopulation": "982,276",
@@ -696,7 +696,7 @@
   },
   "phoenix-az": {
     "Name": "Phoenix, AZ",
-    "Percentage": "21%",
+    "Percentage": "22%",
     "cityType": "core city",
     "Population": "1,607,739",
     "urbanizedAreaPopulation": "3,976,313",
@@ -745,7 +745,7 @@
   },
   "richmond-va": {
     "Name": "Richmond, VA",
-    "Percentage": "21%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "226,610",
     "urbanizedAreaPopulation": "1,059,150",
@@ -774,7 +774,7 @@
   },
   "sacramento-ca": {
     "Name": "Sacramento, CA",
-    "Percentage": "17%",
+    "Percentage": "13%",
     "cityType": "core city",
     "Population": "522,754",
     "urbanizedAreaPopulation": "1,946,618",
@@ -784,7 +784,7 @@
   },
   "saint-louis-mo": {
     "Name": "Saint Louis, MO",
-    "Percentage": "21%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "301,578",
     "urbanizedAreaPopulation": "2,156,323",
@@ -843,7 +843,7 @@
   },
   "san-francisco-ca": {
     "Name": "San Francisco, CA",
-    "Percentage": "4%",
+    "Percentage": "3%",
     "cityType": "core city",
     "Population": "873,965",
     "urbanizedAreaPopulation": "3,515,933",
