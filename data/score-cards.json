@@ -59,7 +59,7 @@
   },
   "atlanta-ga": {
     "Name": "Atlanta, GA",
-    "Percentage": "25%",
+    "Percentage": "26%",
     "cityType": "core city",
     "Population": "498,715",
     "urbanizedAreaPopulation": "5,100,112",
@@ -78,7 +78,7 @@
   },
   "austin-tx": {
     "Name": "Austin, TX",
-    "Percentage": "17%",
+    "Percentage": "15%",
     "cityType": "core city",
     "Population": "961,855",
     "urbanizedAreaPopulation": "1,809,888",
@@ -97,7 +97,7 @@
   },
   "baltimore-md": {
     "Name": "Baltimore, MD",
-    "Percentage": "11%",
+    "Percentage": "15%",
     "cityType": "core city",
     "Population": "585,708",
     "urbanizedAreaPopulation": "2,212,038",
@@ -117,7 +117,7 @@
   },
   "birmingham-al": {
     "Name": "Birmingham, AL",
-    "Percentage": "27%",
+    "Percentage": "30%",
     "cityType": "core city",
     "Population": "200,733",
     "urbanizedAreaPopulation": "774,956",
@@ -137,7 +137,7 @@
   },
   "buffalo-ny": {
     "Name": "Buffalo, NY",
-    "Percentage": "29%",
+    "Percentage": "30%",
     "cityType": "core city",
     "Population": "278,349",
     "urbanizedAreaPopulation": "948,864",
@@ -157,7 +157,7 @@
   },
   "charlotte-nc": {
     "Name": "Charlotte, NC",
-    "Percentage": "18%",
+    "Percentage": "26%",
     "cityType": "core city",
     "Population": "874,541",
     "urbanizedAreaPopulation": "1,379,873",
@@ -167,7 +167,7 @@
   },
   "chicago-il": {
     "Name": "Chicago, IL",
-    "Percentage": "4%",
+    "Percentage": "7%",
     "cityType": "core city",
     "Population": "2,747,231",
     "urbanizedAreaPopulation": "8,671,746",
@@ -177,7 +177,7 @@
   },
   "cincinnati-oh": {
     "Name": "Cincinnati, OH",
-    "Percentage": "20%",
+    "Percentage": "22%",
     "cityType": "core city",
     "Population": "309,317",
     "urbanizedAreaPopulation": "1,686,744",
@@ -187,7 +187,7 @@
   },
   "cleveland-oh": {
     "Name": "Cleveland, OH",
-    "Percentage": "26%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "373,091",
     "urbanizedAreaPopulation": "1,712,178",
@@ -236,7 +236,7 @@
   },
   "dallas-tx": {
     "Name": "Dallas, TX",
-    "Percentage": "24%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "1,304,442",
     "urbanizedAreaPopulation": "5,732,354",
@@ -256,7 +256,7 @@
   },
   "denver-co": {
     "Name": "Denver, CO",
-    "Percentage": "12%",
+    "Percentage": "17%",
     "cityType": "core city",
     "Population": "715,522",
     "urbanizedAreaPopulation": "2,686,147",
@@ -315,7 +315,7 @@
   },
   "fresno-ca": {
     "Name": "Fresno, CA",
-    "Percentage": "30%",
+    "Percentage": "34%",
     "cityType": "core city",
     "Population": "542,107",
     "urbanizedAreaPopulation": "717,589",
@@ -354,7 +354,7 @@
   },
   "hartford-ct": {
     "Name": "Hartford, CT",
-    "Percentage": "22%",
+    "Percentage": "26%",
     "cityType": "core city",
     "Population": "121,054",
     "urbanizedAreaPopulation": "977,158",
@@ -373,7 +373,7 @@
   },
   "honolulu-hi": {
     "Name": "Honolulu, HI",
-    "Percentage": "15%",
+    "Percentage": "18%",
     "cityType": "core city",
     "Population": "350,964",
     "urbanizedAreaPopulation": "853,252",
@@ -393,7 +393,7 @@
   },
   "indianapolis-in": {
     "Name": "Indianapolis, IN",
-    "Percentage": "24%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "887,752",
     "urbanizedAreaPopulation": "1,699,881",
@@ -403,7 +403,7 @@
   },
   "jacksonville-fl": {
     "Name": "Jacksonville, FL",
-    "Percentage": "29%",
+    "Percentage": "26%",
     "cityType": "core city",
     "Population": "887,752",
     "urbanizedAreaPopulation": "1,247,374",
@@ -462,7 +462,7 @@
   },
   "lincoln-ne": {
     "Name": "Lincoln, NE",
-    "Percentage": "23%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "291,082",
     "urbanizedAreaPopulation": "291,217",
@@ -490,7 +490,7 @@
   },
   "los-angeles-ca": {
     "Name": "Los Angeles, CA",
-    "Percentage": "12%",
+    "Percentage": "23%",
     "cityType": "core city",
     "Population": "3,893,986",
     "urbanizedAreaPopulation": "12,237,376",
@@ -500,7 +500,7 @@
   },
   "louisville-ky": {
     "Name": "Louisville, KY",
-    "Percentage": "28%",
+    "Percentage": "30%",
     "cityType": "core city",
     "Population": "632,689",
     "urbanizedAreaPopulation": "974,397",
@@ -540,7 +540,7 @@
   },
   "memphis-tn": {
     "Name": "Memphis, TN",
-    "Percentage": "25%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "633,104",
     "urbanizedAreaPopulation": "1,056,190",
@@ -558,7 +558,7 @@
   },
   "miami-fl": {
     "Name": "Miami, FL",
-    "Percentage": "18%",
+    "Percentage": "19%",
     "cityType": "core city",
     "Population": "442,265",
     "urbanizedAreaPopulation": "6,077,522",
@@ -568,7 +568,7 @@
   },
   "milwaukee-wi": {
     "Name": "Milwaukee, WI",
-    "Percentage": "18%",
+    "Percentage": "20%",
     "cityType": "core city",
     "Population": "577,222",
     "urbanizedAreaPopulation": "1,306,795",
@@ -578,7 +578,7 @@
   },
   "minneapolis-mn": {
     "Name": "Minneapolis, MN",
-    "Percentage": "17%",
+    "Percentage": "19%",
     "cityType": "core city",
     "Population": "428,403",
     "urbanizedAreaPopulation": "2,914,866",
@@ -588,7 +588,7 @@
   },
   "nashville-tn": {
     "Name": "Nashville, TN",
-    "Percentage": "19%",
+    "Percentage": "24%",
     "cityType": "core city",
     "Population": "689,504",
     "urbanizedAreaPopulation": "1,158,642",
@@ -598,7 +598,7 @@
   },
   "new-haven-ct": {
     "Name": "New Haven, CT",
-    "Percentage": "19%",
+    "Percentage": "34%",
     "cityType": "principal",
     "Population": "134,023",
     "urbanizedAreaPopulation": "561,456",
@@ -607,7 +607,7 @@
   },
   "new-orleans-la": {
     "Name": "New Orleans, LA",
-    "Percentage": "19%",
+    "Percentage": "21%",
     "cityType": "core city",
     "Population": "383,997",
     "urbanizedAreaPopulation": "963,212",
@@ -617,7 +617,7 @@
   },
   "new-york-ny": {
     "Name": "New York, NY",
-    "Percentage": "1%",
+    "Percentage": "0.4%",
     "cityType": "core city",
     "Population": "8,804,190",
     "urbanizedAreaPopulation": "19,426,449",
@@ -637,7 +637,7 @@
   },
   "norfolk-va": {
     "Name": "Norfolk, VA",
-    "Percentage": "23%",
+    "Percentage": "24%",
     "cityType": "core city",
     "Population": "238,005",
     "urbanizedAreaPopulation": "1,451,578",
@@ -657,7 +657,7 @@
   },
   "oklahoma-city-ok": {
     "Name": "Oklahoma City, OK",
-    "Percentage": "28%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "681,054",
     "urbanizedAreaPopulation": "982,276",
@@ -667,7 +667,7 @@
   },
   "omaha-ne": {
     "Name": "Omaha, NE",
-    "Percentage": "21%",
+    "Percentage": "23%",
     "cityType": "core city",
     "Population": "486,051",
     "urbanizedAreaPopulation": "819,508",
@@ -677,7 +677,7 @@
   },
   "orlando-fl": {
     "Name": "Orlando, FL",
-    "Percentage": "29%",
+    "Percentage": "33%",
     "cityType": "core city",
     "Population": "307,573",
     "urbanizedAreaPopulation": "1,853,896",
@@ -686,7 +686,7 @@
   },
   "philadelphia-pa": {
     "Name": "Philadelphia, PA",
-    "Percentage": "13%",
+    "Percentage": "14%",
     "cityType": "core city",
     "Population": "1,603,797",
     "urbanizedAreaPopulation": "5,696,125",
@@ -696,7 +696,7 @@
   },
   "phoenix-az": {
     "Name": "Phoenix, AZ",
-    "Percentage": "21%",
+    "Percentage": "22%",
     "cityType": "core city",
     "Population": "1,607,739",
     "urbanizedAreaPopulation": "3,976,313",
@@ -745,7 +745,7 @@
   },
   "richmond-va": {
     "Name": "Richmond, VA",
-    "Percentage": "21%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "226,610",
     "urbanizedAreaPopulation": "1,059,150",
@@ -774,7 +774,7 @@
   },
   "sacramento-ca": {
     "Name": "Sacramento, CA",
-    "Percentage": "17%",
+    "Percentage": "13%",
     "cityType": "core city",
     "Population": "522,754",
     "urbanizedAreaPopulation": "1,946,618",
@@ -784,7 +784,7 @@
   },
   "saint-louis-mo": {
     "Name": "Saint Louis, MO",
-    "Percentage": "21%",
+    "Percentage": "25%",
     "cityType": "core city",
     "Population": "301,578",
     "urbanizedAreaPopulation": "2,156,323",
@@ -814,7 +814,7 @@
   },
   "san-antonio-tx": {
     "Name": "San Antonio, TX",
-    "Percentage": "28%",
+    "Percentage": "29%",
     "cityType": "core city",
     "Population": "1,434,270",
     "urbanizedAreaPopulation": "1,992,689",
@@ -843,7 +843,7 @@
   },
   "san-francisco-ca": {
     "Name": "San Francisco, CA",
-    "Percentage": "4%",
+    "Percentage": "3%",
     "cityType": "core city",
     "Population": "873,965",
     "urbanizedAreaPopulation": "3,515,933",
@@ -863,7 +863,7 @@
   },
   "san-juan-pr": {
     "Name": "San Juan, PR",
-    "Percentage": "7%",
+    "Percentage": "41%",
     "cityType": "core city",
     "Population": "342,259",
     "urbanizedAreaPopulation": "1,844,410",
@@ -900,7 +900,7 @@
   },
   "seattle-wa": {
     "Name": "Seattle, WA",
-    "Percentage": "10%",
+    "Percentage": "9%",
     "cityType": "core city",
     "Population": "735,157",
     "urbanizedAreaPopulation": "3,544,011",
@@ -910,7 +910,7 @@
   },
   "st.-petersburg-fl": {
     "Name": "St. Petersburg, FL",
-    "Percentage": "24%",
+    "Percentage": "28%",
     "cityType": "principal",
     "Population": "258,308",
     "urbanizedAreaPopulation": "2,783,045",
@@ -929,7 +929,7 @@
   },
   "tampa-fl": {
     "Name": "Tampa, FL",
-    "Percentage": "30%",
+    "Percentage": "29%",
     "cityType": "core city",
     "Population": "382,769",
     "urbanizedAreaPopulation": "2,783,045",
@@ -948,7 +948,7 @@
   },
   "tucson-az": {
     "Name": "Tucson, AZ",
-    "Percentage": "23%",
+    "Percentage": "18%",
     "cityType": "core city",
     "Population": "542,629",
     "urbanizedAreaPopulation": "875,441",
