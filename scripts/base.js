@@ -107,12 +107,15 @@ const updateCoordinates = async (
   return Ok("File updated successfully!");
 };
 
-const updateParkingLots = async (cityId, addCity) => {
-  const parkingFilePath = `data/parking-lots/${cityId}.geojson`;
-
+const updateParkingLots = async (
+  cityId,
+  addCity,
+  originalFilePath,
+  updateFilePath
+) => {
   let newData;
   try {
-    const rawNewData = await fs.readFile("parking-lots-update.geojson", "utf8");
+    const rawNewData = await fs.readFile(originalFilePath, "utf8");
     newData = JSON.parse(rawNewData);
   } catch (err) {
     return Err(
@@ -135,20 +138,20 @@ const updateParkingLots = async (cityId, addCity) => {
       properties: { id: cityId },
       geometry: { type: newGeometryType, coordinates: newCoordinates },
     };
-    await fs.writeFile(parkingFilePath, JSON.stringify(newFile, null, 2));
+    await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
   } else {
     let originalData;
     try {
-      const rawOriginalData = await fs.readFile(parkingFilePath, "utf8");
+      const rawOriginalData = await fs.readFile(updateFilePath, "utf8");
       originalData = JSON.parse(rawOriginalData);
     } catch (err) {
       return Err(
-        `Issue reading the original data file path ${parkingFilePath}: ${err.message}`
+        `Issue reading the original data file path ${updateFilePath}: ${err.message}`
       );
     }
     originalData.geometry.coordinates = newCoordinates;
 
-    await fs.writeFile(parkingFilePath, JSON.stringify(originalData, null, 2));
+    await fs.writeFile(updateFilePath, JSON.stringify(originalData, null, 2));
   }
   return Ok("File updated successfully!");
 };

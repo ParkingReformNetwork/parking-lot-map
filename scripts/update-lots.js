@@ -9,7 +9,12 @@ const main = async () => {
   }
 
   const { cityId } = args.value;
-  const result = await updateParkingLots(cityId, false);
+  const result = await updateParkingLots(
+    cityId,
+    false,
+    "parking-lots-update.geojson",
+    `data/parking-lots/${cityId}.geojson`
+  );
 
   if (result.error) {
     console.error("Error:", result.error);

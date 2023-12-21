@@ -63,7 +63,12 @@ const main = async () => {
     process.exit(1);
   }
 
-  const lotsResult = await updateParkingLots(cityId, true);
+  const lotsResult = await updateParkingLots(
+    cityId,
+    true,
+    "parking-lots-update.geojson",
+    `data/parking-lots/${cityId}.geojson`
+  );
   if (lotsResult.error) {
     console.error("Error:", lotsResult.error);
     process.exit(1);
