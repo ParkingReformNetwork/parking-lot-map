@@ -1,6 +1,10 @@
 import fs from "fs/promises";
 import { expect, test } from "@playwright/test";
-import { determineArgs, updateCoordinates } from "../../scripts/base";
+import {
+  determineArgs,
+  updateCoordinates,
+  updateParkingLots,
+} from "../../scripts/base";
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
@@ -152,5 +156,70 @@ test.describe("updateCoordinates()", () => {
       validUpdateFilePath
     );
     expect(result.error).toContain("tests/scripts/data/does-not-exist");
+  });
+});
+
+test.describe("updateParkingLots()", () => {
+  let originalData;
+  const parkingLotData = "tests/scripts/data/parking-lot-data.geojson";
+  const addDataPath = "tests/scripts/data/new-parking-lot.geojson";
+
+  test.beforeAll(async () => {
+    // Save the original data for reverting the changes.
+    originalData = await fs.readFile(parkingLotData, "utf8");
+  });
+
+  test.afterEach(async () => {
+    // Revert the changes.
+    await fs.writeFile(parkingLotData, originalData);
+  });
+
+  const expectUpdatedFile = async (cityId, updateFilePath) => {
+    const rawUpdatedData = await fs.readFile(updateFilePath, "utf8");
+    const updatedData = JSON.parse(rawUpdatedData);
+    const updatedCoordinates = updatedData.geometry.coordinates;
+
+    const parsedOriginalData = JSON.parse(originalData);
+
+    expect(updatedData.properties).toEqual({
+      id: cityId,
+    });
+    expect(updatedData.geometry.type).toEqual("MultiPolygon");
+    expect(parsedOriginalData.features[0].geometry.coordinates).toEqual(
+      updatedCoordinates
+    );
+  };
+
+  test("adds a new city", async () => {
+    const cityId = "parking-reform-now";
+    const result = await updateParkingLots(
+      cityId,
+      true,
+      parkingLotData,
+      addDataPath
+    );
+    expect(result.error).toBeUndefined();
+    expect(result.value).toBeDefined();
+
+    await expectUpdatedFile(cityId, addDataPath);
+
+    await fs.rm(addDataPath);
+  });
+  test("update city lots", async () => {
+    const existingDataPath = "tests/scripts/data/existing-lot-data.geojson";
+    const existingData = await fs.readFile(existingDataPath);
+
+    const cityId = "parking-reform-now";
+    const result = await updateParkingLots(
+      cityId,
+      true,
+      parkingLotData,
+      existingDataPath
+    );
+    expect(result.error).toBeUndefined();
+    expect(result.value).toBeDefined();
+
+    await expectUpdatedFile(cityId, existingDataPath);
+    await fs.writeFile(existingDataPath, existingData);
   });
 });

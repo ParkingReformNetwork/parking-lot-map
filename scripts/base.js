@@ -107,4 +107,53 @@ const updateCoordinates = async (
   return Ok("File updated successfully!");
 };
 
-export { Ok, Err, determineArgs, updateCoordinates };
+const updateParkingLots = async (
+  cityId,
+  addCity,
+  originalFilePath,
+  updateFilePath
+) => {
+  let newData;
+  try {
+    const rawNewData = await fs.readFile(originalFilePath, "utf8");
+    newData = JSON.parse(rawNewData);
+  } catch (err) {
+    return Err(
+      `Issue reading the update file path parking-lots-update.geojson: ${err.message}`
+    );
+  }
+
+  if (!Array.isArray(newData.features) || newData.features.length !== 1) {
+    return Err(
+      "The script expects exactly one entry in `features` because you can only update one city at a time."
+    );
+  }
+
+  const newCoordinates = newData.features[0].geometry.coordinates;
+  const newGeometryType = newData.features[0].geometry.type;
+
+  if (addCity) {
+    const newFile = {
+      type: "Feature",
+      properties: { id: cityId },
+      geometry: { type: newGeometryType, coordinates: newCoordinates },
+    };
+    await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
+  } else {
+    let originalData;
+    try {
+      const rawOriginalData = await fs.readFile(updateFilePath, "utf8");
+      originalData = JSON.parse(rawOriginalData);
+    } catch (err) {
+      return Err(
+        `Issue reading the original data file path ${updateFilePath}: ${err.message}`
+      );
+    }
+    originalData.geometry.coordinates = newCoordinates;
+
+    await fs.writeFile(updateFilePath, JSON.stringify(originalData, null, 2));
+  }
+  return Ok("File updated successfully!");
+};
+
+export { Ok, Err, determineArgs, updateCoordinates, updateParkingLots };
