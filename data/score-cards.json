@@ -782,16 +782,6 @@
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Sacramento_CA.html"
   },
-  "saint-louis-mo": {
-    "Name": "Saint Louis, MO",
-    "Percentage": "25%",
-    "cityType": "core city",
-    "Population": "301,578",
-    "urbanizedAreaPopulation": "2,156,323",
-    "Parking Score": "50",
-    "Reforms": "implemented",
-    "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Louis_MO.html"
-  },
   "saint-paul-mn": {
     "Name": "Saint Paul, MN",
     "Percentage": "16%",
@@ -907,6 +897,16 @@
     "Parking Score": "26",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Seattle_WA.html"
+  },
+  "st.-louis-mo": {
+    "Name": "St. Louis, MO",
+    "Percentage": "25%",
+    "cityType": "core city",
+    "Population": "301,578",
+    "urbanizedAreaPopulation": "2,156,323",
+    "Parking Score": "50",
+    "Reforms": "implemented",
+    "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Louis_MO.html"
   },
   "st.-petersburg-fl": {
     "Name": "St. Petersburg, FL",

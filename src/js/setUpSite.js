@@ -106,7 +106,7 @@ const copyToClipboard = async (value) => {
 /**
  * Add an event listener for the share button to copy the link to the clipboard.
  *
- * @param string cityId: e.g. `saint-louis-mo`
+ * @param string cityId: e.g. `st.-louis-mo`
  */
 const setUpShareUrlClickListener = (cityId) => {
   // We put the event listener on `map` because it is never erased, unlike the copy button
