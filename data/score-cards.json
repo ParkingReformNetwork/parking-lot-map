@@ -4,7 +4,7 @@
     "Percentage": "29%",
     "cityType": "core city",
     "Population": "99,233",
-    "urbanizedAreaPopulation": "899,748",
+    "urbanizedAreaPopulation": "593,142",
     "Parking Score": "50",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Albany_NY.html"
@@ -24,14 +24,14 @@
     "Percentage": "27%",
     "cityType": "core city",
     "Population": "125,858",
-    "urbanizedAreaPopulation": "861,508",
+    "urbanizedAreaPopulation": "621,703",
     "Parking Score": "47",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Allentown_PA.html"
   },
   "anaheim-ca": {
     "Name": "Anaheim, CA",
-    "Percentage": "23%",
+    "Percentage": "24%",
     "cityType": "principal",
     "Population": "346,824",
     "urbanizedAreaPopulation": "12,237,376",
@@ -80,7 +80,7 @@
     "Name": "Austin, TX",
     "Percentage": "15%",
     "cityType": "core city",
-    "Population": "961,855",
+    "Population": "959,549",
     "urbanizedAreaPopulation": "1,809,888",
     "Parking Score": "21",
     "Reforms": "implemented",
@@ -110,7 +110,7 @@
     "Percentage": "33%",
     "cityType": "core city",
     "Population": "226,916",
-    "urbanizedAreaPopulation": "870,220",
+    "urbanizedAreaPopulation": "631,326",
     "Parking Score": "64",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Baton Rouge_LA.html"
@@ -150,7 +150,7 @@
     "Percentage": "23%",
     "cityType": "core city",
     "Population": "150,288",
-    "urbanizedAreaPopulation": "803,413",
+    "urbanizedAreaPopulation": "684,773",
     "Parking Score": "33",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Charleston_SC.html"
@@ -177,7 +177,7 @@
   },
   "cincinnati-oh": {
     "Name": "Cincinnati, OH",
-    "Percentage": "22%",
+    "Percentage": "21%",
     "cityType": "core city",
     "Population": "309,317",
     "urbanizedAreaPopulation": "1,686,744",
@@ -210,7 +210,7 @@
     "Percentage": "37%",
     "cityType": "core city",
     "Population": "136,803",
-    "urbanizedAreaPopulation": "830,082",
+    "urbanizedAreaPopulation": "590,407",
     "Parking Score": "78",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Columbia_SC.html"
@@ -249,7 +249,7 @@
     "Percentage": "29%",
     "cityType": "core city",
     "Population": "137,624",
-    "urbanizedAreaPopulation": "814,162",
+    "urbanizedAreaPopulation": "674,046",
     "Parking Score": "50",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Dayton_OH.html"
@@ -268,14 +268,14 @@
     "Percentage": "26%",
     "cityType": "core city",
     "Population": "214,125",
-    "urbanizedAreaPopulation": "711,109",
+    "urbanizedAreaPopulation": "542,486",
     "Parking Score": "38",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Des Moines_IA.html"
   },
   "detroit-mi": {
     "Name": "Detroit, MI",
-    "Percentage": "30%",
+    "Percentage": "31%",
     "cityType": "core city",
     "Population": "639,614",
     "urbanizedAreaPopulation": "3,776,890",
@@ -298,14 +298,14 @@
     "Percentage": "30%",
     "cityType": "core city",
     "Population": "86,401",
-    "urbanizedAreaPopulation": "765,504",
+    "urbanizedAreaPopulation": "599,242",
     "Parking Score": "57",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Fort Myers_FL.html"
   },
   "fort-worth-tx": {
     "Name": "Fort Worth, TX",
-    "Percentage": "27%",
+    "Percentage": "28%",
     "cityType": "principal",
     "Population": "918,377",
     "urbanizedAreaPopulation": "5,732,354",
@@ -347,7 +347,7 @@
     "Percentage": "30%",
     "cityType": "core city",
     "Population": "50,088",
-    "urbanizedAreaPopulation": "592,736",
+    "urbanizedAreaPopulation": "490,859",
     "Parking Score": "53",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Harrisburg_PA.html"
@@ -405,7 +405,7 @@
     "Name": "Jacksonville, FL",
     "Percentage": "26%",
     "cityType": "core city",
-    "Population": "887,752",
+    "Population": "949,611",
     "urbanizedAreaPopulation": "1,247,374",
     "Parking Score": "48",
     "Reforms": "implemented",
@@ -413,7 +413,7 @@
   },
   "jersey-city-nj": {
     "Name": "Jersey City, NJ",
-    "Percentage": "20%",
+    "Percentage": "24%",
     "cityType": "principal",
     "Population": "292,449",
     "urbanizedAreaPopulation": "19,426,449",
@@ -436,8 +436,8 @@
     "Percentage": "27%",
     "cityType": "core city",
     "Population": "190,728",
-    "urbanizedAreaPopulation": "882,268",
-    "Parking Score": "44",
+    "urbanizedAreaPopulation": "597,257",
+    "Parking Score": "48",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Knoxville_TN.html"
   },
@@ -474,7 +474,7 @@
     "Percentage": "34%",
     "cityType": "core city",
     "Population": "202,562",
-    "urbanizedAreaPopulation": "748,940",
+    "urbanizedAreaPopulation": "461,864",
     "Parking Score": "65",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Little Rock_AR.html"
@@ -513,7 +513,7 @@
     "Percentage": "18%",
     "cityType": "core city",
     "Population": "269,769",
-    "urbanizedAreaPopulation": "681,838",
+    "urbanizedAreaPopulation": "450,305",
     "Parking Score": "16",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Madison_WI.html"
@@ -523,7 +523,7 @@
     "Percentage": "28%",
     "cityType": "core city",
     "Population": "142,195",
-    "urbanizedAreaPopulation": "872,806",
+    "urbanizedAreaPopulation": "779,553",
     "Parking Score": "46",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/McAllen_TX.html"
@@ -533,7 +533,7 @@
     "Percentage": "35%",
     "cityType": "core city",
     "Population": "84,703",
-    "urbanizedAreaPopulation": "608,713",
+    "urbanizedAreaPopulation": "510,675",
     "Parking Score": "68",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Melbourne_FL.html"
@@ -706,7 +706,7 @@
   },
   "pittsburgh-pa": {
     "Name": "Pittsburgh, PA",
-    "Percentage": "15%",
+    "Percentage": "16%",
     "cityType": "core city",
     "Population": "302,971",
     "urbanizedAreaPopulation": "1,745,039",
@@ -774,23 +774,13 @@
   },
   "sacramento-ca": {
     "Name": "Sacramento, CA",
-    "Percentage": "13%",
+    "Percentage": "16%",
     "cityType": "core city",
     "Population": "522,754",
     "urbanizedAreaPopulation": "1,946,618",
     "Parking Score": "25",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Sacramento_CA.html"
-  },
-  "saint-louis-mo": {
-    "Name": "Saint Louis, MO",
-    "Percentage": "25%",
-    "cityType": "core city",
-    "Population": "301,578",
-    "urbanizedAreaPopulation": "2,156,323",
-    "Parking Score": "50",
-    "Reforms": "implemented",
-    "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Louis_MO.html"
   },
   "saint-paul-mn": {
     "Name": "Saint Paul, MN",
@@ -826,14 +816,14 @@
     "Name": "San Bernardino, CA",
     "Percentage": "49%",
     "cityType": "principal",
-    "Population": "221,101",
+    "Population": "222,101",
     "urbanizedAreaPopulation": "2,276,703",
     "Parking Score": "N/A",
     "Reforms": "no reforms"
   },
   "san-diego-ca": {
     "Name": "San Diego, CA",
-    "Percentage": "14%",
+    "Percentage": "13%",
     "cityType": "core city",
     "Population": "1,385,922",
     "urbanizedAreaPopulation": "3,070,300",
@@ -866,7 +856,7 @@
     "Percentage": "41%",
     "cityType": "core city",
     "Population": "342,259",
-    "urbanizedAreaPopulation": "1,844,410",
+    "urbanizedAreaPopulation": "1,814,587",
     "Parking Score": "100",
     "Reforms": "no reforms"
   },
@@ -893,7 +883,7 @@
     "Percentage": "29%",
     "cityType": "core city",
     "Population": "54,840",
-    "urbanizedAreaPopulation": "837,800",
+    "urbanizedAreaPopulation": "779,075",
     "Parking Score": "52",
     "Reforms": "no reforms",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Sarasota_FL.html"
@@ -907,6 +897,16 @@
     "Parking Score": "26",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Seattle_WA.html"
+  },
+  "st.-louis-mo": {
+    "Name": "St. Louis, MO",
+    "Percentage": "25%",
+    "cityType": "core city",
+    "Population": "301,578",
+    "urbanizedAreaPopulation": "2,156,323",
+    "Parking Score": "50",
+    "Reforms": "implemented",
+    "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Louis_MO.html"
   },
   "st.-petersburg-fl": {
     "Name": "St. Petersburg, FL",
@@ -941,7 +941,7 @@
     "Percentage": "27%",
     "cityType": "core city",
     "Population": "270,880",
-    "urbanizedAreaPopulation": "646,012",
+    "urbanizedAreaPopulation": "497,952",
     "Parking Score": "45",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Toledo_OH.html"

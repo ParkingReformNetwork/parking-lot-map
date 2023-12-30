@@ -59,7 +59,7 @@ Then, save your changes in Git (in a new branch) and open a pull request. See th
 
 Export the GeoJSON file and save it as the file `parking-lots-update.geojson` in the root of this repository. If the file already exists, overwrite it with your new data.
 
-Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `Saint Louis, MO`.
+Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `St. Louis, MO`.
 
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
@@ -75,7 +75,7 @@ Then, save your changes in Git (in a new branch) and open a pull request. See th
 
 Export the GeoJSON file and save it as the file `city-update.geojson` in the root of this repository. If the file already exists, overwrite it with your new data.
 
-Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `Saint Louis, MO`.
+Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `St. Louis, MO`.
 
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
@@ -93,7 +93,7 @@ Export the city boundaries' GeoJSON and save it as the file `city-update.geojson
 
 Also export the city's parking lots GeoJSON and save it as the file `parking-lots-update.geojson`.
 
-Then, determine the city/state name, such as `Saint Louis, MO`.
+Then, determine the city/state name, such as `St. Louis, MO`.
 
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
