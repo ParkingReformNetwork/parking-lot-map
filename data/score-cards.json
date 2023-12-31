@@ -900,7 +900,7 @@
   },
   "st.-louis-mo": {
     "Name": "St. Louis, MO",
-    "Percentage": "25%",
+    "Percentage": "27%",
     "cityType": "core city",
     "Population": "301,578",
     "urbanizedAreaPopulation": "2,156,323",
@@ -976,7 +976,7 @@
   },
   "washington-dc": {
     "Name": "Washington, DC",
-    "Percentage": "3%",
+    "Percentage": "4%",
     "cityType": "core city",
     "Population": "689,545",
     "urbanizedAreaPopulation": "5,174,759",
