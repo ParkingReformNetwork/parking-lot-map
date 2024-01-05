@@ -866,11 +866,12 @@
   "santa-barbara-ca": {
     "Name": "Santa Barbara, CA",
     "Percentage": "27%",
-    "cityType": "node city",
+    "cityType": "core city",
     "Population": "88,665",
-    "urbanizedAreaPopulation": "446,475",
+    "urbanizedAreaPopulation": "199,023",
     "Parking Score": "N/A",
-    "Reforms": "No Reforms"
+    "Reforms": "No Reforms",
+    "Website URL": "https://parkingreform.org/mandates-map/city_detail/SantaBarbara_CA.html"
   },
   "sarasota-fl": {
     "Name": "Sarasota, FL",
