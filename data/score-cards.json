@@ -31,7 +31,7 @@
   },
   "anaheim-ca": {
     "Name": "Anaheim, CA",
-    "Percentage": "24%",
+    "Percentage": "33%",
     "cityType": "principal",
     "Population": "346,824",
     "urbanizedAreaPopulation": "12,237,376",
@@ -40,7 +40,7 @@
   },
   "anchorage-ak": {
     "Name": "Anchorage, AK",
-    "Percentage": "30%",
+    "Percentage": "34%",
     "cityType": "core city",
     "Population": "291,247",
     "urbanizedAreaPopulation": "249,252",
@@ -50,7 +50,7 @@
   },
   "arlington-tx": {
     "Name": "Arlington, TX",
-    "Percentage": "42%",
+    "Percentage": "39%",
     "cityType": "suburb",
     "Population": "394,218",
     "urbanizedAreaPopulation": "5,732,354",
@@ -69,7 +69,7 @@
   },
   "aurora-co": {
     "Name": "Aurora, CO",
-    "Percentage": "26%",
+    "Percentage": "28%",
     "cityType": "suburb",
     "Population": "386,261",
     "urbanizedAreaPopulation": "2,686,147",
@@ -301,7 +301,7 @@
   },
   "fort-worth-tx": {
     "Name": "Fort Worth, TX",
-    "Percentage": "28%",
+    "Percentage": "29%",
     "cityType": "principal",
     "Population": "918,377",
     "urbanizedAreaPopulation": "5,732,354",
@@ -331,7 +331,7 @@
   },
   "greensboro-nc": {
     "Name": "Greensboro, NC",
-    "Percentage": "32%",
+    "Percentage": "31%",
     "cityType": "core city",
     "Population": "299,035",
     "urbanizedAreaPopulation": "338,928",
@@ -409,7 +409,7 @@
   },
   "jersey-city-nj": {
     "Name": "Jersey City, NJ",
-    "Percentage": "24%",
+    "Percentage": "25%",
     "cityType": "principal",
     "Population": "292,449",
     "urbanizedAreaPopulation": "19,426,449",
@@ -621,7 +621,7 @@
   },
   "newark-nj": {
     "Name": "Newark, NJ",
-    "Percentage": "26%",
+    "Percentage": "28%",
     "cityType": "principal",
     "Population": "311,549",
     "urbanizedAreaPopulation": "19,426,449",
@@ -641,7 +641,7 @@
   },
   "oakland-ca": {
     "Name": "Oakland, CA",
-    "Percentage": "12%",
+    "Percentage": "14%",
     "cityType": "principal",
     "Population": "439,349",
     "urbanizedAreaPopulation": "3,515,933",
@@ -719,7 +719,7 @@
   },
   "providence-ri": {
     "Name": "Providence, RI",
-    "Percentage": "24%",
+    "Percentage": "27%",
     "cityType": "principal",
     "Population": "190,934",
     "urbanizedAreaPopulation": "1,285,806",
@@ -778,7 +778,7 @@
   },
   "saint-paul-mn": {
     "Name": "Saint Paul, MN",
-    "Percentage": "16%",
+    "Percentage": "18%",
     "cityType": "principal",
     "Population": "311,527",
     "urbanizedAreaPopulation": "2,914,866",
@@ -837,7 +837,7 @@
   },
   "san-jose-ca": {
     "Name": "San Jose, CA",
-    "Percentage": "14%",
+    "Percentage": "18%",
     "cityType": "principal",
     "Population": "1,014,545",
     "urbanizedAreaPopulation": "1,837,446",
@@ -856,7 +856,7 @@
   },
   "santa-ana-ca": {
     "Name": "Santa Ana, CA",
-    "Percentage": "22%",
+    "Percentage": "20%",
     "cityType": "principal",
     "Population": "310,227",
     "urbanizedAreaPopulation": "12,237,376",
@@ -960,7 +960,7 @@
   },
   "virginia-beach-va": {
     "Name": "Virginia Beach, VA",
-    "Percentage": "35%",
+    "Percentage": "36%",
     "cityType": "suburb",
     "Population": "459,470",
     "urbanizedAreaPopulation": "2,196,623",
