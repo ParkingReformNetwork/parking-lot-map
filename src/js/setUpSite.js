@@ -165,8 +165,7 @@ const generateScorecard = (scoreCardEntry) => {
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const snapToCity = async (map, cityProperties) => {
-  const { layer } = cityProperties;
+const snapToCity = async (map, layer) => {
   map.fitBounds(layer.getBounds());
 };
 
@@ -239,7 +238,7 @@ const setUpCitiesLayer = async (map) => {
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
-    snapToCity(map, cities[cityId]);
+    snapToCity(map, cities[cityId].layer);
   });
 
   // Set up map to update when user clicks within a city's boundary
@@ -248,14 +247,14 @@ const setUpCitiesLayer = async (map) => {
     if (currentZoom > 7) {
       const cityId = e.sourceTarget.feature.properties.id;
       cityToggleElement.value = cityId;
-      snapToCity(map, cities[cityId]);
+      snapToCity(map, cities[cityId].layer);
     }
   });
 
   // Load initial city.
   const cityId = cityToggleElement.value;
   setUpAutoScorecard(map, cities);
-  snapToCity(map, cities[cityId]);
+  snapToCity(map, cities[cityId].layer);
   setScorecard(cityId, cities[cityId]);
 };
 
