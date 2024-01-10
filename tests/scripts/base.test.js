@@ -205,6 +205,7 @@ test.describe("updateParkingLots()", () => {
 
     await fs.rm(addDataPath);
   });
+  
   test("update city lots", async () => {
     const existingDataPath = "tests/scripts/data/existing-lot-data.geojson";
     const existingData = await fs.readFile(existingDataPath);

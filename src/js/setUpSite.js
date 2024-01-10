@@ -190,6 +190,7 @@ const snapToCity = async (map, cityProperties) => {
   const { layer } = cityProperties;
   map.fitBounds(layer.getBounds());
 };
+
 /**
  * Sets scorecard to city.
  *
