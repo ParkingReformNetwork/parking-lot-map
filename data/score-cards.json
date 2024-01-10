@@ -576,7 +576,7 @@
     "cityType": "core city",
     "Population": "428,403",
     "urbanizedAreaPopulation": "2,914,866",
-    "Parking Score": "50",
+    "Parking Score": "58",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Minneapolis_MN.html"
   },
@@ -642,10 +642,10 @@
   "oakland-ca": {
     "Name": "Oakland, CA",
     "Percentage": "14%",
-    "cityType": "principal",
+    "cityType": "core city",
     "Population": "439,349",
     "urbanizedAreaPopulation": "3,515,933",
-    "Parking Score": "N/A",
+    "Parking Score": "39",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Oakland_CA.html"
   },
@@ -779,10 +779,10 @@
   "saint-paul-mn": {
     "Name": "Saint Paul, MN",
     "Percentage": "18%",
-    "cityType": "principal",
+    "cityType": "core city",
     "Population": "311,527",
     "urbanizedAreaPopulation": "2,914,866",
-    "Parking Score": "N/A",
+    "Parking Score": "50",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/St.Paul_MN.html"
   },
@@ -821,7 +821,7 @@
     "cityType": "core city",
     "Population": "1,385,922",
     "urbanizedAreaPopulation": "3,070,300",
-    "Parking Score": "38",
+    "Parking Score": "42",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanDiego_CA.html"
   },
@@ -831,7 +831,7 @@
     "cityType": "core city",
     "Population": "873,965",
     "urbanizedAreaPopulation": "3,515,933",
-    "Parking Score": "7",
+    "Parking Score": "10",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/SanFrancisco_CA.html"
   },
@@ -888,7 +888,7 @@
     "cityType": "core city",
     "Population": "735,157",
     "urbanizedAreaPopulation": "3,544,011",
-    "Parking Score": "26",
+    "Parking Score": "38",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Seattle_WA.html"
   },
@@ -927,7 +927,7 @@
     "cityType": "core city",
     "Population": "382,769",
     "urbanizedAreaPopulation": "2,783,045",
-    "Parking Score": "85",
+    "Parking Score": "88",
     "Reforms": "no reforms"
   },
   "toledo-oh": {
