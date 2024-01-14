@@ -162,8 +162,7 @@ const generateScorecard = (scoreCardEntry) => {
  * Centers view to city.
  *
  * @param map: The Leaflet map instance.
- * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
- *    representing the score card properties stored in `score-cards.json`.
+ * @param layer: The Leaflet layer with the city boundaries to snap to.
  */
 const snapToCity = async (map, layer) => {
   map.fitBounds(layer.getBounds());
