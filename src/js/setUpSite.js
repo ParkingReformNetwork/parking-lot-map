@@ -159,18 +159,25 @@ const generateScorecard = (scoreCardEntry) => {
 };
 
 /**
- * Move the map to the city boundaries and set its score card.
+ * Centers view to city.
+ *
+ * @param map: The Leaflet map instance.
+ * @param layer: The Leaflet layer with the city boundaries to snap to.
+ */
+const snapToCity = async (map, layer) => {
+  map.fitBounds(layer.getBounds());
+};
+
+/**
+ * Set scorecard to city.
  *
  * @param map: The Leaflet map instance.
  * @param cityId: E.g. `columbus-oh`.
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const setMapToCity = (map, cityId, cityProperties, toFitBounds = true) => {
+const setScorecard = (cityId, cityProperties) => {
   const { layer } = cityProperties;
-  if (toFitBounds) {
-    map.fitBounds(layer.getBounds());
-  }
   const scorecard = generateScorecard(cityProperties);
   setUpShareUrlClickListener(cityId);
   const popup = new Popup({
@@ -199,7 +206,7 @@ const setUpAutoScorecard = (map, cities) => {
     });
     if (centralCity) {
       document.getElementById("city-choice").value = centralCity;
-      setMapToCity(map, centralCity, cities[centralCity], false);
+      setScorecard(centralCity, cities[centralCity]);
     }
   });
 };
@@ -230,7 +237,7 @@ const setUpCitiesLayer = async (map) => {
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", () => {
     const cityId = cityToggleElement.value;
-    setMapToCity(map, cityId, cities[cityId]);
+    snapToCity(map, cities[cityId].layer);
   });
 
   // Set up map to update when user clicks within a city's boundary
@@ -239,14 +246,15 @@ const setUpCitiesLayer = async (map) => {
     if (currentZoom > 7) {
       const cityId = e.sourceTarget.feature.properties.id;
       cityToggleElement.value = cityId;
-      setMapToCity(map, cityId, cities[cityId]);
+      snapToCity(map, cities[cityId].layer);
     }
   });
 
   // Load initial city.
   const cityId = cityToggleElement.value;
-  setMapToCity(map, cityId, cities[cityId]);
   setUpAutoScorecard(map, cities);
+  snapToCity(map, cities[cityId].layer);
+  setScorecard(cityId, cities[cityId]);
 };
 
 const setUpParkingLotsLayer = async (map) => {
