@@ -169,7 +169,7 @@
     "cityType": "core city",
     "Population": "2,747,231",
     "urbanizedAreaPopulation": "8,671,746",
-    "Parking Score": "14",
+    "Parking Score": "15",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Chicago_IL.html"
   },
@@ -237,7 +237,7 @@
     "cityType": "core city",
     "Population": "1,304,442",
     "urbanizedAreaPopulation": "5,732,354",
-    "Parking Score": "76",
+    "Parking Score": "77",
     "Reforms": "Proposed",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Dallas_TX.html"
   },
@@ -383,7 +383,7 @@
     "cityType": "core city",
     "Population": "2,302,792",
     "urbanizedAreaPopulation": "5,853,575",
-    "Parking Score": "72",
+    "Parking Score": "73",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/Houston_TX.html"
   },
@@ -490,7 +490,7 @@
     "cityType": "core city",
     "Population": "3,893,986",
     "urbanizedAreaPopulation": "12,237,376",
-    "Parking Score": "62",
+    "Parking Score": "63",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/LosAngeles_CA.html"
   },
@@ -552,7 +552,7 @@
   },
   "miami-fl": {
     "Name": "Miami, FL",
-    "Percentage": "19%",
+    "Percentage": "18%",
     "cityType": "core city",
     "Population": "442,265",
     "urbanizedAreaPopulation": "6,077,522",
@@ -974,7 +974,7 @@
     "cityType": "core city",
     "Population": "689,545",
     "urbanizedAreaPopulation": "5,174,759",
-    "Parking Score": "6",
+    "Parking Score": "7",
     "Reforms": "implemented",
     "Website URL": "https://parkingreform.org/mandates-map/city_detail/WashingtonDC_DC.html"
   },
