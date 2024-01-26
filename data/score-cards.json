@@ -439,11 +439,11 @@
   },
   "las-vegas-nv": {
     "Name": "Las Vegas, NV",
-    "Percentage": "32%",
+    "Percentage": "33%",
     "cityType": "core city",
     "Population": "641,825",
     "urbanizedAreaPopulation": "2,196,623",
-    "Parking Score": "91",
+    "Parking Score": "93",
     "Reforms": "no reforms"
   },
   "lexington-ky": {
