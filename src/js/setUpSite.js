@@ -108,7 +108,7 @@ const copyToClipboard = async (value) => {
 /**
  * Add an event listener for the share button to copy the link to the clipboard.
  *
- * @param string cityId: e.g. `saint-louis-mo`
+ * @param string cityId: e.g. `st.-louis-mo`
  */
 const setUpShareUrlClickListener = (cityId) => {
   // We put the event listener on `map` because it is never erased, unlike the copy button
@@ -181,6 +181,17 @@ const loadParkingLot = async (cityId, parkingLayer) => {
 
 /**
  * Centers view to city.
+ * Centers view to city.
+ *
+ * @param map: The Leaflet map instance.
+ * @param layer: The Leaflet layer with the city boundaries to snap to.
+ */
+const snapToCity = async (map, layer) => {
+  map.fitBounds(layer.getBounds());
+};
+
+/**
+ * Set scorecard to city.
  *
  * @param map: The Leaflet map instance.
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
@@ -268,7 +279,7 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", async () => {
     const cityId = cityToggleElement.value;
-    snapToCity(map, cities[cityId]);
+    setMapToCity(map, cityId, cities[cityId]);
   });
 
   // Set up map to update when user clicks within a city's boundary
@@ -277,15 +288,14 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
     if (currentZoom > 7) {
       const cityId = e.sourceTarget.feature.properties.id;
       cityToggleElement.value = cityId;
-      snapToCity(map, cities[cityId]);
+      setMapToCity(map, cityId, cities[cityId]);
     }
   });
 
   // Load initial city.
   const cityId = cityToggleElement.value;
-  setUpAutoScorecard(map, cities, parkingLayer);
-  snapToCity(map, cities[cityId]);
-  setScorecard(cityId, cities[cityId]);
+  setMapToCity(map, cityId, cities[cityId]);
+  setUpAutoScorecard(map, cities);
 };
 
 /**
