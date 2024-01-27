@@ -266,7 +266,7 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
   const cityToggleElement = document.getElementById("city-choice");
   cityToggleElement.addEventListener("change", async () => {
     const cityId = cityToggleElement.value;
-    snapToCity(map, cities[cityId]);
+    snapToCity(map, cities[cityId].layer);
   });
 
   // Set up map to update when user clicks within a city's boundary
@@ -275,14 +275,14 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
     if (currentZoom > 7) {
       const cityId = e.sourceTarget.feature.properties.id;
       cityToggleElement.value = cityId;
-      snapToCity(map, cities[cityId]);
+      snapToCity(map, cities[cityId].layer);
     }
   });
 
   // Load initial city.
   const cityId = cityToggleElement.value;
   setUpAutoScorecard(map, cities, parkingLayer);
-  snapToCity(map, cities[cityId]);
+  snapToCity(map, cities[cityId].layer);
   setScorecard(cityId, cities[cityId]);
 };
 
