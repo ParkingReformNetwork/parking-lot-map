@@ -107,6 +107,16 @@ const updateCoordinates = async (
   return Ok("File updated successfully!");
 };
 
+/**
+ * Add or update a city's parking lot .geojson file.
+ *
+ * @param string cityId - e.g. 'my-city-az'
+ * @param boolean addCity - whether a city exists or not
+ * @param string originalFilePath - what will be updated
+ * @param string updatedFilePath - where to get the new coordinates
+ * @return either an `error` or `value` object. The `value` does not include follow up
+      instructions, which you should log.
+ */
 const updateParkingLots = async (
   cityId,
   addCity,
@@ -132,14 +142,7 @@ const updateParkingLots = async (
   const newCoordinates = newData.features[0].geometry.coordinates;
   const newGeometryType = newData.features[0].geometry.type;
 
-  if (addCity) {
-    const newFile = {
-      type: "Feature",
-      properties: { id: cityId },
-      geometry: { type: newGeometryType, coordinates: newCoordinates },
-    };
-    await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
-  } else {
+  if (!addCity) {
     let originalData;
     try {
       const rawOriginalData = await fs.readFile(updateFilePath, "utf8");
@@ -152,7 +155,15 @@ const updateParkingLots = async (
     originalData.geometry.coordinates = newCoordinates;
 
     await fs.writeFile(updateFilePath, JSON.stringify(originalData, null, 2));
+    return Ok("File updated successfully!");
   }
+  const newFile = {
+    type: "Feature",
+    properties: { id: cityId },
+    geometry: { type: newGeometryType, coordinates: newCoordinates },
+  };
+  await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
+
   return Ok("File updated successfully!");
 };
 
