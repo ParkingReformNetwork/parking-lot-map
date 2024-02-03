@@ -167,15 +167,12 @@ const generateScorecard = (scoreCardEntry) => {
  * @param parkingLayer: GeoJSON layer with parking lot data
  */
 const loadParkingLot = async (cityId, parkingLayer) => {
-  let load = true;
-  parkingLayer.getLayers().forEach((loadedCity) => {
-    if (loadedCity.feature.properties.id === cityId) {
-      load = false;
-    }
-  });
-  if (load) {
+  const alreadyLoaded = parkingLayer
+    .getLayers()
+    .find((city) => city.feature.properties.id === cityId);
+  if (!alreadyLoaded) {
     parkingLayer.addData(await parkingLots[`${cityId}.geojson`]());
-    parkingLayer.bringToBack(); // Ensures city boundary is on top
+    parkingLayer.bringToBack(); // Ensures city boundary is on top")
   }
 };
 
