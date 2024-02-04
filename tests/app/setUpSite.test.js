@@ -37,17 +37,26 @@ test("every city is in the toggle", async ({ page }) => {
 
 test("correctly load the city score card", async ({ page }) => {
   const rawData = fs.readFileSync("data/score-cards.json");
-  const anchorageExpected = JSON.parse(rawData)["anchorage-ak"];
+  const albanyExpected = JSON.parse(rawData)["albany-ny"];
+  let albanyLoaded = false;
+  page.route("**/*", (route) => {
+    const requestUrl = route.request().url();
+    if (requestUrl.includes("albany-ny")) {
+      albanyLoaded = true;
+    }
+    route.continue();
+  });
 
   await page.goto("");
+  expect(albanyLoaded).toBe(false);
 
   const selectElement = await page.$("#city-choice");
-  await selectElement.selectOption("anchorage-ak");
+  await selectElement.selectOption("albany-ny");
   await page.waitForFunction(() => {
     const titleElement = document.querySelector(
       ".leaflet-popup-content .title"
     );
-    return titleElement && titleElement.textContent === "Anchorage, AK";
+    return titleElement && titleElement.textContent === "Albany, NY";
   });
 
   const [content, cityToggleValue] = await page.evaluate(() => {
@@ -66,18 +75,17 @@ test("correctly load the city score card", async ({ page }) => {
     });
     return [details, cityToggle];
   });
-  expect(cityToggleValue).toEqual("anchorage-ak");
+  expect(cityToggleValue).toEqual("albany-ny");
   expect(content["Parking: "]).toEqual(
-    `${anchorageExpected.Percentage} of central city`
+    `${albanyExpected.Percentage} of central city`
   );
-  expect(content["Population: "]).toEqual(anchorageExpected.Population);
+  expect(content["Population: "]).toEqual(albanyExpected.Population);
   expect(content["Urbanized area population: "]).toEqual(
-    anchorageExpected.urbanizedAreaPopulation
+    albanyExpected.urbanizedAreaPopulation
   );
-  expect(content["Parking score: "]).toEqual(
-    anchorageExpected["Parking Score"]
-  );
-  expect(content["Parking reform: "]).toEqual(anchorageExpected.Reforms);
+  expect(content["Parking score: "]).toEqual(albanyExpected["Parking Score"]);
+  expect(content["Parking reform: "]).toEqual(albanyExpected.Reforms);
+  expect(albanyLoaded).toBe(true);
 });
 
 test.describe("the share feature", () => {
@@ -234,7 +242,7 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
     .locator(".leaflet-control-zoom-out")
     .click({ clickCount: 6, delay: 300 });
 
-  // Drag map to Birgminham
+  // Drag map to Birmingham
   await dragMap(page, 300);
   const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
     const title = document.querySelector(
@@ -245,4 +253,34 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
   });
   await expect(scoreCardTitle).toEqual("Birmingham, AL");
   await expect(cityToggleValue).toEqual("birmingham-al");
+});
+
+test("map only loads parking lots for visible cities", async ({ page }) => {
+  await page.goto("");
+
+  let birminghamLoaded = false;
+  page.route("**/*", (route) => {
+    const requestUrl = route.request().url();
+    if (requestUrl.includes("birmingham-al")) {
+      birminghamLoaded = true;
+    }
+    route.continue();
+  });
+
+  // Wait a second to make sure the site is fully loaded.
+  await page.waitForTimeout(1000);
+
+  // Zoom out.
+  await page
+    .locator(".leaflet-control-zoom-out")
+    .click({ clickCount: 6, delay: 300 });
+
+  // Check that Birmingham's parking lots are not loaded
+  expect(birminghamLoaded).toBe(false);
+
+  // Drag map to Birmingham
+  await dragMap(page, 300);
+
+  // Check that Birmingham's parking lots are not loaded
+  expect(birminghamLoaded).toBe(true);
 });
