@@ -289,7 +289,7 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
  *
  * @param map: The Leaflet map instance.
  */
-const setUpParkingparkingLayer = async (map) => {
+const setUpParkingLotsLayer = async (map) => {
   const parkingLayer = geoJSON(null, {
     style() {
       return STYLES.parkingLots;
@@ -317,7 +317,7 @@ const setUpSite = async () => {
   setUpAbout();
 
   const map = createMap();
-  const parkingLayer = await setUpParkingparkingLayer(map);
+  const parkingLayer = await setUpParkingLotsLayer(map);
   await setUpCitiesLayer(map, parkingLayer);
 
   // There have been some issues on Safari with the map only rendering the top 20%
