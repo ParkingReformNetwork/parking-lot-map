@@ -15,6 +15,15 @@ You will also need to install:
 
 To run the below commands, open your terminal app. Make sure you have `git clone`d the fork of your repository somewhere on your machine. Then, use `cd <directory>` to navigate there, e.g. `cd code/parking-lot-map`.
 
+## Prereq: install
+
+You must first install the project's dependencies before running any of the below commands.
+
+```bash
+❯ npm install
+❯ npx playwright install
+```
+
 ## Start the server
 
 ```bash
