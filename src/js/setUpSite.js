@@ -124,8 +124,7 @@ const loadParkingLot = async (cityId, parkingLayer) => {
     .getLayers()
     .find((city) => city.feature.properties.id === cityId);
   if (!alreadyLoaded) {
-    const lots = await parkingLots;
-    parkingLayer.addData(await lots[`${cityId}.geojson`]());
+    parkingLayer.addData(await parkingLots[`${cityId}.geojson`]());
     parkingLayer.bringToBack(); // Ensures city boundary is on top")
   }
 };
