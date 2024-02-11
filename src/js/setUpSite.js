@@ -1,11 +1,12 @@
-/* global document, navigator, window */
+/* global document, window */
 import { Control, Map, Popup, TileLayer, geoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { determineShareUrl, extractCityIdFromUrl } from "./cityId";
+import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
 import setUpAbout from "./about";
+import setUpShareUrlClickListener from "./share";
 
 const parkingLots = import("../../data/parking-lots/*"); // eslint-disable-line
 
@@ -84,45 +85,6 @@ const createMap = () => {
 };
 
 /**
- * Copy `value` to the user's clipboard and show the copied link message.
- *
- * @param string value
- */
-const copyToClipboard = async (value) => {
-  try {
-    await navigator.clipboard.writeText(value);
-  } catch (err) {
-    // eslint-disable-next-line no-console
-    console.error("Failed to write to clipboard: ", err);
-  }
-
-  const copiedLinkMessageElement = document.querySelector(
-    ".copied-link-message"
-  );
-  copiedLinkMessageElement.style.display = "block";
-  setTimeout(() => {
-    copiedLinkMessageElement.style.display = "none";
-  }, 1000);
-};
-
-/**
- * Add an event listener for the share button to copy the link to the clipboard.
- *
- * @param string cityId: e.g. `st.-louis-mo`
- */
-const setUpShareUrlClickListener = (cityId) => {
-  // We put the event listener on `map` because it is never erased, unlike the copy button
-  // being recreated every time the score card changes. This is called "event delegation".
-  document.querySelector("#map").addEventListener("click", async (event) => {
-    const targetElement = event.target.closest("div.url-copy-button > a");
-    if (targetElement) {
-      const shareUrl = determineShareUrl(window.location.href, cityId);
-      await copyToClipboard(shareUrl);
-    }
-  });
-};
-
-/**
  * Generate the HTML for the score card.
  *
  * @param scoreCardEntry: An entry from score-cards.json.
@@ -141,7 +103,12 @@ const generateScorecard = (scoreCardEntry) => {
   } = scoreCardEntry;
   let result = `
     <div class="title">${Name}</div>
-    <div class="url-copy-button"><a href="#"><i class="fa-solid fa-link fa-xl"></i></a></div>
+    <div class="url-copy-button">
+      <a href="#" class="share-icon">
+        <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
+        <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
+      </a>
+    </div>
     <hr>
     <div><span class="details-title">Parking: </span><span class="details-value">${Percentage} of central city</span></div>
     <div><span class="details-title">Parking score: </span><span class="details-value">${ParkingScore}</span></div>
@@ -299,10 +266,10 @@ const setUpParkingLotsLayer = async (map) => {
   // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
   if (window.location.href.indexOf("#lots-toggle") !== -1) {
     document.querySelector("#lots-toggle").style.display = "block";
-    document.querySelector("#lots-toggle-on").addEventListener("click", () => {
+    document.querySelector("#lots-toggle-off").addEventListener("click", () => {
       parkingLayer.removeFrom(map);
     });
-    document.querySelector("#lots-toggle-off").addEventListener("click", () => {
+    document.querySelector("#lots-toggle-on").addEventListener("click", () => {
       parkingLayer.addTo(map);
     });
   }

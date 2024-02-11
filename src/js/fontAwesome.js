@@ -4,11 +4,18 @@ import {
   faCircleXmark,
   faLink,
   faUpRightFromSquare,
+  faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 const setUpIcons = () => {
-  library.add(faCircleInfo, faCircleXmark, faLink, faUpRightFromSquare);
+  library.add(
+    faCircleInfo,
+    faCircleXmark,
+    faLink,
+    faUpRightFromSquare,
+    faCheck
+  );
   dom.watch();
 };
 
