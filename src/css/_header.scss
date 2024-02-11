@@ -21,6 +21,8 @@ header {
   .header-about-icon {
     margin-right: 0.75em;
   }
+
+  margin-left: auto;
 }
 
 @media only screen and (min-width: 48em) {
@@ -39,14 +41,38 @@ header {
   .site-title {
     flex: 1;
   }
+
+  #city-dropdown {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 40px;
+    margin-bottom: 6px;
+  }
 }
 
 #city-dropdown label {
   font-weight: normal;
 }
 
-#city-choice {
+.choices__inner {
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  color: black;
+  height: 40px;
+
+  @media only screen and (min-width: 285px) {
+    min-width: 285px;
+  }
+}
+
+.choices__item--selectable {
+  font-size: 14px;
+  height: 40px;
+}
+
+.choices__list--dropdown,
+.choices__list[aria-expanded] {
+  z-index: 1001;
   color: black;
 }

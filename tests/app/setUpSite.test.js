@@ -19,18 +19,14 @@ test("every city is in the toggle", async ({ page }) => {
   const data = JSON.parse(rawData);
   const expectedCities = Object.values(data).map((scoreCard) => scoreCard.Name);
 
-  await page.goto("");
+  await page.goto("/");
+  await page.waitForSelector(".choices");
 
-  // Wait a second to make sure the site is fully loaded.
-  await page.waitForTimeout(1000);
+  const toggleValues = await page.$$eval(".choices__item--choice", (elements) =>
+    Array.from(elements.map((opt) => opt.textContent.trim()))
+  );
 
-  const toggleValues = await page.evaluate(() => {
-    const select = document.querySelector("#city-choice");
-    return Array.from(select.querySelectorAll("option")).map((opt) =>
-      opt.textContent.trim()
-    );
-  });
-
+  toggleValues.sort();
   expectedCities.sort();
   expect(toggleValues).toEqual(expectedCities);
 });
@@ -47,11 +43,12 @@ test("correctly load the city score card", async ({ page }) => {
     route.continue();
   });
 
-  await page.goto("");
+  await page.goto("/");
   expect(albanyLoaded).toBe(false);
+  await page.waitForSelector(".choices");
 
-  const selectElement = await page.$("#city-choice");
-  await selectElement.selectOption("albany-ny");
+  await page.click(".choices");
+  await page.click('.choices__item--choice >> text="Albany, NY"');
   await page.waitForFunction(() => {
     const titleElement = document.querySelector(
       ".leaflet-popup-content .title"
@@ -93,10 +90,8 @@ test.describe("the share feature", () => {
     const context = await browser.newContext();
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     const page = await context.newPage();
-    await page.goto("");
-
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
+    await page.goto("/");
+    await page.waitForSelector(".url-copy-button > a");
 
     await page.click(".url-copy-button > a");
     const firstCityClipboardText = await page.evaluate(() =>
@@ -106,8 +101,9 @@ test.describe("the share feature", () => {
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
-    const selectElement = await page.$("#city-choice");
-    await selectElement.selectOption("anchorage-ak");
+    await page.waitForSelector(".choices");
+    await page.click(".choices");
+    await page.click('.choices__item--choice >> text="Anchorage, AK"');
     await page.waitForFunction(() => {
       const titleElement = document.querySelector(
         ".leaflet-popup-content .title"
@@ -129,7 +125,7 @@ test.describe("the share feature", () => {
     await page.goto("#parking-reform-map=fort-worth-tx");
 
     // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
+    await page.waitForSelector(".leaflet-popup-content .title");
 
     const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
       const title = document.querySelector(
@@ -234,8 +230,7 @@ test.describe("auto-focus city", () => {
 test("scorecard pulls up city closest to center", async ({ page }) => {
   await page.goto("");
 
-  // Wait a second to make sure the site is fully loaded.
-  await page.waitForTimeout(1000);
+  await page.waitForSelector(".leaflet-control-zoom-out");
 
   // Zoom out.
   await page
@@ -244,6 +239,8 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
 
   // Drag map to Birmingham
   await dragMap(page, 300);
+
+  await page.waitForSelector(".choices");
   const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
     const title = document.querySelector(
       ".leaflet-popup-content .title"
