@@ -1,0 +1,87 @@
+{
+  "type": "FeatureCollection",
+  "name": "parking-reform-now",
+  "crs": {
+    "type": "name",
+    "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "Name": "Parking Reform, NOW",
+        "description": "",
+        "timestamp": null,
+        "begin": null,
+        "end": null,
+        "altitudeMode": null,
+        "tessellate": 0,
+        "extrude": 0,
+        "visibility": 0,
+        "drawOrder": null,
+        "icon": null,
+        "full_id": "",
+        "osm_id": "",
+        "osm_type": "",
+        "amenity": "",
+        "building_levels": "",
+        "building": "",
+        "access": "",
+        "surface": "",
+        "parking": "",
+        "supervised": "",
+        "level": "",
+        "addr_street": "",
+        "addr_state": "",
+        "addr_postcode": "",
+        "addr_housenumber": "",
+        "addr_city": "",
+        "operator": "",
+        "capacity": "",
+        "wheelchair": "",
+        "type": "",
+        "fee": "",
+        "old_name": "",
+        "nysgissam_nysaddresspointid": "",
+        "website": "",
+        "ele": "",
+        "addr_floor": "",
+        "comment": "",
+        "alt_name": "",
+        "operator_type": "",
+        "historic": "",
+        "public_transport": "",
+        "park_ride": "",
+        "OBJECTID": "",
+        "FEAT_CODE": "",
+        "LASTUPDATE": "",
+        "EDITORNAME": "",
+        "CMETHOD": "",
+        "CSOURCE": "",
+        "ISOURCE": "",
+        "GlobalID": "",
+        "Shape_Length": "",
+        "Shape_Area": "",
+        "CREATED": "",
+        "full_id_2": "w295320197",
+        "osm_id_2": "295320197"
+      },
+      "geometry": {
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [-91.1870355, 30.4444685, 0.0],
+              [-91.1870382, 30.4446061, 0.0],
+              [-91.1869551, 30.4446067, 0.0],
+              [-91.1869618, 30.444824, 0.0],
+              [-91.1868666, 30.4448269, 0.0],
+              [-91.1868491, 30.4444697, 0.0],
+              [-91.1870355, 30.4444685, 0.0]
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
