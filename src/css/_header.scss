@@ -45,7 +45,7 @@ header {
   #city-dropdown {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.7em;
     height: 40px;
     margin-bottom: 6px;
   }
@@ -61,8 +61,8 @@ header {
   color: black;
   height: 40px;
 
-  @media only screen and (min-width: 285px) {
-    min-width: 285px;
+  @media only screen and (min-width: 20em) {
+    min-width: 20em;
   }
 }
 
