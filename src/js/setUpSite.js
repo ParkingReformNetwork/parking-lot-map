@@ -7,6 +7,7 @@ import setUpIcons from "./fontAwesome";
 import scoreCardsData from "../../data/score-cards.json";
 import setUpAbout from "./about";
 import setUpShareUrlClickListener from "./share";
+import setUpDropdown, { DROPDOWN } from "./dropdown";
 
 const parkingLots = import("../../data/parking-lots/*"); // eslint-disable-line
 
@@ -46,21 +47,6 @@ const STYLES = {
     weight: 1,
     fillOpacity: 0.6,
   },
-};
-
-const addCitiesToToggle = (initialCityId, fallbackCityId) => {
-  const cityToggleElement = document.getElementById("city-choice");
-  let validInitialId = false;
-  Object.entries(scoreCardsData).forEach(([id, { Name }]) => {
-    if (id === initialCityId) {
-      validInitialId = true;
-    }
-    const option = document.createElement("option");
-    option.value = id;
-    option.textContent = Name;
-    cityToggleElement.appendChild(option);
-  });
-  cityToggleElement.value = validInitialId ? initialCityId : fallbackCityId;
 };
 
 /**
@@ -198,7 +184,7 @@ const setUpAutoScorecard = async (map, cities, parkingLayer) => {
       }
     });
     if (centralCity) {
-      document.getElementById("city-choice").value = centralCity;
+      DROPDOWN.setChoiceByValue(centralCity);
       setScorecard(centralCity, cities[centralCity]);
     }
   });
@@ -280,7 +266,7 @@ const setUpSite = async () => {
   setUpIcons();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  addCitiesToToggle(initialCityId, "atlanta-ga");
+  setUpDropdown(initialCityId, "atlanta-ga");
   setUpAbout();
 
   const map = createMap();
