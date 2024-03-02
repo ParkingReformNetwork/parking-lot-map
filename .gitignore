@@ -6,3 +6,4 @@
 
 /parking-lots-update.geojson
 /city-update.geojson
+*.tsbuildinfo

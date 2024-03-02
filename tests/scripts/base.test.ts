@@ -1,34 +1,53 @@
 import fs from "fs/promises";
 import { expect, test } from "@playwright/test";
+import { Feature, Polygon, FeatureCollection } from "geojson";
 import {
+  OrError,
   determineArgs,
   updateCoordinates,
   updateParkingLots,
+  valueOrExit,
+  error,
 } from "../../scripts/base";
+import { CityId } from "../../src/js/types";
+
+const expectError = <T>(res: OrError<T>) => {
+  expect("error" in res).toBe(true);
+  return expect((res as error).error);
+};
+
+const expectOk = <T>(res: OrError<T>) => {
+  if ("error" in res) {
+    throw new Error(`Expected ok: ${res.error}`);
+  }
+};
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
     const result = determineArgs("my-script", ["My City"]);
-    expect(result.value).toEqual({
+    expect(valueOrExit(result)).toEqual({
       cityName: "My City",
       cityId: "my-city",
     });
   });
 
   test("requires exactly 1 argument", () => {
-    let result = determineArgs("my-script", []);
-    expect(result.error).toContain("exactly one argument");
+    let result: OrError<{ cityName: string; cityId: string }> = determineArgs(
+      "my-script",
+      []
+    );
+    expectError(result).toContain("exactly one argument");
 
     result = determineArgs("my-script", ["My City", "--bad"]);
-    expect(result.error).toContain("exactly one argument");
+    expectError(result).toContain("exactly one argument");
 
     result = determineArgs("my-script", ["My City", "AZ"]);
-    expect(result.error).toContain("exactly one argument");
+    expectError(result).toContain("exactly one argument");
   });
 });
 
 test.describe("updateCoordinates()", () => {
-  let originalData;
+  let originalData: string;
   const originalFilePath = "tests/scripts/data/original-data.geojson";
   const validUpdateFilePath = "tests/scripts/data/valid-update.geojson";
 
@@ -53,20 +72,19 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       updateFilePath
     );
-    expect(result.error).toBeUndefined();
-    expect(result.value).toBeDefined();
+    expectOk(result);
 
     const rawUpdateData = await fs.readFile(updateFilePath, "utf8");
     const updateData = JSON.parse(rawUpdateData);
     const updatedCoordinates = updateData.features[0].geometry.coordinates;
 
     const rawResultData = await fs.readFile(originalFilePath, "utf8");
-    const resultData = JSON.parse(rawResultData);
+    const resultData: FeatureCollection<Polygon> = JSON.parse(rawResultData);
 
     const cityTargetData = resultData.features.find(
-      (feature) => feature.properties.id === cityId
+      (feature) => feature?.properties?.id === cityId
     );
-    expect(cityTargetData.geometry.coordinates).toEqual(updatedCoordinates);
+    expect(cityTargetData?.geometry.coordinates).toEqual(updatedCoordinates);
   });
 
   test("adds a new city when add is set", async () => {
@@ -80,8 +98,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       updateFilePath
     );
-    expect(result.error).toBeUndefined();
-    expect(result.value).toBeDefined();
+    expectOk(result);
 
     const rawUpdatedData = await fs.readFile(updateFilePath, "utf8");
     const updatedData = JSON.parse(rawUpdatedData);
@@ -91,12 +108,12 @@ test.describe("updateCoordinates()", () => {
     const resultData = JSON.parse(rawResultData);
 
     const resultCityIds = resultData.features.map(
-      (feature) => feature.properties.id
+      (feature: Feature<Polygon>) => feature.properties?.id
     );
     expect(resultCityIds).toEqual(["honolulu-hi", cityId, "shoup-ville-az"]);
 
     const cityTargetData = resultData.features.find(
-      (feature) => feature.properties.id === cityId
+      (feature: Feature<Polygon>) => feature.properties?.id === cityId
     );
     expect(cityTargetData.properties).toEqual({
       id: cityId,
@@ -113,7 +130,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       validUpdateFilePath
     );
-    expect(result.error).toContain("To add a new city,");
+    expectError(result).toContain("To add a new city,");
   });
 
   test("validates the update file has exactly one `feature`", async () => {
@@ -124,7 +141,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       "tests/scripts/data/too-many-updates.geojson"
     );
-    expect(result.error).toContain("expects exactly one entry in `features`");
+    expectError(result).toContain("expects exactly one entry in `features`");
 
     result = await updateCoordinates(
       "my-script",
@@ -133,7 +150,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       "tests/scripts/data/empty-update.geojson"
     );
-    expect(result.error).toContain("expects exactly one entry in `features`");
+    expectError(result).toContain("expects exactly one entry in `features`");
   });
 
   test("errors gracefully if update file not found", async () => {
@@ -144,7 +161,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       "tests/scripts/data/does-not-exist"
     );
-    expect(result.error).toContain("tests/scripts/data/does-not-exist");
+    expectError(result).toContain("tests/scripts/data/does-not-exist");
   });
 
   test("errors gracefully if original data file not found", async () => {
@@ -155,12 +172,12 @@ test.describe("updateCoordinates()", () => {
       "tests/scripts/data/does-not-exist",
       validUpdateFilePath
     );
-    expect(result.error).toContain("tests/scripts/data/does-not-exist");
+    expectError(result).toContain("tests/scripts/data/does-not-exist");
   });
 });
 
 test.describe("updateParkingLots()", () => {
-  let originalData;
+  let originalData: string;
   const parkingLotData = "tests/scripts/data/parking-lot-data.geojson";
   const addDataPath = "tests/scripts/data/new-parking-lot.geojson";
 
@@ -174,7 +191,7 @@ test.describe("updateParkingLots()", () => {
     await fs.writeFile(parkingLotData, originalData);
   });
 
-  const expectUpdatedFile = async (cityId, updateFilePath) => {
+  const expectUpdatedFile = async (cityId: CityId, updateFilePath: string) => {
     const rawUpdatedData = await fs.readFile(updateFilePath, "utf8");
     const updatedData = JSON.parse(rawUpdatedData);
     const updatedCoordinates = updatedData.geometry.coordinates;
@@ -198,8 +215,7 @@ test.describe("updateParkingLots()", () => {
       parkingLotData,
       addDataPath
     );
-    expect(result.error).toBeUndefined();
-    expect(result.value).toBeDefined();
+    expectOk(result);
 
     await expectUpdatedFile(cityId, addDataPath);
 
@@ -217,8 +233,7 @@ test.describe("updateParkingLots()", () => {
       parkingLotData,
       existingDataPath
     );
-    expect(result.error).toBeUndefined();
-    expect(result.value).toBeDefined();
+    expectOk(result);
 
     await expectUpdatedFile(cityId, existingDataPath);
     await fs.writeFile(existingDataPath, existingData);

@@ -1,10 +1,12 @@
+import { CityId } from "./types";
+
 /**
  * Extract the city ID from the URL's `#`, if present.
  *
  * @param string windowUrl: The `window.location.href` global
  * @return string: Returns e.g. `st.-louis-mo` if present, else the empty string
  */
-const extractCityIdFromUrl = (windowUrl) =>
+const extractCityIdFromUrl = (windowUrl: string) =>
   windowUrl.indexOf("#parking-reform-map=") === -1
     ? ""
     : windowUrl.split("#")[1].split("=")[1].toLowerCase();
@@ -15,7 +17,7 @@ const extractCityIdFromUrl = (windowUrl) =>
  * @param string jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
  * @return string: the city ID, e.g. `st.-louis-mo`.
  */
-const parseCityIdFromJson = (jsonCityName) =>
+const parseCityIdFromJson = (jsonCityName: string) =>
   jsonCityName.toLowerCase().replace(/ /g, "-").replace(/,/g, "");
 
 /**
@@ -25,7 +27,7 @@ const parseCityIdFromJson = (jsonCityName) =>
  * @param string cityId: e.g. `st.-louis-mo`
  * @return string: the URL to share
  */
-const determineShareUrl = (windowUrl, cityId) => {
+const determineShareUrl = (windowUrl: string, cityId: CityId) => {
   const [baseUrl] = windowUrl.split("#");
   return `${baseUrl}#parking-reform-map=${cityId}`;
 };

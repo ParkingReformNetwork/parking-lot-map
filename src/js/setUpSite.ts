@@ -1,15 +1,31 @@
 /* global document, window */
-import { Control, Map, Popup, TileLayer, geoJSON } from "leaflet";
+import {
+  Control,
+  ImageOverlay,
+  Map,
+  Popup,
+  TileLayer,
+  geoJSON,
+  GeoJSON,
+} from "leaflet";
+import { Feature, GeoJsonProperties, Geometry } from "geojson";
 import "leaflet/dist/leaflet.css";
-
+import { CityId, ScoreCard, ScoreCards, ScoreCardDetails } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
-import scoreCardsData from "../../data/score-cards.json";
 import setUpAbout from "./about";
 import setUpShareUrlClickListener from "./share";
 import setUpDropdown, { DROPDOWN } from "./dropdown";
+import cityBoundaries from "~/data/city-boundaries.geojson";
+import scoreCardsDetails from "~/data/score-cards.json";
 
-const parkingLots = import("../../data/parking-lots/*"); // eslint-disable-line
+interface ParkingLotModules {
+  [key: string]: () => Promise<Feature<Geometry>>;
+}
+
+const parkingLotsModules = import(
+  "~/data/parking-lots/*"
+) as unknown as ParkingLotModules;
 
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
@@ -22,7 +38,6 @@ const BASE_LAYERS = {
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: MAX_ZOOM,
-      ext: "png",
     }
   ),
   "Google Maps": new TileLayer(
@@ -66,7 +81,7 @@ const createMap = () => {
   );
 
   new Control.Layers(BASE_LAYERS).addTo(map);
-  map.createPane("fixed", document.getElementById("map"));
+  map.createPane("fixed", document.getElementById("map") || undefined);
   return map;
 };
 
@@ -76,19 +91,19 @@ const createMap = () => {
  * @param scoreCardEntry: An entry from score-cards.json.
  * @returns string: The HTML represented as a string.
  */
-const generateScorecard = (scoreCardEntry) => {
+const generateScorecard = (scoreCardEntry: ScoreCardDetails) => {
   const {
-    Name,
+    name,
     cityType,
-    Percentage,
-    Population,
+    percentage,
+    population,
     urbanizedAreaPopulation,
-    "Parking Score": ParkingScore,
-    Reforms,
-    "Website URL": WebsiteURL,
+    parkingScore,
+    reforms,
+    url,
   } = scoreCardEntry;
   let result = `
-    <div class="title">${Name}</div>
+    <div class="title">${name}</div>
     <div class="url-copy-button">
       <a href="#" class="share-icon">
         <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
@@ -96,18 +111,18 @@ const generateScorecard = (scoreCardEntry) => {
       </a>
     </div>
     <hr>
-    <div><span class="details-title">Parking: </span><span class="details-value">${Percentage} of central city</span></div>
-    <div><span class="details-title">Parking score: </span><span class="details-value">${ParkingScore}</span></div>
-    <div><span class="details-title">Parking reform: </span><span class="details-value">${Reforms}</span></div>
+    <div><span class="details-title">Parking: </span><span class="details-value">${percentage} of central city</span></div>
+    <div><span class="details-title">Parking score: </span><span class="details-value">${parkingScore}</span></div>
+    <div><span class="details-title">Parking reform: </span><span class="details-value">${reforms}</span></div>
     <br />
     <div><span class="details-title">City type: </span><span class="details-value">${cityType}</span></div>
-    <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
+    <div><span class="details-title">Population: </span><span class="details-value">${population}</span></div>
     <div><span class="details-title">Urbanized area population: </span><span class="details-value">${urbanizedAreaPopulation}</span></div>
   `;
-  if (WebsiteURL) {
+  if (url) {
     result += `
     <hr>
-    <div class="popup-button"><a href="${WebsiteURL}">View more about reforms</a></div>
+    <div class="popup-button"><a href="${url}">View more about reforms</a></div>
   `;
   }
   return result;
@@ -119,12 +134,15 @@ const generateScorecard = (scoreCardEntry) => {
  * @param cityId: E.g. `columbus-oh`.
  * @param parkingLayer: GeoJSON layer with parking lot data
  */
-const loadParkingLot = async (cityId, parkingLayer) => {
+const loadParkingLot: (
+  cityId: CityId,
+  parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
+) => Promise<void> = async (cityId, parkingLayer) => {
   const alreadyLoaded = parkingLayer
     .getLayers()
-    .find((city) => city.feature.properties.id === cityId);
+    .find((city: GeoJsonProperties) => city?.feature.properties.id === cityId);
   if (!alreadyLoaded) {
-    parkingLayer.addData(await parkingLots[`${cityId}.geojson`]());
+    parkingLayer.addData(await parkingLotsModules[`${cityId}.geojson`]());
     parkingLayer.bringToBack(); // Ensures city boundary is on top")
   }
 };
@@ -135,7 +153,10 @@ const loadParkingLot = async (cityId, parkingLayer) => {
  * @param map: The Leaflet map instance.
  * @param layer: The Leaflet layer with the city boundaries to snap to.
  */
-const snapToCity = async (map, layer) => {
+const snapToCity: (map: Map, layer: ImageOverlay) => void = async (
+  map,
+  layer
+) => {
   map.fitBounds(layer.getBounds());
 };
 
@@ -146,9 +167,12 @@ const snapToCity = async (map, layer) => {
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const setScorecard = (cityId, cityProperties) => {
-  const { layer } = cityProperties;
-  const scorecard = generateScorecard(cityProperties);
+const setScorecard: (cityId: CityId, cityProperties: ScoreCard) => void = (
+  cityId,
+  cityProperties
+) => {
+  const { layer, details } = cityProperties;
+  const scorecard = generateScorecard(details);
   setUpShareUrlClickListener(cityId);
   const popup = new Popup({
     pane: "fixed",
@@ -166,15 +190,19 @@ const setScorecard = (cityId, cityProperties) => {
  * @param cities: Dictionary of cities with layer and scorecard info.
  * @param parkingLayer: GeoJSON layer with parking lot data
  */
-const setUpAutoScorecard = async (map, cities, parkingLayer) => {
+const setUpAutoScorecard: (
+  map: Map,
+  cities: ScoreCards,
+  parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
+) => Promise<void> = async (map, cities, parkingLayer) => {
   map.on("moveend", async () => {
-    let centralCityDistance = null;
+    let centralCityDistance: number | null = null;
     let centralCity;
     Object.entries(cities).forEach((city) => {
-      const [cityName, details] = city;
-      const bounds = details.layer.getBounds();
+      const [cityName, scoreCard] = city;
+      const bounds = scoreCard.layer.getBounds();
 
-      if (map.getBounds().intersects(bounds)) {
+      if (bounds && map.getBounds().intersects(bounds)) {
         const diff = map.getBounds().getCenter().distanceTo(bounds.getCenter());
         loadParkingLot(cityName, parkingLayer); // Load parking lot data on any city in view
         if (centralCityDistance == null || diff < centralCityDistance) {
@@ -194,18 +222,23 @@ const setUpAutoScorecard = async (map, cities, parkingLayer) => {
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
  */
-const setUpCitiesLayer = async (map, parkingLayer) => {
-  const cities = {};
-  const cityBoundariesData = await import("../../data/city-boundaries.geojson");
-  const allBoundaries = geoJSON(cityBoundariesData, {
+const setUpCitiesLayer: (
+  map: Map,
+  parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
+) => Promise<void> = async (map, parkingLayer) => {
+  const cities: ScoreCards = {};
+  const allBoundaries = geoJSON(cityBoundaries, {
     style() {
       return STYLES.cities;
     },
-    onEachFeature(feature, layer) {
+    onEachFeature(feature, layer: ImageOverlay) {
       const cityId = feature.properties.id;
-      cities[cityId] = { layer, ...scoreCardsData[cityId] };
+      cities[cityId] = {
+        layer,
+        details: scoreCardsDetails[cityId],
+      } as ScoreCard;
       layer.on("add", () => {
-        layer.getElement().setAttribute("id", cityId);
+        layer.getElement()?.setAttribute("id", cityId);
       });
     },
   });
@@ -214,26 +247,36 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
 
   // Set up map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-choice");
-  cityToggleElement.addEventListener("change", async () => {
+  if (cityToggleElement instanceof HTMLSelectElement) {
+    cityToggleElement.addEventListener("change", async () => {
+      const cityId = cityToggleElement.value;
+      const { layer } = cities[cityId];
+      if (layer) {
+        snapToCity(map, layer);
+      }
+    });
+
+    // Set up map to update when user clicks within a city's boundary
+    allBoundaries.addEventListener("click", (e) => {
+      const currentZoom = map.getZoom();
+      if (currentZoom > 7) {
+        const cityId = e.sourceTarget.feature.properties.id;
+        cityToggleElement.value = cityId;
+        const { layer } = cities[cityId];
+        if (layer) {
+          snapToCity(map, layer);
+        }
+      }
+    });
+
+    // Load initial city.
     const cityId = cityToggleElement.value;
+    setUpAutoScorecard(map, cities, parkingLayer);
     snapToCity(map, cities[cityId].layer);
-  });
-
-  // Set up map to update when user clicks within a city's boundary
-  allBoundaries.addEventListener("click", (e) => {
-    const currentZoom = map.getZoom();
-    if (currentZoom > 7) {
-      const cityId = e.sourceTarget.feature.properties.id;
-      cityToggleElement.value = cityId;
-      snapToCity(map, cities[cityId].layer);
-    }
-  });
-
-  // Load initial city.
-  const cityId = cityToggleElement.value;
-  setUpAutoScorecard(map, cities, parkingLayer);
-  snapToCity(map, cities[cityId].layer);
-  setScorecard(cityId, cities[cityId]);
+    setScorecard(cityId, cities[cityId]);
+  } else {
+    throw new Error("#city-choice is not a select element");
+  }
 };
 
 /**
@@ -242,8 +285,10 @@ const setUpCitiesLayer = async (map, parkingLayer) => {
  *
  * @param map: The Leaflet map instance.
  */
-const setUpParkingLotsLayer = async (map) => {
-  const parkingLayer = geoJSON(null, {
+const setUpParkingLotsLayer: (
+  map: Map
+) => Promise<GeoJSON<GeoJsonProperties, Geometry>> = async (map) => {
+  const parkingLayer = geoJSON(undefined, {
     style() {
       return STYLES.parkingLots;
     },
@@ -251,18 +296,24 @@ const setUpParkingLotsLayer = async (map) => {
 
   // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
   if (window.location.href.indexOf("#lots-toggle") !== -1) {
-    document.querySelector("#lots-toggle").style.display = "block";
-    document.querySelector("#lots-toggle-off").addEventListener("click", () => {
-      parkingLayer.removeFrom(map);
-    });
-    document.querySelector("#lots-toggle-on").addEventListener("click", () => {
+    const toggle: HTMLAnchorElement | null =
+      document.querySelector("#lots-toggle");
+    if (toggle) {
+      toggle.style.display = "block";
+    }
+    document
+      .querySelector("#lots-toggle-off")
+      ?.addEventListener("click", () => {
+        parkingLayer.removeFrom(map);
+      });
+    document.querySelector("#lots-toggle-on")?.addEventListener("click", () => {
       parkingLayer.addTo(map);
     });
   }
   return parkingLayer;
 };
 
-const setUpSite = async () => {
+const setUpSite: () => Promise<void> = async () => {
   setUpIcons();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);

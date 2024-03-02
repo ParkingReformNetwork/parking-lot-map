@@ -1,6 +1,7 @@
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
 import scoreCardsData from "../../data/score-cards.json";
+import { CityId } from "./types";
 
 export const DROPDOWN = new Choices("#city-choice", {
   allowHTML: false,
@@ -8,10 +9,10 @@ export const DROPDOWN = new Choices("#city-choice", {
   searchEnabled: true,
 });
 
-const setUpDropdown = (initialCityId, fallBackCityId) => {
-  const cities = Object.entries(scoreCardsData).map(([id, { Name }]) => ({
+const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
+  const cities = Object.entries(scoreCardsData).map(([id, { name }]) => ({
     value: id,
-    label: Name,
+    label: name,
   }));
   DROPDOWN.setChoices(cities);
   if (Object.keys(scoreCardsData).includes(initialCityId)) {

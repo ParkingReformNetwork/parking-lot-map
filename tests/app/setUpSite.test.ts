@@ -1,9 +1,9 @@
 /* global document, navigator */
 import fs from "fs";
-import { expect, test } from "@playwright/test";
+import { expect, test, Page } from "@playwright/test";
 
 test("no console errors and warnings", async ({ page }) => {
-  const errors = [];
+  const errors: string[] = [];
   page.on("console", (message) => {
     if (message.type() === "error" || message.type() === "warn") {
       errors.push(message.text());
@@ -15,15 +15,15 @@ test("no console errors and warnings", async ({ page }) => {
 });
 
 test("every city is in the toggle", async ({ page }) => {
-  const rawData = fs.readFileSync("data/score-cards.json");
-  const data = JSON.parse(rawData);
-  const expectedCities = Object.values(data).map((scoreCard) => scoreCard.Name);
+  const rawData: Buffer = fs.readFileSync("data/score-cards.json");
+  const data: JSON = JSON.parse(rawData.toString());
+  const expectedCities = Object.values(data).map((scoreCard) => scoreCard.name);
 
   await page.goto("/");
   await page.waitForSelector(".choices");
 
   const toggleValues = await page.$$eval(".choices__item--choice", (elements) =>
-    Array.from(elements.map((opt) => opt.textContent.trim()))
+    Array.from(elements.map((opt) => opt.textContent?.trim()))
   );
 
   toggleValues.sort();
@@ -32,8 +32,8 @@ test("every city is in the toggle", async ({ page }) => {
 });
 
 test("correctly load the city score card", async ({ page }) => {
-  const rawData = fs.readFileSync("data/score-cards.json");
-  const albanyExpected = JSON.parse(rawData)["albany-ny"];
+  const rawData: Buffer = fs.readFileSync("data/score-cards.json");
+  const albanyExpected = JSON.parse(rawData.toString())["albany-ny"];
   let albanyLoaded = false;
   page.route("**/*", (route) => {
     const requestUrl = route.request().url();
@@ -57,7 +57,9 @@ test("correctly load the city score card", async ({ page }) => {
   });
 
   const [content, cityToggleValue] = await page.evaluate(() => {
-    const cityToggle = document.querySelector("#city-choice").value;
+    const cityChoice: HTMLSelectElement | null =
+      document.querySelector("#city-choice");
+    const cityToggle = cityChoice?.value;
 
     const detailsTitles = Array.from(
       document.querySelectorAll(".leaflet-popup-content .details-title")
@@ -66,22 +68,24 @@ test("correctly load the city score card", async ({ page }) => {
       document.querySelectorAll(".leaflet-popup-content .details-value")
     ).map((el) => el.textContent);
 
-    const details = {};
+    const details: Record<string, string | null> = {};
     detailsTitles.forEach((title, index) => {
-      details[title] = detailsValues[index];
+      if (title) {
+        details[title] = detailsValues[index];
+      }
     });
     return [details, cityToggle];
   });
   expect(cityToggleValue).toEqual("albany-ny");
   expect(content["Parking: "]).toEqual(
-    `${albanyExpected.Percentage} of central city`
+    `${albanyExpected.percentage} of central city`
   );
-  expect(content["Population: "]).toEqual(albanyExpected.Population);
+  expect(content["Population: "]).toEqual(albanyExpected.population);
   expect(content["Urbanized area population: "]).toEqual(
     albanyExpected.urbanizedAreaPopulation
   );
-  expect(content["Parking score: "]).toEqual(albanyExpected["Parking Score"]);
-  expect(content["Parking reform: "]).toEqual(albanyExpected.Reforms);
+  expect(content["Parking score: "]).toEqual(albanyExpected.parkingScore);
+  expect(content["Parking reform: "]).toEqual(albanyExpected.reforms);
   expect(albanyLoaded).toBe(true);
 });
 
@@ -128,10 +132,13 @@ test.describe("the share feature", () => {
     await page.waitForSelector(".leaflet-popup-content .title");
 
     const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-      const title = document.querySelector(
+      const titlePopup: HTMLElement | null = document.querySelector(
         ".leaflet-popup-content .title"
-      ).textContent;
-      const cityToggle = document.querySelector("#city-choice").value;
+      );
+      const title = titlePopup?.textContent;
+      const cityChoice: HTMLSelectElement | null =
+        document.querySelector("#city-choice");
+      const cityToggle = cityChoice?.value;
       return [title, cityToggle];
     });
 
@@ -147,10 +154,14 @@ test.describe("the share feature", () => {
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
     const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-      const title = document.querySelector(
+      const titlePopup: HTMLAnchorElement | null = document.querySelector(
         ".leaflet-popup-content .title"
-      ).textContent;
-      const cityToggle = document.querySelector("#city-choice").value;
+      );
+
+      const title = titlePopup?.textContent;
+      const cityChoiceSelector: HTMLSelectElement | null =
+        document.querySelector("#city-choice");
+      const cityToggle = cityChoiceSelector?.value;
       return [title, cityToggle];
     });
 
@@ -159,7 +170,7 @@ test.describe("the share feature", () => {
   });
 });
 
-const dragMap = async (page, distance) => {
+const dragMap = async (page: Page, distance: number) => {
   await page.waitForTimeout(1000);
   await page.mouse.move(600, 500);
   await page.mouse.down();
@@ -191,7 +202,7 @@ test.describe("auto-focus city", () => {
     // Drag map to bring Birmingham into view.
     await dragMap(page, 200);
     // Click on Birmingham boundary.
-    const city = await page.locator("#birmingham-al");
+    const city = page.locator("#birmingham-al");
     await city.click({ force: true });
 
     // Wait a second to make sure the site is fully loaded.
@@ -200,8 +211,8 @@ test.describe("auto-focus city", () => {
     const newScorecard = await page
       .locator(".leaflet-popup-content .title")
       .evaluate((node) => node.textContent);
-    await expect(newScorecard).toEqual("Birmingham, AL");
-    await expect(city).toBeVisible();
+    expect(newScorecard).toEqual("Birmingham, AL");
+    expect(await page.isVisible("#birmingham-al")).toBe(true);
   });
   test("clicking on city boundary wide view", async ({ page }) => {
     await page.goto("");
@@ -223,7 +234,7 @@ test.describe("auto-focus city", () => {
     const scorecard = await page
       .locator(".leaflet-popup-content .title")
       .evaluate((node) => node.textContent);
-    await expect(scorecard).toEqual("Atlanta, GA");
+    expect(scorecard).toEqual("Atlanta, GA");
   });
 });
 
@@ -242,14 +253,14 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
 
   await page.waitForSelector(".choices");
   const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-    const title = document.querySelector(
-      ".leaflet-popup-content .title"
-    ).textContent;
-    const cityToggle = document.querySelector("#city-choice").value;
-    return [title, cityToggle];
+    const titlePopup = document.querySelector(".leaflet-popup-content .title");
+    const title = titlePopup?.textContent;
+    const cityChoice: HTMLSelectElement | null =
+      document.querySelector("#city-choice");
+    return [title, cityChoice?.value];
   });
-  await expect(scoreCardTitle).toEqual("Birmingham, AL");
-  await expect(cityToggleValue).toEqual("birmingham-al");
+  expect(scoreCardTitle).toEqual("Birmingham, AL");
+  expect(cityToggleValue).toEqual("birmingham-al");
 });
 
 test("map only loads parking lots for visible cities", async ({ page }) => {
