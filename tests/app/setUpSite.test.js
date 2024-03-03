@@ -17,7 +17,7 @@ test("no console errors and warnings", async ({ page }) => {
 test("every city is in the toggle", async ({ page }) => {
   const rawData = fs.readFileSync("data/score-cards.json");
   const data = JSON.parse(rawData);
-  const expectedCities = Object.values(data).map((scoreCard) => scoreCard.Name);
+  const expectedCities = Object.values(data).map((scoreCard) => scoreCard.name);
 
   await page.goto("/");
   await page.waitForSelector(".choices");
@@ -74,14 +74,14 @@ test("correctly load the city score card", async ({ page }) => {
   });
   expect(cityToggleValue).toEqual("albany-ny");
   expect(content["Parking: "]).toEqual(
-    `${albanyExpected.Percentage} of central city`
+    `${albanyExpected.percentage} of central city`
   );
-  expect(content["Population: "]).toEqual(albanyExpected.Population);
+  expect(content["Population: "]).toEqual(albanyExpected.population);
   expect(content["Urbanized area population: "]).toEqual(
     albanyExpected.urbanizedAreaPopulation
   );
-  expect(content["Parking score: "]).toEqual(albanyExpected["Parking Score"]);
-  expect(content["Parking reform: "]).toEqual(albanyExpected.Reforms);
+  expect(content["Parking score: "]).toEqual(albanyExpected.parkingScore);
+  expect(content["Parking reform: "]).toEqual(albanyExpected.reforms);
   expect(albanyLoaded).toBe(true);
 });
 

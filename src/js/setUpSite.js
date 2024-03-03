@@ -78,17 +78,17 @@ const createMap = () => {
  */
 const generateScorecard = (scoreCardEntry) => {
   const {
-    Name,
+    name,
     cityType,
-    Percentage,
-    Population,
+    percentage,
+    population,
     urbanizedAreaPopulation,
-    "Parking Score": ParkingScore,
-    Reforms,
-    "Website URL": WebsiteURL,
+    parkingScore,
+    reforms,
+    url,
   } = scoreCardEntry;
   let result = `
-    <div class="title">${Name}</div>
+    <div class="title">${name}</div>
     <div class="url-copy-button">
       <a href="#" class="share-icon">
         <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
@@ -96,18 +96,18 @@ const generateScorecard = (scoreCardEntry) => {
       </a>
     </div>
     <hr>
-    <div><span class="details-title">Parking: </span><span class="details-value">${Percentage} of central city</span></div>
-    <div><span class="details-title">Parking score: </span><span class="details-value">${ParkingScore}</span></div>
-    <div><span class="details-title">Parking reform: </span><span class="details-value">${Reforms}</span></div>
+    <div><span class="details-title">Parking: </span><span class="details-value">${percentage} of central city</span></div>
+    <div><span class="details-title">Parking score: </span><span class="details-value">${parkingScore}</span></div>
+    <div><span class="details-title">Parking reform: </span><span class="details-value">${reforms}</span></div>
     <br />
     <div><span class="details-title">City type: </span><span class="details-value">${cityType}</span></div>
-    <div><span class="details-title">Population: </span><span class="details-value">${Population}</span></div>
+    <div><span class="details-title">Population: </span><span class="details-value">${population}</span></div>
     <div><span class="details-title">Urbanized area population: </span><span class="details-value">${urbanizedAreaPopulation}</span></div>
   `;
-  if (WebsiteURL) {
+  if (url) {
     result += `
     <hr>
-    <div class="popup-button"><a href="${WebsiteURL}">View more about reforms</a></div>
+    <div class="popup-button"><a href="${url}">View more about reforms</a></div>
   `;
   }
   return result;

@@ -9,9 +9,9 @@ export const DROPDOWN = new Choices("#city-choice", {
 });
 
 const setUpDropdown = (initialCityId, fallBackCityId) => {
-  const cities = Object.entries(scoreCardsData).map(([id, { Name }]) => ({
+  const cities = Object.entries(scoreCardsData).map(([id, { name }]) => ({
     value: id,
-    label: Name,
+    label: name,
   }));
   DROPDOWN.setChoices(cities);
   if (Object.keys(scoreCardsData).includes(initialCityId)) {
