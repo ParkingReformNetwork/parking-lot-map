@@ -8,8 +8,8 @@ import {
   updateParkingLots,
   valueOrExit,
   exitOnError,
-} from "./base";
-import { CityId } from "../src/js/types";
+} from "./base.ts";
+import { CityId } from "../src/js/types.ts";
 
 const addScoreCard: (
   cityId: CityId,

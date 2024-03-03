@@ -5,7 +5,7 @@ import {
   Polygon,
   Feature,
 } from "geojson";
-import { parseCityIdFromJson } from "../src/js/cityId";
+import { parseCityIdFromJson } from "../src/js/cityId.ts";
 import { CityId } from "../src/js/types";
 
 type ok<T> = { value: T };
