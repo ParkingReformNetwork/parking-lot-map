@@ -71,6 +71,10 @@ header {
   height: 40px;
 }
 
+.choices__input {
+  font-size: 16px;
+}
+
 .choices__list--dropdown,
 .choices__list[aria-expanded] {
   z-index: 1001;
