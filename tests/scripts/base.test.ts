@@ -2,47 +2,26 @@ import fs from "fs/promises";
 import { expect, test } from "@playwright/test";
 import { Feature, Polygon, FeatureCollection } from "geojson";
 import {
-  OrError,
   determineArgs,
   updateCoordinates,
   updateParkingLots,
-  valueOrExit,
-  error,
 } from "../../scripts/base";
 import { CityId } from "../../src/js/types";
 
-const expectError = <T>(res: OrError<T>) => {
-  expect("error" in res).toBe(true);
-  return expect((res as error).error);
-};
-
-const expectOk = <T>(res: OrError<T>) => {
-  if ("error" in res) {
-    throw new Error(`Expected ok: ${res.error}`);
-  }
-};
-
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
-    const result = determineArgs("my-script", ["My City"]);
-    expect(valueOrExit(result)).toEqual({
+    expect(determineArgs("my-script", ["My City"]).unwrap()).toEqual({
       cityName: "My City",
       cityId: "my-city",
     });
   });
 
-  test("requires exactly 1 argument", () => {
-    let result: OrError<{ cityName: string; cityId: string }> = determineArgs(
-      "my-script",
-      []
-    );
-    expectError(result).toContain("exactly one argument");
-
-    result = determineArgs("my-script", ["My City", "--bad"]);
-    expectError(result).toContain("exactly one argument");
-
-    result = determineArgs("my-script", ["My City", "AZ"]);
-    expectError(result).toContain("exactly one argument");
+  [[], ["My City", "--bad"], ["My City", "AZ"]].forEach((args, index) => {
+    test(`${index}) requires exactly 1 argument`, () => {
+      expect(() => determineArgs("my-script", args).unwrap()).toThrow(
+        /exactly one argument/
+      );
+    });
   });
 });
 
@@ -72,7 +51,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       updateFilePath
     );
-    expectOk(result);
+    expect(result.ok).toBe(true);
 
     const rawUpdateData = await fs.readFile(updateFilePath, "utf8");
     const updateData = JSON.parse(rawUpdateData);
@@ -98,7 +77,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       updateFilePath
     );
-    expectOk(result);
+    expect(result.ok).toBe(true);
 
     const rawUpdatedData = await fs.readFile(updateFilePath, "utf8");
     const updatedData = JSON.parse(rawUpdatedData);
@@ -130,7 +109,7 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       validUpdateFilePath
     );
-    expectError(result).toContain("To add a new city,");
+    expect(() => result.unwrap()).toThrow(/To add a new city,/);
   });
 
   test("validates the update file has exactly one `feature`", async () => {
@@ -141,7 +120,9 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       "tests/scripts/data/too-many-updates.geojson"
     );
-    expectError(result).toContain("expects exactly one entry in `features`");
+    expect(() => result.unwrap()).toThrow(
+      /expects exactly one entry in `features`/
+    );
 
     result = await updateCoordinates(
       "my-script",
@@ -150,7 +131,9 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       "tests/scripts/data/empty-update.geojson"
     );
-    expectError(result).toContain("expects exactly one entry in `features`");
+    expect(() => result.unwrap()).toThrow(
+      /expects exactly one entry in `features`/
+    );
   });
 
   test("errors gracefully if update file not found", async () => {
@@ -161,7 +144,9 @@ test.describe("updateCoordinates()", () => {
       originalFilePath,
       "tests/scripts/data/does-not-exist"
     );
-    expectError(result).toContain("tests/scripts/data/does-not-exist");
+    expect(() => result.unwrap()).toThrow(
+      /tests\/scripts\/data\/does-not-exist/
+    );
   });
 
   test("errors gracefully if original data file not found", async () => {
@@ -172,7 +157,9 @@ test.describe("updateCoordinates()", () => {
       "tests/scripts/data/does-not-exist",
       validUpdateFilePath
     );
-    expectError(result).toContain("tests/scripts/data/does-not-exist");
+    expect(() => result.unwrap()).toThrow(
+      /tests\/scripts\/data\/does-not-exist/
+    );
   });
 });
 
@@ -215,7 +202,7 @@ test.describe("updateParkingLots()", () => {
       parkingLotData,
       addDataPath
     );
-    expectOk(result);
+    expect(result.ok).toBe(true);
 
     await expectUpdatedFile(cityId, addDataPath);
 
@@ -233,7 +220,7 @@ test.describe("updateParkingLots()", () => {
       parkingLotData,
       existingDataPath
     );
-    expectOk(result);
+    expect(result.ok).toBe(true);
 
     await expectUpdatedFile(cityId, existingDataPath);
     await fs.writeFile(existingDataPath, existingData);

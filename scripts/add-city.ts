@@ -1,20 +1,12 @@
+import results from "ts-results";
 import fs from "fs/promises";
-import {
-  Ok,
-  Err,
-  OrError,
-  determineArgs,
-  updateCoordinates,
-  updateParkingLots,
-  valueOrExit,
-  exitOnError,
-} from "./base.ts";
+import { determineArgs, updateCoordinates, updateParkingLots } from "./base.ts";
 import { CityId } from "../src/js/types.ts";
 
 const addScoreCard: (
   cityId: CityId,
   cityName: string
-) => Promise<OrError<undefined>> = async (cityId, cityName) => {
+) => Promise<results.Result<void, string>> = async (cityId, cityName) => {
   const newEntry = {
     name: cityName,
     percentage: "FILL ME IN, e.g. 23%",
@@ -33,7 +25,7 @@ const addScoreCard: (
     originalData = JSON.parse(rawOriginalData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return Err(
+    return results.Err(
       `Issue reading the score card file path ${originalFilePath}: ${message}`
     );
   }
@@ -47,35 +39,35 @@ const addScoreCard: (
   });
 
   await fs.writeFile(originalFilePath, JSON.stringify(sortedData, null, 2));
-  return Ok();
+  return results.Ok.EMPTY;
 };
 
 const main = async () => {
-  const args = determineArgs("add-city", process.argv.slice(2));
-  const { cityName, cityId } = valueOrExit(
-    args,
-    (msg) => `Argument error: ${msg}`
-  );
+  const { cityName, cityId } = determineArgs("add-city", process.argv.slice(2))
+    .mapErr((err) => new Error(`Argument error: ${err}`))
+    .unwrap();
 
-  const boundariesResult = await updateCoordinates(
-    "add-city",
-    cityId,
-    true,
-    "data/city-boundaries.geojson",
-    "city-update.geojson"
-  );
-  exitOnError(boundariesResult, (msg) => `Error: ${msg}`);
+  (
+    await updateCoordinates(
+      "add-city",
+      cityId,
+      true,
+      "data/city-boundaries.geojson",
+      "city-update.geojson"
+    )
+  ).unwrap();
 
-  const lotsResult = await updateParkingLots(
-    cityId,
-    true,
-    "parking-lots-update.geojson",
-    `data/parking-lots/${cityId}.geojson`
-  );
-  exitOnError(lotsResult, (msg) => `Error ${msg}`);
+  (
+    await updateParkingLots(
+      cityId,
+      true,
+      "parking-lots-update.geojson",
+      `data/parking-lots/${cityId}.geojson`
+    )
+  ).unwrap();
 
-  const scoreCardResult = await addScoreCard(cityId, cityName);
-  exitOnError(scoreCardResult, (msg) => `Error ${msg}`);
+  (await addScoreCard(cityId, cityName)).unwrap();
+
   /* eslint-disable-next-line no-console */
   console.log(
     `Almost done! Now, fill in the score card values in data/score-cards.json. Then,

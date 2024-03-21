@@ -1,17 +1,22 @@
-import { determineArgs, valueOrExit, updateCoordinates } from "./base.js";
+import { determineArgs, updateCoordinates } from "./base.js";
 
 const main = async () => {
-  const args = determineArgs("update-city-boundaries", process.argv.slice(2));
-  const { cityId } = valueOrExit(args, (msg) => `Argument error: ${msg}`);
-  const result = await updateCoordinates(
+  const { cityId } = determineArgs(
     "update-city-boundaries",
-    cityId,
-    false,
-    "data/city-boundaries.geojson",
-    "city-update.geojson"
-  );
+    process.argv.slice(2)
+  )
+    .mapErr((err) => new Error(`Argument error: ${err}`))
+    .unwrap();
+  const value = (
+    await updateCoordinates(
+      "update-city-boundaries",
+      cityId,
+      false,
+      "data/city-boundaries.geojson",
+      "city-update.geojson"
+    )
+  ).unwrap();
 
-  const value = valueOrExit(result, (msg) => `Error: ${msg}`);
   /* eslint-disable-next-line no-console */
   console.log(
     `${value} Now, run 'npm run fmt'. Then, 'npm start' and

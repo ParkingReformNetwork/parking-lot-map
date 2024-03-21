@@ -1,3 +1,4 @@
+import results from "ts-results";
 import fs from "fs/promises";
 import {
   FeatureCollection,
@@ -7,34 +8,6 @@ import {
 } from "geojson";
 import { parseCityIdFromJson } from "../src/js/cityId.ts";
 import { CityId } from "../src/js/types";
-
-type ok<T> = { value: T };
-type error = { error: string };
-type OrError<T> = ok<T> | error;
-
-// Rather than using `try/catch`, we return either `Ok` or `Err`.
-// This emulates Rust's `Result` type.
-const Ok = <T>(value?: T): OrError<T> => ({ value } as ok<T>);
-const Err = <T>(err: string): OrError<T> => ({ error: err } as error);
-
-export const valueOrExit = <T>(
-  res: OrError<T>,
-  f?: (msg: string) => string
-): T => {
-  if ("error" in res) {
-    // eslint-disable-next-line no-console
-    console.error(f ? f(res.error) : res.error);
-    process.exit(1);
-  }
-  return res.value;
-};
-
-export const exitOnError = <T>(
-  res: OrError<T>,
-  f?: (msg: string) => string
-): void => {
-  valueOrExit(res, f);
-};
 
 /**
  * Determine the city name and city ID.
@@ -46,12 +19,12 @@ export const exitOnError = <T>(
 const determineArgs: (
   scriptCommand: string,
   processArgv: string[]
-) => OrError<{ cityName: string; cityId: CityId }> = (
+) => results.Result<{ cityName: string; cityId: CityId }, string> = (
   scriptCommand,
   processArgv
 ) => {
   if (processArgv.length !== 1) {
-    return Err(
+    return new results.Err(
       `Must provide exactly one argument (the city/state name). For example,
        npm run ${scriptCommand} -- 'Columbus, OH'
        `
@@ -59,7 +32,7 @@ const determineArgs: (
   }
   const cityName = processArgv[0];
   const cityId = parseCityIdFromJson(cityName);
-  return Ok({ cityName, cityId });
+  return results.Ok({ cityName, cityId });
 };
 
 /**
@@ -73,12 +46,18 @@ const determineArgs: (
  * @return either an `error` or `value` object. The `value` does not include follow up
       instructions, which you should log.
  */
-const updateCoordinates = async (
+const updateCoordinates: (
   scriptCommand: string,
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
   updateFilePath: string
+) => Promise<results.Result<string, string>> = async (
+  scriptCommand,
+  cityId,
+  addCity,
+  originalFilePath,
+  updateFilePath
 ) => {
   let newData: FeatureCollection<Polygon, GeoJsonProperties>;
   try {
@@ -86,13 +65,13 @@ const updateCoordinates = async (
     newData = JSON.parse(rawNewData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return Err(
+    return results.Err(
       `Issue reading the update file path ${updateFilePath}: ${message}`
     );
   }
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
-    return Err(
+    return results.Err(
       "The script expects exactly one entry in `features` because you can only update one city at a time."
     );
   }
@@ -107,7 +86,7 @@ const updateCoordinates = async (
     originalData = JSON.parse(rawOriginalData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return Err(
+    return results.Err(
       `Issue reading the original data file path ${originalFilePath}: ${message}`
     );
   }
@@ -124,7 +103,7 @@ const updateCoordinates = async (
       (feature) => feature?.properties?.id === cityId
     );
     if (!cityOriginalData) {
-      return Err(
+      return results.Err(
         `City not found in ${originalFilePath}. To add a new city, run again with the '--add' flag, e.g. npm run ${scriptCommand} -- 'My City, AZ' --add`
       );
     }
@@ -143,7 +122,7 @@ const updateCoordinates = async (
   });
 
   await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
-  return Ok("File updated successfully!");
+  return results.Ok("File updated successfully!");
 };
 
 /**
@@ -156,11 +135,16 @@ const updateCoordinates = async (
  * @return either an `error` or `value` object. The `value` does not include follow up
       instructions, which you should log.
  */
-const updateParkingLots = async (
+const updateParkingLots: (
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
   updateFilePath: string
+) => Promise<results.Result<string, string>> = async (
+  cityId,
+  addCity,
+  originalFilePath,
+  updateFilePath
 ) => {
   let newData;
   try {
@@ -168,13 +152,13 @@ const updateParkingLots = async (
     newData = JSON.parse(rawNewData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return Err(
+    return results.Err(
       `Issue reading the update file path parking-lots-update.geojson: ${message}`
     );
   }
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
-    return Err(
+    return results.Err(
       "The script expects exactly one entry in `features` because you can only update one city at a time."
     );
   }
@@ -189,14 +173,14 @@ const updateParkingLots = async (
       originalData = JSON.parse(rawOriginalData);
     } catch (err: unknown) {
       const { message } = err as Error;
-      return Err(
+      return results.Err(
         `Issue reading the original data file path ${updateFilePath}: ${message}`
       );
     }
     originalData.geometry.coordinates = newCoordinates;
 
     await fs.writeFile(updateFilePath, JSON.stringify(originalData, null, 2));
-    return Ok("File updated successfully!");
+    return results.Ok("File updated successfully!");
   }
   const newFile = {
     type: "Feature",
@@ -205,16 +189,7 @@ const updateParkingLots = async (
   };
   await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
 
-  return Ok("File updated successfully!");
+  return results.Ok("File updated successfully!");
 };
 
-export {
-  Ok,
-  Err,
-  determineArgs,
-  updateCoordinates,
-  updateParkingLots,
-  OrError,
-  error,
-  ok,
-};
+export { determineArgs, updateCoordinates, updateParkingLots };
