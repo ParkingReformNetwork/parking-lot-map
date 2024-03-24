@@ -3,10 +3,10 @@ import fs from "fs/promises";
 import { determineArgs, updateCoordinates, updateParkingLots } from "./base.ts";
 import { CityId } from "../src/js/types.ts";
 
-const addScoreCard: (
+const addScoreCard = async (
   cityId: CityId,
   cityName: string
-) => Promise<results.Result<void, string>> = async (cityId, cityName) => {
+): Promise<results.Result<void, string>> => {
   const newEntry = {
     name: cityName,
     percentage: "FILL ME IN, e.g. 23%",

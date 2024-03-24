@@ -1,6 +1,6 @@
 import { determineArgs, updateParkingLots } from "./base";
 
-const main = async () => {
+const main = async (): Promise<void> => {
   const { cityId } = determineArgs("update-lots", process.argv.slice(2))
     .mapErr((err) => new Error(`Argument error: ${err}`))
     .unwrap();

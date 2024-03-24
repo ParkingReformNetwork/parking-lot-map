@@ -9,20 +9,10 @@ import {
 import { parseCityIdFromJson } from "../src/js/cityId.ts";
 import { CityId } from "../src/js/types";
 
-/**
- * Determine the city name and city ID.
- *
- * @param string scriptCommand - e.g. `update-lots` or `update-city-boundaries`.
- * @param list[string] processArgv - all argv after the first two elements.
- * @return either an `error` or `value` object.
- */
-const determineArgs: (
+const determineArgs = (
   scriptCommand: string,
   processArgv: string[]
-) => results.Result<{ cityName: string; cityId: CityId }, string> = (
-  scriptCommand,
-  processArgv
-) => {
+): results.Result<{ cityName: string; cityId: CityId }, string> => {
   if (processArgv.length !== 1) {
     return new results.Err(
       `Must provide exactly one argument (the city/state name). For example,
@@ -35,30 +25,13 @@ const determineArgs: (
   return results.Ok({ cityName, cityId });
 };
 
-/**
- * Rewrite the coordinates for `cityId`.
- *
- * @param string scriptCommand - i.e. `update-lots` or `update-city-boundaries`.
- * @param string cityId - e.g. 'my-city-az'
- * @param boolean addCity - what to do if the city is missing
- * @param string originalFilePath - what will be updated
- * @param string updatedFilePath - where to get the new coordinates
- * @return either an `error` or `value` object. The `value` does not include follow up
-      instructions, which you should log.
- */
-const updateCoordinates: (
+const updateCoordinates = async (
   scriptCommand: string,
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
   updateFilePath: string
-) => Promise<results.Result<string, string>> = async (
-  scriptCommand,
-  cityId,
-  addCity,
-  originalFilePath,
-  updateFilePath
-) => {
+): Promise<results.Result<string, string>> => {
   let newData: FeatureCollection<Polygon, GeoJsonProperties>;
   try {
     const rawNewData = await fs.readFile(updateFilePath, "utf8");
@@ -125,27 +98,12 @@ const updateCoordinates: (
   return results.Ok("File updated successfully!");
 };
 
-/**
- * Add or update a city's parking lot .geojson file.
- *
- * @param string cityId - e.g. 'my-city-az'
- * @param boolean addCity - whether a city exists or not
- * @param string originalFilePath - what will be updated
- * @param string updatedFilePath - where to get the new coordinates
- * @return either an `error` or `value` object. The `value` does not include follow up
-      instructions, which you should log.
- */
-const updateParkingLots: (
+const updateParkingLots = async (
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
   updateFilePath: string
-) => Promise<results.Result<string, string>> = async (
-  cityId,
-  addCity,
-  originalFilePath,
-  updateFilePath
-) => {
+): Promise<results.Result<string, string>> => {
   let newData;
   try {
     const rawNewData = await fs.readFile(originalFilePath, "utf8");

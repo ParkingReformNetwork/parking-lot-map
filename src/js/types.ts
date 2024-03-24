@@ -1,7 +1,7 @@
 import { Feature, Geometry } from "geojson";
 import { ImageOverlay } from "leaflet";
 
-export type CityId = string;
+export type CityId = string; // e.g. `st.-louis-mo`
 
 export interface ScoreCardDetails {
   name: string;

@@ -1,12 +1,8 @@
 /* global document, navigator, window */
 import { CityId } from "./types";
 import { determineShareUrl } from "./cityId";
-/**
- * Copy `value` to the user's clipboard
- *
- * @param string value
- */
-const copyToClipboard = async (value: string) => {
+
+const copyToClipboard = async (value: string): Promise<void> => {
   try {
     await navigator.clipboard.writeText(value);
   } catch (err) {
@@ -15,12 +11,7 @@ const copyToClipboard = async (value: string) => {
   }
 };
 
-/**
- * Toggle share link icon briefly to show user an indicator
- *
- * @param {HTMLAnchorElement} shareIcon
- */
-const switchIcons = (shareIcon: HTMLAnchorElement) => {
+const switchIcons = (shareIcon: HTMLAnchorElement): void => {
   const linkIcon: HTMLAnchorElement | null = shareIcon.querySelector(
     "svg.share-link-icon"
   );
@@ -37,12 +28,7 @@ const switchIcons = (shareIcon: HTMLAnchorElement) => {
   }
 };
 
-/**
- * Add an event listener for the share button to copy the link to the clipboard.
- *
- * @param string cityId: e.g. `st.-louis-mo`
- */
-const setUpShareUrlClickListener = (cityId: CityId) => {
+const setUpShareUrlClickListener = (cityId: CityId): void => {
   // We put the event listener on `map` because it is never erased, unlike the copy button
   // being recreated every time the score card changes. This is called "event delegation".
   const mapElement: HTMLElement | null = document.querySelector("#map");

@@ -1,6 +1,6 @@
 import { determineArgs, updateCoordinates } from "./base.js";
 
-const main = async () => {
+const main = async (): Promise<void> => {
   const { cityId } = determineArgs(
     "update-city-boundaries",
     process.argv.slice(2)
