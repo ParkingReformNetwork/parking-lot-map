@@ -71,6 +71,15 @@ header {
   height: 40px;
 }
 
+.choices__input {
+  /*
+   * This is necessary to prevent autozoom on iOS 
+   * for accessibility reasons.  See:
+   * https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
+   */
+  font-size: 16px;
+}
+
 .choices__list--dropdown,
 .choices__list[aria-expanded] {
   z-index: 1001;
