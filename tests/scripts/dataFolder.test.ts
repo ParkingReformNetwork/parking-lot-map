@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import { expect, test } from "@playwright/test";
 
-const assertSortedGeojson = async (filePath) => {
+const assertSortedGeojson = async (filePath: string) => {
   const rawData = await fs.readFile(filePath, "utf8");
   const data = JSON.parse(rawData);
   const sortedFeatures = [...data.features].sort((a, b) =>
