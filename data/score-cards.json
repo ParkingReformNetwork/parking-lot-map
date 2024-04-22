@@ -56,7 +56,8 @@
     "population": "394,218",
     "urbanizedAreaPopulation": "5,732,354",
     "parkingScore": "N/A",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Arlington_TX.html"
   },
   "atlanta-ga": {
     "name": "Atlanta, GA",
@@ -75,7 +76,8 @@
     "population": "386,261",
     "urbanizedAreaPopulation": "2,686,147",
     "parkingScore": "N/A",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Aurora_CO.html"
   },
   "austin-tx": {
     "name": "Austin, TX",
@@ -534,7 +536,8 @@
     "population": "142,195",
     "urbanizedAreaPopulation": "779,553",
     "parkingScore": "46",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/McAllen_TX.html"
   },
   "melbourne-fl": {
     "name": "Melbourne, FL",
@@ -563,7 +566,8 @@
     "population": "504,500",
     "urbanizedAreaPopulation": "3,976,313",
     "parkingScore": "N/A",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Mesa_AZ.html"
   },
   "miami-fl": {
     "name": "Miami, FL",
@@ -722,7 +726,8 @@
     "population": "302,971",
     "urbanizedAreaPopulation": "1,745,039",
     "parkingScore": "17",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Pittsburgh_PA.html"
   },
   "portland-or": {
     "name": "Portland, OR",
@@ -900,7 +905,8 @@
     "population": "54,840",
     "urbanizedAreaPopulation": "779,075",
     "parkingScore": "52",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Sarasota_FL.html"
   },
   "seattle-wa": {
     "name": "Seattle, WA",
@@ -949,7 +955,8 @@
     "population": "382,769",
     "urbanizedAreaPopulation": "2,783,045",
     "parkingScore": "85",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Tampa_FL.html"
   },
   "toledo-oh": {
     "name": "Toledo, OH",
@@ -988,7 +995,8 @@
     "population": "459,470",
     "urbanizedAreaPopulation": "2,196,623",
     "parkingScore": "N/A",
-    "reforms": "no reforms"
+    "reforms": "implemented",
+    "url": "https://parkingreform.org/mandates-map/city_detail/VirginiaBeach_VA.html"
   },
   "washington-dc": {
     "name": "Washington, DC",
