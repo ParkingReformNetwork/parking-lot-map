@@ -11,7 +11,8 @@ export interface ScoreCardDetails {
   urbanizedAreaPopulation: string;
   parkingScore: string;
   reforms: string;
-  url: string;
+  url?: string;
+  contribution?: string;
 }
 
 export type ScoreCardsDetails = Record<CityId, ScoreCardDetails>;
