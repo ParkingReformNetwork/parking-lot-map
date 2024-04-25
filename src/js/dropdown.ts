@@ -22,8 +22,8 @@ const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
   );
   DROPDOWN.setChoices([
     {
-      value: "PRN Maps",
-      label: "PRN Maps",
+      value: "Official Maps",
+      label: "Official Maps",
       disabled: false,
       choices: allCities.filter((city) => city.contribution === "PRN"),
     },
