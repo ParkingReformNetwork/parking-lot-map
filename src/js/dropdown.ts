@@ -20,6 +20,9 @@ const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
       contribution: contribution || "PRN",
     })
   );
+  const communityCities = allCities.filter(
+    (city) => city.contribution !== "PRN"
+  );
   DROPDOWN.setChoices([
     {
       value: "Official Maps",
@@ -31,7 +34,16 @@ const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
       value: "Community Maps",
       label: "Community Maps",
       disabled: false,
-      choices: allCities.filter((city) => city.contribution !== "PRN"),
+      choices:
+        communityCities.length > 0
+          ? communityCities
+          : [
+              {
+                value: "",
+                label: "No community maps available",
+                disabled: true,
+              },
+            ],
     },
   ]);
   if (Object.keys(scoreCardsData).includes(initialCityId)) {
