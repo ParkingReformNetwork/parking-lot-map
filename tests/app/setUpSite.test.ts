@@ -18,6 +18,9 @@ test("every city is in the toggle", async ({ page }) => {
   const rawData: Buffer = fs.readFileSync("data/score-cards.json");
   const data: JSON = JSON.parse(rawData.toString());
   const expectedCities = Object.values(data).map((scoreCard) => scoreCard.name);
+  const communityCities = Object.values(data).filter(
+    (city) => "contribution" in city
+  );
 
   await page.goto("/");
   await page.waitForSelector(".choices");
@@ -26,8 +29,14 @@ test("every city is in the toggle", async ({ page }) => {
     Array.from(elements.map((opt) => opt.textContent?.trim()))
   );
 
+  // If there are no community cities, the dropdown adds an entry called "No community maps available"
+  if (communityCities.length < 1) {
+    expectedCities.push("No community maps available");
+  }
+
   toggleValues.sort();
   expectedCities.sort();
+
   expect(toggleValues).toEqual(expectedCities);
 });
 
