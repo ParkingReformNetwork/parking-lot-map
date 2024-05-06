@@ -161,16 +161,16 @@ const snapToCity: (map: Map, layer: ImageOverlay) => void = async (
 };
 
 /**
- * Sets scorecard to city.
+ * Sets scorecard to city and alert if city is community made.
  *
  * @param cityId: E.g. `columbus-oh`.
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const setScorecard: (cityId: CityId, cityProperties: ScoreCard) => void = (
-  cityId,
-  cityProperties
-) => {
+const setScorecardAndAlert: (
+  cityId: CityId,
+  cityProperties: ScoreCard
+) => void = (cityId, cityProperties) => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
   setUpShareUrlClickListener(cityId);
@@ -180,6 +180,17 @@ const setScorecard: (cityId: CityId, cityProperties: ScoreCard) => void = (
     autoPan: false,
   }).setContent(scorecard);
   layer.bindPopup(popup).openPopup();
+
+  const alertBox = document.getElementById(
+    "community-map-alert"
+  ) as HTMLElement;
+  if ("contribution" in details) {
+    const email = document.getElementById("email") as HTMLSpanElement;
+    email.innerText = details.contribution;
+    alertBox.style.display = "block";
+  } else {
+    alertBox.style.display = "none";
+  }
 };
 
 /**
@@ -213,7 +224,7 @@ const setUpAutoScorecard: (
     });
     if (centralCity) {
       DROPDOWN.setChoiceByValue(centralCity);
-      setScorecard(centralCity, cities[centralCity]);
+      setScorecardAndAlert(centralCity, cities[centralCity]);
     }
   });
 };
@@ -273,7 +284,7 @@ const setUpCitiesLayer: (
     const cityId = cityToggleElement.value;
     setUpAutoScorecard(map, cities, parkingLayer);
     snapToCity(map, cities[cityId].layer);
-    setScorecard(cityId, cities[cityId]);
+    setScorecardAndAlert(cityId, cities[cityId]);
   } else {
     throw new Error("#city-choice is not a select element");
   }
