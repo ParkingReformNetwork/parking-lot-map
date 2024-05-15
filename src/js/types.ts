@@ -27,3 +27,9 @@ export type ScoreCards = Record<CityId, ScoreCard>;
 export interface ParkingLotModules {
   [key: string]: () => Promise<Feature<Geometry>>;
 }
+
+export interface dropdownChoice {
+  value: string;
+  label: string;
+  contribution: string;
+}
