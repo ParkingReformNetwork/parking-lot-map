@@ -35,7 +35,7 @@
     "cityType": "principal",
     "population": "346,824",
     "urbanizedAreaPopulation": "12,237,376",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Anaheim_CA.html"
   },
@@ -45,7 +45,7 @@
     "cityType": "core city",
     "population": "291,247",
     "urbanizedAreaPopulation": "249,252",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Anchorage_AK.html"
   },
@@ -55,7 +55,7 @@
     "cityType": "suburb",
     "population": "394,218",
     "urbanizedAreaPopulation": "5,732,354",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Arlington_TX.html"
   },
@@ -75,7 +75,7 @@
     "cityType": "suburb",
     "population": "386,261",
     "urbanizedAreaPopulation": "2,686,147",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Aurora_CO.html"
   },
@@ -235,7 +235,7 @@
     "cityType": "core city",
     "population": "317,863",
     "urbanizedAreaPopulation": "339,066",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/CorpusChristi_TX.html"
   },
@@ -315,7 +315,7 @@
     "cityType": "principal",
     "population": "918,377",
     "urbanizedAreaPopulation": "5,732,354",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/FortWorth_TX.html"
   },
@@ -345,7 +345,7 @@
     "cityType": "core city",
     "population": "299,035",
     "urbanizedAreaPopulation": "338,928",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Greensboro_NC.html"
   },
@@ -375,7 +375,7 @@
     "cityType": "suburb",
     "population": "317,610",
     "urbanizedAreaPopulation": "2,196,623",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Henderson_NV.html"
   },
@@ -425,7 +425,7 @@
     "cityType": "principal",
     "population": "292,449",
     "urbanizedAreaPopulation": "19,426,449",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/JerseyCity_NJ.html"
   },
@@ -465,7 +465,7 @@
     "cityType": "core city",
     "population": "322,570",
     "urbanizedAreaPopulation": "315,631",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Lexington_KY.html"
   },
@@ -475,7 +475,7 @@
     "cityType": "core city",
     "population": "291,082",
     "urbanizedAreaPopulation": "291,217",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Lincoln_NE.html"
   },
@@ -495,7 +495,7 @@
     "cityType": "principal",
     "population": "466,302",
     "urbanizedAreaPopulation": "12,237,376",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/LongBeach_CA.html"
   },
@@ -565,7 +565,7 @@
     "cityType": "suburb",
     "population": "504,500",
     "urbanizedAreaPopulation": "3,976,313",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Mesa_AZ.html"
   },
@@ -615,7 +615,7 @@
     "cityType": "principal",
     "population": "134,023",
     "urbanizedAreaPopulation": "561,456",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/NewHaven_CT.html"
   },
@@ -645,7 +645,7 @@
     "cityType": "principal",
     "population": "311,549",
     "urbanizedAreaPopulation": "19,426,449",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Newark_NJ.html"
   },
@@ -745,7 +745,7 @@
     "cityType": "principal",
     "population": "190,934",
     "urbanizedAreaPopulation": "1,285,806",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Providence_RI.html"
   },
@@ -775,7 +775,7 @@
     "cityType": "principal",
     "population": "317,610",
     "urbanizedAreaPopulation": "2,276,703",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Riverside_CA.html"
   },
@@ -835,7 +835,7 @@
     "cityType": "principal",
     "population": "222,101",
     "urbanizedAreaPopulation": "2,276,703",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/SanBernardino_CA.html"
   },
@@ -865,7 +865,7 @@
     "cityType": "principal",
     "population": "1,014,545",
     "urbanizedAreaPopulation": "1,837,446",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "passed",
     "url": "https://parkingreform.org/mandates-map/city_detail/SanJose_CA.html"
   },
@@ -876,7 +876,8 @@
     "population": "342,259",
     "urbanizedAreaPopulation": "1,814,587",
     "parkingScore": "100",
-    "reforms": "no reforms"
+    "reforms": "no reforms",
+    "url": "https://parkingreform.org/mandates-map/city_detail/SanJuan_PR.html"
   },
   "santa-ana-ca": {
     "name": "Santa Ana, CA",
@@ -884,7 +885,7 @@
     "cityType": "principal",
     "population": "310,227",
     "urbanizedAreaPopulation": "12,237,376",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/SantaAna_CA.html"
   },
@@ -894,7 +895,7 @@
     "cityType": "core city",
     "population": "88,665",
     "urbanizedAreaPopulation": "199,023",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "No reforms",
     "url": "https://parkingreform.org/mandates-map/city_detail/SantaBarbara_CA.html"
   },
@@ -934,7 +935,7 @@
     "cityType": "principal",
     "population": "258,308",
     "urbanizedAreaPopulation": "2,783,045",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/St.Petersburg_FL.html"
   },
@@ -944,7 +945,7 @@
     "cityType": "principal",
     "population": "320,804",
     "urbanizedAreaPopulation": "414,847",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Stockton_CA.html"
   },
@@ -994,7 +995,7 @@
     "cityType": "suburb",
     "population": "459,470",
     "urbanizedAreaPopulation": "2,196,623",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/VirginiaBeach_VA.html"
   },
@@ -1024,7 +1025,7 @@
     "cityType": "principal",
     "population": "206,518",
     "urbanizedAreaPopulation": "482,085",
-    "parkingScore": "N/A",
+    "parkingScore": null,
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Worcester_MA.html"
   }

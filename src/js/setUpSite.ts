@@ -106,7 +106,9 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   };
 
   addEntry("Parking", `${entry.percentage} of central city`);
-  addEntry("Parking score", entry.parkingScore);
+  if (entry.parkingScore) {
+    addEntry("Parking score", entry.parkingScore);
+  }
   addEntry("Parking reform", entry.reforms);
   lines.push("<br />");
   addEntry("City type", entry.cityType);
