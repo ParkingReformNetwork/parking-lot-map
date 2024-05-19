@@ -87,7 +87,7 @@ const createMap = (): Map => {
  * Generate the HTML for the score card.
  */
 const generateScorecard = (entry: ScoreCardDetails): string => {
-  let result = `
+  const header = `
     <div class="title">${entry.name}</div>
     <div class="url-copy-button">
       <a href="#" class="share-icon">
@@ -119,7 +119,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
       `<div class="popup-button"><a href="${entry.url}">View more about reforms</a></div>`
     );
   }
-  return result + lines.join("\n");
+  return header + lines.join("\n");
 };
 
 /**
