@@ -86,19 +86,9 @@ const createMap = (): Map => {
 /**
  * Generate the HTML for the score card.
  */
-const generateScorecard = (scoreCardEntry: ScoreCardDetails): string => {
-  const {
-    name,
-    cityType,
-    percentage,
-    population,
-    urbanizedAreaPopulation,
-    parkingScore,
-    reforms,
-    url,
-  } = scoreCardEntry;
+const generateScorecard = (entry: ScoreCardDetails): string => {
   let result = `
-    <div class="title">${name}</div>
+    <div class="title">${entry.name}</div>
     <div class="url-copy-button">
       <a href="#" class="share-icon">
         <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
@@ -106,21 +96,30 @@ const generateScorecard = (scoreCardEntry: ScoreCardDetails): string => {
       </a>
     </div>
     <hr>
-    <div><span class="details-title">Parking: </span><span class="details-value">${percentage} of central city</span></div>
-    <div><span class="details-title">Parking score: </span><span class="details-value">${parkingScore}</span></div>
-    <div><span class="details-title">Parking reform: </span><span class="details-value">${reforms}</span></div>
-    <br />
-    <div><span class="details-title">City type: </span><span class="details-value">${cityType}</span></div>
-    <div><span class="details-title">Population: </span><span class="details-value">${population}</span></div>
-    <div><span class="details-title">Urbanized area population: </span><span class="details-value">${urbanizedAreaPopulation}</span></div>
-  `;
-  if (url) {
-    result += `
-    <hr>
-    <div class="popup-button"><a href="${url}">View more about reforms</a></div>
-  `;
+    `;
+
+  const lines = [];
+  const addEntry = (title: string, value: string): void => {
+    lines.push(
+      `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
+    );
+  };
+
+  addEntry("Parking", `${entry.percentage} of central city`);
+  addEntry("Parking score", entry.parkingScore);
+  addEntry("Parking reform", entry.reforms);
+  lines.push("<br />");
+  addEntry("City type", entry.cityType);
+  addEntry("Population", entry.population);
+  addEntry("Urbanized area population", entry.urbanizedAreaPopulation);
+
+  if (entry.url) {
+    lines.push(
+      "<hr>",
+      `<div class="popup-button"><a href="${entry.url}">View more about reforms</a></div>`
+    );
   }
-  return result;
+  return result + lines.join("\n");
 };
 
 /**
