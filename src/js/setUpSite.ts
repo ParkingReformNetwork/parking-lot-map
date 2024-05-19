@@ -68,10 +68,8 @@ const STYLES = {
  * Create the initial map object.
  *
  * This sets up Google Maps vs. Light mode, attribution, and zoom.
- *
- * @returns: The map instance.
  */
-const createMap = () => {
+const createMap = (): Map => {
   const map = new Map("map", {
     layers: [BASE_LAYERS.Light],
     closePopupOnClick: false,
@@ -87,11 +85,8 @@ const createMap = () => {
 
 /**
  * Generate the HTML for the score card.
- *
- * @param scoreCardEntry: An entry from score-cards.json.
- * @returns string: The HTML represented as a string.
  */
-const generateScorecard = (scoreCardEntry: ScoreCardDetails) => {
+const generateScorecard = (scoreCardEntry: ScoreCardDetails): string => {
   const {
     name,
     cityType,
@@ -130,14 +125,11 @@ const generateScorecard = (scoreCardEntry: ScoreCardDetails) => {
 
 /**
  * Load city parking lots if not already loaded.
- *
- * @param cityId: E.g. `columbus-oh`.
- * @param parkingLayer: GeoJSON layer with parking lot data
  */
-const loadParkingLot: (
+const loadParkingLot = async (
   cityId: CityId,
   parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
-) => Promise<void> = async (cityId, parkingLayer) => {
+): Promise<void> => {
   const alreadyLoaded = parkingLayer
     .getLayers()
     .find((city: GeoJsonProperties) => city?.feature.properties.id === cityId);
@@ -153,24 +145,11 @@ const loadParkingLot: (
  * @param map: The Leaflet map instance.
  * @param layer: The Leaflet layer with the city boundaries to snap to.
  */
-const snapToCity: (map: Map, layer: ImageOverlay) => void = async (
-  map,
-  layer
-) => {
+const snapToCity = (map: Map, layer: ImageOverlay): void => {
   map.fitBounds(layer.getBounds());
 };
 
-/**
- * Sets scorecard to city.
- *
- * @param cityId: E.g. `columbus-oh`.
- * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
- *    representing the score card properties stored in `score-cards.json`.
- */
-const setScorecard: (cityId: CityId, cityProperties: ScoreCard) => void = (
-  cityId,
-  cityProperties
-) => {
+const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
   setUpShareUrlClickListener(cityId);
@@ -190,11 +169,11 @@ const setScorecard: (cityId: CityId, cityProperties: ScoreCard) => void = (
  * @param cities: Dictionary of cities with layer and scorecard info.
  * @param parkingLayer: GeoJSON layer with parking lot data
  */
-const setUpAutoScorecard: (
+const setUpAutoScorecard = async (
   map: Map,
   cities: ScoreCards,
   parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
-) => Promise<void> = async (map, cities, parkingLayer) => {
+): Promise<void> => {
   map.on("moveend", async () => {
     let centralCityDistance: number | null = null;
     let centralCity;
@@ -222,10 +201,10 @@ const setUpAutoScorecard: (
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
  */
-const setUpCitiesLayer: (
+const setUpCitiesLayer = async (
   map: Map,
   parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
-) => Promise<void> = async (map, parkingLayer) => {
+): Promise<void> => {
   const cities: ScoreCards = {};
   const allBoundaries = geoJSON(cityBoundaries, {
     style() {
@@ -282,12 +261,10 @@ const setUpCitiesLayer: (
 /**
  * Creates a GeoJSON layer to hold all parking lot polygons.
  * Every cites' parking lots will be lazily added to this layer.
- *
- * @param map: The Leaflet map instance.
  */
-const setUpParkingLotsLayer: (
+const setUpParkingLotsLayer = async (
   map: Map
-) => Promise<GeoJSON<GeoJsonProperties, Geometry>> = async (map) => {
+): Promise<GeoJSON<GeoJsonProperties, Geometry>> => {
   const parkingLayer = geoJSON(undefined, {
     style() {
       return STYLES.parkingLots;
@@ -313,7 +290,7 @@ const setUpParkingLotsLayer: (
   return parkingLayer;
 };
 
-const setUpSite: () => Promise<void> = async () => {
+const setUpSite = async (): Promise<void> => {
   setUpIcons();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
