@@ -13,9 +13,10 @@ const addScoreCard = async (
     cityType: "FILL ME IN, e.g. Core City",
     population: "FILL ME IN, e.g. 346,824",
     urbanizedAreaPopulation: "FILL ME IN, e.g. 13,200,998",
-    parkingScore: "FILL ME IN, e.g. 53",
+    parkingScore:
+      "FILL ME IN, e.g. 53. If not relevant, remove the quotes and set to null",
     reforms: "FILL ME IN, e.g. No Reforms or Implemented",
-    url: "FILL ME IN OR DELETE ME",
+    url: "FILL ME IN. If not relevant, remove the quotes and set to null",
   };
 
   const originalFilePath = "data/score-cards.json";
