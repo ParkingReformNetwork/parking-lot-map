@@ -9,7 +9,7 @@ export const DROPDOWN = new Choices("#city-choice", {
   searchEnabled: true,
 });
 
-const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
+const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId): void => {
   const cities = Object.entries(scoreCardsData).map(([id, { name }]) => ({
     value: id,
     label: name,
