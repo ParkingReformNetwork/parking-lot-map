@@ -9,7 +9,7 @@ export interface ScoreCardDetails {
   cityType: string;
   population: string;
   urbanizedAreaPopulation: string;
-  parkingScore: string;
+  parkingScore: string | null;
   reforms: string;
   url?: string;
   contribution?: string;
