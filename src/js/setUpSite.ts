@@ -167,10 +167,10 @@ const snapToCity: (map: Map, layer: ImageOverlay) => void = async (
  * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
  *    representing the score card properties stored in `score-cards.json`.
  */
-const setScorecardAndAlert: (
+const setScorecardAndAlert = (
   cityId: CityId,
   cityProperties: ScoreCard
-) => void = (cityId, cityProperties) => {
+): void => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
   setUpShareUrlClickListener(cityId);
