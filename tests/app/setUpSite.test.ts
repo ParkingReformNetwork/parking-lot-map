@@ -28,6 +28,7 @@ test("every city is in the toggle", async ({ page }) => {
 
   toggleValues.sort();
   expectedCities.sort();
+
   expect(toggleValues).toEqual(expectedCities);
 });
 
