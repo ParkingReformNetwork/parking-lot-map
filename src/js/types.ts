@@ -9,9 +9,9 @@ export interface ScoreCardDetails {
   cityType: string;
   population: string;
   urbanizedAreaPopulation: string;
-  parkingScore: string;
+  parkingScore: string | null;
   reforms: string;
-  url: string;
+  url?: string;
   contribution?: string;
 }
 
@@ -26,4 +26,10 @@ export type ScoreCards = Record<CityId, ScoreCard>;
 
 export interface ParkingLotModules {
   [key: string]: () => Promise<Feature<Geometry>>;
+}
+
+export interface dropdownChoice {
+  value: string;
+  label: string;
+  contribution: string;
 }
