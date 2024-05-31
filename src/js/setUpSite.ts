@@ -152,10 +152,6 @@ const snapToCity = (map: Map, layer: ImageOverlay): void => {
 
 /**
  * Sets scorecard to city and alert if city is community made.
- *
- * @param cityId: E.g. `columbus-oh`.
- * @param cityProperties: An object with a `layout` key (Leaflet value) and keys
- *    representing the score card properties stored in `score-cards.json`.
  */
 const setScorecardAndAlert = (
   cityId: CityId,
