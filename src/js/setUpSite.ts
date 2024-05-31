@@ -95,7 +95,6 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
         <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
       </a>
     </div>
-    <hr>
     `;
 
   const lines = [];
@@ -104,6 +103,13 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
       `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
     );
   };
+
+  if ("contribution" in entry) {
+    lines.push(
+      `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.<span><div>`
+    );
+  }
+  lines.push("<hr>");
 
   addEntry("Parking", `${entry.percentage} of central city`);
   if (entry.parkingScore) {
@@ -153,10 +159,7 @@ const snapToCity = (map: Map, layer: ImageOverlay): void => {
 /**
  * Sets scorecard to city and alert if city is community made.
  */
-const setScorecardAndAlert = (
-  cityId: CityId,
-  cityProperties: ScoreCard
-): void => {
+const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
   setUpShareUrlClickListener(cityId);
@@ -166,17 +169,6 @@ const setScorecardAndAlert = (
     autoPan: false,
   }).setContent(scorecard);
   layer.bindPopup(popup).openPopup();
-
-  const alertBox = document.getElementById(
-    "community-map-alert"
-  ) as HTMLElement;
-  if ("contribution" in details) {
-    const email = document.getElementById("email") as HTMLSpanElement;
-    email.innerText = details.contribution;
-    alertBox.style.display = "block";
-  } else {
-    alertBox.style.display = "none";
-  }
 };
 
 /**
@@ -210,7 +202,7 @@ const setUpAutoScorecard = async (
     });
     if (centralCity) {
       DROPDOWN.setChoiceByValue(centralCity);
-      setScorecardAndAlert(centralCity, cities[centralCity]);
+      setScorecard(centralCity, cities[centralCity]);
     }
   });
 };
@@ -270,7 +262,7 @@ const setUpCitiesLayer = async (
     const cityId = cityToggleElement.value;
     setUpAutoScorecard(map, cities, parkingLayer);
     snapToCity(map, cities[cityId].layer);
-    setScorecardAndAlert(cityId, cities[cityId]);
+    setScorecard(cityId, cities[cityId]);
   } else {
     throw new Error("#city-choice is not a select element");
   }

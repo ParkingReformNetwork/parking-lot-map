@@ -1,4 +1,6 @@
 $teal: #21ccb9;
+$opaque-yellow: #fae678e2;
+$gray: rgb(60, 60, 60);
 
 .popup-fixed {
   position: fixed;
@@ -81,6 +83,12 @@ div.popup-button a:hover {
   background-color: white;
   color: $teal;
   border: 1px solid $teal;
+}
+
+.community-tag {
+  font-size: 14px;
+  background-color: $opaque-yellow;
+  color: $gray;
 }
 
 @media only screen and (max-width: 830px) {
