@@ -155,9 +155,6 @@ const snapToCity = (map: Map, layer: ImageOverlay): void => {
   map.fitBounds(layer.getBounds());
 };
 
-/**
- * Sets scorecard to city if city is community made.
- */
 const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
