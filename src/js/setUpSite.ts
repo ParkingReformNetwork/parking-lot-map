@@ -97,19 +97,12 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
     </div>
     `;
 
-  const lines = [];
+  const lines = ["<hr>"];
   const addEntry = (title: string, value: string): void => {
     lines.push(
       `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
     );
   };
-
-  if ("contribution" in entry) {
-    lines.push(
-      `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.<span><div>`
-    );
-  }
-  lines.push("<hr>");
 
   addEntry("Parking", `${entry.percentage} of central city`);
   if (entry.parkingScore) {
@@ -121,6 +114,12 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   addEntry("Population", entry.population);
   addEntry("Urbanized area population", entry.urbanizedAreaPopulation);
 
+  if ("contribution" in entry) {
+    lines.push("<hr>");
+    lines.push(
+      `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.</span></div>`
+    );
+  }
   if (entry.url) {
     lines.push(
       "<hr>",
@@ -157,7 +156,7 @@ const snapToCity = (map: Map, layer: ImageOverlay): void => {
 };
 
 /**
- * Sets scorecard to city and alert if city is community made.
+ * Sets scorecard to city if city is community made.
  */
 const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   const { layer, details } = cityProperties;
