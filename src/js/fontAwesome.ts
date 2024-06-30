@@ -5,6 +5,7 @@ import {
   faLink,
   faUpRightFromSquare,
   faCheck,
+  faTriangleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
@@ -14,7 +15,8 @@ const setUpIcons = (): void => {
     faCircleXmark,
     faLink,
     faUpRightFromSquare,
-    faCheck
+    faCheck,
+    faTriangleExclamation
   );
   dom.watch();
 };

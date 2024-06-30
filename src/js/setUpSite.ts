@@ -95,10 +95,9 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
         <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
       </a>
     </div>
-    <hr>
     `;
 
-  const lines = [];
+  const lines = ["<hr>"];
   const addEntry = (title: string, value: string): void => {
     lines.push(
       `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
@@ -115,6 +114,12 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   addEntry("Population", entry.population);
   addEntry("Urbanized area population", entry.urbanizedAreaPopulation);
 
+  if ("contribution" in entry) {
+    lines.push("<hr>");
+    lines.push(
+      `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.</span></div>`
+    );
+  }
   if (entry.url) {
     lines.push(
       "<hr>",
