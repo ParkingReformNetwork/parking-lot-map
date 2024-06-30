@@ -1,5 +1,4 @@
-$teal: #21ccb9;
-$gray: rgb(60, 60, 60);
+@use "colors";
 
 .popup-fixed {
   position: fixed;
@@ -29,7 +28,7 @@ div.leaflet-popup-content-wrapper div div {
 }
 
 div.leaflet-popup-content-wrapper > div > div.title {
-  color: $teal;
+  color: colors.$teal;
   font-weight: bold;
   font-size: 16px;
 }
@@ -37,15 +36,15 @@ div.leaflet-popup-content-wrapper > div > div.title {
 div.leaflet-popup-content-wrapper div span.details-title,
 div.leaflet-popup-content-wrapper div span.details-value {
   font-size: 14px;
-  color: black;
+  color: colors.$black;
 }
 
 div.leaflet-popup-content-wrapper span.details-value {
-  color: $teal;
+  color: colors.$teal;
 }
 
 div.leaflet-popup-content-wrapper > div > div.title {
-  color: $teal;
+  color: colors.$teal;
   font-weight: bold;
   font-size: 18px;
   display: inline-block;
@@ -63,30 +62,30 @@ div.leaflet-popup-content-wrapper > div > div.url-copy-button:hover {
 }
 
 div.leaflet-popup-content-wrapper > div > div.url-copy-button svg.fa-link {
-  color: $teal;
+  color: colors.$teal;
 }
 
 div.popup-button a {
-  background-color: $teal;
+  background-color: colors.$teal;
   padding: 10px;
   font-size: 16px;
-  color: white;
+  color: colors.$white;
   border-radius: 8px;
   font-weight: bold;
   text-decoration: none;
-  border: 1px solid $teal;
+  border: 1px solid colors.$teal;
   display: inline-block;
 }
 
 div.popup-button a:hover {
-  background-color: white;
-  color: $teal;
-  border: 1px solid $teal;
+  background-color: colors.$white;
+  color: colors.$teal;
+  border: 1px solid colors.$teal;
 }
 
 .community-tag {
   font-size: 14px;
-  color: $gray;
+  color: colors.$gray;
 }
 
 @media only screen and (max-width: 830px) {

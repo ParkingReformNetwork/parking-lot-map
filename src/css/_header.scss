@@ -1,9 +1,11 @@
+@use "colors";
+
 header {
   width: 100%;
   padding: 0.4em 1em;
 
-  background-color: #4d4d4d;
-  color: white;
+  background-color: colors.$gray-light;
+  color: colors.$white;
   font-size: 1.3em;
 
   display: flex;
@@ -15,7 +17,7 @@ header {
   cursor: pointer;
 
   svg {
-    color: white;
+    color: colors.$white;
   }
 
   .header-about-icon {
@@ -56,9 +58,9 @@ header {
 }
 
 .choices__inner {
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  border: 2px solid colors.$black-translucent;
   border-radius: 10px;
-  color: black;
+  color: colors.$black;
   height: 40px;
 
   @media only screen and (min-width: 20em) {
@@ -83,5 +85,5 @@ header {
 .choices__list--dropdown,
 .choices__list[aria-expanded] {
   z-index: 1001;
-  color: black;
+  color: colors.$black;
 }
