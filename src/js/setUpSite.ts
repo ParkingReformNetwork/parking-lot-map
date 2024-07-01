@@ -231,7 +231,7 @@ const setUpCitiesLayer = async (
   allBoundaries.addTo(map);
 
   // Set up map to update when city selection changes.
-  const cityToggleElement = document.getElementById("city-choice");
+  const cityToggleElement = document.getElementById("city-dropdown");
   if (cityToggleElement instanceof HTMLSelectElement) {
     cityToggleElement.addEventListener("change", async () => {
       const cityId = cityToggleElement.value;
@@ -260,7 +260,7 @@ const setUpCitiesLayer = async (
     snapToCity(map, cities[cityId].layer);
     setScorecard(cityId, cities[cityId]);
   } else {
-    throw new Error("#city-choice is not a select element");
+    throw new Error("#city-dropdown is not a select element");
   }
 };
 
