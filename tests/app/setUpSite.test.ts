@@ -59,7 +59,7 @@ test("correctly load the city score card", async ({ page }) => {
 
   const [content, cityToggleValue] = await page.evaluate(() => {
     const cityChoice: HTMLSelectElement | null =
-      document.querySelector("#city-choice");
+      document.querySelector("#city-dropdown");
     const cityToggle = cityChoice?.value;
 
     const detailsTitles = Array.from(
@@ -138,7 +138,7 @@ test.describe("the share feature", () => {
       );
       const title = titlePopup?.textContent;
       const cityChoice: HTMLSelectElement | null =
-        document.querySelector("#city-choice");
+        document.querySelector("#city-dropdown");
       const cityToggle = cityChoice?.value;
       return [title, cityToggle];
     });
@@ -161,7 +161,7 @@ test.describe("the share feature", () => {
 
       const title = titlePopup?.textContent;
       const cityChoiceSelector: HTMLSelectElement | null =
-        document.querySelector("#city-choice");
+        document.querySelector("#city-dropdown");
       const cityToggle = cityChoiceSelector?.value;
       return [title, cityToggle];
     });
@@ -257,7 +257,7 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
     const titlePopup = document.querySelector(".leaflet-popup-content .title");
     const title = titlePopup?.textContent;
     const cityChoice: HTMLSelectElement | null =
-      document.querySelector("#city-choice");
+      document.querySelector("#city-dropdown");
     return [title, cityChoice?.value];
   });
   expect(scoreCardTitle).toEqual("Birmingham, AL");

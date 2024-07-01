@@ -3,7 +3,7 @@ import "choices.js/public/assets/styles/choices.css";
 import scoreCardsData from "../../data/score-cards.json";
 import { CityId, ScoreCardDetails, dropdownChoice } from "./types";
 
-export const DROPDOWN = new Choices("#city-choice", {
+export const DROPDOWN = new Choices("#city-dropdown", {
   allowHTML: false,
   itemSelectText: "Select",
   searchEnabled: true,
