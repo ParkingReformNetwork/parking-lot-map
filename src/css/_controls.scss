@@ -1,18 +1,33 @@
+@use "theme/touchable-icons";
+@use "theme/typography";
+
 .leaflet-top.leaflet-left {
-  top: 0.8rem;
+  top: 10px;
+
+  a {
+    width: touchable-icons.$min-touch-target;
+    height: touchable-icons.$min-touch-target;
+    font-size: typography.$font-size-lg;
+    font-weight: normal;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .leaflet-touch .leaflet-control-layers-toggle {
-  width: 30px;
-  height: 30px;
+  width: touchable-icons.$min-touch-target;
+  height: touchable-icons.$min-touch-target;
 }
 
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 8rem;
+  top: 100px;
   margin-left: 10px;
   right: auto;
 }
 
-.leaflet-control-layers {
-  font-size: 12px;
+.leaflet-control-layers label {
+  font-size: typography.$font-size-base;
+  font-weight: normal;
 }

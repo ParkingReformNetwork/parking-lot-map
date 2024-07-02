@@ -1,0 +1,40 @@
+$icon-size-xs: 20px;
+$icon-size-sm: 24px;
+$icon-size-md: 32px;
+
+// https://www.w3.org/WAI/WCAG21/Understanding/target-size.html recommends
+// 44px, but 40px takes less space.
+$min-touch-target: 40px;
+
+@mixin touchable-icon($icon-size) {
+  width: $icon-size;
+  height: $icon-size;
+
+  // Ensure minimum touch target size
+  $touch-size: max($icon-size, $min-touch-target);
+  min-width: $touch-size;
+  min-height: $touch-size;
+
+  // Center the icon within the touch target
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  // Add padding if icon is smaller than min touch target
+  @if $icon-size < $min-touch-target {
+    $padding: ($min-touch-target - $icon-size) / 2;
+    padding: $padding;
+  }
+}
+
+@mixin touchable-icon-xs {
+  @include touchable-icon($icon-size-xs);
+}
+
+@mixin touchable-icon-sm {
+  @include touchable-icon($icon-size-sm);
+}
+
+@mixin touchable-icon-md {
+  @include touchable-icon($icon-size-md);
+}
