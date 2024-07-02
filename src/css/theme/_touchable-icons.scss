@@ -2,9 +2,8 @@ $icon-size-xs: 20px;
 $icon-size-sm: 24px;
 $icon-size-md: 32px;
 
-// https://www.w3.org/WAI/WCAG21/Understanding/target-size.html recommends
-// 44px, but 40px takes less space.
-$min-touch-target: 40px;
+// https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
+$min-touch-target: 44px;
 
 @mixin touchable-icon($icon-size) {
   width: $icon-size;

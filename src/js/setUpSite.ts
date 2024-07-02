@@ -29,7 +29,7 @@ const parkingLotsModules = import(
 
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
-  Light: new TileLayer(
+  "High contrast": new TileLayer(
     "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png",
     {
       attribution: `Map tiles: &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>
@@ -67,11 +67,11 @@ const STYLES = {
 /**
  * Create the initial map object.
  *
- * This sets up Google Maps vs. Light mode, attribution, and zoom.
+ * This sets up Google Maps vs. High contrast, attribution, and zoom.
  */
 const createMap = (): Map => {
   const map = new Map("map", {
-    layers: [BASE_LAYERS.Light],
+    layers: [BASE_LAYERS["High contrast"]],
     closePopupOnClick: false,
   });
   map.attributionControl.setPrefix(
