@@ -1,33 +1,68 @@
+@use "theme/colors";
 @use "theme/touchable-icons";
 @use "theme/typography";
 
-.leaflet-top.leaflet-left {
+.leaflet-control-zoom.leaflet-bar,
+.leaflet-control-layers.leaflet-control {
+  border: 2px solid colors.$gray-light-translucent;
+  border-radius: 4px;
+}
+
+.leaflet-control-zoom.leaflet-bar {
   top: 10px;
 
   a {
     width: touchable-icons.$min-touch-target;
     height: touchable-icons.$min-touch-target;
-    font-size: typography.$font-size-lg;
+    font-size: typography.$font-size-md;
     font-weight: normal;
 
     display: flex;
     align-items: center;
     justify-content: center;
+
+    &:first-child {
+      border-bottom: 1px solid colors.$gray-light-translucent;
+    }
   }
 }
 
-.leaflet-touch .leaflet-control-layers-toggle {
+.leaflet-touch.leaflet-control-layers-toggle {
   width: touchable-icons.$min-touch-target;
   height: touchable-icons.$min-touch-target;
 }
 
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 100px;
+  top: 104px;
   margin-left: 10px;
   right: auto;
 }
 
+.leaflet-control-layers-selector {
+  top: 0px;
+}
+
+.leaflet-control-layers-expanded {
+  padding: 0px;
+}
+
 .leaflet-control-layers label {
-  font-size: typography.$font-size-base;
-  font-weight: normal;
+  font-size: typography.$font-size-md;
+  line-height: 1;
+
+  &:first-child {
+    border-bottom: 1px solid colors.$gray-light-translucent;
+  }
+
+  display: flex;
+  align-items: center;
+
+  // Each option is naturally 18px, so 13px padding results in
+  // the touch target being the minimum size of 44px.
+  padding: 13px 8px;
+
+  input[type="radio"] {
+    margin: 0;
+    vertical-align: middle;
+  }
 }
