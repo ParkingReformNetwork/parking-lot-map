@@ -6,7 +6,7 @@
 const setUpAbout = () => {
   const aboutElement: HTMLElement | null =
     document.querySelector(".about-text-popup");
-  const infoButton = document.querySelector(".header-about-icon");
+  const infoButton = document.querySelector(".header-about-icon-container");
   if (infoButton && aboutElement) {
     infoButton.addEventListener("click", () => {
       aboutElement.style.display =

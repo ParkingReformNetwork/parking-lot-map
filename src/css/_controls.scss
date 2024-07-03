@@ -2,19 +2,24 @@
 @use "theme/touchable-icons";
 @use "theme/typography";
 
+$label-font-size: typography.$font-size-md;
+$zoom-controls-top-offset: 10px;
+$outer-border-thickness: 2px;
+$option-divider: 1px solid colors.$gray-light-translucent;
+
 .leaflet-control-zoom.leaflet-bar,
 .leaflet-control-layers.leaflet-control {
-  border: 2px solid colors.$gray-light-translucent;
+  border: $outer-border-thickness solid colors.$gray-light-translucent;
   border-radius: 4px;
 }
 
 .leaflet-control-zoom.leaflet-bar {
-  top: 10px;
+  top: $zoom-controls-top-offset;
 
   a {
     width: touchable-icons.$min-touch-target;
     height: touchable-icons.$min-touch-target;
-    font-size: typography.$font-size-md;
+    font-size: $label-font-size;
     font-weight: normal;
 
     display: flex;
@@ -22,7 +27,7 @@
     justify-content: center;
 
     &:first-child {
-      border-bottom: 1px solid colors.$gray-light-translucent;
+      border-bottom: $option-divider;
     }
   }
 }
@@ -33,8 +38,15 @@
 }
 
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
-  top: 104px;
-  margin-left: 10px;
+  $zoom-controls-height: calc(
+    (touchable-icons.$min-touch-target * 2) + $outer-border-thickness
+  );
+  $margin-between-zoom-control: 8px;
+  top: calc(
+    $zoom-controls-top-offset + $zoom-controls-height +
+      $margin-between-zoom-control
+  );
+  margin-left: 10px; // Mirrors zoom controls.
   right: auto;
 }
 
@@ -47,19 +59,18 @@
 }
 
 .leaflet-control-layers label {
-  font-size: typography.$font-size-md;
+  font-size: $label-font-size;
   line-height: 1;
 
   &:first-child {
-    border-bottom: 1px solid colors.$gray-light-translucent;
+    border-bottom: $option-divider;
   }
 
   display: flex;
   align-items: center;
 
-  // Each option is naturally 18px, so 13px padding results in
-  // the touch target being the minimum size of 44px.
-  padding: 13px 8px;
+  $padding-y: calc((touchable-icons.$min-touch-target - $label-font-size) / 2);
+  padding: $padding-y 8px;
 
   input[type="radio"] {
     margin: 0;
