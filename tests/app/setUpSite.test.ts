@@ -96,9 +96,9 @@ test.describe("the share feature", () => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     const page = await context.newPage();
     await page.goto("/");
-    await page.waitForSelector(".url-copy-button > a");
+    await page.waitForSelector(".header-share-icon-container");
 
-    await page.click(".url-copy-button > a");
+    await page.click(".header-share-icon-container");
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
@@ -116,7 +116,7 @@ test.describe("the share feature", () => {
       return titleElement && titleElement.textContent === "Anchorage, AK";
     });
 
-    await page.click(".url-copy-button > a");
+    await page.click(".header-share-icon-container");
     const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );

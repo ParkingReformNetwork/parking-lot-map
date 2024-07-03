@@ -1,4 +1,7 @@
+@use "theme/breakpoints";
 @use "theme/colors";
+@use "theme/typography";
+@use "header";
 
 .popup-fixed {
   position: fixed;
@@ -11,113 +14,48 @@
 }
 
 .leaflet-popup-content-wrapper {
-  width: 365px;
-  border-radius: 10px;
-  float: right;
   position: fixed;
-  right: 11px;
-  top: 70px;
+  right: 10px;
+  top: calc(header.$header-height + 10px);
+
+  width: 270px;
+  border-radius: 10px;
 }
 
-.leaflet-popup-content {
-  width: 330px;
-}
+.scorecard-title {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 10px;
 
-div.leaflet-popup-content-wrapper div div {
-  width: 342px;
-}
-
-div.leaflet-popup-content-wrapper > div > div.title {
   color: colors.$teal;
   font-weight: bold;
-  font-size: 16px;
+  font-size: typography.$font-size-xl;
+  line-height: 1.1;
 }
 
-div.leaflet-popup-content-wrapper div span.details-title,
-div.leaflet-popup-content-wrapper div span.details-value {
-  font-size: 14px;
+.details-title,
+.details-value {
+  font-size: typography.$font-size-base;
   color: colors.$black;
 }
 
-div.leaflet-popup-content-wrapper span.details-value {
-  color: colors.$teal;
-}
-
-div.leaflet-popup-content-wrapper > div > div.title {
-  color: colors.$teal;
-  font-weight: bold;
-  font-size: 18px;
-  display: inline-block;
-  width: 50%;
-}
-
-div.leaflet-popup-content-wrapper > div > div.url-copy-button {
-  float: right;
-  width: 0%;
-  display: inline-block;
-}
-
-div.leaflet-popup-content-wrapper > div > div.url-copy-button:hover {
-  cursor: pointer;
-}
-
-div.leaflet-popup-content-wrapper > div > div.url-copy-button svg.fa-link {
-  color: colors.$teal;
+.community-tag {
+  font-size: typography.$font-size-base;
+  color: colors.$gray;
 }
 
 div.popup-button a {
   background-color: colors.$teal;
   padding: 10px;
-  font-size: 16px;
+  font-size: typography.$font-size-base;
   color: colors.$white;
   border-radius: 8px;
-  font-weight: bold;
   text-decoration: none;
-  border: 1px solid colors.$teal;
   display: inline-block;
-}
 
-div.popup-button a:hover {
-  background-color: colors.$white;
-  color: colors.$teal;
-  border: 1px solid colors.$teal;
-}
-
-.community-tag {
-  font-size: 14px;
-  color: colors.$gray;
-}
-
-@media only screen and (max-width: 830px) {
-  .leaflet-popup-content-wrapper {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 119px;
-    width: 350px;
-    border-radius: 10px;
-    float: left;
-    position: fixed;
-    bottom: 32px;
-    top: auto;
-    right: 10px;
-  }
-
-  div.leaflet-popup-content-wrapper div div {
-    width: 310px;
-  }
-
-  div.leaflet-popup-content {
-    width: auto;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .leaflet-popup-content-wrapper {
-    width: 280px;
-    bottom: 40px;
-  }
-
-  div.leaflet-popup-content-wrapper div div {
-    width: 240px;
+  &:hover {
+    background-color: colors.$white;
+    color: colors.$teal;
+    border: 1px solid colors.$teal;
   }
 }

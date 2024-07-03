@@ -26,18 +26,12 @@ const switchIcons = (shareIcon: HTMLAnchorElement): void => {
 };
 
 const setUpShareUrlClickListener = (cityId: CityId): void => {
-  // We put the event listener on `map` because it is never erased, unlike the copy button
-  // being recreated every time the score card changes. This is called "event delegation".
-  const mapElement = document.querySelector("#map");
-  if (!(mapElement instanceof Element)) return;
-  mapElement.addEventListener("click", async (event) => {
-    const copyButton = event.target;
-    if (!(copyButton instanceof Element)) return;
-    const targetElement = copyButton.closest("div.url-copy-button > a");
-    if (!(targetElement instanceof HTMLAnchorElement)) return;
+  const copyButton = document.querySelector(".header-share-icon-container");
+  if (!(copyButton instanceof HTMLAnchorElement)) return;
+  copyButton.addEventListener("click", async () => {
     const shareUrl = determineShareUrl(window.location.href, cityId);
     await copyToClipboard(shareUrl);
-    switchIcons(targetElement);
+    switchIcons(copyButton);
   });
 };
 

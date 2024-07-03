@@ -87,17 +87,8 @@ const createMap = (): Map => {
  * Generate the HTML for the score card.
  */
 const generateScorecard = (entry: ScoreCardDetails): string => {
-  const header = `
-    <div class="title">${entry.name}</div>
-    <div class="url-copy-button">
-      <a href="#" class="share-icon">
-        <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
-        <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
-      </a>
-    </div>
-    `;
-
-  const lines = ["<hr>"];
+  const header = `<h1 class="scorecard-title">Parking lots in ${entry.name}</h1>`;
+  const lines = [];
   const addEntry = (title: string, value: string): void => {
     lines.push(
       `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
@@ -123,7 +114,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   if (entry.url) {
     lines.push(
       "<hr>",
-      `<div class="popup-button"><a href="${entry.url}">View more about reforms</a></div>`
+      `<div class="popup-button"><a href="${entry.url}">Reform details</a></div>`
     );
   }
   return header + lines.join("\n");
