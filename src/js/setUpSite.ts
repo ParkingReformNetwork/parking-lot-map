@@ -232,36 +232,32 @@ const setUpCitiesLayer = async (
 
   // Set up map to update when city selection changes.
   const cityToggleElement = document.getElementById("city-dropdown");
-  if (cityToggleElement instanceof HTMLSelectElement) {
-    cityToggleElement.addEventListener("change", async () => {
-      const cityId = cityToggleElement.value;
-      const { layer } = cities[cityId];
-      if (layer) {
-        snapToCity(map, layer);
-      }
-    });
-
-    // Set up map to update when user clicks within a city's boundary
-    allBoundaries.addEventListener("click", (e) => {
-      const currentZoom = map.getZoom();
-      if (currentZoom > 7) {
-        const cityId = e.sourceTarget.feature.properties.id;
-        cityToggleElement.value = cityId;
-        const { layer } = cities[cityId];
-        if (layer) {
-          snapToCity(map, layer);
-        }
-      }
-    });
-
-    // Load initial city.
+  if (!(cityToggleElement instanceof HTMLSelectElement)) return;
+  cityToggleElement.addEventListener("change", async () => {
     const cityId = cityToggleElement.value;
-    setUpAutoScorecard(map, cities, parkingLayer);
-    snapToCity(map, cities[cityId].layer);
-    setScorecard(cityId, cities[cityId]);
-  } else {
-    throw new Error("#city-dropdown is not a select element");
-  }
+    const { layer } = cities[cityId];
+    if (layer) {
+      snapToCity(map, layer);
+    }
+  });
+
+  // Set up map to update when user clicks within a city's boundary
+  allBoundaries.addEventListener("click", (e) => {
+    const currentZoom = map.getZoom();
+    if (currentZoom <= 7) return;
+    const cityId = e.sourceTarget.feature.properties.id;
+    cityToggleElement.value = cityId;
+    const { layer } = cities[cityId];
+    if (layer) {
+      snapToCity(map, layer);
+    }
+  });
+
+  // Load initial city.
+  const cityId = cityToggleElement.value;
+  setUpAutoScorecard(map, cities, parkingLayer);
+  snapToCity(map, cities[cityId].layer);
+  setScorecard(cityId, cities[cityId]);
 };
 
 /**
@@ -277,22 +273,20 @@ const setUpParkingLotsLayer = async (
     },
   }).addTo(map);
 
+  if (window.location.href.indexOf("#lots-toggle") === -1) return parkingLayer;
+
   // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
-  if (window.location.href.indexOf("#lots-toggle") !== -1) {
-    const toggle: HTMLAnchorElement | null =
-      document.querySelector("#lots-toggle");
-    if (toggle) {
-      toggle.style.display = "block";
-    }
-    document
-      .querySelector("#lots-toggle-off")
-      ?.addEventListener("click", () => {
-        parkingLayer.removeFrom(map);
-      });
-    document.querySelector("#lots-toggle-on")?.addEventListener("click", () => {
-      parkingLayer.addTo(map);
-    });
+  const toggle: HTMLAnchorElement | null =
+    document.querySelector("#lots-toggle");
+  if (toggle) {
+    toggle.style.display = "block";
   }
+  document.querySelector("#lots-toggle-off")?.addEventListener("click", () => {
+    parkingLayer.removeFrom(map);
+  });
+  document.querySelector("#lots-toggle-on")?.addEventListener("click", () => {
+    parkingLayer.addTo(map);
+  });
   return parkingLayer;
 };
 
