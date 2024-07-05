@@ -1,4 +1,5 @@
 @use "theme/colors";
+@use "theme/typography";
 
 .popup-fixed {
   position: fixed;
@@ -16,75 +17,53 @@
   float: right;
   position: fixed;
   right: 11px;
-  top: 70px;
+  top: 75px;
 }
 
-.leaflet-popup-content {
-  width: 330px;
-}
-
-div.leaflet-popup-content-wrapper div div {
-  width: 342px;
-}
-
-div.leaflet-popup-content-wrapper > div > div.title {
+.scorecard-title {
   color: colors.$teal;
   font-weight: bold;
-  font-size: 16px;
-}
-
-div.leaflet-popup-content-wrapper div span.details-title,
-div.leaflet-popup-content-wrapper div span.details-value {
-  font-size: 14px;
-  color: colors.$black;
-}
-
-div.leaflet-popup-content-wrapper span.details-value {
-  color: colors.$teal;
-}
-
-div.leaflet-popup-content-wrapper > div > div.title {
-  color: colors.$teal;
-  font-weight: bold;
-  font-size: 18px;
+  font-size: typography.$font-size-md;
   display: inline-block;
-  width: 50%;
+  width: 75%;
 }
 
-div.leaflet-popup-content-wrapper > div > div.url-copy-button {
+.leaflet-popup-content-wrapper p {
+  font-size: typography.$font-size-sm;
+  color: colors.$black;
+  margin: 0;
+}
+
+.share-icon-container-outer {
   float: right;
   width: 0%;
   display: inline-block;
-}
-
-div.leaflet-popup-content-wrapper > div > div.url-copy-button:hover {
   cursor: pointer;
+
+  .share-icon-container svg {
+    color: colors.$teal;
+  }
 }
 
-div.leaflet-popup-content-wrapper > div > div.url-copy-button svg.fa-link {
-  color: colors.$teal;
-}
-
-div.popup-button a {
+.popup-button a {
   background-color: colors.$teal;
   padding: 10px;
-  font-size: 16px;
+  font-size: typography.$font-size-base;
   color: colors.$white;
   border-radius: 8px;
-  font-weight: bold;
   text-decoration: none;
   border: 1px solid colors.$teal;
   display: inline-block;
-}
 
-div.popup-button a:hover {
-  background-color: colors.$white;
-  color: colors.$teal;
-  border: 1px solid colors.$teal;
+  &:hover {
+    background-color: colors.$white;
+    color: colors.$teal;
+    border: 1px solid colors.$teal;
+  }
 }
 
 .community-tag {
-  font-size: 14px;
+  font-size: typography.$font-size-sm;
   color: colors.$gray;
 }
 
@@ -94,20 +73,11 @@ div.popup-button a:hover {
     overflow-x: hidden;
     height: 119px;
     width: 350px;
-    border-radius: 10px;
     float: left;
     position: fixed;
     bottom: 32px;
     top: auto;
     right: 10px;
-  }
-
-  div.leaflet-popup-content-wrapper div div {
-    width: 310px;
-  }
-
-  div.leaflet-popup-content {
-    width: auto;
   }
 }
 
@@ -115,9 +85,5 @@ div.popup-button a:hover {
   .leaflet-popup-content-wrapper {
     width: 280px;
     bottom: 40px;
-  }
-
-  div.leaflet-popup-content-wrapper div div {
-    width: 240px;
   }
 }

@@ -88,9 +88,9 @@ const createMap = (): Map => {
  */
 const generateScorecard = (entry: ScoreCardDetails): string => {
   const header = `
-    <div class="title">${entry.name}</div>
-    <div class="url-copy-button">
-      <a href="#" class="share-icon">
+    <div class="scorecard-title">${entry.name}</div>
+    <div class="share-icon-container-outer">
+      <a href="#" class="share-icon-container">
         <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
         <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
       </a>
@@ -98,21 +98,17 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
     `;
 
   const lines = ["<hr>"];
-  const addEntry = (title: string, value: string): void => {
-    lines.push(
-      `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
-    );
-  };
-
-  addEntry("Parking", `${entry.percentage} of central city`);
+  lines.push(`<p>Parking: ${entry.percentage} of central city</p>`);
   if (entry.parkingScore) {
-    addEntry("Parking score", entry.parkingScore);
+    lines.push(`<p>Parking score: ${entry.parkingScore}</p>`);
   }
-  addEntry("Parking reform", entry.reforms);
+  lines.push(`<p>Parking reform: ${entry.reforms}</p>`);
   lines.push("<br />");
-  addEntry("City type", entry.cityType);
-  addEntry("Population", entry.population);
-  addEntry("Urbanized area population", entry.urbanizedAreaPopulation);
+  lines.push(`<p>City type: ${entry.cityType}</p>`);
+  lines.push(`<p>Population: ${entry.population}</p>`);
+  lines.push(
+    `<p>Urbanized area population: ${entry.urbanizedAreaPopulation}</p>`
+  );
 
   if ("contribution" in entry) {
     lines.push("<hr>");
