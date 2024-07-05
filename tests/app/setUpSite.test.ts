@@ -61,10 +61,12 @@ test("correctly load the city score card", async ({ page }) => {
     const cityToggle = cityChoice?.value;
 
     const keysToValues: Record<string, string> = {};
+    // eslint-disable-next-line no-restricted-syntax
     for (const el of document.querySelectorAll(
       ".leaflet-popup-content-wrapper p"
     )) {
       const split = el.textContent?.split(":", 2);
+      // eslint-disable-next-line no-continue
       if (!split) continue;
       const [k, v] = split;
       keysToValues[k] = v.trim();
@@ -73,10 +75,10 @@ test("correctly load the city score card", async ({ page }) => {
   });
 
   expect(cityToggleValue).toEqual("albany-ny");
-  expect(content["Parking"]).toEqual(
+  expect(content.Parking).toEqual(
     `${albanyExpected.percentage} of central city`
   );
-  expect(content["Population"]).toEqual(albanyExpected.population);
+  expect(content.Population).toEqual(albanyExpected.population);
   expect(content["Urbanized area population"]).toEqual(
     albanyExpected.urbanizedAreaPopulation
   );
