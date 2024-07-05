@@ -88,8 +88,8 @@ const createMap = (): Map => {
  */
 const generateScorecard = (entry: ScoreCardDetails): string => {
   const header = `
-    <div class="scorecard-title">${entry.name}</div>
-    <div class="share-icon-container-outer">
+    <div class="scorecard-header">
+      <div class="scorecard-title">${entry.name}</div>
       <a href="#" class="share-icon-container">
         <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
         <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
