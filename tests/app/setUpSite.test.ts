@@ -51,9 +51,7 @@ test("correctly load the city score card", async ({ page }) => {
   await page.click(".choices");
   await page.click('.choices__item--choice >> text="Albany, NY"');
   await page.waitForFunction(() => {
-    const titleElement = document.querySelector(
-      ".leaflet-popup-content .title"
-    );
+    const titleElement = document.querySelector(".scorecard-title");
     return titleElement && titleElement.textContent === "Albany, NY";
   });
 
@@ -62,31 +60,30 @@ test("correctly load the city score card", async ({ page }) => {
       document.querySelector("#city-dropdown");
     const cityToggle = cityChoice?.value;
 
-    const detailsTitles = Array.from(
-      document.querySelectorAll(".leaflet-popup-content .details-title")
-    ).map((el) => el.textContent);
-    const detailsValues = Array.from(
-      document.querySelectorAll(".leaflet-popup-content .details-value")
-    ).map((el) => el.textContent);
-
-    const details: Record<string, string | null> = {};
-    detailsTitles.forEach((title, index) => {
-      if (title) {
-        details[title] = detailsValues[index];
-      }
-    });
-    return [details, cityToggle];
+    const keysToValues: Record<string, string> = {};
+    // eslint-disable-next-line no-restricted-syntax
+    for (const el of document.querySelectorAll(
+      ".leaflet-popup-content-wrapper p"
+    )) {
+      const split = el.textContent?.split(":", 2);
+      // eslint-disable-next-line no-continue
+      if (!split) continue;
+      const [k, v] = split;
+      keysToValues[k] = v.trim();
+    }
+    return [keysToValues, cityToggle];
   });
+
   expect(cityToggleValue).toEqual("albany-ny");
-  expect(content["Parking: "]).toEqual(
+  expect(content.Parking).toEqual(
     `${albanyExpected.percentage} of central city`
   );
-  expect(content["Population: "]).toEqual(albanyExpected.population);
-  expect(content["Urbanized area population: "]).toEqual(
+  expect(content.Population).toEqual(albanyExpected.population);
+  expect(content["Urbanized area population"]).toEqual(
     albanyExpected.urbanizedAreaPopulation
   );
-  expect(content["Parking score: "]).toEqual(albanyExpected.parkingScore);
-  expect(content["Parking reform: "]).toEqual(albanyExpected.reforms);
+  expect(content["Parking score"]).toEqual(albanyExpected.parkingScore);
+  expect(content["Parking reform"]).toEqual(albanyExpected.reforms);
   expect(albanyLoaded).toBe(true);
 });
 
@@ -96,9 +93,9 @@ test.describe("the share feature", () => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     const page = await context.newPage();
     await page.goto("/");
-    await page.waitForSelector(".url-copy-button > a");
+    await page.waitForSelector(".share-icon-container");
 
-    await page.click(".url-copy-button > a");
+    await page.click(".share-icon-container");
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
@@ -110,13 +107,11 @@ test.describe("the share feature", () => {
     await page.click(".choices");
     await page.click('.choices__item--choice >> text="Anchorage, AK"');
     await page.waitForFunction(() => {
-      const titleElement = document.querySelector(
-        ".leaflet-popup-content .title"
-      );
+      const titleElement = document.querySelector(".scorecard-title");
       return titleElement && titleElement.textContent === "Anchorage, AK";
     });
 
-    await page.click(".url-copy-button > a");
+    await page.click(".share-icon-container");
     const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
@@ -130,12 +125,11 @@ test.describe("the share feature", () => {
     await page.goto("#parking-reform-map=fort-worth-tx");
 
     // Wait a second to make sure the site is fully loaded.
-    await page.waitForSelector(".leaflet-popup-content .title");
+    await page.waitForSelector(".scorecard-title");
 
     const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-      const titlePopup: HTMLElement | null = document.querySelector(
-        ".leaflet-popup-content .title"
-      );
+      const titlePopup: HTMLElement | null =
+        document.querySelector(".scorecard-title");
       const title = titlePopup?.textContent;
       const cityChoice: HTMLSelectElement | null =
         document.querySelector("#city-dropdown");
@@ -155,9 +149,8 @@ test.describe("the share feature", () => {
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
     const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-      const titlePopup: HTMLAnchorElement | null = document.querySelector(
-        ".leaflet-popup-content .title"
-      );
+      const titlePopup: HTMLAnchorElement | null =
+        document.querySelector(".scorecard-title");
 
       const title = titlePopup?.textContent;
       const cityChoiceSelector: HTMLSelectElement | null =
@@ -210,7 +203,7 @@ test.describe("auto-focus city", () => {
     await page.waitForTimeout(1000);
 
     const newScorecard = await page
-      .locator(".leaflet-popup-content .title")
+      .locator(".scorecard-title")
       .evaluate((node) => node.textContent);
     expect(newScorecard).toEqual("Birmingham, AL");
     expect(await page.isVisible("#birmingham-al")).toBe(true);
@@ -233,7 +226,7 @@ test.describe("auto-focus city", () => {
     await page.waitForTimeout(1000);
 
     const scorecard = await page
-      .locator(".leaflet-popup-content .title")
+      .locator(".scorecard-title")
       .evaluate((node) => node.textContent);
     expect(scorecard).toEqual("Atlanta, GA");
   });
@@ -254,7 +247,7 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
 
   await page.waitForSelector(".choices");
   const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-    const titlePopup = document.querySelector(".leaflet-popup-content .title");
+    const titlePopup = document.querySelector(".scorecard-title");
     const title = titlePopup?.textContent;
     const cityChoice: HTMLSelectElement | null =
       document.querySelector("#city-dropdown");

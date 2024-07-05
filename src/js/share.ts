@@ -33,7 +33,7 @@ const setUpShareUrlClickListener = (cityId: CityId): void => {
   mapElement.addEventListener("click", async (event) => {
     const copyButton = event.target;
     if (!(copyButton instanceof Element)) return;
-    const targetElement = copyButton.closest("div.url-copy-button > a");
+    const targetElement = copyButton.closest(".share-icon-container");
     if (!(targetElement instanceof HTMLAnchorElement)) return;
     const shareUrl = determineShareUrl(window.location.href, cityId);
     await copyToClipboard(shareUrl);
