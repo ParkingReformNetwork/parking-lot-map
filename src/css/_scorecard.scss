@@ -12,7 +12,7 @@
 }
 
 .leaflet-popup-content-wrapper {
-  width: 365px;
+  width: 330px;
   border-radius: 10px;
   float: right;
   position: fixed;
@@ -34,7 +34,7 @@
 }
 
 .leaflet-popup-content-wrapper p {
-  font-size: typography.$font-size-sm;
+  font-size: typography.$font-size-base;
   color: colors.$black;
   margin: 0;
 }
@@ -74,7 +74,6 @@
     overflow-y: scroll;
     overflow-x: hidden;
     height: 119px;
-    width: 350px;
     float: left;
     position: fixed;
     bottom: 32px;
