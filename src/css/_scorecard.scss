@@ -20,12 +20,17 @@
   top: 75px;
 }
 
+.scorecard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .scorecard-title {
+  flex: 1;
   color: colors.$teal;
   font-weight: bold;
   font-size: typography.$font-size-md;
-  display: inline-block;
-  width: 75%;
 }
 
 .leaflet-popup-content-wrapper p {
@@ -34,14 +39,11 @@
   margin: 0;
 }
 
-.share-icon-container-outer {
-  float: right;
-  width: 0%;
-  display: inline-block;
-  cursor: pointer;
+.share-icon-container {
+  margin-left: 10px;
 
-  .share-icon-container svg {
-    color: colors.$teal;
+  svg {
+    color: colors.$teal !important;
   }
 }
 
