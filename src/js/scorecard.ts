@@ -44,13 +44,13 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
 const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
-  setUpShareUrlClickListener(cityId);
   const popup = new Popup({
     pane: "fixed",
     className: "popup-fixed",
     autoPan: false,
   }).setContent(scorecard);
   layer.bindPopup(popup).openPopup();
+  setUpShareUrlClickListener(cityId);
 };
 
 export default setScorecard;
