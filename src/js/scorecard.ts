@@ -39,14 +39,14 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   }
 
   const accordion = `<div class="scorecard-accordion">
-      <button class="scorecard-accordion-toggle">
+      <button class="scorecard-accordion-toggle" aria-expanded="false" aria-controls="scorecard-accordion-content">
         <span class="scorecard-accordion-title">Additional details</span>
-        <div class="scorecard-accordion-icon-container">
+        <div class="scorecard-accordion-icon-container" aria-hidden="true">
           <i class="fa-solid fa-chevron-down" title="expand additional details"></i>
           <i class="fa-solid fa-chevron-up" title="collapse additional details" style="display: none"></i>
         </div>
       </button>
-      <div id="scorecard-accordion-content" class="scorecard-accordion-content" style="display: none">
+      <div id="scorecard-accordion-content" class="scorecard-accordion-content" hidden>
         ${accordionLines.join("\n")}
       </div>
     </div>
@@ -67,24 +67,6 @@ const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   setUpShareUrlClickListener(cityId);
 };
 
-const switchAccordionIcons = (
-  accordionToggle: HTMLButtonElement,
-  currentlyExpanded: boolean
-): void => {
-  const upIcon = accordionToggle.querySelector(".fa-chevron-up");
-  const downIcon = accordionToggle.querySelector(".fa-chevron-down");
-  if (!(upIcon instanceof SVGElement) || !(downIcon instanceof SVGElement))
-    return;
-
-  if (currentlyExpanded) {
-    upIcon.style.display = "none";
-    downIcon.style.display = "block";
-  } else {
-    upIcon.style.display = "block";
-    downIcon.style.display = "none";
-  }
-};
-
 const setScorecardAccordionListener = () => {
   // The event listener is on `map` because it is never erased, unlike the scorecard
   // being recreated every time the map moves. This is called "event delegation".
@@ -95,15 +77,28 @@ const setScorecardAccordionListener = () => {
     if (!(clicked instanceof Element)) return;
     const accordionToggle = clicked.closest(".scorecard-accordion-toggle");
     if (!(accordionToggle instanceof HTMLButtonElement)) return;
-
     const accordionContent = document.querySelector(
       "#scorecard-accordion-content"
     );
     if (!(accordionContent instanceof HTMLDivElement)) return;
-    const currentlyExpanded = accordionContent.style.display !== "none";
+    const upIcon = accordionToggle.querySelector(".fa-chevron-up");
+    const downIcon = accordionToggle.querySelector(".fa-chevron-down");
+    if (!(upIcon instanceof SVGElement) || !(downIcon instanceof SVGElement))
+      return;
 
-    accordionContent.style.display = currentlyExpanded ? "none" : "block";
-    switchAccordionIcons(accordionToggle, currentlyExpanded);
+    const currentlyExpanded =
+      accordionToggle.getAttribute("aria-expanded") === "true";
+    if (currentlyExpanded) {
+      accordionToggle.setAttribute("aria-expanded", "false");
+      accordionContent.hidden = true;
+      upIcon.style.display = "none";
+      downIcon.style.display = "block";
+    } else {
+      accordionToggle.setAttribute("aria-expanded", "true");
+      accordionContent.hidden = false;
+      upIcon.style.display = "block";
+      downIcon.style.display = "none";
+    }
   });
 };
 
