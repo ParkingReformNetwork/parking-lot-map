@@ -67,7 +67,7 @@ const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
   setUpShareUrlClickListener(cityId);
 };
 
-const setScorecardAccordionListener = () => {
+const setUpScorecardAccordionListener = () => {
   // The event listener is on `map` because it is never erased, unlike the scorecard
   // being recreated every time the map moves. This is called "event delegation".
   const map = document.querySelector("#map");
@@ -102,4 +102,4 @@ const setScorecardAccordionListener = () => {
   });
 };
 
-export { setScorecard, setScorecardAccordionListener };
+export { setScorecard, setUpScorecardAccordionListener };
