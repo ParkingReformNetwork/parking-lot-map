@@ -55,36 +55,33 @@ test("correctly load the city score card", async ({ page }) => {
     return titleElement && titleElement.textContent === "Albany, NY";
   });
 
-  const [content, cityToggleValue] = await page.evaluate(() => {
+  await page.locator(".scorecard-accordion-toggle").click();
+
+  const [pLines, cityToggleValue] = await page.evaluate(async () => {
     const cityChoice: HTMLSelectElement | null =
       document.querySelector("#city-dropdown");
-    const cityToggle = cityChoice?.value;
+    const cityToggleValue2 = cityChoice?.value;
 
-    const keysToValues: Record<string, string> = {};
-    // eslint-disable-next-line no-restricted-syntax
-    for (const el of document.querySelectorAll(
-      ".leaflet-popup-content-wrapper p"
-    )) {
-      const split = el.textContent?.split(":", 2);
-      // eslint-disable-next-line no-continue
-      if (!split) continue;
-      const [k, v] = split;
-      keysToValues[k] = v.trim();
-    }
-    return [keysToValues, cityToggle];
+    const pLines2 = Array.from(
+      document.querySelectorAll(".leaflet-popup-content-wrapper p")
+    )
+      .filter((el) => el instanceof HTMLParagraphElement)
+      .map((p) => p.textContent?.trim() || "");
+    return [pLines2, cityToggleValue2];
   });
 
-  expect(cityToggleValue).toEqual("albany-ny");
-  expect(content.Parking).toEqual(
-    `${albanyExpected.percentage} of central city`
-  );
-  expect(content.Population).toEqual(albanyExpected.population);
-  expect(content["Urbanized area population"]).toEqual(
-    albanyExpected.urbanizedAreaPopulation
-  );
-  expect(content["Parking score"]).toEqual(albanyExpected.parkingScore);
-  expect(content["Parking reform"]).toEqual(albanyExpected.reforms);
   expect(albanyLoaded).toBe(true);
+  expect(cityToggleValue).toEqual("albany-ny");
+
+  const expectedLines = new Set([
+    `${albanyExpected.percentage} of the central city is off-street parking`,
+    `Parking score: ${albanyExpected.parkingScore}`,
+    `City type: ${albanyExpected.cityType}`,
+    `Population: ${albanyExpected.population}`,
+    `Urbanized area population: ${albanyExpected.urbanizedAreaPopulation}`,
+    `Parking reform: ${albanyExpected.reforms}`,
+  ]);
+  expect(new Set(pLines)).toEqual(expectedLines);
 });
 
 test.describe("the share feature", () => {
