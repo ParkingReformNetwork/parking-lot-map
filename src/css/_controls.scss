@@ -1,9 +1,10 @@
 @use "theme/colors";
 @use "theme/touchable-icons";
 @use "theme/typography";
+@use "header";
 
 $label-font-size: typography.$font-size-md;
-$zoom-controls-top-offset: 10px;
+$zoom-controls-top-offset: calc(70px - header.$header-height);
 $outer-border-thickness: 2px;
 $option-divider: 1px solid colors.$gray-light-translucent;
 

@@ -1,80 +1,83 @@
+@use "theme/breakpoints";
 @use "theme/colors";
+@use "theme/touchable-icons";
+@use "theme/typography";
+
+$header-y-padding: 10px;
+$header-border-bottom-size: 4px;
+$header-height: calc(
+  touchable-icons.$min-touch-target + ($header-y-padding * 2) +
+    $header-border-bottom-size
+);
 
 header {
   width: 100%;
-  padding: 0.4em 1em;
+  display: flex;
+  align-items: center;
+
+  padding: $header-y-padding 10px;
 
   background-color: colors.$gray-light;
-  color: colors.$white;
-  font-size: 1.3em;
-
-  display: flex;
+  border-bottom: $header-border-bottom-size solid colors.$teal;
 }
 
 .header-icons {
   display: flex;
-
+  margin-left: auto;
   cursor: pointer;
+
+  .header-about-icon-container,
+  .header-share-icon-container,
+  .header-link-icon-container {
+    height: touchable-icons.$min-touch-target;
+    width: touchable-icons.$min-touch-target;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   svg {
     color: colors.$white;
-  }
-
-  .header-about-icon-container {
-    margin-right: 0.75em;
-  }
-
-  margin-left: auto;
-}
-
-@media only screen and (min-width: 48em) {
-  header {
-    align-items: center;
-    font-size: 1.75em;
-  }
-
-  .navigation {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    margin-right: 1em;
-  }
-
-  .site-title {
-    flex: 1;
-  }
-
-  #city-dropdown {
-    display: flex;
-    align-items: center;
-    gap: 0.7em;
-    height: 40px;
+    height: touchable-icons.$icon-size-md;
+    width: touchable-icons.$icon-size-md;
   }
 }
 
-.choices__inner {
-  border: 2px solid colors.$black-translucent;
-  border-radius: 10px;
-  color: colors.$black;
-  height: 40px;
+.choices {
+  margin-bottom: 0;
+}
 
-  @media only screen and (min-width: 20em) {
-    min-width: 20em;
+.choices[data-type*="select-one"] {
+  .choices__inner {
+    border-radius: 10px;
+    color: colors.$black;
+    font-size: typography.$font-size-base;
+    line-height: 1.2; // To vertically center the text.
+
+    height: touchable-icons.$min-touch-target;
+
+    min-width: 220px;
+    @include breakpoints.gt-xs {
+      min-width: 300px;
+    }
+  }
+
+  .choices__input {
+    // Cannot be less than 16px due to iOS autozoom:
+    //   https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
+    font-size: typography.$font-size-base;
   }
 }
 
-.choices__item--selectable {
-  font-size: 14px;
-  height: 40px;
+.choices__heading {
+  font-size: typography.$font-size-sm;
+  cursor: default;
 }
 
-.choices__input {
-  /*
-   * This is necessary to prevent autozoom on iOS 
-   * for accessibility reasons.  See:
-   * https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
-   */
-  font-size: 16px;
+div.choices__item.choices__item--choice.choices__item--selectable {
+  font-size: typography.$font-size-base;
+  height: touchable-icons.$min-touch-target;
 }
 
 .choices__list--dropdown,

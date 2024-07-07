@@ -4,13 +4,7 @@ import setUpShareUrlClickListener from "./share";
 
 const generateScorecard = (entry: ScoreCardDetails): string => {
   const header = `
-      <div class="scorecard-header">
-        <h1 class="scorecard-title">${entry.name}</h1>
-        <a href="#" class="share-icon-container">
-          <i class="share-link-icon fa-solid fa-link fa-xl" title="Copy link"></i>
-          <i class="share-check-icon fa-solid fa-check fa-xl" title="Link Copied!" style="display: none"></i>
-        </a>
-      </div>
+      <h1 class="scorecard-title">Parking lots in ${entry.name}</h1>
       <p>${entry.percentage} of the central city is off-street parking</p>
       `;
 

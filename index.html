@@ -72,20 +72,28 @@
 
   <body>
     <header>
-      <div class="navigation">
-        <span class="site-title">Parking Lot Map</span>
-        <select
-          single
-          name="city-dropdown"
-          class="city-dropdown"
-          id="city-dropdown"
-          aria-label="select the city"
-        ></select>
-      </div>
+      <select
+        single
+        name="city-dropdown"
+        class="header-dropdown"
+        id="city-dropdown"
+        aria-label="select the city"
+      ></select>
       <div class="header-icons">
         <div class="header-about-icon-container">
           <i class="fa-solid fa-circle-info" title="About"></i>
         </div>
+        <a href="#" class="header-share-icon-container"
+          ><i
+            class="share-link-icon fa-solid fa-link fa-lg"
+            title="copy link"
+          ></i
+          ><i
+            class="share-check-icon fa-solid fa-check fa-lg"
+            title="link successfully copied"
+            style="display: none"
+          ></i>
+        </a>
         <a
           class="header-link-icon-container"
           href="https://parkingreform.org/parking-lot-map/"

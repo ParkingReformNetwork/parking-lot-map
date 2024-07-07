@@ -52,7 +52,9 @@ test("correctly load the city score card", async ({ page }) => {
   await page.click('.choices__item--choice >> text="Albany, NY"');
   await page.waitForFunction(() => {
     const titleElement = document.querySelector(".scorecard-title");
-    return titleElement && titleElement.textContent === "Albany, NY";
+    return (
+      titleElement && titleElement.textContent === "Parking lots in Albany, NY"
+    );
   });
 
   await page.locator(".scorecard-accordion-toggle").click();
@@ -90,9 +92,9 @@ test.describe("the share feature", () => {
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     const page = await context.newPage();
     await page.goto("/");
-    await page.waitForSelector(".share-icon-container");
+    await page.waitForSelector(".header-share-icon-container");
 
-    await page.click(".share-icon-container");
+    await page.click(".header-share-icon-container");
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
@@ -105,10 +107,13 @@ test.describe("the share feature", () => {
     await page.click('.choices__item--choice >> text="Anchorage, AK"');
     await page.waitForFunction(() => {
       const titleElement = document.querySelector(".scorecard-title");
-      return titleElement && titleElement.textContent === "Anchorage, AK";
+      return (
+        titleElement &&
+        titleElement.textContent === "Parking lots in Anchorage, AK"
+      );
     });
 
-    await page.click(".share-icon-container");
+    await page.click(".header-share-icon-container");
     const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText()
     );
@@ -134,7 +139,7 @@ test.describe("the share feature", () => {
       return [title, cityToggle];
     });
 
-    expect(scoreCardTitle).toEqual("Fort Worth, TX");
+    expect(scoreCardTitle).toEqual("Parking lots in Fort Worth, TX");
     expect(cityToggleValue).toEqual("fort-worth-tx");
   });
 
@@ -156,7 +161,7 @@ test.describe("the share feature", () => {
       return [title, cityToggle];
     });
 
-    expect(scoreCardTitle).toEqual("Atlanta, GA");
+    expect(scoreCardTitle).toEqual("Parking lots in Atlanta, GA");
     expect(cityToggleValue).toEqual("atlanta-ga");
   });
 });
@@ -202,7 +207,7 @@ test.describe("auto-focus city", () => {
     const newScorecard = await page
       .locator(".scorecard-title")
       .evaluate((node) => node.textContent);
-    expect(newScorecard).toEqual("Birmingham, AL");
+    expect(newScorecard).toEqual("Parking lots in Birmingham, AL");
     expect(await page.isVisible("#birmingham-al")).toBe(true);
   });
   test("clicking on city boundary wide view", async ({ page }) => {
@@ -225,7 +230,7 @@ test.describe("auto-focus city", () => {
     const scorecard = await page
       .locator(".scorecard-title")
       .evaluate((node) => node.textContent);
-    expect(scorecard).toEqual("Atlanta, GA");
+    expect(scorecard).toEqual("Parking lots in Atlanta, GA");
   });
 });
 
@@ -250,7 +255,7 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
       document.querySelector("#city-dropdown");
     return [title, cityChoice?.value];
   });
-  expect(scoreCardTitle).toEqual("Birmingham, AL");
+  expect(scoreCardTitle).toEqual("Parking lots in Birmingham, AL");
   expect(cityToggleValue).toEqual("birmingham-al");
 });
 
