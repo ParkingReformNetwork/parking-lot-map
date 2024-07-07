@@ -13,7 +13,7 @@ import { CityId, ScoreCard, ScoreCards } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import setUpAbout from "./about";
-import setScorecard from "./scorecard";
+import { setScorecard, setUpScorecardAccordionListener } from "./scorecard";
 import setUpDropdown, { DROPDOWN } from "./dropdown";
 import cityBoundaries from "~/data/city-boundaries.geojson";
 import scoreCardsDetails from "~/data/score-cards.json";
@@ -99,13 +99,16 @@ const loadParkingLot = async (
 };
 
 /**
- * Centers view to city.
- *
- * @param map: The Leaflet map instance.
- * @param layer: The Leaflet layer with the city boundaries to snap to.
+ * Centers view to city, but translated down to account for the top UI elements.
  */
 const snapToCity = (map: Map, layer: ImageOverlay): void => {
-  map.fitBounds(layer.getBounds());
+  const bounds = layer.getBounds();
+  map.fitBounds(bounds);
+  const centerPoint = map.latLngToContainerPoint(bounds.getCenter());
+  const translateYPx = -40;
+  const translatedCenterPoint = centerPoint.add([0, translateYPx]);
+  const translatedCenter = map.containerPointToLatLng(translatedCenterPoint);
+  map.setView(translatedCenter, map.getZoom());
 };
 
 /**
@@ -239,6 +242,7 @@ const setUpSite = async (): Promise<void> => {
   setUpAbout();
 
   const map = createMap();
+  setUpScorecardAccordionListener();
   const parkingLayer = await setUpParkingLotsLayer(map);
   await setUpCitiesLayer(map, parkingLayer);
 
