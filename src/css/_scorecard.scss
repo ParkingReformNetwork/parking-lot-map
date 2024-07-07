@@ -2,6 +2,7 @@
 @use "theme/colors";
 @use "theme/touchable-icons";
 @use "theme/typography";
+@use "header";
 
 $outer-padding: 15px;
 $padding-between-elements: 10px;
@@ -28,30 +29,26 @@ $border-radius: 10px;
 
   float: right;
   position: fixed;
-  right: 11px;
-  top: 100px;
+  right: 10px;
+  top: calc(header.$header-height + 12px);
 
   border-radius: $border-radius;
 }
 
-.scorecard-header {
+.scorecard-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: $outer-padding;
-  padding-bottom: $padding-between-elements;
-  padding-left: $outer-padding;
-  padding-right: $outer-padding;
-}
 
-.scorecard-title {
-  flex: 1;
+  margin-top: $outer-padding;
+  margin-bottom: $padding-between-elements;
+  margin-left: $outer-padding;
+  margin-right: $outer-padding;
+  line-height: 1.1;
+
   color: colors.$teal;
   font-weight: bold;
   font-size: typography.$font-size-xl;
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 .scorecard-accordion-toggle {
@@ -106,16 +103,6 @@ $border-radius: 10px;
   margin: 0;
   padding-left: $outer-padding;
   padding-right: $outer-padding;
-}
-
-.share-icon-container {
-  margin-left: 10px;
-
-  svg {
-    color: colors.$teal !important;
-    font-size: typography.$font-size-lg;
-    padding-bottom: 2px;
-  }
 }
 
 .popup-button a {

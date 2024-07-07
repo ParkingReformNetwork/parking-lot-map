@@ -16,9 +16,6 @@ div.donate-button {
   @include breakpoints.gt-sm {
     width: 105px;
   }
-  @include breakpoints.gt-md {
-    width: 120px;
-  }
 
   a img {
     width: 100%;

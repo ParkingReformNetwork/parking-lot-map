@@ -3,9 +3,6 @@
 @use "theme/touchable-icons";
 @use "theme/typography";
 
-// TODO:
-//  - figure out revamp of scorecard. ideally we don't have to max-height on mobile
-
 $header-y-padding: 10px;
 $header-border-bottom-size: 4px;
 $header-height: calc(
