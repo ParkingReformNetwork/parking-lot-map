@@ -1,7 +1,11 @@
 @use "theme/breakpoints";
 @use "theme/colors";
+@use "theme/touchable-icons";
 @use "theme/typography";
-@use "header";
+
+$outer-padding: 15px;
+$padding-between-elements: 10px;
+$border-radius: 10px;
 
 .popup-fixed {
   position: fixed;
@@ -13,49 +17,127 @@
   display: none;
 }
 
-.leaflet-popup-content-wrapper {
-  position: fixed;
-  right: 10px;
-  top: calc(header.$header-height + 10px);
+.leaflet-popup-content {
+  margin: 0;
+}
 
+.leaflet-popup-content-wrapper {
   width: 270px;
-  border-radius: 10px;
+  padding: 0;
+  padding-right: 1px;
+
+  float: right;
+  position: fixed;
+  right: 11px;
+  top: 100px;
+
+  border-radius: $border-radius;
+}
+
+.scorecard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: $outer-padding;
+  padding-bottom: $padding-between-elements;
+  padding-left: $outer-padding;
+  padding-right: $outer-padding;
 }
 
 .scorecard-title {
-  display: inline-block;
-  margin-top: 0;
-  margin-bottom: 10px;
-
+  flex: 1;
   color: colors.$teal;
   font-weight: bold;
   font-size: typography.$font-size-xl;
   line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-.details-title,
-.details-value {
+.scorecard-accordion-toggle {
+  height: touchable-icons.$min-touch-target;
+  width: 100%;
+  padding: 0;
+  margin-top: $padding-between-elements;
+
+  font-size: typography.$font-size-base;
+  cursor: pointer;
+  text-align: left;
+  padding-left: $outer-padding;
+  padding-right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: colors.$white;
+  border-left: 0;
+  border-right: 0;
+  border-top: 1px solid colors.$gray-light-translucent;
+  border-bottom: 0;
+  border-bottom-left-radius: $border-radius;
+  border-bottom-right-radius: $border-radius;
+
+  .scorecard-accordion-title {
+    flex: 1;
+  }
+
+  .scorecard-accordion-icon-container {
+    height: touchable-icons.$min-touch-target;
+    width: touchable-icons.$min-touch-target;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      height: touchable-icons.$icon-size-sm;
+    }
+  }
+}
+
+.scorecard-accordion-content {
+  border-top: 1px solid colors.$gray-light-translucent;
+  padding-top: $padding-between-elements;
+}
+
+.leaflet-popup-content-wrapper p {
   font-size: typography.$font-size-base;
   color: colors.$black;
+  margin: 0;
+  padding-left: $outer-padding;
+  padding-right: $outer-padding;
 }
 
-.community-tag {
-  font-size: typography.$font-size-base;
-  color: colors.$gray;
+.share-icon-container {
+  margin-left: 10px;
+
+  svg {
+    color: colors.$teal !important;
+    font-size: typography.$font-size-lg;
+    padding-bottom: 2px;
+  }
 }
 
-div.popup-button a {
-  background-color: colors.$teal;
+.popup-button a {
+  display: inline-block;
   padding: 10px;
+  margin: $padding-between-elements;
+
+  background-color: colors.$teal;
   font-size: typography.$font-size-base;
   color: colors.$white;
   border-radius: 8px;
   text-decoration: none;
-  display: inline-block;
+  border: 1px solid colors.$teal;
 
   &:hover {
     background-color: colors.$white;
     color: colors.$teal;
     border: 1px solid colors.$teal;
   }
+}
+
+.community-tag {
+  font-size: typography.$font-size-sm;
+  color: colors.$gray;
 }

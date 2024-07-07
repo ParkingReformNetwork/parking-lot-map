@@ -3,18 +3,17 @@ import {
   Control,
   ImageOverlay,
   Map,
-  Popup,
   TileLayer,
   geoJSON,
   GeoJSON,
 } from "leaflet";
 import { Feature, GeoJsonProperties, Geometry } from "geojson";
 import "leaflet/dist/leaflet.css";
-import { CityId, ScoreCard, ScoreCards, ScoreCardDetails } from "./types";
+import { CityId, ScoreCard, ScoreCards } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import setUpAbout from "./about";
-import setUpShareUrlClickListener from "./share";
+import { setScorecard, setUpScorecardAccordionListener } from "./scorecard";
 import setUpDropdown, { DROPDOWN } from "./dropdown";
 import cityBoundaries from "~/data/city-boundaries.geojson";
 import scoreCardsDetails from "~/data/score-cards.json";
@@ -84,43 +83,6 @@ const createMap = (): Map => {
 };
 
 /**
- * Generate the HTML for the score card.
- */
-const generateScorecard = (entry: ScoreCardDetails): string => {
-  const header = `<h1 class="scorecard-title">Parking lots in ${entry.name}</h1>`;
-  const lines = [];
-  const addEntry = (title: string, value: string): void => {
-    lines.push(
-      `<div><span class="details-title">${title}: </span><span class="details-value">${value}</span></div>`
-    );
-  };
-
-  addEntry("Parking", `${entry.percentage} of central city`);
-  if (entry.parkingScore) {
-    addEntry("Parking score", entry.parkingScore);
-  }
-  addEntry("Parking reform", entry.reforms);
-  lines.push("<br />");
-  addEntry("City type", entry.cityType);
-  addEntry("Population", entry.population);
-  addEntry("Urbanized area population", entry.urbanizedAreaPopulation);
-
-  if ("contribution" in entry) {
-    lines.push("<hr>");
-    lines.push(
-      `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.</span></div>`
-    );
-  }
-  if (entry.url) {
-    lines.push(
-      "<hr>",
-      `<div class="popup-button"><a href="${entry.url}">Reform details</a></div>`
-    );
-  }
-  return header + lines.join("\n");
-};
-
-/**
  * Load city parking lots if not already loaded.
  */
 const loadParkingLot = async (
@@ -137,25 +99,16 @@ const loadParkingLot = async (
 };
 
 /**
- * Centers view to city.
- *
- * @param map: The Leaflet map instance.
- * @param layer: The Leaflet layer with the city boundaries to snap to.
+ * Centers view to city, but translated down to account for the top UI elements.
  */
 const snapToCity = (map: Map, layer: ImageOverlay): void => {
-  map.fitBounds(layer.getBounds());
-};
-
-const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
-  const { layer, details } = cityProperties;
-  const scorecard = generateScorecard(details);
-  setUpShareUrlClickListener(cityId);
-  const popup = new Popup({
-    pane: "fixed",
-    className: "popup-fixed",
-    autoPan: false,
-  }).setContent(scorecard);
-  layer.bindPopup(popup).openPopup();
+  const bounds = layer.getBounds();
+  map.fitBounds(bounds);
+  const centerPoint = map.latLngToContainerPoint(bounds.getCenter());
+  const translateYPx = -40;
+  const translatedCenterPoint = centerPoint.add([0, translateYPx]);
+  const translatedCenter = map.containerPointToLatLng(translatedCenterPoint);
+  map.setView(translatedCenter, map.getZoom());
 };
 
 /**
@@ -289,6 +242,7 @@ const setUpSite = async (): Promise<void> => {
   setUpAbout();
 
   const map = createMap();
+  setUpScorecardAccordionListener();
   const parkingLayer = await setUpParkingLotsLayer(map);
   await setUpCitiesLayer(map, parkingLayer);
 

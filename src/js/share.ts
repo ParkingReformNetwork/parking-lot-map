@@ -26,12 +26,12 @@ const switchIcons = (shareIcon: HTMLAnchorElement): void => {
 };
 
 const setUpShareUrlClickListener = (cityId: CityId): void => {
-  const copyButton = document.querySelector(".header-share-icon-container");
-  if (!(copyButton instanceof HTMLAnchorElement)) return;
-  copyButton.addEventListener("click", async () => {
+  const iconContainer = document.querySelector(".header-share-icon-container");
+  if (!(iconContainer instanceof HTMLAnchorElement)) return;
+  iconContainer.addEventListener("click", async () => {
     const shareUrl = determineShareUrl(window.location.href, cityId);
     await copyToClipboard(shareUrl);
-    switchIcons(copyButton);
+    switchIcons(iconContainer);
   });
 };
 
