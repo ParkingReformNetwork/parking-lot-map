@@ -13,11 +13,9 @@
     bottom: 10px;
   }
 
-  // width: 60px;  // logo1
-  width: 120px; // logo2
+  width: 120px;
   @include breakpoints.gt-sm {
-    // width: 80px;  // logo1
-    width: 140px; // logo2
+    width: 140px;
   }
 
   img {
