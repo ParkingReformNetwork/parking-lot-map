@@ -42,6 +42,16 @@ header {
     height: touchable-icons.$icon-size-md;
     width: touchable-icons.$icon-size-md;
   }
+
+  .header-link-icon-container {
+    // We don't show the icon on small screens because it takes up
+    // too much screen real estate, and it's not very useful to see
+    // the map in full-screen vs iframe if you're on such a small screen.
+    display: none;
+    @include breakpoints.gt-xs {
+      display: inline-flex;
+    }
+  }
 }
 
 .choices {

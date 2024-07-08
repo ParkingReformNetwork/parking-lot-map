@@ -23,7 +23,11 @@ $border-radius: 10px;
 }
 
 .leaflet-popup-content-wrapper {
-  width: 270px;
+  width: 260px;
+  @include breakpoints.gt-xs {
+    width: 280px;
+  }
+
   padding: 0;
   padding-right: 1px;
 
