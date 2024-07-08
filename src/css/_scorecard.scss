@@ -33,6 +33,18 @@ $border-radius: 10px;
   top: calc(header.$header-height + 12px);
 
   border-radius: $border-radius;
+  color: colors.$black;
+
+  p,
+  li {
+    font-size: typography.$font-size-base;
+  }
+
+  p {
+    margin: 0;
+    padding-left: $outer-padding;
+    padding-right: $outer-padding;
+  }
 }
 
 .scorecard-title {
@@ -95,32 +107,14 @@ $border-radius: 10px;
 .scorecard-accordion-content {
   border-top: 1px solid colors.$gray-light-translucent;
   padding-top: $padding-between-elements;
-}
 
-.leaflet-popup-content-wrapper p {
-  font-size: typography.$font-size-base;
-  color: colors.$black;
-  margin: 0;
-  padding-left: $outer-padding;
-  padding-right: $outer-padding;
-}
-
-.popup-button a {
-  display: inline-block;
-  padding: 10px;
-  margin: $padding-between-elements;
-
-  background-color: colors.$teal;
-  font-size: typography.$font-size-base;
-  color: colors.$white;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 1px solid colors.$teal;
-
-  &:hover {
-    background-color: colors.$white;
-    color: colors.$teal;
-    border: 1px solid colors.$teal;
+  ul {
+    padding: 0;
+    padding-inline-start: 20px; // Default is 40px
+    margin-left: $outer-padding;
+    margin-right: $outer-padding;
+    margin-bottom: $outer-padding;
+    margin-top: $padding-between-elements;
   }
 }
 
