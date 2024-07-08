@@ -3,11 +3,11 @@
 @use "theme/typography";
 
 .leaflet-container .leaflet-control-attribution {
-    font-size: typography.$font-size-xs;
-    background-color: colors.$white;
-    border-top-left-radius: 2px;
+  font-size: typography.$font-size-xs;
+  background-color: colors.$white;
+  border-top-left-radius: 2px;
 
-    @include breakpoints.gt-sm {
-        font-size: typography.$font-size-sm;
-    }
+  @include breakpoints.gt-sm {
+    font-size: typography.$font-size-sm;
+  }
 }
