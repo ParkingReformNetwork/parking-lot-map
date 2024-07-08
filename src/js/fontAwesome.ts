@@ -1,10 +1,9 @@
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { faCircleQuestion, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowRight,
   faChevronDown,
   faChevronUp,
-  faCircleInfo,
-  faCircleXmark,
   faLink,
   faUpRightFromSquare,
   faCheck,
@@ -17,8 +16,8 @@ const setUpIcons = (): void => {
     faArrowRight,
     faChevronDown,
     faChevronUp,
-    faCircleInfo,
     faCircleXmark,
+    faCircleQuestion,
     faLink,
     faUpRightFromSquare,
     faCheck,
