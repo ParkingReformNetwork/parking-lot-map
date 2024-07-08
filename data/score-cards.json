@@ -2,7 +2,7 @@
   "albany-ny": {
     "name": "Albany, NY",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "99,233",
     "urbanizedAreaPopulation": "593,142",
     "parkingScore": "50",
@@ -12,7 +12,7 @@
   "albuquerque-nm": {
     "name": "Albuquerque, NM",
     "percentage": "33%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "564,559",
     "urbanizedAreaPopulation": "769,837",
     "parkingScore": "63",
@@ -22,7 +22,7 @@
   "allentown-pa": {
     "name": "Allentown, PA",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "125,858",
     "urbanizedAreaPopulation": "621,703",
     "parkingScore": "47",
@@ -42,7 +42,7 @@
   "anchorage-ak": {
     "name": "Anchorage, AK",
     "percentage": "34%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "291,247",
     "urbanizedAreaPopulation": "249,252",
     "parkingScore": null,
@@ -62,7 +62,7 @@
   "atlanta-ga": {
     "name": "Atlanta, GA",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "498,715",
     "urbanizedAreaPopulation": "5,100,112",
     "parkingScore": "73",
@@ -82,7 +82,7 @@
   "austin-tx": {
     "name": "Austin, TX",
     "percentage": "15%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "959,549",
     "urbanizedAreaPopulation": "1,809,888",
     "parkingScore": "21",
@@ -92,7 +92,7 @@
   "bakersfield-ca": {
     "name": "Bakersfield, CA",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "403,455",
     "urbanizedAreaPopulation": "570,235",
     "parkingScore": "40",
@@ -102,7 +102,7 @@
   "baltimore-md": {
     "name": "Baltimore, MD",
     "percentage": "15%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "585,708",
     "urbanizedAreaPopulation": "2,212,038",
     "parkingScore": "42",
@@ -112,7 +112,7 @@
   "baton-rouge-la": {
     "name": "Baton Rouge, LA",
     "percentage": "33%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "226,916",
     "urbanizedAreaPopulation": "631,326",
     "parkingScore": "64",
@@ -122,7 +122,7 @@
   "birmingham-al": {
     "name": "Birmingham, AL",
     "percentage": "30%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "200,733",
     "urbanizedAreaPopulation": "774,956",
     "parkingScore": "56",
@@ -132,7 +132,7 @@
   "boston-ma": {
     "name": "Boston, MA",
     "percentage": "6%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "676,216",
     "urbanizedAreaPopulation": "4,382,009",
     "parkingScore": "29",
@@ -142,7 +142,7 @@
   "buffalo-ny": {
     "name": "Buffalo, NY",
     "percentage": "30%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "278,349",
     "urbanizedAreaPopulation": "948,864",
     "parkingScore": "64",
@@ -152,7 +152,7 @@
   "charleston-sc": {
     "name": "Charleston, SC",
     "percentage": "23%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "150,288",
     "urbanizedAreaPopulation": "684,773",
     "parkingScore": "33",
@@ -162,7 +162,7 @@
   "charlotte-nc": {
     "name": "Charlotte, NC",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "874,541",
     "urbanizedAreaPopulation": "1,379,873",
     "parkingScore": "50",
@@ -172,7 +172,7 @@
   "chicago-il": {
     "name": "Chicago, IL",
     "percentage": "7%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "2,747,231",
     "urbanizedAreaPopulation": "8,671,746",
     "parkingScore": "15",
@@ -182,7 +182,7 @@
   "cincinnati-oh": {
     "name": "Cincinnati, OH",
     "percentage": "21%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "309,317",
     "urbanizedAreaPopulation": "1,686,744",
     "parkingScore": "38",
@@ -192,7 +192,7 @@
   "cleveland-oh": {
     "name": "Cleveland, OH",
     "percentage": "25%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "373,091",
     "urbanizedAreaPopulation": "1,712,178",
     "parkingScore": "50",
@@ -202,7 +202,7 @@
   "colorado-springs-co": {
     "name": "Colorado Springs, CO",
     "percentage": "21%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "478,961",
     "urbanizedAreaPopulation": "632,494",
     "parkingScore": "26",
@@ -212,7 +212,7 @@
   "columbia-sc": {
     "name": "Columbia, SC",
     "percentage": "37%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "136,803",
     "urbanizedAreaPopulation": "590,407",
     "parkingScore": "78",
@@ -222,7 +222,7 @@
   "columbus-oh": {
     "name": "Columbus, OH",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "905,672",
     "urbanizedAreaPopulation": "1,567,254",
     "parkingScore": "53",
@@ -232,7 +232,7 @@
   "corpus-christi-tx": {
     "name": "Corpus Christi, TX",
     "percentage": "33%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "317,863",
     "urbanizedAreaPopulation": "339,066",
     "parkingScore": null,
@@ -242,17 +242,17 @@
   "dallas-tx": {
     "name": "Dallas, TX",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "1,304,442",
     "urbanizedAreaPopulation": "5,732,354",
     "parkingScore": "77",
-    "reforms": "Proposed",
+    "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Dallas_TX.html"
   },
   "dayton-oh": {
     "name": "Dayton, OH",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "137,624",
     "urbanizedAreaPopulation": "674,046",
     "parkingScore": "50",
@@ -262,7 +262,7 @@
   "denver-co": {
     "name": "Denver, CO",
     "percentage": "17%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "715,522",
     "urbanizedAreaPopulation": "2,686,147",
     "parkingScore": "48",
@@ -272,7 +272,7 @@
   "des-moines-ia": {
     "name": "Des Moines, IA",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "214,125",
     "urbanizedAreaPopulation": "542,486",
     "parkingScore": "38",
@@ -282,7 +282,7 @@
   "detroit-mi": {
     "name": "Detroit, MI",
     "percentage": "31%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "639,614",
     "urbanizedAreaPopulation": "3,776,890",
     "parkingScore": "100",
@@ -292,7 +292,7 @@
   "el-paso-tx": {
     "name": "El Paso, TX",
     "percentage": "23%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "678,815",
     "urbanizedAreaPopulation": "854,584",
     "parkingScore": "42",
@@ -302,7 +302,7 @@
   "fort-myers-fl": {
     "name": "Fort Myers, FL",
     "percentage": "30%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "86,401",
     "urbanizedAreaPopulation": "599,242",
     "parkingScore": "57",
@@ -322,7 +322,7 @@
   "fresno-ca": {
     "name": "Fresno, CA",
     "percentage": "34%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "542,107",
     "urbanizedAreaPopulation": "717,589",
     "parkingScore": "65",
@@ -332,7 +332,7 @@
   "grand-rapids-mi": {
     "name": "Grand Rapids, MI",
     "percentage": "28%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "198,917",
     "urbanizedAreaPopulation": "605,666",
     "parkingScore": "50",
@@ -342,7 +342,7 @@
   "greensboro-nc": {
     "name": "Greensboro, NC",
     "percentage": "31%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "299,035",
     "urbanizedAreaPopulation": "338,928",
     "parkingScore": null,
@@ -352,7 +352,7 @@
   "harrisburg-pa": {
     "name": "Harrisburg, PA",
     "percentage": "30%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "50,088",
     "urbanizedAreaPopulation": "490,859",
     "parkingScore": "53",
@@ -362,7 +362,7 @@
   "hartford-ct": {
     "name": "Hartford, CT",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "121,054",
     "urbanizedAreaPopulation": "977,158",
     "parkingScore": "53",
@@ -382,7 +382,7 @@
   "honolulu-hi": {
     "name": "Honolulu, HI",
     "percentage": "18%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "350,964",
     "urbanizedAreaPopulation": "853,252",
     "parkingScore": "21",
@@ -392,7 +392,7 @@
   "houston-tx": {
     "name": "Houston, TX",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "2,302,792",
     "urbanizedAreaPopulation": "5,853,575",
     "parkingScore": "73",
@@ -402,7 +402,7 @@
   "indianapolis-in": {
     "name": "Indianapolis, IN",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "887,752",
     "urbanizedAreaPopulation": "1,699,881",
     "parkingScore": "51",
@@ -412,7 +412,7 @@
   "jacksonville-fl": {
     "name": "Jacksonville, FL",
     "percentage": "26%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "949,611",
     "urbanizedAreaPopulation": "1,247,374",
     "parkingScore": "48",
@@ -432,7 +432,7 @@
   "kansas-city-mo": {
     "name": "Kansas City, MO",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "507,969",
     "urbanizedAreaPopulation": "1,674,218",
     "parkingScore": "64",
@@ -442,7 +442,7 @@
   "knoxville-tn": {
     "name": "Knoxville, TN",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "190,728",
     "urbanizedAreaPopulation": "597,257",
     "parkingScore": "48",
@@ -452,7 +452,7 @@
   "las-vegas-nv": {
     "name": "Las Vegas, NV",
     "percentage": "33%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "641,825",
     "urbanizedAreaPopulation": "2,196,623",
     "parkingScore": "93",
@@ -462,7 +462,7 @@
   "lexington-ky": {
     "name": "Lexington, KY",
     "percentage": "38%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "322,570",
     "urbanizedAreaPopulation": "315,631",
     "parkingScore": null,
@@ -472,7 +472,7 @@
   "lincoln-ne": {
     "name": "Lincoln, NE",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "291,082",
     "urbanizedAreaPopulation": "291,217",
     "parkingScore": null,
@@ -482,7 +482,7 @@
   "little-rock-ar": {
     "name": "Little Rock, AR",
     "percentage": "34%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "202,562",
     "urbanizedAreaPopulation": "461,864",
     "parkingScore": "65",
@@ -502,7 +502,7 @@
   "los-angeles-ca": {
     "name": "Los Angeles, CA",
     "percentage": "23%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "3,893,986",
     "urbanizedAreaPopulation": "12,237,376",
     "parkingScore": "63",
@@ -512,7 +512,7 @@
   "louisville-ky": {
     "name": "Louisville, KY",
     "percentage": "30%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "632,689",
     "urbanizedAreaPopulation": "974,397",
     "parkingScore": "66",
@@ -522,7 +522,7 @@
   "madison-wi": {
     "name": "Madison, WI",
     "percentage": "17%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "269,769",
     "urbanizedAreaPopulation": "450,305",
     "parkingScore": "14",
@@ -532,7 +532,7 @@
   "mcallen-tx": {
     "name": "McAllen, TX",
     "percentage": "28%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "142,195",
     "urbanizedAreaPopulation": "779,553",
     "parkingScore": "46",
@@ -542,7 +542,7 @@
   "melbourne-fl": {
     "name": "Melbourne, FL",
     "percentage": "35%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "84,703",
     "urbanizedAreaPopulation": "510,675",
     "parkingScore": "68",
@@ -552,7 +552,7 @@
   "memphis-tn": {
     "name": "Memphis, TN",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "633,104",
     "urbanizedAreaPopulation": "1,056,190",
     "parkingScore": "53",
@@ -572,17 +572,17 @@
   "miami-fl": {
     "name": "Miami, FL",
     "percentage": "18%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "442,265",
     "urbanizedAreaPopulation": "6,077,522",
     "parkingScore": "50",
-    "reforms": "Repealed",
+    "reforms": "repealed",
     "url": "https://parkingreform.org/mandates-map/city_detail/Miami_FL.html"
   },
   "milwaukee-wi": {
     "name": "Milwaukee, WI",
     "percentage": "20%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "577,222",
     "urbanizedAreaPopulation": "1,306,795",
     "parkingScore": "32",
@@ -592,7 +592,7 @@
   "minneapolis-mn": {
     "name": "Minneapolis, MN",
     "percentage": "19%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "428,403",
     "urbanizedAreaPopulation": "2,914,866",
     "parkingScore": "55",
@@ -602,7 +602,7 @@
   "nashville-tn": {
     "name": "Nashville, TN",
     "percentage": "24%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "689,504",
     "urbanizedAreaPopulation": "1,158,642",
     "parkingScore": "44",
@@ -622,7 +622,7 @@
   "new-orleans-la": {
     "name": "New Orleans, LA",
     "percentage": "21%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "383,997",
     "urbanizedAreaPopulation": "963,212",
     "parkingScore": "38",
@@ -632,7 +632,7 @@
   "new-york-ny": {
     "name": "New York, NY",
     "percentage": "0.4%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "8,804,190",
     "urbanizedAreaPopulation": "19,426,449",
     "parkingScore": "1",
@@ -652,7 +652,7 @@
   "norfolk-va": {
     "name": "Norfolk, VA",
     "percentage": "24%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "238,005",
     "urbanizedAreaPopulation": "1,451,578",
     "parkingScore": "47",
@@ -662,7 +662,7 @@
   "oakland-ca": {
     "name": "Oakland, CA",
     "percentage": "14%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "439,349",
     "urbanizedAreaPopulation": "3,515,933",
     "parkingScore": "39",
@@ -672,7 +672,7 @@
   "oklahoma-city-ok": {
     "name": "Oklahoma City, OK",
     "percentage": "25%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "681,054",
     "urbanizedAreaPopulation": "982,276",
     "parkingScore": "47",
@@ -682,7 +682,7 @@
   "omaha-ne": {
     "name": "Omaha, NE",
     "percentage": "23%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "486,051",
     "urbanizedAreaPopulation": "819,508",
     "parkingScore": "34",
@@ -692,7 +692,7 @@
   "orlando-fl": {
     "name": "Orlando, FL",
     "percentage": "33%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "307,573",
     "urbanizedAreaPopulation": "1,853,896",
     "parkingScore": "69",
@@ -702,7 +702,7 @@
   "philadelphia-pa": {
     "name": "Philadelphia, PA",
     "percentage": "14%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "1,603,797",
     "urbanizedAreaPopulation": "5,696,125",
     "parkingScore": "23",
@@ -712,7 +712,7 @@
   "phoenix-az": {
     "name": "Phoenix, AZ",
     "percentage": "22%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "1,607,739",
     "urbanizedAreaPopulation": "3,976,313",
     "parkingScore": "77",
@@ -722,7 +722,7 @@
   "pittsburgh-pa": {
     "name": "Pittsburgh, PA",
     "percentage": "16%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "302,971",
     "urbanizedAreaPopulation": "1,745,039",
     "parkingScore": "17",
@@ -732,7 +732,7 @@
   "portland-or": {
     "name": "Portland, OR",
     "percentage": "11%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "652,089",
     "urbanizedAreaPopulation": "2,104,238",
     "parkingScore": "4",
@@ -752,7 +752,7 @@
   "raleigh-nc": {
     "name": "Raleigh, NC",
     "percentage": "28%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "467,665",
     "urbanizedAreaPopulation": "1,106,646",
     "parkingScore": "57",
@@ -762,11 +762,11 @@
   "richmond-va": {
     "name": "Richmond, VA",
     "percentage": "25%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "226,610",
     "urbanizedAreaPopulation": "1,059,150",
     "parkingScore": "48",
-    "reforms": "Passed",
+    "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Richmond_VA.html"
   },
   "riverside-ca": {
@@ -782,7 +782,7 @@
   "rochester-ny": {
     "name": "Rochester, NY",
     "percentage": "28%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "211,328",
     "urbanizedAreaPopulation": "704,327",
     "parkingScore": "48",
@@ -792,7 +792,7 @@
   "sacramento-ca": {
     "name": "Sacramento, CA",
     "percentage": "16%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "522,754",
     "urbanizedAreaPopulation": "1,946,618",
     "parkingScore": "25",
@@ -802,7 +802,7 @@
   "saint-paul-mn": {
     "name": "Saint Paul, MN",
     "percentage": "18%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "311,527",
     "urbanizedAreaPopulation": "2,914,866",
     "parkingScore": "52",
@@ -812,7 +812,7 @@
   "salt-lake-city-ut": {
     "name": "Salt Lake City, UT",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "199,723",
     "urbanizedAreaPopulation": "1,178,533",
     "parkingScore": "60",
@@ -822,7 +822,7 @@
   "san-antonio-tx": {
     "name": "San Antonio, TX",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "1,434,270",
     "urbanizedAreaPopulation": "1,992,689",
     "parkingScore": "86",
@@ -842,7 +842,7 @@
   "san-diego-ca": {
     "name": "San Diego, CA",
     "percentage": "13%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "1,385,922",
     "urbanizedAreaPopulation": "3,070,300",
     "parkingScore": "38",
@@ -852,7 +852,7 @@
   "san-francisco-ca": {
     "name": "San Francisco, CA",
     "percentage": "3%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "873,965",
     "urbanizedAreaPopulation": "3,515,933",
     "parkingScore": "5",
@@ -866,13 +866,13 @@
     "population": "1,014,545",
     "urbanizedAreaPopulation": "1,837,446",
     "parkingScore": null,
-    "reforms": "passed",
+    "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/SanJose_CA.html"
   },
   "san-juan-pr": {
     "name": "San Juan, PR",
     "percentage": "41%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "342,259",
     "urbanizedAreaPopulation": "1,814,587",
     "parkingScore": "100",
@@ -892,7 +892,7 @@
   "santa-barbara-ca": {
     "name": "Santa Barbara, CA",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "88,665",
     "urbanizedAreaPopulation": "199,023",
     "parkingScore": null,
@@ -902,7 +902,7 @@
   "sarasota-fl": {
     "name": "Sarasota, FL",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "54,840",
     "urbanizedAreaPopulation": "779,075",
     "parkingScore": "52",
@@ -912,7 +912,7 @@
   "seattle-wa": {
     "name": "Seattle, WA",
     "percentage": "9%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "735,157",
     "urbanizedAreaPopulation": "3,544,011",
     "parkingScore": "37",
@@ -922,7 +922,7 @@
   "st.-louis-mo": {
     "name": "St. Louis, MO",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "301,578",
     "urbanizedAreaPopulation": "2,156,323",
     "parkingScore": "50",
@@ -952,7 +952,7 @@
   "tampa-fl": {
     "name": "Tampa, FL",
     "percentage": "29%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "382,769",
     "urbanizedAreaPopulation": "2,783,045",
     "parkingScore": "85",
@@ -962,7 +962,7 @@
   "toledo-oh": {
     "name": "Toledo, OH",
     "percentage": "27%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "270,880",
     "urbanizedAreaPopulation": "497,952",
     "parkingScore": "45",
@@ -972,7 +972,7 @@
   "tucson-az": {
     "name": "Tucson, AZ",
     "percentage": "18%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "542,629",
     "urbanizedAreaPopulation": "875,441",
     "parkingScore": "29",
@@ -982,7 +982,7 @@
   "tulsa-ok": {
     "name": "Tulsa, OK",
     "percentage": "31%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "413,066",
     "urbanizedAreaPopulation": "722,810",
     "parkingScore": "59",
@@ -1002,7 +1002,7 @@
   "washington-dc": {
     "name": "Washington, DC",
     "percentage": "4%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "689,545",
     "urbanizedAreaPopulation": "5,174,759",
     "parkingScore": "7",
@@ -1012,7 +1012,7 @@
   "wichita-ks": {
     "name": "Wichita, KS",
     "percentage": "35%",
-    "cityType": "core city",
+    "cityType": "core",
     "population": "397,532",
     "urbanizedAreaPopulation": "500,231",
     "parkingScore": "69",

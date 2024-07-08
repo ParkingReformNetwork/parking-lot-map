@@ -8,29 +8,29 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
       <p>${entry.percentage} of the central city is off-street parking</p>
       `;
 
-  const accordionLines = [];
+  // TODO: figure out design for contributions
+  // if ("contribution" in entry) {
+  // accordionLines.push("<hr>");
+  // accordionLines.push(
+  //   `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.</span></div>`
+  // );
+  // }
+
+  const listEntries = [];
   if (entry.parkingScore) {
-    accordionLines.push(`<p>Parking score: ${entry.parkingScore}</p>`);
-  }
-  accordionLines.push(`<p>City type: ${entry.cityType}</p>`);
-  accordionLines.push(`<p>Population: ${entry.population}</p>`);
-  accordionLines.push(
-    `<p>Urbanized area population: ${entry.urbanizedAreaPopulation}</p>`
-  );
-
-  if ("contribution" in entry) {
-    accordionLines.push("<hr>");
-    accordionLines.push(
-      `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.</span></div>`
+    listEntries.push(
+      `${entry.parkingScore}/100 parking score (lower is better)`
     );
   }
+  listEntries.push(`City type: ${entry.cityType}`);
+  listEntries.push(`${entry.population} residents - city proper`);
+  listEntries.push(`${entry.urbanizedAreaPopulation} residents - urban area`);
 
-  accordionLines.push(`<p>Parking reform: ${entry.reforms}</p>`);
+  let reformsLine = `Parking reforms ${entry.reforms}`;
   if (entry.url) {
-    accordionLines.push(
-      `<div class="popup-button"><a href="${entry.url}">View more about reforms</a></div>`
-    );
+    reformsLine += ` (<a href="${entry.url}">details ↗</a>)`;
   }
+  listEntries.push(reformsLine);
 
   const accordion = `<div class="scorecard-accordion">
       <button class="scorecard-accordion-toggle" aria-expanded="false" aria-controls="scorecard-accordion-content">
@@ -41,7 +41,9 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
         </div>
       </button>
       <div id="scorecard-accordion-content" class="scorecard-accordion-content" hidden>
-        ${accordionLines.join("\n")}
+        <ul>
+        ${listEntries.map((e) => `<li>${e}</li>`).join("\n")}
+        </ul>
       </div>
     </div>
   `;

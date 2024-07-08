@@ -59,17 +59,22 @@ test("correctly load the city score card", async ({ page }) => {
 
   await page.locator(".scorecard-accordion-toggle").click();
 
-  const [pLines, cityToggleValue] = await page.evaluate(async () => {
+  const [contentLines, cityToggleValue] = await page.evaluate(async () => {
     const cityChoice: HTMLSelectElement | null =
       document.querySelector("#city-dropdown");
     const cityToggleValue2 = cityChoice?.value;
 
-    const pLines2 = Array.from(
-      document.querySelectorAll(".leaflet-popup-content-wrapper p")
+    const lines = Array.from(
+      document.querySelectorAll(
+        ".leaflet-popup-content-wrapper p, .leaflet-popup-content-wrapper li"
+      )
     )
-      .filter((el) => el instanceof HTMLParagraphElement)
+      .filter(
+        (el) =>
+          el instanceof HTMLParagraphElement || el instanceof HTMLLIElement
+      )
       .map((p) => p.textContent?.trim() || "");
-    return [pLines2, cityToggleValue2];
+    return [lines, cityToggleValue2];
   });
 
   expect(albanyLoaded).toBe(true);
@@ -77,13 +82,13 @@ test("correctly load the city score card", async ({ page }) => {
 
   const expectedLines = new Set([
     `${albanyExpected.percentage} of the central city is off-street parking`,
-    `Parking score: ${albanyExpected.parkingScore}`,
+    `${albanyExpected.parkingScore}/100 parking score (lower is better)`,
     `City type: ${albanyExpected.cityType}`,
-    `Population: ${albanyExpected.population}`,
-    `Urbanized area population: ${albanyExpected.urbanizedAreaPopulation}`,
-    `Parking reform: ${albanyExpected.reforms}`,
+    `${albanyExpected.population} residents - city proper`,
+    `${albanyExpected.urbanizedAreaPopulation} residents - urban area`,
+    `Parking reforms ${albanyExpected.reforms} (details ↗)`,
   ]);
-  expect(new Set(pLines)).toEqual(expectedLines);
+  expect(new Set(contentLines)).toEqual(expectedLines);
 });
 
 test.describe("the share feature", () => {
