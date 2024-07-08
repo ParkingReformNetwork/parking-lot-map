@@ -125,6 +125,12 @@ test.describe("the share feature", () => {
     expect(secondCityClipboardText).toContain(
       "/#parking-reform-map=anchorage-ak"
     );
+
+    // Also ensure the full-screen icon link is updated.
+    const href = await page
+      .locator(".header-full-screen-icon-container")
+      .getAttribute("href");
+    expect(href).toContain("/#parking-reform-map=anchorage-ak");
   });
 
   test("loading from a share link works", async ({ page }) => {

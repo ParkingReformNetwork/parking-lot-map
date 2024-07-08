@@ -13,6 +13,7 @@ import { CityId, ScoreCard, ScoreCards } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import setUpAbout from "./about";
+import updateIconsShareLink from "./share";
 import { setScorecard, setUpScorecardAccordionListener } from "./scorecard";
 import setUpDropdown, { DROPDOWN } from "./dropdown";
 import cityBoundaries from "~/data/city-boundaries.geojson";
@@ -143,7 +144,8 @@ const setUpAutoScorecard = async (
     });
     if (centralCity) {
       DROPDOWN.setChoiceByValue(centralCity);
-      setScorecard(centralCity, cities[centralCity]);
+      setScorecard(cities[centralCity]);
+      updateIconsShareLink(centralCity);
     }
   });
 };
@@ -202,7 +204,8 @@ const setUpCitiesLayer = async (
   const cityId = cityToggleElement.value;
   setUpAutoScorecard(map, cities, parkingLayer);
   snapToCity(map, cities[cityId].layer);
-  setScorecard(cityId, cities[cityId]);
+  setScorecard(cities[cityId]);
+  updateIconsShareLink(cityId);
 };
 
 /**
