@@ -1,6 +1,5 @@
 import { Popup } from "leaflet";
-import { CityId, ScoreCard, ScoreCardDetails } from "./types";
-import setUpShareUrlClickListener from "./share";
+import { ScoreCard, ScoreCardDetails } from "./types";
 
 const generateScorecard = (entry: ScoreCardDetails): string => {
   const header = `
@@ -51,7 +50,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   return header + accordion;
 };
 
-const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
+const setScorecard = (cityProperties: ScoreCard): void => {
   const { layer, details } = cityProperties;
   const scorecard = generateScorecard(details);
   const popup = new Popup({
@@ -60,7 +59,6 @@ const setScorecard = (cityId: CityId, cityProperties: ScoreCard): void => {
     autoPan: false,
   }).setContent(scorecard);
   layer.bindPopup(popup).openPopup();
-  setUpShareUrlClickListener(cityId);
 };
 
 const setUpScorecardAccordionListener = () => {
