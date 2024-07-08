@@ -17,7 +17,7 @@ header {
 
   padding: $header-y-padding 10px;
 
-  background-color: colors.$gray-light;
+  background-color: colors.$gray;
   border-bottom: $header-border-bottom-size solid colors.$teal;
 }
 
@@ -72,6 +72,7 @@ header {
 
 .choices__heading {
   font-size: typography.$font-size-sm;
+  color: colors.$gray;
   cursor: default;
 }
 
