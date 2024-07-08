@@ -31,9 +31,10 @@ const BASE_LAYERS = {
   "High contrast": new TileLayer(
     "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png",
     {
-      attribution: `Map tiles: &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>
-        &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a>
-        &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>`,
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+        &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>
+        &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>
+        &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a>`,
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: MAX_ZOOM,
@@ -42,7 +43,7 @@ const BASE_LAYERS = {
   "Google Maps": new TileLayer(
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
-      attribution: "Map tiles: Google Maps",
+      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; Google Maps`,
       maxZoom: MAX_ZOOM,
     }
   ),
@@ -74,7 +75,7 @@ const createMap = (): Map => {
     closePopupOnClick: false,
   });
   map.attributionControl.setPrefix(
-    'Map data: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    '<a href="https://parkingreform.org/support/">Parking Reform Network</a>'
   );
 
   new Control.Layers(BASE_LAYERS).addTo(map);

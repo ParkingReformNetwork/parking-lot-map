@@ -1,6 +1,7 @@
 @use "theme/breakpoints";
+@use "theme/colors";
 
-div.donate-button {
+.prn-logo {
   position: absolute;
   left: 10px;
   z-index: 2001;
@@ -9,16 +10,19 @@ div.donate-button {
   // on small screens, since it wraps to two lines.
   bottom: 35px;
   @include breakpoints.gt-xs {
+    bottom: 20px;
+  }
+  @include breakpoints.gt-md {
     bottom: 10px;
   }
 
-  width: 90px;
+  width: 120px;
   @include breakpoints.gt-sm {
-    width: 105px;
+    width: 140px;
   }
 
-  a img {
+  img {
+    background-color: colors.$white;
     width: 100%;
-    border-radius: 4px;
   }
 }
