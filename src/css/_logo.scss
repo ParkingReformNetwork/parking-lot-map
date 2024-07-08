@@ -1,24 +1,27 @@
 @use "theme/breakpoints";
+@use "theme/colors";
 
-div.donate-button {
+.prn-logo {
   position: absolute;
   left: 10px;
   z-index: 2001;
 
   // `bottom` is set so high to avoid covering the attribution
   // on small screens, since it wraps to two lines.
-  bottom: 35px;
+  bottom: 30px;
   @include breakpoints.gt-xs {
     bottom: 10px;
   }
 
-  width: 90px;
+  // width: 60px;  // logo1
+  width: 120px; // logo2
   @include breakpoints.gt-sm {
-    width: 105px;
+    // width: 80px;  // logo1
+    width: 140px; // logo2
   }
 
-  a img {
+  img {
+    background-color: colors.$white;
     width: 100%;
-    border-radius: 4px;
   }
 }
