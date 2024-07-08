@@ -24,7 +24,7 @@ $border-radius: 10px;
 
 .leaflet-popup-content-wrapper {
   width: 260px;
-  @include breakpoints.gt-xs {
+  @include breakpoints.gt-xxs {
     width: 280px;
   }
 
