@@ -6,11 +6,11 @@
 $label-font-size: typography.$font-size-md;
 $zoom-controls-top-offset: calc(70px - header.$header-height);
 $outer-border-thickness: 2px;
-$option-divider: 1px solid colors.$gray-light-translucent;
+$option-divider: 1px solid colors.$gray-translucent;
 
 .leaflet-control-zoom.leaflet-bar,
 .leaflet-control-layers.leaflet-control {
-  border: $outer-border-thickness solid colors.$gray-light-translucent;
+  border: $outer-border-thickness solid colors.$gray-translucent;
   border-radius: 4px;
 }
 

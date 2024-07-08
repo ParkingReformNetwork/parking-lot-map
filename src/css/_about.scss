@@ -9,7 +9,7 @@ div.about-text-popup {
   z-index: 2001;
   background-color: colors.$white;
   font-size: 18px;
-  border: 1px solid colors.$gray-light-translucent;
+  border: 1px solid colors.$gray-translucent;
   display: none;
   left: 10%;
   height: 60%;
@@ -19,7 +19,7 @@ div.about-text-popup {
 }
 
 div.about-text-popup svg.fa-circle-xmark {
-  color: colors.$gray-light;
+  color: colors.$gray;
 }
 
 div.about-text-container {

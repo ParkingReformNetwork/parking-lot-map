@@ -82,7 +82,7 @@ $border-radius: 10px;
   background-color: colors.$white;
   border-left: 0;
   border-right: 0;
-  border-top: 1px solid colors.$gray-light-translucent;
+  border-top: 1px solid colors.$gray-translucent;
   border-bottom: 0;
   border-bottom-left-radius: $border-radius;
   border-bottom-right-radius: $border-radius;
@@ -105,7 +105,7 @@ $border-radius: 10px;
 }
 
 .scorecard-accordion-content {
-  border-top: 1px solid colors.$gray-light-translucent;
+  border-top: 1px solid colors.$gray-translucent;
   padding-top: $padding-between-elements;
 
   ul {
