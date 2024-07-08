@@ -1,4 +1,7 @@
 // Inspired by https://dev.to/alberto/defining-responsive-breakpoints-made-easy-with-sass-mixins-26p0.
+//
+// When developing, check how 335px x 600px renders. This is what the map as an iframe
+// looks like on iPhone SE.
 
 $sm-width: "640px";
 $md-width: "768px";
