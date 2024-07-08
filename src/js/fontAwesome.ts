@@ -1,5 +1,8 @@
 import { library, dom } from "@fortawesome/fontawesome-svg-core";
-import { faCircleQuestion, faCircleXmark } from "@fortawesome/free-regular-svg-icons";
+import {
+  faCircleQuestion,
+  faCircleXmark,
+} from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowRight,
   faChevronDown,
