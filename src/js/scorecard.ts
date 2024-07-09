@@ -23,7 +23,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   }
   listEntries.push(`City type: ${entry.cityType}`);
   listEntries.push(`${entry.population} residents - city proper`);
-  listEntries.push(`${entry.urbanizedAreaPopulation} residents - urban area`);
+  listEntries.push(`${entry.urbanizedAreaPopulation} residents - urbanized area`);
 
   let reformsLine = `Parking reforms ${entry.reforms}`;
   if (entry.url) {
