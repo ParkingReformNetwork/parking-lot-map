@@ -1,15 +1,17 @@
 @use "theme/colors";
-@use "theme/touchable-icons";
+@use "theme/spacing";
 @use "theme/typography";
 @use "header";
 
 $label-font-size: typography.$font-size-md;
-$zoom-controls-top-offset: calc(64px - header.$header-height);
+$zoom-controls-top-offset: calc(
+  58px + spacing.$map-controls-margin-top - header.$header-height
+);
 $outer-border-thickness: 2px;
 $option-divider: 1px solid colors.$gray-translucent;
 
 .leaflet-left .leaflet-control {
-  margin-left: 8px;
+  margin-left: spacing.$map-controls-margin-x;
 }
 
 .leaflet-control-zoom.leaflet-bar,
@@ -22,8 +24,8 @@ $option-divider: 1px solid colors.$gray-translucent;
   top: $zoom-controls-top-offset;
 
   a {
-    width: touchable-icons.$min-touch-target;
-    height: touchable-icons.$min-touch-target;
+    width: spacing.$min-touch-target;
+    height: spacing.$min-touch-target;
     font-size: $label-font-size;
     font-weight: normal;
 
@@ -38,20 +40,18 @@ $option-divider: 1px solid colors.$gray-translucent;
 }
 
 .leaflet-touch.leaflet-control-layers-toggle {
-  width: touchable-icons.$min-touch-target;
-  height: touchable-icons.$min-touch-target;
+  width: spacing.$min-touch-target;
+  height: spacing.$min-touch-target;
 }
 
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
   $zoom-controls-height: calc(
-    (touchable-icons.$min-touch-target * 2) + $outer-border-thickness
+    (spacing.$min-touch-target * 2) + $outer-border-thickness
   );
-  $margin-between-zoom-control: 8px;
   top: calc(
-    $zoom-controls-top-offset + $zoom-controls-height +
-      $margin-between-zoom-control
+    $zoom-controls-top-offset + $zoom-controls-height + spacing.$element-gap
   );
-  margin-left: 8px; // Mirrors zoom controls.
+  margin-left: spacing.$map-controls-margin-x;
   right: auto;
 }
 
@@ -74,8 +74,8 @@ $option-divider: 1px solid colors.$gray-translucent;
   display: flex;
   align-items: center;
 
-  $padding-y: calc((touchable-icons.$min-touch-target - $label-font-size) / 2);
-  padding: $padding-y 8px;
+  $padding-y: calc((spacing.$min-touch-target - $label-font-size) / 2);
+  padding: $padding-y spacing.$element-gap;
 
   input[type="radio"] {
     margin: 0;

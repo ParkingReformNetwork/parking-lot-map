@@ -1,11 +1,10 @@
 @use "theme/breakpoints";
 @use "theme/colors";
-@use "theme/touchable-icons";
+@use "theme/spacing";
+@use "theme/icons";
 @use "theme/typography";
 @use "header";
 
-$outer-padding: 15px;
-$padding-between-elements: 10px;
 $border-radius: 10px;
 
 .popup-fixed {
@@ -33,8 +32,8 @@ $border-radius: 10px;
 
   float: right;
   position: fixed;
-  right: 8px;
-  top: calc(header.$header-height + 6px);
+  right: spacing.$map-controls-margin-x;
+  top: calc(header.$header-height + spacing.$map-controls-margin-top);
 
   border-radius: $border-radius;
   color: colors.$black;
@@ -46,8 +45,8 @@ $border-radius: 10px;
 
   p {
     margin: 0;
-    padding-left: $outer-padding;
-    padding-right: $outer-padding;
+    padding-left: spacing.$container-edge-spacing;
+    padding-right: spacing.$container-edge-spacing;
   }
 }
 
@@ -56,10 +55,10 @@ $border-radius: 10px;
   align-items: center;
   justify-content: space-between;
 
-  margin-top: $outer-padding;
-  margin-bottom: $padding-between-elements;
-  margin-left: $outer-padding;
-  margin-right: $outer-padding;
+  margin-top: spacing.$container-edge-spacing;
+  margin-bottom: spacing.$element-gap;
+  margin-left: spacing.$container-edge-spacing;
+  margin-right: spacing.$container-edge-spacing;
   line-height: 1.1;
 
   color: colors.$teal;
@@ -68,15 +67,15 @@ $border-radius: 10px;
 }
 
 .scorecard-accordion-toggle {
-  height: touchable-icons.$min-touch-target;
+  height: spacing.$min-touch-target;
   width: 100%;
   padding: 0;
-  margin-top: $padding-between-elements;
+  margin-top: spacing.$element-gap;
 
   font-size: typography.$font-size-base;
   cursor: pointer;
   text-align: left;
-  padding-left: $outer-padding;
+  padding-left: spacing.$container-edge-spacing;
   padding-right: 0;
 
   display: flex;
@@ -96,29 +95,29 @@ $border-radius: 10px;
   }
 
   .scorecard-accordion-icon-container {
-    height: touchable-icons.$min-touch-target;
-    width: touchable-icons.$min-touch-target;
+    height: spacing.$min-touch-target;
+    width: spacing.$min-touch-target;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     svg {
-      height: touchable-icons.$icon-size-sm;
+      height: icons.$icon-size-sm;
     }
   }
 }
 
 .scorecard-accordion-content {
   border-top: 1px solid colors.$gray-translucent;
-  padding-top: $padding-between-elements;
+  padding-top: spacing.$element-gap;
 
   ul {
     padding: 0;
     padding-inline-start: 20px; // Default is 40px
-    margin-left: $outer-padding;
-    margin-right: $outer-padding;
-    margin-bottom: $outer-padding;
-    margin-top: $padding-between-elements;
+    margin-left: spacing.$container-edge-spacing;
+    margin-right: spacing.$container-edge-spacing;
+    margin-bottom: spacing.$container-edge-spacing;
+    margin-top: spacing.$element-gap;
   }
 }
 
@@ -137,8 +136,8 @@ $border-radius: 10px;
 .community-contribution-warning {
   font-size: typography.$font-size-sm;
   color: colors.$gray;
-  margin-top: $padding-between-elements;
-  margin-bottom: $padding-between-elements;
-  margin-left: $outer-padding;
-  margin-right: $outer-padding;
+  margin-top: spacing.$element-gap;
+  margin-bottom: spacing.$element-gap;
+  margin-left: spacing.$container-edge-spacing;
+  margin-right: spacing.$container-edge-spacing;
 }

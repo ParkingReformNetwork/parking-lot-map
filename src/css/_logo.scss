@@ -1,9 +1,10 @@
 @use "theme/breakpoints";
 @use "theme/colors";
+@use "theme/spacing";
 
 .prn-logo {
   position: absolute;
-  left: 8px;
+  left: spacing.$map-controls-margin-x;
   z-index: 2001;
 
   // `bottom` is set so high to avoid covering the attribution

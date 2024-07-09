@@ -1,12 +1,14 @@
 @use "theme/breakpoints";
 @use "theme/colors";
-@use "theme/touchable-icons";
+@use "theme/spacing";
+@use "theme/icons";
 @use "theme/typography";
 
-$header-y-padding: 10px;
+// We don't use $container-edge-spacing to save vertical space.
+$header-y-padding: spacing.$element-gap;
 $header-border-bottom-size: 4px;
 $header-height: calc(
-  touchable-icons.$min-touch-target + ($header-y-padding * 2) +
+  spacing.$min-touch-target + ($header-y-padding * 2) +
     $header-border-bottom-size
 );
 
@@ -15,7 +17,7 @@ header {
   display: flex;
   align-items: center;
 
-  padding: $header-y-padding 10px;
+  padding: $header-y-padding spacing.$element-gap;
 
   background-color: colors.$gray;
   border-bottom: $header-border-bottom-size solid colors.$teal;
@@ -29,8 +31,8 @@ header {
   .header-about-icon-container,
   .header-share-icon-container,
   .header-full-screen-icon-container {
-    height: touchable-icons.$min-touch-target;
-    width: touchable-icons.$min-touch-target;
+    height: spacing.$min-touch-target;
+    width: spacing.$min-touch-target;
 
     display: inline-flex;
     align-items: center;
@@ -39,8 +41,8 @@ header {
 
   svg {
     color: colors.$white;
-    height: touchable-icons.$icon-size-md;
-    width: touchable-icons.$icon-size-md;
+    height: icons.$icon-size-md;
+    width: icons.$icon-size-md;
   }
 
   .header-full-screen-icon-container {
@@ -67,7 +69,7 @@ header {
     font-size: typography.$font-size-base;
     line-height: 1.2; // To vertically center the text.
 
-    height: touchable-icons.$min-touch-target;
+    height: spacing.$min-touch-target;
 
     min-width: 220px;
     @include breakpoints.gt-xs {
@@ -90,7 +92,7 @@ header {
 
 div.choices__item.choices__item--choice.choices__item--selectable {
   font-size: typography.$font-size-base;
-  height: touchable-icons.$min-touch-target;
+  height: spacing.$min-touch-target;
 }
 
 .choices__list--dropdown,
