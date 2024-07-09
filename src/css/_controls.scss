@@ -4,9 +4,13 @@
 @use "header";
 
 $label-font-size: typography.$font-size-md;
-$zoom-controls-top-offset: calc(70px - header.$header-height);
+$zoom-controls-top-offset: calc(64px - header.$header-height);
 $outer-border-thickness: 2px;
 $option-divider: 1px solid colors.$gray-translucent;
+
+.leaflet-left .leaflet-control {
+  margin-left: 8px;
+}
 
 .leaflet-control-zoom.leaflet-bar,
 .leaflet-control-layers.leaflet-control {
@@ -47,7 +51,7 @@ $option-divider: 1px solid colors.$gray-translucent;
     $zoom-controls-top-offset + $zoom-controls-height +
       $margin-between-zoom-control
   );
-  margin-left: 10px; // Mirrors zoom controls.
+  margin-left: 8px; // Mirrors zoom controls.
   right: auto;
 }
 

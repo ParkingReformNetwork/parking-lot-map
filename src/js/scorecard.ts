@@ -2,18 +2,14 @@ import { Popup } from "leaflet";
 import { ScoreCard, ScoreCardDetails } from "./types";
 
 const generateScorecard = (entry: ScoreCardDetails): string => {
-  const header = `
+  let header = `
       <h1 class="scorecard-title">Parking lots in ${entry.name}</h1>
       <p>${entry.percentage} of the central city is off-street parking</p>
       `;
 
-  // TODO: figure out design for contributions
-  // if ("contribution" in entry) {
-  // accordionLines.push("<hr>");
-  // accordionLines.push(
-  //   `<div><span class="community-tag"><i class="fa-solid fa-triangle-exclamation"></i> Community-maintained map. <br>Email ${entry.contribution} for issues.</span></div>`
-  // );
-  // }
+  if ("contribution" in entry) {
+    header += `<div class="community-contribution-warning"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> This city is maintained by <a href="mailto:${entry.contribution}">${entry.contribution}</a></div>`;
+  }
 
   const listEntries = [];
   if (entry.parkingScore) {
