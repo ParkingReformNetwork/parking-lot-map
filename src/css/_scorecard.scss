@@ -1,6 +1,7 @@
 @use "theme/breakpoints";
 @use "theme/colors";
-@use "theme/touchable-icons";
+@use "theme/spacing";
+@use "theme/icons";
 @use "theme/typography";
 @use "header";
 
@@ -33,8 +34,8 @@ $border-radius: 10px;
 
   float: right;
   position: fixed;
-  right: 8px;
-  top: calc(header.$header-height + 6px);
+  right: spacing.$map-controls-margin-x;
+  top: calc(header.$header-height + spacing.$map-controls-margin-top);
 
   border-radius: $border-radius;
   color: colors.$black;
@@ -68,7 +69,7 @@ $border-radius: 10px;
 }
 
 .scorecard-accordion-toggle {
-  height: touchable-icons.$min-touch-target;
+  height: spacing.$min-touch-target;
   width: 100%;
   padding: 0;
   margin-top: $padding-between-elements;
@@ -96,14 +97,14 @@ $border-radius: 10px;
   }
 
   .scorecard-accordion-icon-container {
-    height: touchable-icons.$min-touch-target;
-    width: touchable-icons.$min-touch-target;
+    height: spacing.$min-touch-target;
+    width: spacing.$min-touch-target;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
     svg {
-      height: touchable-icons.$icon-size-sm;
+      height: icons.$icon-size-sm;
     }
   }
 }
