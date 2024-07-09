@@ -85,7 +85,7 @@ test("correctly load the city score card", async ({ page }) => {
     `${albanyExpected.parkingScore}/100 parking score (lower is better)`,
     `City type: ${albanyExpected.cityType}`,
     `${albanyExpected.population} residents - city proper`,
-    `${albanyExpected.urbanizedAreaPopulation} residents - urban area`,
+    `${albanyExpected.urbanizedAreaPopulation} residents - urbanized area`,
     `Parking reforms ${albanyExpected.reforms} (details )`,
   ]);
   expect(new Set(contentLines)).toEqual(expectedLines);
