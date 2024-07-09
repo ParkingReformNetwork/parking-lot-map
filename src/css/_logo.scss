@@ -16,9 +16,12 @@
     bottom: 10px;
   }
 
-  width: 120px;
+  width: 80px;
+  @include breakpoints.gt-xxs {
+    width: 110px;
+  }
   @include breakpoints.gt-sm {
-    width: 140px;
+    width: 130px;
   }
 
   img {
