@@ -9,7 +9,7 @@
     "test": "playwright test",
     "check": "tsc --noEmit",
     "fmt": "prettier --write .",
-    "fix": "prettier --write scripts/ src/ tests/; eslint --fix scripts/ src/ tests/",
+    "fix": "prettier --write index.html scripts/ src/ tests/; eslint --fix scripts/ src/ tests/",
     "lint": "prettier --check . && eslint scripts/ src/ tests/",
     "add-city": "ts-node-esm scripts/add-city.ts",
     "update-city-boundaries": "ts-node-esm scripts/update-city-boundaries.ts",

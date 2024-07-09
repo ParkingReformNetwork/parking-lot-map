@@ -4,7 +4,7 @@ dd {
   margin-bottom: 10px;
 }
 
-div.about-text-popup {
+.about-text-popup {
   position: absolute;
   z-index: 2001;
   background-color: colors.$white;
@@ -16,23 +16,18 @@ div.about-text-popup {
   width: 80%;
   top: 120px;
   overflow: auto;
-}
-
-div.about-text-popup svg.fa-circle-xmark {
-  color: colors.$gray;
-}
-
-div.about-text-container {
   padding: 20px;
+
+  @media only screen and (max-width: 830px) {
+    top: 190px;
+  }
+}
+
+.fa-circle-xmark {
+  color: colors.$gray;
 }
 
 .about-close {
   float: right;
   cursor: pointer;
-}
-
-@media only screen and (max-width: 830px) {
-  div.about-text-popup {
-    top: 190px;
-  }
 }

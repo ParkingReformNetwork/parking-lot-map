@@ -34,18 +34,27 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   listEntries.push(reformsLine);
 
   const accordion = `<div class="scorecard-accordion">
-      <button class="scorecard-accordion-toggle" aria-expanded="false" aria-controls="scorecard-accordion-content">
-        <span class="scorecard-accordion-title">Additional details</span>
+      <button
+        class="scorecard-accordion-toggle"
+        aria-expanded="false"
+        aria-controls="scorecard-accordion-content"
+      >
+        <span id="scorecard-accordion-title" class="scorecard-accordion-title">Additional details</span>
         <div class="scorecard-accordion-icon-container" aria-hidden="true">
           <i class="fa-solid fa-chevron-down" title="expand additional details"></i>
           <i class="fa-solid fa-chevron-up" title="collapse additional details" style="display: none"></i>
         </div>
       </button>
-      <div id="scorecard-accordion-content" class="scorecard-accordion-content" hidden>
+      <section
+        id="scorecard-accordion-content"
+        class="scorecard-accordion-content"
+        aria-describedby="scorecard-accordion-title"
+        hidden
+      >
         <ul>
         ${listEntries.map((e) => `<li>${e}</li>`).join("\n")}
         </ul>
-      </div>
+      </section>
     </div>
   `;
 
@@ -76,7 +85,7 @@ const setUpScorecardAccordionListener = () => {
     const accordionContent = document.querySelector(
       "#scorecard-accordion-content"
     );
-    if (!(accordionContent instanceof HTMLDivElement)) return;
+    if (!(accordionContent instanceof HTMLElement)) return;
     const upIcon = accordionToggle.querySelector(".fa-chevron-up");
     const downIcon = accordionToggle.querySelector(".fa-chevron-down");
     if (!(upIcon instanceof SVGElement) || !(downIcon instanceof SVGElement))
