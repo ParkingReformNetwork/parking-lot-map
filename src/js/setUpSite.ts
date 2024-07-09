@@ -9,13 +9,16 @@ import {
 } from "leaflet";
 import { Feature, GeoJsonProperties, Geometry } from "geojson";
 import "leaflet/dist/leaflet.css";
+
 import { CityId, ScoreCard, ScoreCards } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
+import maybeDisableFullScreenIcon from "./iframe";
 import setUpAbout from "./about";
 import updateIconsShareLink from "./share";
 import { setScorecard, setUpScorecardAccordionListener } from "./scorecard";
 import setUpDropdown, { DROPDOWN } from "./dropdown";
+
 import cityBoundaries from "~/data/city-boundaries.geojson";
 import scoreCardsDetails from "~/data/score-cards.json";
 
@@ -240,6 +243,7 @@ const setUpParkingLotsLayer = async (
 
 const setUpSite = async (): Promise<void> => {
   setUpIcons();
+  maybeDisableFullScreenIcon();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
   setUpDropdown(initialCityId, "atlanta-ga");
