@@ -4,7 +4,8 @@
 @use "theme/icons";
 @use "theme/typography";
 
-$header-y-padding: 10px;
+// We don't use $container-edge-spacing to save vertical space.
+$header-y-padding: spacing.$element-gap;
 $header-border-bottom-size: 4px;
 $header-height: calc(
   spacing.$min-touch-target + ($header-y-padding * 2) +
@@ -16,7 +17,7 @@ header {
   display: flex;
   align-items: center;
 
-  padding: $header-y-padding 10px;
+  padding: $header-y-padding spacing.$element-gap;
 
   background-color: colors.$gray;
   border-bottom: $header-border-bottom-size solid colors.$teal;

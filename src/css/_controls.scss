@@ -48,10 +48,8 @@ $option-divider: 1px solid colors.$gray-translucent;
   $zoom-controls-height: calc(
     (spacing.$min-touch-target * 2) + $outer-border-thickness
   );
-  $margin-between-zoom-control: 8px;
   top: calc(
-    $zoom-controls-top-offset + $zoom-controls-height +
-      $margin-between-zoom-control
+    $zoom-controls-top-offset + $zoom-controls-height + spacing.$element-gap
   );
   margin-left: spacing.$map-controls-margin-x;
   right: auto;
@@ -77,7 +75,7 @@ $option-divider: 1px solid colors.$gray-translucent;
   align-items: center;
 
   $padding-y: calc((spacing.$min-touch-target - $label-font-size) / 2);
-  padding: $padding-y 8px;
+  padding: $padding-y spacing.$element-gap;
 
   input[type="radio"] {
     margin: 0;
