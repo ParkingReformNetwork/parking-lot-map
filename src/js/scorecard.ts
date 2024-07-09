@@ -8,7 +8,10 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
       `;
 
   if ("contribution" in entry) {
-    header += `<div class="community-contribution-warning"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> This city is maintained by <a href="mailto:${entry.contribution}">${entry.contribution}</a></div>`;
+    header += `<div class="community-contribution-warning">
+      <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
+      <a href="mailto:${entry.contribution}" title="email map maintainer: ${entry.contribution}">Community-maintained</a> map
+    </div>`;
   }
 
   const listEntries = [];
