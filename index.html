@@ -79,7 +79,7 @@
         id="city-dropdown"
         aria-label="select the city"
       ></select>
-      <div class="header-icons">
+      <nav class="header-icons">
         <div class="header-about-icon-container">
           <i class="fa-regular fa-circle-question" title="about the map"></i>
         </div>
@@ -101,116 +101,121 @@
             title="view fullscreen"
           ></i>
         </a>
-      </div>
+      </nav>
     </header>
 
-    <div class="about-text-popup">
-      <div class="about-text-container">
-        <div class="about-close">
-          <i
-            class="close-icon fa-regular fa-circle-xmark"
-            title="close about popup"
-          ></i>
-        </div>
-        <h2>Parking Lot Coverage Map</h2>
-        <div id="lots-toggle" style="display: none">
-          <h3 id="lots-toggle-on"><a>Click me turn on lot data.</a></h3>
-          <h3 id="lots-toggle-off"><a>Click me turn off lot data.</a></h3>
-        </div>
-        <ul>
-          <li>
-            <a href="https://parkingreform.org/resources/parking-lot-map/"
-              >Detailed methodology and key takeaways.</a
-            >
-          </li>
-          <li>
-            <a href="https://parkingreform.org/resources/mandates-map"
-              >PRN's Parking Mandates Map</a
-            >
-          </li>
-          <li>
-            <a href="https://parkingreform.org/support/"
-              >Support this project with a donation.</a
-            >
-          </li>
-        </ul>
-        <h3>FAQ</h3>
-        <dl>
-          <dt>What is the Parking Score?</dt>
-          <dd>
-            Parking Score measures how a city’s parking lot land use compares to
-            other cities with similar metropolitan area populations. All red
-            highlighted area on the map indicates an area where the land that’s
-            primary purpose is parking passenger vehicles. A low parking score
-            means the city devotes much less land in its central neighborhoods
-            to parking than the average. Conversely, a high score translates to
-            more land dedicated to parking compared to the average for a city of
-            that size. This scoring system was created to evaluate cities on an
-            equal basis and should not be used outside of this context.
-          </dd>
-          <dt>What is included on this map?</dt>
-          <dd>
-            This map generally includes surface parking and above ground parking
-            structures which are marked on OpenStreetMap and/or visible in
-            Google Maps imagery. It does not include underground or podium
-            parking (parking lots that take up the first several floors of a
-            building).
-          </dd>
-          <dt>What does “Central City” mean?</dt>
-          <dd>
-            “Central City” is a term invented for this map to encompass the
-            densest, most centrally located, and most valuable real estate in a
-            metropolitan area. “Central City” is a blanket term for a city’s
-            Central Business District, Downtown, Financial District, or adjacent
-            connecting neighborhoods of interest. For example, New Orleans’s
-            Central Business District seamlessly connects with the World
-            Renowned French Quarter Neighborhood. These areas were combined into
-            the Central City of New Orleans. For details on each city boundary
-            <a
-              href="https://parkingreform.org/resources/parking-lot-map/parking-lot-map-boundary-methodology/"
-              >see this detailed methodology</a
-            >.
-          </dd>
-        </dl>
-        <hr />
-        <h3>Acknowledgments</h3>
-        <div>
-          This map was developed by
-          <a href="https://www.linkedin.com/in/thomas-carpenito/"
-            >Thomas Carpenito</a
-          >
-          with the assistance of
-          <a href="https://www.linkedin.com/in/arellanoeric/">Eric Arellano</a>,
-          <a href="https://www.linkedin.com/in/tung-lin-bb1745163/">Tung Lin</a
-          >, <a href="https://www.geocadder.bg/en/">Geocadder</a>, David Hunt,
-          <a href="https://www.linkedin.com/in/ellen-schwartz-614847132/"
-            >Ellen Schwartz</a
-          >,
-          <a href="https://www.linkedin.com/in/tony-jordan-pdx/">Tony Jordan</a
-          >, <a href="https://www.linkedin.com/in/pameeela/">Pamela Barone</a>,
-          <a href="https://nathanwyand.com/">Nathan Wyand</a>, and
-          <a href="https://www.linkedin.com/in/justin-sawyer-59b0525/"
-            >Justin Sawyer</a
-          >. The map data come from
-          <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>.
-          The map is built using <a href="https://leafletjs.com/">Leaflet</a>.
-          The map tiles are developed by
-          <a href="https://www.stadiamaps.com/">Stadia Maps</a>,
-          <a href="http://stamen.com/">Stamen Design</a>,
-          <a href="https://openmaptiles.org/">OpenMapTiles</a>, and Google Maps.
-        </div>
-        <br />
-        <div>Copyright 2023 Parking Reform Network - All Rights Reserved</div>
+    <section class="about-text-popup" aria-label="about the map">
+      <div class="about-close">
+        <i
+          class="close-icon fa-regular fa-circle-xmark"
+          title="close about popup"
+        ></i>
       </div>
-    </div>
+      <h2>Parking Lot Coverage Map</h2>
+      <div id="lots-toggle" style="display: none">
+        <h3 id="lots-toggle-on"><a>Click me turn on lot data.</a></h3>
+        <h3 id="lots-toggle-off"><a>Click me turn off lot data.</a></h3>
+      </div>
+      <ul aria-label="related external links">
+        <li>
+          <a href="https://parkingreform.org/resources/parking-lot-map/"
+            >Detailed methodology and key takeaways.</a
+          >
+        </li>
+        <li>
+          <a href="https://parkingreform.org/resources/mandates-map"
+            >PRN's Parking Mandates Map</a
+          >
+        </li>
+        <li>
+          <a href="https://parkingreform.org/support/"
+            >Support this project with a donation.</a
+          >
+        </li>
+      </ul>
+      <h3>FAQ</h3>
+      <dl>
+        <dt>What is the Parking Score?</dt>
+        <dd>
+          Parking Score measures how a city’s parking lot land use compares to
+          other cities with similar metropolitan area populations. All red
+          highlighted area on the map indicates an area where the land that’s
+          primary purpose is parking passenger vehicles. A low parking score
+          means the city devotes much less land in its central neighborhoods to
+          parking than the average. Conversely, a high score translates to more
+          land dedicated to parking compared to the average for a city of that
+          size. This scoring system was created to evaluate cities on an equal
+          basis and should not be used outside of this context.
+        </dd>
+        <dt>What is included on this map?</dt>
+        <dd>
+          This map generally includes surface parking and above ground parking
+          structures which are marked on OpenStreetMap and/or visible in Google
+          Maps imagery. It does not include underground or podium parking
+          (parking lots that take up the first several floors of a building).
+        </dd>
+        <dt>What does “Central City” mean?</dt>
+        <dd>
+          “Central City” is a term invented for this map to encompass the
+          densest, most centrally located, and most valuable real estate in a
+          metropolitan area. “Central City” is a blanket term for a city’s
+          Central Business District, Downtown, Financial District, or adjacent
+          connecting neighborhoods of interest. For example, New Orleans’s
+          Central Business District seamlessly connects with the World Renowned
+          French Quarter Neighborhood. These areas were combined into the
+          Central City of New Orleans. For details on each city boundary
+          <a
+            href="https://parkingreform.org/resources/parking-lot-map/parking-lot-map-boundary-methodology/"
+            >see this detailed methodology</a
+          >.
+        </dd>
+      </dl>
+      <hr />
+      <h3>Acknowledgments</h3>
+      <p>
+        This map was developed by
+        <a href="https://www.linkedin.com/in/thomas-carpenito/"
+          >Thomas Carpenito</a
+        >
+        with the assistance of
+        <a href="https://www.linkedin.com/in/arellanoeric/">Eric Arellano</a>,
+        <a href="https://www.linkedin.com/in/tung-lin-bb1745163/">Tung Lin</a>,
+        <a href="https://www.geocadder.bg/en/">Geocadder</a>, David Hunt,
+        <a href="https://www.linkedin.com/in/ellen-schwartz-614847132/"
+          >Ellen Schwartz</a
+        >,
+        <a href="https://www.linkedin.com/in/tony-jordan-pdx/">Tony Jordan</a>,
+        <a href="https://www.linkedin.com/in/pameeela/">Pamela Barone</a>,
+        <a href="https://nathanwyand.com/">Nathan Wyand</a>, and
+        <a href="https://www.linkedin.com/in/justin-sawyer-59b0525/"
+          >Justin Sawyer</a
+        >. The map data come from
+        <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>. The
+        map is built using <a href="https://leafletjs.com/">Leaflet</a>. The map
+        tiles are developed by
+        <a href="https://www.stadiamaps.com/">Stadia Maps</a>,
+        <a href="http://stamen.com/">Stamen Design</a>,
+        <a href="https://openmaptiles.org/">OpenMapTiles</a>, and Google Maps.
+      </p>
+      <br />
+      <p>Copyright 2023 Parking Reform Network - All Rights Reserved</p>
+    </section>
 
     <div class="prn-logo">
-      <a href="https://parkingreform.org/support/"
-        ><img src="./assets/images/prn-logo.png"
+      <a
+        href="https://parkingreform.org/support/"
+        aria-label="Support Parking Reform Network"
+        ><img
+          src="./assets/images/prn-logo.png"
+          alt="Parking Reform Network logo"
       /></a>
     </div>
 
-    <div id="map"></div>
+    <div
+      id="map"
+      role="application"
+      aria-label="interactive map of downtown parking lots"
+    ></div>
     <script type="module">
       import setUpSite from "./src/js/setUpSite";
 
