@@ -4,38 +4,36 @@
  * Set up event listeners to open and close the about popup.
  */
 const setUpAbout = () => {
-  const aboutElement = document.querySelector(".about-text-popup");
-  const infoButton = document.querySelector(".header-about-icon-container");
+  const aboutPopup = document.querySelector(".about-popup");
+  const aboutHeaderIcon = document.querySelector(
+    ".header-about-icon-container"
+  );
   if (
-    !(aboutElement instanceof HTMLElement) ||
-    !(infoButton instanceof HTMLElement)
+    !(aboutPopup instanceof HTMLElement) ||
+    !(aboutHeaderIcon instanceof HTMLElement)
   )
     return;
 
-  infoButton.addEventListener("click", () => {
-    aboutElement.style.display =
-      aboutElement.style.display !== "block" ? "block" : "none";
+  aboutHeaderIcon.addEventListener("click", () => {
+    aboutPopup.hidden = !aboutPopup.hidden;
   });
 
   // closes window on clicks outside the info popup
   window.addEventListener("click", (event) => {
     if (
+      !aboutPopup.hidden &&
       event.target instanceof Element &&
-      !infoButton.contains(event.target) &&
-      aboutElement.style.display === "block" &&
-      !aboutElement.contains(event.target)
+      !aboutHeaderIcon.contains(event.target) &&
+      !aboutPopup.contains(event.target)
     ) {
-      aboutElement.style.display = "none";
-      infoButton.classList.toggle("active");
+      aboutPopup.hidden = true;
     }
   });
 
-  const aboutClose = document.querySelector(".about-close");
-  if (!(aboutClose instanceof HTMLElement)) return;
-  aboutClose.addEventListener("click", () => {
-    // Note that the close element will only render when the about text popup is rendered.
-    // So, it only ever makes sense for a click to close.
-    aboutElement.style.display = "none";
+  const closeIcon = document.querySelector(".about-popup-close-icon-container");
+  if (!(closeIcon instanceof HTMLElement)) return;
+  closeIcon.addEventListener("click", () => {
+    aboutPopup.hidden = true;
   });
 };
 
