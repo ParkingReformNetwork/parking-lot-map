@@ -34,7 +34,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
 
   if ("contribution" in entry) {
     listEntries.push(
-      `<a href="mailto:${entry.contribution}" title="email ${entry.contribution}">Contact data maintainer</a>`
+      `<a href="mailto:${entry.contribution}">Email data maintainer</a>`
     );
   }
 
