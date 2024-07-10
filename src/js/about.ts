@@ -15,26 +15,25 @@ const setUpAbout = () => {
     return;
 
   aboutHeaderIcon.addEventListener("click", () => {
-    aboutPopup.style.display =
-      aboutPopup.style.display !== "block" ? "block" : "none";
+    aboutPopup.hidden = !aboutPopup.hidden;
   });
 
   // closes window on clicks outside the info popup
   window.addEventListener("click", (event) => {
     if (
-      aboutPopup.style.display === "block" &&
+      !aboutPopup.hidden &&
       event.target instanceof Element &&
       !aboutHeaderIcon.contains(event.target) &&
       !aboutPopup.contains(event.target)
     ) {
-      aboutPopup.style.display = "none";
+      aboutPopup.hidden = true;
     }
   });
 
   const closeIcon = document.querySelector(".about-popup-close-icon-container");
   if (!(closeIcon instanceof HTMLElement)) return;
   closeIcon.addEventListener("click", () => {
-    aboutPopup.style.display = "none";
+    aboutPopup.hidden = true;
   });
 };
 
