@@ -6,7 +6,7 @@ test("about popup can be opened and closed", async ({ page }) => {
   const aboutIcon = ".header-about-icon-container";
 
   const aboutIsVisible = async () =>
-    page.$eval(".about-text-popup", (el) => el.style.display === "block");
+    page.$eval(".about-popup", (el) => el.style.display === "block");
 
   // before click
   expect(await aboutIsVisible()).toBe(false);
@@ -24,7 +24,7 @@ test("about popup can be opened and closed", async ({ page }) => {
   expect(await aboutIsVisible()).toBe(true);
 
   // click x icon in popup
-  await page.click(".about-close");
+  await page.click(".about-popup-close-icon-container");
   expect(await aboutIsVisible()).toBe(false);
 
   // click about icon (open popup)
