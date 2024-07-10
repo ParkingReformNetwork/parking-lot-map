@@ -230,7 +230,7 @@ const setUpParkingLotsLayer = async (
   const toggle: HTMLAnchorElement | null =
     document.querySelector("#lots-toggle");
   if (toggle) {
-    toggle.style.display = "block";
+    toggle.hidden = false;
   }
   document.querySelector("#lots-toggle-off")?.addEventListener("click", () => {
     parkingLayer.removeFrom(map);
