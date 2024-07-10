@@ -10,7 +10,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   if ("contribution" in entry) {
     header += `<div class="community-contribution-warning">
       <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
-      <a href="mailto:${entry.contribution}" title="email map maintainer: ${entry.contribution}">Community-maintained</a> map
+      Community-maintained map
     </div>`;
   }
 
@@ -31,6 +31,12 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
     reformsLine += ` (<a class="reforms-link" title="view parking reform details" href="${entry.url}">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
   }
   listEntries.push(reformsLine);
+
+  if ("contribution" in entry) {
+    listEntries.push(
+      `<a href="mailto:${entry.contribution}">Email data maintainer</a>`
+    );
+  }
 
   const accordion = `<div class="scorecard-accordion">
       <button
