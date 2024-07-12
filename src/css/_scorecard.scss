@@ -121,18 +121,6 @@ $border-radius: 10px;
   }
 }
 
-.reforms-link {
-  &:hover {
-    // We disable underlining because the font awesome icon won't
-    // have underlining on hover, which looks weird.
-    text-decoration: none;
-  }
-
-  svg {
-    transform: rotate(-45deg);
-  }
-}
-
 .community-contribution-warning {
   font-size: typography.$font-size-sm;
   color: colors.$gray;
