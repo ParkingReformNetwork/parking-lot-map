@@ -28,7 +28,7 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
 
   let reformsLine = `Parking reforms ${entry.reforms}`;
   if (entry.url) {
-    reformsLine += ` (<a class="reforms-link" title="view parking reform details" href="${entry.url}">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
+    reformsLine += ` (<a class="external-link" title="view parking reform details" href="${entry.url}">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
   }
   listEntries.push(reformsLine);
 
