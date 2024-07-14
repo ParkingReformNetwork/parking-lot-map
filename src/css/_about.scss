@@ -1,3 +1,4 @@
+@use "theme/borders";
 @use "theme/breakpoints";
 @use "theme/colors";
 @use "theme/icons";
@@ -28,8 +29,8 @@
   font-size: typography.$font-size-base;
   padding: spacing.$container-edge-spacing;
 
-  border: 1px solid colors.$gray-translucent;
-  border-radius: 10px;
+  border: borders.$component-border;
+  border-radius: borders.$border-radius;
 
   overflow-y: auto;
 
