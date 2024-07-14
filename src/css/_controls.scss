@@ -1,3 +1,4 @@
+@use "theme/borders";
 @use "theme/colors";
 @use "theme/spacing";
 @use "theme/typography";
@@ -7,17 +8,15 @@ $label-font-size: typography.$font-size-md;
 $zoom-controls-top-offset: calc(
   58px + spacing.$map-controls-margin-top - header.$header-height
 );
-$outer-border-thickness: 2px;
-$option-divider: 1px solid colors.$gray-translucent;
 
 .leaflet-left .leaflet-control {
   margin-left: spacing.$map-controls-margin-x;
 }
 
-.leaflet-control-zoom.leaflet-bar,
+.leaflet-control-zoom.leaflet-bar.leaflet-control,
 .leaflet-control-layers.leaflet-control {
-  border: $outer-border-thickness solid colors.$gray-translucent;
-  border-radius: 4px;
+  border: borders.$component-border;
+  border-radius: borders.$border-radius;
 }
 
 .leaflet-control-zoom.leaflet-bar {
@@ -34,7 +33,14 @@ $option-divider: 1px solid colors.$gray-translucent;
     justify-content: center;
 
     &:first-child {
-      border-bottom: $option-divider;
+      border-bottom: borders.$component-inner-divider;
+      border-top-left-radius: borders.$border-radius;
+      border-top-right-radius: borders.$border-radius;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: borders.$border-radius;
+      border-bottom-right-radius: borders.$border-radius;
     }
   }
 }
@@ -46,7 +52,7 @@ $option-divider: 1px solid colors.$gray-translucent;
 
 #map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
   $zoom-controls-height: calc(
-    (spacing.$min-touch-target * 2) + $outer-border-thickness
+    (spacing.$min-touch-target * 2) + borders.$border-thickness
   );
   top: calc(
     $zoom-controls-top-offset + $zoom-controls-height + spacing.$element-gap
@@ -68,7 +74,7 @@ $option-divider: 1px solid colors.$gray-translucent;
   line-height: 1;
 
   &:first-child {
-    border-bottom: $option-divider;
+    border-bottom: borders.$component-inner-divider;
   }
 
   display: flex;

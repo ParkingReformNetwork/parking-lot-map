@@ -1,11 +1,10 @@
+@use "theme/borders";
 @use "theme/breakpoints";
 @use "theme/colors";
 @use "theme/spacing";
 @use "theme/icons";
 @use "theme/typography";
 @use "header";
-
-$border-radius: 10px;
 
 .popup-fixed {
   position: fixed;
@@ -35,7 +34,9 @@ $border-radius: 10px;
   right: spacing.$map-controls-margin-x;
   top: calc(header.$header-height + spacing.$map-controls-margin-top);
 
-  border-radius: $border-radius;
+  border: borders.$component-border;
+  border-radius: borders.$border-radius;
+  box-shadow: none;
   color: colors.$black;
 
   p,
@@ -85,10 +86,10 @@ $border-radius: 10px;
   background-color: colors.$white;
   border-left: 0;
   border-right: 0;
-  border-top: 1px solid colors.$gray-translucent;
+  border-top: borders.$component-inner-divider;
   border-bottom: 0;
-  border-bottom-left-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
+  border-bottom-left-radius: borders.$border-radius;
+  border-bottom-right-radius: borders.$border-radius;
 
   .scorecard-accordion-title {
     flex: 1;
@@ -108,7 +109,7 @@ $border-radius: 10px;
 }
 
 .scorecard-accordion-content {
-  border-top: 1px solid colors.$gray-translucent;
+  border-top: borders.$component-inner-divider;
   padding-top: spacing.$element-gap;
 
   ul {

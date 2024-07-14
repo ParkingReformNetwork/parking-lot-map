@@ -1,3 +1,4 @@
+@use "theme/borders";
 @use "theme/breakpoints";
 @use "theme/colors";
 @use "theme/spacing";
@@ -64,7 +65,6 @@ $header-height: calc(
 
 .choices[data-type*="select-one"] {
   .choices__inner {
-    border-radius: 10px;
     color: colors.$black;
     font-size: typography.$font-size-base;
     line-height: 1.2; // To vertically center the text.
@@ -74,6 +74,18 @@ $header-height: calc(
     min-width: 220px;
     @include breakpoints.gt-xs {
       min-width: 300px;
+    }
+
+    border-top-left-radius: borders.$border-radius;
+    border-top-right-radius: borders.$border-radius;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &:not(.is-open) {
+    .choices__inner {
+      border-bottom-left-radius: borders.$border-radius;
+      border-bottom-right-radius: borders.$border-radius;
     }
   }
 
