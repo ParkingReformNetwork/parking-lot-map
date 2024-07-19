@@ -1,5 +1,6 @@
 @use "theme/borders";
 @use "theme/colors";
+@use "theme/input-mode";
 @use "theme/spacing";
 @use "theme/typography";
 @use "header";
@@ -21,6 +22,10 @@ $zoom-controls-top-offset: calc(
 
 .leaflet-control-zoom.leaflet-bar {
   top: $zoom-controls-top-offset;
+
+  @include input-mode.touch-exclusive {
+    display: none;
+  }
 
   a {
     width: spacing.$min-touch-target;
@@ -57,6 +62,11 @@ $zoom-controls-top-offset: calc(
   top: calc(
     $zoom-controls-top-offset + $zoom-controls-height + spacing.$element-gap
   );
+
+  @include input-mode.touch-exclusive {
+    top: $zoom-controls-top-offset;
+  }
+
   margin-left: spacing.$map-controls-margin-x;
   right: auto;
 }
