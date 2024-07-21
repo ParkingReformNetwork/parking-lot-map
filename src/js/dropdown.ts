@@ -5,9 +5,13 @@ import { CityId, ScoreCardDetails, dropdownChoice } from "./types";
 
 export const DROPDOWN = new Choices("#city-dropdown", {
   allowHTML: false,
-  itemSelectText: "Select",
+  itemSelectText: "",
   searchEnabled: true,
-  shouldSort: false, // since cities are already alphabetical order in scorecard, disabling this option allows us to show PRN maps at the top.
+  searchResultLimit: 6,
+  searchFields: ["label"],
+  // Since cities are already alphabetical order in scorecard,
+  // disabling this option allows us to show PRN maps at the top.
+  shouldSort: false,
 });
 
 const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
