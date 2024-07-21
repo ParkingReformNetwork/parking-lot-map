@@ -66,7 +66,7 @@ test("correctly load the city score card", async ({ page }) => {
 
     const lines = Array.from(
       document.querySelectorAll(
-        ".leaflet-popup-content-wrapper p, .leaflet-popup-content-wrapper li"
+        ".scorecard-container p, .scorecard-container li"
       )
     )
       .filter(

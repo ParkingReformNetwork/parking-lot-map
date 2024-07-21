@@ -1,5 +1,4 @@
-import { Popup } from "leaflet";
-import { ScoreCard, ScoreCardDetails } from "./types";
+import { ScoreCardDetails } from "./types";
 
 const generateScorecard = (entry: ScoreCardDetails): string => {
   let header = `
@@ -66,23 +65,19 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   return header + accordion;
 };
 
-const setScorecard = (cityProperties: ScoreCard): void => {
-  const { layer, details } = cityProperties;
-  const scorecard = generateScorecard(details);
-  const popup = new Popup({
-    pane: "fixed",
-    className: "popup-fixed",
-    autoPan: false,
-  }).setContent(scorecard);
-  layer.bindPopup(popup).openPopup();
+const setScorecard = (entry: ScoreCardDetails): void => {
+  const scorecardContainer = document.querySelector(".scorecard-container");
+  if (!scorecardContainer) return;
+  scorecardContainer.innerHTML = generateScorecard(entry);
 };
 
 const setUpScorecardAccordionListener = () => {
-  // The event listener is on `map` because it is never erased, unlike the scorecard
-  // being recreated every time the map moves. This is called "event delegation".
-  const map = document.querySelector("#map");
-  if (!(map instanceof Element)) return;
-  map.addEventListener("click", async (event) => {
+  // The event listener is on `#scorecard-container` because it is never erased,
+  // unlike the scorecard contents being recreated every time the city changes.
+  // This is called "event delegation".
+  const scorecardContainer = document.querySelector("#scorecard-container");
+  if (!(scorecardContainer instanceof Element)) return;
+  scorecardContainer.addEventListener("click", async (event) => {
     const clicked = event.target;
     if (!(clicked instanceof Element)) return;
     const accordionToggle = clicked.closest(".scorecard-accordion-toggle");

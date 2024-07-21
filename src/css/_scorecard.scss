@@ -7,41 +7,21 @@
 @use "theme/zindex";
 @use "header";
 
-.leaflet-pane.leaflet-fixed-pane {
+.scorecard-container {
   z-index: zindex.$scorecard;
-}
-
-.popup-fixed {
   position: fixed;
-  transform: none !important;
-  margin: 0;
-}
+  right: spacing.$map-controls-margin-x;
+  top: calc(header.$header-height + spacing.$map-controls-margin-top);
 
-.leaflet-popup-tip-container {
-  display: none;
-}
-
-.leaflet-popup-content {
-  margin: 0;
-}
-
-.leaflet-popup-content-wrapper {
+  padding: 0;
   width: 260px;
   @include breakpoints.gt-xxs {
     width: 280px;
   }
 
-  padding: 0;
-  padding-right: 1px;
-
-  float: right;
-  position: fixed;
-  right: spacing.$map-controls-margin-x;
-  top: calc(header.$header-height + spacing.$map-controls-margin-top);
-
+  background-color: colors.$white;
   border: borders.$component-border;
   border-radius: borders.$border-radius;
-  box-shadow: none;
   color: colors.$black;
 
   p,
@@ -88,7 +68,6 @@
   align-items: center;
   justify-content: space-between;
 
-  background-color: colors.$white;
   border-left: 0;
   border-right: 0;
   border-top: borders.$component-inner-divider;
@@ -118,8 +97,6 @@
   padding-top: spacing.$element-gap;
 
   ul {
-    padding: 0;
-    padding-inline-start: 20px; // Default is 40px
     margin-left: spacing.$container-edge-spacing;
     margin-right: spacing.$container-edge-spacing;
     margin-bottom: spacing.$container-edge-spacing;
