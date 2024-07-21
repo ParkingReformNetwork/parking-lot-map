@@ -76,7 +76,6 @@ const STYLES = {
 const createMap = (): Map => {
   const map = new Map("map", {
     layers: [BASE_LAYERS["High contrast"]],
-    closePopupOnClick: false,
   });
   map.attributionControl.setPrefix(
     '<a href="https://parkingreform.org/support/">Parking Reform Network</a>'
@@ -147,7 +146,7 @@ const setUpAutoScorecard = async (
     });
     if (centralCity) {
       DROPDOWN.setChoiceByValue(centralCity);
-      setScorecard(cities[centralCity]);
+      setScorecard(cities[centralCity].details);
       updateIconsShareLink(centralCity);
     }
   });
@@ -207,7 +206,7 @@ const setUpCitiesLayer = async (
   const cityId = cityToggleElement.value;
   setUpAutoScorecard(map, cities, parkingLayer);
   snapToCity(map, cities[cityId].layer);
-  setScorecard(cities[cityId]);
+  setScorecard(cities[cityId].details);
   updateIconsShareLink(cityId);
 };
 
