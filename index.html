@@ -80,39 +80,52 @@
         aria-label="select the city"
       ></select>
       <nav class="header-icons">
-        <div class="header-icon-container header-about-icon-container">
-          <i class="fa-regular fa-circle-question" title="about the map"></i>
-        </div>
-        <a class="header-icon-container header-share-icon-container"
-          ><i class="share-link-icon fa-solid fa-link" title="copy link"></i
+        <button
+          class="header-icon-container header-about-icon-container"
+          title="about the map"
+          aria-expanded="false"
+          aria-controls="about-popup"
+        >
+          <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
+          <span class="sr-only">toggle a popup describing the map</span>
+        </button>
+        <a
+          class="header-icon-container header-share-icon-container"
+          title="copy link"
+          ><i class="share-link-icon fa-solid fa-link" aria-hidden="true"></i
           ><i
             class="share-check-icon fa-solid fa-check"
-            title="link successfully copied"
             style="display: none"
+            aria-hidden="true"
           ></i>
         </a>
         <a
           class="header-icon-container header-full-screen-icon-container"
           href="https://parkingreform.org/parking-lot-map/"
+          title="view fullscreen"
           target="_blank"
         >
-          <i
-            class="fa-solid fa-up-right-from-square"
-            title="view fullscreen"
-          ></i>
+          <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i>
+          <span class="sr-only">view fullscreen (opens in new tab)</span>
         </a>
       </nav>
     </header>
 
-    <section class="about-popup" aria-label="about the map" hidden>
+    <section
+      id="about-popup"
+      class="about-popup"
+      aria-label="about the map"
+      hidden
+    >
       <header class="about-popup-header">
         <h2>About the Parking Lot Map</h2>
-        <div class="about-popup-close-icon-container">
-          <i
-            class="fa-regular fa-circle-xmark"
-            title="close the about popup"
-          ></i>
-        </div>
+        <button
+          class="about-popup-close-icon-container"
+          title="close the about popup"
+          aria-label="close the about popup"
+        >
+          <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+        </button>
       </header>
 
       <div id="lots-toggle" hidden>
