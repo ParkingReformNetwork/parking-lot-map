@@ -1,28 +1,32 @@
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
 import scoreCardsData from "../../data/score-cards.json";
-import { CityId, ScoreCardDetails, dropdownChoice } from "./types";
+import { CityId, ScoreCardDetails, DropdownChoice } from "./types";
 
 export const DROPDOWN = new Choices("#city-dropdown", {
   allowHTML: false,
   itemSelectText: "",
   searchEnabled: true,
   searchResultLimit: 6,
-  searchFields: ["label"],
+  searchFields: ["customProperties.city", "customProperties.state"],
   // Since cities are already alphabetical order in scorecard,
   // disabling this option allows us to show PRN maps at the top.
   shouldSort: false,
 });
 
 const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
-  const officialCities: dropdownChoice[] = [];
-  const communityCities: dropdownChoice[] = [];
+  const officialCities: DropdownChoice[] = [];
+  const communityCities: DropdownChoice[] = [];
   Object.entries(scoreCardsData as Record<string, ScoreCardDetails>).forEach(
     ([id, { name, contribution }]) => {
-      const entry: dropdownChoice = {
+      const [city, state] = name.split(", ");
+      const entry: DropdownChoice = {
         value: id,
         label: name,
-        contribution: contribution || "PRN",
+        customProperties: {
+          city,
+          state,
+        },
       };
       if (contribution) {
         communityCities.push(entry);
@@ -34,18 +38,18 @@ const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
 
   DROPDOWN.setChoices([
     {
-      value: "Official Maps",
-      label: "Official Maps",
+      value: "Official maps",
+      label: "Official maps",
       disabled: false,
-      choices: officialCities.filter((city) => city.contribution === "PRN"),
+      choices: officialCities,
     },
   ]);
 
   if (communityCities.length > 0) {
     DROPDOWN.setChoices([
       {
-        value: "Community Maps",
-        label: "Community Maps",
+        value: "Community maps",
+        label: "Community maps",
         disabled: false,
         choices: communityCities,
       },

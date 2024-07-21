@@ -28,8 +28,11 @@ export interface ParkingLotModules {
   [key: string]: () => Promise<Feature<Geometry>>;
 }
 
-export interface dropdownChoice {
+export interface DropdownChoice {
   value: string;
   label: string;
-  contribution: string;
+  customProperties: {
+    city: string;
+    state: string;
+  };
 }
