@@ -3,7 +3,6 @@
 @use "theme/colors";
 @use "theme/spacing";
 @use "theme/icons";
-@use "theme/typography";
 
 // We don't use $container-edge-spacing to save vertical space.
 $header-y-padding: spacing.$element-gap;
@@ -55,58 +54,4 @@ $header-height: calc(
   @include breakpoints.gt-xxs {
     display: inline-flex;
   }
-}
-
-.choices {
-  margin-bottom: 0;
-}
-
-.choices[data-type*="select-one"] {
-  .choices__inner {
-    color: colors.$black;
-    font-size: typography.$font-size-base;
-    line-height: 1.2; // To vertically center the text.
-
-    height: spacing.$min-touch-target;
-
-    min-width: 220px;
-    @include breakpoints.gt-xs {
-      min-width: 300px;
-    }
-
-    border-top-left-radius: borders.$border-radius;
-    border-top-right-radius: borders.$border-radius;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  &:not(.is-open) {
-    .choices__inner {
-      border-bottom-left-radius: borders.$border-radius;
-      border-bottom-right-radius: borders.$border-radius;
-    }
-  }
-
-  .choices__input {
-    // Cannot be less than 16px due to iOS autozoom:
-    //   https://weblog.west-wind.com/posts/2023/Apr/17/Preventing-iOS-Safari-Textbox-Zooming
-    font-size: typography.$font-size-base;
-  }
-}
-
-.choices__heading {
-  font-size: typography.$font-size-sm;
-  color: colors.$gray;
-  cursor: default;
-}
-
-div.choices__item.choices__item--choice.choices__item--selectable {
-  font-size: typography.$font-size-base;
-  height: spacing.$min-touch-target;
-}
-
-.choices__list--dropdown,
-.choices__list[aria-expanded] {
-  z-index: 1001;
-  color: colors.$black;
 }
