@@ -4,7 +4,12 @@
 @use "theme/spacing";
 @use "theme/icons";
 @use "theme/typography";
+@use "theme/zindex";
 @use "header";
+
+.leaflet-pane.leaflet-fixed-pane {
+  z-index: zindex.$scorecard;
+}
 
 .popup-fixed {
   position: fixed;
