@@ -8,14 +8,30 @@ const setUpAbout = () => {
   const aboutHeaderIcon = document.querySelector(
     ".header-about-icon-container"
   );
+  const closeIcon = document.querySelector(".about-popup-close-icon-container");
   if (
     !(aboutPopup instanceof HTMLElement) ||
-    !(aboutHeaderIcon instanceof HTMLElement)
+    !(aboutHeaderIcon instanceof HTMLElement) ||
+    !(closeIcon instanceof HTMLElement)
   )
     return;
 
+  const closePopup = () => {
+    aboutPopup.hidden = true;
+    aboutHeaderIcon.setAttribute("aria-expanded", "false");
+  };
+
+  const openPopup = () => {
+    aboutPopup.hidden = false;
+    aboutHeaderIcon.setAttribute("aria-expanded", "true");
+  };
+
   aboutHeaderIcon.addEventListener("click", () => {
-    aboutPopup.hidden = !aboutPopup.hidden;
+    if (aboutPopup.hidden) {
+      openPopup();
+    } else {
+      closePopup();
+    }
   });
 
   // closes window on clicks outside the info popup
@@ -26,14 +42,12 @@ const setUpAbout = () => {
       !aboutHeaderIcon.contains(event.target) &&
       !aboutPopup.contains(event.target)
     ) {
-      aboutPopup.hidden = true;
+      closePopup();
     }
   });
 
-  const closeIcon = document.querySelector(".about-popup-close-icon-container");
-  if (!(closeIcon instanceof HTMLElement)) return;
   closeIcon.addEventListener("click", () => {
-    aboutPopup.hidden = true;
+    closePopup();
   });
 };
 
