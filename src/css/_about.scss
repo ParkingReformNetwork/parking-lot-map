@@ -4,6 +4,7 @@
 @use "theme/icons";
 @use "theme/spacing";
 @use "theme/typography";
+@use "theme/zindex";
 
 @use "header";
 
@@ -23,7 +24,7 @@
   min-width: 200px;
   max-width: 800px;
   top: calc(header.$header-height + 25px);
-  z-index: 1003;
+  z-index: zindex.$about;
 
   background-color: colors.$white;
   font-size: typography.$font-size-base;
@@ -33,6 +34,7 @@
   border-radius: borders.$border-radius;
 
   overflow-y: auto;
+  overflow-wrap: break-word;
 
   h3 {
     margin: 0;

@@ -2,6 +2,7 @@
 @use "theme/colors";
 @use "theme/spacing";
 @use "theme/typography";
+@use "theme/zindex";
 
 .choices {
   margin-bottom: 0;
@@ -49,7 +50,7 @@ div.choices__item.choices__item--choice.choices__item--selectable {
 
 .choices__list--dropdown,
 .choices__list[aria-expanded] {
-  z-index: 1001;
+  z-index: zindex.$dropdown;
   color: colors.$black;
 }
 
