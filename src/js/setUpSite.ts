@@ -107,12 +107,13 @@ const loadParkingLot = async (
  */
 const snapToCity = (map: Map, layer: ImageOverlay): void => {
   const bounds = layer.getBounds();
+  // This moves the map and resets zoom.
   map.fitBounds(bounds);
   const centerPoint = map.latLngToContainerPoint(bounds.getCenter());
   const translateYPx = -40;
   const translatedCenterPoint = centerPoint.add([0, translateYPx]);
   const translatedCenter = map.containerPointToLatLng(translatedCenterPoint);
-  map.setView(translatedCenter, map.getZoom());
+  map.setView(translatedCenter);
 };
 
 /**
