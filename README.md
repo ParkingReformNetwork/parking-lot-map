@@ -137,3 +137,22 @@ We use continuous deployment, meaning that we re-deploy the site every time we m
 After you've confirmed staging looks good at https://parkingreform.org/plm-staging/, you can manually trigger a deploy.
 
 Go to https://github.com/ParkingReformNetwork/parking-lot-map/actions and open the "Deploy to prod" workflow. Initiate a build.
+
+## State diagram
+
+```mermaid
+graph TD
+    A[current city] -->|controls| B[map data loaded]
+    A -->|controls| C[share link URL]
+    A -->|controls| D[scorecard entry]
+    A -->|controls| E[map position]
+
+    F[user interaction w/ select element] -->|controls| A
+    G[user scrolling] -->|controls| E
+    H[zoom buttons] -->|controls| I[zoom]
+    J[scorecard accordion button] -->|toggles| K[scorecard accordion contents]
+    L[layer toggle] -->|controls| M[map layer]
+
+    N[about icon] -->|toggles| O[about popup]
+    P[Map click] -->|closes if open| O
+```
