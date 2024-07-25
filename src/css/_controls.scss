@@ -33,6 +33,12 @@ $zoom-controls-top-offset: calc(
     align-items: center;
     justify-content: center;
 
+    &:hover,
+    &:focus {
+      color: unset;
+      text-decoration: none;
+    }
+
     &:first-child {
       border-bottom: borders.$component-inner-divider;
       border-top-left-radius: borders.$border-radius;

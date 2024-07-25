@@ -142,14 +142,17 @@ Go to https://github.com/ParkingReformNetwork/parking-lot-map/actions and open t
 
 ```mermaid
 graph TD
+    F[user interaction w/ select element] -->|controls| A
+
     A[current city] -->|controls| B[map data loaded]
     A -->|controls| C[share link URL]
     A -->|controls| D[scorecard entry]
-    A -->|controls| E[map position]
+    A -->|resets| E[map position]
+    A -->|resets| G[zoom]
 
-    F[user interaction w/ select element] -->|controls| A
-    G[user scrolling] -->|controls| E
-    H[zoom buttons] -->|controls| I[zoom]
+    H[user scrolling] -->|controls| E
+
+    R[zoom buttons] -->|controls| G[zoom]
     J[scorecard accordion button] -->|toggles| K[scorecard accordion contents]
     L[layer toggle] -->|controls| M[map layer]
 
