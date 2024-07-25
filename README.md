@@ -154,5 +154,6 @@ graph TD
     L[layer toggle] -->|controls| M[map layer]
 
     N[about icon] -->|toggles| O[about popup]
-    P[Map click] -->|closes if open| O
+    P[map click] -->|closes if open| O
+    Q[about popup close icon] -->|closes| O
 ```
