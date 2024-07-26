@@ -144,38 +144,36 @@ This shows all possible user interactions on the map, and what triggers what.
 
 ```mermaid
 graph TD
-    subgraph Nodes
-        A[current city]
-        F[user interaction w/ select element]
+    A[current city]
+    F[user interaction w/ select element]
 
-        C[share link URL]
-        S[full-screen URL]
+    C[share link URL]
+    S[full-screen URL]
 
-        B[map data loaded]
-        D[scorecard entry]
+    B[map data loaded]
+    D[scorecard entry]
 
-        E[map position]
-        H[user scrolling]
+    E[map position]
+    H[user scrolling]
 
-        T[user click on city]
-        U[AND]
+    T[user click on city]
+    U[AND]
 
-        G[zoom]
-        R[zoom buttons]
+    G[zoom]
+    R[zoom buttons]
 
-        J[scorecard accordion button]
-        K[scorecard accordion contents]
+    J[scorecard accordion button]
+    K[scorecard accordion contents]
 
-        L[layer toggle]
-        M[map layer]
+    L[layer toggle]
+    M[map layer]
 
-        N[about icon]
-        O[about popup]
-        P[click outside popup]
-        Q[about popup close icon]
-    end
+    N[about icon]
+    O[about popup]
+    P[click outside popup]
+    Q[about popup close icon]
 
-    %% Relationships
+
     N -->|toggles| O
     P -->|closes| O
     Q -->|closes| O
@@ -199,7 +197,7 @@ graph TD
     A -->|controls| B
     A -->|controls| D
 
-    A -->|can reset| E
+    A -->|can change| E
     A -->|can reset| G
 
     H -->|controls| E
