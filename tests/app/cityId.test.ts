@@ -6,13 +6,13 @@ import {
 } from "../../src/js/cityId";
 
 test.describe("extractCityIdFromUrl()", () => {
-  test("returns empty when no relevant # fragment", () => {
-    expect(extractCityIdFromUrl("")).toEqual("");
-    expect(extractCityIdFromUrl("https://parking.org")).toEqual("");
-    expect(extractCityIdFromUrl("https://parking.org#shoup")).toEqual("");
+  test("returns null when no relevant # fragment", () => {
+    expect(extractCityIdFromUrl("")).toBeNull();
+    expect(extractCityIdFromUrl("https://parking.org")).toBeNull();
+    expect(extractCityIdFromUrl("https://parking.org#shoup")).toBeNull();
     expect(
       extractCityIdFromUrl("https://parking.org#parking-reform-map")
-    ).toEqual("");
+    ).toBeNull();
   });
 
   test("extracts the city id", () => {
