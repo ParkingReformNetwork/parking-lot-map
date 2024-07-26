@@ -140,40 +140,68 @@ Go to https://github.com/ParkingReformNetwork/parking-lot-map/actions and open t
 
 ## State diagram
 
+This shows all possible user interactions on the map, and what triggers what.
+
 ```mermaid
 graph TD
     subgraph Nodes
         A[current city]
-        B[map data loaded]
-        C[share link URL]
-        D[scorecard entry]
-        E[map position]
         F[user interaction w/ select element]
-        G[zoom]
+
+        C[share link URL]
+        S[full-screen URL]
+
+        B[map data loaded]
+        D[scorecard entry]
+
+        E[map position]
         H[user scrolling]
+
+        T[user click on city]
+        U[AND]
+
+        G[zoom]
         R[zoom buttons]
+
         J[scorecard accordion button]
         K[scorecard accordion contents]
+
         L[layer toggle]
         M[map layer]
+
         N[about icon]
         O[about popup]
-        P[map click]
+        P[click outside popup]
         Q[about popup close icon]
     end
 
     %% Relationships
+    N -->|toggles| O
+    P -->|closes| O
+    Q -->|closes| O
+
+    J -->|toggles| K
+
+    L -->|controls| M
+
     F -->|controls| A
-    A -->|controls| B
+
+    E -->|changes| B
+    E -->|can change| A
+
+    T --> U
+    G --> U
+    U --> |changes| A
+
     A -->|controls| C
+    A -->|controls| S
+
+    A -->|controls| B
     A -->|controls| D
-    A -->|resets| E
-    A -->|resets| G
+
+    A -->|can reset| E
+    A -->|can reset| G
+
     H -->|controls| E
     R -->|controls| G
-    J -->|toggles| K
-    L -->|controls| M
-    N -->|toggles| O
-    P -->|closes if open| O
-    Q -->|closes| O
 ```
