@@ -14,7 +14,7 @@ export const DROPDOWN = new Choices("#city-dropdown", {
   shouldSort: false,
 });
 
-const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
+const setUpDropdown = (cityId: CityId) => {
   const officialCities: DropdownChoice[] = [];
   const communityCities: DropdownChoice[] = [];
   Object.entries(scoreCardsData as Record<string, ScoreCardDetails>).forEach(
@@ -56,11 +56,7 @@ const setUpDropdown = (initialCityId: CityId, fallBackCityId: CityId) => {
     ]);
   }
 
-  if (Object.keys(scoreCardsData).includes(initialCityId)) {
-    DROPDOWN.setChoiceByValue(initialCityId);
-  } else {
-    DROPDOWN.setChoiceByValue(fallBackCityId);
-  }
+  DROPDOWN.setChoiceByValue(cityId);
 };
 
 export default setUpDropdown;

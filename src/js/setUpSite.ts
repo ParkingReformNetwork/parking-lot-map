@@ -246,7 +246,7 @@ const setUpSite = async (): Promise<void> => {
   maybeDisableFullScreenIcon();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  setUpDropdown(initialCityId, "atlanta-ga");
+  setUpDropdown(initialCityId || "atlanta-ga");
   setUpAbout();
 
   const map = createMap();

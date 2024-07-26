@@ -2,13 +2,10 @@ import { CityId } from "./types";
 
 /**
  * Extract the city ID from the URL's `#`, if present.
- *
- * @param windowUrl: The `window.location.href` global
- * @return: Returns e.g. `st.-louis-mo` if present, else the empty string
  */
-const extractCityIdFromUrl = (windowUrl: string): string =>
+const extractCityIdFromUrl = (windowUrl: string): string | null =>
   windowUrl.indexOf("#parking-reform-map=") === -1
-    ? ""
+    ? null
     : windowUrl.split("#")[1].split("=")[1].toLowerCase();
 
 /**
