@@ -3,12 +3,12 @@ import "leaflet/dist/leaflet.css";
 
 import { ScoreCard, ScoreCards } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
-import setUpIcons from "./fontAwesome";
+import initIcons from "./fontAwesome";
 import maybeDisableFullScreenIcon from "./iframe";
-import setUpAbout from "./about";
-import addShareLinkSubscriber from "./share";
-import addScorecardSubscriber from "./scorecard";
-import setUpDropdown from "./dropdown";
+import initAbout from "./about";
+import subscribeShareLink from "./share";
+import subscribeScorecard from "./scorecard";
+import initDropdown from "./dropdown";
 import { createMap, STYLES } from "./map";
 import ParkingLotLoader from "./ParkingLotLoader";
 import {
@@ -33,7 +33,7 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
   map.setView(translatedCenter);
 }
 
-function addSnapToCitySubscriber(
+function subscribeSnapToCity(
   observable: CitySelectionObservable,
   map: Map,
   cities: ScoreCards,
@@ -117,10 +117,10 @@ function setCityOnBoundaryClick(
   });
 }
 
-async function setUpSite(): Promise<void> {
-  setUpIcons();
+export default async function setUpSite(): Promise<void> {
+  initIcons();
   maybeDisableFullScreenIcon();
-  setUpAbout();
+  initAbout();
 
   const map = createMap();
   const [cityBoundaries, cities] = createCitiesLayer(map);
@@ -133,11 +133,11 @@ async function setUpSite(): Promise<void> {
     "atlanta-ga",
   );
 
-  setUpDropdown(citySelectionObservable);
-  addScorecardSubscriber(citySelectionObservable, cities);
-  addShareLinkSubscriber(citySelectionObservable);
-  addSnapToCitySubscriber(citySelectionObservable, map, cities);
-  parkingLotLoader.subscribeToCitySelection(citySelectionObservable);
+  initDropdown(citySelectionObservable);
+  subscribeScorecard(citySelectionObservable, cities);
+  subscribeShareLink(citySelectionObservable);
+  subscribeSnapToCity(citySelectionObservable, map, cities);
+  parkingLotLoader.subscribe(citySelectionObservable);
 
   setCityOnBoundaryClick(citySelectionObservable, map, cityBoundaries);
   setCityByMapPosition(citySelectionObservable, map, cities, parkingLotLoader);
@@ -148,5 +148,3 @@ async function setUpSite(): Promise<void> {
   // on the first page load. This is meant to address that.
   map.invalidateSize();
 }
-
-export default setUpSite;

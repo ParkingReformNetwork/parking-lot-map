@@ -1,6 +1,6 @@
 import Observable from "./Observable";
 
-function updateAboutPopupUI(visible: boolean): void {
+function updatePopupUI(visible: boolean): void {
   const popup = document.querySelector<HTMLElement>(".about-popup");
   const icon = document.querySelector(".header-about-icon-container");
   if (!popup || !icon) return;
@@ -8,9 +8,9 @@ function updateAboutPopupUI(visible: boolean): void {
   icon.setAttribute("aria-expanded", visible.toString());
 }
 
-function setUpAbout(): void {
+export default function initAbout(): void {
   const isVisible = new Observable<boolean>(false);
-  isVisible.subscribe(updateAboutPopupUI);
+  isVisible.subscribe(updatePopupUI);
 
   const popup = document.querySelector(".about-popup");
   const headerIcon = document.querySelector(".header-about-icon-container");
@@ -35,5 +35,3 @@ function setUpAbout(): void {
 
   isVisible.initialize();
 }
-
-export default setUpAbout;

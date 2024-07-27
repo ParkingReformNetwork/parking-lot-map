@@ -61,7 +61,9 @@ function createDropdown(): Choices {
   return dropdown;
 }
 
-function setUpDropdown(observable: CitySelectionObservable): void {
+export default function initDropdown(
+  observable: CitySelectionObservable,
+): void {
   const dropdown = createDropdown();
 
   observable.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
@@ -73,5 +75,3 @@ function setUpDropdown(observable: CitySelectionObservable): void {
     observable.setValue({ cityId: selectElement.value, shouldSnapMap: true });
   });
 }
-
-export default setUpDropdown;

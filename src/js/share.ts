@@ -24,7 +24,7 @@ function switchShareIcons(shareIcon: HTMLAnchorElement): void {
   }, 1000);
 }
 
-export default function addShareLinkSubscriber(
+export default function subscribeShareLink(
   observable: CitySelectionObservable,
 ): void {
   observable.subscribe(({ cityId }) => {

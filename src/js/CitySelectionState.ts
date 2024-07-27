@@ -8,9 +8,9 @@ type CitySelectionState = {
   shouldSnapMap: boolean;
 };
 
-type CitySelectionObservable = Observable<CitySelectionState>;
+export type CitySelectionObservable = Observable<CitySelectionState>;
 
-function initCitySelectionState(
+export function initCitySelectionState(
   initialCityId: CityId | null,
   fallBackCityId: CityId,
 ): CitySelectionObservable {
@@ -23,5 +23,3 @@ function initCitySelectionState(
     shouldSnapMap: true,
   });
 }
-
-export { CitySelectionObservable, initCitySelectionState };

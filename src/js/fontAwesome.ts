@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-function setUpIcons(): void {
+export default function initIcons(): void {
   library.add(
     faArrowRight,
     faChevronDown,
@@ -28,5 +28,3 @@ function setUpIcons(): void {
   );
   dom.watch();
 }
-
-export default setUpIcons;

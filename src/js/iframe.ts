@@ -13,7 +13,7 @@ function isIFrame(): boolean {
  *
  * Note that _header.scss also disables the icon on mobile.
  */
-function maybeDisableFullScreenIcon(): void {
+export default function maybeDisableFullScreenIcon(): void {
   if (isIFrame()) return;
   const iconContainer = document.querySelector<HTMLAnchorElement>(
     ".header-full-screen-icon-container",
@@ -21,5 +21,3 @@ function maybeDisableFullScreenIcon(): void {
   if (!iconContainer) return;
   iconContainer.style.display = "none";
 }
-
-export default maybeDisableFullScreenIcon;
