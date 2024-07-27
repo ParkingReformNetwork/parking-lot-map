@@ -14,13 +14,14 @@ import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import maybeDisableFullScreenIcon from "./iframe";
 import setUpAbout from "./about";
-import updateIconsShareLink from "./share";
-import { setScorecard, setUpScorecardAccordionListener } from "./scorecard";
-import setUpDropdown, { DROPDOWN } from "./dropdown";
-
-import cityBoundaries from "~/data/city-boundaries.geojson";
-import scoreCardsDetails from "~/data/score-cards.json";
+import addShareLinkSubscriber from "./share";
+import addScorecardSubscriber from "./scorecard";
+import setUpDropdown from "./dropdown";
 import ParkingLotLoader from "./ParkingLotLoader";
+import { GlobalStateObservable, initGlobalState } from "./GlobalState";
+
+import cityBoundariesGeojson from "~/data/city-boundaries.geojson";
+import scoreCardsDetails from "~/data/score-cards.json";
 
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
@@ -78,6 +79,16 @@ function createMap(): Map {
   return map;
 }
 
+function addParkingLotLoadSubscriber(
+  globalState: GlobalStateObservable,
+  parkingLayer: GeoJSON,
+  parkingLotLoader: ParkingLotLoader
+): void {
+  globalState.subscribe(({ cityId }) =>
+    parkingLotLoader.load(cityId, parkingLayer)
+  );
+}
+
 /**
  * Centers view to city, but translated down to account for the top UI elements.
  */
@@ -92,55 +103,58 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
   map.setView(translatedCenter);
 }
 
+function addSnapToCitySubscriber(
+  globalState: GlobalStateObservable,
+  map: Map,
+  cities: ScoreCards
+): void {
+  globalState.subscribe((state) => {
+    if (!state.shouldSnapMap) return;
+    snapToCity(map, cities[state.cityId].layer);
+  });
+}
+
 /**
- * Pulls up scorecard for the city closest to the center of view.
- * Also, loads parking lot data of any city in view.
+ * Change the city to whatever is in the center of the map.
  *
- * @param map: The Leaflet map instance.
- * @param cities: Dictionary of cities with layer and scorecard info.
- * @param parkingLayer: GeoJSON layer with parking lot data
+ * Regardless of if the city is chosen, ensure its parking lots are loaded when in view.
  */
-const setUpAutoScorecard = async (
+function setCityByMapPosition(
+  globalState: GlobalStateObservable,
   map: Map,
   cities: ScoreCards,
   parkingLayer: GeoJSON,
   parkingLotLoader: ParkingLotLoader
-): Promise<void> => {
-  map.on("moveend", async () => {
+): void {
+  map.on("moveend", () => {
     let centralCityDistance: number | null = null;
     let centralCity;
-    Object.entries(cities).forEach((city) => {
-      const [cityName, scoreCard] = city;
-      const bounds = scoreCard.layer.getBounds();
+    Object.entries(cities).forEach(([cityId, scorecard]) => {
+      const bounds = scorecard.layer.getBounds();
+      if (!map.getBounds().intersects(bounds)) return;
+      parkingLotLoader.load(cityId, parkingLayer);
 
-      if (bounds && map.getBounds().intersects(bounds)) {
-        const diff = map.getBounds().getCenter().distanceTo(bounds.getCenter());
-        parkingLotLoader.load(cityName, parkingLayer);
-        if (centralCityDistance == null || diff < centralCityDistance) {
-          centralCityDistance = diff;
-          centralCity = cityName;
-        }
+      const distance = map
+        .getBounds()
+        .getCenter()
+        .distanceTo(bounds.getCenter());
+      if (!centralCityDistance || distance < centralCityDistance) {
+        centralCityDistance = distance;
+        centralCity = cityId;
       }
     });
     if (centralCity) {
-      DROPDOWN.setChoiceByValue(centralCity);
-      setScorecard(cities[centralCity].details);
-      updateIconsShareLink(centralCity);
+      globalState.setValue({ cityId: centralCity, shouldSnapMap: false });
     }
   });
-};
+}
 
 /**
- * Load the cities from GeoJson and set up an event listener to change cities when the user
- * toggles the city selection.
+ * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
  */
-async function setUpCitiesLayer(
-  map: Map,
-  parkingLayer: GeoJSON,
-  parkingLotLoader: ParkingLotLoader
-): Promise<void> {
+function createCitiesLayer(map: Map): [GeoJSON, ScoreCards] {
   const cities: ScoreCards = {};
-  const allBoundaries = geoJSON(cityBoundaries, {
+  const allBoundaries = geoJSON(cityBoundariesGeojson, {
     style() {
       return STYLES.cities;
     },
@@ -157,44 +171,28 @@ async function setUpCitiesLayer(
   });
 
   allBoundaries.addTo(map);
+  return [allBoundaries, cities];
+}
 
-  // Set up map to update when city selection changes.
-  const cityToggleElement =
-    document.querySelector<HTMLSelectElement>("#city-dropdown");
-  if (!cityToggleElement) return;
-  cityToggleElement.addEventListener("change", async () => {
-    const cityId = cityToggleElement.value;
-    const { layer } = cities[cityId];
-    if (layer) {
-      snapToCity(map, layer);
-    }
-  });
-
-  // Set up map to update when user clicks within a city's boundary
-  allBoundaries.addEventListener("click", (e) => {
+function setCityOnBoundaryClick(
+  globalState: GlobalStateObservable,
+  map: Map,
+  cityBoundaries: GeoJSON
+): void {
+  cityBoundaries.addEventListener("click", (e) => {
     const currentZoom = map.getZoom();
+    // Only change cities if zoomed in enough.
     if (currentZoom <= 7) return;
     const cityId = e.sourceTarget.feature.properties.id;
-    cityToggleElement.value = cityId;
-    const { layer } = cities[cityId];
-    if (layer) {
-      snapToCity(map, layer);
-    }
+    globalState.setValue({ cityId, shouldSnapMap: true });
   });
-
-  // Load initial city.
-  const cityId = cityToggleElement.value;
-  setUpAutoScorecard(map, cities, parkingLayer, parkingLotLoader);
-  snapToCity(map, cities[cityId].layer);
-  setScorecard(cities[cityId].details);
-  updateIconsShareLink(cityId);
 }
 
 /**
  * Creates a GeoJSON layer to hold all parking lot polygons.
  * Every cites' parking lots will be lazily added to this layer.
  */
-async function setUpParkingLotsLayer(map: Map): Promise<GeoJSON> {
+function createParkingLotsLayer(map: Map): GeoJSON {
   const parkingLayer = geoJSON(undefined, {
     style() {
       return STYLES.parkingLots;
@@ -204,8 +202,7 @@ async function setUpParkingLotsLayer(map: Map): Promise<GeoJSON> {
   if (window.location.href.indexOf("#lots-toggle") === -1) return parkingLayer;
 
   // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
-  const toggle: HTMLAnchorElement | null =
-    document.querySelector("#lots-toggle");
+  const toggle = document.querySelector<HTMLElement>("#lots-toggle");
   if (toggle) {
     toggle.hidden = false;
   }
@@ -222,16 +219,31 @@ async function setUpSite(): Promise<void> {
   setUpIcons();
   maybeDisableFullScreenIcon();
   setUpAbout();
-  setUpScorecardAccordionListener();
-
-  const initialCityId = extractCityIdFromUrl(window.location.href);
-  setUpDropdown(initialCityId, "atlanta-ga");
-
-  const parkingLotLoader = new ParkingLotLoader();
 
   const map = createMap();
-  const parkingLayer = await setUpParkingLotsLayer(map);
-  await setUpCitiesLayer(map, parkingLayer, parkingLotLoader);
+  const parkingLayer = createParkingLotsLayer(map);
+  const [cityBoundaries, cities] = createCitiesLayer(map);
+
+  const initialCityId = extractCityIdFromUrl(window.location.href);
+  const globalState = initGlobalState(initialCityId, "atlanta-ga");
+  const parkingLotLoader = new ParkingLotLoader();
+
+  setUpDropdown(globalState);
+  addScorecardSubscriber(globalState, cities);
+  addShareLinkSubscriber(globalState);
+  addSnapToCitySubscriber(globalState, map, cities);
+  addParkingLotLoadSubscriber(globalState, parkingLayer, parkingLotLoader);
+
+  setCityOnBoundaryClick(globalState, map, cityBoundaries);
+  setCityByMapPosition(
+    globalState,
+    map,
+    cities,
+    parkingLayer,
+    parkingLotLoader
+  );
+
+  globalState.initialize();
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.

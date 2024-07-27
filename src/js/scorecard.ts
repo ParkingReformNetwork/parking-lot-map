@@ -1,4 +1,5 @@
-import { ScoreCardDetails } from "./types";
+import { GlobalStateObservable } from "./GlobalState";
+import { ScoreCards, ScoreCardDetails } from "./types";
 import Observable from "./Observable";
 
 function generateScorecard(entry: ScoreCardDetails): string {
@@ -66,12 +67,6 @@ function generateScorecard(entry: ScoreCardDetails): string {
   return header + accordion;
 }
 
-function setScorecard(entry: ScoreCardDetails): void {
-  const scorecardContainer = document.querySelector(".scorecard-container");
-  if (!scorecardContainer) return;
-  scorecardContainer.innerHTML = generateScorecard(entry);
-}
-
 function updateScorecardAccordionUI(expanded: boolean): void {
   const toggle = document.querySelector(".scorecard-accordion-toggle");
   const content = document.querySelector<HTMLElement>(
@@ -87,10 +82,9 @@ function updateScorecardAccordionUI(expanded: boolean): void {
   downIcon.style.display = expanded ? "none" : "block";
 }
 
-function setUpScorecardAccordionListener(): void {
+function setUpScorecardAccordion(): void {
   const isExpanded = new Observable<boolean>(false);
   isExpanded.subscribe(updateScorecardAccordionUI);
-  isExpanded.initialize();
 
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.
@@ -104,6 +98,23 @@ function setUpScorecardAccordionListener(): void {
       isExpanded.setValue(!isExpanded.getValue());
     }
   });
+
+  isExpanded.initialize();
 }
 
-export { setScorecard, setUpScorecardAccordionListener };
+function addScorecardSubscriber(
+  globalState: GlobalStateObservable,
+  cities: ScoreCards
+): void {
+  globalState.subscribe(({ cityId }) => {
+    const scorecardContainer = document.querySelector(".scorecard-container");
+    if (!scorecardContainer) return;
+    scorecardContainer.innerHTML = generateScorecard(cities[cityId].details);
+  });
+
+  // Also set up the accordion UI. It doesn't depend on globalState, so only
+  // needs to run once.
+  setUpScorecardAccordion();
+}
+
+export default addScorecardSubscriber;
