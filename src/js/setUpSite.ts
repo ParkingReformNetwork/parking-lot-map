@@ -7,10 +7,9 @@ import {
   geoJSON,
   GeoJSON,
 } from "leaflet";
-import { Feature, GeoJsonProperties, Geometry } from "geojson";
 import "leaflet/dist/leaflet.css";
 
-import { CityId, ScoreCard, ScoreCards } from "./types";
+import { ScoreCard, ScoreCards } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import setUpIcons from "./fontAwesome";
 import maybeDisableFullScreenIcon from "./iframe";
@@ -21,14 +20,7 @@ import setUpDropdown, { DROPDOWN } from "./dropdown";
 
 import cityBoundaries from "~/data/city-boundaries.geojson";
 import scoreCardsDetails from "~/data/score-cards.json";
-
-interface ParkingLotModules {
-  [key: string]: () => Promise<Feature<Geometry>>;
-}
-
-const parkingLotsModules = import(
-  "~/data/parking-lots/*"
-) as unknown as ParkingLotModules;
+import ParkingLotLoader from "./ParkingLotLoader";
 
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
@@ -87,22 +79,6 @@ function createMap(): Map {
 }
 
 /**
- * Load city parking lots if not already loaded.
- */
-const loadParkingLot = async (
-  cityId: CityId,
-  parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
-): Promise<void> => {
-  const alreadyLoaded = parkingLayer
-    .getLayers()
-    .find((city: GeoJsonProperties) => city?.feature.properties.id === cityId);
-  if (!alreadyLoaded) {
-    parkingLayer.addData(await parkingLotsModules[`${cityId}.geojson`]());
-    parkingLayer.bringToBack(); // Ensures city boundary is on top")
-  }
-};
-
-/**
  * Centers view to city, but translated down to account for the top UI elements.
  */
 function snapToCity(map: Map, layer: ImageOverlay): void {
@@ -127,7 +103,8 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 const setUpAutoScorecard = async (
   map: Map,
   cities: ScoreCards,
-  parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
+  parkingLayer: GeoJSON,
+  parkingLotLoader: ParkingLotLoader
 ): Promise<void> => {
   map.on("moveend", async () => {
     let centralCityDistance: number | null = null;
@@ -138,7 +115,7 @@ const setUpAutoScorecard = async (
 
       if (bounds && map.getBounds().intersects(bounds)) {
         const diff = map.getBounds().getCenter().distanceTo(bounds.getCenter());
-        loadParkingLot(cityName, parkingLayer); // Load parking lot data on any city in view
+        parkingLotLoader.load(cityName, parkingLayer);
         if (centralCityDistance == null || diff < centralCityDistance) {
           centralCityDistance = diff;
           centralCity = cityName;
@@ -157,10 +134,11 @@ const setUpAutoScorecard = async (
  * Load the cities from GeoJson and set up an event listener to change cities when the user
  * toggles the city selection.
  */
-const setUpCitiesLayer = async (
+async function setUpCitiesLayer(
   map: Map,
-  parkingLayer: GeoJSON<GeoJsonProperties, Geometry>
-): Promise<void> => {
+  parkingLayer: GeoJSON,
+  parkingLotLoader: ParkingLotLoader
+): Promise<void> {
   const cities: ScoreCards = {};
   const allBoundaries = geoJSON(cityBoundaries, {
     style() {
@@ -206,19 +184,17 @@ const setUpCitiesLayer = async (
 
   // Load initial city.
   const cityId = cityToggleElement.value;
-  setUpAutoScorecard(map, cities, parkingLayer);
+  setUpAutoScorecard(map, cities, parkingLayer, parkingLotLoader);
   snapToCity(map, cities[cityId].layer);
   setScorecard(cities[cityId].details);
   updateIconsShareLink(cityId);
-};
+}
 
 /**
  * Creates a GeoJSON layer to hold all parking lot polygons.
  * Every cites' parking lots will be lazily added to this layer.
  */
-const setUpParkingLotsLayer = async (
-  map: Map
-): Promise<GeoJSON<GeoJsonProperties, Geometry>> => {
+async function setUpParkingLotsLayer(map: Map): Promise<GeoJSON> {
   const parkingLayer = geoJSON(undefined, {
     style() {
       return STYLES.parkingLots;
@@ -240,24 +216,26 @@ const setUpParkingLotsLayer = async (
     parkingLayer.addTo(map);
   });
   return parkingLayer;
-};
+}
 
-const setUpSite = async (): Promise<void> => {
+async function setUpSite(): Promise<void> {
   setUpIcons();
   maybeDisableFullScreenIcon();
+  setUpAbout();
+  setUpScorecardAccordionListener();
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
   setUpDropdown(initialCityId, "atlanta-ga");
-  setUpAbout();
+
+  const parkingLotLoader = new ParkingLotLoader();
 
   const map = createMap();
-  setUpScorecardAccordionListener();
   const parkingLayer = await setUpParkingLotsLayer(map);
-  await setUpCitiesLayer(map, parkingLayer);
+  await setUpCitiesLayer(map, parkingLayer, parkingLotLoader);
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
   map.invalidateSize();
-};
+}
 
 export default setUpSite;
