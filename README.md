@@ -2,7 +2,13 @@
 
 The code behind https://parkingreform.org/parking-lot-map/.
 
-The code is fairly simple and we do not use fancy frameworks like React or Svelte. The main files are `index.html`, `src/js/setUpSite.js`, and `data/*.geojson`. `setUpSite.js` will load the `.geojson` files to dynamically update `index.html` with all our data.
+The code is fairly simple. We do not use frameworks like React or Svelte to keep things simple. However, we do use these techniques:
+
+- TypeScript
+- Sass and the folder `src/css/theme`, which should stay aligned with https://github.com/ParkingReformNetwork/reform-map
+- Reactive state management - see [State diagram](#state-diagram)
+
+The main files are `index.html`, `src/js/main.ts`, `data/city-stats.json`, and `data/*.geojson`. `main.ts` will load the `.geojson` files to dynamically update `index.html` with all our data.
 
 # How tos
 
@@ -203,3 +209,32 @@ graph TD
     H -->|controls| E
     R -->|controls| G
 ```
+
+We use [reactive programming](https://en.wikipedia.org/wiki/Reactive_programming) to manage the application's state. This paradigm separates out state management from how the UI should render. Whenever the state is changed, the relevant UI elements will automatically update. For example:
+
+```typescript
+// Keep track of the value of a counter, starting at 0.
+const counterObservable = new Observable<number>(0);
+
+// Get existing DOM elements
+const counterDisplay = document.getElementById("counter-display")!;
+const incrementButton = document.getElementById("increment-button")!;
+
+// Whenever the count changes values, this will re-render the UI with the
+// updated value.
+counterObservable.subscribe((count) => {
+  counterDisplay.textContent = `Count: ${count}`;
+});
+
+// This binds the button to the counter so that when you click the button, the
+// counter increases its value by 1. The call to .setValue() will then cause
+// everything that has called `counterObservable.subscribe` to re-render.
+incrementButton.addEventListener("click", () => {
+  counterObservable.setValue(counterObservable.getValue() + 1);
+});
+
+// Initialize the UI
+counterObservable.initialize();
+```
+
+Look at `Observable.ts` and its usages for how we use the reactive paradigm.
