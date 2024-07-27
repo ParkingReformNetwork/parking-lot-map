@@ -1,23 +1,22 @@
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
+
 import scoreCardsData from "../../data/score-cards.json";
-import { CityId, ScoreCardDetails, DropdownChoice } from "./types";
+import { ScoreCardDetails, DropdownChoice } from "./types";
+import { CitySelectionObservable } from "./CitySelectionState";
 
-export const DROPDOWN = new Choices("#city-dropdown", {
-  allowHTML: false,
-  itemSelectText: "",
-  searchEnabled: true,
-  searchResultLimit: 6,
-  searchFields: ["customProperties.city", "customProperties.state"],
-  // Since cities are already alphabetical order in scorecard,
-  // disabling this option allows us to show PRN maps at the top.
-  shouldSort: false,
-});
+function createDropdown(): Choices {
+  const dropdown = new Choices("#city-dropdown", {
+    allowHTML: false,
+    itemSelectText: "",
+    searchEnabled: true,
+    searchResultLimit: 6,
+    searchFields: ["customProperties.city", "customProperties.state"],
+    // Since cities are already alphabetical order in scorecard,
+    // disabling this option allows us to show PRN maps at the top.
+    shouldSort: false,
+  });
 
-function setUpDropdown(
-  initialCityId: CityId | null,
-  fallBackCityId: CityId
-): void {
   const officialCities: DropdownChoice[] = [];
   const communityCities: DropdownChoice[] = [];
   Object.entries(scoreCardsData as Record<string, ScoreCardDetails>).forEach(
@@ -39,7 +38,7 @@ function setUpDropdown(
     }
   );
 
-  DROPDOWN.setChoices([
+  dropdown.setChoices([
     {
       value: "Official maps",
       label: "Official maps",
@@ -49,7 +48,7 @@ function setUpDropdown(
   ]);
 
   if (communityCities.length > 0) {
-    DROPDOWN.setChoices([
+    dropdown.setChoices([
       {
         value: "Community maps",
         label: "Community maps",
@@ -59,11 +58,20 @@ function setUpDropdown(
     ]);
   }
 
-  if (initialCityId && Object.keys(scoreCardsData).includes(initialCityId)) {
-    DROPDOWN.setChoiceByValue(initialCityId);
-  } else {
-    DROPDOWN.setChoiceByValue(fallBackCityId);
-  }
+  return dropdown;
+}
+
+function setUpDropdown(observable: CitySelectionObservable): void {
+  const dropdown = createDropdown();
+
+  observable.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
+
+  // Bind user-changes in the dropdown to update the state in CitySelectionObservable.
+  // Note that `change` only triggers for user-driven changes, not programmatic updates.
+  const selectElement = dropdown.passedElement.element as HTMLSelectElement;
+  selectElement.addEventListener("change", () => {
+    observable.setValue({ cityId: selectElement.value, shouldSnapMap: true });
+  });
 }
 
 export default setUpDropdown;

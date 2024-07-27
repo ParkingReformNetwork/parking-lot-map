@@ -1,6 +1,6 @@
 /* global document, navigator, window */
-import { CityId } from "./types";
 import { determineShareUrl } from "./cityId";
+import { CitySelectionObservable } from "./CitySelectionState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
@@ -24,27 +24,23 @@ function switchShareIcons(shareIcon: HTMLAnchorElement): void {
   }, 1000);
 }
 
-/** Set up the share icon & full screen icons to use the cityId.
- *
- * This function should be called anytime the cityId changes.
- */
-function updateIconsShareLink(cityId: CityId): void {
-  const shareUrl = determineShareUrl(window.location.href, cityId);
+export default function addShareLinkSubscriber(
+  observable: CitySelectionObservable
+): void {
+  observable.subscribe(({ cityId }) => {
+    const shareIcon = document.querySelector<HTMLAnchorElement>(
+      ".header-share-icon-container"
+    );
+    const fullScreenIcon = document.querySelector<HTMLAnchorElement>(
+      ".header-full-screen-icon-container"
+    );
+    if (!shareIcon || !fullScreenIcon) return;
 
-  const shareIconContainer = document.querySelector<HTMLAnchorElement>(
-    ".header-share-icon-container"
-  );
-  if (!shareIconContainer) return;
-  shareIconContainer.addEventListener("click", async () => {
-    await copyToClipboard(shareUrl);
-    switchShareIcons(shareIconContainer);
+    const shareUrl = determineShareUrl(window.location.href, cityId);
+    shareIcon.addEventListener("click", async () => {
+      await copyToClipboard(shareUrl);
+      switchShareIcons(shareIcon);
+    });
+    fullScreenIcon.href = shareUrl;
   });
-
-  const fullScreenIconContainer = document.querySelector<HTMLAnchorElement>(
-    ".header-full-screen-icon-container"
-  );
-  if (!fullScreenIconContainer) return;
-  fullScreenIconContainer.href = shareUrl;
 }
-
-export default updateIconsShareLink;

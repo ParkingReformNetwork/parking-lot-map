@@ -11,7 +11,6 @@ function updateAboutPopupUI(visible: boolean): void {
 function setUpAbout(): void {
   const isVisible = new Observable<boolean>(false);
   isVisible.subscribe(updateAboutPopupUI);
-  isVisible.initialize();
 
   const popup = document.querySelector(".about-popup");
   const headerIcon = document.querySelector(".header-about-icon-container");
@@ -33,6 +32,8 @@ function setUpAbout(): void {
       isVisible.setValue(false);
     }
   });
+
+  isVisible.initialize();
 }
 
 export default setUpAbout;
