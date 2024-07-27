@@ -90,7 +90,7 @@ function updateScorecardAccordionUI(expanded: boolean): void {
 function setUpScorecardAccordionListener(): void {
   const isExpanded = new Observable<boolean>(false);
   isExpanded.subscribe(updateScorecardAccordionUI);
-  updateScorecardAccordionUI(isExpanded.getValue());
+  isExpanded.initialize();
 
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.

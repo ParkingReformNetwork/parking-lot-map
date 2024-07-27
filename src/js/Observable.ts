@@ -10,6 +10,8 @@ class Observable<T> {
 
   private subscribers: ((value: T) => void)[] = [];
 
+  private isInitialized: boolean = false;
+
   constructor(initialValue: T) {
     this.value = initialValue;
   }
@@ -24,7 +26,18 @@ class Observable<T> {
   }
 
   subscribe(callback: (value: T) => void): void {
+    if (this.isInitialized) {
+      throw new Error("Cannot add subscribers after initialization");
+    }
     this.subscribers.push(callback);
+  }
+
+  initialize(): void {
+    if (this.isInitialized) {
+      throw new Error("Observable is already initialized");
+    }
+    this.isInitialized = true;
+    this.notify();
   }
 
   private notify(): void {
