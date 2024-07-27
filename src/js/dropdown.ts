@@ -66,9 +66,10 @@ function setUpDropdown(observable: CitySelectionObservable): void {
 
   observable.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
 
+  // Bind user-changes in the dropdown to update the state in CitySelectionObservable.
+  // Note that `change` only triggers for user-driven changes, not programmatic updates.
   const selectElement = dropdown.passedElement.element as HTMLSelectElement;
   selectElement.addEventListener("change", () => {
-    // Note that `change` only triggers for user-driven changes, not programmatic changes.
     observable.setValue({ cityId: selectElement.value, shouldSnapMap: true });
   });
 }

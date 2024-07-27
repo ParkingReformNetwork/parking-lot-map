@@ -102,7 +102,7 @@ function setUpScorecardAccordion(): void {
   isExpanded.initialize();
 }
 
-function addScorecardSubscriber(
+export default function addScorecardSubscriber(
   observable: CitySelectionObservable,
   cities: ScoreCards
 ): void {
@@ -116,5 +116,3 @@ function addScorecardSubscriber(
   // needs to run once.
   setUpScorecardAccordion();
 }
-
-export default addScorecardSubscriber;

@@ -24,7 +24,9 @@ function switchShareIcons(shareIcon: HTMLAnchorElement): void {
   }, 1000);
 }
 
-function addShareLinkSubscriber(observable: CitySelectionObservable): void {
+export default function addShareLinkSubscriber(
+  observable: CitySelectionObservable
+): void {
   observable.subscribe(({ cityId }) => {
     const shareIcon = document.querySelector<HTMLAnchorElement>(
       ".header-share-icon-container"
@@ -42,5 +44,3 @@ function addShareLinkSubscriber(observable: CitySelectionObservable): void {
     fullScreenIcon.href = shareUrl;
   });
 }
-
-export default addShareLinkSubscriber;
