@@ -128,26 +128,18 @@ export default async function setUpSite(): Promise<void> {
   const parkingLotLoader = new ParkingLotLoader(map);
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  const citySelectionObservable = initCitySelectionState(
-    initialCityId,
-    "atlanta-ga",
-  );
+  const cityState = initCitySelectionState(initialCityId, "atlanta-ga");
 
-  initDropdown(citySelectionObservable);
-  subscribeScorecard(citySelectionObservable, cityEntries);
-  subscribeShareLink(citySelectionObservable);
-  subscribeSnapToCity(citySelectionObservable, map, cityEntries);
-  parkingLotLoader.subscribe(citySelectionObservable);
+  initDropdown(cityState);
+  subscribeScorecard(cityState, cityEntries);
+  subscribeShareLink(cityState);
+  subscribeSnapToCity(cityState, map, cityEntries);
+  parkingLotLoader.subscribe(cityState);
 
-  setCityOnBoundaryClick(citySelectionObservable, map, cityBoundaries);
-  setCityByMapPosition(
-    citySelectionObservable,
-    map,
-    cityEntries,
-    parkingLotLoader,
-  );
+  setCityOnBoundaryClick(cityState, map, cityBoundaries);
+  setCityByMapPosition(cityState, map, cityEntries, parkingLotLoader);
 
-  citySelectionObservable.initialize();
+  cityState.initialize();
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.
