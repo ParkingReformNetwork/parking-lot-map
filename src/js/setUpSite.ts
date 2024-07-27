@@ -181,8 +181,9 @@ const setUpCitiesLayer = async (
   allBoundaries.addTo(map);
 
   // Set up map to update when city selection changes.
-  const cityToggleElement = document.getElementById("city-dropdown");
-  if (!(cityToggleElement instanceof HTMLSelectElement)) return;
+  const cityToggleElement =
+    document.querySelector<HTMLSelectElement>("#city-dropdown");
+  if (!cityToggleElement) return;
   cityToggleElement.addEventListener("change", async () => {
     const cityId = cityToggleElement.value;
     const { layer } = cities[cityId];

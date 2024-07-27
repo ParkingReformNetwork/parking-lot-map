@@ -15,10 +15,10 @@ const isIFrame = (): boolean => {
  */
 const maybeDisableFullScreenIcon = (): void => {
   if (isIFrame()) return;
-  const iconContainer = document.querySelector(
+  const iconContainer = document.querySelector<HTMLAnchorElement>(
     ".header-full-screen-icon-container"
   );
-  if (!(iconContainer instanceof HTMLAnchorElement)) return;
+  if (!iconContainer) return;
   iconContainer.style.display = "none";
 };
 

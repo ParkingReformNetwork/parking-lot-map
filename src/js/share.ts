@@ -12,10 +12,9 @@ const copyToClipboard = async (value: string): Promise<void> => {
 };
 
 const switchShareIcons = (shareIcon: HTMLAnchorElement): void => {
-  const linkIcon = shareIcon.querySelector("svg.share-link-icon");
-  const checkIcon = shareIcon.querySelector("svg.share-check-icon");
-  if (!(linkIcon instanceof SVGElement) || !(checkIcon instanceof SVGElement))
-    return;
+  const linkIcon = shareIcon.querySelector<SVGElement>("svg.share-link-icon");
+  const checkIcon = shareIcon.querySelector<SVGElement>("svg.share-check-icon");
+  if (!linkIcon || !checkIcon) return;
 
   linkIcon.style.display = "none";
   checkIcon.style.display = "inline-block";
@@ -32,19 +31,19 @@ const switchShareIcons = (shareIcon: HTMLAnchorElement): void => {
 const updateIconsShareLink = (cityId: CityId): void => {
   const shareUrl = determineShareUrl(window.location.href, cityId);
 
-  const shareIconContainer = document.querySelector(
+  const shareIconContainer = document.querySelector<HTMLAnchorElement>(
     ".header-share-icon-container"
   );
-  if (!(shareIconContainer instanceof HTMLAnchorElement)) return;
+  if (!shareIconContainer) return;
   shareIconContainer.addEventListener("click", async () => {
     await copyToClipboard(shareUrl);
     switchShareIcons(shareIconContainer);
   });
 
-  const fullScreenIconContainer = document.querySelector(
+  const fullScreenIconContainer = document.querySelector<HTMLAnchorElement>(
     ".header-full-screen-icon-container"
   );
-  if (!(fullScreenIconContainer instanceof HTMLAnchorElement)) return;
+  if (!fullScreenIconContainer) return;
   fullScreenIconContainer.href = shareUrl;
 };
 

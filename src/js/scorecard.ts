@@ -75,35 +75,33 @@ const setUpScorecardAccordionListener = () => {
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.
   // This is called "event delegation".
-  const scorecardContainer = document.querySelector("#scorecard-container");
-  if (!(scorecardContainer instanceof Element)) return;
-  scorecardContainer.addEventListener("click", async (event) => {
+  const scorecardContainer = document.querySelector<HTMLElement>(
+    "#scorecard-container"
+  );
+  scorecardContainer?.addEventListener("click", async (event) => {
     const clicked = event.target;
     if (!(clicked instanceof Element)) return;
-    const accordionToggle = clicked.closest(".scorecard-accordion-toggle");
-    if (!(accordionToggle instanceof HTMLButtonElement)) return;
-    const accordionContent = document.querySelector(
+    const accordionToggle = clicked.closest<HTMLButtonElement>(
+      ".scorecard-accordion-toggle"
+    );
+    if (!accordionToggle) return;
+
+    const accordionContent = document.querySelector<HTMLElement>(
       "#scorecard-accordion-content"
     );
-    if (!(accordionContent instanceof HTMLElement)) return;
-    const upIcon = accordionToggle.querySelector(".fa-chevron-up");
-    const downIcon = accordionToggle.querySelector(".fa-chevron-down");
-    if (!(upIcon instanceof SVGElement) || !(downIcon instanceof SVGElement))
-      return;
+    const upIcon = accordionToggle.querySelector<SVGElement>(".fa-chevron-up");
+    const downIcon =
+      accordionToggle.querySelector<SVGElement>(".fa-chevron-down");
+    if (!accordionContent || !upIcon || !downIcon) return;
 
     const currentlyExpanded =
       accordionToggle.getAttribute("aria-expanded") === "true";
-    if (currentlyExpanded) {
-      accordionToggle.setAttribute("aria-expanded", "false");
-      accordionContent.hidden = true;
-      upIcon.style.display = "none";
-      downIcon.style.display = "block";
-    } else {
-      accordionToggle.setAttribute("aria-expanded", "true");
-      accordionContent.hidden = false;
-      upIcon.style.display = "block";
-      downIcon.style.display = "none";
-    }
+    const newState = !currentlyExpanded;
+
+    accordionToggle.setAttribute("aria-expanded", newState.toString());
+    accordionContent.hidden = !newState;
+    upIcon.style.display = newState ? "block" : "none";
+    downIcon.style.display = newState ? "none" : "block";
   });
 };
 

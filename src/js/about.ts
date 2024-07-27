@@ -4,17 +4,14 @@
  * Set up event listeners to open and close the about popup.
  */
 const setUpAbout = () => {
-  const aboutPopup = document.querySelector(".about-popup");
-  const aboutHeaderIcon = document.querySelector(
+  const aboutPopup = document.querySelector<HTMLElement>(".about-popup");
+  const aboutHeaderIcon = document.querySelector<HTMLElement>(
     ".header-about-icon-container"
   );
-  const closeIcon = document.querySelector(".about-popup-close-icon-container");
-  if (
-    !(aboutPopup instanceof HTMLElement) ||
-    !(aboutHeaderIcon instanceof HTMLElement) ||
-    !(closeIcon instanceof HTMLElement)
-  )
-    return;
+  const closeIcon = document.querySelector<HTMLElement>(
+    ".about-popup-close-icon-container"
+  );
+  if (!aboutPopup || !aboutHeaderIcon || !closeIcon) return;
 
   const closePopup = () => {
     aboutPopup.hidden = true;
