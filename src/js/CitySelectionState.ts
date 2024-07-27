@@ -12,7 +12,7 @@ type CitySelectionObservable = Observable<CitySelectionState>;
 
 function initCitySelectionState(
   initialCityId: CityId | null,
-  fallBackCityId: CityId
+  fallBackCityId: CityId,
 ): CitySelectionObservable {
   const startingCity =
     initialCityId && Object.keys(scoreCardsData).includes(initialCityId)

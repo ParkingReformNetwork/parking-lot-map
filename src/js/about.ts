@@ -17,7 +17,7 @@ function setUpAbout(): void {
   const closeIcon = document.querySelector(".about-popup-close-icon-container");
 
   headerIcon?.addEventListener("click", () =>
-    isVisible.setValue(!isVisible.getValue())
+    isVisible.setValue(!isVisible.getValue()),
   );
   closeIcon?.addEventListener("click", () => isVisible.setValue(false));
 

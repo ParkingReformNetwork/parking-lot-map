@@ -9,7 +9,7 @@ const main = async (): Promise<void> => {
       cityId,
       false,
       "parking-lots-update.geojson",
-      `data/parking-lots/${cityId}.geojson`
+      `data/parking-lots/${cityId}.geojson`,
     )
   ).unwrap();
 
@@ -17,7 +17,7 @@ const main = async (): Promise<void> => {
   console.log(
     `${value} Now, run 'npm run fmt'. Then, 'npm start' and
       see if the site is what you expect.
-    `
+    `,
   );
 };
 

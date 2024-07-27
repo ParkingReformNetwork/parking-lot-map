@@ -5,7 +5,7 @@ const assertSortedGeojson = async (filePath: string) => {
   const rawData = await fs.readFile(filePath, "utf8");
   const data = JSON.parse(rawData);
   const sortedFeatures = [...data.features].sort((a, b) =>
-    a.properties.id.localeCompare(b.properties.id)
+    a.properties.id.localeCompare(b.properties.id),
   );
   expect(data.features).toEqual(sortedFeatures);
 };

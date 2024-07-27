@@ -23,7 +23,7 @@ test("every city is in the toggle", async ({ page }) => {
   await page.waitForSelector(".choices");
 
   const toggleValues = await page.$$eval(".choices__item--choice", (elements) =>
-    Array.from(elements.map((opt) => opt.textContent?.trim()))
+    Array.from(elements.map((opt) => opt.textContent?.trim())),
   );
 
   toggleValues.sort();
@@ -66,12 +66,12 @@ test("correctly load the city score card", async ({ page }) => {
 
     const lines = Array.from(
       document.querySelectorAll(
-        ".scorecard-container p, .scorecard-container li"
-      )
+        ".scorecard-container p, .scorecard-container li",
+      ),
     )
       .filter(
         (el) =>
-          el instanceof HTMLParagraphElement || el instanceof HTMLLIElement
+          el instanceof HTMLParagraphElement || el instanceof HTMLLIElement,
       )
       .map((p) => p.textContent?.trim() || "");
     return [lines, cityToggleValue2];
@@ -101,7 +101,7 @@ test.describe("the share feature", () => {
 
     await page.click(".header-share-icon-container");
     const firstCityClipboardText = await page.evaluate(() =>
-      navigator.clipboard.readText()
+      navigator.clipboard.readText(),
     );
     expect(firstCityClipboardText).toContain("/#parking-reform-map=atlanta-ga");
 
@@ -120,10 +120,10 @@ test.describe("the share feature", () => {
 
     await page.click(".header-share-icon-container");
     const secondCityClipboardText = await page.evaluate(() =>
-      navigator.clipboard.readText()
+      navigator.clipboard.readText(),
     );
     expect(secondCityClipboardText).toContain(
-      "/#parking-reform-map=anchorage-ak"
+      "/#parking-reform-map=anchorage-ak",
     );
 
     // Also ensure the full-screen icon link is updated.

@@ -19,7 +19,7 @@ test.describe("determineArgs()", () => {
   [[], ["My City", "--bad"], ["My City", "AZ"]].forEach((args, index) => {
     test(`${index}) requires exactly 1 argument`, () => {
       expect(() => determineArgs("my-script", args).unwrap()).toThrow(
-        /exactly one argument/
+        /exactly one argument/,
       );
     });
   });
@@ -49,7 +49,7 @@ test.describe("updateCoordinates()", () => {
       cityId,
       false,
       originalFilePath,
-      updateFilePath
+      updateFilePath,
     );
     expect(result.ok).toBe(true);
 
@@ -61,7 +61,7 @@ test.describe("updateCoordinates()", () => {
     const resultData: FeatureCollection<Polygon> = JSON.parse(rawResultData);
 
     const cityTargetData = resultData.features.find(
-      (feature) => feature?.properties?.id === cityId
+      (feature) => feature?.properties?.id === cityId,
     );
     expect(cityTargetData?.geometry.coordinates).toEqual(updatedCoordinates);
   });
@@ -75,7 +75,7 @@ test.describe("updateCoordinates()", () => {
       cityId,
       true,
       originalFilePath,
-      updateFilePath
+      updateFilePath,
     );
     expect(result.ok).toBe(true);
 
@@ -87,12 +87,12 @@ test.describe("updateCoordinates()", () => {
     const resultData = JSON.parse(rawResultData);
 
     const resultCityIds = resultData.features.map(
-      (feature: Feature<Polygon>) => feature.properties?.id
+      (feature: Feature<Polygon>) => feature.properties?.id,
     );
     expect(resultCityIds).toEqual(["honolulu-hi", cityId, "shoup-ville-az"]);
 
     const cityTargetData = resultData.features.find(
-      (feature: Feature<Polygon>) => feature.properties?.id === cityId
+      (feature: Feature<Polygon>) => feature.properties?.id === cityId,
     );
     expect(cityTargetData.properties).toEqual({
       id: cityId,
@@ -107,7 +107,7 @@ test.describe("updateCoordinates()", () => {
       "bad-city",
       false,
       originalFilePath,
-      validUpdateFilePath
+      validUpdateFilePath,
     );
     expect(() => result.unwrap()).toThrow(/To add a new city,/);
   });
@@ -118,10 +118,10 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "tests/scripts/data/too-many-updates.geojson"
+      "tests/scripts/data/too-many-updates.geojson",
     );
     expect(() => result.unwrap()).toThrow(
-      /expects exactly one entry in `features`/
+      /expects exactly one entry in `features`/,
     );
 
     result = await updateCoordinates(
@@ -129,10 +129,10 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "tests/scripts/data/empty-update.geojson"
+      "tests/scripts/data/empty-update.geojson",
     );
     expect(() => result.unwrap()).toThrow(
-      /expects exactly one entry in `features`/
+      /expects exactly one entry in `features`/,
     );
   });
 
@@ -142,10 +142,10 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "tests/scripts/data/does-not-exist"
+      "tests/scripts/data/does-not-exist",
     );
     expect(() => result.unwrap()).toThrow(
-      /tests\/scripts\/data\/does-not-exist/
+      /tests\/scripts\/data\/does-not-exist/,
     );
   });
 
@@ -155,10 +155,10 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       "tests/scripts/data/does-not-exist",
-      validUpdateFilePath
+      validUpdateFilePath,
     );
     expect(() => result.unwrap()).toThrow(
-      /tests\/scripts\/data\/does-not-exist/
+      /tests\/scripts\/data\/does-not-exist/,
     );
   });
 });
@@ -190,7 +190,7 @@ test.describe("updateParkingLots()", () => {
     });
     expect(updatedData.geometry.type).toEqual("MultiPolygon");
     expect(parsedOriginalData.features[0].geometry.coordinates).toEqual(
-      updatedCoordinates
+      updatedCoordinates,
     );
   };
 
@@ -200,7 +200,7 @@ test.describe("updateParkingLots()", () => {
       cityId,
       true,
       parkingLotData,
-      addDataPath
+      addDataPath,
     );
     expect(result.ok).toBe(true);
 
@@ -218,7 +218,7 @@ test.describe("updateParkingLots()", () => {
       cityId,
       true,
       parkingLotData,
-      existingDataPath
+      existingDataPath,
     );
     expect(result.ok).toBe(true);
 
