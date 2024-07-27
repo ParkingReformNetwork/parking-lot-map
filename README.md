@@ -4,9 +4,9 @@ The code behind https://parkingreform.org/parking-lot-map/.
 
 The code is fairly simple. We do not use frameworks like React or Svelte to keep things simple. However, we do use these techniques:
 
-* TypeScript
-* Sass and the folder `src/css/theme`, which should stay aligned with https://github.com/ParkingReformNetwork/reform-map
-* Reactive state management - see [State diagram](#state-diagram)
+- TypeScript
+- Sass and the folder `src/css/theme`, which should stay aligned with https://github.com/ParkingReformNetwork/reform-map
+- Reactive state management - see [State diagram](#state-diagram)
 
 The main files are `index.html`, `src/js/main.ts`, `data/city-stats.json`, and `data/*.geojson`. `main.ts` will load the `.geojson` files to dynamically update `index.html` with all our data.
 
@@ -217,8 +217,8 @@ We use [reactive programming](https://en.wikipedia.org/wiki/Reactive_programming
 const counterObservable = new Observable<number>(0);
 
 // Get existing DOM elements
-const counterDisplay = document.getElementById('counter-display')!;
-const incrementButton = document.getElementById('increment-button')!;
+const counterDisplay = document.getElementById("counter-display")!;
+const incrementButton = document.getElementById("increment-button")!;
 
 // Whenever the count changes values, this will re-render the UI with the
 // updated value.
@@ -229,7 +229,7 @@ counterObservable.subscribe((count) => {
 // This binds the button to the counter so that when you click the button, the
 // counter increases its value by 1. The call to .setValue() will then cause
 // everything that has called `counterObservable.subscribe` to re-render.
-incrementButton.addEventListener('click', () => {
+incrementButton.addEventListener("click", () => {
   counterObservable.setValue(counterObservable.getValue() + 1);
 });
 
