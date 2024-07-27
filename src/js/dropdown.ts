@@ -7,6 +7,7 @@ import { CitySelectionObservable } from "./CitySelectionState";
 
 function createDropdown(): Choices {
   const dropdown = new Choices("#city-dropdown", {
+    position: "bottom",
     allowHTML: false,
     itemSelectText: "",
     searchEnabled: true,
