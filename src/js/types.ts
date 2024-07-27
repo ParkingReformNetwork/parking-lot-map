@@ -1,4 +1,3 @@
-import { Feature, Geometry } from "geojson";
 import { ImageOverlay } from "leaflet";
 
 export type CityId = string; // e.g. `st.-louis-mo`
@@ -23,10 +22,6 @@ export interface ScoreCard {
 }
 
 export type ScoreCards = Record<CityId, ScoreCard>;
-
-export interface ParkingLotModules {
-  [key: string]: () => Promise<Feature<Geometry>>;
-}
 
 export interface DropdownChoice {
   value: string;
