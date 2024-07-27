@@ -3,10 +3,11 @@ import { CityId } from "./types";
 /**
  * Extract the city ID from the URL's `#`, if present.
  */
-const extractCityIdFromUrl = (windowUrl: string): string | null =>
-  windowUrl.indexOf("#parking-reform-map=") === -1
+function extractCityIdFromUrl(windowUrl: string): string | null {
+  return windowUrl.indexOf("#parking-reform-map=") === -1
     ? null
     : windowUrl.split("#")[1].split("=")[1].toLowerCase();
+}
 
 /**
  * Parse the geojson's `Name` property into the city ID.
@@ -14,8 +15,9 @@ const extractCityIdFromUrl = (windowUrl: string): string | null =>
  * @param jsonCityName: the `Name` property from JSON, e.g. `"My City, AZ"`
  * @return: the city ID, e.g. `st.-louis-mo`.
  */
-const parseCityIdFromJson = (jsonCityName: string): string =>
-  jsonCityName.toLowerCase().replace(/ /g, "-").replace(/,/g, "");
+function parseCityIdFromJson(jsonCityName: string): string {
+  return jsonCityName.toLowerCase().replace(/ /g, "-").replace(/,/g, "");
+}
 
 /**
  * Determine what URL to use to share the current city.
@@ -24,9 +26,9 @@ const parseCityIdFromJson = (jsonCityName: string): string =>
  * @param cityId: e.g. `st.-louis-mo`
  * @return: the URL to share
  */
-const determineShareUrl = (windowUrl: string, cityId: CityId): string => {
+function determineShareUrl(windowUrl: string, cityId: CityId): string {
   const [baseUrl] = windowUrl.split("#");
   return `${baseUrl}#parking-reform-map=${cityId}`;
-};
+}
 
 export { determineShareUrl, extractCityIdFromUrl, parseCityIdFromJson };

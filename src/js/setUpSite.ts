@@ -73,7 +73,7 @@ const STYLES = {
  *
  * This sets up Google Maps vs. High contrast, attribution, and zoom.
  */
-const createMap = (): Map => {
+function createMap(): Map {
   const map = new Map("map", {
     layers: [BASE_LAYERS["High contrast"]],
   });
@@ -84,7 +84,7 @@ const createMap = (): Map => {
   new Control.Layers(BASE_LAYERS).addTo(map);
   map.createPane("fixed", document.getElementById("map") || undefined);
   return map;
-};
+}
 
 /**
  * Load city parking lots if not already loaded.
@@ -105,7 +105,7 @@ const loadParkingLot = async (
 /**
  * Centers view to city, but translated down to account for the top UI elements.
  */
-const snapToCity = (map: Map, layer: ImageOverlay): void => {
+function snapToCity(map: Map, layer: ImageOverlay): void {
   const bounds = layer.getBounds();
   // This moves the map and resets zoom.
   map.fitBounds(bounds);
@@ -114,7 +114,7 @@ const snapToCity = (map: Map, layer: ImageOverlay): void => {
   const translatedCenterPoint = centerPoint.add([0, translateYPx]);
   const translatedCenter = map.containerPointToLatLng(translatedCenterPoint);
   map.setView(translatedCenter);
-};
+}
 
 /**
  * Pulls up scorecard for the city closest to the center of view.

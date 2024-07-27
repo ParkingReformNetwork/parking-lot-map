@@ -1,6 +1,6 @@
 import { ScoreCardDetails } from "./types";
 
-const generateScorecard = (entry: ScoreCardDetails): string => {
+function generateScorecard(entry: ScoreCardDetails): string {
   let header = `
       <h1 class="scorecard-title">Parking lots in ${entry.name}</h1>
       <p>${entry.percentage} of the central city is off-street parking</p>
@@ -63,15 +63,15 @@ const generateScorecard = (entry: ScoreCardDetails): string => {
   `;
 
   return header + accordion;
-};
+}
 
-const setScorecard = (entry: ScoreCardDetails): void => {
+function setScorecard(entry: ScoreCardDetails): void {
   const scorecardContainer = document.querySelector(".scorecard-container");
   if (!scorecardContainer) return;
   scorecardContainer.innerHTML = generateScorecard(entry);
-};
+}
 
-const setUpScorecardAccordionListener = () => {
+function setUpScorecardAccordionListener() {
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.
   // This is called "event delegation".
@@ -103,6 +103,6 @@ const setUpScorecardAccordionListener = () => {
     upIcon.style.display = newState ? "block" : "none";
     downIcon.style.display = newState ? "none" : "block";
   });
-};
+}
 
 export { setScorecard, setUpScorecardAccordionListener };

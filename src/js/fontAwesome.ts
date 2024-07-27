@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
-const setUpIcons = (): void => {
+function setUpIcons(): void {
   library.add(
     faArrowRight,
     faChevronDown,
@@ -27,6 +27,6 @@ const setUpIcons = (): void => {
     faTriangleExclamation
   );
   dom.watch();
-};
+}
 
 export default setUpIcons;

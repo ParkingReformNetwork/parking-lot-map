@@ -14,10 +14,10 @@ export const DROPDOWN = new Choices("#city-dropdown", {
   shouldSort: false,
 });
 
-const setUpDropdown = (
+function setUpDropdown(
   initialCityId: CityId | null,
   fallBackCityId: CityId
-) => {
+): void {
   const officialCities: DropdownChoice[] = [];
   const communityCities: DropdownChoice[] = [];
   Object.entries(scoreCardsData as Record<string, ScoreCardDetails>).forEach(
@@ -64,6 +64,6 @@ const setUpDropdown = (
   } else {
     DROPDOWN.setChoiceByValue(fallBackCityId);
   }
-};
+}
 
 export default setUpDropdown;
