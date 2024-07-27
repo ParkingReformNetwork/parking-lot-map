@@ -1,8 +1,8 @@
 import Choices from "choices.js";
 import "choices.js/public/assets/styles/choices.css";
 
-import scoreCardsData from "../../data/score-cards.json";
-import { ScoreCardDetails, DropdownChoice } from "./types";
+import cityStatsData from "../../data/city-stats.json";
+import { CityStatsCollection, DropdownChoice } from "./types";
 import { CitySelectionObservable } from "./CitySelectionState";
 
 function createDropdown(): Choices {
@@ -19,7 +19,7 @@ function createDropdown(): Choices {
 
   const officialCities: DropdownChoice[] = [];
   const communityCities: DropdownChoice[] = [];
-  Object.entries(scoreCardsData as Record<string, ScoreCardDetails>).forEach(
+  Object.entries(cityStatsData as CityStatsCollection).forEach(
     ([id, { name, contribution }]) => {
       const [city, state] = name.split(", ");
       const entry: DropdownChoice = {

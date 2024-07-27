@@ -2,7 +2,7 @@ import { ImageOverlay } from "leaflet";
 
 export type CityId = string; // e.g. `st.-louis-mo`
 
-export interface ScoreCardDetails {
+export interface CityStats {
   name: string;
   percentage: string;
   cityType: string;
@@ -14,14 +14,14 @@ export interface ScoreCardDetails {
   contribution?: string;
 }
 
-export type ScoreCardsDetails = Record<CityId, ScoreCardDetails>;
+export type CityStatsCollection = Record<CityId, CityStats>;
 
-export interface ScoreCard {
-  details: ScoreCardDetails;
+export interface CityEntry {
+  stats: CityStats;
   layer: ImageOverlay;
 }
 
-export type ScoreCards = Record<CityId, ScoreCard>;
+export type CityEntryCollection = Record<CityId, CityEntry>;
 
 export interface DropdownChoice {
   value: string;

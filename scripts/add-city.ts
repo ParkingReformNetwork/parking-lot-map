@@ -19,7 +19,7 @@ const addScoreCard = async (
     url: "FILL ME IN. If not relevant, remove the quotes and set to null",
   };
 
-  const originalFilePath = "data/score-cards.json";
+  const originalFilePath = "data/city-stats.json";
   let originalData: Record<string, Record<string, string>>;
   try {
     const rawOriginalData = await fs.readFile(originalFilePath, "utf8");
@@ -71,7 +71,7 @@ const main = async () => {
 
   /* eslint-disable-next-line no-console */
   console.log(
-    `Almost done! Now, fill in the score card values in data/score-cards.json. Then,
+    `Almost done! Now, fill in the score card values in data/city-stats.json. Then,
     run 'npm run fmt'. Then, 'npm start' and see if the site is what you expect.
     `,
   );

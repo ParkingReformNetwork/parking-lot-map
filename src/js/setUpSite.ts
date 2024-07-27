@@ -1,7 +1,7 @@
 import { ImageOverlay, Map, geoJSON, GeoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-import { ScoreCard, ScoreCards } from "./types";
+import { CityEntry, CityEntryCollection } from "./types";
 import { extractCityIdFromUrl } from "./cityId";
 import initIcons from "./fontAwesome";
 import maybeDisableFullScreenIcon from "./iframe";
@@ -17,7 +17,7 @@ import {
 } from "./CitySelectionState";
 
 import cityBoundariesGeojson from "~/data/city-boundaries.geojson";
-import scoreCardsDetails from "~/data/score-cards.json";
+import cityStatsData from "~/data/city-stats.json";
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
@@ -36,11 +36,11 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 function subscribeSnapToCity(
   observable: CitySelectionObservable,
   map: Map,
-  cities: ScoreCards,
+  cityEntries: CityEntryCollection,
 ): void {
   observable.subscribe((state) => {
     if (!state.shouldSnapMap) return;
-    snapToCity(map, cities[state.cityId].layer);
+    snapToCity(map, cityEntries[state.cityId].layer);
   });
 }
 
@@ -52,13 +52,13 @@ function subscribeSnapToCity(
 function setCityByMapPosition(
   observable: CitySelectionObservable,
   map: Map,
-  cities: ScoreCards,
+  cityEntries: CityEntryCollection,
   parkingLotLoader: ParkingLotLoader,
 ): void {
   map.on("moveend", () => {
     let centralCityDistance: number | null = null;
     let centralCity;
-    Object.entries(cities).forEach(([cityId, scorecard]) => {
+    Object.entries(cityEntries).forEach(([cityId, scorecard]) => {
       const bounds = scorecard.layer.getBounds();
       if (!map.getBounds().intersects(bounds)) return;
       parkingLotLoader.load(cityId);
@@ -81,26 +81,26 @@ function setCityByMapPosition(
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
  */
-function createCitiesLayer(map: Map): [GeoJSON, ScoreCards] {
-  const cities: ScoreCards = {};
-  const allBoundaries = geoJSON(cityBoundariesGeojson, {
+function createCitiesLayer(map: Map): [GeoJSON, CityEntryCollection] {
+  const cityEntries: CityEntryCollection = {};
+  const boundaries = geoJSON(cityBoundariesGeojson, {
     style() {
       return STYLES.cities;
     },
     onEachFeature(feature, layer: ImageOverlay) {
       const cityId = feature.properties.id;
-      cities[cityId] = {
+      cityEntries[cityId] = {
         layer,
-        details: scoreCardsDetails[cityId],
-      } as ScoreCard;
+        stats: cityStatsData[cityId],
+      } as CityEntry;
       layer.on("add", () => {
         layer.getElement()?.setAttribute("id", cityId);
       });
     },
   });
 
-  allBoundaries.addTo(map);
-  return [allBoundaries, cities];
+  boundaries.addTo(map);
+  return [boundaries, cityEntries];
 }
 
 function setCityOnBoundaryClick(
@@ -123,26 +123,23 @@ export default async function setUpSite(): Promise<void> {
   initAbout();
 
   const map = createMap();
-  const [cityBoundaries, cities] = createCitiesLayer(map);
+  const [cityBoundaries, cityEntries] = createCitiesLayer(map);
 
   const parkingLotLoader = new ParkingLotLoader(map);
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  const citySelectionObservable = initCitySelectionState(
-    initialCityId,
-    "atlanta-ga",
-  );
+  const cityState = initCitySelectionState(initialCityId, "atlanta-ga");
 
-  initDropdown(citySelectionObservable);
-  subscribeScorecard(citySelectionObservable, cities);
-  subscribeShareLink(citySelectionObservable);
-  subscribeSnapToCity(citySelectionObservable, map, cities);
-  parkingLotLoader.subscribe(citySelectionObservable);
+  initDropdown(cityState);
+  subscribeScorecard(cityState, cityEntries);
+  subscribeShareLink(cityState);
+  subscribeSnapToCity(cityState, map, cityEntries);
+  parkingLotLoader.subscribe(cityState);
 
-  setCityOnBoundaryClick(citySelectionObservable, map, cityBoundaries);
-  setCityByMapPosition(citySelectionObservable, map, cities, parkingLotLoader);
+  setCityOnBoundaryClick(cityState, map, cityBoundaries);
+  setCityByMapPosition(cityState, map, cityEntries, parkingLotLoader);
 
-  citySelectionObservable.initialize();
+  cityState.initialize();
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.

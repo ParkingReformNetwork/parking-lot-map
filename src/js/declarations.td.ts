@@ -5,8 +5,8 @@ declare module "~/data/city-boundaries.geojson" {
   export default value;
 }
 
-declare module "~/data/score-cards.json" {
-  const value: import("./types").ScoreCardsDetails;
+declare module "~/data/city-stats.json" {
+  const value: import("./types").CityStatsCollection;
   export default value;
 }
 

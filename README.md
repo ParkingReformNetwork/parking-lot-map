@@ -58,7 +58,7 @@ If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try
 
 ## Update score card for existing city
 
-Manually edit the values in the file `data/score-cards.json`.
+Manually edit the values in the file `data/city-stats.json`.
 
 Run the site with `npm start` and make sure it's what you want.
 
@@ -110,7 +110,7 @@ Now, run the below but replace the last part with the city/state name (in single
 ❯ npm run add-city -- 'My City, AZ'
 ```
 
-Next, manually fill in the score card entries in the file `data/score-cards.json`. Search for the city name and update the values.
+Next, manually fill in the score card entries in the file `data/city-stats.json`. Search for the city name and update the values.
 
 Start the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
 
