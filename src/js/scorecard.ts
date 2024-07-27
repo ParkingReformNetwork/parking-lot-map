@@ -1,14 +1,14 @@
 import { CitySelectionObservable } from "./CitySelectionState";
-import { ScoreCards, ScoreCardDetails } from "./types";
+import { CityEntryCollection, CityStats } from "./types";
 import Observable from "./Observable";
 
-function generateScorecard(entry: ScoreCardDetails): string {
+function generateScorecard(stats: CityStats): string {
   let header = `
-      <h1 class="scorecard-title">Parking lots in ${entry.name}</h1>
-      <p>${entry.percentage} of the central city is off-street parking</p>
+      <h1 class="scorecard-title">Parking lots in ${stats.name}</h1>
+      <p>${stats.percentage} of the central city is off-street parking</p>
       `;
 
-  if ("contribution" in entry) {
+  if ("contribution" in stats) {
     header += `<div class="community-contribution-warning">
       <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
       Community-maintained map
@@ -16,26 +16,26 @@ function generateScorecard(entry: ScoreCardDetails): string {
   }
 
   const listEntries = [];
-  if (entry.parkingScore) {
+  if (stats.parkingScore) {
     listEntries.push(
-      `${entry.parkingScore}/100 parking score (lower is better)`,
+      `${stats.parkingScore}/100 parking score (lower is better)`,
     );
   }
-  listEntries.push(`City type: ${entry.cityType}`);
-  listEntries.push(`${entry.population} residents - city proper`);
+  listEntries.push(`City type: ${stats.cityType}`);
+  listEntries.push(`${stats.population} residents - city proper`);
   listEntries.push(
-    `${entry.urbanizedAreaPopulation} residents - urbanized area`,
+    `${stats.urbanizedAreaPopulation} residents - urbanized area`,
   );
 
-  let reformsLine = `Parking reforms ${entry.reforms}`;
-  if (entry.url) {
-    reformsLine += ` (<a class="external-link" title="view parking reform details" href="${entry.url}">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
+  let reformsLine = `Parking reforms ${stats.reforms}`;
+  if (stats.url) {
+    reformsLine += ` (<a class="external-link" title="view parking reform details" href="${stats.url}">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
   }
   listEntries.push(reformsLine);
 
-  if ("contribution" in entry) {
+  if ("contribution" in stats) {
     listEntries.push(
-      `<a href="mailto:${entry.contribution}">Email data maintainer</a>`,
+      `<a href="mailto:${stats.contribution}">Email data maintainer</a>`,
     );
   }
 
@@ -104,12 +104,12 @@ function initAccordion(): void {
 
 export default function subscribeScorecard(
   observable: CitySelectionObservable,
-  cities: ScoreCards,
+  cityEntries: CityEntryCollection,
 ): void {
   observable.subscribe(({ cityId }) => {
     const scorecardContainer = document.querySelector(".scorecard-container");
     if (!scorecardContainer) return;
-    scorecardContainer.innerHTML = generateScorecard(cities[cityId].details);
+    scorecardContainer.innerHTML = generateScorecard(cityEntries[cityId].stats);
   });
 
   // Also set up the accordion UI. It doesn't depend on globalState, so only

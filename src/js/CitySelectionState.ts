@@ -1,7 +1,7 @@
 import Observable from "./Observable";
 import { CityId } from "./types";
 
-import scoreCardsData from "../../data/score-cards.json";
+import cityStatsData from "../../data/city-stats.json";
 
 type CitySelectionState = {
   cityId: CityId;
@@ -15,7 +15,7 @@ export function initCitySelectionState(
   fallBackCityId: CityId,
 ): CitySelectionObservable {
   const startingCity =
-    initialCityId && Object.keys(scoreCardsData).includes(initialCityId)
+    initialCityId && Object.keys(cityStatsData).includes(initialCityId)
       ? initialCityId
       : fallBackCityId;
   return new Observable<CitySelectionState>({
