@@ -1,12 +1,4 @@
-/* global document, window */
-import {
-  Control,
-  ImageOverlay,
-  Map,
-  TileLayer,
-  geoJSON,
-  GeoJSON,
-} from "leaflet";
+import { ImageOverlay, Map, geoJSON, GeoJSON } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 import { ScoreCard, ScoreCards } from "./types";
@@ -17,6 +9,7 @@ import setUpAbout from "./about";
 import addShareLinkSubscriber from "./share";
 import addScorecardSubscriber from "./scorecard";
 import setUpDropdown from "./dropdown";
+import { createMap, STYLES } from "./map";
 import ParkingLotLoader from "./ParkingLotLoader";
 import {
   CitySelectionObservable,
@@ -25,72 +18,6 @@ import {
 
 import cityBoundariesGeojson from "~/data/city-boundaries.geojson";
 import scoreCardsDetails from "~/data/score-cards.json";
-
-const MAX_ZOOM = 18;
-const BASE_LAYERS = {
-  "High contrast": new TileLayer(
-    "https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png",
-    {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
-        &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>
-        &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>
-        &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a>`,
-      subdomains: "abcd",
-      minZoom: 0,
-      maxZoom: MAX_ZOOM,
-    }
-  ),
-  "Google Maps": new TileLayer(
-    "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
-    {
-      attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; Google Maps`,
-      maxZoom: MAX_ZOOM,
-    }
-  ),
-};
-
-const STYLES = {
-  cities: {
-    fillColor: "##c84041",
-    color: "#c84041",
-    weight: 4,
-    fillOpacity: 0,
-  },
-  parkingLots: {
-    fillColor: "#FF0000",
-    color: "#FF0000",
-    weight: 1,
-    fillOpacity: 0.6,
-  },
-};
-
-/**
- * Create the initial map object.
- *
- * This sets up Google Maps vs. High contrast, attribution, and zoom.
- */
-function createMap(): Map {
-  const map = new Map("map", {
-    layers: [BASE_LAYERS["High contrast"]],
-  });
-  map.attributionControl.setPrefix(
-    '<a href="https://parkingreform.org/support/">Parking Reform Network</a>'
-  );
-
-  new Control.Layers(BASE_LAYERS).addTo(map);
-  map.createPane("fixed", document.getElementById("map") || undefined);
-  return map;
-}
-
-function addParkingLotLoadSubscriber(
-  observable: CitySelectionObservable,
-  parkingLayer: GeoJSON,
-  parkingLotLoader: ParkingLotLoader
-): void {
-  observable.subscribe(({ cityId }) =>
-    parkingLotLoader.load(cityId, parkingLayer)
-  );
-}
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
@@ -126,7 +53,6 @@ function setCityByMapPosition(
   observable: CitySelectionObservable,
   map: Map,
   cities: ScoreCards,
-  parkingLayer: GeoJSON,
   parkingLotLoader: ParkingLotLoader
 ): void {
   map.on("moveend", () => {
@@ -135,7 +61,7 @@ function setCityByMapPosition(
     Object.entries(cities).forEach(([cityId, scorecard]) => {
       const bounds = scorecard.layer.getBounds();
       if (!map.getBounds().intersects(bounds)) return;
-      parkingLotLoader.load(cityId, parkingLayer);
+      parkingLotLoader.load(cityId);
 
       const distance = map
         .getBounds()
@@ -191,67 +117,30 @@ function setCityOnBoundaryClick(
   });
 }
 
-/**
- * Creates a GeoJSON layer to hold all parking lot polygons.
- * Every cites' parking lots will be lazily added to this layer.
- */
-function createParkingLotsLayer(map: Map): GeoJSON {
-  const parkingLayer = geoJSON(undefined, {
-    style() {
-      return STYLES.parkingLots;
-    },
-  }).addTo(map);
-
-  if (window.location.href.indexOf("#lots-toggle") === -1) return parkingLayer;
-
-  // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
-  const toggle = document.querySelector<HTMLElement>("#lots-toggle");
-  if (toggle) {
-    toggle.hidden = false;
-  }
-  document.querySelector("#lots-toggle-off")?.addEventListener("click", () => {
-    parkingLayer.removeFrom(map);
-  });
-  document.querySelector("#lots-toggle-on")?.addEventListener("click", () => {
-    parkingLayer.addTo(map);
-  });
-  return parkingLayer;
-}
-
 async function setUpSite(): Promise<void> {
   setUpIcons();
   maybeDisableFullScreenIcon();
   setUpAbout();
 
   const map = createMap();
-  const parkingLayer = createParkingLotsLayer(map);
   const [cityBoundaries, cities] = createCitiesLayer(map);
+
+  const parkingLotLoader = new ParkingLotLoader(map);
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
   const citySelectionObservable = initCitySelectionState(
     initialCityId,
     "atlanta-ga"
   );
-  const parkingLotLoader = new ParkingLotLoader();
 
   setUpDropdown(citySelectionObservable);
   addScorecardSubscriber(citySelectionObservable, cities);
   addShareLinkSubscriber(citySelectionObservable);
   addSnapToCitySubscriber(citySelectionObservable, map, cities);
-  addParkingLotLoadSubscriber(
-    citySelectionObservable,
-    parkingLayer,
-    parkingLotLoader
-  );
+  parkingLotLoader.subscribeToCitySelection(citySelectionObservable);
 
   setCityOnBoundaryClick(citySelectionObservable, map, cityBoundaries);
-  setCityByMapPosition(
-    citySelectionObservable,
-    map,
-    cities,
-    parkingLayer,
-    parkingLotLoader
-  );
+  setCityByMapPosition(citySelectionObservable, map, cities, parkingLotLoader);
 
   citySelectionObservable.initialize();
 
