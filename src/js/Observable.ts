@@ -5,7 +5,7 @@
  * the UI is re-calculated. This allows other components to change the state without needing to
  * know which other parts of the app need to be updated.
  */
-class Observable<T> {
+export default class Observable<T> {
   private value: T;
 
   private subscribers: ((value: T) => void)[] = [];
@@ -44,5 +44,3 @@ class Observable<T> {
     this.subscribers.forEach((callback) => callback(this.value));
   }
 }
-
-export default Observable;

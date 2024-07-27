@@ -67,7 +67,7 @@ function generateScorecard(entry: ScoreCardDetails): string {
   return header + accordion;
 }
 
-function updateScorecardAccordionUI(expanded: boolean): void {
+function updateAccordionUI(expanded: boolean): void {
   const toggle = document.querySelector(".scorecard-accordion-toggle");
   const content = document.querySelector<HTMLElement>(
     "#scorecard-accordion-content",
@@ -82,9 +82,9 @@ function updateScorecardAccordionUI(expanded: boolean): void {
   downIcon.style.display = expanded ? "none" : "block";
 }
 
-function setUpScorecardAccordion(): void {
+function initAccordion(): void {
   const isExpanded = new Observable<boolean>(false);
-  isExpanded.subscribe(updateScorecardAccordionUI);
+  isExpanded.subscribe(updateAccordionUI);
 
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.
@@ -102,7 +102,7 @@ function setUpScorecardAccordion(): void {
   isExpanded.initialize();
 }
 
-export default function addScorecardSubscriber(
+export default function subscribeScorecard(
   observable: CitySelectionObservable,
   cities: ScoreCards,
 ): void {
@@ -114,5 +114,5 @@ export default function addScorecardSubscriber(
 
   // Also set up the accordion UI. It doesn't depend on globalState, so only
   // needs to run once.
-  setUpScorecardAccordion();
+  initAccordion();
 }
