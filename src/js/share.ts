@@ -1,6 +1,6 @@
 /* global document, navigator, window */
 import { determineShareUrl } from "./cityId";
-import { GlobalStateObservable } from "./GlobalState";
+import { CitySelectionObservable } from "./CitySelectionState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
@@ -24,8 +24,8 @@ function switchShareIcons(shareIcon: HTMLAnchorElement): void {
   }, 1000);
 }
 
-function addShareLinkSubscriber(globalState: GlobalStateObservable): void {
-  globalState.subscribe(({ cityId }) => {
+function addShareLinkSubscriber(observable: CitySelectionObservable): void {
+  observable.subscribe(({ cityId }) => {
     const shareIcon = document.querySelector<HTMLAnchorElement>(
       ".header-share-icon-container"
     );

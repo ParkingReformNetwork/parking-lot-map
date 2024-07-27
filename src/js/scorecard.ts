@@ -1,4 +1,4 @@
-import { GlobalStateObservable } from "./GlobalState";
+import { CitySelectionObservable } from "./CitySelectionState";
 import { ScoreCards, ScoreCardDetails } from "./types";
 import Observable from "./Observable";
 
@@ -103,10 +103,10 @@ function setUpScorecardAccordion(): void {
 }
 
 function addScorecardSubscriber(
-  globalState: GlobalStateObservable,
+  observable: CitySelectionObservable,
   cities: ScoreCards
 ): void {
-  globalState.subscribe(({ cityId }) => {
+  observable.subscribe(({ cityId }) => {
     const scorecardContainer = document.querySelector(".scorecard-container");
     if (!scorecardContainer) return;
     scorecardContainer.innerHTML = generateScorecard(cities[cityId].details);

@@ -3,25 +3,25 @@ import { CityId } from "./types";
 
 import scoreCardsData from "../../data/score-cards.json";
 
-type GlobalState = {
+type CitySelectionState = {
   cityId: CityId;
   shouldSnapMap: boolean;
 };
 
-type GlobalStateObservable = Observable<GlobalState>;
+type CitySelectionObservable = Observable<CitySelectionState>;
 
-function initGlobalState(
+function initCitySelectionState(
   initialCityId: CityId | null,
   fallBackCityId: CityId
-): GlobalStateObservable {
+): CitySelectionObservable {
   const startingCity =
     initialCityId && Object.keys(scoreCardsData).includes(initialCityId)
       ? initialCityId
       : fallBackCityId;
-  return new Observable<GlobalState>({
+  return new Observable<CitySelectionState>({
     cityId: startingCity,
     shouldSnapMap: true,
   });
 }
 
-export { GlobalStateObservable, initGlobalState };
+export { CitySelectionObservable, initCitySelectionState };

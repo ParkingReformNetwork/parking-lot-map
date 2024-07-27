@@ -18,7 +18,10 @@ import addShareLinkSubscriber from "./share";
 import addScorecardSubscriber from "./scorecard";
 import setUpDropdown from "./dropdown";
 import ParkingLotLoader from "./ParkingLotLoader";
-import { GlobalStateObservable, initGlobalState } from "./GlobalState";
+import {
+  CitySelectionObservable,
+  initCitySelectionState,
+} from "./CitySelectionState";
 
 import cityBoundariesGeojson from "~/data/city-boundaries.geojson";
 import scoreCardsDetails from "~/data/score-cards.json";
@@ -80,11 +83,11 @@ function createMap(): Map {
 }
 
 function addParkingLotLoadSubscriber(
-  globalState: GlobalStateObservable,
+  observable: CitySelectionObservable,
   parkingLayer: GeoJSON,
   parkingLotLoader: ParkingLotLoader
 ): void {
-  globalState.subscribe(({ cityId }) =>
+  observable.subscribe(({ cityId }) =>
     parkingLotLoader.load(cityId, parkingLayer)
   );
 }
@@ -104,11 +107,11 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 }
 
 function addSnapToCitySubscriber(
-  globalState: GlobalStateObservable,
+  observable: CitySelectionObservable,
   map: Map,
   cities: ScoreCards
 ): void {
-  globalState.subscribe((state) => {
+  observable.subscribe((state) => {
     if (!state.shouldSnapMap) return;
     snapToCity(map, cities[state.cityId].layer);
   });
@@ -120,7 +123,7 @@ function addSnapToCitySubscriber(
  * Regardless of if the city is chosen, ensure its parking lots are loaded when in view.
  */
 function setCityByMapPosition(
-  globalState: GlobalStateObservable,
+  observable: CitySelectionObservable,
   map: Map,
   cities: ScoreCards,
   parkingLayer: GeoJSON,
@@ -144,7 +147,7 @@ function setCityByMapPosition(
       }
     });
     if (centralCity) {
-      globalState.setValue({ cityId: centralCity, shouldSnapMap: false });
+      observable.setValue({ cityId: centralCity, shouldSnapMap: false });
     }
   });
 }
@@ -175,7 +178,7 @@ function createCitiesLayer(map: Map): [GeoJSON, ScoreCards] {
 }
 
 function setCityOnBoundaryClick(
-  globalState: GlobalStateObservable,
+  observable: CitySelectionObservable,
   map: Map,
   cityBoundaries: GeoJSON
 ): void {
@@ -184,7 +187,7 @@ function setCityOnBoundaryClick(
     // Only change cities if zoomed in enough.
     if (currentZoom <= 7) return;
     const cityId = e.sourceTarget.feature.properties.id;
-    globalState.setValue({ cityId, shouldSnapMap: true });
+    observable.setValue({ cityId, shouldSnapMap: true });
   });
 }
 
@@ -225,25 +228,32 @@ async function setUpSite(): Promise<void> {
   const [cityBoundaries, cities] = createCitiesLayer(map);
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  const globalState = initGlobalState(initialCityId, "atlanta-ga");
+  const citySelectionObservable = initCitySelectionState(
+    initialCityId,
+    "atlanta-ga"
+  );
   const parkingLotLoader = new ParkingLotLoader();
 
-  setUpDropdown(globalState);
-  addScorecardSubscriber(globalState, cities);
-  addShareLinkSubscriber(globalState);
-  addSnapToCitySubscriber(globalState, map, cities);
-  addParkingLotLoadSubscriber(globalState, parkingLayer, parkingLotLoader);
+  setUpDropdown(citySelectionObservable);
+  addScorecardSubscriber(citySelectionObservable, cities);
+  addShareLinkSubscriber(citySelectionObservable);
+  addSnapToCitySubscriber(citySelectionObservable, map, cities);
+  addParkingLotLoadSubscriber(
+    citySelectionObservable,
+    parkingLayer,
+    parkingLotLoader
+  );
 
-  setCityOnBoundaryClick(globalState, map, cityBoundaries);
+  setCityOnBoundaryClick(citySelectionObservable, map, cityBoundaries);
   setCityByMapPosition(
-    globalState,
+    citySelectionObservable,
     map,
     cities,
     parkingLayer,
     parkingLotLoader
   );
 
-  globalState.initialize();
+  citySelectionObservable.initialize();
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.

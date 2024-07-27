@@ -3,7 +3,7 @@ import "choices.js/public/assets/styles/choices.css";
 
 import scoreCardsData from "../../data/score-cards.json";
 import { ScoreCardDetails, DropdownChoice } from "./types";
-import { GlobalStateObservable } from "./GlobalState";
+import { CitySelectionObservable } from "./CitySelectionState";
 
 function createDropdown(): Choices {
   const dropdown = new Choices("#city-dropdown", {
@@ -61,15 +61,15 @@ function createDropdown(): Choices {
   return dropdown;
 }
 
-function setUpDropdown(globalState: GlobalStateObservable): void {
+function setUpDropdown(observable: CitySelectionObservable): void {
   const dropdown = createDropdown();
 
-  globalState.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
+  observable.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
 
   const selectElement = dropdown.passedElement.element as HTMLSelectElement;
   selectElement.addEventListener("change", () => {
     // Note that `change` only triggers for user-driven changes, not programmatic changes.
-    globalState.setValue({ cityId: selectElement.value, shouldSnapMap: true });
+    observable.setValue({ cityId: selectElement.value, shouldSnapMap: true });
   });
 }
 
