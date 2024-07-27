@@ -3,7 +3,7 @@
 /**
  * Set up event listeners to open and close the about popup.
  */
-const setUpAbout = () => {
+function setUpAbout(): void {
   const aboutPopup = document.querySelector<HTMLElement>(".about-popup");
   const aboutHeaderIcon = document.querySelector<HTMLElement>(
     ".header-about-icon-container"
@@ -46,6 +46,6 @@ const setUpAbout = () => {
   closeIcon.addEventListener("click", () => {
     closePopup();
   });
-};
+}
 
 export default setUpAbout;
