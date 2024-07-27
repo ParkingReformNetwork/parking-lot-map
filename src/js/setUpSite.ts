@@ -36,7 +36,7 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 function addSnapToCitySubscriber(
   observable: CitySelectionObservable,
   map: Map,
-  cities: ScoreCards
+  cities: ScoreCards,
 ): void {
   observable.subscribe((state) => {
     if (!state.shouldSnapMap) return;
@@ -53,7 +53,7 @@ function setCityByMapPosition(
   observable: CitySelectionObservable,
   map: Map,
   cities: ScoreCards,
-  parkingLotLoader: ParkingLotLoader
+  parkingLotLoader: ParkingLotLoader,
 ): void {
   map.on("moveend", () => {
     let centralCityDistance: number | null = null;
@@ -106,7 +106,7 @@ function createCitiesLayer(map: Map): [GeoJSON, ScoreCards] {
 function setCityOnBoundaryClick(
   observable: CitySelectionObservable,
   map: Map,
-  cityBoundaries: GeoJSON
+  cityBoundaries: GeoJSON,
 ): void {
   cityBoundaries.addEventListener("click", (e) => {
     const currentZoom = map.getZoom();
@@ -130,7 +130,7 @@ async function setUpSite(): Promise<void> {
   const initialCityId = extractCityIdFromUrl(window.location.href);
   const citySelectionObservable = initCitySelectionState(
     initialCityId,
-    "atlanta-ga"
+    "atlanta-ga",
   );
 
   setUpDropdown(citySelectionObservable);

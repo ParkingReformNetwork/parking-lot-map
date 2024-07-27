@@ -13,14 +13,14 @@ const BASE_LAYERS = {
       subdomains: "abcd",
       minZoom: 0,
       maxZoom: MAX_ZOOM,
-    }
+    },
   ),
   "Google Maps": new TileLayer(
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; Google Maps`,
       maxZoom: MAX_ZOOM,
-    }
+    },
   ),
 };
 
@@ -49,7 +49,7 @@ export function createMap(): Map {
     layers: [BASE_LAYERS["High contrast"]],
   });
   map.attributionControl.setPrefix(
-    '<a href="https://parkingreform.org/support/">Parking Reform Network</a>'
+    '<a href="https://parkingreform.org/support/">Parking Reform Network</a>',
   );
 
   new Control.Layers(BASE_LAYERS).addTo(map);

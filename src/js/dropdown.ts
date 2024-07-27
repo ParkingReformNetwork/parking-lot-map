@@ -35,7 +35,7 @@ function createDropdown(): Choices {
       } else {
         officialCities.push(entry);
       }
-    }
+    },
   );
 
   dropdown.setChoices([

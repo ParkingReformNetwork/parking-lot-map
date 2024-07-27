@@ -3,7 +3,7 @@ import { determineArgs, updateCoordinates } from "./base.js";
 const main = async (): Promise<void> => {
   const { cityId } = determineArgs(
     "update-city-boundaries",
-    process.argv.slice(2)
+    process.argv.slice(2),
   )
     .mapErr((err) => new Error(`Argument error: ${err}`))
     .unwrap();
@@ -13,7 +13,7 @@ const main = async (): Promise<void> => {
       cityId,
       false,
       "data/city-boundaries.geojson",
-      "city-update.geojson"
+      "city-update.geojson",
     )
   ).unwrap();
 
@@ -21,7 +21,7 @@ const main = async (): Promise<void> => {
   console.log(
     `${value} Now, run 'npm run fmt'. Then, 'npm start' and
       see if the site is what you expect.
-    `
+    `,
   );
 };
 

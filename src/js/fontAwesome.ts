@@ -24,7 +24,7 @@ function setUpIcons(): void {
     faLink,
     faUpRightFromSquare,
     faCheck,
-    faTriangleExclamation
+    faTriangleExclamation,
   );
   dom.watch();
 }
