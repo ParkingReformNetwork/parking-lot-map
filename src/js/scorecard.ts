@@ -1,4 +1,5 @@
 import { ScoreCardDetails } from "./types";
+import Observable from "./Observable";
 
 function generateScorecard(entry: ScoreCardDetails): string {
   let header = `
@@ -71,37 +72,37 @@ function setScorecard(entry: ScoreCardDetails): void {
   scorecardContainer.innerHTML = generateScorecard(entry);
 }
 
-function setUpScorecardAccordionListener() {
+function updateScorecardAccordionUI(expanded: boolean): void {
+  const toggle = document.querySelector(".scorecard-accordion-toggle");
+  const content = document.querySelector<HTMLElement>(
+    "#scorecard-accordion-content"
+  );
+  const upIcon = toggle?.querySelector<SVGElement>(".fa-chevron-up");
+  const downIcon = toggle?.querySelector<SVGElement>(".fa-chevron-down");
+  if (!toggle || !content || !upIcon || !downIcon) return;
+
+  toggle.setAttribute("aria-expanded", expanded.toString());
+  content.hidden = !expanded;
+  upIcon.style.display = expanded ? "block" : "none";
+  downIcon.style.display = expanded ? "none" : "block";
+}
+
+function setUpScorecardAccordionListener(): void {
+  const isExpanded = new Observable<boolean>(false);
+  isExpanded.subscribe(updateScorecardAccordionUI);
+  updateScorecardAccordionUI(isExpanded.getValue());
+
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.
   // This is called "event delegation".
-  const scorecardContainer = document.querySelector<HTMLElement>(
-    "#scorecard-container"
-  );
-  scorecardContainer?.addEventListener("click", async (event) => {
-    const clicked = event.target;
-    if (!(clicked instanceof Element)) return;
-    const accordionToggle = clicked.closest<HTMLButtonElement>(
-      ".scorecard-accordion-toggle"
-    );
-    if (!accordionToggle) return;
-
-    const accordionContent = document.querySelector<HTMLElement>(
-      "#scorecard-accordion-content"
-    );
-    const upIcon = accordionToggle.querySelector<SVGElement>(".fa-chevron-up");
-    const downIcon =
-      accordionToggle.querySelector<SVGElement>(".fa-chevron-down");
-    if (!accordionContent || !upIcon || !downIcon) return;
-
-    const currentlyExpanded =
-      accordionToggle.getAttribute("aria-expanded") === "true";
-    const newState = !currentlyExpanded;
-
-    accordionToggle.setAttribute("aria-expanded", newState.toString());
-    accordionContent.hidden = !newState;
-    upIcon.style.display = newState ? "block" : "none";
-    downIcon.style.display = newState ? "none" : "block";
+  const scorecardContainer = document.querySelector("#scorecard-container");
+  scorecardContainer?.addEventListener("click", (event) => {
+    const clickedElement = event.target;
+    if (!(clickedElement instanceof Element)) return;
+    const toggleClicked = clickedElement.closest(".scorecard-accordion-toggle");
+    if (toggleClicked) {
+      isExpanded.setValue(!isExpanded.getValue());
+    }
   });
 }
 

@@ -1,50 +1,37 @@
-/* global document, window */
+import Observable from "./Observable";
 
-/**
- * Set up event listeners to open and close the about popup.
- */
+function updateAboutPopupUI(visible: boolean): void {
+  const popup = document.querySelector<HTMLElement>(".about-popup");
+  const icon = document.querySelector(".header-about-icon-container");
+  if (!popup || !icon) return;
+  popup.hidden = !visible;
+  icon.setAttribute("aria-expanded", visible.toString());
+}
+
 function setUpAbout(): void {
-  const aboutPopup = document.querySelector<HTMLElement>(".about-popup");
-  const aboutHeaderIcon = document.querySelector<HTMLElement>(
-    ".header-about-icon-container"
+  const isVisible = new Observable<boolean>(false);
+  isVisible.subscribe(updateAboutPopupUI);
+  updateAboutPopupUI(isVisible.getValue());
+
+  const popup = document.querySelector(".about-popup");
+  const headerIcon = document.querySelector(".header-about-icon-container");
+  const closeIcon = document.querySelector(".about-popup-close-icon-container");
+
+  headerIcon?.addEventListener("click", () =>
+    isVisible.setValue(!isVisible.getValue())
   );
-  const closeIcon = document.querySelector<HTMLElement>(
-    ".about-popup-close-icon-container"
-  );
-  if (!aboutPopup || !aboutHeaderIcon || !closeIcon) return;
+  closeIcon?.addEventListener("click", () => isVisible.setValue(false));
 
-  const closePopup = () => {
-    aboutPopup.hidden = true;
-    aboutHeaderIcon.setAttribute("aria-expanded", "false");
-  };
-
-  const openPopup = () => {
-    aboutPopup.hidden = false;
-    aboutHeaderIcon.setAttribute("aria-expanded", "true");
-  };
-
-  aboutHeaderIcon.addEventListener("click", () => {
-    if (aboutPopup.hidden) {
-      openPopup();
-    } else {
-      closePopup();
-    }
-  });
-
-  // closes window on clicks outside the info popup
+  // Clicks outside the popup close it.
   window.addEventListener("click", (event) => {
     if (
-      !aboutPopup.hidden &&
+      isVisible.getValue() === true &&
       event.target instanceof Element &&
-      !aboutHeaderIcon.contains(event.target) &&
-      !aboutPopup.contains(event.target)
+      !headerIcon?.contains(event.target) &&
+      !popup?.contains(event.target)
     ) {
-      closePopup();
+      isVisible.setValue(false);
     }
-  });
-
-  closeIcon.addEventListener("click", () => {
-    closePopup();
   });
 }
 
