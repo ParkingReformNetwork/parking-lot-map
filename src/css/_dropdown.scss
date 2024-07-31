@@ -45,7 +45,7 @@
 
 div.choices__item.choices__item--choice.choices__item--selectable {
   font-size: typography.$font-size-base;
-  height: spacing.$min-touch-target;
+  min-height: spacing.$min-touch-target;
 }
 
 .choices__list--dropdown,
