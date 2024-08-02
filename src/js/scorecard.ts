@@ -29,7 +29,7 @@ function generateScorecard(stats: CityStats): string {
 
   let reformsLine = `Parking reforms ${stats.reforms}`;
   if (stats.url) {
-    reformsLine += ` (<a class="external-link" title="view parking reform details" href="${stats.url}">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
+    reformsLine += ` (<a class="external-link" title="view parking reform details" href="${stats.url}" target="_blank">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
   }
   listEntries.push(reformsLine);
 
