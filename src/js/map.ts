@@ -1,6 +1,7 @@
 import { Control, Map, TileLayer } from "leaflet";
 import "leaflet/dist/leaflet.css";
 
+const MIN_ZOOM = 4;
 const MAX_ZOOM = 18;
 const BASE_LAYERS = {
   "High contrast": new TileLayer(
@@ -11,7 +12,7 @@ const BASE_LAYERS = {
         &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a>
         &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a>`,
       subdomains: "abcd",
-      minZoom: 0,
+      minZoom: MIN_ZOOM,
       maxZoom: MAX_ZOOM,
     },
   ),
@@ -19,6 +20,7 @@ const BASE_LAYERS = {
     "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
     {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; Google Maps`,
+      minZoom: MIN_ZOOM,
       maxZoom: MAX_ZOOM,
     },
   ),
