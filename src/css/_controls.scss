@@ -99,4 +99,8 @@ $zoom-controls-top-offset: calc(
     margin: 0;
     vertical-align: middle;
   }
+
+  &:hover {
+    background-color: colors.$hover;
+  }
 }
