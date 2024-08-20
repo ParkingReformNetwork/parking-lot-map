@@ -37,6 +37,10 @@ $header-height: calc(
   justify-content: center;
   cursor: pointer;
 
+  &:hover {
+    background-color: colors.$hover-gray;
+  }
+
   svg {
     color: colors.$white;
     height: icons.$icon-size-md;
