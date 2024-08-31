@@ -10,8 +10,8 @@ test("there are exactly 103 official city maps", async ({ page }) => {
     ".choices__list [role='listbox']",
     (element: HTMLElement) =>
       Array.from(element.children).map(
-        (child: Element) => (child as HTMLElement).innerText,
-      ),
+        (child: Element) => (child as HTMLElement).innerText
+      )
   );
 
   const communityMapIndex = toggleValues.indexOf("Community Maps");

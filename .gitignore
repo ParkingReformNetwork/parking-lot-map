@@ -7,3 +7,8 @@
 /parking-lots-update.geojson
 /city-update.geojson
 *.tsbuildinfo
+
+addCityBulk.py
+addCommunityMap.py
+/community-map-geojson/
+/community-map-kml/

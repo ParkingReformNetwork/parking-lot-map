@@ -35,7 +35,7 @@ export function createCitiesLayer(map: Map): [GeoJSON, CityEntryCollection] {
 export function setCityOnBoundaryClick(
   observable: CitySelectionObservable,
   map: Map,
-  cityBoundaries: GeoJSON,
+  cityBoundaries: GeoJSON
 ): void {
   cityBoundaries.addEventListener("click", (e) => {
     const currentZoom = map.getZoom();

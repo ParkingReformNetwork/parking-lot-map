@@ -11,13 +11,13 @@ import { CityId } from "../src/js/types";
 
 const determineArgs = (
   scriptCommand: string,
-  processArgv: string[],
+  processArgv: string[]
 ): results.Result<{ cityName: string; cityId: CityId }, string> => {
   if (processArgv.length !== 1) {
     return new results.Err(
       `Must provide exactly one argument (the city/state name). For example,
        npm run ${scriptCommand} -- 'Columbus, OH'
-       `,
+       `
     );
   }
   const cityName = processArgv[0];
@@ -30,7 +30,7 @@ const updateCoordinates = async (
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
-  updateFilePath: string,
+  updateFilePath: string
 ): Promise<results.Result<string, string>> => {
   let newData: FeatureCollection<Polygon, GeoJsonProperties>;
   try {
@@ -39,13 +39,13 @@ const updateCoordinates = async (
   } catch (err: unknown) {
     const { message } = err as Error;
     return results.Err(
-      `Issue reading the update file path ${updateFilePath}: ${message}`,
+      `Issue reading the update file path ${updateFilePath}: ${message}`
     );
   }
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
     return results.Err(
-      "The script expects exactly one entry in `features` because you can only update one city at a time.",
+      "The script expects exactly one entry in `features` because you can only update one city at a time."
     );
   }
 
@@ -60,7 +60,7 @@ const updateCoordinates = async (
   } catch (err: unknown) {
     const { message } = err as Error;
     return results.Err(
-      `Issue reading the original data file path ${originalFilePath}: ${message}`,
+      `Issue reading the original data file path ${originalFilePath}: ${message}`
     );
   }
 
@@ -73,11 +73,11 @@ const updateCoordinates = async (
     originalData.features.push(newEntry);
   } else {
     const cityOriginalData = originalData.features.find(
-      (feature) => feature?.properties?.id === cityId,
+      (feature) => feature?.properties?.id === cityId
     );
     if (!cityOriginalData) {
       return results.Err(
-        `City not found in ${originalFilePath}. To add a new city, run again with the '--add' flag, e.g. npm run ${scriptCommand} -- 'My City, AZ' --add`,
+        `City not found in ${originalFilePath}. To add a new city, run again with the '--add' flag, e.g. npm run ${scriptCommand} -- 'My City, AZ' --add`
       );
     }
     cityOriginalData.geometry.coordinates = newCoordinates;
@@ -102,7 +102,7 @@ const updateParkingLots = async (
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
-  updateFilePath: string,
+  updateFilePath: string
 ): Promise<results.Result<string, string>> => {
   let newData;
   try {
@@ -111,13 +111,13 @@ const updateParkingLots = async (
   } catch (err: unknown) {
     const { message } = err as Error;
     return results.Err(
-      `Issue reading the update file path parking-lots-update.geojson: ${message}`,
+      `Issue reading the update file path parking-lots-update.geojson: ${message}`
     );
   }
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
     return results.Err(
-      "The script expects exactly one entry in `features` because you can only update one city at a time.",
+      "The script expects exactly one entry in `features` because you can only update one city at a time."
     );
   }
 
@@ -132,7 +132,7 @@ const updateParkingLots = async (
     } catch (err: unknown) {
       const { message } = err as Error;
       return results.Err(
-        `Issue reading the original data file path ${updateFilePath}: ${message}`,
+        `Issue reading the original data file path ${updateFilePath}: ${message}`
       );
     }
     originalData.geometry.coordinates = newCoordinates;

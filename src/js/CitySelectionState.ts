@@ -12,7 +12,7 @@ export type CitySelectionObservable = Observable<CitySelectionState>;
 
 export function initCitySelectionState(
   initialCityId: CityId | null,
-  fallBackCityId: CityId,
+  fallBackCityId: CityId
 ): CitySelectionObservable {
   const startingCity =
     initialCityId && Object.keys(cityStatsData).includes(initialCityId)

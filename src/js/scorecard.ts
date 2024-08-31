@@ -18,13 +18,13 @@ function generateScorecard(stats: CityStats): string {
   const listEntries = [];
   if (stats.parkingScore) {
     listEntries.push(
-      `${stats.parkingScore}/100 parking score (lower is better)`,
+      `${stats.parkingScore}/100 parking score (lower is better)`
     );
   }
   listEntries.push(`City type: ${stats.cityType}`);
   listEntries.push(`${stats.population} residents - city proper`);
   listEntries.push(
-    `${stats.urbanizedAreaPopulation} residents - urbanized area`,
+    `${stats.urbanizedAreaPopulation} residents - urbanized area`
   );
 
   let reformsLine = `Parking reforms ${stats.reforms}`;
@@ -35,7 +35,7 @@ function generateScorecard(stats: CityStats): string {
 
   if ("contribution" in stats) {
     listEntries.push(
-      `<a href="mailto:${stats.contribution}">Email data maintainer</a>`,
+      `<a href="mailto:${stats.contribution}">Email data maintainer</a>`
     );
   }
 
@@ -70,7 +70,7 @@ function generateScorecard(stats: CityStats): string {
 function updateAccordionUI(expanded: boolean): void {
   const toggle = document.querySelector(".scorecard-accordion-toggle");
   const content = document.querySelector<HTMLElement>(
-    "#scorecard-accordion-content",
+    "#scorecard-accordion-content"
   );
   const upIcon = toggle?.querySelector<SVGElement>(".fa-chevron-up");
   const downIcon = toggle?.querySelector<SVGElement>(".fa-chevron-down");
@@ -104,7 +104,7 @@ function initAccordion(): void {
 
 export default function subscribeScorecard(
   observable: CitySelectionObservable,
-  cityEntries: CityEntryCollection,
+  cityEntries: CityEntryCollection
 ): void {
   observable.subscribe(({ cityId }) => {
     const scorecardContainer = document.querySelector(".scorecard-container");

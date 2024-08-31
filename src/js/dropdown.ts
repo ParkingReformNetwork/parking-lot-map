@@ -36,7 +36,7 @@ function createDropdown(): Choices {
       } else {
         officialCities.push(entry);
       }
-    },
+    }
   );
 
   dropdown.setChoices([
@@ -63,7 +63,7 @@ function createDropdown(): Choices {
 }
 
 export default function initDropdown(
-  observable: CitySelectionObservable,
+  observable: CitySelectionObservable
 ): void {
   const dropdown = createDropdown();
 

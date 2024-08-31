@@ -16,7 +16,7 @@ function isIFrame(): boolean {
 export default function maybeDisableFullScreenIcon(): void {
   if (isIFrame()) return;
   const iconContainer = document.querySelector<HTMLAnchorElement>(
-    ".header-full-screen-icon-container",
+    ".header-full-screen-icon-container"
   );
   if (!iconContainer) return;
   iconContainer.style.display = "none";
