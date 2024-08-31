@@ -22,8 +22,9 @@
     "@fortawesome/free-regular-svg-icons": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
     "@parcel/resolver-glob": "^2.10.3",
-    "choices.js": "^11.0.1",
-    "leaflet": "~1.9.3"
+    "choices.js": "^10.2.0",
+    "leaflet": "~1.9.3",
+    "ts-results": "^3.3.0"
   },
   "devDependencies": {
     "@parcel/compressor-brotli": "^2.10.3",
@@ -42,7 +43,6 @@
     "playwright": "^1.34.3",
     "prettier": "^3.3.3",
     "ts-node": "^10.9.2",
-    "ts-results": "^3.3.0",
     "typescript": "^5.3.3"
   },
   "targets": {
