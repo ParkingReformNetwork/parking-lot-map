@@ -53,3 +53,10 @@ div.choices__item.choices__item--choice.choices__item--selectable {
   z-index: zindex.$dropdown;
   color: colors.$black;
 }
+
+.choices__list--dropdown .choices__item--selectable,
+.choices__list[aria-expanded] .choices__item--selectable {
+  // Choices.js sets this to 100px to account for itemSelectText. But we disable that,
+  // so we want to use the normal padding it would otherwise use of 10px.
+  padding-right: 10px;
+}

@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 import results from "ts-results";
 import fs from "fs/promises";
 import {
