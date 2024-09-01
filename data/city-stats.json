@@ -49,6 +49,16 @@
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Anchorage_AK.html"
   },
+  "arcata-ca": {
+    "name": "Arcata, CA",
+    "percentage": "FILL ME IN, e.g. 23%",
+    "cityType": "FILL ME IN, e.g. Core City",
+    "population": "FILL ME IN, e.g. 346,824",
+    "urbanizedAreaPopulation": "FILL ME IN, e.g. 13,200,998",
+    "parkingScore": "FILL ME IN, e.g. 53. If not relevant, remove the quotes and set to null",
+    "reforms": "FILL ME IN, e.g. No Reforms or Implemented",
+    "url": "FILL ME IN. If not relevant, remove the quotes and set to null"
+  },
   "arlington-tx": {
     "name": "Arlington, TX",
     "percentage": "39%",
