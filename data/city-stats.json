@@ -51,13 +51,13 @@
   },
   "arcata-ca": {
     "name": "Arcata, CA",
-    "percentage": "FILL ME IN, e.g. 23%",
-    "cityType": "FILL ME IN, e.g. Core City",
-    "population": "FILL ME IN, e.g. 346,824",
-    "urbanizedAreaPopulation": "FILL ME IN, e.g. 13,200,998",
-    "parkingScore": "FILL ME IN, e.g. 53. If not relevant, remove the quotes and set to null",
-    "reforms": "FILL ME IN, e.g. No Reforms or Implemented",
-    "url": "FILL ME IN. If not relevant, remove the quotes and set to null"
+    "percentage": "26%",
+    "cityType": "suburb",
+    "population": "18,857",
+    "urbanizedAreaPopulation": "19,714",
+    "parkingScore": null,
+    "reforms": "no reforms",
+    "url": "https://parkingreform.org/mandates-map/city_detail/Arcata_CA.html"
   },
   "arlington-tx": {
     "name": "Arlington, TX",
