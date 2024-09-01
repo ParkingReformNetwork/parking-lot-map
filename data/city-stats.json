@@ -49,17 +49,6 @@
     "reforms": "implemented",
     "url": "https://parkingreform.org/mandates-map/city_detail/Anchorage_AK.html"
   },
-  "arcata-ca": {
-    "name": "Arcata, CA",
-    "percentage": "34%",
-    "cityType": "suburb",
-    "population": "18,857",
-    "urbanizedAreaPopulation": "19,714",
-    "parkingScore": null,
-    "reforms": "no reforms",
-    "url": null,
-    "contribution": "admin@transportationpriorities.org"
-  },
   "arlington-tx": {
     "name": "Arlington, TX",
     "percentage": "39%",

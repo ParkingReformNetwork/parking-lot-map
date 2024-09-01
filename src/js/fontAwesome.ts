@@ -24,7 +24,7 @@ export default function initIcons(): void {
     faLink,
     faUpRightFromSquare,
     faCheck,
-    faTriangleExclamation
+    faTriangleExclamation,
   );
   dom.watch();
 }

@@ -21,7 +21,7 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 export function subscribeSnapToCity(
   observable: CitySelectionObservable,
   map: Map,
-  cityEntries: CityEntryCollection
+  cityEntries: CityEntryCollection,
 ): void {
   observable.subscribe((state) => {
     if (!state.shouldSnapMap) return;
@@ -38,7 +38,7 @@ export function setCityByMapPosition(
   observable: CitySelectionObservable,
   map: Map,
   cityEntries: CityEntryCollection,
-  parkingLotLoader: ParkingLotLoader
+  parkingLotLoader: ParkingLotLoader,
 ): void {
   map.on("moveend", () => {
     let centralCityDistance: number | null = null;

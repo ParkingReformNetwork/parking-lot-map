@@ -5,7 +5,7 @@ import { CityId } from "../src/js/types.ts";
 
 const addScoreCard = async (
   cityId: CityId,
-  cityName: string
+  cityName: string,
 ): Promise<results.Result<void, string>> => {
   const newEntry = {
     name: cityName,
@@ -27,7 +27,7 @@ const addScoreCard = async (
   } catch (err: unknown) {
     const { message } = err as Error;
     return results.Err(
-      `Issue reading the score card file path ${originalFilePath}: ${message}`
+      `Issue reading the score card file path ${originalFilePath}: ${message}`,
     );
   }
 
@@ -54,7 +54,7 @@ const main = async () => {
       cityId,
       true,
       "data/city-boundaries.geojson",
-      "city-update.geojson"
+      "city-update.geojson",
     )
   ).unwrap();
 
@@ -63,7 +63,7 @@ const main = async () => {
       cityId,
       true,
       "parking-lots-update.geojson",
-      `data/parking-lots/${cityId}.geojson`
+      `data/parking-lots/${cityId}.geojson`,
     )
   ).unwrap();
 
@@ -73,7 +73,7 @@ const main = async () => {
   console.log(
     `Almost done! Now, fill in the score card values in data/city-stats.json. Then,
     run 'npm run fmt'. Then, 'npm start' and see if the site is what you expect.
-    `
+    `,
   );
 };
 

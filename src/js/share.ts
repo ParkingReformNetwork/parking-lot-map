@@ -25,14 +25,14 @@ function switchShareIcons(shareIcon: HTMLAnchorElement): void {
 }
 
 export default function subscribeShareLink(
-  observable: CitySelectionObservable
+  observable: CitySelectionObservable,
 ): void {
   observable.subscribe(({ cityId }) => {
     const shareIcon = document.querySelector<HTMLAnchorElement>(
-      ".header-share-icon-container"
+      ".header-share-icon-container",
     );
     const fullScreenIcon = document.querySelector<HTMLAnchorElement>(
-      ".header-full-screen-icon-container"
+      ".header-full-screen-icon-container",
     );
     if (!shareIcon || !fullScreenIcon) return;
 
