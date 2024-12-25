@@ -15,14 +15,15 @@
 
   padding: 0;
   width: 260px;
-  @include breakpoints.gt-xxs {
-    width: 280px;
-  }
 
   background-color: colors.$white;
   border: borders.$component-border;
   border-radius: borders.$border-radius;
   color: colors.$black;
+
+  @include breakpoints.gt-xxs {
+    width: 280px;
+  }
 
   p,
   li {
