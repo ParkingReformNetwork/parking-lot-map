@@ -1,11 +1,14 @@
-import results from "ts-results";
+/* eslint-disable import/no-extraneous-dependencies */
 import fs from "fs/promises";
+
+import results from "ts-results";
 import {
   FeatureCollection,
   GeoJsonProperties,
   Polygon,
   Feature,
 } from "geojson";
+
 import { parseCityIdFromJson } from "../src/js/cityId.ts";
 import { CityId } from "../src/js/types";
 

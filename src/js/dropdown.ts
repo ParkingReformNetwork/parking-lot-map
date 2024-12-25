@@ -1,5 +1,4 @@
 import Choices from "choices.js";
-import "choices.js/public/assets/styles/choices.css";
 
 import cityStatsData from "../../data/city-stats.json";
 import { CityStatsCollection, DropdownChoice } from "./types";
