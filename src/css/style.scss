@@ -11,4 +11,8 @@
 @use "map";
 @use "scorecard";
 
+@import "./vendor/bootstrap.css";
+@import "npm:@fortawesome/fontawesome-svg-core/styles.css";
+@import "npm:choices.js/public/assets/styles/choices.css";
+@import "npm:leaflet/dist/leaflet.css";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");

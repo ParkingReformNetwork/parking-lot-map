@@ -1,5 +1,4 @@
 import { Control, Map, TileLayer } from "leaflet";
-import "leaflet/dist/leaflet.css";
 
 const MIN_ZOOM = 4;
 const MAX_ZOOM = 18;
