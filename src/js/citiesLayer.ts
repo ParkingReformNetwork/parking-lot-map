@@ -4,8 +4,8 @@ import { CityEntry, CityEntryCollection } from "./types";
 import { STYLES } from "./map";
 import { CitySelectionObservable } from "./CitySelectionState";
 
-import cityBoundariesGeojson from "~/data/city-boundaries.geojson";
-import cityStatsData from "~/data/city-stats.json";
+import cityBoundariesGeojson from "~/data/city-boundaries.geojson" with { type: "json" };
+import cityStatsData from "~/data/city-stats.json" with { type: "json" };
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.

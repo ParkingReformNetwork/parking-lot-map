@@ -1,6 +1,6 @@
 import Choices from "choices.js";
 
-import cityStatsData from "../../data/city-stats.json";
+import cityStatsData from "../../data/city-stats.json" with { type: "json" };
 import { CityStatsCollection, DropdownChoice } from "./types";
 import { CitySelectionObservable } from "./CitySelectionState";
 
