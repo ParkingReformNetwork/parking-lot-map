@@ -1,18 +1,23 @@
 import { ImageOverlay, Map, geoJSON, GeoJSON } from "leaflet";
 
-import { CityEntry, CityEntryCollection } from "./types";
+import type {
+  CityEntryCollection,
+  CityStatsCollection,
+  CityBoundaries,
+} from "./types";
 import { STYLES } from "./map";
 import { CitySelectionObservable } from "./CitySelectionState";
-
-import cityBoundariesGeojson from "~/data/city-boundaries.geojson" with { type: "json" };
-import cityStatsData from "~/data/city-stats.json" with { type: "json" };
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
  */
-export function createCitiesLayer(map: Map): [GeoJSON, CityEntryCollection] {
+export function createCitiesLayer(
+  map: Map,
+  cityBoundaries: CityBoundaries,
+  cityStatsData: CityStatsCollection,
+): [GeoJSON, CityEntryCollection] {
   const cityEntries: CityEntryCollection = {};
-  const boundaries = geoJSON(cityBoundariesGeojson, {
+  const boundaries = geoJSON(cityBoundaries, {
     style() {
       return STYLES.cities;
     },
@@ -21,7 +26,7 @@ export function createCitiesLayer(map: Map): [GeoJSON, CityEntryCollection] {
       cityEntries[cityId] = {
         layer,
         stats: cityStatsData[cityId],
-      } as CityEntry;
+      };
       layer.on("add", () => {
         layer.getElement()?.setAttribute("id", cityId);
       });

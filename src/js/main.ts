@@ -10,6 +10,11 @@ import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
 import { createCitiesLayer, setCityOnBoundaryClick } from "./citiesLayer";
 import ParkingLotLoader from "./ParkingLotLoader";
 import { initCitySelectionState } from "./CitySelectionState";
+import {
+  CITY_STATS_DATA,
+  CITY_BOUNDARIES_GEOJSON,
+  PARKING_LOT_GEOJSON_MODULES,
+} from "./data";
 
 export default async function initApp(): Promise<void> {
   initIcons();
@@ -17,13 +22,24 @@ export default async function initApp(): Promise<void> {
   initAbout();
 
   const map = createMap();
-  const [cityBoundaries, cityEntries] = createCitiesLayer(map);
-  const parkingLotLoader = new ParkingLotLoader(map);
+  const [cityBoundaries, cityEntries] = createCitiesLayer(
+    map,
+    CITY_BOUNDARIES_GEOJSON,
+    CITY_STATS_DATA,
+  );
+  const parkingLotLoader = new ParkingLotLoader(
+    map,
+    PARKING_LOT_GEOJSON_MODULES,
+  );
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  const cityState = initCitySelectionState(initialCityId, "atlanta-ga");
+  const cityState = initCitySelectionState(
+    Object.keys(CITY_STATS_DATA),
+    initialCityId,
+    "atlanta-ga",
+  );
 
-  initDropdown(cityState);
+  initDropdown(CITY_STATS_DATA, cityState);
   subscribeScorecard(cityState, cityEntries);
   subscribeShareLink(cityState);
   subscribeSnapToCity(cityState, map, cityEntries);

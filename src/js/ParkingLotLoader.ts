@@ -1,17 +1,8 @@
 import { geoJSON, GeoJSON, Map as LeafletMap } from "leaflet";
-import { Feature, Geometry } from "geojson";
 
-import { CityId } from "./types";
+import { CityId, ParkingLotGeoJSONModules } from "./types";
 import { CitySelectionObservable } from "./CitySelectionState";
 import { STYLES } from "./map";
-
-interface ParkingLotModules {
-  [key: string]: () => Promise<Feature<Geometry>>;
-}
-
-const parkingLotsModules = import(
-  "~/data/parking-lots/*"
-) as unknown as ParkingLotModules;
 
 function createParkingLotsLayer(map: LeafletMap): GeoJSON {
   const parkingLayer = geoJSON(undefined, {
@@ -42,14 +33,17 @@ function createParkingLotsLayer(map: LeafletMap): GeoJSON {
 export default class ParkingLotLoader {
   private layer: GeoJSON;
 
+  private lotsData: ParkingLotGeoJSONModules;
+
   private loadedCities: Set<CityId>;
 
   // Used to track in-flight requests to load the data so that we don't have
   // multiple concurrent requests.
   private loadingPromises: Map<CityId, Promise<void>>;
 
-  constructor(map: LeafletMap) {
+  constructor(map: LeafletMap, lotsData: ParkingLotGeoJSONModules) {
     this.layer = createParkingLotsLayer(map);
+    this.lotsData = lotsData;
     this.loadedCities = new Set();
     this.loadingPromises = new Map();
   }
@@ -77,7 +71,7 @@ export default class ParkingLotLoader {
   }
 
   private async loadCity(cityId: CityId): Promise<void> {
-    const data = await parkingLotsModules[`${cityId}.geojson`]();
+    const data = await this.lotsData[`${cityId}.geojson`]();
     this.layer.addData(data);
     // Ensure the parking lots do not cover the city boundary.
     this.layer.bringToBack();

@@ -1,7 +1,5 @@
 declare module "~/data/city-boundaries.geojson" {
-  import { FeatureCollection, Polygon, GeoJsonProperties } from "geojson";
-
-  const value: FeatureCollection<Polygon, GeoJsonProperties>;
+  const value: import("./types").CityBoundaries;
   export default value;
 }
 

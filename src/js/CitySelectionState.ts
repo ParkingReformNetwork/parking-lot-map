@@ -1,8 +1,6 @@
 import Observable from "./Observable";
 import { CityId } from "./types";
 
-import cityStatsData from "../../data/city-stats.json" with { type: "json" };
-
 type CitySelectionState = {
   cityId: CityId;
   shouldSnapMap: boolean;
@@ -11,11 +9,12 @@ type CitySelectionState = {
 export type CitySelectionObservable = Observable<CitySelectionState>;
 
 export function initCitySelectionState(
+  cityIds: CityId[],
   initialCityId: CityId | null,
   fallBackCityId: CityId,
 ): CitySelectionObservable {
   const startingCity =
-    initialCityId && Object.keys(cityStatsData).includes(initialCityId)
+    initialCityId && cityIds.includes(initialCityId)
       ? initialCityId
       : fallBackCityId;
   return new Observable<CitySelectionState>({
