@@ -1,10 +1,9 @@
 import Choices from "choices.js";
 
-import cityStatsData from "../../data/city-stats.json" with { type: "json" };
-import { CityStatsCollection, DropdownChoice } from "./types";
+import type { CityStatsCollection, DropdownChoice } from "./types";
 import { CitySelectionObservable } from "./CitySelectionState";
 
-function createDropdown(): Choices {
+function createDropdown(cityStatsData: CityStatsCollection): Choices {
   const dropdown = new Choices("#city-dropdown", {
     position: "bottom",
     allowHTML: false,
@@ -19,24 +18,22 @@ function createDropdown(): Choices {
 
   const officialCities: DropdownChoice[] = [];
   const communityCities: DropdownChoice[] = [];
-  Object.entries(cityStatsData as CityStatsCollection).forEach(
-    ([id, { name, contribution }]) => {
-      const [city, state] = name.split(", ");
-      const entry: DropdownChoice = {
-        value: id,
-        label: name,
-        customProperties: {
-          city,
-          state,
-        },
-      };
-      if (contribution) {
-        communityCities.push(entry);
-      } else {
-        officialCities.push(entry);
-      }
-    },
-  );
+  Object.entries(cityStatsData).forEach(([id, { name, contribution }]) => {
+    const [city, state] = name.split(", ");
+    const entry: DropdownChoice = {
+      value: id,
+      label: name,
+      customProperties: {
+        city,
+        state,
+      },
+    };
+    if (contribution) {
+      communityCities.push(entry);
+    } else {
+      officialCities.push(entry);
+    }
+  });
 
   dropdown.setChoices([
     {
@@ -62,9 +59,10 @@ function createDropdown(): Choices {
 }
 
 export default function initDropdown(
+  cityStatsData: CityStatsCollection,
   observable: CitySelectionObservable,
 ): void {
-  const dropdown = createDropdown();
+  const dropdown = createDropdown(cityStatsData);
 
   observable.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
 
