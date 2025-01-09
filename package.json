@@ -18,9 +18,9 @@
     "test-dist": "PORT=8080 playwright test"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.5.2",
-    "@fortawesome/free-regular-svg-icons": "^6.5.2",
-    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@parcel/resolver-glob": "^2.10.3",
     "choices.js": "^10.2.0",
     "leaflet": "~1.9.3"
@@ -29,21 +29,21 @@
     "@parcel/compressor-brotli": "~2.12.0",
     "@parcel/compressor-gzip": "~2.12.0",
     "@parcel/transformer-sass": "~2.12.0",
-    "@playwright/test": "^1.34.3",
-    "@types/geojson": "^7946.0.14",
-    "@types/leaflet": "^1.9.8",
-    "@types/node": "^20.11.20",
-    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@playwright/test": "^1.49.1",
+    "@types/geojson": "^7946.0.15",
+    "@types/leaflet": "^1.9.16",
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
     "eslint": "^8.37.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "http-server": "^14.1.1",
     "parcel": "~2.12.0",
-    "playwright": "^1.34.3",
-    "prettier": "^3.3.3",
+    "playwright": "^1.49.1",
+    "prettier": "^3.4.2",
     "ts-node": "^10.9.2",
     "ts-results": "^3.3.0",
-    "typescript": "^5.3.3"
+    "typescript": "^5.7.3"
   },
   "targets": {
     "default": {
