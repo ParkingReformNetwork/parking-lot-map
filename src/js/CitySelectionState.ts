@@ -1,7 +1,7 @@
 import Observable from "./Observable";
 import { CityId } from "./types";
 
-import cityStatsData from "../../data/city-stats.json";
+import cityStatsData from "../../data/city-stats.json" with { type: "json" };
 
 type CitySelectionState = {
   cityId: CityId;
