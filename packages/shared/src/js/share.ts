@@ -1,6 +1,6 @@
 /* global document, navigator, window */
 
-import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+import { ViewStateObservable } from "./ViewState";
 import { determineShareUrl } from "./cityId";
 
 async function copyToClipboard(value: string): Promise<void> {

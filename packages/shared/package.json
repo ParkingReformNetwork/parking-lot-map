@@ -2,7 +2,9 @@
   "name": "@prn-parking-lots/shared",
   "version": "1.0.0",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "playwright test"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",

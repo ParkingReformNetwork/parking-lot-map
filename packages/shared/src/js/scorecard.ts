@@ -1,10 +1,6 @@
-import Observable from "@prn-parking-lots/shared/src/js/Observable";
-
-import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
-import type {
-  CityEntryCollection,
-  CityStats,
-} from "@prn-parking-lots/shared/src/js/types";
+import Observable from "./Observable";
+import { ViewStateObservable } from "./ViewState";
+import type { CityEntryCollection, CityStats } from "./types";
 
 function generateScorecard(stats: CityStats): string {
   let header = `

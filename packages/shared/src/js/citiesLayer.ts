@@ -4,9 +4,8 @@ import type {
   CityEntryCollection,
   CityStatsCollection,
   CityBoundaries,
-} from "@prn-parking-lots/shared/src/js/types";
-import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
-
+} from "./types";
+import { ViewStateObservable } from "./ViewState";
 import { STYLES } from "./map";
 
 /**

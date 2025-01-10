@@ -8,7 +8,7 @@ import {
   Feature,
 } from "geojson";
 
-import { parseCityIdFromJson } from "@prn-parking-lots/primary/src/js/cityId.ts";
+import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/cityId.ts";
 import type { CityId } from "@prn-parking-lots/shared/src/js/types";
 
 const determineArgs = (
