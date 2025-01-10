@@ -1,8 +1,9 @@
 import { ImageOverlay, Map } from "leaflet";
 
-import { CityEntryCollection } from "./types";
+import type { CityEntryCollection } from "@prn-parking-lots/shared/src/js/types";
+import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+
 import ParkingLotLoader from "./ParkingLotLoader";
-import { CitySelectionObservable } from "./CitySelectionState";
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
@@ -19,11 +20,11 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 }
 
 export function subscribeSnapToCity(
-  observable: CitySelectionObservable,
+  viewState: ViewStateObservable,
   map: Map,
   cityEntries: CityEntryCollection,
 ): void {
-  observable.subscribe((state) => {
+  viewState.subscribe((state) => {
     if (!state.shouldSnapMap) return;
     snapToCity(map, cityEntries[state.cityId].layer);
   }, "snap to city");
@@ -35,7 +36,7 @@ export function subscribeSnapToCity(
  * Regardless of if the city is chosen, ensure its parking lots are loaded when in view.
  */
 export function setCityByMapPosition(
-  observable: CitySelectionObservable,
+  viewState: ViewStateObservable,
   map: Map,
   cityEntries: CityEntryCollection,
   parkingLotLoader: ParkingLotLoader,
@@ -58,7 +59,7 @@ export function setCityByMapPosition(
       }
     });
     if (centralCity) {
-      observable.setValue({ cityId: centralCity, shouldSnapMap: false });
+      viewState.setValue({ cityId: centralCity, shouldSnapMap: false });
     }
   });
 }

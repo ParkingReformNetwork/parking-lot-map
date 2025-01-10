@@ -1,7 +1,10 @@
 import Choices from "choices.js";
 
-import type { CityStatsCollection, DropdownChoice } from "./types";
-import { CitySelectionObservable } from "./CitySelectionState";
+import type {
+  CityStatsCollection,
+  DropdownChoice,
+} from "@prn-parking-lots/shared/src/js/types";
+import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
 
 function createDropdown(cityStatsData: CityStatsCollection): Choices {
   const dropdown = new Choices("#city-dropdown", {
@@ -60,11 +63,11 @@ function createDropdown(cityStatsData: CityStatsCollection): Choices {
 
 export default function initDropdown(
   cityStatsData: CityStatsCollection,
-  observable: CitySelectionObservable,
+  viewState: ViewStateObservable,
 ): void {
   const dropdown = createDropdown(cityStatsData);
 
-  observable.subscribe(
+  viewState.subscribe(
     ({ cityId }) => dropdown.setChoiceByValue(cityId),
     "set dropdown to city",
   );
@@ -73,6 +76,6 @@ export default function initDropdown(
   // Note that `change` only triggers for user-driven changes, not programmatic updates.
   const selectElement = dropdown.passedElement.element as HTMLSelectElement;
   selectElement.addEventListener("change", () => {
-    observable.setValue({ cityId: selectElement.value, shouldSnapMap: true });
+    viewState.setValue({ cityId: selectElement.value, shouldSnapMap: true });
   });
 }

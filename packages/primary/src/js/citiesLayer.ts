@@ -4,9 +4,10 @@ import type {
   CityEntryCollection,
   CityStatsCollection,
   CityBoundaries,
-} from "./types";
+} from "@prn-parking-lots/shared/src/js/types";
+import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+
 import { STYLES } from "./map";
-import { CitySelectionObservable } from "./CitySelectionState";
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
@@ -38,7 +39,7 @@ export function createCitiesLayer(
 }
 
 export function setCityOnBoundaryClick(
-  observable: CitySelectionObservable,
+  viewState: ViewStateObservable,
   map: Map,
   cityBoundaries: GeoJSON,
 ): void {
@@ -47,6 +48,6 @@ export function setCityOnBoundaryClick(
     // Only change cities if zoomed in enough.
     if (currentZoom <= 7) return;
     const cityId = e.sourceTarget.feature.properties.id;
-    observable.setValue({ cityId, shouldSnapMap: true });
+    viewState.setValue({ cityId, shouldSnapMap: true });
   });
 }

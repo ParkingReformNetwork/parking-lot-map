@@ -1,4 +1,4 @@
-import { CityId } from "./types";
+import type { CityId } from "@prn-parking-lots/shared/src/js/types";
 
 /**
  * Extract the city ID from the URL's `#`, if present.

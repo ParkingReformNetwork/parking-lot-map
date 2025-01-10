@@ -1,6 +1,6 @@
 /* eslint-disable import/no-relative-packages */
 
-import { ParkingLotGeoJSONModules } from "./types";
+import type { ParkingLotGeoJSONModules } from "@prn-parking-lots/shared/src/js/types";
 
 import CITY_STATS_DATA from "../../../../data/city-stats.json" with { type: "json" };
 // @ts-expect-error - move data to this package to fix declaration

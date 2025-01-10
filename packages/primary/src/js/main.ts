@@ -1,5 +1,6 @@
 import initIcons from "@prn-parking-lots/shared/src/js/fontAwesome";
 import maybeDisableFullScreenIcon from "@prn-parking-lots/shared/src/js/iframe";
+import { initViewState } from "@prn-parking-lots/shared/src/js/ViewState";
 
 import { extractCityIdFromUrl } from "./cityId";
 import initAbout from "./about";
@@ -10,7 +11,6 @@ import { createMap } from "./map";
 import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
 import { createCitiesLayer, setCityOnBoundaryClick } from "./citiesLayer";
 import ParkingLotLoader from "./ParkingLotLoader";
-import { initCitySelectionState } from "./CitySelectionState";
 import {
   CITY_STATS_DATA,
   CITY_BOUNDARIES_GEOJSON,
@@ -34,22 +34,22 @@ export default async function initApp(): Promise<void> {
   );
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
-  const cityState = initCitySelectionState(
+  const viewState = initViewState(
     Object.keys(CITY_STATS_DATA),
     initialCityId,
     "atlanta-ga",
   );
 
-  initDropdown(CITY_STATS_DATA, cityState);
-  subscribeScorecard(cityState, cityEntries);
-  subscribeShareLink(cityState);
-  subscribeSnapToCity(cityState, map, cityEntries);
-  parkingLotLoader.subscribe(cityState);
+  initDropdown(CITY_STATS_DATA, viewState);
+  subscribeScorecard(viewState, cityEntries);
+  subscribeShareLink(viewState);
+  subscribeSnapToCity(viewState, map, cityEntries);
+  parkingLotLoader.subscribe(viewState);
 
-  setCityOnBoundaryClick(cityState, map, cityBoundaries);
-  setCityByMapPosition(cityState, map, cityEntries, parkingLotLoader);
+  setCityOnBoundaryClick(viewState, map, cityBoundaries);
+  setCityByMapPosition(viewState, map, cityEntries, parkingLotLoader);
 
-  cityState.initialize();
+  viewState.initialize();
 
   // There have been some issues on Safari with the map only rendering the top 20%
   // on the first page load. This is meant to address that.

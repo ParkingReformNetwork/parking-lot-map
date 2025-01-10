@@ -1,6 +1,7 @@
 /* global document, navigator, window */
+
+import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
 import { determineShareUrl } from "./cityId";
-import { CitySelectionObservable } from "./CitySelectionState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
@@ -25,9 +26,9 @@ function switchShareIcons(shareIcon: HTMLAnchorElement): void {
 }
 
 export default function subscribeShareLink(
-  observable: CitySelectionObservable,
+  viewState: ViewStateObservable,
 ): void {
-  observable.subscribe(({ cityId }) => {
+  viewState.subscribe(({ cityId }) => {
     const shareIcon = document.querySelector<HTMLAnchorElement>(
       ".header-share-icon-container",
     );

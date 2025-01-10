@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prn-parking-lots/primary": "workspace:*",
+    "@prn-parking-lots/shared": "workspace:*",
     "ts-results": "^3.3.0"
   },
   "devDependencies": {
