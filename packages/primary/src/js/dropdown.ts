@@ -64,7 +64,10 @@ export default function initDropdown(
 ): void {
   const dropdown = createDropdown(cityStatsData);
 
-  observable.subscribe(({ cityId }) => dropdown.setChoiceByValue(cityId));
+  observable.subscribe(
+    ({ cityId }) => dropdown.setChoiceByValue(cityId),
+    "set dropdown to city",
+  );
 
   // Bind user-changes in the dropdown to update the state in CitySelectionObservable.
   // Note that `change` only triggers for user-driven changes, not programmatic updates.

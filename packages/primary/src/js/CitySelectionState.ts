@@ -1,4 +1,5 @@
-import Observable from "./Observable";
+import Observable from "@prn-parking-lots/shared/src/js/Observable";
+
 import { CityId } from "./types";
 
 type CitySelectionState = {
@@ -17,7 +18,7 @@ export function initCitySelectionState(
     initialCityId && cityIds.includes(initialCityId)
       ? initialCityId
       : fallBackCityId;
-  return new Observable<CitySelectionState>({
+  return new Observable<CitySelectionState>("city state", {
     cityId: startingCity,
     shouldSnapMap: true,
   });

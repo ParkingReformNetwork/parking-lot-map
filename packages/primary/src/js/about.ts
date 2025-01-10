@@ -1,4 +1,4 @@
-import Observable from "./Observable";
+import Observable from "@prn-parking-lots/shared/src/js/Observable";
 
 function updatePopupUI(visible: boolean): void {
   const popup = document.querySelector<HTMLElement>(".about-popup");
@@ -9,8 +9,8 @@ function updatePopupUI(visible: boolean): void {
 }
 
 export default function initAbout(): void {
-  const isVisible = new Observable<boolean>(false);
-  isVisible.subscribe(updatePopupUI);
+  const isVisible = new Observable<boolean>("about popup", false);
+  isVisible.subscribe(updatePopupUI, "update popup UI");
 
   const popup = document.querySelector(".about-popup");
   const headerIcon = document.querySelector(".header-about-icon-container");

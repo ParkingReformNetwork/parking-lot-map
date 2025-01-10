@@ -42,5 +42,5 @@ export default function subscribeShareLink(
       switchShareIcons(shareIcon);
     });
     fullScreenIcon.href = shareUrl;
-  });
+  }, "update share link");
 }

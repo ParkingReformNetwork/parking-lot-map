@@ -1,6 +1,7 @@
+import Observable from "@prn-parking-lots/shared/src/js/Observable";
+
 import { CitySelectionObservable } from "./CitySelectionState";
 import { CityEntryCollection, CityStats } from "./types";
-import Observable from "./Observable";
 
 function generateScorecard(stats: CityStats): string {
   let header = `
@@ -83,8 +84,8 @@ function updateAccordionUI(expanded: boolean): void {
 }
 
 function initAccordion(): void {
-  const isExpanded = new Observable<boolean>(false);
-  isExpanded.subscribe(updateAccordionUI);
+  const isExpanded = new Observable<boolean>("scorecard accordion", false);
+  isExpanded.subscribe(updateAccordionUI, "toggle scorecard open/closed");
 
   // The event listener is on `#scorecard-container` because it is never erased,
   // unlike the scorecard contents being recreated every time the city changes.
@@ -110,7 +111,7 @@ export default function subscribeScorecard(
     const scorecardContainer = document.querySelector(".scorecard-container");
     if (!scorecardContainer) return;
     scorecardContainer.innerHTML = generateScorecard(cityEntries[cityId].stats);
-  });
+  }, "generate scorecard");
 
   // Also set up the accordion UI. It doesn't depend on globalState, so only
   // needs to run once.
