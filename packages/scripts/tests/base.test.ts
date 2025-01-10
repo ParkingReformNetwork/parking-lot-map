@@ -1,12 +1,14 @@
 import fs from "fs/promises";
+
 import { expect, test } from "@playwright/test";
 import { Feature, Polygon, FeatureCollection } from "geojson";
+
 import {
   determineArgs,
   updateCoordinates,
   updateParkingLots,
-} from "../../scripts/base";
-import { CityId } from "../../src/js/types";
+} from "../src/base";
+import { CityId } from "../../primary/src/js/types";
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {

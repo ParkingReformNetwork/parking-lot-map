@@ -1,0 +1,16 @@
+{
+  "name": "@prn-parking-lots/scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "add-city": "ts-node-esm src/add-city.ts",
+    "update-city-boundaries": "ts-node-esm src/update-city-boundaries.ts",
+    "update-lots": "ts-node-esm src/update-lots.ts"
+  },
+  "dependencies": {
+    "ts-results": "^3.3.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
+  }
+}

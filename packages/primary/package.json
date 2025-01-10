@@ -1,0 +1,19 @@
+{
+  "name": "@prn-parking-lots/primary",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "type": "module",
+  "scripts": {
+    "start": "parcel",
+    "build": "rm -rf dist; parcel build --detailed-report",
+    "serve-dist": "cd dist; http-server",
+    "test-dist": "PORT=8080 playwright test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "targets": {
+    "default": {
+      "publicUrl": "./"
+    }
+  }
+}

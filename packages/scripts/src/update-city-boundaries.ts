@@ -1,4 +1,4 @@
-import { determineArgs, updateCoordinates } from "./base.js";
+import { determineArgs, updateCoordinates } from "./base.ts";
 
 const main = async (): Promise<void> => {
   const { cityId } = determineArgs(

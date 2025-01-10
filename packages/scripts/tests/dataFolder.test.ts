@@ -1,4 +1,5 @@
 import fs from "fs/promises";
+
 import { expect, test } from "@playwright/test";
 
 const assertSortedGeojson = async (filePath: string) => {

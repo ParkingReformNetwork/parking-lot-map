@@ -1,4 +1,4 @@
-import { determineArgs, updateParkingLots } from "./base";
+import { determineArgs, updateParkingLots } from "./base.ts";
 
 const main = async (): Promise<void> => {
   const { cityId } = determineArgs("update-lots", process.argv.slice(2))

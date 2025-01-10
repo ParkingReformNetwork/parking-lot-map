@@ -1,21 +1,18 @@
 {
-  "name": "parking-lot-map",
+  "name": "prn-parking-lots",
+  "private": true,
   "version": "1.0.0",
   "source": "index.html",
   "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start": "parcel",
-    "build": "rm -rf dist; parcel build --detailed-report",
     "test": "playwright test",
     "check": "tsc --noEmit",
     "fmt": "prettier --write .",
-    "fix": "prettier --write index.html scripts/ src/ tests/; eslint --fix scripts/ src/ tests/",
-    "lint": "prettier --check . && eslint scripts/ src/ tests/",
-    "add-city": "ts-node-esm scripts/add-city.ts",
-    "update-city-boundaries": "ts-node-esm scripts/update-city-boundaries.ts",
-    "update-lots": "ts-node-esm scripts/update-lots.ts",
-    "serve-dist": "cd dist; http-server",
-    "test-dist": "PORT=8080 playwright test"
+    "fix": "prettier --write packages/; eslint --fix packages/",
+    "lint": "prettier --check . && eslint packages/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
@@ -41,8 +38,6 @@
     "parcel": "~2.12.0",
     "playwright": "^1.49.1",
     "prettier": "^3.4.2",
-    "ts-node": "^10.9.2",
-    "ts-results": "^3.3.0",
     "typescript": "^5.7.3"
   },
   "targets": {

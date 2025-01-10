@@ -1,8 +1,8 @@
 /node_modules/
 /.idea/
 /.fleet/
-/dist/
-/.parcel-cache/
+dist/
+.parcel-cache/
 
 /parking-lots-update.geojson
 /city-update.geojson
