@@ -4,7 +4,7 @@
   "source": "src/index.html",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf dist .parcel-cache",
+    "clean": "rm -rf dist ../../.parcel-cache",
     "test": "playwright test",
     "start": "npm run clean; parcel",
     "build": "npm run clean; parcel build --detailed-report",
