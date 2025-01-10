@@ -22,4 +22,5 @@ rules:
   no-unexpected-multiline: off
   import/no-unresolved: off
   import/extensions: off
+  no-underscore-dangle: off
   "@typescript-eslint/no-unused-vars": off
