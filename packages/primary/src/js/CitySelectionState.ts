@@ -1,4 +1,5 @@
-import Observable from "./Observable";
+import Observable from "@prn-parking-lots/shared/src/js/Observable";
+
 import { CityId } from "./types";
 
 type CitySelectionState = {
