@@ -9,7 +9,7 @@ const main = async (): Promise<void> => {
       cityId,
       false,
       "parking-lots-update.geojson",
-      `data/parking-lots/${cityId}.geojson`,
+      `packages/primary/data/parking-lots/${cityId}.geojson`,
     )
   ).unwrap();
 
