@@ -1,5 +1,6 @@
 import initIcons from "@prn-parking-lots/shared/src/js/fontAwesome";
 import maybeDisableFullScreenIcon from "@prn-parking-lots/shared/src/js/iframe";
+import { initViewState } from "@prn-parking-lots/shared/src/js/ViewState";
 
 import { extractCityIdFromUrl } from "./cityId";
 import initAbout from "./about";
@@ -10,7 +11,6 @@ import { createMap } from "./map";
 import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
 import { createCitiesLayer, setCityOnBoundaryClick } from "./citiesLayer";
 import ParkingLotLoader from "./ParkingLotLoader";
-import { initViewState } from "@prn-parking-lots/shared/src/js/ViewState";
 import {
   CITY_STATS_DATA,
   CITY_BOUNDARIES_GEOJSON,

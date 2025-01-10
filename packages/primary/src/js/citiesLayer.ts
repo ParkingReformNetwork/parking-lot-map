@@ -5,8 +5,9 @@ import type {
   CityStatsCollection,
   CityBoundaries,
 } from "@prn-parking-lots/shared/src/js/types";
-import { STYLES } from "./map";
 import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+
+import { STYLES } from "./map";
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.

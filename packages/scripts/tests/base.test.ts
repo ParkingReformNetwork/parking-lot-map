@@ -3,12 +3,13 @@ import fs from "fs/promises";
 import { expect, test } from "@playwright/test";
 import { Feature, Polygon, FeatureCollection } from "geojson";
 
+import type { CityId } from "@prn-parking-lots/shared/src/js/types";
+
 import {
   determineArgs,
   updateCoordinates,
   updateParkingLots,
 } from "../src/base";
-import type { CityId } from "@prn-parking-lots/shared/src/js/types";
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {

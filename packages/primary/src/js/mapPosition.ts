@@ -1,8 +1,9 @@
 import { ImageOverlay, Map } from "leaflet";
 
-import ParkingLotLoader from "./ParkingLotLoader";
 import type { CityEntryCollection } from "@prn-parking-lots/shared/src/js/types";
 import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+
+import ParkingLotLoader from "./ParkingLotLoader";
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
