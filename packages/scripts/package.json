@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "test": "playwright test",
     "add-city": "ts-node-esm src/add-city.ts",
     "update-city-boundaries": "ts-node-esm src/update-city-boundaries.ts",
     "update-lots": "ts-node-esm src/update-lots.ts"

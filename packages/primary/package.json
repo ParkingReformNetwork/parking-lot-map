@@ -4,6 +4,7 @@
   "source": "src/index.html",
   "type": "module",
   "scripts": {
+    "test": "playwright test",
     "start": "parcel",
     "build": "rm -rf dist; parcel build --detailed-report",
     "serve-dist": "cd dist; http-server",

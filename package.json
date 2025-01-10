@@ -8,7 +8,7 @@
     "packages/*"
   ],
   "scripts": {
-    "test": "playwright test",
+    "test": "npm run test --workspaces",
     "check": "tsc --noEmit",
     "fmt": "prettier --write .",
     "fix": "prettier --write packages/; eslint --fix packages/",

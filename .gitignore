@@ -8,4 +8,4 @@ dist/
 /city-update.geojson
 *.tsbuildinfo
 
-/test-results
+test-results/
