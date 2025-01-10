@@ -46,3 +46,9 @@ export type CityBoundaries = FeatureCollection<Polygon, GeoJsonProperties>;
 export interface ParkingLotGeoJSONModules {
   [key: string]: () => Promise<Feature<Geometry>>;
 }
+
+export interface DataSet {
+  stats: CityStatsCollection;
+  boundaries: CityBoundaries;
+  parkingLots: ParkingLotGeoJSONModules;
+}
