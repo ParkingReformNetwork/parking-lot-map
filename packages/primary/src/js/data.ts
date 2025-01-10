@@ -2,13 +2,12 @@
 
 import type { ParkingLotGeoJSONModules } from "@prn-parking-lots/shared/src/js/types";
 
-import CITY_STATS_DATA from "../../../../data/city-stats.json" with { type: "json" };
-// @ts-expect-error - move data to this package to fix declaration
-import CITY_BOUNDARIES_GEOJSON from "../../../../data/city-boundaries.geojson" with { type: "json" };
+import CITY_STATS_DATA from "../../data/city-stats.json" with { type: "json" };
+import CITY_BOUNDARIES_GEOJSON from "../../data/city-boundaries.geojson" with { type: "json" };
 
 const PARKING_LOT_GEOJSON_MODULES = import(
-  // @ts-expect-error - move data to this package to fix declaration
-  "../../../../data/parking-lots/*"
+  // @ts-expect-error Dynamic import with glob pattern
+  "../../data/parking-lots/*"
 ) as unknown as ParkingLotGeoJSONModules;
 
 export {

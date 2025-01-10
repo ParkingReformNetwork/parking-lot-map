@@ -12,7 +12,7 @@ const main = async (): Promise<void> => {
       "update-city-boundaries",
       cityId,
       false,
-      "data/city-boundaries.geojson",
+      "packages/primary/data/city-boundaries.geojson",
       "city-update.geojson",
     )
   ).unwrap();
