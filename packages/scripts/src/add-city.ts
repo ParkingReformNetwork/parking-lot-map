@@ -2,8 +2,8 @@ import fs from "fs/promises";
 
 import results from "ts-results";
 
+import { CityId } from "@prn-parking-lots/primary/src/js/types.ts";
 import { determineArgs, updateCoordinates, updateParkingLots } from "./base.ts";
-import { CityId } from "../../primary/src/js/types.ts";
 
 const addScoreCard = async (
   cityId: CityId,

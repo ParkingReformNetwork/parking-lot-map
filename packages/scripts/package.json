@@ -9,6 +9,7 @@
     "update-lots": "ts-node-esm src/update-lots.ts"
   },
   "dependencies": {
+    "@prn-parking-lots/primary": "*",
     "ts-results": "^3.3.0"
   },
   "devDependencies": {
