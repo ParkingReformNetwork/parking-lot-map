@@ -26,7 +26,7 @@ export function subscribeSnapToCity(
   observable.subscribe((state) => {
     if (!state.shouldSnapMap) return;
     snapToCity(map, cityEntries[state.cityId].layer);
-  });
+  }, "snap to city");
 }
 
 /**

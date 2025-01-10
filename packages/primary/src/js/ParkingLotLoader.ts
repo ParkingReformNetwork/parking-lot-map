@@ -67,7 +67,10 @@ export default class ParkingLotLoader {
   }
 
   subscribe(observable: CitySelectionObservable): void {
-    observable.subscribe(({ cityId }) => this.load(cityId));
+    observable.subscribe(
+      ({ cityId }) => this.load(cityId),
+      "load parking lots",
+    );
   }
 
   private async loadCity(cityId: CityId): Promise<void> {

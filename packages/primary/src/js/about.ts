@@ -10,7 +10,7 @@ function updatePopupUI(visible: boolean): void {
 
 export default function initAbout(): void {
   const isVisible = new Observable<boolean>("about popup", false);
-  isVisible.subscribe(updatePopupUI);
+  isVisible.subscribe(updatePopupUI, "update popup UI");
 
   const popup = document.querySelector(".about-popup");
   const headerIcon = document.querySelector(".header-about-icon-container");
