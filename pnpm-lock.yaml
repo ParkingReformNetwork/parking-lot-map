@@ -52,15 +52,12 @@ importers:
       "@fortawesome/fontawesome-svg-core":
         specifier: ^6.7.2
         version: 6.7.2
-      "@fortawesome/free-regular-svg-icons":
-        specifier: ^6.7.2
-        version: 6.7.2
-      "@fortawesome/free-solid-svg-icons":
-        specifier: ^6.7.2
-        version: 6.7.2
       "@parcel/resolver-glob":
         specifier: ~2.12.0
         version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.15))
+      "@prn-parking-lots/shared":
+        specifier: workspace:*
+        version: link:../shared
       choices.js:
         specifier: ^10.2.0
         version: 10.2.0
@@ -99,6 +96,18 @@ importers:
       tsx:
         specifier: ^4.19.2
         version: 4.19.2
+
+  packages/shared:
+    dependencies:
+      "@fortawesome/fontawesome-svg-core":
+        specifier: ^6.7.2
+        version: 6.7.2
+      "@fortawesome/free-regular-svg-icons":
+        specifier: ^6.7.2
+        version: 6.7.2
+      "@fortawesome/free-solid-svg-icons":
+        specifier: ^6.7.2
+        version: 6.7.2
 
 packages:
   "@babel/code-frame@7.26.2":

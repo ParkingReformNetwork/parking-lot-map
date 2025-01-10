@@ -1,6 +1,7 @@
+import initIcons from "@prn-parking-lots/shared/src/js/fontAwesome";
+import maybeDisableFullScreenIcon from "@prn-parking-lots/shared/src/js/iframe";
+
 import { extractCityIdFromUrl } from "./cityId";
-import initIcons from "./fontAwesome";
-import maybeDisableFullScreenIcon from "./iframe";
 import initAbout from "./about";
 import subscribeShareLink from "./share";
 import subscribeScorecard from "./scorecard";
