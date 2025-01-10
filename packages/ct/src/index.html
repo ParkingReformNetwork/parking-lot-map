@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Connecticut Parking Lot Map - Parking Reform Network</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../shared/src/css/style.scss" />
+  </head>
+
+  <body>
+    <header class="top-header">
+      <select
+        single
+        name="city-dropdown"
+        class="header-dropdown"
+        id="city-dropdown"
+        aria-label="select the city"
+      ></select>
+      <nav class="header-icons">
+        <button
+          class="header-icon-container header-about-icon-container"
+          title="about the map"
+          aria-expanded="false"
+          aria-controls="about-popup"
+        >
+          <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
+          <span class="sr-only">toggle a popup describing the map</span>
+        </button>
+        <a
+          class="header-icon-container header-share-icon-container"
+          title="copy link"
+          ><i class="share-link-icon fa-solid fa-link" aria-hidden="true"></i
+          ><i
+            class="share-check-icon fa-solid fa-check"
+            style="display: none"
+            aria-hidden="true"
+          ></i>
+        </a>
+        <a
+          class="header-icon-container header-full-screen-icon-container"
+          href="https://parkingreform.org/parking-lot-map/"
+          title="view fullscreen"
+          target="_blank"
+        >
+          <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i>
+          <span class="sr-only">view fullscreen (opens in new tab)</span>
+        </a>
+      </nav>
+    </header>
+
+    <section
+      id="about-popup"
+      class="about-popup"
+      aria-label="about the map"
+      hidden
+    >
+      <header class="about-popup-header">
+        <h2>About the Connecticut Parking Lot Map</h2>
+        <button
+          class="about-popup-close-icon-container"
+          title="close the about popup"
+          aria-label="close the about popup"
+        >
+          <i class="fa-regular fa-circle-xmark" aria-hidden="true"></i>
+        </button>
+      </header>
+
+      <div role="region" aria-labelledby="about-popup-links-heading">
+        <h3 id="about-popup-links-heading">Relevant links</h3>
+        <ul class="about-popup-links-list">
+          <li>
+            <a
+              class="external-link"
+              href="https://parkingreform.org/resources/parking-lot-map/"
+              target="_blank"
+              >Methodology and key takeaways
+              <i aria-hidden="true" class="fa-solid fa-arrow-right"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              class="external-link"
+              href="https://parkingreform.org/resources/mandates-map"
+              target="_blank"
+              >PRN's Parking Mandates Map
+              <i aria-hidden="true" class="fa-solid fa-arrow-right"></i
+            ></a>
+          </li>
+          <li>
+            <a
+              class="external-link"
+              href="https://parkingreform.org/support/"
+              target="_blank"
+              >Support this project with a donation
+              <i aria-hidden="true" class="fa-solid fa-arrow-right"></i
+            ></a>
+          </li>
+        </ul>
+      </div>
+
+      <h3>FAQ</h3>
+      <dl>
+        <dt>What is included on this map?</dt>
+        <dd>
+          <p>
+            The map includes surface parking and above ground parking structures
+            which are marked on OpenStreetMap and/or visible in Google Maps
+            imagery. It does not include street parking, underground parking,
+            and podium parking (parking lots that take up only the first several
+            floors of a building).
+          </p>
+        </dd>
+        <dt>What is the parking score?</dt>
+        <dd>
+          <p>
+            The parking score measures how a city’s parking lot land use
+            compares to other cities with similar metropolitan area populations.
+          </p>
+          <p>
+            A low parking score is good and means that the city devotes less
+            land in its central neighborhoods to parking than the average.
+            Conversely, a high score means that more land is dedicated to
+            parking compared to the average for a city of that size.
+          </p>
+          <p>
+            This scoring system was created to evaluate cities on an equal basis
+            and should not be used outside of this context.
+          </p>
+        </dd>
+        <dt>What does “central city” mean?</dt>
+        <dd>
+          <p>
+            “Central city” is a term invented for this map to encompass the
+            densest, most centrally located, and most valuable real estate in a
+            metropolitan area. It is a blanket term for a city’s central
+            business district, downtown, financial district, or adjacent
+            connecting neighborhoods of interest.
+          </p>
+          <p>
+            For example, New Orleans’s Central Business District seamlessly
+            connects with the World Renowned French Quarter Neighborhood. These
+            areas were combined into the Central City of New Orleans.
+          </p>
+          <p>
+            For details on each city boundary,
+            <a
+              class="external-link"
+              href="https://parkingreform.org/resources/parking-lot-map/parking-lot-map-boundary-methodology/"
+              target="_blank"
+              >see this detailed methodology
+              <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+            >.
+          </p>
+        </dd>
+        <dt>How do I embed this map in my site?</dt>
+        <dd>
+          <p>
+            You can embed our map by using an iframe, which is a way to embed
+            other websites directly into your website.
+          </p>
+          <p>
+            First, find how to embed iframes with your website provider. For
+            example, Wordpress sites should use a
+            <a
+              class="external-link"
+              href="https://wordpress.com/support/wordpress-editor/blocks/custom-html-block/"
+              target="_blank"
+              >Custom HTML code block
+              <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+            >. Try searching for the name of your website provider and 'iframe',
+            like 'Squarespace iframe'.
+          </p>
+          <p>
+            Then, include code like the following block. However, change the
+            value for "src" to the link to your specific city, which you can get
+            by clicking the link icon in the top-right corner of the map's
+            header bar.
+          </p>
+          <p>
+            <code
+              >&lt;iframe
+              src="https://parkingreform.org/parking-lot-map/#parking-reform-map=salt-lake-city-ut"
+              width="100%" height="525px"&gt;&lt;/iframe&gt;</code
+            >
+          </p>
+          <p>
+            You may want to adjust the "width" and "height" attributes. However,
+            we do not recommend setting the height taller than "525px" because
+            it makes it hard to scroll on mobile.
+          </p>
+        </dd>
+      </dl>
+      <h3>Acknowledgments</h3>
+      <p>
+        This map was developed by
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/thomas-carpenito/"
+          target="_blank"
+          >Thomas Carpenito
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i
+        ></a>
+        with the assistance of
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/arellanoeric/"
+          target="_blank"
+          >Eric Arellano
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/tung-lin-bb1745163/"
+          target="_blank"
+          >Tung Lin
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://www.geocadder.bg/en/"
+          target="_blank"
+          >Geocadder
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/davidrhunt/"
+          target="_blank"
+          >David Hunt
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/ellen-schwartz-614847132/"
+          target="_blank"
+          >Ellen Schwartz
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/tony-jordan-pdx/"
+          target="_blank"
+          >Tony Jordan
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/pameeela/"
+          target="_blank"
+          >Pamela Barone
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a class="external-link" href="https://nathanwyand.com/" target="_blank"
+          >Nathan Wyand
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >, and
+        <a
+          class="external-link"
+          href="https://www.linkedin.com/in/justin-sawyer-59b0525/"
+          target="_blank"
+          >Justin Sawyer
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >. The map data come from
+        <a
+          class="external-link"
+          href="https://www.openstreetmap.org/copyright"
+          target="_blank"
+          >OpenStreetMap
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >. The map is built using
+        <a class="external-link" href="https://leafletjs.com/" target="_blank"
+          >Leaflet <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >. The map tiles are developed by
+        <a
+          class="external-link"
+          href="https://www.stadiamaps.com/"
+          target="_blank"
+          >Stadia Maps
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a class="external-link" href="http://stamen.com/" target="_blank"
+          >Stamen Design
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >,
+        <a
+          class="external-link"
+          href="https://openmaptiles.org/"
+          target="_blank"
+          >OpenMapTiles
+          <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a
+        >, and Google Maps.
+      </p>
+      <p>Copyright 2025 Parking Reform Network - All Rights Reserved</p>
+    </section>
+
+    <section
+      id="scorecard-container"
+      class="scorecard-container"
+      role="region"
+    ></section>
+
+    <div class="prn-logo">
+      <a
+        href="https://parkingreform.org/support/"
+        aria-label="Support Parking Reform Network"
+        target="_blank"
+        ><img
+          src="../../shared/assets/images/prn-logo.png"
+          alt="Parking Reform Network logo"
+      /></a>
+    </div>
+
+    <div
+      id="map"
+      role="application"
+      aria-label="interactive map of parking lots in Connecticut"
+    ></div>
+    <script type="module">
+      import initApp from "./js/main";
+
+      window.onload = async () => {
+        await initApp();
+      };
+    </script>
+  </body>
+</html>

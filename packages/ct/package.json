@@ -1,0 +1,21 @@
+{
+  "name": "@prn-parking-lots/ct",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist ../../.parcel-cache",
+    "test": "playwright test",
+    "start": "npm run clean; parcel",
+    "build": "npm run clean; parcel build --detailed-report",
+    "serve-dist": "cd dist; http-server",
+    "test-dist": "PORT=8080 playwright test"
+  },
+  "dependencies": {
+    "@prn-parking-lots/shared": "workspace:*",
+    "@parcel/resolver-glob": "~2.12.0",
+    "choices.js": "^10.2.0",
+    "leaflet": "~1.9.3"
+  },
+  "devDependencies": {}
+}
