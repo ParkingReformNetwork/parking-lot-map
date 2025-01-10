@@ -12,6 +12,11 @@
     "lint": "prettier --check . && eslint packages/"
   },
   "devDependencies": {
+    "@parcel/compressor-brotli": "~2.12.0",
+    "@parcel/compressor-gzip": "~2.12.0",
+    "@parcel/config-default": "~2.12.0",
+    "@parcel/resolver-glob": "~2.12.0",
+    "@parcel/transformer-json": "~2.12.0",
     "@parcel/transformer-sass": "2.12.0",
     "@playwright/test": "^1.49.1",
     "@types/geojson": "^7946.0.15",
@@ -22,6 +27,7 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-prettier": "^8.8.0",
     "http-server": "^14.1.1",
+    "parcel": "~2.12.0",
     "playwright": "^1.49.1",
     "prettier": "^3.4.2",
     "typescript": "^5.7.3"
