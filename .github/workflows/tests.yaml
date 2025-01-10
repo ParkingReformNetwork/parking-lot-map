@@ -13,6 +13,7 @@ jobs:
           node-version: 20
       - name: Install dependencies
         run: |
+          corepack enable pnpm
           pnpm install
           npx playwright install --with-deps
       - name: Typecheck
