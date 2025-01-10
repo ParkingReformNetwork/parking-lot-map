@@ -7,6 +7,8 @@ import type {
   GeoJsonProperties,
 } from "geojson";
 
+/// The slugified ID, e.g. `st.-louis-mo` or `hartford`.
+/// (The state code is missing for state-specific maps like CT.)
 export type CityId = string; // e.g. `st.-louis-mo`
 
 export interface CityStats {

@@ -1,7 +1,10 @@
 import Observable from "@prn-parking-lots/shared/src/js/Observable";
 
-import { CitySelectionObservable } from "./CitySelectionState";
-import { CityEntryCollection, CityStats } from "./types";
+import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+import type {
+  CityEntryCollection,
+  CityStats,
+} from "@prn-parking-lots/shared/src/js/types";
 
 function generateScorecard(stats: CityStats): string {
   let header = `
@@ -104,10 +107,10 @@ function initAccordion(): void {
 }
 
 export default function subscribeScorecard(
-  observable: CitySelectionObservable,
+  viewState: ViewStateObservable,
   cityEntries: CityEntryCollection,
 ): void {
-  observable.subscribe(({ cityId }) => {
+  viewState.subscribe(({ cityId }) => {
     const scorecardContainer = document.querySelector(".scorecard-container");
     if (!scorecardContainer) return;
     scorecardContainer.innerHTML = generateScorecard(cityEntries[cityId].stats);

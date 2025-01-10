@@ -86,6 +86,9 @@ importers:
       "@prn-parking-lots/primary":
         specifier: workspace:*
         version: link:../primary
+      "@prn-parking-lots/shared":
+        specifier: workspace:*
+        version: link:../shared
       ts-results:
         specifier: ^3.3.0
         version: 3.3.0

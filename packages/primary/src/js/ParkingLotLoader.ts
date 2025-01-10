@@ -1,7 +1,10 @@
 import { geoJSON, GeoJSON, Map as LeafletMap } from "leaflet";
 
-import { CityId, ParkingLotGeoJSONModules } from "./types";
-import { CitySelectionObservable } from "./CitySelectionState";
+import type {
+  CityId,
+  ParkingLotGeoJSONModules,
+} from "@prn-parking-lots/shared/src/js/types";
+import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
 import { STYLES } from "./map";
 
 function createParkingLotsLayer(map: LeafletMap): GeoJSON {
@@ -66,11 +69,8 @@ export default class ParkingLotLoader {
     return loadPromise;
   }
 
-  subscribe(observable: CitySelectionObservable): void {
-    observable.subscribe(
-      ({ cityId }) => this.load(cityId),
-      "load parking lots",
-    );
+  subscribe(viewState: ViewStateObservable): void {
+    viewState.subscribe(({ cityId }) => this.load(cityId), "load parking lots");
   }
 
   private async loadCity(cityId: CityId): Promise<void> {

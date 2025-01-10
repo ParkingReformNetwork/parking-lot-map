@@ -8,7 +8,7 @@ import {
   updateCoordinates,
   updateParkingLots,
 } from "../src/base";
-import { CityId } from "../../primary/src/js/types";
+import type { CityId } from "@prn-parking-lots/shared/src/js/types";
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
