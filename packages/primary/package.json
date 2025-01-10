@@ -4,9 +4,10 @@
   "source": "src/index.html",
   "type": "module",
   "scripts": {
+    "clean": "rm -rf dist .parcel-cache",
     "test": "playwright test",
-    "start": "parcel",
-    "build": "rm -rf dist; parcel build --detailed-report",
+    "start": "npm run clean; parcel",
+    "build": "npm run clean; parcel build --detailed-report",
     "serve-dist": "cd dist; http-server",
     "test-dist": "PORT=8080 playwright test"
   },
