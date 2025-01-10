@@ -1,15 +1,23 @@
+root: true
+
 extends:
   - eslint:recommended
   - airbnb-base
   - prettier
   - plugin:@typescript-eslint/recommended
+
 parser: "@typescript-eslint/parser"
 plugins:
   - "@typescript-eslint"
-overrides: []
 parserOptions:
   ecmaVersion: latest
   sourceType: module
+
+overrides:
+  - files: ["**/*.test.ts", "**/playwright.config.js"]
+    rules:
+      "import/no-extraneous-dependencies": "off"
+
 rules:
   no-unexpected-multiline: off
   import/no-unresolved: off

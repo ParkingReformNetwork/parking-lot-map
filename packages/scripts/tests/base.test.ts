@@ -1,12 +1,14 @@
 import fs from "fs/promises";
+
 import { expect, test } from "@playwright/test";
 import { Feature, Polygon, FeatureCollection } from "geojson";
+
 import {
   determineArgs,
   updateCoordinates,
   updateParkingLots,
-} from "../../scripts/base";
-import { CityId } from "../../src/js/types";
+} from "../src/base";
+import { CityId } from "../../primary/src/js/types";
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
@@ -27,8 +29,8 @@ test.describe("determineArgs()", () => {
 
 test.describe("updateCoordinates()", () => {
   let originalData: string;
-  const originalFilePath = "tests/scripts/data/original-data.geojson";
-  const validUpdateFilePath = "tests/scripts/data/valid-update.geojson";
+  const originalFilePath = "tests/data/original-data.geojson";
+  const validUpdateFilePath = "tests/data/valid-update.geojson";
 
   test.beforeAll(async () => {
     // Save the original data for reverting the changes.
@@ -118,7 +120,7 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "tests/scripts/data/too-many-updates.geojson",
+      "tests/data/too-many-updates.geojson",
     );
     expect(() => result.unwrap()).toThrow(
       /expects exactly one entry in `features`/,
@@ -129,7 +131,7 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "tests/scripts/data/empty-update.geojson",
+      "tests/data/empty-update.geojson",
     );
     expect(() => result.unwrap()).toThrow(
       /expects exactly one entry in `features`/,
@@ -142,11 +144,9 @@ test.describe("updateCoordinates()", () => {
       "shoup-ville-az",
       false,
       originalFilePath,
-      "tests/scripts/data/does-not-exist",
+      "tests/data/does-not-exist",
     );
-    expect(() => result.unwrap()).toThrow(
-      /tests\/scripts\/data\/does-not-exist/,
-    );
+    expect(() => result.unwrap()).toThrow(/tests\/data\/does-not-exist/);
   });
 
   test("errors gracefully if original data file not found", async () => {
@@ -154,19 +154,17 @@ test.describe("updateCoordinates()", () => {
       "my-script",
       "shoup-ville-az",
       false,
-      "tests/scripts/data/does-not-exist",
+      "tests/data/does-not-exist",
       validUpdateFilePath,
     );
-    expect(() => result.unwrap()).toThrow(
-      /tests\/scripts\/data\/does-not-exist/,
-    );
+    expect(() => result.unwrap()).toThrow(/tests\/data\/does-not-exist/);
   });
 });
 
 test.describe("updateParkingLots()", () => {
   let originalData: string;
-  const parkingLotData = "tests/scripts/data/parking-lot-data.geojson";
-  const addDataPath = "tests/scripts/data/new-parking-lot.geojson";
+  const parkingLotData = "tests/data/parking-lot-data.geojson";
+  const addDataPath = "tests/data/new-parking-lot.geojson";
 
   test.beforeAll(async () => {
     // Save the original data for reverting the changes.
@@ -210,7 +208,7 @@ test.describe("updateParkingLots()", () => {
   });
 
   test("update city lots", async () => {
-    const existingDataPath = "tests/scripts/data/existing-lot-data.geojson";
+    const existingDataPath = "tests/data/existing-lot-data.geojson";
     const existingData = await fs.readFile(existingDataPath);
 
     const cityId = "parking-reform-now";

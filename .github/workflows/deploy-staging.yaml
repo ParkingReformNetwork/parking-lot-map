@@ -18,13 +18,13 @@ jobs:
           npm ci
           npx playwright install --with-deps
       - name: Build
-        run: npm run build
+        run: npm run -w packages/primary build
       - name: Run tests on dist/
-        run: npm run test-dist
+        run: npm run -w packages/primary test-dist
       - name: Archive dist/ contents
         run: |
-          cd dist
-          tar -czf ../dist_contents.tar.gz *
+          cd packages/primary/dist
+          tar -czf ../../../dist_contents.tar.gz *
       - name: Copy dist/ to server
         uses: appleboy/scp-action@master
         with:

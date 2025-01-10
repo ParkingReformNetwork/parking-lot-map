@@ -3,7 +3,7 @@ import {
   extractCityIdFromUrl,
   determineShareUrl,
   parseCityIdFromJson,
-} from "../../src/js/cityId";
+} from "../src/js/cityId";
 
 test.describe("extractCityIdFromUrl()", () => {
   test("returns null when no relevant # fragment", () => {

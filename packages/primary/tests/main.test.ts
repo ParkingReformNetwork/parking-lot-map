@@ -15,7 +15,7 @@ test("no console errors and warnings", async ({ page }) => {
 });
 
 test("every city is in the toggle", async ({ page }) => {
-  const rawData: Buffer = fs.readFileSync("data/city-stats.json");
+  const rawData: Buffer = fs.readFileSync("../../data/city-stats.json");
   const data: JSON = JSON.parse(rawData.toString());
   const expectedCities = Object.values(data).map((scoreCard) => scoreCard.name);
 
@@ -33,7 +33,7 @@ test("every city is in the toggle", async ({ page }) => {
 });
 
 test("correctly load the city score card", async ({ page }) => {
-  const rawData: Buffer = fs.readFileSync("data/city-stats.json");
+  const rawData: Buffer = fs.readFileSync("../../data/city-stats.json");
   const albanyExpected = JSON.parse(rawData.toString())["albany-ny"];
   let albanyLoaded = false;
   page.route("**/*", (route) => {

@@ -1,0 +1,33 @@
+{
+  "name": "@prn-parking-lots/primary",
+  "version": "1.0.0",
+  "source": "src/index.html",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist ../../.parcel-cache",
+    "test": "playwright test",
+    "start": "npm run clean; parcel",
+    "build": "npm run clean; parcel build --detailed-report",
+    "serve-dist": "cd dist; http-server",
+    "test-dist": "PORT=8080 playwright test"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
+    "@parcel/resolver-glob": "^2.10.3",
+    "choices.js": "^10.2.0",
+    "leaflet": "~1.9.3"
+  },
+  "devDependencies": {
+    "@parcel/compressor-brotli": "~2.12.0",
+    "@parcel/compressor-gzip": "~2.12.0",
+    "@parcel/transformer-sass": "~2.12.0",
+    "parcel": "~2.12.0"
+  },
+  "targets": {
+    "default": {
+      "publicUrl": "./"
+    }
+  }
+}

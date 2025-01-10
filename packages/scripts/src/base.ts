@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import fs from "fs/promises";
 
 import results from "ts-results";
@@ -9,8 +8,8 @@ import {
   Feature,
 } from "geojson";
 
-import { parseCityIdFromJson } from "../src/js/cityId.ts";
-import { CityId } from "../src/js/types";
+import { parseCityIdFromJson } from "@prn-parking-lots/primary/src/js/cityId.ts";
+import { CityId } from "../../primary/src/js/types";
 
 const determineArgs = (
   scriptCommand: string,
