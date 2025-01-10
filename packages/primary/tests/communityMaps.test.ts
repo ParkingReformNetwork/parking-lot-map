@@ -14,8 +14,8 @@ test("there are exactly 103 official city maps", async ({ page }) => {
       ),
   );
 
+  const expectedCities = 103;
+  const labelOffset = 1;
   const communityMapIndex = toggleValues.indexOf("Community maps");
-  const officialMapIndex =
-    communityMapIndex - toggleValues.indexOf("Official maps");
-  expect(officialMapIndex).toEqual(103);
+  expect(communityMapIndex).toEqual(expectedCities + labelOffset);
 });
