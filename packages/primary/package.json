@@ -22,6 +22,8 @@
   "devDependencies": {
     "@parcel/compressor-brotli": "~2.12.0",
     "@parcel/compressor-gzip": "~2.12.0",
+    "@parcel/config-default": "~2.12.0",
+    "@parcel/transformer-json": "~2.12.0",
     "@parcel/transformer-sass": "~2.12.0",
     "parcel": "~2.12.0"
   },
