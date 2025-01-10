@@ -49,9 +49,6 @@ importers:
 
   packages/primary:
     dependencies:
-      "@fortawesome/fontawesome-svg-core":
-        specifier: ^6.7.2
-        version: 6.7.2
       "@parcel/resolver-glob":
         specifier: ~2.12.0
         version: 2.12.0(@parcel/core@2.12.0(@swc/helpers@0.5.15))
@@ -108,6 +105,12 @@ importers:
       "@fortawesome/free-solid-svg-icons":
         specifier: ^6.7.2
         version: 6.7.2
+      choices.js:
+        specifier: ^10.2.0
+        version: 10.2.0
+      leaflet:
+        specifier: ~1.9.3
+        version: 1.9.4
 
 packages:
   "@babel/code-frame@7.26.2":
