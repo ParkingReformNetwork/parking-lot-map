@@ -4,18 +4,15 @@
   "version": "1.0.0",
   "source": "index.html",
   "type": "module",
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "test": "npm run test --workspaces",
+    "test": "pnpm -r test",
     "check": "tsc --noEmit",
     "fmt": "prettier --write .",
     "fix": "prettier --write packages/; eslint --fix packages/",
     "lint": "prettier --check . && eslint packages/"
   },
-  "dependencies": {},
   "devDependencies": {
+    "@parcel/transformer-sass": "2.12.0",
     "@playwright/test": "^1.49.1",
     "@types/geojson": "^7946.0.15",
     "@types/leaflet": "^1.9.16",
@@ -33,5 +30,15 @@
     "default": {
       "publicUrl": "./"
     }
-  }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "esbuild",
+      "lmdb",
+      "msgpackr-extract"
+    ]
+  },
+  "packageManager": "pnpm@10.0.0+sha512.b8fef5494bd3fe4cbd4edabd0745df2ee5be3e4b0b8b08fa643aa3e4c6702ccc0f00d68fa8a8c9858a735a0032485a44990ed2810526c875e416f001b17df12b"
 }

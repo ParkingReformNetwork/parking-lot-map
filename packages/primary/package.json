@@ -15,13 +15,15 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
-    "@parcel/resolver-glob": "^2.10.3",
+    "@parcel/resolver-glob": "~2.12.0",
     "choices.js": "^10.2.0",
     "leaflet": "~1.9.3"
   },
   "devDependencies": {
     "@parcel/compressor-brotli": "~2.12.0",
     "@parcel/compressor-gzip": "~2.12.0",
+    "@parcel/config-default": "~2.12.0",
+    "@parcel/transformer-json": "~2.12.0",
     "@parcel/transformer-sass": "~2.12.0",
     "parcel": "~2.12.0"
   },

@@ -26,14 +26,15 @@ To run the below commands, open your terminal app. Make sure you have `git clone
 You must first install the project's dependencies before running any of the below commands.
 
 ```bash
-❯ npm install
+❯ corepack enable pnpm
+❯ pnpm install
 ❯ npx playwright install
 ```
 
 ## Start the server
 
 ```bash
-❯ npm -w packages/primary start
+❯ pnpm -F primary start
 ```
 
 Then open http://127.0.0.1:1234 in a browser. Hit `CTRL-C` to stop the server.
@@ -43,7 +44,7 @@ When the server is running, you can make any changes you want to the project. Re
 ## Run tests
 
 ```bash
-❯ npm test
+❯ pnpm test
 ```
 
 If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try the tests again.
@@ -51,7 +52,7 @@ If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try
 ## Autoformat code
 
 ```bash
-❯ npm run fmt
+❯ pnpm fmt
 ```
 
 ## Lint code
@@ -59,7 +60,7 @@ If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try
 "Linting" means using tools that check for common issues that may be bugs or low code quality.
 
 ```bash
-❯ npm run lint
+❯ pnpm lint
 ```
 
 ## Update score card for existing city
@@ -79,7 +80,7 @@ Then, determine the city/state name. This is the same as what we show in the cit
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
-❯ npm run -w packages/scripts update-lots -- 'My City, AZ'
+❯ pnpm -F scripts update-lots -- 'My City, AZ'
 ```
 
 Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
@@ -95,7 +96,7 @@ Then, determine the city/state name. This is the same as what we show in the cit
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
-❯ npm run -w packages/scripts update-city-boundaries -- 'My City, AZ'
+❯ pnpm -F scripts update-city-boundaries -- 'My City, AZ'
 ```
 
 Start the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
@@ -113,7 +114,7 @@ Then, determine the city/state name, such as `St. Louis, MO`.
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
-❯ npm run -w packages/scripts add-city -- 'My City, AZ'
+❯ pnpm -F scripts add-city -- 'My City, AZ'
 ```
 
 Next, manually fill in the score card entries in the file `data/city-stats.json`. Search for the city name and update the values.
