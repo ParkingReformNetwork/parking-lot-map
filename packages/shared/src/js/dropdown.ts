@@ -1,10 +1,7 @@
 import Choices from "choices.js";
 
-import type {
-  CityStatsCollection,
-  DropdownChoice,
-} from "@prn-parking-lots/shared/src/js/types";
-import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+import type { CityStatsCollection, DropdownChoice } from "./types";
+import { ViewStateObservable } from "./ViewState";
 
 function createDropdown(cityStatsData: CityStatsCollection): Choices {
   const dropdown = new Choices("#city-dropdown", {

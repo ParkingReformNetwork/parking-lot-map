@@ -14,11 +14,8 @@ test("there are exactly 103 official city maps", async ({ page }) => {
       ),
   );
 
-  const communityMapIndex = toggleValues.indexOf("Community Maps");
-  // Consider removing if statement after first community map is implemented
-  if (communityMapIndex > -1) {
-    const officialMapIndex =
-      communityMapIndex - toggleValues.indexOf("Official Maps");
-    expect(officialMapIndex).toEqual(103);
-  }
+  const expectedCities = 103;
+  const labelOffset = 1;
+  const communityMapIndex = toggleValues.indexOf("Community maps");
+  expect(communityMapIndex).toEqual(expectedCities + labelOffset);
 });

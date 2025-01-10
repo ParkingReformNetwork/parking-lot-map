@@ -1,16 +1,22 @@
 import initIcons from "@prn-parking-lots/shared/src/js/fontAwesome";
 import maybeDisableFullScreenIcon from "@prn-parking-lots/shared/src/js/iframe";
 import { initViewState } from "@prn-parking-lots/shared/src/js/ViewState";
+import { extractCityIdFromUrl } from "@prn-parking-lots/shared/src/js/cityId";
+import initAbout from "@prn-parking-lots/shared/src/js/about";
+import subscribeShareLink from "@prn-parking-lots/shared/src/js/share";
+import subscribeScorecard from "@prn-parking-lots/shared/src/js/scorecard";
+import initDropdown from "@prn-parking-lots/shared/src/js/dropdown";
+import { createMap } from "@prn-parking-lots/shared/src/js/map";
+import {
+  setCityByMapPosition,
+  subscribeSnapToCity,
+} from "@prn-parking-lots/shared/src/js/mapPosition";
+import {
+  createCitiesLayer,
+  setCityOnBoundaryClick,
+} from "@prn-parking-lots/shared/src/js/citiesLayer";
+import ParkingLotLoader from "@prn-parking-lots/shared/src/js/ParkingLotLoader";
 
-import { extractCityIdFromUrl } from "./cityId";
-import initAbout from "./about";
-import subscribeShareLink from "./share";
-import subscribeScorecard from "./scorecard";
-import initDropdown from "./dropdown";
-import { createMap } from "./map";
-import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
-import { createCitiesLayer, setCityOnBoundaryClick } from "./citiesLayer";
-import ParkingLotLoader from "./ParkingLotLoader";
 import {
   CITY_STATS_DATA,
   CITY_BOUNDARIES_GEOJSON,

@@ -1,8 +1,7 @@
 import { ImageOverlay, Map } from "leaflet";
 
-import type { CityEntryCollection } from "@prn-parking-lots/shared/src/js/types";
-import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
-
+import type { CityEntryCollection } from "./types";
+import { ViewStateObservable } from "./ViewState";
 import ParkingLotLoader from "./ParkingLotLoader";
 
 /**

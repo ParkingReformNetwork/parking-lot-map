@@ -1,4 +1,4 @@
-import Observable from "@prn-parking-lots/shared/src/js/Observable";
+import Observable from "./Observable";
 
 function updatePopupUI(visible: boolean): void {
   const popup = document.querySelector<HTMLElement>(".about-popup");

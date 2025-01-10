@@ -1,10 +1,7 @@
 import { geoJSON, GeoJSON, Map as LeafletMap } from "leaflet";
 
-import type {
-  CityId,
-  ParkingLotGeoJSONModules,
-} from "@prn-parking-lots/shared/src/js/types";
-import { ViewStateObservable } from "@prn-parking-lots/shared/src/js/ViewState";
+import type { CityId, ParkingLotGeoJSONModules } from "./types";
+import { ViewStateObservable } from "./ViewState";
 import { STYLES } from "./map";
 
 function createParkingLotsLayer(map: LeafletMap): GeoJSON {
