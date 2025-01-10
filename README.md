@@ -33,7 +33,7 @@ You must first install the project's dependencies before running any of the belo
 ## Start the server
 
 ```bash
-❯ npm start
+❯ npm -w packages/primary start
 ```
 
 Then open http://127.0.0.1:1234 in a browser. Hit `CTRL-C` to stop the server.
@@ -66,7 +66,7 @@ If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try
 
 Manually edit the values in the file `data/city-stats.json`.
 
-Run the site with `npm start` and make sure it's what you want.
+Run the site with `npm run -w packages/primary start` and make sure it's what you want.
 
 Then, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
 
@@ -79,7 +79,7 @@ Then, determine the city/state name. This is the same as what we show in the cit
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
-❯ npm run update-lots -- 'My City, AZ'
+❯ npm run -w packages/scripts update-lots -- 'My City, AZ'
 ```
 
 Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
@@ -95,7 +95,7 @@ Then, determine the city/state name. This is the same as what we show in the cit
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
-❯ npm run update-city-boundaries -- 'My City, AZ'
+❯ npm run -w packages/scripts update-city-boundaries -- 'My City, AZ'
 ```
 
 Start the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
@@ -113,7 +113,7 @@ Then, determine the city/state name, such as `St. Louis, MO`.
 Now, run the below but replace the last part with the city/state name (in single quotes!):
 
 ```bash
-❯ npm run add-city -- 'My City, AZ'
+❯ npm run -w packages/scripts add-city -- 'My City, AZ'
 ```
 
 Next, manually fill in the score card entries in the file `data/city-stats.json`. Search for the city name and update the values.

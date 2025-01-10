@@ -4,15 +4,15 @@
   "type": "module",
   "scripts": {
     "test": "playwright test",
-    "add-city": "ts-node-esm src/add-city.ts",
-    "update-city-boundaries": "ts-node-esm src/update-city-boundaries.ts",
-    "update-lots": "ts-node-esm src/update-lots.ts"
+    "add-city": "tsx src/add-city.ts",
+    "update-city-boundaries": "tsx src/update-city-boundaries.ts",
+    "update-lots": "tsx src/update-lots.ts"
   },
   "dependencies": {
     "@prn-parking-lots/primary": "*",
     "ts-results": "^3.3.0"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2"
+    "tsx": "^4.19.2"
   }
 }
