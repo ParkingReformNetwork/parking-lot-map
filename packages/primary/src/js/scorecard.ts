@@ -83,7 +83,7 @@ function updateAccordionUI(expanded: boolean): void {
 }
 
 function initAccordion(): void {
-  const isExpanded = new Observable<boolean>(false);
+  const isExpanded = new Observable<boolean>("scorecard accordion", false);
   isExpanded.subscribe(updateAccordionUI);
 
   // The event listener is on `#scorecard-container` because it is never erased,

@@ -17,7 +17,7 @@ export function initCitySelectionState(
     initialCityId && cityIds.includes(initialCityId)
       ? initialCityId
       : fallBackCityId;
-  return new Observable<CitySelectionState>({
+  return new Observable<CitySelectionState>("city state", {
     cityId: startingCity,
     shouldSnapMap: true,
   });
