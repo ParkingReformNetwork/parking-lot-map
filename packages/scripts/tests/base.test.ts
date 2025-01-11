@@ -3,7 +3,7 @@ import fs from "fs/promises";
 import { expect, test } from "@playwright/test";
 import { Feature, Polygon, FeatureCollection } from "geojson";
 
-import type { CityId } from "@prn-parking-lots/shared/src/js/types";
+import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 
 import {
   determineArgs,

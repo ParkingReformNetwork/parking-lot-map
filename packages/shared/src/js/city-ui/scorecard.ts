@@ -1,6 +1,6 @@
-import Observable from "./Observable";
-import { ViewStateObservable } from "./ViewState";
-import type { CityEntryCollection, CityStats } from "./types";
+import type { CityEntryCollection, CityStats } from "../model/types";
+import Observable from "../state/Observable";
+import { ViewStateObservable } from "../state/ViewState";
 
 function generateScorecard(stats: CityStats): string {
   let header = `

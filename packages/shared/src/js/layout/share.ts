@@ -1,7 +1,7 @@
 /* global document, navigator, window */
 
-import { ViewStateObservable } from "./ViewState";
-import { determineShareUrl } from "./cityId";
+import { ViewStateObservable } from "../state/ViewState";
+import { determineShareUrl } from "../model/cityId";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {

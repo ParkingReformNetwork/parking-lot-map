@@ -1,8 +1,8 @@
 import { ImageOverlay, Map } from "leaflet";
 
-import type { CityEntryCollection } from "./types";
-import { ViewStateObservable } from "./ViewState";
-import ParkingLotLoader from "./ParkingLotLoader";
+import type { CityEntryCollection } from "./model/types";
+import { ViewStateObservable } from "./state/ViewState";
+import ParkingLotLoader from "./map-layers/ParkingLotLoader";
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
