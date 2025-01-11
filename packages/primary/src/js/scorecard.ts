@@ -26,9 +26,7 @@ export default function formatScorecard(stats: CityStats): ScorecardValues {
   }
   listEntries.push(`City type: ${stats.cityType}`);
   listEntries.push(`${stats.population} city residents`);
-  listEntries.push(
-    `${stats.urbanizedAreaPopulation} urbanized area residents`,
-  );
+  listEntries.push(`${stats.urbanizedAreaPopulation} urbanized area residents`);
   if (stats.reforms) {
     listEntries.push(formatReformLine(stats.reforms, stats.url));
   }
