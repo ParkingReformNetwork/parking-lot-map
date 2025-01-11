@@ -1,24 +1,19 @@
 import { determineArgs, updateParkingLots } from "./base.ts";
 
-const main = async (): Promise<void> => {
-  const { cityId } = determineArgs("update-lots", process.argv.slice(2))
-    .mapErr((err) => new Error(`Argument error: ${err}`))
-    .unwrap();
-  const value = (
-    await updateParkingLots(
-      cityId,
-      false,
-      "parking-lots-update.geojson",
-      `packages/primary/data/parking-lots/${cityId}.geojson`,
-    )
-  ).unwrap();
+async function main(): Promise<void> {
+  const { cityId } = determineArgs("update-lots", process.argv.slice(2));
+  await updateParkingLots(
+    cityId,
+    false,
+    "parking-lots-update.geojson",
+    `packages/primary/data/parking-lots/${cityId}.geojson`,
+  );
 
-  /* eslint-disable-next-line no-console */
   console.log(
-    `${value} Now, run 'npm run fmt'. Then, 'npm start' and
+    `File updated! Now, run 'pnpm fmt'. Then, start the server and
       see if the site is what you expect.
     `,
   );
-};
+}
 
 main();

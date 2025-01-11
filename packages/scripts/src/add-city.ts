@@ -1,14 +1,9 @@
 import fs from "fs/promises";
 
-import results from "ts-results";
-
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types.ts";
 import { determineArgs, updateCoordinates, updateParkingLots } from "./base.ts";
 
-const addScoreCard = async (
-  cityId: CityId,
-  cityName: string,
-): Promise<results.Result<void, string>> => {
+async function addScoreCard(cityId: CityId, cityName: string): Promise<void> {
   const newEntry = {
     name: cityName,
     percentage: "FILL ME IN, e.g. 23%",
@@ -31,7 +26,7 @@ const addScoreCard = async (
     originalData = JSON.parse(rawOriginalData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return results.Err(
+    throw new Error(
       `Issue reading the score card file path ${originalFilePath}: ${message}`,
     );
   }
@@ -45,41 +40,33 @@ const addScoreCard = async (
   });
 
   await fs.writeFile(originalFilePath, JSON.stringify(sortedData, null, 2));
-  return results.Ok.EMPTY;
-};
+}
 
-const main = async () => {
-  const { cityName, cityId } = determineArgs("add-city", process.argv.slice(2))
-    .mapErr((err) => new Error(`Argument error: ${err}`))
-    .unwrap();
+async function main() {
+  const { cityName, cityId } = determineArgs("add-city", process.argv.slice(2));
 
-  (
-    await updateCoordinates(
-      "add-city",
-      cityId,
-      true,
-      "packages/primary/data/city-boundaries.geojson",
-      "city-update.geojson",
-    )
-  ).unwrap();
+  await updateCoordinates(
+    "add-city",
+    cityId,
+    true,
+    "packages/primary/data/city-boundaries.geojson",
+    "city-update.geojson",
+  );
 
-  (
-    await updateParkingLots(
-      cityId,
-      true,
-      "parking-lots-update.geojson",
-      `packages/primary/data/parking-lots/${cityId}.geojson`,
-    )
-  ).unwrap();
+  await updateParkingLots(
+    cityId,
+    true,
+    "parking-lots-update.geojson",
+    `packages/primary/data/parking-lots/${cityId}.geojson`,
+  );
 
-  (await addScoreCard(cityId, cityName)).unwrap();
+  await addScoreCard(cityId, cityName);
 
-  /* eslint-disable-next-line no-console */
   console.log(
     `Almost done! Now, fill in the score card values in packages/primary/data/city-stats.json. Then,
-    run 'npm run fmt'. Then, 'npm start' and see if the site is what you expect.
+    run 'pnpm fmt'. Then, start the server and see if the site is what you expect.
     `,
   );
-};
+}
 
 main();

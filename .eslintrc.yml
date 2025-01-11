@@ -17,6 +17,9 @@ overrides:
   - files: ["**/*.test.ts", "**/playwright.config.js"]
     rules:
       "import/no-extraneous-dependencies": "off"
+  - files: ["packages/scripts/**/*.ts"]
+    rules:
+      "no-console": "off"
 
 rules:
   no-unexpected-multiline: off
