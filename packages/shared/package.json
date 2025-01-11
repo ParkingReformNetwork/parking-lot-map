@@ -12,10 +12,5 @@
     "choices.js": "^10.2.0",
     "leaflet": "~1.9.3"
   },
-  "devDependencies": {},
-  "targets": {
-    "default": {
-      "publicUrl": "./"
-    }
-  }
+  "devDependencies": {}
 }
