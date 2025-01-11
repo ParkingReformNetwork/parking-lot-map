@@ -1,7 +1,7 @@
 import { determineArgs, updateCoordinates } from "./base.ts";
 
 async function main(): Promise<void> {
-  const { cityId } = determineArgs(
+  const { cityId, pkg } = determineArgs(
     "update-city-boundaries",
     process.argv.slice(2),
   );
@@ -9,14 +9,14 @@ async function main(): Promise<void> {
     "update-city-boundaries",
     cityId,
     false,
-    "packages/primary/data/city-boundaries.geojson",
+    `packages/${pkg}/data/city-boundaries.geojson`,
     "city-update.geojson",
   );
 
   console.log(
-    `File updatad! Now, run 'pnpm fmt'. Then, start the server and
-      see if the site is what you expect.
-    `,
+    "File updated! Now, run 'pnpm fmt'. Then, " +
+      `start the server with 'pnpm -F ${pkg} start' and ` +
+      "see if the site is what you expect.",
   );
 }
 

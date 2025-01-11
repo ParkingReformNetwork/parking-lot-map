@@ -12,19 +12,28 @@ import {
 } from "../src/base";
 
 test.describe("determineArgs()", () => {
-  test("returns the city name and ID", () => {
-    expect(determineArgs("my-script", ["My City"])).toEqual({
+  test("returns the args", () => {
+    expect(determineArgs("my-script", ["ct", "My City"])).toEqual({
+      pkg: "ct",
       cityName: "My City",
       cityId: "my-city",
     });
   });
 
-  [[], ["My City", "--bad"], ["My City", "AZ"]].forEach((args, index) => {
-    test(`${index}) requires exactly 1 argument`, () => {
-      expect(() => determineArgs("my-script", args)).toThrow(
-        /exactly one argument/,
-      );
-    });
+  [["ct"], ["ct", "My City", "--bad"], ["ct", "My City", "AZ"]].forEach(
+    (args, index) => {
+      test(`${index}) requires exactly 1 argument`, () => {
+        expect(() => determineArgs("my-script", args)).toThrow(
+          /exactly two arguments/,
+        );
+      });
+    },
+  );
+
+  test("must be a recognized package", () => {
+    expect(() => determineArgs("my-script", ["shared", "My City"])).toThrow(
+      /Unrecognized package/,
+    );
   });
 });
 

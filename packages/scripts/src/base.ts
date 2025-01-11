@@ -10,20 +10,31 @@ import {
 import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 
+export type Pkg = "primary" | "ct";
+
+interface Args {
+  pkg: Pkg;
+  cityName: string;
+  cityId: CityId;
+}
+
 export function determineArgs(
   scriptCommand: string,
   processArgv: string[],
-): { cityName: string; cityId: CityId } {
-  if (processArgv.length !== 1) {
+): Args {
+  if (processArgv.length !== 2) {
     throw new Error(
-      `Must provide exactly one argument (the city/state name). For example,
-       npm run ${scriptCommand} -- 'Columbus, OH'
+      `Must provide exactly two arguments: 1) either 'ct' or 'primary' for the app and 2) the city name. For example,
+       pnpm -F scripts ${scriptCommand} -- 'primary' 'Columbus, OH'
        `,
     );
   }
-  const cityName = processArgv[0];
+  const [pkg, cityName] = processArgv;
+  if (pkg !== "ct" && pkg !== "primary") {
+    throw new Error(`Unrecognized package '${pkg}'. Must be 'ct' or 'primary'`);
+  }
   const cityId = parseCityIdFromJson(cityName);
-  return { cityName, cityId };
+  return { pkg, cityName, cityId };
 }
 
 export async function updateCoordinates(
