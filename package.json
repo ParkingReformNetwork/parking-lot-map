@@ -32,6 +32,11 @@
     "prettier": "^3.4.2",
     "typescript": "^5.7.3"
   },
+  "targets": {
+    "default": {
+      "publicUrl": "./"
+    }
+  },
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
