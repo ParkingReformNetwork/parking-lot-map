@@ -2,12 +2,16 @@ import { kebabCase } from "lodash-es";
 
 import type { CityId } from "./types";
 
-/**
- * Extract the city ID from the URL's `#`, if present.
- */
 export function extractCityIdFromUrl(windowUrl: string): string | null {
-  if (windowUrl.indexOf("#parking-reform-map=") === -1) return null;
-  return windowUrl.split("#")[1].split("=")[1].toLowerCase().replace(".", "");
+  if (
+    windowUrl.indexOf("#city=") === -1 &&
+    // This was the legacy anchor link. We still read it.
+    windowUrl.indexOf("#parking-reform-map=") === -1
+  )
+    return null;
+  const anchor = windowUrl.split("#")[1];
+  const arg = anchor.split("=")[1];
+  return arg.toLowerCase().replace(".", "");
 }
 
 /**
@@ -20,14 +24,7 @@ export function parseCityIdFromJson(jsonCityName: string): string {
   return kebabCase(jsonCityName);
 }
 
-/**
- * Determine what URL to use to share the current city.
- *
- * @param windowUrl: the current page's URL
- * @param cityId: e.g. `st-louis-mo`
- * @return: the URL to share
- */
 export function determineShareUrl(windowUrl: string, cityId: CityId): string {
   const [baseUrl] = windowUrl.split("#");
-  return `${baseUrl}#parking-reform-map=${cityId}`;
+  return `${baseUrl}#city=${cityId}`;
 }
