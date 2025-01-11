@@ -4,7 +4,7 @@ import type {
   ParkingLotGeoJSONModules,
   CityStatsCollection,
   CityBoundaries,
-} from "@prn-parking-lots/shared/src/js/types";
+} from "@prn-parking-lots/shared/src/js/model/types";
 
 import UNTYPED_CITY_STATS_DATA from "../../data/city-stats.json" with { type: "json" };
 const CITY_STATS_DATA: CityStatsCollection = UNTYPED_CITY_STATS_DATA;

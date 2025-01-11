@@ -1,7 +1,7 @@
 import Choices from "choices.js";
 
-import type { CityStatsCollection, DropdownChoice } from "./types";
-import { ViewStateObservable } from "./ViewState";
+import type { CityStatsCollection, DropdownChoice } from "../model/types";
+import { ViewStateObservable } from "../state/ViewState";
 
 function createDropdown(cityStatsData: CityStatsCollection): Choices {
   const dropdown = new Choices("#city-dropdown", {

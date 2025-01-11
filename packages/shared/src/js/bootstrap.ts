@@ -1,16 +1,24 @@
-import initIcons from "./fontAwesome";
-import maybeDisableFullScreenIcon from "./iframe";
-import { initViewState } from "./ViewState";
-import { extractCityIdFromUrl } from "./cityId";
-import initAbout from "./about";
-import subscribeShareLink from "./share";
-import subscribeScorecard from "./scorecard";
-import initDropdown from "./dropdown";
-import { createMap } from "./map";
+import subscribeScorecard from "./city-ui/scorecard";
+import initDropdown from "./city-ui/dropdown";
+
+import initAbout from "./layout/about";
+import initIcons from "./layout/fontAwesome";
+import maybeDisableFullScreenIcon from "./layout/iframe";
+import { createMap } from "./layout/map";
+import subscribeShareLink from "./layout/share";
+
 import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
-import { createCitiesLayer, setCityOnBoundaryClick } from "./citiesLayer";
-import ParkingLotLoader from "./ParkingLotLoader";
-import type { CityId, DataSet } from "./types";
+
+import {
+  createCitiesLayer,
+  setCityOnBoundaryClick,
+} from "./map-layers/citiesLayer";
+import ParkingLotLoader from "./map-layers/ParkingLotLoader";
+
+import { extractCityIdFromUrl } from "./model/cityId";
+import type { CityId, DataSet } from "./model/types";
+
+import { initViewState } from "./state/ViewState";
 
 interface Args {
   data: DataSet;
