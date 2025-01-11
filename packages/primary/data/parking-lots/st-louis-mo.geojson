@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "st.-louis-mo"
+    "id": "st-louis-mo"
   },
   "geometry": {
     "type": "MultiPolygon",
