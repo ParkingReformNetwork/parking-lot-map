@@ -103,65 +103,60 @@ test.describe("updateCoordinates()", () => {
   });
 
   test("errors if city cannot be found in the original data and add not set", async () => {
-    await expect(
-      async () =>
-        await updateCoordinates(
-          "my-script",
-          "bad-city",
-          false,
-          originalFilePath,
-          validUpdateFilePath,
-        ),
+    await expect(async () =>
+      updateCoordinates(
+        "my-script",
+        "bad-city",
+        false,
+        originalFilePath,
+        validUpdateFilePath,
+      ),
     ).rejects.toThrow(/To add a new city,/);
   });
 
   test("validates the update file has exactly one `feature`", async () => {
-    await expect(
-      async () =>
-        await updateCoordinates(
-          "my-script",
-          "shoup-ville-az",
-          false,
-          originalFilePath,
-          "tests/data/too-many-updates.geojson",
-        ),
+    await expect(async () =>
+      updateCoordinates(
+        "my-script",
+        "shoup-ville-az",
+        false,
+        originalFilePath,
+        "tests/data/too-many-updates.geojson",
+      ),
     ).rejects.toThrow(/expects exactly one entry in `features`/);
 
-    await expect(
-      async () =>
-        await updateCoordinates(
-          "my-script",
-          "shoup-ville-az",
-          false,
-          originalFilePath,
-          "tests/data/empty-update.geojson",
-        ),
+    await expect(async () =>
+      updateCoordinates(
+        "my-script",
+        "shoup-ville-az",
+        false,
+        originalFilePath,
+        "tests/data/empty-update.geojson",
+      ),
     ).rejects.toThrow(/expects exactly one entry in `features`/);
   });
 
   test("errors gracefully if update file not found", async () => {
-    await expect(
-      async () =>
-        await updateCoordinates(
-          "my-script",
-          "shoup-ville-az",
-          false,
-          originalFilePath,
-          "tests/data/does-not-exist",
-        ),
+    await expect(async () =>
+      updateCoordinates(
+        "my-script",
+        "shoup-ville-az",
+        false,
+        originalFilePath,
+        "tests/data/does-not-exist",
+      ),
     ).rejects.toThrow(/tests\/data\/does-not-exist/);
   });
 
   test("errors gracefully if original data file not found", async () => {
-    await expect(
-      async () =>
-        await updateCoordinates(
-          "my-script",
-          "shoup-ville-az",
-          false,
-          "tests/data/does-not-exist",
-          validUpdateFilePath,
-        ),
+    await expect(async () =>
+      updateCoordinates(
+        "my-script",
+        "shoup-ville-az",
+        false,
+        "tests/data/does-not-exist",
+        validUpdateFilePath,
+      ),
     ).rejects.toThrow(/tests\/data\/does-not-exist/);
   });
 });
