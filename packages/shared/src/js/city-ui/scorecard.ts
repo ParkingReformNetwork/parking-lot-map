@@ -33,7 +33,7 @@ function generateScorecard(stats: CityStats): string {
   }
   listEntries.push(reformsLine);
 
-  if ("contribution" in stats) {
+  if (stats.contribution) {
     listEntries.push(
       `<a href="mailto:${stats.contribution}">Email data maintainer</a>`,
     );
