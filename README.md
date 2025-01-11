@@ -1,14 +1,19 @@
 # Parking Lot Map
 
-The code behind https://parkingreform.org/parking-lot-map/.
+The code behind https://parkingreform.org/parking-lot-map/ and https://parkingreform.org/ct-parking-lots/.
 
 The code is fairly simple. We do not use frameworks like React or Svelte to keep things simple. However, we do use these techniques:
 
 - TypeScript
-- Sass and the folder `src/css/theme`, which should stay aligned with https://github.com/ParkingReformNetwork/reform-map
+- Sass and the folder `packages/shared/src/css/theme`, which should stay aligned with https://github.com/ParkingReformNetwork/reform-map
 - Reactive state management - see [State diagram](#state-diagram)
 
-The main files are `index.html`, `src/js/main.ts`, `data/city-stats.json`, and `data/*.geojson`. `main.ts` will load the `.geojson` files to dynamically update `index.html` with all our data.
+The repository is organized as a "monorepo":
+
+- `packages/shared`: the core functionality for the map
+- `packages/primary`: the map at https://parkingreform.org/parking-lot-map/
+- `packages/ct`: the map at https://parkingreform.org/ct-parking-lots/ (CT == Connecticut)
+- `packages/scripts`: scripts to help with adding and updatings data
 
 # How tos
 
@@ -34,7 +39,11 @@ You must first install the project's dependencies before running any of the belo
 ## Start the server
 
 ```bash
+# Open primary app:
 ❯ pnpm -F primary start
+
+# Or, open CT app:
+❯ pnpm -F ct start
 ```
 
 Then open http://127.0.0.1:1234 in a browser. Hit `CTRL-C` to stop the server.
@@ -47,7 +56,7 @@ When the server is running, you can make any changes you want to the project. Re
 ❯ pnpm test
 ```
 
-If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try the tests again.
+You can tests for a specific package with `-F`, e.g. `pnpm -F shared test`.
 
 ## Autoformat code
 
@@ -65,11 +74,11 @@ If the tests are taking a long time to start, run `rm -rf .parcel-cache` and try
 
 ## Update score card for existing city
 
-Manually edit the values in the file `data/city-stats.json`.
+Manually edit the values in the files `packages/primary/data/city-stats.json` and `packages/ct/data/city-stats.json`.
 
-Run the site with `npm run -w packages/primary start` and make sure it's what you want.
+[Start the server](#start-the-server) to make sure it's what you want.
 
-Then, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
+Then, save your changes in Git (in a new branch) and open a pull request. See the section ["Make a contribution"](#make-a-contribution) below.
 
 ## Update parking lot data for existing city
 
@@ -83,9 +92,9 @@ Now, run the below but replace the last part with the city/state name (in single
 ❯ pnpm -F scripts update-lots -- 'My City, AZ'
 ```
 
-Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
+Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
 
-Then, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
+Then, save your changes in Git (in a new branch) and open a pull request. See the section ["Make a contribution"](#make-a-contribution) below.
 
 ## Update city boundaries for existing city
 
@@ -99,9 +108,9 @@ Now, run the below but replace the last part with the city/state name (in single
 ❯ pnpm -F scripts update-city-boundaries -- 'My City, AZ'
 ```
 
-Start the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
+[Start the server](#start-the-server) to make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
 
-Finally, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
+Finally, save your changes in Git (in a new branch) and open a pull request. See the section ["Make a contribution"](#make-a-contribution) below.
 
 ## Add a new city
 
@@ -117,11 +126,11 @@ Now, run the below but replace the last part with the city/state name (in single
 ❯ pnpm -F scripts add-city -- 'My City, AZ'
 ```
 
-Next, manually fill in the score card entries in the file `data/city-stats.json`. Search for the city name and update the values.
+Next, manually fill in the score card entries in the `city-stats.json` for the app you're adding the city to. Search for the city name and update the values.
 
-Start the site with `npm start` and make sure it's what you want. Also, autoformat the file with `npm run fmt`.
+[Start the server](#start-the-server) to make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
 
-Finally, save your changes in Git (in a new branch) and open a pull request. See the section "Make a contribution" below.
+Finally, save your changes in Git (in a new branch) and open a pull request. See the section ["Make a contribution"](#make-a-contribution) below.
 
 ## Make a contribution
 
@@ -131,17 +140,17 @@ We use the typical forking model to make contributions by opening Pull Requests.
 
 ### Try out a build locally
 
-You can preview what a build will look like by running `npm run build`. Then use `npm run serve-dist` to start the server.
+You can preview what a build will look like by running `pnpm -F primary build` or `pnpm -F ct build`. Then use either `pnpm -F primary serve-dist` or `pnpm -F ct serve-dist` to start the server.
 
-You can also run our integration tests on built dist folder with `npm run test-dist` (make sure the server is not already running).
+You can also run our integration tests on built dist folder with `pnpm -F primary test-dist` and `pnpm -F ct test-dist` (make sure the server is not already running).
 
 ### Staging
 
-We use continuous deployment, meaning that we re-deploy the site every time we merge a pull request to staging at https://parkingreform.org/plm-staging/. You can check how the site renders about ~1-2 minutes after your change merges.
+We use continuous deployment, meaning that we re-deploy the site every time we merge a pull request to staging at https://parkingreform.org/plm-staging/ and https://parkingreform.org/ct-parking-lots-staging. You can check how the site renders about ~1-2 minutes after your change merges.
 
 ### Production
 
-After you've confirmed staging looks good at https://parkingreform.org/plm-staging/, you can manually trigger a deploy.
+After you've confirmed staging looks good at https://parkingreform.org/plm-staging/ and https://parkingreform.org/ct-parking-lots-staging, you can manually trigger a deploy.
 
 Go to https://github.com/ParkingReformNetwork/parking-lot-map/actions and open the "Deploy to prod" workflow. Initiate a build.
 
