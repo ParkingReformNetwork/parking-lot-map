@@ -9,12 +9,13 @@ test("createDropdownGroups", () => {
     urbanizedAreaPopulation: "",
     parkingScore: null,
     reforms: "",
-    url: "",
+    url: null,
   };
   const input = {
     "city1-ny": {
       ...common,
       name: "City 1, NY",
+      contribution: null,
     },
     "city2-ny": {
       ...common,

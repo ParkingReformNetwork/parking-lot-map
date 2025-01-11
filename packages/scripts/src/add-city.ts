@@ -19,6 +19,8 @@ const addScoreCard = async (
       "FILL ME IN, e.g. 53. If not relevant, remove the quotes and set to null",
     reforms: "FILL ME IN, e.g. No Reforms or Implemented",
     url: "FILL ME IN. If not relevant, remove the quotes and set to null",
+    contribution:
+      "FILL ME IN with the email of the contributor. If it's an official map, remove the quotes and set to null",
   };
 
   const originalFilePath = "packages/primary/data/city-stats.json";

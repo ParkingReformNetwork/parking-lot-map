@@ -19,8 +19,8 @@ export interface CityStats {
   urbanizedAreaPopulation: string;
   parkingScore: string | null;
   reforms: string;
-  url?: string;
-  contribution?: string;
+  url: string | null;
+  contribution: string | null;
 }
 
 export type CityStatsCollection = Record<CityId, CityStats>;
