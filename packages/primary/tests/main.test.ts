@@ -84,8 +84,8 @@ test("correctly load the city score card", async ({ page }) => {
     `${albanyExpected.percentage} of the central city is off-street parking`,
     `${albanyExpected.parkingScore}/100 parking score (lower is better)`,
     `City type: ${albanyExpected.cityType}`,
-    `${albanyExpected.population} residents - city proper`,
-    `${albanyExpected.urbanizedAreaPopulation} residents - urbanized area`,
+    `${albanyExpected.population} city residents`,
+    `${albanyExpected.urbanizedAreaPopulation} urbanized area residents`,
     `Parking reforms ${albanyExpected.reforms} (details )`,
   ]);
   expect(new Set(contentLines)).toEqual(expectedLines);
