@@ -11,26 +11,28 @@ import type {
 /// (The state code is missing for state-specific maps like CT.)
 export type CityId = string;
 
-export interface CityStats {
+export interface BaseCityStats {
   name: string;
-  percentage: string;
-  cityType: string;
-  population: string;
-  urbanizedAreaPopulation: string;
-  parkingScore: string | null;
-  reforms: string | null;
-  url: string | null;
-  contribution: string | null;
 }
 
-export type CityStatsCollection = Record<CityId, CityStats>;
+export type CityStatsCollection<T extends BaseCityStats> = Record<CityId, T>;
 
-export interface CityEntry {
-  stats: CityStats;
+export interface CityEntry<T extends BaseCityStats> {
+  stats: T;
   layer: ImageOverlay;
 }
 
-export type CityEntryCollection = Record<CityId, CityEntry>;
+export type CommonCityStats = BaseCityStats & {
+  percentage: string;
+  reforms: string | null;
+  url: string | null;
+  population: string;
+};
+
+export type CityEntryCollection<T extends BaseCityStats> = Record<
+  CityId,
+  CityEntry<T>
+>;
 
 export type CityBoundaries = FeatureCollection<Polygon, GeoJsonProperties>;
 
@@ -38,8 +40,8 @@ export interface ParkingLotGeoJSONModules {
   [key: string]: () => Promise<Feature<Geometry>>;
 }
 
-export interface DataSet {
-  stats: CityStatsCollection;
+export interface DataSet<T extends BaseCityStats> {
+  stats: CityStatsCollection<T>;
   boundaries: CityBoundaries;
   parkingLots: ParkingLotGeoJSONModules;
 }

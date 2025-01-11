@@ -1,4 +1,4 @@
-import type { CityEntryCollection, CityStats } from "../model/types";
+import type { BaseCityStats, CityEntryCollection } from "../model/types";
 import Observable from "../state/Observable";
 import { ViewStateObservable } from "../state/ViewState";
 
@@ -7,7 +7,9 @@ export interface ScorecardValues {
   listEntries: string[];
 }
 
-export type ScorecardFormatter = (stats: CityStats) => ScorecardValues;
+export type ScorecardFormatter<T extends BaseCityStats> = (
+  stats: T,
+) => ScorecardValues;
 
 function generateScorecard(values: ScorecardValues): string {
   const accordion = `<div class="scorecard-accordion">
@@ -94,10 +96,10 @@ function initAccordion(): void {
   isExpanded.initialize();
 }
 
-export default function subscribeScorecard(
+export default function subscribeScorecard<T extends BaseCityStats>(
   viewState: ViewStateObservable,
-  cityEntries: CityEntryCollection,
-  scorecardFormatter: ScorecardFormatter,
+  cityEntries: CityEntryCollection<T>,
+  scorecardFormatter: ScorecardFormatter<T>,
 ): void {
   viewState.subscribe(({ cityId }) => {
     const scorecardContainer = document.querySelector(".scorecard-container");

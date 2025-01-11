@@ -6,8 +6,10 @@ import type {
   CityBoundaries,
 } from "@prn-parking-lots/shared/src/js/model/types";
 
+import type { CityStats } from "./types";
+
 import UNTYPED_CITY_STATS_DATA from "../../data/city-stats.json" with { type: "json" };
-const CITY_STATS_DATA: CityStatsCollection = UNTYPED_CITY_STATS_DATA;
+const CITY_STATS_DATA: CityStatsCollection<CityStats> = UNTYPED_CITY_STATS_DATA;
 
 // @ts-expect-error TypeScript doesn't understand GeoJSON.
 import UNTYPED_CITY_BOUNDARIES_GEOJSON from "../../data/city-boundaries.geojson" with { type: "json" };

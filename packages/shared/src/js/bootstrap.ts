@@ -17,18 +17,20 @@ import {
 import ParkingLotLoader from "./map-layers/ParkingLotLoader";
 
 import { extractCityIdFromUrl } from "./model/cityId";
-import type { CityId, DataSet } from "./model/types";
+import type { CityId, DataSet, BaseCityStats } from "./model/types";
 
 import { initViewState } from "./state/ViewState";
 
-interface Args {
-  data: DataSet;
+interface Args<T extends BaseCityStats> {
+  data: DataSet<T>;
   initialCity: CityId;
   dropdownGroups: DropdownGroup[];
-  scorecardFormatter: ScorecardFormatter;
+  scorecardFormatter: ScorecardFormatter<T>;
 }
 
-export default async function bootstrapApp(args: Args): Promise<void> {
+export default async function bootstrapApp<T extends BaseCityStats>(
+  args: Args<T>,
+): Promise<void> {
   initIcons();
   maybeDisableFullScreenIcon();
   initAbout();

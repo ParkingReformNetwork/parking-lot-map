@@ -4,6 +4,7 @@ import type {
   CityEntryCollection,
   CityStatsCollection,
   CityBoundaries,
+  BaseCityStats,
 } from "../model/types";
 import { ViewStateObservable } from "../state/ViewState";
 import { STYLES } from "../layout/map";
@@ -11,12 +12,12 @@ import { STYLES } from "../layout/map";
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
  */
-export function createCitiesLayer(
+export function createCitiesLayer<T extends BaseCityStats>(
   map: Map,
   cityBoundaries: CityBoundaries,
-  cityStatsData: CityStatsCollection,
-): [GeoJSON, CityEntryCollection] {
-  const cityEntries: CityEntryCollection = {};
+  cityStatsData: CityStatsCollection<T>,
+): [GeoJSON, CityEntryCollection<T>] {
+  const cityEntries: CityEntryCollection<T> = {};
   const boundaries = geoJSON(cityBoundaries, {
     style() {
       return STYLES.cities;
