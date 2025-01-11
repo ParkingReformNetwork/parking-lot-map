@@ -2,8 +2,9 @@ import {
   ScorecardValues,
   formatHeader,
   formatReformLine,
-} from "@prn-parking-lots/shared/src/js/city-ui/scorecard";
-import type { CityStats } from "./types";
+} from "@prn-parking-lots/shared/src/js/city-ui/scorecard.ts";
+
+import type { CityStats } from "./types.ts";
 
 export default function formatScorecard(stats: CityStats): ScorecardValues {
   const header = formatHeader({
