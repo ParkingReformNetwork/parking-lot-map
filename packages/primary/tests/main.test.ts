@@ -103,7 +103,7 @@ test.describe("the share feature", () => {
     const firstCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText(),
     );
-    expect(firstCityClipboardText).toContain("/#parking-reform-map=atlanta-ga");
+    expect(firstCityClipboardText).toContain("/#share=atlanta-ga");
 
     // Check that the share button works when changing the city, too.
     // This is a regression test.
@@ -123,19 +123,19 @@ test.describe("the share feature", () => {
       navigator.clipboard.readText(),
     );
     expect(secondCityClipboardText).toContain(
-      "/#parking-reform-map=anchorage-ak",
+      "/#share=anchorage-ak",
     );
 
     // Also ensure the full-screen icon link is updated.
     const href = await page
       .locator(".header-full-screen-icon-container")
       .getAttribute("href");
-    expect(href).toContain("/#parking-reform-map=anchorage-ak");
+    expect(href).toContain("/#share=anchorage-ak");
   });
 
   test("loading from a share link works", async ({ page }) => {
     // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
-    await page.goto("#parking-reform-map=fort-worth-tx");
+    await page.goto("#share=fort-worth-tx");
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForSelector(".scorecard-title");
@@ -157,7 +157,7 @@ test.describe("the share feature", () => {
   test("loading from a bad share link falls back to default city", async ({
     page,
   }) => {
-    await page.goto("#parking-reform-map=bad-city");
+    await page.goto("#share=bad-city");
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
