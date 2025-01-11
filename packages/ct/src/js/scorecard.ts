@@ -3,7 +3,7 @@ import {
   formatHeader,
   formatReformLine,
 } from "@prn-parking-lots/shared/src/js/city-ui/scorecard";
-import { CityStats } from "@prn-parking-lots/shared/src/js/model/types";
+import type { CityStats } from "./types";
 
 export default function formatScorecard(stats: CityStats): ScorecardValues {
   const header = formatHeader({

@@ -2,23 +2,15 @@
   "hartford": {
     "name": "Hartford",
     "percentage": "26%",
-    "cityType": "core",
     "population": "121,054",
-    "urbanizedAreaPopulation": "977,158",
-    "parkingScore": "53",
     "reforms": "adopted",
-    "url": "https://parkingreform.org/mandates-map/city_detail/Hartford_CT.html",
-    "contribution": null
+    "url": "https://parkingreform.org/mandates-map/city_detail/Hartford_CT.html"
   },
   "new-haven": {
     "name": "New Haven",
     "percentage": "34%",
-    "cityType": "principal",
     "population": "134,023",
-    "urbanizedAreaPopulation": "561,456",
-    "parkingScore": null,
     "reforms": "adopted",
-    "url": "https://parkingreform.org/mandates-map/city_detail/NewHaven_CT.html",
-    "contribution": null
+    "url": "https://parkingreform.org/mandates-map/city_detail/NewHaven_CT.html"
   }
 }

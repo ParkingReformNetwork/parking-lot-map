@@ -1,8 +1,10 @@
 import { DropdownGroup } from "@prn-parking-lots/shared/src/js/city-ui/dropdownUtils";
-import { CityStatsCollection } from "@prn-parking-lots/shared/src/js/model/types";
+import type { CityStatsCollection } from "@prn-parking-lots/shared/src/js/model/types";
+
+import type { CityStats } from "./types";
 
 export default function createDropdownGroups(
-  data: CityStatsCollection,
+  data: CityStatsCollection<CityStats>,
 ): DropdownGroup[] {
   return [
     {

@@ -1,6 +1,6 @@
 import { ImageOverlay, Map } from "leaflet";
 
-import type { CityEntryCollection } from "./model/types";
+import type { BaseCityStats, CityEntryCollection } from "./model/types";
 import { ViewStateObservable } from "./state/ViewState";
 import ParkingLotLoader from "./map-layers/ParkingLotLoader";
 
@@ -18,10 +18,10 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
   map.setView(translatedCenter);
 }
 
-export function subscribeSnapToCity(
+export function subscribeSnapToCity<T extends BaseCityStats>(
   viewState: ViewStateObservable,
   map: Map,
-  cityEntries: CityEntryCollection,
+  cityEntries: CityEntryCollection<T>,
 ): void {
   viewState.subscribe((state) => {
     if (!state.shouldSnapMap) return;
@@ -34,10 +34,10 @@ export function subscribeSnapToCity(
  *
  * Regardless of if the city is chosen, ensure its parking lots are loaded when in view.
  */
-export function setCityByMapPosition(
+export function setCityByMapPosition<T extends BaseCityStats>(
   viewState: ViewStateObservable,
   map: Map,
-  cityEntries: CityEntryCollection,
+  cityEntries: CityEntryCollection<T>,
   parkingLotLoader: ParkingLotLoader,
 ): void {
   map.on("moveend", () => {
