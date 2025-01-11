@@ -1,6 +1,5 @@
 import fs from "fs/promises";
 
-import results from "ts-results";
 import {
   FeatureCollection,
   GeoJsonProperties,
@@ -11,12 +10,12 @@ import {
 import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 
-const determineArgs = (
+export function determineArgs(
   scriptCommand: string,
   processArgv: string[],
-): results.Result<{ cityName: string; cityId: CityId }, string> => {
+): { cityName: string; cityId: CityId } {
   if (processArgv.length !== 1) {
-    return new results.Err(
+    throw new Error(
       `Must provide exactly one argument (the city/state name). For example,
        npm run ${scriptCommand} -- 'Columbus, OH'
        `,
@@ -24,29 +23,29 @@ const determineArgs = (
   }
   const cityName = processArgv[0];
   const cityId = parseCityIdFromJson(cityName);
-  return results.Ok({ cityName, cityId });
-};
+  return { cityName, cityId };
+}
 
-const updateCoordinates = async (
+export async function updateCoordinates(
   scriptCommand: string,
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
   updateFilePath: string,
-): Promise<results.Result<string, string>> => {
+): Promise<void> {
   let newData: FeatureCollection<Polygon, GeoJsonProperties>;
   try {
     const rawNewData = await fs.readFile(updateFilePath, "utf8");
     newData = JSON.parse(rawNewData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return results.Err(
+    throw new Error(
       `Issue reading the update file path ${updateFilePath}: ${message}`,
     );
   }
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
-    return results.Err(
+    throw new Error(
       "The script expects exactly one entry in `features` because you can only update one city at a time.",
     );
   }
@@ -61,7 +60,7 @@ const updateCoordinates = async (
     originalData = JSON.parse(rawOriginalData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return results.Err(
+    throw new Error(
       `Issue reading the original data file path ${originalFilePath}: ${message}`,
     );
   }
@@ -78,7 +77,7 @@ const updateCoordinates = async (
       (feature) => feature?.properties?.id === cityId,
     );
     if (!cityOriginalData) {
-      return results.Err(
+      throw new Error(
         `City not found in ${originalFilePath}. To add a new city, run again with the '--add' flag, e.g. npm run ${scriptCommand} -- 'My City, AZ' --add`,
       );
     }
@@ -97,28 +96,27 @@ const updateCoordinates = async (
   });
 
   await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
-  return results.Ok("File updated successfully!");
-};
+}
 
-const updateParkingLots = async (
+export async function updateParkingLots(
   cityId: CityId,
   addCity: boolean,
   originalFilePath: string,
   updateFilePath: string,
-): Promise<results.Result<string, string>> => {
+): Promise<void> {
   let newData;
   try {
     const rawNewData = await fs.readFile(originalFilePath, "utf8");
     newData = JSON.parse(rawNewData);
   } catch (err: unknown) {
     const { message } = err as Error;
-    return results.Err(
+    throw new Error(
       `Issue reading the update file path parking-lots-update.geojson: ${message}`,
     );
   }
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
-    return results.Err(
+    throw new Error(
       "The script expects exactly one entry in `features` because you can only update one city at a time.",
     );
   }
@@ -133,23 +131,20 @@ const updateParkingLots = async (
       originalData = JSON.parse(rawOriginalData);
     } catch (err: unknown) {
       const { message } = err as Error;
-      return results.Err(
+      throw new Error(
         `Issue reading the original data file path ${updateFilePath}: ${message}`,
       );
     }
     originalData.geometry.coordinates = newCoordinates;
 
     await fs.writeFile(updateFilePath, JSON.stringify(originalData, null, 2));
-    return results.Ok("File updated successfully!");
+    return;
   }
+
   const newFile = {
     type: "Feature",
     properties: { id: cityId },
     geometry: { type: newGeometryType, coordinates: newCoordinates },
   };
   await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
-
-  return results.Ok("File updated successfully!");
-};
-
-export { determineArgs, updateCoordinates, updateParkingLots };
+}

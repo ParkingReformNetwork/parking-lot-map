@@ -9,8 +9,7 @@
     "update-lots": "tsx src/update-lots.ts"
   },
   "dependencies": {
-    "@prn-parking-lots/shared": "workspace:*",
-    "ts-results": "^3.3.0"
+    "@prn-parking-lots/shared": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.19.2"

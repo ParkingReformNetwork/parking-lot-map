@@ -103,9 +103,6 @@ importers:
       "@prn-parking-lots/shared":
         specifier: workspace:*
         version: link:../shared
-      ts-results:
-        specifier: ^3.3.0
-        version: 3.3.0
     devDependencies:
       tsx:
         specifier: ^4.19.2
@@ -3584,12 +3581,6 @@ packages:
     peerDependencies:
       typescript: ">=4.8.4"
 
-  ts-results@3.3.0:
-    resolution:
-      {
-        integrity: sha512-FWqxGX2NHp5oCyaMd96o2y2uMQmSu8Dey6kvyuFdRJ2AzfmWo3kWa4UsPlCGlfQ/qu03m09ZZtppMoY8EMHuiA==,
-      }
-
   tsconfig-paths@3.15.0:
     resolution:
       {
@@ -6185,8 +6176,6 @@ snapshots:
   ts-api-utils@2.0.0(typescript@5.7.3):
     dependencies:
       typescript: 5.7.3
-
-  ts-results@3.3.0: {}
 
   tsconfig-paths@3.15.0:
     dependencies:
