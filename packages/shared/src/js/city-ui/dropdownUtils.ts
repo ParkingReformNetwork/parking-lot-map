@@ -1,5 +1,6 @@
-import type { CityId } from "../model/types";
 import type { Group as ChoicesJSGroup } from "choices.js";
+
+import type { CityId } from "../model/types";
 
 interface DropdownChoice {
   value: string;
