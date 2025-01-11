@@ -1,5 +1,6 @@
 import subscribeScorecard from "./city-ui/scorecard";
 import initDropdown from "./city-ui/dropdown";
+import type { DropdownGroup } from "./city-ui/dropdownUtils";
 
 import initAbout from "./layout/about";
 import initIcons from "./layout/fontAwesome";
@@ -23,6 +24,7 @@ import { initViewState } from "./state/ViewState";
 interface Args {
   data: DataSet;
   initialCity: CityId;
+  dropdownGroups: DropdownGroup[];
 }
 
 export default async function bootstrapApp(args: Args): Promise<void> {
@@ -45,7 +47,7 @@ export default async function bootstrapApp(args: Args): Promise<void> {
     args.initialCity,
   );
 
-  initDropdown(args.data.stats, viewState);
+  initDropdown(args.dropdownGroups, viewState);
   subscribeScorecard(viewState, cityEntries);
   subscribeShareLink(viewState);
   subscribeSnapToCity(viewState, map, cityEntries);

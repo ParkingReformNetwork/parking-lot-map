@@ -1,6 +1,7 @@
 import type { CityId } from "../model/types";
+import type { Group as ChoicesJSGroup } from "choices.js";
 
-export interface DropdownChoice {
+interface DropdownChoice {
   value: string;
   label: string;
   customProperties: {
@@ -8,6 +9,16 @@ export interface DropdownChoice {
     /// E.g. "NY" or "rail station"
     context: string;
   };
+}
+
+export interface DropdownChoiceId {
+  id: CityId;
+  name: string;
+}
+
+export interface DropdownGroup {
+  label: string;
+  cities: Array<DropdownChoiceId>;
 }
 
 export function createChoice(id: CityId, name: string): DropdownChoice {
@@ -20,4 +31,17 @@ export function createChoice(id: CityId, name: string): DropdownChoice {
       context: context ?? "",
     },
   };
+}
+
+export function convertToChoicesGroups(
+  groups: DropdownGroup[],
+): ChoicesJSGroup[] {
+  return groups
+    .filter(({ cities }) => cities.length > 0)
+    .map(({ label, cities }) => ({
+      label,
+      value: label,
+      disabled: false,
+      choices: cities.map(({ id, name }) => createChoice(id, name)),
+    }));
 }
