@@ -1,40 +1,23 @@
-/* global document, navigator */
-import fs from "fs";
 import { expect, test, Page } from "@playwright/test";
 
-test("no console errors and warnings", async ({ page }) => {
-  const errors: string[] = [];
-  page.on("console", (message) => {
-    if (message.type() === "error" || message.type() === "warn") {
-      errors.push(message.text());
-    }
-  });
+import {
+  getAllDropdownValues,
+  getCurrentCity,
+  loadMap,
+  readCityStats,
+} from "@prn-parking-lots/shared/tests/integrationUtils.ts";
 
-  await page.goto("");
-  expect(errors).toHaveLength(0);
-});
+import type { CityStats } from "../src/js/types";
 
 test("every city is in the toggle", async ({ page }) => {
-  const rawData: Buffer = fs.readFileSync("data/city-stats.json");
-  const data: JSON = JSON.parse(rawData.toString());
-  const expectedCities = Object.values(data).map((scoreCard) => scoreCard.name);
-
-  await page.goto("/");
-  await page.waitForSelector(".choices");
-
-  const toggleValues = await page.$$eval(".choices__item--choice", (elements) =>
-    Array.from(elements.map((opt) => opt.textContent?.trim())),
-  );
-
-  toggleValues.sort();
-  expectedCities.sort();
-
-  expect(toggleValues).toEqual(expectedCities);
+  const cityStats = await readCityStats();
+  const expectedCities = Object.values(cityStats).map(({ name }) => name);
+  await loadMap(page);
+  const dropdownValues = await getAllDropdownValues(page);
+  expect(dropdownValues).toEqual(expectedCities);
 });
 
 test("correctly load the city score card", async ({ page }) => {
-  const rawData: Buffer = fs.readFileSync("data/city-stats.json");
-  const albanyExpected = JSON.parse(rawData.toString())["albany-ny"];
   let albanyLoaded = false;
   page.route("**/*", (route) => {
     const requestUrl = route.request().url();
@@ -80,6 +63,8 @@ test("correctly load the city score card", async ({ page }) => {
   expect(albanyLoaded).toBe(true);
   expect(cityToggleValue).toEqual("albany-ny");
 
+  const cityStats = await readCityStats<CityStats>();
+  const albanyExpected = cityStats["albany-ny"];
   const expectedLines = new Set([
     `${albanyExpected.percentage} of the central city is off-street parking`,
     `${albanyExpected.parkingScore}/100 parking score (lower is better)`,
@@ -96,8 +81,7 @@ test.describe("the share feature", () => {
     const context = await browser.newContext();
     await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     const page = await context.newPage();
-    await page.goto("/");
-    await page.waitForSelector(".header-share-icon-container");
+    await loadMap(page);
 
     await page.click(".header-share-icon-container");
     const firstCityClipboardText = await page.evaluate(() =>
@@ -133,56 +117,30 @@ test.describe("the share feature", () => {
 
   test("loading from a share link works", async ({ page }) => {
     // Regression test of https://github.com/ParkingReformNetwork/parking-lot-map/issues/10.
-    await page.goto("#city=fort-worth-tx");
-
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForSelector(".scorecard-title");
-
-    const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-      const titlePopup: HTMLElement | null =
-        document.querySelector(".scorecard-title");
-      const title = titlePopup?.textContent;
-      const cityChoice: HTMLSelectElement | null =
-        document.querySelector("#city-dropdown");
-      const cityToggle = cityChoice?.value;
-      return [title, cityToggle];
-    });
-
-    expect(scoreCardTitle).toEqual("Parking lots in Fort Worth, TX");
-    expect(cityToggleValue).toEqual("fort-worth-tx");
+    await loadMap(page, "#city=fort-worth-tx");
+    const { scorecardTitle, cityId } = await getCurrentCity(page);
+    expect(scorecardTitle).toEqual("Parking lots in Fort Worth, TX");
+    expect(cityId).toEqual("fort-worth-tx");
   });
 
   test("loading from a bad share link falls back to default city", async ({
     page,
   }) => {
-    await page.goto("#city=bad-city");
-
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
-    const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-      const titlePopup: HTMLAnchorElement | null =
-        document.querySelector(".scorecard-title");
-
-      const title = titlePopup?.textContent;
-      const cityChoiceSelector: HTMLSelectElement | null =
-        document.querySelector("#city-dropdown");
-      const cityToggle = cityChoiceSelector?.value;
-      return [title, cityToggle];
-    });
-
-    expect(scoreCardTitle).toEqual("Parking lots in Atlanta, GA");
-    expect(cityToggleValue).toEqual("atlanta-ga");
+    await loadMap(page, "#city=bad-city");
+    const { scorecardTitle, cityId } = await getCurrentCity(page);
+    expect(scorecardTitle).toEqual("Parking lots in Atlanta, GA");
+    expect(cityId).toEqual("atlanta-ga");
   });
 });
 
-const dragMap = async (page: Page, distance: number) => {
+async function dragMap(page: Page, distance: number): Promise<void> {
   await page.waitForTimeout(1000);
   await page.mouse.move(600, 500);
   await page.mouse.down();
   await page.mouse.move(600 + distance, 500, { steps: 5 });
   await page.mouse.up();
   await page.waitForTimeout(2000);
-};
+}
 
 test.describe("auto-focus city", () => {
   test("clicking on city boundary close view", async ({ page }) => {
@@ -213,40 +171,35 @@ test.describe("auto-focus city", () => {
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
 
-    const newScorecard = await page
-      .locator(".scorecard-title")
-      .evaluate((node) => node.textContent);
-    expect(newScorecard).toEqual("Parking lots in Birmingham, AL");
-    expect(await page.isVisible("#birmingham-al")).toBe(true);
+    const { scorecardTitle } = await getCurrentCity(page);
+    expect(scorecardTitle).toEqual("Parking lots in Birmingham, AL");
+    expect(await page.locator("#birmingham-al").isVisible()).toBe(true);
   });
-  test("clicking on city boundary wide view", async ({ page }) => {
-    await page.goto("");
 
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
+  test("clicking on city boundary doesn't impact zoom out", async ({
+    page,
+  }) => {
+    await loadMap(page);
 
     // Zoom out.
     await page
       .locator(".leaflet-control-zoom-out")
       .click({ clickCount: 10, delay: 300 });
+
     // Click on Birmingham boundary.
-    const city = await page.locator("#birmingham-al");
-    await city.click({ force: true });
+    await page.locator("#birmingham-al").click({ force: true });
 
     // Wait a second to make sure the site is fully loaded.
     await page.waitForTimeout(1000);
 
-    const scorecard = await page
-      .locator(".scorecard-title")
-      .evaluate((node) => node.textContent);
-    expect(scorecard).toEqual("Parking lots in Atlanta, GA");
+    // Scorecard should stay the default of Atlanta
+    const { scorecardTitle } = await getCurrentCity(page);
+    expect(scorecardTitle).toEqual("Parking lots in Atlanta, GA");
   });
 });
 
 test("scorecard pulls up city closest to center", async ({ page }) => {
-  await page.goto("");
-
-  await page.waitForSelector(".leaflet-control-zoom-out");
+  await loadMap(page);
 
   // Zoom out.
   await page
@@ -257,20 +210,12 @@ test("scorecard pulls up city closest to center", async ({ page }) => {
   await dragMap(page, 300);
 
   await page.waitForSelector(".choices");
-  const [scoreCardTitle, cityToggleValue] = await page.evaluate(() => {
-    const titlePopup = document.querySelector(".scorecard-title");
-    const title = titlePopup?.textContent;
-    const cityChoice: HTMLSelectElement | null =
-      document.querySelector("#city-dropdown");
-    return [title, cityChoice?.value];
-  });
-  expect(scoreCardTitle).toEqual("Parking lots in Birmingham, AL");
-  expect(cityToggleValue).toEqual("birmingham-al");
+  const { scorecardTitle, cityId } = await getCurrentCity(page);
+  expect(scorecardTitle).toEqual("Parking lots in Birmingham, AL");
+  expect(cityId).toEqual("birmingham-al");
 });
 
 test("map only loads parking lots for visible cities", async ({ page }) => {
-  await page.goto("");
-
   let birminghamLoaded = false;
   page.route("**/*", (route) => {
     const requestUrl = route.request().url();
@@ -280,8 +225,7 @@ test("map only loads parking lots for visible cities", async ({ page }) => {
     route.continue();
   });
 
-  // Wait a second to make sure the site is fully loaded.
-  await page.waitForTimeout(1000);
+  await loadMap(page);
 
   // Zoom out.
   await page
