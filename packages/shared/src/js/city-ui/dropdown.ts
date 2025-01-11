@@ -1,33 +1,26 @@
-import Choices from "choices.js";
+import ChoicesJS from "choices.js";
 
-import type { CityStatsCollection, DropdownChoice } from "../model/types";
+import { DropdownChoice, createChoice } from "./dropdownUtils";
+import type { CityStatsCollection } from "../model/types";
 import { ViewStateObservable } from "../state/ViewState";
 
-function createDropdown(cityStatsData: CityStatsCollection): Choices {
-  const dropdown = new Choices("#city-dropdown", {
+function createDropdown(cityStatsData: CityStatsCollection): ChoicesJS {
+  const dropdown = new ChoicesJS("#city-dropdown", {
     position: "bottom",
     allowHTML: false,
     itemSelectText: "",
     searchEnabled: true,
     searchResultLimit: 6,
-    searchFields: ["customProperties.city", "customProperties.state"],
-    // Since cities are already alphabetical order in scorecard,
-    // disabling this option allows us to show PRN maps at the top.
+    searchFields: ["customProperties.city", "customProperties.context"],
+    // Disabling this option allows us to properly handle search groups.
+    // We already sort entries in the JSON file.
     shouldSort: false,
   });
 
   const officialCities: DropdownChoice[] = [];
   const communityCities: DropdownChoice[] = [];
   Object.entries(cityStatsData).forEach(([id, { name, contribution }]) => {
-    const [city, state] = name.split(", ");
-    const entry: DropdownChoice = {
-      value: id,
-      label: name,
-      customProperties: {
-        city,
-        state,
-      },
-    };
+    const entry = createChoice(id, name);
     if (contribution) {
       communityCities.push(entry);
     } else {

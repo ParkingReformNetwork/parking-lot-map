@@ -32,15 +32,6 @@ export interface CityEntry {
 
 export type CityEntryCollection = Record<CityId, CityEntry>;
 
-export interface DropdownChoice {
-  value: string;
-  label: string;
-  customProperties: {
-    city: string;
-    state: string;
-  };
-}
-
 export type CityBoundaries = FeatureCollection<Polygon, GeoJsonProperties>;
 
 export interface ParkingLotGeoJSONModules {
