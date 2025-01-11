@@ -10,9 +10,14 @@ import { createMap } from "./map";
 import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
 import { createCitiesLayer, setCityOnBoundaryClick } from "./citiesLayer";
 import ParkingLotLoader from "./ParkingLotLoader";
-import type { DataSet } from "./types";
+import type { CityId, DataSet } from "./types";
 
-export default async function bootstrapApp(dataSet: DataSet): Promise<void> {
+interface Args {
+  data: DataSet;
+  initialCity: CityId;
+}
+
+export default async function bootstrapApp(args: Args): Promise<void> {
   initIcons();
   maybeDisableFullScreenIcon();
   initAbout();
@@ -20,19 +25,19 @@ export default async function bootstrapApp(dataSet: DataSet): Promise<void> {
   const map = createMap();
   const [cityBoundaries, cityEntries] = createCitiesLayer(
     map,
-    dataSet.boundaries,
-    dataSet.stats,
+    args.data.boundaries,
+    args.data.stats,
   );
-  const parkingLotLoader = new ParkingLotLoader(map, dataSet.parkingLots);
+  const parkingLotLoader = new ParkingLotLoader(map, args.data.parkingLots);
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
   const viewState = initViewState(
-    Object.keys(dataSet.stats),
+    Object.keys(args.data.stats),
     initialCityId,
-    "atlanta-ga",
+    args.initialCity,
   );
 
-  initDropdown(dataSet.stats, viewState);
+  initDropdown(args.data.stats, viewState);
   subscribeScorecard(viewState, cityEntries);
   subscribeShareLink(viewState);
   subscribeSnapToCity(viewState, map, cityEntries);
