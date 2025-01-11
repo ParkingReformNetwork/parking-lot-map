@@ -10,7 +10,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "choices.js": "^10.2.0",
-    "leaflet": "~1.9.3"
+    "leaflet": "~1.9.3",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {}
 }

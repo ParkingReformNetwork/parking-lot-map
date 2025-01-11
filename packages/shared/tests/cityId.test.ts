@@ -32,6 +32,9 @@ test.describe("extractCityIdFromUrl()", () => {
         "https://parking.org#parking-reform-map=CITY-OF-SHOUP",
       ),
     ).toEqual("city-of-shoup");
+    expect(
+      extractCityIdFromUrl("https://parking.org#parking-reform-map=st.-louis"),
+    ).toEqual("st-louis");
   });
 });
 
@@ -41,7 +44,13 @@ test("parseCityIdFromJson() extracts the city", () => {
   expect(parseCityIdFromJson("Saint Shoup Village, AZ")).toEqual(
     "saint-shoup-village-az",
   );
+  expect(parseCityIdFromJson("St. Shoup Village, AZ")).toEqual(
+    "st-shoup-village-az",
+  );
   expect(parseCityIdFromJson("No state")).toEqual("no-state");
+  expect(parseCityIdFromJson("Hartford - rail station")).toEqual(
+    "hartford-rail-station",
+  );
 });
 
 test.describe("determineShareUrl()", () => {

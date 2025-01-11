@@ -13,6 +13,6 @@ export default async function initApp(): Promise<void> {
       boundaries: CITY_BOUNDARIES_GEOJSON,
       parkingLots: PARKING_LOT_GEOJSON_MODULES,
     },
-    initialCity: "hartford-ct",
+    initialCity: "hartford",
   });
 }

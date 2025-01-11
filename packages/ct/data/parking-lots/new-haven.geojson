@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "new-haven-ct"
+    "id": "new-haven"
   },
   "geometry": {
     "type": "MultiPolygon",

@@ -9868,7 +9868,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "st.-louis-mo"
+        "id": "st-louis-mo"
       },
       "geometry": {
         "type": "Polygon",
@@ -9969,7 +9969,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "st.-petersburg-fl"
+        "id": "st-petersburg-fl"
       },
       "geometry": {
         "type": "Polygon",

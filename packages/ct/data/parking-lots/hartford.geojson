@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "hartford-ct"
+    "id": "hartford"
   },
   "geometry": {
     "type": "MultiPolygon",

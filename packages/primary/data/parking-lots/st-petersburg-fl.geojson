@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "st.-petersburg-fl"
+    "id": "st-petersburg-fl"
   },
   "geometry": {
     "type": "MultiPolygon",
