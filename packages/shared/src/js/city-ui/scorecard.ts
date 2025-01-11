@@ -37,6 +37,28 @@ function generateScorecard(values: ScorecardValues): string {
   return values.header + accordion;
 }
 
+export function formatHeader(args: {
+  name: string;
+  percentage: string;
+  boundaryDescription: string;
+}): string {
+  return `
+    <h1 class="scorecard-title">Parking lots in ${args.name}</h1>
+    <p>${args.percentage} of the ${args.boundaryDescription} is off-street parking</p>
+    `;
+}
+
+export function formatReformLine(
+  reformStatus: string,
+  url: string | null,
+): string {
+  let result = `Parking reforms ${reformStatus}`;
+  if (url) {
+    result += ` (<a class="external-link" title="view parking reform details" href="${url}" target="_blank">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
+  }
+  return result;
+}
+
 function updateAccordionUI(expanded: boolean): void {
   const toggle = document.querySelector(".scorecard-accordion-toggle");
   const content = document.querySelector<HTMLElement>(
