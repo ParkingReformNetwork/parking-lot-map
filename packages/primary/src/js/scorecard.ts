@@ -2,8 +2,14 @@ import {
   ScorecardValues,
   formatHeader,
   formatReformLine,
-} from "@prn-parking-lots/shared/src/js/city-ui/scorecard";
-import type { CityStats } from "./types";
+} from "@prn-parking-lots/shared/src/js/city-ui/scorecard.ts";
+
+import type { CityStats } from "./types.ts";
+
+export const COMMUNITY_WARNING = `<div class="community-contribution-warning">
+    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
+    Community-maintained map
+  </div>`;
 
 export default function formatScorecard(stats: CityStats): ScorecardValues {
   let header = formatHeader({
@@ -12,10 +18,7 @@ export default function formatScorecard(stats: CityStats): ScorecardValues {
     boundaryDescription: "central city",
   });
   if (stats.contribution) {
-    header += `<div class="community-contribution-warning">
-    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
-    Community-maintained map
-  </div>`;
+    header += COMMUNITY_WARNING;
   }
 
   const listEntries = [];

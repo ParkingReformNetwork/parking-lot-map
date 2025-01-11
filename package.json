@@ -9,7 +9,7 @@
     "check": "tsc --noEmit",
     "fmt": "prettier --write .",
     "fix": "prettier --write packages/; eslint --fix packages/",
-    "lint": "prettier --check . && eslint packages/"
+    "lint": "eslint packages/ && prettier --check ."
   },
   "devDependencies": {
     "@parcel/compressor-brotli": "~2.12.0",
