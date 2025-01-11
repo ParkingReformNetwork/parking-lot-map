@@ -4,16 +4,9 @@ import type { CityId, ParkingLotGeoJSONModules } from "./types";
 import { ViewStateObservable } from "./ViewState";
 import { STYLES } from "./map";
 
-function createParkingLotsLayer(map: LeafletMap): GeoJSON {
-  const parkingLayer = geoJSON(undefined, {
-    style() {
-      return STYLES.parkingLots;
-    },
-  }).addTo(map);
+function handleLotsToggle(map: LeafletMap, parkingLayer: GeoJSON): void {
+  if (window.location.href.indexOf("#lots-toggle") === -1) return;
 
-  if (window.location.href.indexOf("#lots-toggle") === -1) return parkingLayer;
-
-  // If `#lots-toggle` is in the URL, we show buttons to toggle parking lots.
   const toggle = document.querySelector<HTMLElement>("#lots-toggle");
   if (toggle) {
     toggle.hidden = false;
@@ -24,6 +17,15 @@ function createParkingLotsLayer(map: LeafletMap): GeoJSON {
   document.querySelector("#lots-toggle-on")?.addEventListener("click", () => {
     parkingLayer.addTo(map);
   });
+}
+
+function createParkingLotsLayer(map: LeafletMap): GeoJSON {
+  const parkingLayer = geoJSON(undefined, {
+    style() {
+      return STYLES.parkingLots;
+    },
+  }).addTo(map);
+  handleLotsToggle(map, parkingLayer);
   return parkingLayer;
 }
 
