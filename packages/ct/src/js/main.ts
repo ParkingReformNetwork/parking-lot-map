@@ -8,8 +8,11 @@ import {
 
 export default async function initApp(): Promise<void> {
   await bootstrapApp({
-    stats: CITY_STATS_DATA,
-    boundaries: CITY_BOUNDARIES_GEOJSON,
-    parkingLots: PARKING_LOT_GEOJSON_MODULES,
+    data: {
+      stats: CITY_STATS_DATA,
+      boundaries: CITY_BOUNDARIES_GEOJSON,
+      parkingLots: PARKING_LOT_GEOJSON_MODULES,
+    },
+    initialCity: "hartford-ct",
   });
 }
