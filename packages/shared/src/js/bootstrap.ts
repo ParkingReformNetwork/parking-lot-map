@@ -1,4 +1,4 @@
-import subscribeScorecard from "./city-ui/scorecard";
+import subscribeScorecard, { ScorecardFormatter } from "./city-ui/scorecard";
 import initDropdown from "./city-ui/dropdown";
 import type { DropdownGroup } from "./city-ui/dropdownUtils";
 
@@ -25,6 +25,7 @@ interface Args {
   data: DataSet;
   initialCity: CityId;
   dropdownGroups: DropdownGroup[];
+  scorecardFormatter: ScorecardFormatter;
 }
 
 export default async function bootstrapApp(args: Args): Promise<void> {
@@ -48,7 +49,7 @@ export default async function bootstrapApp(args: Args): Promise<void> {
   );
 
   initDropdown(args.dropdownGroups, viewState);
-  subscribeScorecard(viewState, cityEntries);
+  subscribeScorecard(viewState, cityEntries, args.scorecardFormatter);
   subscribeShareLink(viewState);
   subscribeSnapToCity(viewState, map, cityEntries);
   parkingLotLoader.subscribe(viewState);

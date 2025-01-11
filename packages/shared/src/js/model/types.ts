@@ -18,7 +18,7 @@ export interface CityStats {
   population: string;
   urbanizedAreaPopulation: string;
   parkingScore: string | null;
-  reforms: string;
+  reforms: string | null;
   url: string | null;
   contribution: string | null;
 }
