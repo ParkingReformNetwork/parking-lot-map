@@ -13,7 +13,7 @@ import {
 
 test.describe("determineArgs()", () => {
   test("returns the city name and ID", () => {
-    expect(determineArgs("my-script", ["My City"]).unwrap()).toEqual({
+    expect(determineArgs("my-script", ["My City"])).toEqual({
       cityName: "My City",
       cityId: "my-city",
     });
@@ -21,7 +21,7 @@ test.describe("determineArgs()", () => {
 
   [[], ["My City", "--bad"], ["My City", "AZ"]].forEach((args, index) => {
     test(`${index}) requires exactly 1 argument`, () => {
-      expect(() => determineArgs("my-script", args).unwrap()).toThrow(
+      expect(() => determineArgs("my-script", args)).toThrow(
         /exactly one argument/,
       );
     });
@@ -47,14 +47,13 @@ test.describe("updateCoordinates()", () => {
     const updateFilePath = validUpdateFilePath;
 
     const cityId = "shoup-ville-az";
-    const result = await updateCoordinates(
+    await updateCoordinates(
       "my-script",
       cityId,
       false,
       originalFilePath,
       updateFilePath,
     );
-    expect(result.ok).toBe(true);
 
     const rawUpdateData = await fs.readFile(updateFilePath, "utf8");
     const updateData = JSON.parse(rawUpdateData);
@@ -73,14 +72,13 @@ test.describe("updateCoordinates()", () => {
     const updateFilePath = validUpdateFilePath;
 
     const cityId = "parking-reform-now";
-    const result = await updateCoordinates(
+    await updateCoordinates(
       "my-script",
       cityId,
       true,
       originalFilePath,
       updateFilePath,
     );
-    expect(result.ok).toBe(true);
 
     const rawUpdatedData = await fs.readFile(updateFilePath, "utf8");
     const updatedData = JSON.parse(rawUpdatedData);
@@ -105,60 +103,66 @@ test.describe("updateCoordinates()", () => {
   });
 
   test("errors if city cannot be found in the original data and add not set", async () => {
-    const result = await updateCoordinates(
-      "my-script",
-      "bad-city",
-      false,
-      originalFilePath,
-      validUpdateFilePath,
-    );
-    expect(() => result.unwrap()).toThrow(/To add a new city,/);
+    await expect(
+      async () =>
+        await updateCoordinates(
+          "my-script",
+          "bad-city",
+          false,
+          originalFilePath,
+          validUpdateFilePath,
+        ),
+    ).rejects.toThrow(/To add a new city,/);
   });
 
   test("validates the update file has exactly one `feature`", async () => {
-    let result = await updateCoordinates(
-      "my-script",
-      "shoup-ville-az",
-      false,
-      originalFilePath,
-      "tests/data/too-many-updates.geojson",
-    );
-    expect(() => result.unwrap()).toThrow(
-      /expects exactly one entry in `features`/,
-    );
+    await expect(
+      async () =>
+        await updateCoordinates(
+          "my-script",
+          "shoup-ville-az",
+          false,
+          originalFilePath,
+          "tests/data/too-many-updates.geojson",
+        ),
+    ).rejects.toThrow(/expects exactly one entry in `features`/);
 
-    result = await updateCoordinates(
-      "my-script",
-      "shoup-ville-az",
-      false,
-      originalFilePath,
-      "tests/data/empty-update.geojson",
-    );
-    expect(() => result.unwrap()).toThrow(
-      /expects exactly one entry in `features`/,
-    );
+    await expect(
+      async () =>
+        await updateCoordinates(
+          "my-script",
+          "shoup-ville-az",
+          false,
+          originalFilePath,
+          "tests/data/empty-update.geojson",
+        ),
+    ).rejects.toThrow(/expects exactly one entry in `features`/);
   });
 
   test("errors gracefully if update file not found", async () => {
-    const result = await updateCoordinates(
-      "my-script",
-      "shoup-ville-az",
-      false,
-      originalFilePath,
-      "tests/data/does-not-exist",
-    );
-    expect(() => result.unwrap()).toThrow(/tests\/data\/does-not-exist/);
+    await expect(
+      async () =>
+        await updateCoordinates(
+          "my-script",
+          "shoup-ville-az",
+          false,
+          originalFilePath,
+          "tests/data/does-not-exist",
+        ),
+    ).rejects.toThrow(/tests\/data\/does-not-exist/);
   });
 
   test("errors gracefully if original data file not found", async () => {
-    const result = await updateCoordinates(
-      "my-script",
-      "shoup-ville-az",
-      false,
-      "tests/data/does-not-exist",
-      validUpdateFilePath,
-    );
-    expect(() => result.unwrap()).toThrow(/tests\/data\/does-not-exist/);
+    await expect(
+      async () =>
+        await updateCoordinates(
+          "my-script",
+          "shoup-ville-az",
+          false,
+          "tests/data/does-not-exist",
+          validUpdateFilePath,
+        ),
+    ).rejects.toThrow(/tests\/data\/does-not-exist/);
   });
 });
 
@@ -195,32 +199,16 @@ test.describe("updateParkingLots()", () => {
 
   test("adds a new city", async () => {
     const cityId = "parking-reform-now";
-    const result = await updateParkingLots(
-      cityId,
-      true,
-      parkingLotData,
-      addDataPath,
-    );
-    expect(result.ok).toBe(true);
-
+    await updateParkingLots(cityId, true, parkingLotData, addDataPath);
     await expectUpdatedFile(cityId, addDataPath);
-
     await fs.rm(addDataPath);
   });
 
   test("update city lots", async () => {
     const existingDataPath = "tests/data/existing-lot-data.geojson";
     const existingData = await fs.readFile(existingDataPath);
-
     const cityId = "parking-reform-now";
-    const result = await updateParkingLots(
-      cityId,
-      true,
-      parkingLotData,
-      existingDataPath,
-    );
-    expect(result.ok).toBe(true);
-
+    await updateParkingLots(cityId, true, parkingLotData, existingDataPath);
     await expectUpdatedFile(cityId, existingDataPath);
     await fs.writeFile(existingDataPath, existingData);
   });
