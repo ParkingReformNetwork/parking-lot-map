@@ -122,9 +122,7 @@ test.describe("the share feature", () => {
     const secondCityClipboardText = await page.evaluate(() =>
       navigator.clipboard.readText(),
     );
-    expect(secondCityClipboardText).toContain(
-      "/#share=anchorage-ak",
-    );
+    expect(secondCityClipboardText).toContain("/#share=anchorage-ak");
 
     // Also ensure the full-screen icon link is updated.
     const href = await page

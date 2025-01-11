@@ -45,7 +45,7 @@ test("parseCityIdFromJson() extracts the city", () => {
 });
 
 test.describe("determineShareUrl()", () => {
-  test("adds #parking-reform-map= if not yet present", () => {
+  test("adds #city= if not yet present", () => {
     expect(determineShareUrl("https://parking.org", "tempe-az")).toEqual(
       "https://parking.org#city=tempe-az",
     );
