@@ -5,6 +5,7 @@ import {
   CITY_BOUNDARIES_GEOJSON,
   PARKING_LOT_GEOJSON_MODULES,
 } from "./data";
+import createDropdownGroups from "./dropdownGroups";
 
 export default async function initApp(): Promise<void> {
   await bootstrapApp({
@@ -13,6 +14,7 @@ export default async function initApp(): Promise<void> {
       boundaries: CITY_BOUNDARIES_GEOJSON,
       parkingLots: PARKING_LOT_GEOJSON_MODULES,
     },
+    dropdownGroups: createDropdownGroups(CITY_STATS_DATA),
     initialCity: "atlanta-ga",
   });
 }

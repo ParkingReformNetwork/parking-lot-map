@@ -1,5 +1,8 @@
 import { expect, test } from "@playwright/test";
-import { createChoice } from "../src/js/city-ui/dropdownUtils";
+import {
+  createChoice,
+  convertToChoicesGroups,
+} from "../src/js/city-ui/dropdownUtils";
 
 test.describe("createChoice()", () => {
   test("city and state", () => {
@@ -25,4 +28,32 @@ test.describe("createChoice()", () => {
       customProperties: { city: "Tempe", context: "" },
     });
   });
+});
+
+test("convertToChoicesGroups()", () => {
+  const city1 = { id: "city1", name: "City 1" };
+  const city2 = { id: "city2", name: "City 2" };
+  const city3 = { id: "city2", name: "City 3" };
+  const input = [
+    { label: "group 1", cities: [city1] },
+    { label: "hidden", cities: [] },
+    { label: "group 2", cities: [city2, city3] },
+  ];
+  expect(convertToChoicesGroups(input)).toEqual([
+    {
+      value: "group 1",
+      label: "group 1",
+      disabled: false,
+      choices: [createChoice(city1.id, city1.name)],
+    },
+    {
+      value: "group 2",
+      label: "group 2",
+      disabled: false,
+      choices: [
+        createChoice(city2.id, city2.name),
+        createChoice(city3.id, city3.name),
+      ],
+    },
+  ]);
 });
