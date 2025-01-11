@@ -18,22 +18,41 @@ jobs:
           corepack enable pnpm
           pnpm install
           npx playwright install --with-deps
-      - name: Build
+
+      - name: Build 'primary'
         run: pnpm -F primary build
-      - name: Run tests on dist/
+      - name: Build 'ct'
+        run: pnpm -F ct build
+
+      - name: Test 'primary'
         run: pnpm -F primary test-dist
+      - name: Test 'ct'
+        run: pnpm -F ct test-dist
+
       - name: Archive dist/ contents
         run: |
           cd packages/primary/dist
-          tar -czf ../../../dist_contents.tar.gz *
-      - name: Copy dist/ to server
+          tar -czf ../../../dist_contents__primary.tar.gz *
+          cd ../../ct/dist
+          tar -czf ../../../dist_contents__ct.tar.gz *
+
+      - name: Copy 'primary' to server
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.PRN_FTP_HOST }}
           username: ${{ secrets.PRN_SERVER_USERNAME }}
           key: ${{ secrets.PRN_SERVER_PRIVATE_KEY }}
-          source: dist_contents.tar.gz
+          source: dist_contents__primary.tar.gz
           target: /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging
+      - name: Copy 'ct' to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.PRN_FTP_HOST }}
+          username: ${{ secrets.PRN_SERVER_USERNAME }}
+          key: ${{ secrets.PRN_SERVER_PRIVATE_KEY }}
+          source: dist_contents__ct.tar.gz
+          target: /var/www/${{ secrets.PRN_SERVER_HOST }}/ct-parking-lots-staging
+
       - name: Extract on server
         uses: appleboy/ssh-action@master
         with:
@@ -41,5 +60,7 @@ jobs:
           username: ${{ secrets.PRN_SERVER_USERNAME }}
           key: ${{ secrets.PRN_SERVER_PRIVATE_KEY }}
           script: |
-            tar -xzf /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging/dist_contents.tar.gz -C /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging
-            rm /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging/dist_contents.tar.gz
+            tar -xzf /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging/dist_contents__primary.tar.gz -C /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging
+            rm /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging/dist_contents__primary.tar.gz
+            tar -xzf /var/www/${{ secrets.PRN_SERVER_HOST }}/ct-parking-lots-staging/dist_contents__ct.tar.gz -C /var/www/${{ secrets.PRN_SERVER_HOST }}/ct-parking-lots-staging
+            rm /var/www/${{ secrets.PRN_SERVER_HOST }}/ct-parking-lots-staging/dist_contents__ct.tar.gz

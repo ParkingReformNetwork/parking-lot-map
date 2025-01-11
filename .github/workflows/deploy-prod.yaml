@@ -15,3 +15,6 @@ jobs:
             rsync --archive --verbose --compress --delete --no-times \
               /var/www/${{ secrets.PRN_SERVER_HOST }}/plm-staging/ \
               /var/www/${{ secrets.PRN_SERVER_HOST }}/parking-lot-map/
+            rsync --archive --verbose --compress --delete --no-times \
+              /var/www/${{ secrets.PRN_SERVER_HOST }}/ct-parking-lots-staging/ \
+              /var/www/${{ secrets.PRN_SERVER_HOST }}/ct-parking-lots/
