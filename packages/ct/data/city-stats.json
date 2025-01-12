@@ -4,13 +4,15 @@
     "percentage": "26%",
     "population": "121,054",
     "reforms": "adopted",
-    "url": "https://parkingreform.org/mandates-map/city_detail/Hartford_CT.html"
+    "url": "https://parkingreform.org/mandates-map/city_detail/Hartford_CT.html",
+    "group": "Group 1"
   },
   "new-haven": {
     "name": "New Haven",
     "percentage": "34%",
     "population": "134,023",
     "reforms": "adopted",
-    "url": "https://parkingreform.org/mandates-map/city_detail/NewHaven_CT.html"
+    "url": "https://parkingreform.org/mandates-map/city_detail/NewHaven_CT.html",
+    "group": "Group 2"
   }
 }

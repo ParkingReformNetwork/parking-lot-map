@@ -23,7 +23,10 @@ async function addScoreCard(
   };
   let newEntry;
   if (pkg === "ct") {
-    newEntry = { ...common };
+    newEntry = {
+      ...common,
+      group: "FILL ME IN, either 'Group 1', 'Group 2', or 'Group 3'",
+    };
   } else {
     newEntry = {
       ...common,

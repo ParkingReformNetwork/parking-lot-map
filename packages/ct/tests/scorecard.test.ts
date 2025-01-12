@@ -12,6 +12,7 @@ test.describe("formatScorecard", () => {
       population: "42,412",
       reforms: "adopted",
       url: "https://parkingreform.org",
+      group: "",
     });
     expect(listEntries).toEqual([
       "42,412 city residents",
@@ -26,6 +27,7 @@ test.describe("formatScorecard", () => {
       population: "42,412",
       reforms: null,
       url: null,
+      group: "",
     });
     expect(listEntries).toEqual(["42,412 city residents"]);
   });
