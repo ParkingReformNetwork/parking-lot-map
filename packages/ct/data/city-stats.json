@@ -1,18 +1,26 @@
 {
   "hartford": {
-    "name": "Hartford",
+    "name": "Hartford - Center",
     "percentage": "26%",
     "population": "121,054",
     "reforms": "adopted",
     "url": "https://parkingreform.org/mandates-map/city_detail/Hartford_CT.html",
-    "group": "Group 1"
+    "group": "Group 1",
+    "transitStation": "Bethel",
+    "transitService": "moderate",
+    "county": "Fairfield County",
+    "cog": "Western Connecticut"
   },
   "new-haven": {
-    "name": "New Haven",
+    "name": "New Haven - Center",
     "percentage": "34%",
     "population": "134,023",
-    "reforms": "adopted",
-    "url": "https://parkingreform.org/mandates-map/city_detail/NewHaven_CT.html",
-    "group": "Group 2"
+    "reforms": null,
+    "url": null,
+    "group": "Group 2",
+    "transitStation": null,
+    "transitService": null,
+    "county": "Fairfield County",
+    "cog": "Western Connecticut"
   }
 }

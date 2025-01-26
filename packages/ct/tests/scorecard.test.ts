@@ -13,9 +13,17 @@ test.describe("formatScorecard", () => {
       reforms: "adopted",
       url: "https://parkingreform.org",
       group: "",
+      transitStation: "Bethel",
+      transitService: "moderate",
+      county: "Fairfield County",
+      cog: "Western Connecticut",
     });
     expect(listEntries).toEqual([
       "42,412 city residents",
+      "Transit station: Bethel",
+      "Has moderate transit service",
+      "Fairfield County",
+      "Western Connecticut Council of Governments (COG)",
       formatReformLine("adopted", "https://parkingreform.org"),
     ]);
   });
@@ -28,7 +36,15 @@ test.describe("formatScorecard", () => {
       reforms: null,
       url: null,
       group: "",
+      transitStation: null,
+      transitService: null,
+      county: "Fairfield County",
+      cog: "Western Connecticut",
     });
-    expect(listEntries).toEqual(["42,412 city residents"]);
+    expect(listEntries).toEqual([
+      "42,412 city residents",
+      "Fairfield County",
+      "Western Connecticut Council of Governments (COG)",
+    ]);
   });
 });
