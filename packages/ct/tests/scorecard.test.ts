@@ -22,8 +22,8 @@ test.describe("formatScorecard", () => {
       "42,412 city residents",
       "Transit station: Bethel",
       "Has moderate transit service",
-      "Fairfield County",
-      "Western Connecticut Council of Governments (COG)",
+      "In Fairfield County",
+      "In Western Connecticut Council of Governments (COG)",
       formatReformLine("adopted", "https://parkingreform.org"),
     ]);
   });
@@ -43,8 +43,8 @@ test.describe("formatScorecard", () => {
     });
     expect(listEntries).toEqual([
       "42,412 city residents",
-      "Fairfield County",
-      "Western Connecticut Council of Governments (COG)",
+      "In Fairfield County",
+      "In Western Connecticut Council of Governments (COG)",
     ]);
   });
 });

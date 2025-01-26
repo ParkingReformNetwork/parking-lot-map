@@ -7,7 +7,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Ansonia Station",
-    "transitService": "Moderate",
+    "transitService": "moderate",
     "county": "New Haven County",
     "cog": "Naugatuck Valley"
   },
@@ -67,7 +67,7 @@
     "url": null,
     "group": "Group 2",
     "transitStation": "Bethel",
-    "transitService": "Moderate",
+    "transitService": "moderate",
     "county": "Fairfield County",
     "cog": "Western Connecticut"
   },
@@ -127,7 +127,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Fairfield Blackrock",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Greater Bridgeport"
   },
@@ -139,7 +139,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Bridgeport Station",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Greater Bridgeport"
   },
@@ -151,7 +151,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": null,
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Greater Bridgeport"
   },
@@ -163,7 +163,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": null,
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Greater Bridgeport"
   },
@@ -703,7 +703,7 @@
     "url": null,
     "group": "Group 2",
     "transitStation": "Greenwich",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Western Connecticut"
   },
@@ -799,7 +799,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Hartford Union",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -811,7 +811,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Kane Street",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -823,7 +823,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Parkville",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -835,7 +835,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Sigourney",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -1051,7 +1051,7 @@
     "url": null,
     "group": "Group 3",
     "transitStation": null,
-    "transitService": "Moderate",
+    "transitService": "moderate",
     "county": "Middlesex County",
     "cog": "Lower Connecticut River Valley"
   },
@@ -1123,7 +1123,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Downtown Station",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -1135,7 +1135,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "East Main",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -1147,7 +1147,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "East Street",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -1219,7 +1219,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Union Station",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "New Haven County",
     "cog": "South Central"
   },
@@ -1339,7 +1339,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "East Norwalk",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Western Connecticut"
   },
@@ -1361,7 +1361,7 @@
     "population": "121,054",
     "reforms": null,
     "url": null,
-    "group": "Group",
+    "group": "Group 3",
     "transitStation": "Rowayton",
     "transitService": null,
     "county": "Fairfield County",
@@ -1387,7 +1387,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "South Norwalk",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Western Connecticut"
   },
@@ -1819,7 +1819,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Stamford Transportation Center",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Fairfield County",
     "cog": "Western Connecticut"
   },
@@ -2011,7 +2011,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Waterbury",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "New Haven County",
     "cog": "Naugatuck Valley"
   },
@@ -2047,7 +2047,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": null,
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -2059,7 +2059,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Elmwood",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
@@ -2071,7 +2071,7 @@
     "url": null,
     "group": "Group 1",
     "transitStation": "Flatbush Ave",
-    "transitService": "Extensive",
+    "transitService": "extensive",
     "county": "Hartford County",
     "cog": "Capitol"
   },
