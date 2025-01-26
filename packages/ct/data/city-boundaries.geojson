@@ -11,7 +11,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "hartford"
+        "id": "hartford-downtown"
       },
       "geometry": {
         "type": "Polygon",
@@ -171,7 +171,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "new-haven"
+        "id": "new-haven-downtown"
       },
       "geometry": {
         "type": "Polygon",
