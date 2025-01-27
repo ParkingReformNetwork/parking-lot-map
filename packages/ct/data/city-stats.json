@@ -1,2294 +1,1339 @@
 {
   "ansonia-center": {
     "name": "Ansonia - Center",
-    "percentage": "26.0%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Ansonia Station",
-    "transitService": "moderate",
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "ashford-warrenville": {
     "name": "Ashford - Warrenville",
-    "percentage": "11.5%",
+    "percentage": "12%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "avon-center": {
     "name": "Avon - Center",
-    "percentage": "34.0%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "beacon-falls-center": {
     "name": "Beacon Falls - Center",
-    "percentage": "15.1%",
+    "percentage": "15%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Beacon Falls",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "berlin-kensington": {
     "name": "Berlin - Kensington",
-    "percentage": "29.6%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Berlin Station",
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "bethel-center": {
     "name": "Bethel - Center",
-    "percentage": "29.3%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Bethel",
-    "transitService": "moderate",
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "bethlehem-center": {
     "name": "Bethlehem - Center",
-    "percentage": "22.8%",
+    "percentage": "23%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Litchfield County"
   },
   "bloomfield-center": {
     "name": "Bloomfield - Center",
-    "percentage": "37.3%",
+    "percentage": "37%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "bozrah-center": {
     "name": "Bozrah - Center",
-    "percentage": "20.9%",
+    "percentage": "21%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "branford-center": {
     "name": "Branford - Center",
-    "percentage": "1.9%",
+    "percentage": "2%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Branford",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "bridgeport-black-rock": {
     "name": "Bridgeport - Black Rock",
-    "percentage": "27.0%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Fairfield Blackrock",
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "bridgeport-downtown": {
     "name": "Bridgeport - Downtown",
-    "percentage": "29.2%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Bridgeport Station",
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "bridgeport-south-end": {
     "name": "Bridgeport - South End",
-    "percentage": "30.6%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "bridgeport-west-end": {
     "name": "Bridgeport - West End",
-    "percentage": "18.4%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "bridgewater-center": {
     "name": "Bridgewater - Center",
-    "percentage": "6.5%",
+    "percentage": "6%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Western Connecticut"
+    "county": "Litchfield County"
   },
   "bristol-center": {
     "name": "Bristol - Center",
-    "percentage": "26.2%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Naugatuck Valley"
+    "county": "Hartford County"
   },
   "brookfield-center": {
     "name": "Brookfield - Center",
-    "percentage": "25.5%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "brooklyn-center": {
     "name": "Brooklyn - Center",
-    "percentage": "18.9%",
+    "percentage": "19%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "brooklyn-east-brooklyn": {
     "name": "Brooklyn - East Brooklyn",
-    "percentage": "42.3%",
+    "percentage": "42%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "burlington-center": {
     "name": "Burlington - Center",
-    "percentage": "27.0%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Northwest Hills"
+    "county": "Hartford County"
   },
   "canaan-center": {
     "name": "Canaan - Center",
-    "percentage": "8.7%",
+    "percentage": "9%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "canterbury-center": {
     "name": "Canterbury - Center",
-    "percentage": "36.9%",
+    "percentage": "37%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "canton-collingsville": {
     "name": "Canton - Collingsville",
-    "percentage": "24.8%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "chaplin-center": {
     "name": "Chaplin - Center",
-    "percentage": "26.7%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "cheshire-center": {
     "name": "Cheshire - Center",
-    "percentage": "31.7%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "chester-center": {
     "name": "Chester - Center",
-    "percentage": "20.3%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "clinton-center": {
     "name": "Clinton - Center",
-    "percentage": "34.9%",
+    "percentage": "35%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Clinton",
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "colchester-center": {
     "name": "Colchester - Center",
-    "percentage": "28.4%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "columbia-center": {
     "name": "Columbia - Center",
-    "percentage": "25.8%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "coventry-center": {
     "name": "Coventry - Center",
-    "percentage": "32.4%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "cromwell-center": {
     "name": "Cromwell - Center",
-    "percentage": "40.0%",
+    "percentage": "40%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "danbury-downtown": {
     "name": "Danbury - Downtown",
-    "percentage": "29.5%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "darien-center": {
     "name": "Darien - Center",
-    "percentage": "35.4%",
+    "percentage": "35%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Darien Station",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "darien-norton-heights": {
     "name": "Darien - Norton Heights",
-    "percentage": "52.0%",
+    "percentage": "52%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Noroton Heights Station",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "deep-river-center": {
     "name": "Deep River - Center",
-    "percentage": "26.3%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "derby-downtown": {
     "name": "Derby - Downtown",
-    "percentage": "19.7%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Shelton-Derby",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "durham-center": {
     "name": "Durham - Center",
-    "percentage": "28.4%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "east-granby-center": {
     "name": "East Granby - Center",
-    "percentage": "28.2%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "east-haddam-center": {
     "name": "East Haddam - Center",
-    "percentage": "28.8%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "east-hampton-center": {
     "name": "East Hampton - Center",
-    "percentage": "24.4%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "east-hartford-center": {
     "name": "East Hartford - Center",
-    "percentage": "37.5%",
+    "percentage": "38%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "east-haven-center": {
     "name": "East Haven - Center",
-    "percentage": "17.9%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "east-lyme-center": {
     "name": "East Lyme - Center",
-    "percentage": "35.8%",
+    "percentage": "36%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "east-lyme-niantic": {
     "name": "East Lyme - Niantic",
-    "percentage": "31.6%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "east-windsor-broad-brook": {
     "name": "East Windsor - Broad Brook",
-    "percentage": "24.6%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "eastford-center": {
     "name": "Eastford - Center",
-    "percentage": "19.3%",
+    "percentage": "19%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "easton-center": {
     "name": "Easton - Center",
-    "percentage": "32.7%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "ellington-center": {
     "name": "Ellington - Center",
-    "percentage": "25.0%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "enfield-thompsonville": {
     "name": "Enfield - Thompsonville",
-    "percentage": "20.5%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Enfield",
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "essex-center": {
     "name": "Essex - Center",
-    "percentage": "17.4%",
+    "percentage": "17%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "fairfield-black-rock": {
     "name": "Fairfield - Black Rock",
-    "percentage": "42.6%",
+    "percentage": "43%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Black Rock",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "fairfield-center": {
     "name": "Fairfield - Center",
-    "percentage": "38.7%",
+    "percentage": "39%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Fairfield",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "fairfield-southport": {
     "name": "Fairfield - Southport",
-    "percentage": "28.6%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Southport",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "farmington-center": {
     "name": "Farmington - Center",
-    "percentage": "23.7%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "glastonbury-center": {
     "name": "Glastonbury - Center",
-    "percentage": "32.3%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "goshen-center": {
     "name": "Goshen - Center",
-    "percentage": "11.0%",
+    "percentage": "11%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "granby-center": {
     "name": "Granby - Center",
-    "percentage": "31.5%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "greenwich-cos-cob": {
     "name": "Greenwich - Cos Cob",
-    "percentage": "26.3%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Cos Cob",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "greenwich-downtown": {
     "name": "Greenwich - Downtown",
-    "percentage": "33.2%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Greenwich",
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "greenwich-old-greenwich": {
     "name": "Greenwich - Old Greenwich",
-    "percentage": "40.4%",
+    "percentage": "40%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Old Greenwich",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "greenwich-riverside": {
     "name": "Greenwich - Riverside",
-    "percentage": "48.6%",
+    "percentage": "49%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Riverside",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "griswold-center": {
     "name": "Griswold - Center",
-    "percentage": "20.2%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "groton-center": {
     "name": "Groton - Center",
-    "percentage": "25.5%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "guilford-center": {
     "name": "Guilford - Center",
-    "percentage": "28.4%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Guilford",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "haddam-center": {
     "name": "Haddam - Center",
-    "percentage": "30.1%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "hamden-center": {
     "name": "Hamden - Center",
-    "percentage": "25.7%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "hartford-downtown": {
     "name": "Hartford - Downtown",
-    "percentage": "32.8%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Hartford Union",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "hartford-kane": {
     "name": "Hartford - Kane",
-    "percentage": "48.7%",
+    "percentage": "49%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Kane Street",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "hartford-parkville": {
     "name": "Hartford - Parkville",
-    "percentage": "29.6%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Parkville",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "hartford-sigourney": {
     "name": "Hartford - Sigourney",
-    "percentage": "31.6%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Sigourney",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "hartland-center": {
     "name": "Hartland - Center",
-    "percentage": "16.4%",
+    "percentage": "16%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Northwest Hills"
+    "county": "Hartford County"
   },
   "hebron-center": {
     "name": "Hebron - Center",
-    "percentage": "30.6%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "kent-village": {
     "name": "Kent - Village",
-    "percentage": "21.8%",
+    "percentage": "22%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "killingly-center": {
     "name": "Killingly - Center",
-    "percentage": "27.9%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "killingworth-center": {
     "name": "Killingworth - Center",
-    "percentage": "28.5%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "lebanon-center": {
     "name": "Lebanon - Center",
-    "percentage": "14.5%",
+    "percentage": "14%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "ledyard-center": {
     "name": "Ledyard - Center",
-    "percentage": "31.0%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "lisbon-center": {
     "name": "Lisbon - Center",
-    "percentage": "22.7%",
+    "percentage": "23%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "litchfield-center": {
     "name": "Litchfield - Center",
-    "percentage": "31.0%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "madison-center": {
     "name": "Madison - Center",
-    "percentage": "59.6%",
+    "percentage": "60%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Madison",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "manchester-lower-main": {
     "name": "Manchester - Lower Main",
-    "percentage": "31.9%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "manchester-upper-main": {
     "name": "Manchester - Upper Main",
-    "percentage": "31.0%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "mansfield-storrs": {
     "name": "Mansfield - Storrs",
-    "percentage": "34.0%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "marlborough-center": {
     "name": "Marlborough - Center",
-    "percentage": "36.8%",
+    "percentage": "37%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "meriden-downtown": {
     "name": "Meriden - Downtown",
-    "percentage": "17.7%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Meriden",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "middlebury-center": {
     "name": "Middlebury - Center",
-    "percentage": "33.6%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "middlefield-center": {
     "name": "Middlefield - Center",
-    "percentage": "19.6%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "middletown-downtown": {
     "name": "Middletown - Downtown",
-    "percentage": "31.7%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": "moderate",
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "milford-downtown": {
     "name": "Milford - Downtown",
-    "percentage": "26.4%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Milford",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "monroe-center": {
     "name": "Monroe - Center",
-    "percentage": "27.1%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "montville-center": {
     "name": "Montville - Center",
-    "percentage": "26.9%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "morris-center": {
     "name": "Morris - Center",
-    "percentage": "21.7%",
+    "percentage": "22%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "naugatuck-center": {
     "name": "Naugatuck - Center",
-    "percentage": "40.3%",
+    "percentage": "40%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Naugatuck",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "new-britain-downtown": {
     "name": "New Britain - Downtown",
-    "percentage": "28.7%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Downtown Station",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "new-britain-east-main": {
     "name": "New Britain - East Main",
-    "percentage": "32.2%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "East Main",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "new-britain-east-street": {
     "name": "New Britain - East Street",
-    "percentage": "33.2%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "East Street",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "new-canaan-center": {
     "name": "New Canaan - Center",
-    "percentage": "34.7%",
+    "percentage": "35%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "New Canaan",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "new-canaan-talmadge-hill": {
     "name": "New Canaan - Talmadge Hill",
-    "percentage": "74.1%",
+    "percentage": "74%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Talmadge Hill",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "new-fairfield-center": {
     "name": "New Fairfield - Center",
-    "percentage": "36.9%",
+    "percentage": "37%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "new-hartford-center": {
     "name": "New Hartford - Center",
-    "percentage": "23.3%",
+    "percentage": "23%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "new-haven-downtown": {
     "name": "New Haven - Downtown",
-    "percentage": "14.7%",
+    "percentage": "15%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "new-haven-union-station": {
     "name": "New Haven - Union Station",
-    "percentage": "49.8%",
+    "percentage": "50%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Union Station",
-    "transitService": "extensive",
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "new-london-downtown": {
     "name": "New London - Downtown",
-    "percentage": "26.8%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "New London Union",
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "new-milford-center": {
     "name": "New Milford - Center",
-    "percentage": "25.4%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Western Connecticut"
+    "county": "Litchfield County"
   },
   "newington-cedar-street": {
     "name": "Newington - Cedar Street",
-    "percentage": "27.3%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Cedar Street",
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "newington-newington-junction": {
     "name": "Newington - Newington Junction",
-    "percentage": "26.9%",
+    "percentage": "27%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Newington Junction",
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "newtown-center": {
     "name": "Newtown - Center",
-    "percentage": "34.7%",
+    "percentage": "35%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "norfolk-center": {
     "name": "Norfolk - Center",
-    "percentage": "16.4%",
+    "percentage": "16%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "north-canaan-center": {
     "name": "North Canaan - Center",
-    "percentage": "23.5%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "north-haven-center": {
     "name": "North Haven - Center",
-    "percentage": "6.9%",
+    "percentage": "7%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "north-stonington-center": {
     "name": "North Stonington - Center",
-    "percentage": "28.9%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "norwalk-east-norwalk": {
     "name": "Norwalk - East Norwalk",
-    "percentage": "21.2%",
+    "percentage": "21%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "East Norwalk",
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "norwalk-merritt-7": {
     "name": "Norwalk - Merritt 7",
-    "percentage": "18.4%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Merritt 7",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "norwalk-rowayton-downtown": {
     "name": "Norwalk - Rowayton Downtown",
-    "percentage": "32.5%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": "Rowayton",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "norwalk-rowayton-station": {
     "name": "Norwalk - Rowayton Station",
-    "percentage": "51.1%",
+    "percentage": "51%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Rowayton",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "norwalk-south-norwalk": {
     "name": "Norwalk - South Norwalk",
-    "percentage": "31.3%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "South Norwalk",
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "norwich-downtwon": {
     "name": "Norwich - Downtwon",
-    "percentage": "30.0%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "norwich-westside": {
     "name": "Norwich - Westside",
-    "percentage": "36.0%",
+    "percentage": "36%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "old-lyme-center": {
     "name": "Old Lyme - Center",
-    "percentage": "14.6%",
+    "percentage": "15%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "New London County"
   },
   "old-saybrook-center": {
     "name": "Old Saybrook - Center",
-    "percentage": "39.7%",
+    "percentage": "40%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Old Saybrook",
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "orange-center": {
     "name": "Orange - Center",
-    "percentage": "29.5%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "plainfield-center": {
     "name": "Plainfield - Center",
-    "percentage": "26.5%",
+    "percentage": "26%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "plainfield-moosup": {
     "name": "Plainfield - Moosup",
-    "percentage": "28.6%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "plainville-center": {
     "name": "Plainville - Center",
-    "percentage": "23.5%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "plymouth-terryville": {
     "name": "Plymouth - Terryville",
-    "percentage": "33.2%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Litchfield County"
   },
   "pomfret-center": {
     "name": "Pomfret - Center",
-    "percentage": "16.5%",
+    "percentage": "16%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "portland-center": {
     "name": "Portland - Center",
-    "percentage": "18.9%",
+    "percentage": "19%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "prospect-center": {
     "name": "Prospect - Center",
-    "percentage": "29.7%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "putnam-center": {
     "name": "Putnam - Center",
-    "percentage": "33.7%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "redding-center": {
     "name": "Redding - Center",
-    "percentage": "17.6%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Redding",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "ridgefield-branchville": {
     "name": "Ridgefield - Branchville",
-    "percentage": "24.7%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Branchville",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "ridgefield-center": {
     "name": "Ridgefield - Center",
-    "percentage": "39.4%",
+    "percentage": "39%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "rocky-hill-center": {
     "name": "Rocky Hill - Center",
-    "percentage": "41.8%",
+    "percentage": "42%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "salem-center": {
     "name": "Salem - Center",
-    "percentage": "32.3%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "salisbury-center": {
     "name": "Salisbury - Center",
-    "percentage": "12.9%",
+    "percentage": "13%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "scotland-center": {
     "name": "Scotland - Center",
-    "percentage": "11.3%",
+    "percentage": "11%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "seymour-center": {
     "name": "Seymour - Center",
-    "percentage": "36.3%",
+    "percentage": "36%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Seymour",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "sharon-center": {
     "name": "Sharon - Center",
-    "percentage": "22.3%",
+    "percentage": "22%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "shelton-bridgeport-ave": {
     "name": "Shelton - Bridgeport Ave",
-    "percentage": "29.0%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Fairfield County"
   },
   "shelton-downtown": {
     "name": "Shelton - Downtown",
-    "percentage": "24.5%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Fairfield County"
   },
   "sherman-center": {
     "name": "Sherman - Center",
-    "percentage": "23.0%",
+    "percentage": "23%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "simsbury-center": {
     "name": "Simsbury - Center",
-    "percentage": "34.1%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "somers-center": {
     "name": "Somers - Center",
-    "percentage": "32.6%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "south-windsor-wapping": {
     "name": "South Windsor - Wapping",
-    "percentage": "32.1%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "southbury-center": {
     "name": "Southbury - Center",
-    "percentage": "37.4%",
+    "percentage": "37%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "southington-center": {
     "name": "Southington - Center",
-    "percentage": "33.4%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "sprague-center": {
     "name": "Sprague - Center",
-    "percentage": "19.8%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "stafford-stafford-springs": {
     "name": "Stafford - Stafford Springs",
-    "percentage": "19.9%",
+    "percentage": "20%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "stamford-downtown-north": {
     "name": "Stamford - Downtown North",
-    "percentage": "25.0%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "stamford-glenbrook": {
     "name": "Stamford - Glenbrook",
-    "percentage": "34.2%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Glenbrook",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "stamford-springdale": {
     "name": "Stamford - Springdale",
-    "percentage": "35.9%",
+    "percentage": "36%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Springdale",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "stamford-transportation-center": {
     "name": "Stamford - Transportation Center",
-    "percentage": "18.0%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Stamford Transportation Center",
-    "transitService": "extensive",
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "sterling-oneca": {
     "name": "Sterling - Oneca",
-    "percentage": "9.1%",
+    "percentage": "9%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "stonington-borough": {
     "name": "Stonington - Borough",
-    "percentage": "7.7%",
+    "percentage": "8%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "stonington-mystic": {
     "name": "Stonington - Mystic",
-    "percentage": "23.7%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Mystic",
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "stratford-center": {
     "name": "Stratford - Center",
-    "percentage": "37.8%",
+    "percentage": "38%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Stratford",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "suffield-center": {
     "name": "Suffield - Center",
-    "percentage": "31.8%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "thomaston-center": {
     "name": "Thomaston - Center",
-    "percentage": "31.2%",
+    "percentage": "31%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Litchfield County"
   },
   "thompson-north-grosvenordale": {
     "name": "Thompson - North Grosvenordale",
-    "percentage": "18.0%",
+    "percentage": "18%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   },
   "tolland-center": {
     "name": "Tolland - Center",
-    "percentage": "28.3%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "torrington-downtown": {
     "name": "Torrington - Downtown",
-    "percentage": "32.6%",
+    "percentage": "33%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "trumbull-center": {
     "name": "Trumbull - Center",
-    "percentage": "39.2%",
+    "percentage": "39%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "trumbull-town-hall-area": {
     "name": "Trumbull - Town Hall Area",
-    "percentage": "27.8%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Greater Bridgeport"
+    "county": "Fairfield County"
   },
   "vernon-rockville": {
     "name": "Vernon - Rockville",
-    "percentage": "27.9%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "voluntown-center": {
     "name": "Voluntown - Center",
-    "percentage": "22.9%",
+    "percentage": "23%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Northeastern Connecticut"
+    "county": "New London County"
   },
   "wallingford-center": {
     "name": "Wallingford - Center",
-    "percentage": "37.7%",
+    "percentage": "38%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Wallingford",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "washington-center": {
     "name": "Washington - Center",
-    "percentage": "13.3%",
+    "percentage": "13%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "waterbury-downtown": {
     "name": "Waterbury - Downtown",
-    "percentage": "28.6%",
+    "percentage": "29%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Waterbury",
-    "transitService": "extensive",
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "waterford-center": {
     "name": "Waterford - Center",
-    "percentage": "30.4%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New London County",
-    "cog": "Southeastern Connecticut"
+    "county": "New London County"
   },
   "watertown-center": {
     "name": "Watertown - Center",
-    "percentage": "31.9%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Litchfield County"
   },
   "west-hartford-center": {
     "name": "West Hartford - Center",
-    "percentage": "37.2%",
+    "percentage": "37%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "west-hartford-elmwood": {
     "name": "West Hartford - Elmwood",
-    "percentage": "34.6%",
+    "percentage": "35%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Elmwood",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "west-hartford-flatbush": {
     "name": "West Hartford - Flatbush",
-    "percentage": "46.3%",
+    "percentage": "46%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "Flatbush Ave",
-    "transitService": "extensive",
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "west-haven-center": {
     "name": "West Haven - Center",
-    "percentage": "21.3%",
+    "percentage": "21%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": "West Haven",
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "westbrook-center": {
     "name": "Westbrook - Center",
-    "percentage": "33.7%",
+    "percentage": "34%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Westbrook",
-    "transitService": null,
-    "county": "Middlesex County",
-    "cog": "Lower Connecticut River Valley"
+    "county": "Middlesex County"
   },
   "weston-center": {
     "name": "Weston - Center",
-    "percentage": "25.4%",
+    "percentage": "25%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "westport-center": {
     "name": "Westport - Center",
-    "percentage": "43.4%",
+    "percentage": "43%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": null,
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "westport-green's-farms": {
     "name": "Westport - Green's Farms",
-    "percentage": "57.5%",
+    "percentage": "58%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Green's Farms",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "westport-saugatuck": {
     "name": "Westport - Saugatuck",
-    "percentage": "46.9%",
+    "percentage": "47%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Westport (Saugatuck)",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "wethersfield-center": {
     "name": "Wethersfield - Center",
-    "percentage": "30.1%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 1",
     "transitStation": null,
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "willington-center": {
     "name": "Willington - Center",
-    "percentage": "30.5%",
+    "percentage": "30%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Tolland County",
-    "cog": "Capitol"
+    "county": "Tolland County"
   },
   "wilton-cannondale": {
     "name": "Wilton - Cannondale",
-    "percentage": "23.3%",
+    "percentage": "23%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Cannondale",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "wilton-center": {
     "name": "Wilton - Center",
-    "percentage": "36.3%",
+    "percentage": "36%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Wilton",
-    "transitService": null,
-    "county": "Fairfield County",
-    "cog": "Western Connecticut"
+    "county": "Fairfield County"
   },
   "winchester-winstead": {
     "name": "Winchester - Winstead",
-    "percentage": "23.7%",
+    "percentage": "24%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Northwest Hills"
+    "county": "Litchfield County"
   },
   "windham-willimantic": {
     "name": "Windham - Willimantic",
-    "percentage": "31.6%",
+    "percentage": "32%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Southeastern Connecticut"
+    "county": "Windham County"
   },
   "windsor-center": {
     "name": "Windsor - Center",
-    "percentage": "34.8%",
+    "percentage": "35%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Windsor",
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "windsor-locks-center": {
     "name": "Windsor Locks - Center",
-    "percentage": "27.6%",
+    "percentage": "28%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 2",
     "transitStation": "Windsor Locks",
-    "transitService": null,
-    "county": "Hartford County",
-    "cog": "Capitol"
+    "county": "Hartford County"
   },
   "wolcott-center": {
     "name": "Wolcott - Center",
-    "percentage": "40.2%",
+    "percentage": "40%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "Naugatuck Valley"
+    "county": "New Haven County"
   },
   "woodbridge-center": {
     "name": "Woodbridge - Center",
-    "percentage": "35.6%",
+    "percentage": "36%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "New Haven County",
-    "cog": "South Central"
+    "county": "New Haven County"
   },
   "woodbury-center": {
     "name": "Woodbury - Center",
-    "percentage": "17.2%",
+    "percentage": "17%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Litchfield County",
-    "cog": "Naugatuck Valley"
+    "county": "Litchfield County"
   },
   "woodstock-center": {
     "name": "Woodstock - Center",
-    "percentage": "8.6%",
+    "percentage": "9%",
     "population": "121,054",
-    "reforms": null,
-    "url": null,
-    "group": "Group 3",
     "transitStation": null,
-    "transitService": null,
-    "county": "Windham County",
-    "cog": "Northeastern Connecticut"
+    "county": "Windham County"
   }
 }

@@ -1,7 +1,6 @@
 import {
   ScorecardValues,
   formatHeader,
-  formatReformLine,
 } from "@prn-parking-lots/shared/src/js/city-ui/scorecard.ts";
 
 import type { CityStats } from "./types.ts";
@@ -15,17 +14,10 @@ export default function formatScorecard(stats: CityStats): ScorecardValues {
 
   const listEntries = [];
   listEntries.push(`${stats.population} city residents`);
-  if (stats.transitService) {
+  if (stats.transitStation) {
     listEntries.push(`Transit station: ${stats.transitStation}`);
   }
-  if (stats.transitService) {
-    listEntries.push(`Has ${stats.transitService} transit service`);
-  }
-  listEntries.push(`In ${stats.county}`);
-  listEntries.push(`In ${stats.cog} Council of Governments (COG)`);
-  if (stats.reforms) {
-    listEntries.push(formatReformLine(stats.reforms, stats.url));
-  }
+  listEntries.push(`${stats.county}`);
 
   return { header, listEntries };
 }

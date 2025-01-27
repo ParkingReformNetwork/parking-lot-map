@@ -1,9 +1,8 @@
-import type { CommonCityStats } from "@prn-parking-lots/shared/src/js/model/types";
+import type { BaseCityStats } from "@prn-parking-lots/shared/src/js/model/types";
 
-export type CityStats = CommonCityStats & {
-  group: string;
+export type CityStats = BaseCityStats & {
+  percentage: string;
+  population: string;
   transitStation: string | null;
-  transitService: string | null;
   county: string;
-  cog: string;
 };
