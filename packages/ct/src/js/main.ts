@@ -17,6 +17,6 @@ export default async function initApp(): Promise<void> {
     },
     dropdownGroups: createDropdownGroups(CITY_STATS_DATA),
     scorecardFormatter: formatScorecard,
-    initialCity: "hartford",
+    initialCity: "hartford-downtown",
   });
 }
