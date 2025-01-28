@@ -86,10 +86,10 @@ Export the GeoJSON file and save it as the file `parking-lots-update.geojson` in
 
 Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `St. Louis, MO`.
 
-Now, run the below but replace the last part with the city/state name (in single quotes!):
+Now, run the following command, but replace the last part with the city/state name (in single quotes!). If you're adding to the Connecticut map, replace 'primary' with 'ct'.
 
 ```bash
-❯ pnpm -F scripts update-lots -- 'My City, AZ'
+❯ pnpm -F scripts update-lots -- 'primary' 'My City, AZ'
 ```
 
 Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
@@ -102,10 +102,10 @@ Export the GeoJSON file and save it as the file `city-update.geojson` in the roo
 
 Then, determine the city/state name. This is the same as what we show in the city toggle on the site, e.g. `St. Louis, MO`.
 
-Now, run the below but replace the last part with the city/state name (in single quotes!):
+Now, run the following command, but replace the last part with the city/state name (in single quotes!). If you're adding to the Connecticut map, replace 'primary' with 'ct'.
 
 ```bash
-❯ pnpm -F scripts update-city-boundaries -- 'My City, AZ'
+❯ pnpm -F scripts update-city-boundaries -- 'primary' 'My City, AZ'
 ```
 
 [Start the server](#start-the-server) to make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
@@ -120,10 +120,10 @@ Also export the city's parking lots GeoJSON and save it as the file `parking-lot
 
 Then, determine the city/state name, such as `St. Louis, MO`.
 
-Now, run the below but replace the last part with the city/state name (in single quotes!):
+Now, run the following command, but replace the last part with the city/state name (in single quotes!). If you're adding to the Connecticut map, replace 'primary' with 'ct'.
 
 ```bash
-❯ pnpm -F scripts add-city -- 'My City, AZ'
+❯ pnpm -F scripts add-city -- 'primary' 'My City, AZ'
 ```
 
 Next, manually fill in the score card entries in the `city-stats.json` for the app you're adding the city to. Search for the city name and update the values.
