@@ -230,8 +230,8 @@
     "transitStation": "Darien Station",
     "county": "Fairfield County"
   },
-  "darien-norton-heights": {
-    "name": "Darien - Norton Heights",
+  "darien-noroton-heights": {
+    "name": "Darien - Noroton Heights",
     "percentage": "52%",
     "population": "121,054",
     "transitStation": "Noroton Heights Station",
@@ -811,8 +811,8 @@
     "transitStation": "South Norwalk",
     "county": "Fairfield County"
   },
-  "norwich-downtwon": {
-    "name": "Norwich - Downtwon",
+  "norwich-downtown": {
+    "name": "Norwich - Downtown",
     "percentage": "30%",
     "population": "121,054",
     "transitStation": null,
