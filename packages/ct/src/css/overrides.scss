@@ -1,0 +1,27 @@
+// These values come from packages/shared.
+$xs-width: 480px;
+$sm-width: 640px;
+
+@mixin gt-xxs() {
+  @media screen and (min-width: $xs-width) {
+    @content();
+  }
+}
+
+@mixin gt-xs() {
+  @media screen and (min-width: $sm-width) {
+    @content();
+  }
+}
+
+// Make the header wider on large breakpoints.
+.choices[data-type*="select-one"] {
+  .choices__inner {
+    @include gt-xxs() {
+      width: 245px;
+    }
+    @include gt-xs() {
+      width: 270px;
+    }
+  }
+}

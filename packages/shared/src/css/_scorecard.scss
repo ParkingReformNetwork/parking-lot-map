@@ -46,7 +46,11 @@
 
   color: colors.$teal;
   font-weight: bold;
-  font-size: typography.$font-size-xl;
+  font-size: typography.$font-size-lg;
+
+  @include breakpoints.gt-xs {
+    font-size: typography.$font-size-xl;
+  }
 }
 
 .scorecard-accordion-toggle {
