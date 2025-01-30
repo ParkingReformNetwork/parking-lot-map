@@ -1,0 +1,54 @@
+// ---------------------------------------------------------------------
+// Recreate variables from packages/shared
+// ---------------------------------------------------------------------
+
+$font-size-lg: 18px;
+$min-touch-target: 44px;
+$header-border-width: 4px;
+$element-gap: 10px;
+$border-thickness: 1px;
+$map-controls-margin-top: 6px;
+
+// ---------------------------------------------------------------------
+// Change the header due to long entries
+// ---------------------------------------------------------------------
+
+$dropdown-extra-height: 15px;
+
+$header-height: calc(
+  $min-touch-target + ($element-gap * 2) + $header-border-width +
+    $dropdown-extra-height
+);
+
+$zoom-controls-top-offset: calc(
+  $map-controls-margin-top + $header-height - 92px
+);
+
+.choices[data-type*="select-one"] {
+  .choices__inner {
+    height: calc($min-touch-target + $dropdown-extra-height);
+  }
+}
+
+.leaflet-control-zoom.leaflet-bar {
+  top: $zoom-controls-top-offset;
+}
+
+#map > div.leaflet-control-container > div.leaflet-top.leaflet-right {
+  $zoom-controls-height: calc(($min-touch-target * 2) + $border-thickness);
+  top: calc($zoom-controls-top-offset + $zoom-controls-height + $element-gap);
+}
+
+.about-popup {
+  top: calc($header-height + 25px);
+}
+
+.scorecard-container {
+  top: calc($header-height + $map-controls-margin-top);
+}
+
+
+.scorecard-title {
+    font-size: $font-size-lg;
+}
+  

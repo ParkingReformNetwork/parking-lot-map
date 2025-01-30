@@ -7,7 +7,7 @@
 
 $label-font-size: typography.$font-size-md;
 $zoom-controls-top-offset: calc(
-  58px + spacing.$map-controls-margin-top - header.$header-height
+  spacing.$map-controls-margin-top - header.$header-height - 80px
 );
 
 .leaflet-left .leaflet-control {
