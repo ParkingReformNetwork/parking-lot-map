@@ -2,462 +2,462 @@
   "ansonia-center": {
     "name": "Ansonia - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "18,918",
     "transitStation": "Ansonia Station",
     "county": "New Haven County"
   },
   "ashford-warrenville": {
     "name": "Ashford - Warrenville",
     "percentage": "12%",
-    "population": "121,054",
+    "population": "4,191",
     "transitStation": null,
     "county": "Windham County"
   },
   "avon-center": {
     "name": "Avon - Center",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "18,932",
     "transitStation": null,
     "county": "Hartford County"
   },
   "beacon-falls-center": {
     "name": "Beacon Falls - Center",
     "percentage": "15%",
-    "population": "121,054",
+    "population": "6,000",
     "transitStation": "Beacon Falls",
     "county": "New Haven County"
   },
   "berlin-kensington": {
     "name": "Berlin - Kensington",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "20,175",
     "transitStation": "Berlin Station",
     "county": "Hartford County"
   },
   "bethel-center": {
     "name": "Bethel - Center",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "20,358",
     "transitStation": "Bethel",
     "county": "Fairfield County"
   },
   "bethlehem-center": {
     "name": "Bethlehem - Center",
     "percentage": "23%",
-    "population": "121,054",
+    "population": "3,385",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "bloomfield-center": {
     "name": "Bloomfield - Center",
     "percentage": "37%",
-    "population": "121,054",
+    "population": "21,535",
     "transitStation": null,
     "county": "Hartford County"
   },
   "bozrah-center": {
     "name": "Bozrah - Center",
     "percentage": "21%",
-    "population": "121,054",
+    "population": "2,429",
     "transitStation": null,
     "county": "New London County"
   },
   "branford-center": {
     "name": "Branford - Center",
     "percentage": "2%",
-    "population": "121,054",
+    "population": "28,273",
     "transitStation": "Branford",
     "county": "New Haven County"
   },
   "bridgeport-black-rock": {
     "name": "Bridgeport - Black Rock",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "148,654",
     "transitStation": "Fairfield Blackrock",
     "county": "Fairfield County"
   },
   "bridgeport-downtown": {
     "name": "Bridgeport - Downtown",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "148,654",
     "transitStation": "Bridgeport Station",
     "county": "Fairfield County"
   },
   "bridgeport-south-end": {
     "name": "Bridgeport - South End",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "148,654",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "bridgeport-west-end": {
     "name": "Bridgeport - West End",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "148,654",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "bridgewater-center": {
     "name": "Bridgewater - Center",
     "percentage": "6%",
-    "population": "121,054",
+    "population": "1,662",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "bristol-center": {
     "name": "Bristol - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "60,833",
     "transitStation": null,
     "county": "Hartford County"
   },
   "brookfield-center": {
     "name": "Brookfield - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "17,528",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "brooklyn-center": {
     "name": "Brooklyn - Center",
     "percentage": "19%",
-    "population": "121,054",
+    "population": "8,450",
     "transitStation": null,
     "county": "Windham County"
   },
   "brooklyn-east-brooklyn": {
     "name": "Brooklyn - East Brooklyn",
     "percentage": "42%",
-    "population": "121,054",
+    "population": "8,450",
     "transitStation": null,
     "county": "Windham County"
   },
   "burlington-center": {
     "name": "Burlington - Center",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "9,519",
     "transitStation": null,
     "county": "Hartford County"
   },
   "canaan-center": {
     "name": "Canaan - Center",
     "percentage": "9%",
-    "population": "121,054",
+    "population": "1,080",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "canterbury-center": {
     "name": "Canterbury - Center",
     "percentage": "37%",
-    "population": "121,054",
+    "population": "5,045",
     "transitStation": null,
     "county": "Windham County"
   },
   "canton-collingsville": {
     "name": "Canton - Collingsville",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "10,124",
     "transitStation": null,
     "county": "Hartford County"
   },
   "chaplin-center": {
     "name": "Chaplin - Center",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "2,151",
     "transitStation": null,
     "county": "Windham County"
   },
   "cheshire-center": {
     "name": "Cheshire - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "28,733",
     "transitStation": null,
     "county": "New Haven County"
   },
   "chester-center": {
     "name": "Chester - Center",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "3,749",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "clinton-center": {
     "name": "Clinton - Center",
     "percentage": "35%",
-    "population": "121,054",
+    "population": "13,185",
     "transitStation": "Clinton",
     "county": "Middlesex County"
   },
   "colchester-center": {
     "name": "Colchester - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "15,555",
     "transitStation": null,
     "county": "New London County"
   },
   "columbia-center": {
     "name": "Columbia - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "5,272",
     "transitStation": null,
     "county": "Tolland County"
   },
   "coventry-center": {
     "name": "Coventry - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "12,235",
     "transitStation": null,
     "county": "Tolland County"
   },
   "cromwell-center": {
     "name": "Cromwell - Center",
     "percentage": "40%",
-    "population": "121,054",
+    "population": "14,225",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "danbury-downtown": {
     "name": "Danbury - Downtown",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "86,518",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "darien-center": {
     "name": "Darien - Center",
     "percentage": "35%",
-    "population": "121,054",
+    "population": "21,499",
     "transitStation": "Darien Station",
     "county": "Fairfield County"
   },
   "darien-noroton-heights": {
     "name": "Darien - Noroton Heights",
     "percentage": "52%",
-    "population": "121,054",
+    "population": "21,499",
     "transitStation": "Noroton Heights Station",
     "county": "Fairfield County"
   },
   "deep-river-center": {
     "name": "Deep River - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "4,415",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "derby-downtown": {
     "name": "Derby - Downtown",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "12,325",
     "transitStation": "Shelton-Derby",
     "county": "New Haven County"
   },
   "durham-center": {
     "name": "Durham - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "7,152",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "east-granby-center": {
     "name": "East Granby - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "5,214",
     "transitStation": null,
     "county": "Hartford County"
   },
   "east-haddam-center": {
     "name": "East Haddam - Center",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "8,875",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "east-hampton-center": {
     "name": "East Hampton - Center",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "12,717",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "east-hartford-center": {
     "name": "East Hartford - Center",
     "percentage": "38%",
-    "population": "121,054",
+    "population": "51,045",
     "transitStation": null,
     "county": "Hartford County"
   },
   "east-haven-center": {
     "name": "East Haven - Center",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "27,923",
     "transitStation": null,
     "county": "New Haven County"
   },
   "east-lyme-center": {
     "name": "East Lyme - Center",
     "percentage": "36%",
-    "population": "121,054",
+    "population": "18,693",
     "transitStation": null,
     "county": "New London County"
   },
   "east-lyme-niantic": {
     "name": "East Lyme - Niantic",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "18,693",
     "transitStation": null,
     "county": "New London County"
   },
   "east-windsor-broad-brook": {
     "name": "East Windsor - Broad Brook",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "11,190",
     "transitStation": null,
     "county": "Hartford County"
   },
   "eastford-center": {
     "name": "Eastford - Center",
     "percentage": "19%",
-    "population": "121,054",
+    "population": "1,649",
     "transitStation": null,
     "county": "Windham County"
   },
   "easton-center": {
     "name": "Easton - Center",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "7,605",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "ellington-center": {
     "name": "Ellington - Center",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "16,426",
     "transitStation": null,
     "county": "Tolland County"
   },
   "enfield-thompsonville": {
     "name": "Enfield - Thompsonville",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "42,141",
     "transitStation": "Enfield",
     "county": "Hartford County"
   },
   "essex-center": {
     "name": "Essex - Center",
     "percentage": "17%",
-    "population": "121,054",
+    "population": "6,733",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "fairfield-black-rock": {
     "name": "Fairfield - Black Rock",
     "percentage": "43%",
-    "population": "121,054",
+    "population": "61,512",
     "transitStation": "Black Rock",
     "county": "Fairfield County"
   },
   "fairfield-center": {
     "name": "Fairfield - Center",
     "percentage": "39%",
-    "population": "121,054",
+    "population": "61,512",
     "transitStation": "Fairfield",
     "county": "Fairfield County"
   },
   "fairfield-southport": {
     "name": "Fairfield - Southport",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "61,512",
     "transitStation": "Southport",
     "county": "Fairfield County"
   },
   "farmington-center": {
     "name": "Farmington - Center",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "26,712",
     "transitStation": null,
     "county": "Hartford County"
   },
   "glastonbury-center": {
     "name": "Glastonbury - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "35,159",
     "transitStation": null,
     "county": "Hartford County"
   },
   "goshen-center": {
     "name": "Goshen - Center",
     "percentage": "11%",
-    "population": "121,054",
+    "population": "3,150",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "granby-center": {
     "name": "Granby - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "10,903",
     "transitStation": null,
     "county": "Hartford County"
   },
   "greenwich-cos-cob": {
     "name": "Greenwich - Cos Cob",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "63,518",
     "transitStation": "Cos Cob",
     "county": "Fairfield County"
   },
   "greenwich-downtown": {
     "name": "Greenwich - Downtown",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "63,518",
     "transitStation": "Greenwich",
     "county": "Fairfield County"
   },
   "greenwich-old-greenwich": {
     "name": "Greenwich - Old Greenwich",
     "percentage": "40%",
-    "population": "121,054",
+    "population": "63,518",
     "transitStation": "Old Greenwich",
     "county": "Fairfield County"
   },
   "greenwich-riverside": {
     "name": "Greenwich - Riverside",
     "percentage": "49%",
-    "population": "121,054",
+    "population": "63,518",
     "transitStation": "Riverside",
     "county": "Fairfield County"
   },
   "griswold-center": {
     "name": "Griswold - Center",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "11,402",
     "transitStation": null,
     "county": "New London County"
   },
   "groton-center": {
     "name": "Groton - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "38,411",
     "transitStation": null,
     "county": "New London County"
   },
   "guilford-center": {
     "name": "Guilford - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "22,073",
     "transitStation": "Guilford",
     "county": "New Haven County"
   },
   "haddam-center": {
     "name": "Haddam - Center",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "8,452",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "hamden-center": {
     "name": "Hamden - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "61,169",
     "transitStation": null,
     "county": "New Haven County"
   },
@@ -492,847 +492,847 @@
   "hartland-center": {
     "name": "Hartland - Center",
     "percentage": "16%",
-    "population": "121,054",
+    "population": "1,901",
     "transitStation": null,
     "county": "Hartford County"
   },
   "hebron-center": {
     "name": "Hebron - Center",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "9,098",
     "transitStation": null,
     "county": "Tolland County"
   },
   "kent-village": {
     "name": "Kent - Village",
     "percentage": "22%",
-    "population": "121,054",
+    "population": "3,019",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "killingly-center": {
     "name": "Killingly - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "17,752",
     "transitStation": null,
     "county": "Windham County"
   },
   "killingworth-center": {
     "name": "Killingworth - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "6,174",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "lebanon-center": {
     "name": "Lebanon - Center",
     "percentage": "14%",
-    "population": "121,054",
+    "population": "7,142",
     "transitStation": null,
     "county": "New London County"
   },
   "ledyard-center": {
     "name": "Ledyard - Center",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "15,413",
     "transitStation": null,
     "county": "New London County"
   },
   "lisbon-center": {
     "name": "Lisbon - Center",
     "percentage": "23%",
-    "population": "121,054",
+    "population": "4,195",
     "transitStation": null,
     "county": "New London County"
   },
   "litchfield-center": {
     "name": "Litchfield - Center",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "8,192",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "madison-center": {
     "name": "Madison - Center",
     "percentage": "60%",
-    "population": "121,054",
+    "population": "17,691",
     "transitStation": "Madison",
     "county": "New Haven County"
   },
   "manchester-lower-main": {
     "name": "Manchester - Lower Main",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "59,713",
     "transitStation": null,
     "county": "Hartford County"
   },
   "manchester-upper-main": {
     "name": "Manchester - Upper Main",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "59,713",
     "transitStation": null,
     "county": "Hartford County"
   },
   "mansfield-storrs": {
     "name": "Mansfield - Storrs",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "25,892",
     "transitStation": null,
     "county": "Tolland County"
   },
   "marlborough-center": {
     "name": "Marlborough - Center",
     "percentage": "37%",
-    "population": "121,054",
+    "population": "6,133",
     "transitStation": null,
     "county": "Hartford County"
   },
   "meriden-downtown": {
     "name": "Meriden - Downtown",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "60,850",
     "transitStation": "Meriden",
     "county": "New Haven County"
   },
   "middlebury-center": {
     "name": "Middlebury - Center",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "7,574",
     "transitStation": null,
     "county": "New Haven County"
   },
   "middlefield-center": {
     "name": "Middlefield - Center",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "4,217",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "middletown-downtown": {
     "name": "Middletown - Downtown",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "47,717",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "milford-downtown": {
     "name": "Milford - Downtown",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "52,044",
     "transitStation": "Milford",
     "county": "New Haven County"
   },
   "monroe-center": {
     "name": "Monroe - Center",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "18,825",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "montville-center": {
     "name": "Montville - Center",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "18,387",
     "transitStation": null,
     "county": "New London County"
   },
   "morris-center": {
     "name": "Morris - Center",
     "percentage": "22%",
-    "population": "121,054",
+    "population": "2,256",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "naugatuck-center": {
     "name": "Naugatuck - Center",
     "percentage": "40%",
-    "population": "121,054",
+    "population": "31,519",
     "transitStation": "Naugatuck",
     "county": "New Haven County"
   },
   "new-britain-downtown": {
     "name": "New Britain - Downtown",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "74,135",
     "transitStation": "Downtown Station",
     "county": "Hartford County"
   },
   "new-britain-east-main": {
     "name": "New Britain - East Main",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "74,135",
     "transitStation": "East Main",
     "county": "Hartford County"
   },
   "new-britain-east-street": {
     "name": "New Britain - East Street",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "74,135",
     "transitStation": "East Street",
     "county": "Hartford County"
   },
   "new-canaan-center": {
     "name": "New Canaan - Center",
     "percentage": "35%",
-    "population": "121,054",
+    "population": "20,622",
     "transitStation": "New Canaan",
     "county": "Fairfield County"
   },
   "new-canaan-talmadge-hill": {
     "name": "New Canaan - Talmadge Hill",
     "percentage": "74%",
-    "population": "121,054",
+    "population": "20,622",
     "transitStation": "Talmadge Hill",
     "county": "Fairfield County"
   },
   "new-fairfield-center": {
     "name": "New Fairfield - Center",
     "percentage": "37%",
-    "population": "121,054",
+    "population": "13,579",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "new-hartford-center": {
     "name": "New Hartford - Center",
     "percentage": "23%",
-    "population": "121,054",
+    "population": "6,658",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "new-haven-downtown": {
     "name": "New Haven - Downtown",
     "percentage": "15%",
-    "population": "121,054",
+    "population": "134,023",
     "transitStation": null,
     "county": "New Haven County"
   },
   "new-haven-union-station": {
     "name": "New Haven - Union Station",
     "percentage": "50%",
-    "population": "121,054",
+    "population": "134,023",
     "transitStation": "Union Station",
     "county": "New Haven County"
   },
   "new-london-downtown": {
     "name": "New London - Downtown",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "27,367",
     "transitStation": "New London Union",
     "county": "New London County"
   },
   "new-milford-center": {
     "name": "New Milford - Center",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "28,115",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "newington-cedar-street": {
     "name": "Newington - Cedar Street",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "30,536",
     "transitStation": "Cedar Street",
     "county": "Hartford County"
   },
   "newington-newington-junction": {
     "name": "Newington - Newington Junction",
     "percentage": "27%",
-    "population": "121,054",
+    "population": "30,536",
     "transitStation": "Newington Junction",
     "county": "Hartford County"
   },
   "newtown-center": {
     "name": "Newtown - Center",
     "percentage": "35%",
-    "population": "121,054",
+    "population": "27,173",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "norfolk-center": {
     "name": "Norfolk - Center",
     "percentage": "16%",
-    "population": "121,054",
+    "population": "1,588",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "north-canaan-center": {
     "name": "North Canaan - Center",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "3,211",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "north-haven-center": {
     "name": "North Haven - Center",
     "percentage": "7%",
-    "population": "121,054",
+    "population": "24,253",
     "transitStation": null,
     "county": "New Haven County"
   },
   "north-stonington-center": {
     "name": "North Stonington - Center",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "5,149",
     "transitStation": null,
     "county": "New London County"
   },
   "norwalk-east-norwalk": {
     "name": "Norwalk - East Norwalk",
     "percentage": "21%",
-    "population": "121,054",
+    "population": "91,184",
     "transitStation": "East Norwalk",
     "county": "Fairfield County"
   },
   "norwalk-merritt-7": {
     "name": "Norwalk - Merritt 7",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "91,184",
     "transitStation": "Merritt 7",
     "county": "Fairfield County"
   },
   "norwalk-rowayton-downtown": {
     "name": "Norwalk - Rowayton Downtown",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "91,184",
     "transitStation": "Rowayton",
     "county": "Fairfield County"
   },
   "norwalk-rowayton-station": {
     "name": "Norwalk - Rowayton Station",
     "percentage": "51%",
-    "population": "121,054",
+    "population": "91,184",
     "transitStation": "Rowayton",
     "county": "Fairfield County"
   },
   "norwalk-south-norwalk": {
     "name": "Norwalk - South Norwalk",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "91,184",
     "transitStation": "South Norwalk",
     "county": "Fairfield County"
   },
   "norwich-downtown": {
     "name": "Norwich - Downtown",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "40,125",
     "transitStation": null,
     "county": "New London County"
   },
   "norwich-westside": {
     "name": "Norwich - Westside",
     "percentage": "36%",
-    "population": "121,054",
+    "population": "40,125",
     "transitStation": null,
     "county": "New London County"
   },
   "old-lyme-center": {
     "name": "Old Lyme - Center",
     "percentage": "15%",
-    "population": "121,054",
+    "population": "7,628",
     "transitStation": null,
     "county": "New London County"
   },
   "old-saybrook-center": {
     "name": "Old Saybrook - Center",
     "percentage": "40%",
-    "population": "121,054",
+    "population": "10,481",
     "transitStation": "Old Saybrook",
     "county": "Middlesex County"
   },
   "orange-center": {
     "name": "Orange - Center",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "14,280",
     "transitStation": null,
     "county": "New Haven County"
   },
   "plainfield-center": {
     "name": "Plainfield - Center",
     "percentage": "26%",
-    "population": "121,054",
+    "population": "14,973",
     "transitStation": null,
     "county": "Windham County"
   },
   "plainfield-moosup": {
     "name": "Plainfield - Moosup",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "14,973",
     "transitStation": null,
     "county": "Windham County"
   },
   "plainville-center": {
     "name": "Plainville - Center",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "17,525",
     "transitStation": null,
     "county": "Hartford County"
   },
   "plymouth-terryville": {
     "name": "Plymouth - Terryville",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "11,671",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "pomfret-center": {
     "name": "Pomfret - Center",
     "percentage": "16%",
-    "population": "121,054",
+    "population": "4,266",
     "transitStation": null,
     "county": "Windham County"
   },
   "portland-center": {
     "name": "Portland - Center",
     "percentage": "19%",
-    "population": "121,054",
+    "population": "9,384",
     "transitStation": null,
     "county": "Middlesex County"
   },
   "prospect-center": {
     "name": "Prospect - Center",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "9,401",
     "transitStation": null,
     "county": "New Haven County"
   },
   "putnam-center": {
     "name": "Putnam - Center",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "9,224",
     "transitStation": null,
     "county": "Windham County"
   },
   "redding-center": {
     "name": "Redding - Center",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "8,765",
     "transitStation": "Redding",
     "county": "Fairfield County"
   },
   "ridgefield-branchville": {
     "name": "Ridgefield - Branchville",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "25,033",
     "transitStation": "Branchville",
     "county": "Fairfield County"
   },
   "ridgefield-center": {
     "name": "Ridgefield - Center",
     "percentage": "39%",
-    "population": "121,054",
+    "population": "25,033",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "rocky-hill-center": {
     "name": "Rocky Hill - Center",
     "percentage": "42%",
-    "population": "121,054",
+    "population": "20,845",
     "transitStation": null,
     "county": "Hartford County"
   },
   "salem-center": {
     "name": "Salem - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "4,213",
     "transitStation": null,
     "county": "New London County"
   },
   "salisbury-center": {
     "name": "Salisbury - Center",
     "percentage": "13%",
-    "population": "121,054",
+    "population": "4,194",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "scotland-center": {
     "name": "Scotland - Center",
     "percentage": "11%",
-    "population": "121,054",
+    "population": "1,576",
     "transitStation": null,
     "county": "Windham County"
   },
   "seymour-center": {
     "name": "Seymour - Center",
     "percentage": "36%",
-    "population": "121,054",
+    "population": "16,748",
     "transitStation": "Seymour",
     "county": "New Haven County"
   },
   "sharon-center": {
     "name": "Sharon - Center",
     "percentage": "22%",
-    "population": "121,054",
+    "population": "2,680",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "shelton-bridgeport-ave": {
     "name": "Shelton - Bridgeport Ave",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "40,869",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "shelton-downtown": {
     "name": "Shelton - Downtown",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "40,869",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "sherman-center": {
     "name": "Sherman - Center",
     "percentage": "23%",
-    "population": "121,054",
+    "population": "3,527",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "simsbury-center": {
     "name": "Simsbury - Center",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "24,517",
     "transitStation": null,
     "county": "Hartford County"
   },
   "somers-center": {
     "name": "Somers - Center",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "10,255",
     "transitStation": null,
     "county": "Tolland County"
   },
   "south-windsor-wapping": {
     "name": "South Windsor - Wapping",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "26,918",
     "transitStation": null,
     "county": "Hartford County"
   },
   "southbury-center": {
     "name": "Southbury - Center",
     "percentage": "37%",
-    "population": "121,054",
+    "population": "19,879",
     "transitStation": null,
     "county": "New Haven County"
   },
   "southington-center": {
     "name": "Southington - Center",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "43,501",
     "transitStation": null,
     "county": "Hartford County"
   },
   "sprague-center": {
     "name": "Sprague - Center",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "2,967",
     "transitStation": null,
     "county": "New London County"
   },
   "stafford-stafford-springs": {
     "name": "Stafford - Stafford Springs",
     "percentage": "20%",
-    "population": "121,054",
+    "population": "11,472",
     "transitStation": null,
     "county": "Tolland County"
   },
   "stamford-downtown-north": {
     "name": "Stamford - Downtown North",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "135,470",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "stamford-glenbrook": {
     "name": "Stamford - Glenbrook",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "135,470",
     "transitStation": "Glenbrook",
     "county": "Fairfield County"
   },
   "stamford-springdale": {
     "name": "Stamford - Springdale",
     "percentage": "36%",
-    "population": "121,054",
+    "population": "135,470",
     "transitStation": "Springdale",
     "county": "Fairfield County"
   },
   "stamford-transportation-center": {
     "name": "Stamford - Transportation Center",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "135,470",
     "transitStation": "Stamford Transportation Center",
     "county": "Fairfield County"
   },
   "sterling-oneca": {
     "name": "Sterling - Oneca",
     "percentage": "9%",
-    "population": "121,054",
+    "population": "3,578",
     "transitStation": null,
     "county": "Windham County"
   },
   "stonington-borough": {
     "name": "Stonington - Borough",
     "percentage": "8%",
-    "population": "121,054",
+    "population": "18,335",
     "transitStation": null,
     "county": "New London County"
   },
   "stonington-mystic": {
     "name": "Stonington - Mystic",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "18,335",
     "transitStation": "Mystic",
     "county": "New London County"
   },
   "stratford-center": {
     "name": "Stratford - Center",
     "percentage": "38%",
-    "population": "121,054",
+    "population": "52,355",
     "transitStation": "Stratford",
     "county": "Fairfield County"
   },
   "suffield-center": {
     "name": "Suffield - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "15,752",
     "transitStation": null,
     "county": "Hartford County"
   },
   "thomaston-center": {
     "name": "Thomaston - Center",
     "percentage": "31%",
-    "population": "121,054",
+    "population": "7,442",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "thompson-north-grosvenordale": {
     "name": "Thompson - North Grosvenordale",
     "percentage": "18%",
-    "population": "121,054",
+    "population": "9,189",
     "transitStation": null,
     "county": "Windham County"
   },
   "tolland-center": {
     "name": "Tolland - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "14,563",
     "transitStation": null,
     "county": "Tolland County"
   },
   "torrington-downtown": {
     "name": "Torrington - Downtown",
     "percentage": "33%",
-    "population": "121,054",
+    "population": "35,515",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "trumbull-center": {
     "name": "Trumbull - Center",
     "percentage": "39%",
-    "population": "121,054",
+    "population": "36,827",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "trumbull-town-hall-area": {
     "name": "Trumbull - Town Hall Area",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "36,827",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "vernon-rockville": {
     "name": "Vernon - Rockville",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "30,215",
     "transitStation": null,
     "county": "Tolland County"
   },
   "voluntown-center": {
     "name": "Voluntown - Center",
     "percentage": "23%",
-    "population": "121,054",
+    "population": "2,570",
     "transitStation": null,
     "county": "New London County"
   },
   "wallingford-center": {
     "name": "Wallingford - Center",
     "percentage": "38%",
-    "population": "121,054",
+    "population": "44,396",
     "transitStation": "Wallingford",
     "county": "New Haven County"
   },
   "washington-center": {
     "name": "Washington - Center",
     "percentage": "13%",
-    "population": "121,054",
+    "population": "3,646",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "waterbury-downtown": {
     "name": "Waterbury - Downtown",
     "percentage": "29%",
-    "population": "121,054",
+    "population": "114,403",
     "transitStation": "Waterbury",
     "county": "New Haven County"
   },
   "waterford-center": {
     "name": "Waterford - Center",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "19,571",
     "transitStation": null,
     "county": "New London County"
   },
   "watertown-center": {
     "name": "Watertown - Center",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "22,105",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "west-hartford-center": {
     "name": "West Hartford - Center",
     "percentage": "37%",
-    "population": "121,054",
+    "population": "64,083",
     "transitStation": null,
     "county": "Hartford County"
   },
   "west-hartford-elmwood": {
     "name": "West Hartford - Elmwood",
     "percentage": "35%",
-    "population": "121,054",
+    "population": "64,083",
     "transitStation": "Elmwood",
     "county": "Hartford County"
   },
   "west-hartford-flatbush": {
     "name": "West Hartford - Flatbush",
     "percentage": "46%",
-    "population": "121,054",
+    "population": "64,083",
     "transitStation": "Flatbush Ave",
     "county": "Hartford County"
   },
   "west-haven-center": {
     "name": "West Haven - Center",
     "percentage": "21%",
-    "population": "121,054",
+    "population": "55,584",
     "transitStation": "West Haven",
     "county": "New Haven County"
   },
   "westbrook-center": {
     "name": "Westbrook - Center",
     "percentage": "34%",
-    "population": "121,054",
+    "population": "6,769",
     "transitStation": "Westbrook",
     "county": "Middlesex County"
   },
   "weston-center": {
     "name": "Weston - Center",
     "percentage": "25%",
-    "population": "121,054",
+    "population": "10,354",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "westport-center": {
     "name": "Westport - Center",
     "percentage": "43%",
-    "population": "121,054",
+    "population": "27,141",
     "transitStation": null,
     "county": "Fairfield County"
   },
   "westport-green's-farms": {
     "name": "Westport - Green's Farms",
     "percentage": "58%",
-    "population": "121,054",
+    "population": "27,141",
     "transitStation": "Green's Farms",
     "county": "Fairfield County"
   },
   "westport-saugatuck": {
     "name": "Westport - Saugatuck",
     "percentage": "47%",
-    "population": "121,054",
+    "population": "27,141",
     "transitStation": "Westport (Saugatuck)",
     "county": "Fairfield County"
   },
   "wethersfield-center": {
     "name": "Wethersfield - Center",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "27,298",
     "transitStation": null,
     "county": "Hartford County"
   },
   "willington-center": {
     "name": "Willington - Center",
     "percentage": "30%",
-    "population": "121,054",
+    "population": "5,566",
     "transitStation": null,
     "county": "Tolland County"
   },
   "wilton-cannondale": {
     "name": "Wilton - Cannondale",
     "percentage": "23%",
-    "population": "121,054",
+    "population": "18,503",
     "transitStation": "Cannondale",
     "county": "Fairfield County"
   },
   "wilton-center": {
     "name": "Wilton - Center",
     "percentage": "36%",
-    "population": "121,054",
+    "population": "18,503",
     "transitStation": "Wilton",
     "county": "Fairfield County"
   },
   "winchester-winstead": {
     "name": "Winchester - Winstead",
     "percentage": "24%",
-    "population": "121,054",
+    "population": "10,224",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "windham-willimantic": {
     "name": "Windham - Willimantic",
     "percentage": "32%",
-    "population": "121,054",
+    "population": "24,425",
     "transitStation": null,
     "county": "Windham County"
   },
   "windsor-center": {
     "name": "Windsor - Center",
     "percentage": "35%",
-    "population": "121,054",
+    "population": "29,492",
     "transitStation": "Windsor",
     "county": "Hartford County"
   },
   "windsor-locks-center": {
     "name": "Windsor Locks - Center",
     "percentage": "28%",
-    "population": "121,054",
+    "population": "12,613",
     "transitStation": "Windsor Locks",
     "county": "Hartford County"
   },
   "wolcott-center": {
     "name": "Wolcott - Center",
     "percentage": "40%",
-    "population": "121,054",
+    "population": "16,142",
     "transitStation": null,
     "county": "New Haven County"
   },
   "woodbridge-center": {
     "name": "Woodbridge - Center",
     "percentage": "36%",
-    "population": "121,054",
+    "population": "9,087",
     "transitStation": null,
     "county": "New Haven County"
   },
   "woodbury-center": {
     "name": "Woodbury - Center",
     "percentage": "17%",
-    "population": "121,054",
+    "population": "9,723",
     "transitStation": null,
     "county": "Litchfield County"
   },
   "woodstock-center": {
     "name": "Woodstock - Center",
     "percentage": "9%",
-    "population": "121,054",
+    "population": "8,221",
     "transitStation": null,
     "county": "Windham County"
   }
