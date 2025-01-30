@@ -21,6 +21,15 @@
     border-top-right-radius: borders.$border-radius;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+
+    // Ensure the dropdown does not ever make the header too tall if we have long
+    // entries. Note that the scorecard will already show the full title of the
+    // selected city.
+    .choices__list--single .choices__item--selectable {
+      white-space: nowrap;
+      overflow: hidden;
+      width: 95%;
+    }
   }
 
   &:not(.is-open) {
