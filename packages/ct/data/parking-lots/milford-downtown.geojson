@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "milford-center"
+    "id": "milford-downtown"
   },
   "geometry": {
     "type": "MultiPolygon",

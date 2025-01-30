@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "shelton-bridgeport-avenue"
+    "id": "shelton-bridgeport-ave"
   },
   "geometry": {
     "type": "MultiPolygon",

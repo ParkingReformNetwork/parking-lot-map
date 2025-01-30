@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "sterling-center"
+    "id": "sterling-oneca"
   },
   "geometry": {
     "type": "MultiPolygon",

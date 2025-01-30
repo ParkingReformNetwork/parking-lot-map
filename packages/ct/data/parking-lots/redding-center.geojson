@@ -1,7 +1,7 @@
 {
   "type": "Feature",
   "properties": {
-    "id": "redding-station"
+    "id": "redding-center"
   },
   "geometry": {
     "type": "MultiPolygon",
