@@ -1,4 +1,7 @@
-import type { Group as ChoicesJSGroup } from "choices.js";
+import type {
+  Group as ChoicesJsGroup,
+  Choice as ChoicesJsChoice,
+} from "choices.js";
 
 import type { CityId } from "../model/types";
 
@@ -12,17 +15,18 @@ interface DropdownChoice {
   };
 }
 
-export interface DropdownChoiceId {
+export interface DropdownChoiceRequest {
   id: CityId;
   name: string;
 }
 
-export interface DropdownGroup {
+export interface DropdownGroupRequest {
   label: string;
-  cities: Array<DropdownChoiceId>;
+  cities: Array<DropdownChoiceRequest>;
 }
 
-export function createChoice(id: CityId, name: string): DropdownChoice {
+export function createChoice(choiceId: DropdownChoiceRequest): DropdownChoice {
+  const { name, id } = choiceId;
   const [city, context] = name.split(/,\s|\s-\s/);
   return {
     value: id,
@@ -34,15 +38,22 @@ export function createChoice(id: CityId, name: string): DropdownChoice {
   };
 }
 
-export function convertToChoicesGroups(
-  groups: DropdownGroup[],
-): ChoicesJSGroup[] {
-  return groups
+export type DropdownRequest =
+  | { useGroups: false; value: DropdownChoiceRequest[] }
+  | { useGroups: true; value: DropdownGroupRequest[] };
+
+export function convertToChoicesJs(
+  request: DropdownRequest,
+): ChoicesJsGroup[] | ChoicesJsChoice[] {
+  if (!request.useGroups) {
+    return request.value.map(createChoice);
+  }
+  return request.value
     .filter(({ cities }) => cities.length > 0)
     .map(({ label, cities }) => ({
       label,
       value: label,
       disabled: false,
-      choices: cities.map(({ id, name }) => createChoice(id, name)),
+      choices: cities.map(createChoice),
     }));
 }
