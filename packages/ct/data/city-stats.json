@@ -64,7 +64,7 @@
   },
   "branford-center": {
     "name": "Branford - Center",
-    "percentage": "2%",
+    "percentage": "19%",
     "population": "28,273",
     "transitStation": "Branford",
     "county": "New Haven County"
@@ -589,7 +589,7 @@
   },
   "meriden-downtown": {
     "name": "Meriden - Downtown",
-    "percentage": "18%",
+    "percentage": "27%",
     "population": "60,850",
     "transitStation": "Meriden",
     "county": "New Haven County"
@@ -701,7 +701,7 @@
   },
   "new-haven-downtown": {
     "name": "New Haven - Downtown",
-    "percentage": "15%",
+    "percentage": "22%",
     "population": "134,023",
     "transitStation": null,
     "county": "New Haven County"
@@ -764,7 +764,7 @@
   },
   "north-haven-center": {
     "name": "North Haven - Center",
-    "percentage": "7%",
+    "percentage": "44%",
     "population": "24,253",
     "transitStation": null,
     "county": "New Haven County"
