@@ -1,9 +1,9 @@
 import ChoicesJS from "choices.js";
 
-import { DropdownGroup, convertToChoicesGroups } from "./dropdownUtils";
+import { DropdownRequest, convertToChoicesJs } from "./dropdownUtils";
 import { ViewStateObservable } from "../state/ViewState";
 
-function createDropdown(groups: DropdownGroup[]): ChoicesJS {
+function createDropdown(dropdownRequest: DropdownRequest): ChoicesJS {
   const dropdown = new ChoicesJS("#city-dropdown", {
     position: "bottom",
     allowHTML: false,
@@ -15,15 +15,15 @@ function createDropdown(groups: DropdownGroup[]): ChoicesJS {
     // We already sort entries in the JSON file.
     shouldSort: false,
   });
-  dropdown.setChoices(convertToChoicesGroups(groups));
+  dropdown.setChoices(convertToChoicesJs(dropdownRequest));
   return dropdown;
 }
 
 export default function initDropdown(
-  groups: DropdownGroup[],
+  dropdownRequest: DropdownRequest,
   viewState: ViewStateObservable,
 ): void {
-  const dropdown = createDropdown(groups);
+  const dropdown = createDropdown(dropdownRequest);
 
   viewState.subscribe(
     ({ cityId }) => dropdown.setChoiceByValue(cityId),

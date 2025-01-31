@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
-import createDropdownGroups from "../src/js/dropdownGroups";
+import createDropdownRequest from "../src/js/dropdownRequest";
 
-test("createDropdownGroups", () => {
+test("createDropdownRequest", () => {
   const common = {
     percentage: "",
     cityType: "",
@@ -23,14 +23,17 @@ test("createDropdownGroups", () => {
       contribution: "some-email@web.com",
     },
   };
-  expect(createDropdownGroups(input)).toEqual([
-    {
-      label: "Official maps",
-      cities: [{ id: "city1-ny", name: "City 1, NY" }],
-    },
-    {
-      label: "Community maps",
-      cities: [{ id: "city2-ny", name: "City 2, NY" }],
-    },
-  ]);
+  expect(createDropdownRequest(input)).toEqual({
+    useGroups: true,
+    value: [
+      {
+        label: "Official maps",
+        cities: [{ id: "city1-ny", name: "City 1, NY" }],
+      },
+      {
+        label: "Community maps",
+        cities: [{ id: "city2-ny", name: "City 2, NY" }],
+      },
+    ],
+  });
 });

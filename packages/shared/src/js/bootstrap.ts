@@ -1,6 +1,6 @@
 import subscribeScorecard, { ScorecardFormatter } from "./city-ui/scorecard";
 import initDropdown from "./city-ui/dropdown";
-import type { DropdownGroup } from "./city-ui/dropdownUtils";
+import type { DropdownRequest } from "./city-ui/dropdownUtils";
 
 import initAbout from "./layout/about";
 import initIcons from "./layout/fontAwesome";
@@ -24,7 +24,7 @@ import { initViewState } from "./state/ViewState";
 interface Args<T extends BaseCityStats> {
   data: DataSet<T>;
   initialCity: CityId;
-  dropdownGroups: DropdownGroup[];
+  dropdownRequest: DropdownRequest;
   scorecardFormatter: ScorecardFormatter<T>;
 }
 
@@ -50,7 +50,7 @@ export default async function bootstrapApp<T extends BaseCityStats>(
     args.initialCity,
   );
 
-  initDropdown(args.dropdownGroups, viewState);
+  initDropdown(args.dropdownRequest, viewState);
   subscribeScorecard(viewState, cityEntries, args.scorecardFormatter);
   subscribeShareLink(viewState);
   subscribeSnapToCity(viewState, map, cityEntries);
