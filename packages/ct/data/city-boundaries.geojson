@@ -1072,7 +1072,7 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "canton-collingsville"
+        "id": "canton-collinsville"
       },
       "geometry": {
         "type": "Polygon",
