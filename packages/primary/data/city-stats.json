@@ -445,7 +445,7 @@
     "cityType": "core",
     "population": "2,302,792",
     "urbanizedAreaPopulation": "5,853,575",
-    "parkingScore": "73",
+    "parkingScore": "72",
     "reforms": "adopted",
     "url": "https://parkingreform.org/mandates-map/city_detail/Houston_TX.html",
     "contribution": null
@@ -584,11 +584,11 @@
   },
   "madison-wi": {
     "name": "Madison, WI",
-    "percentage": "17%",
+    "percentage": "16%",
     "cityType": "core",
     "population": "269,769",
     "urbanizedAreaPopulation": "450,305",
-    "parkingScore": "14",
+    "parkingScore": "12",
     "reforms": "adopted",
     "url": "https://parkingreform.org/mandates-map/city_detail/Madison_WI.html",
     "contribution": null
