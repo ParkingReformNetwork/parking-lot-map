@@ -329,6 +329,17 @@
     "url": "https://parkingreform.org/mandates-map/city_detail/Detroit_MI.html",
     "contribution": null
   },
+  "east-palo-alto-ca": {
+    "name": "East Palo Alto, CA",
+    "percentage": "15%",
+    "population": "30,034",
+    "reforms": "adopted",
+    "url": null,
+    "cityType": "suburb",
+    "urbanizedAreaPopulation": "3,515,933",
+    "parkingScore": null,
+    "contribution": "christopherkao@icloud.com"
+  },
   "el-paso-tx": {
     "name": "El Paso, TX",
     "percentage": "23%",
