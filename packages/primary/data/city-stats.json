@@ -637,6 +637,17 @@
     "url": "https://parkingreform.org/mandates-map/city_detail/Memphis_TN.html",
     "contribution": null
   },
+  "menlo-park-ca": {
+    "name": "Menlo Park, CA",
+    "percentage": "28%",
+    "population": "33,780",
+    "reforms": null,
+    "url": null,
+    "cityType": "suburb",
+    "urbanizedAreaPopulation": "3,515,933",
+    "parkingScore": null,
+    "contribution": "david.hunt@hey.com"
+  },
   "mesa-az": {
     "name": "Mesa, AZ",
     "percentage": "32%",
@@ -988,6 +999,17 @@
     "reforms": "adopted",
     "url": "https://parkingreform.org/mandates-map/city_detail/SanJuan_PR.html",
     "contribution": null
+  },
+  "san-mateo-ca": {
+    "name": "San Mateo, CA",
+    "percentage": "21%",
+    "population": "105,661",
+    "reforms": null,
+    "url": null,
+    "cityType": "suburb",
+    "urbanizedAreaPopulation": "3,515,933",
+    "parkingScore": null,
+    "contribution": "david.hunt@hey.com"
   },
   "santa-ana-ca": {
     "name": "Santa Ana, CA",
