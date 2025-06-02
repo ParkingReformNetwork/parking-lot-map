@@ -452,11 +452,11 @@
   },
   "houston-tx": {
     "name": "Houston, TX",
-    "percentage": "26%",
+    "percentage": "25%",
     "cityType": "core",
     "population": "2,302,792",
     "urbanizedAreaPopulation": "5,853,575",
-    "parkingScore": "72",
+    "parkingScore": "71",
     "reforms": "adopted",
     "url": "https://parkingreform.org/mandates-map/city_detail/Houston_TX.html",
     "contribution": null
