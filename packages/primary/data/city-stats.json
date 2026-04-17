@@ -351,6 +351,17 @@
     "url": "https://parkingreform.org/mandates-map/city_detail/ElPaso_TX.html",
     "contribution": null
   },
+  "fayetteville-ar": {
+    "name": "Fayetteville, AR",
+    "percentage": "29%",
+    "population": "94,308",
+    "reforms": null,
+    "url": null,
+    "cityType": "core",
+    "urbanizedAreaPopulation": "373,687",
+    "parkingScore": null,
+    "contribution": "arcaldwell49@gmail.com"
+  },
   "fort-myers-fl": {
     "name": "Fort Myers, FL",
     "percentage": "30%",
