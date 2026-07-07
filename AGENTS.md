@@ -27,13 +27,14 @@ The repository is organized as a monorepo:
 
 Some particularly important folders and files:
 
-* `packages/shared/src/css/`: stylesheets (Sass)
-- `packages/shared/src/js/bootstrap.ts` — App initialization
-- `packages/shared/src/js/layout/` — UI components (icons, popups, headers, the map)
-- `packages/shared/src/js/map-layers/` — Loading the city overlays
-- `packages/shared/src/js/model/` — The core data types
-- `packages/shared/src/js/state/` — State management and the Observable type
-- `packages/shared/src/js/city-ui/` — The Choices.js dropdown and the scorecard
+- `packages/shared/src/css/`: stylesheets (Sass)
+
+* `packages/shared/src/js/bootstrap.ts` — App initialization
+* `packages/shared/src/js/layout/` — UI components (icons, popups, headers, the map)
+* `packages/shared/src/js/map-layers/` — Loading the city overlays
+* `packages/shared/src/js/model/` — The core data types
+* `packages/shared/src/js/state/` — State management and the Observable type
+* `packages/shared/src/js/city-ui/` — The Choices.js dropdown and the scorecard
 
 ## Development Workflow
 
