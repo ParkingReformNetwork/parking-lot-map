@@ -11,12 +11,16 @@ a {
 
 .external-link {
   &:hover {
-    // We disable underlining because the font awesome icon won't
-    // have underlining on hover, which looks weird.
+    // We disable underlining because the icon won't have underlining
+    // on hover, which looks weird.
     text-decoration: none;
   }
 
   svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.125em;
     transform: rotate(-45deg);
+    transform-origin: center;
   }
 }

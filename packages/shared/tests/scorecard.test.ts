@@ -17,6 +17,6 @@ test("formatHeader", () => {
 test("formatReformLine", () => {
   const result = formatReformLine("adopted", "https://parkingreform.org");
   expect(result).toEqual(
-    `Parking reforms adopted (<a class="external-link" title="view parking reform details" href="https://parkingreform.org" target="_blank">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`,
+    `Parking reforms adopted (<a class="external-link" title="view parking reform details" href="https://parkingreform.org" target="_blank">details <svg aria-hidden="true" width="1em" height="1em"><use href="#icon-arrow-right"></use></svg></a>)`,
   );
 });

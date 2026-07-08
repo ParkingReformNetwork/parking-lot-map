@@ -1,3 +1,4 @@
+import { iconHtml } from "../layout/icons";
 import type { BaseCityStats, CityEntryCollection } from "../model/types";
 import Observable from "../state/Observable";
 import type { ViewStateObservable } from "../state/ViewState";
@@ -20,8 +21,8 @@ function generateScorecard(values: ScorecardValues): string {
       >
         <span id="scorecard-accordion-title" class="scorecard-accordion-title">Additional details</span>
         <div class="scorecard-accordion-icon-container" aria-hidden="true">
-          <i class="fa-solid fa-chevron-down" title="expand additional details"></i>
-          <i class="fa-solid fa-chevron-up" title="collapse additional details" style="display: none"></i>
+          <svg class="chevron-down-icon" title="expand additional details"><use href="#icon-chevron-down"></use></svg>
+          <svg class="chevron-up-icon" title="collapse additional details" style="display: none"><use href="#icon-chevron-up"></use></svg>
         </div>
       </button>
       <section
@@ -56,7 +57,7 @@ export function formatReformLine(
 ): string {
   let result = `Parking reforms ${reformStatus}`;
   if (url) {
-    result += ` (<a class="external-link" title="view parking reform details" href="${url}" target="_blank">details <i aria-hidden="true" class="fa-solid fa-arrow-right"></i></a>)`;
+    result += ` (<a class="external-link" title="view parking reform details" href="${url}" target="_blank">details ${iconHtml("arrow-right")}</a>)`;
   }
   return result;
 }
@@ -66,8 +67,8 @@ function updateAccordionUI(expanded: boolean): void {
   const content = document.querySelector<HTMLElement>(
     "#scorecard-accordion-content",
   );
-  const upIcon = toggle?.querySelector<SVGElement>(".fa-chevron-up");
-  const downIcon = toggle?.querySelector<SVGElement>(".fa-chevron-down");
+  const upIcon = toggle?.querySelector<SVGElement>(".chevron-up-icon");
+  const downIcon = toggle?.querySelector<SVGElement>(".chevron-down-icon");
   if (!toggle || !content || !upIcon || !downIcon) return;
 
   toggle.setAttribute("aria-expanded", expanded.toString());
