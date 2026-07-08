@@ -84,6 +84,9 @@ importers:
         specifier: workspace:*
         version: link:../shared
     devDependencies:
+      '@playwright/test':
+        specifier: ^1.61.1
+        version: 1.61.1
       tsx:
         specifier: ^4.19.2
         version: 4.23.0

@@ -10,3 +10,5 @@ dist/
 *.tsbuildinfo
 
 test-results/
+
+benchmark-results/
