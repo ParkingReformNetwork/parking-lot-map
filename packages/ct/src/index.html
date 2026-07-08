@@ -52,48 +52,10 @@
   </head>
 
   <body>
-    <header class="top-header">
-      <select
-        single
-        name="city-dropdown"
-        class="header-dropdown"
-        id="city-dropdown"
-        aria-label="select the city"
-      ></select>
-      <nav class="header-icons">
-        <button
-          type="button"
-          class="header-icon-container header-about-icon-container"
-          title="about the map"
-          aria-expanded="false"
-          aria-controls="about-popup"
-        >
-          <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
-          <span class="sr-only">toggle a popup describing the map</span>
-        </button>
-        <button
-          type="button"
-          class="header-icon-container header-share-icon-container"
-          title="copy link"
-        >
-          <i class="share-link-icon fa-solid fa-link" aria-hidden="true"></i
-          ><i
-            class="share-check-icon fa-solid fa-check"
-            style="display: none"
-            aria-hidden="true"
-          ></i>
-        </button>
-        <a
-          class="header-icon-container header-full-screen-icon-container"
-          href="https://parkingreform.org/parking-lot-map/"
-          title="view fullscreen"
-          target="_blank"
-        >
-          <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i>
-          <span class="sr-only">view fullscreen (opens in new tab)</span>
-        </a>
-      </nav>
-    </header>
+    <include
+      src="packages/shared/src/html/header.html"
+      locals='{"fullscreenUrl": "https://parkingreform.org/ct-parking-lots/"}'
+    ></include>
 
     <section
       id="about-popup"
@@ -311,35 +273,15 @@
       <p>Copyright 2025 Parking Reform Network - All Rights Reserved</p>
     </section>
 
-    <section
-      id="scorecard-container"
-      class="scorecard-container"
-      role="region"
-    ></section>
+    <include src="packages/shared/src/html/scorecard.html"></include>
 
-    <div class="prn-logo">
-      <a
-        href="https://parkingreform.org/support/"
-        aria-label="Support Parking Reform Network"
-        target="_blank"
-        ><img
-          src="../../shared/assets/images/prn-logo.png"
-          alt="Parking Reform Network logo"
-        ></a
-      >
-    </div>
+    <include src="packages/shared/src/html/logo.html"></include>
 
     <div
       id="map"
       role="application"
       aria-label="interactive map of parking lots in Connecticut"
     ></div>
-    <script type="module">
-    import initApp from "./js/main";
-
-    window.onload = async () => {
-      await initApp();
-    };
-    </script>
+    <include src="packages/shared/src/html/bootstrap.html"></include>
   </body>
 </html>
