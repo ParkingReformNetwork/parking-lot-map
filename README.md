@@ -144,6 +144,10 @@ You can preview what a build will look like by running `pnpm -F primary build` o
 
 You can also run our integration tests on built dist folder with `pnpm -F primary test-dist` and `pnpm -F ct test-dist` (make sure the server is not already running).
 
+### Benchmark performance
+
+Against a running production build of `primary` (see above), run `pnpm -F scripts benchmark` to measure initial page load and the cost of switching cities with a headless browser. It writes `benchmark-results/latest.json`; compare two runs with `python3 packages/scripts/compare-benchmarks.py <before.json> <after.json>`. Options: `--runs N`, `--out <path>`, `--headed`, and `PORT` to override the port.
+
 ### Staging
 
 We use continuous deployment, meaning that we re-deploy the site every time we merge a pull request to staging at https://parkingreform.org/plm-staging/ and https://parkingreform.org/ct-parking-lots-staging. You can check how the site renders about ~1-2 minutes after your change merges.
