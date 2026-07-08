@@ -1,6 +1,8 @@
 import initDropdown from "./city-ui/dropdown";
 import type { DropdownRequest } from "./city-ui/dropdownUtils";
-import subscribeScorecard, { ScorecardFormatter } from "./city-ui/scorecard";
+import subscribeScorecard, {
+  type ScorecardFormatter,
+} from "./city-ui/scorecard";
 
 import initAbout from "./layout/about";
 import initIcons from "./layout/fontAwesome";

@@ -1,11 +1,12 @@
+import fs from "node:fs/promises";
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types.ts";
-import fs from "fs/promises";
 import {
   determineArgs,
-  Pkg,
+  type Pkg,
   updateCoordinates,
   updateParkingLots,
 } from "./base.ts";
+import { runScript } from "./runScript.ts";
 
 async function addScoreCard(
   pkg: Pkg,
@@ -20,7 +21,7 @@ async function addScoreCard(
       'FILL ME IN, with "repealed", "adopted", or "proposed". If none apply, remove the quotes and set to null',
     url: "FILL ME IN. If not relevant, remove the quotes and set to null",
   };
-  let newEntry;
+  let newEntry: Record<string, string>;
   if (pkg === "ct") {
     newEntry = {
       ...common,
@@ -61,7 +62,7 @@ async function addScoreCard(
   await fs.writeFile(filePath, JSON.stringify(sortedData, null, 2));
 }
 
-async function main() {
+async function main(): Promise<void> {
   const { pkg, cityName, cityId } = determineArgs(
     "add-city",
     process.argv.slice(2),
@@ -91,4 +92,4 @@ async function main() {
   );
 }
 
-main();
+runScript(main);

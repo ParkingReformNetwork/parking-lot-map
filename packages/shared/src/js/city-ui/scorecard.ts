@@ -1,6 +1,6 @@
 import type { BaseCityStats, CityEntryCollection } from "../model/types";
 import Observable from "../state/Observable";
-import { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateObservable } from "../state/ViewState";
 
 export interface ScorecardValues {
   header: string;

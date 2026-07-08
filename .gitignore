@@ -3,6 +3,7 @@ node_modules/
 /.fleet/
 dist/
 .parcel-cache/
+/.claude
 
 /parking-lots-update.geojson
 /city-update.geojson

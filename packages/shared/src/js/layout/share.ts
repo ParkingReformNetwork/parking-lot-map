@@ -1,13 +1,12 @@
 /* global document, navigator, window */
 
 import { determineShareUrl } from "../model/cityId";
-import { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateObservable } from "../state/ViewState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
     await navigator.clipboard.writeText(value);
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error("Failed to write to clipboard: ", err);
   }
 }

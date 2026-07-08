@@ -1,4 +1,4 @@
-import { Control, Map, TileLayer } from "leaflet";
+import { Control, Map as LeafletMap, TileLayer } from "leaflet";
 
 const MIN_ZOOM = 4;
 const MAX_ZOOM = 18;
@@ -45,8 +45,8 @@ export const STYLES = {
  *
  * This sets up Google Maps vs. High contrast, attribution, and zoom.
  */
-export function createMap(): Map {
-  const map = new Map("map", {
+export function createMap(): LeafletMap {
+  const map = new LeafletMap("map", {
     layers: [BASE_LAYERS["High contrast"]],
   });
   map.attributionControl.setPrefix(

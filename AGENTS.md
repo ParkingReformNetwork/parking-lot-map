@@ -14,7 +14,7 @@ This is the **Parking Lot Map**, an interactive web application for the Parking 
 - **State management**: Reactive stream with custom `Observable` class in packages/shared/src/js/state/Observable.ts
 - **Data**: GeoJSON files stored in packages/primary/data and packages/ct/data
 - **Testing**: Playwright
-- **Code quality**: Biome, ESLint, TypeScript compiler
+- **Code quality**: Biome, TypeScript compiler
 
 ## Key Files & Directories
 
@@ -42,7 +42,7 @@ Some particularly important folders and files:
 
 - **Format code**: `pnpm fmt`
 - **Fix issues**: `pnpm fix` — Auto-fix linting and format issues
-- **Lint**: `pnpm lint` — ESlint + format checks
+- **Lint**: `pnpm lint` — Biome + format checks
 - **Type check**: `pnpm check`
 - **Test**: `npx playwright test` — Playwright tests
 

@@ -1,4 +1,9 @@
-import { GeoJSON, geoJSON, ImageOverlay, Map } from "leaflet";
+import {
+  type GeoJSON,
+  geoJSON,
+  type ImageOverlay,
+  type Map as LeafletMap,
+} from "leaflet";
 import { STYLES } from "../layout/map";
 import type {
   BaseCityStats,
@@ -6,13 +11,13 @@ import type {
   CityEntryCollection,
   CityStatsCollection,
 } from "../model/types";
-import { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateObservable } from "../state/ViewState";
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
  */
 export function createCitiesLayer<T extends BaseCityStats>(
-  map: Map,
+  map: LeafletMap,
   cityBoundaries: CityBoundaries,
   cityStatsData: CityStatsCollection<T>,
 ): [GeoJSON, CityEntryCollection<T>] {
@@ -39,7 +44,7 @@ export function createCitiesLayer<T extends BaseCityStats>(
 
 export function setCityOnBoundaryClick(
   viewState: ViewStateObservable,
-  map: Map,
+  map: LeafletMap,
   cityBoundaries: GeoJSON,
 ): void {
   cityBoundaries.addEventListener("click", (e) => {

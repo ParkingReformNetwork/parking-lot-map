@@ -3,7 +3,7 @@
 function isIFrame(): boolean {
   try {
     return window.self !== window.top;
-  } catch (e) {
+  } catch {
     return false;
   }
 }

@@ -1,4 +1,5 @@
 import { determineArgs, updateCoordinates } from "./base.ts";
+import { runScript } from "./runScript.ts";
 
 async function main(): Promise<void> {
   const { cityId, pkg } = determineArgs(
@@ -20,4 +21,4 @@ async function main(): Promise<void> {
   );
 }
 
-main();
+runScript(main);
