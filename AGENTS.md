@@ -44,7 +44,7 @@ Some particularly important folders and files:
 - **Fix issues**: `pnpm fix` — Auto-fix linting and format issues
 - **Lint**: `pnpm lint` — Biome + format checks
 - **Type check**: `pnpm check`
-- **Test**: `npx playwright test` — Playwright tests
+- **Test**: `pnpm exec playwright test` — Playwright tests
 
 All PRs require passing lint, type checks, and tests.
 
