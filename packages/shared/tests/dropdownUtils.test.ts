@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import {
-  createChoice,
   convertToChoicesJs,
+  createChoice,
 } from "../src/js/city-ui/dropdownUtils";
 
 test.describe("createChoice()", () => {

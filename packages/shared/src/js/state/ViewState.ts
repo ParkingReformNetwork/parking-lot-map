@@ -1,5 +1,5 @@
-import Observable from "./Observable";
 import type { CityId } from "../model/types";
+import Observable from "./Observable";
 
 type ViewState = {
   cityId: CityId;

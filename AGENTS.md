@@ -14,7 +14,7 @@ This is the **Parking Lot Map**, an interactive web application for the Parking 
 - **State management**: Reactive stream with custom `Observable` class in packages/shared/src/js/state/Observable.ts
 - **Data**: GeoJSON files stored in packages/primary/data and packages/ct/data
 - **Testing**: Playwright
-- **Code quality**: Prettier, ESLint, TypeScript compiler
+- **Code quality**: Biome, ESLint, TypeScript compiler
 
 ## Key Files & Directories
 
@@ -40,10 +40,10 @@ Some particularly important folders and files:
 
 ### Code quality
 
-- **Format code**: `npm run fmt`
-- **Fix issues**: `npm run fix` — Auto-fix linting and format issues
-- **Lint**: `npm run lint` — ESlint + format checks
-- **Type check**: `npm run check`
+- **Format code**: `pnpm fmt`
+- **Fix issues**: `pnpm fix` — Auto-fix linting and format issues
+- **Lint**: `pnpm lint` — ESlint + format checks
+- **Type check**: `pnpm check`
 - **Test**: `npx playwright test` — Playwright tests
 
 All PRs require passing lint, type checks, and tests.
