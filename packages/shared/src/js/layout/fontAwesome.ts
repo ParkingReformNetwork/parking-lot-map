@@ -1,16 +1,16 @@
-import { library, dom } from "@fortawesome/fontawesome-svg-core";
+import { dom, library } from "@fortawesome/fontawesome-svg-core";
 import {
   faCircleQuestion,
   faCircleXmark,
 } from "@fortawesome/free-regular-svg-icons";
 import {
   faArrowRight,
+  faCheck,
   faChevronDown,
   faChevronUp,
   faLink,
-  faUpRightFromSquare,
-  faCheck,
   faTriangleExclamation,
+  faUpRightFromSquare,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function initIcons(): void {

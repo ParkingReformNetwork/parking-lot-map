@@ -1,6 +1,6 @@
 import {
-  DropdownRequest,
   DropdownChoiceRequest,
+  DropdownRequest,
 } from "@prn-parking-lots/shared/src/js/city-ui/dropdownUtils";
 import type { CityStatsCollection } from "@prn-parking-lots/shared/src/js/model/types";
 

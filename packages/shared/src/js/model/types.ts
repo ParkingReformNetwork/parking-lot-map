@@ -1,11 +1,11 @@
-import type { ImageOverlay } from "leaflet";
 import type {
-  FeatureCollection,
   Feature,
+  FeatureCollection,
+  GeoJsonProperties,
   Geometry,
   Polygon,
-  GeoJsonProperties,
 } from "geojson";
+import type { ImageOverlay } from "leaflet";
 
 /// The slugified ID, e.g. `st-louis-mo` or `hartford`.
 /// (The state code is missing for state-specific maps like CT.)

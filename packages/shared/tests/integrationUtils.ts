@@ -1,6 +1,5 @@
-import fs from "fs/promises";
-
 import type { Page } from "@playwright/test";
+import fs from "fs/promises";
 import {
   BaseCityStats,
   CityId,

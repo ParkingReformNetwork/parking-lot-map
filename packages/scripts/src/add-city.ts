@@ -1,6 +1,5 @@
-import fs from "fs/promises";
-
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types.ts";
+import fs from "fs/promises";
 import {
   determineArgs,
   Pkg,

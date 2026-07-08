@@ -1,6 +1,5 @@
-import fs from "fs/promises";
-
 import { expect, test } from "@playwright/test";
+import fs from "fs/promises";
 
 async function assertSortedGeojson(filePath: string): Promise<void> {
   const rawData = await fs.readFile(filePath, "utf8");

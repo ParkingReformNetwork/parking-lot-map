@@ -1,13 +1,12 @@
-import { ImageOverlay, Map, geoJSON, GeoJSON } from "leaflet";
-
+import { GeoJSON, geoJSON, ImageOverlay, Map } from "leaflet";
+import { STYLES } from "../layout/map";
 import type {
+  BaseCityStats,
+  CityBoundaries,
   CityEntryCollection,
   CityStatsCollection,
-  CityBoundaries,
-  BaseCityStats,
 } from "../model/types";
 import { ViewStateObservable } from "../state/ViewState";
-import { STYLES } from "../layout/map";
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
