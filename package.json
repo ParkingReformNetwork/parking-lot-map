@@ -5,7 +5,7 @@
   "source": "index.html",
   "type": "module",
   "scripts": {
-    "test": "pnpm -r test",
+    "test": "pnpm -r --workspace-concurrency 1 test",
     "check": "tsc --noEmit",
     "fmt": "biome check --write .",
     "fix": "biome check --write --unsafe .",

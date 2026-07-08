@@ -44,7 +44,7 @@ Some particularly important folders and files:
 - **Fix issues**: `pnpm fix` — Auto-fix linting and format issues
 - **Lint**: `pnpm lint` — Biome + format checks
 - **Type check**: `pnpm check`
-- **Test**: `pnpm exec playwright test` — Playwright tests
+- **Test**: `pnpm test` — Playwright tests (see Testing section below for concurrency caveats)
 
 All PRs require passing lint, type checks, and tests.
 
@@ -52,6 +52,7 @@ All PRs require passing lint, type checks, and tests.
 
 - Playwright tests start the server. If there are issues starting the server, try `rm -rf .parcel-cache` and retry
 - Note that packages/primary/tests has more tests than packages/ct/tests because we don't want to duplicate tests for the common functionality.
+- The `primary` and `ct` packages both serve on the same port, so their tests can't run concurrently. Either run the top-level `pnpm test` (which forces `--workspace-concurrency 1`), or scope to one package at a time with `pnpm -F <pkg> test`. Don't run `npx playwright test` or `pnpm -r test` directly across the whole workspace, since that allows both packages to run at once.
 
 ## Styling
 
