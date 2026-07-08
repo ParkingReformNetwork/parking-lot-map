@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>Parking Lot Map - Parking Reform Network</title>
     <meta charset="utf-8">
@@ -15,8 +15,8 @@
     ></script>
     <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
+    function gtag(...args) {
+      dataLayer.push(args);
     }
     gtag("js", new Date());
 
@@ -80,6 +80,7 @@
       ></select>
       <nav class="header-icons">
         <button
+          type="button"
           class="header-icon-container header-about-icon-container"
           title="about the map"
           aria-expanded="false"
@@ -88,16 +89,18 @@
           <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
           <span class="sr-only">toggle a popup describing the map</span>
         </button>
-        <a
+        <button
+          type="button"
           class="header-icon-container header-share-icon-container"
           title="copy link"
-          ><i class="share-link-icon fa-solid fa-link" aria-hidden="true"></i
+        >
+          <i class="share-link-icon fa-solid fa-link" aria-hidden="true"></i
           ><i
             class="share-check-icon fa-solid fa-check"
             style="display: none"
             aria-hidden="true"
           ></i>
-        </a>
+        </button>
         <a
           class="header-icon-container header-full-screen-icon-container"
           href="https://parkingreform.org/parking-lot-map/"
@@ -119,6 +122,7 @@
       <header class="about-popup-header">
         <h2>About the Parking Lot Map</h2>
         <button
+          type="button"
           class="about-popup-close-icon-container"
           title="close the about popup"
           aria-label="close the about popup"
@@ -128,11 +132,15 @@
       </header>
 
       <div id="lots-toggle" hidden>
-        <h4 id="lots-toggle-on"><a>Turn on parking lots overlay</a></h4>
-        <h4 id="lots-toggle-off"><a>Turn off parking lots overlay</a></h4>
+        <h4 id="lots-toggle-on">
+          <button type="button">Turn on parking lots overlay</button>
+        </h4>
+        <h4 id="lots-toggle-off">
+          <button type="button">Turn off parking lots overlay</button>
+        </h4>
       </div>
 
-      <div role="region" aria-labelledby="about-popup-links-heading">
+      <section aria-labelledby="about-popup-links-heading">
         <h3 id="about-popup-links-heading">Relevant links</h3>
         <ul class="about-popup-links-list">
           <li>
@@ -163,7 +171,7 @@
             >
           </li>
         </ul>
-      </div>
+      </section>
 
       <h3>FAQ</h3>
       <dl>
