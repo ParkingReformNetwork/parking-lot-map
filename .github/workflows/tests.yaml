@@ -23,6 +23,6 @@ jobs:
         run: pnpm check
 
       - name: Install playwright
-        run: npx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
       - name: Run tests
         run: pnpm test

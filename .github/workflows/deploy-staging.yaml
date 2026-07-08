@@ -25,7 +25,7 @@ jobs:
         run: pnpm -F ct build
 
       - name: Install playwright
-        run: npx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
       - name: Test 'primary'
         run: pnpm -F primary test-dist
       - name: Test 'ct'

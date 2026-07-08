@@ -33,7 +33,7 @@ You must first install the project's dependencies before running any of the belo
 ```bash
 ❯ corepack enable pnpm
 ❯ pnpm install
-❯ npx playwright install
+❯ pnpm exec playwright install
 ```
 
 ## Start the server
