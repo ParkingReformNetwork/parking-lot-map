@@ -1,6 +1,6 @@
 import {
   formatHeader,
-  ScorecardValues,
+  type ScorecardValues,
 } from "@prn-parking-lots/shared/src/js/city-ui/scorecard.ts";
 
 import type { CityStats } from "./types.ts";

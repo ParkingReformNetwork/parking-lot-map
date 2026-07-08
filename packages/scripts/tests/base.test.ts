@@ -1,7 +1,7 @@
+import fs from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
-import fs from "fs/promises";
-import { Feature, FeatureCollection, Polygon } from "geojson";
+import type { Feature, FeatureCollection, Polygon } from "geojson";
 
 import {
   determineArgs,

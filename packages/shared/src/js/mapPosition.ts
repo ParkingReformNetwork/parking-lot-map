@@ -1,12 +1,12 @@
-import { ImageOverlay, Map } from "leaflet";
-import ParkingLotLoader from "./map-layers/ParkingLotLoader";
-import type { BaseCityStats, CityEntryCollection } from "./model/types";
-import { ViewStateObservable } from "./state/ViewState";
+import type { ImageOverlay, Map as LeafletMap } from "leaflet";
+import type ParkingLotLoader from "./map-layers/ParkingLotLoader";
+import type { BaseCityStats, CityEntryCollection, CityId } from "./model/types";
+import type { ViewStateObservable } from "./state/ViewState";
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
  */
-function snapToCity(map: Map, layer: ImageOverlay): void {
+function snapToCity(map: LeafletMap, layer: ImageOverlay): void {
   const bounds = layer.getBounds();
   // This moves the map and resets zoom.
   map.fitBounds(bounds);
@@ -19,7 +19,7 @@ function snapToCity(map: Map, layer: ImageOverlay): void {
 
 export function subscribeSnapToCity<T extends BaseCityStats>(
   viewState: ViewStateObservable,
-  map: Map,
+  map: LeafletMap,
   cityEntries: CityEntryCollection<T>,
 ): void {
   viewState.subscribe((state) => {
@@ -35,17 +35,17 @@ export function subscribeSnapToCity<T extends BaseCityStats>(
  */
 export function setCityByMapPosition<T extends BaseCityStats>(
   viewState: ViewStateObservable,
-  map: Map,
+  map: LeafletMap,
   cityEntries: CityEntryCollection<T>,
   parkingLotLoader: ParkingLotLoader,
 ): void {
   map.on("moveend", () => {
     let centralCityDistance: number | null = null;
-    let centralCity;
+    let centralCity: CityId | null = null;
     Object.entries(cityEntries).forEach(([cityId, scorecard]) => {
       const bounds = scorecard.layer.getBounds();
       if (!map.getBounds().intersects(bounds)) return;
-      parkingLotLoader.load(cityId);
+      void parkingLotLoader.load(cityId);
 
       const distance = map
         .getBounds()

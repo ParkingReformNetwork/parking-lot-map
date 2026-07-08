@@ -1,5 +1,3 @@
-/* eslint-disable import/first, import/newline-after-import */
-
 import type {
   CityBoundaries,
   CityStatsCollection,

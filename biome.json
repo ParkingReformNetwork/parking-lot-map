@@ -12,7 +12,7 @@
     "indentWidth": 2
   },
   "linter": {
-    "enabled": false,
+    "enabled": true,
     "rules": {
       "preset": "recommended",
       "suspicious": { "noExplicitAny": "off" },

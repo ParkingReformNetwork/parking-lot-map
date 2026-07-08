@@ -1,6 +1,6 @@
+import fs from "node:fs/promises";
 import type { Page } from "@playwright/test";
-import fs from "fs/promises";
-import {
+import type {
   BaseCityStats,
   CityId,
   CityStatsCollection,
