@@ -14,7 +14,7 @@ This is the **Parking Lot Map**, an interactive web application for the Parking 
 - **State management**: Reactive stream with custom `Observable` class in packages/shared/src/js/state/Observable.ts
 - **Data**: GeoJSON files stored in packages/primary/data and packages/ct/data
 - **Testing**: Playwright
-- **Code quality**: Prettier, ESLint, TypeScript compiler
+- **Code quality**: Biome, ESLint, TypeScript compiler
 
 ## Key Files & Directories
 

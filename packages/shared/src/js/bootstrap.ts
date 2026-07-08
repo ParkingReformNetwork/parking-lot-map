@@ -1,23 +1,21 @@
-import subscribeScorecard, { ScorecardFormatter } from "./city-ui/scorecard";
 import initDropdown from "./city-ui/dropdown";
 import type { DropdownRequest } from "./city-ui/dropdownUtils";
+import subscribeScorecard, { ScorecardFormatter } from "./city-ui/scorecard";
 
 import initAbout from "./layout/about";
 import initIcons from "./layout/fontAwesome";
 import maybeDisableFullScreenIcon from "./layout/iframe";
 import { createMap } from "./layout/map";
 import subscribeShareLink from "./layout/share";
-
-import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
-
 import {
   createCitiesLayer,
   setCityOnBoundaryClick,
 } from "./map-layers/citiesLayer";
 import ParkingLotLoader from "./map-layers/ParkingLotLoader";
+import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
 
 import { extractCityIdFromUrl } from "./model/cityId";
-import type { CityId, DataSet, BaseCityStats } from "./model/types";
+import type { BaseCityStats, CityId, DataSet } from "./model/types";
 
 import { initViewState } from "./state/ViewState";
 

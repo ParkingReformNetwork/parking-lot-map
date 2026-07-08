@@ -1,4 +1,4 @@
-import { expect, test, Page } from "@playwright/test";
+import { expect, Page, test } from "@playwright/test";
 
 import {
   getAllDropdownValues,

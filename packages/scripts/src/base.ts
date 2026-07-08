@@ -1,14 +1,12 @@
+import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
+import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 import fs from "fs/promises";
-
 import {
+  Feature,
   FeatureCollection,
   GeoJsonProperties,
   Polygon,
-  Feature,
 } from "geojson";
-
-import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
-import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 
 export type Pkg = "primary" | "ct";
 
