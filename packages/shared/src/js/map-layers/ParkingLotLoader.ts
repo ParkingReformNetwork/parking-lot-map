@@ -1,7 +1,7 @@
 import { type GeoJSON, geoJSON, type Map as LeafletMap } from "leaflet";
 import { STYLES } from "../layout/map";
 import type { CityId, ParkingLotGeoJSONModules } from "../model/types";
-import type { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateManager } from "../state/ViewState";
 
 function handleLotsToggle(map: LeafletMap, parkingLayer: GeoJSON): void {
   if (window.location.href.indexOf("#lots-toggle") === -1) return;
@@ -67,8 +67,10 @@ export default class ParkingLotLoader {
     return loadPromise;
   }
 
-  subscribe(viewState: ViewStateObservable): void {
-    viewState.subscribe(({ cityId }) => this.load(cityId), "load parking lots");
+  subscribe(viewState: ViewStateManager): void {
+    viewState.subscribeToCity("load parking lots", (cityId) =>
+      this.load(cityId),
+    );
   }
 
   private async loadCity(cityId: CityId): Promise<void> {

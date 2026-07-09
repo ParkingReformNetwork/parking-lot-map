@@ -1,5 +1,5 @@
 import ChoicesJS from "choices.js";
-import type { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateManager } from "../state/ViewState";
 import { convertToChoicesJs, type DropdownRequest } from "./dropdownUtils";
 
 function createDropdown(dropdownRequest: DropdownRequest): ChoicesJS {
@@ -20,13 +20,12 @@ function createDropdown(dropdownRequest: DropdownRequest): ChoicesJS {
 
 export default function initDropdown(
   dropdownRequest: DropdownRequest,
-  viewState: ViewStateObservable,
+  viewState: ViewStateManager,
 ): void {
   const dropdown = createDropdown(dropdownRequest);
 
-  viewState.subscribe(
-    ({ cityId }) => dropdown.setChoiceByValue(cityId),
-    "set dropdown to city",
+  viewState.subscribeToCity("set dropdown to city", (cityId) =>
+    dropdown.setChoiceByValue(cityId),
   );
 
   // Bind user changes in the dropdown to update the view state.
