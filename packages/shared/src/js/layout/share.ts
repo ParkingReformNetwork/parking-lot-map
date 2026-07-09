@@ -27,20 +27,24 @@ function switchShareIcons(shareIcon: HTMLButtonElement): void {
 export default function subscribeShareLink(
   viewState: ViewStateObservable,
 ): void {
-  viewState.subscribe(({ cityId }) => {
-    const shareIcon = document.querySelector<HTMLButtonElement>(
-      ".header-share-icon-container",
-    );
-    const fullScreenIcon = document.querySelector<HTMLAnchorElement>(
-      ".header-full-screen-icon-container",
-    );
-    if (!shareIcon || !fullScreenIcon) return;
+  const shareIcon = document.querySelector<HTMLButtonElement>(
+    ".header-share-icon-container",
+  );
+  const fullScreenIcon = document.querySelector<HTMLAnchorElement>(
+    ".header-full-screen-icon-container",
+  );
+  if (!shareIcon || !fullScreenIcon) return;
 
-    const shareUrl = determineShareUrl(window.location.href, cityId);
-    shareIcon.addEventListener("click", async () => {
-      await copyToClipboard(shareUrl);
-      switchShareIcons(shareIcon);
-    });
-    fullScreenIcon.href = shareUrl;
+  shareIcon.addEventListener("click", async () => {
+    const shareUrl = determineShareUrl(
+      window.location.href,
+      viewState.getValue().cityId,
+    );
+    await copyToClipboard(shareUrl);
+    switchShareIcons(shareIcon);
+  });
+
+  viewState.subscribe(({ cityId }) => {
+    fullScreenIcon.href = determineShareUrl(window.location.href, cityId);
   }, "update share link");
 }
