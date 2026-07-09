@@ -5,7 +5,6 @@ import subscribeScorecard, {
 } from "./city-ui/scorecard";
 
 import initAbout from "./layout/about";
-import initIcons from "./layout/fontAwesome";
 import maybeDisableFullScreenIcon from "./layout/iframe";
 import { createMap } from "./layout/map";
 import subscribeShareLink from "./layout/share";
@@ -31,7 +30,6 @@ interface Args<T extends BaseCityStats> {
 export default async function bootstrapApp<T extends BaseCityStats>(
   args: Args<T>,
 ): Promise<void> {
-  initIcons();
   maybeDisableFullScreenIcon();
   initAbout();
 

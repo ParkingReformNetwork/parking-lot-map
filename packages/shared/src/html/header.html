@@ -14,7 +14,7 @@
       aria-expanded="false"
       aria-controls="about-popup"
     >
-      <i class="fa-regular fa-circle-question" aria-hidden="true"></i>
+      <svg aria-hidden="true"><use href="#icon-circle-question"></use></svg>
       <span class="sr-only">toggle a popup describing the map</span>
     </button>
     <button
@@ -22,12 +22,12 @@
       class="header-icon-container header-share-icon-container"
       title="copy link"
     >
-      <i class="share-link-icon fa-solid fa-link" aria-hidden="true"></i
-      ><i
-        class="share-check-icon fa-solid fa-check"
-        style="display: none"
-        aria-hidden="true"
-      ></i>
+      <svg class="share-link-icon" aria-hidden="true">
+        <use href="#icon-link"></use>
+      </svg>
+      <svg class="share-check-icon" style="display: none" aria-hidden="true">
+        <use href="#icon-check"></use>
+      </svg>
     </button>
     <a
       class="header-icon-container header-full-screen-icon-container"
@@ -35,7 +35,9 @@
       title="view fullscreen"
       target="_blank"
     >
-      <i class="fa-solid fa-up-right-from-square" aria-hidden="true"></i>
+      <svg aria-hidden="true">
+        <use href="#icon-up-right-from-square"></use>
+      </svg>
       <span class="sr-only">view fullscreen (opens in new tab)</span>
     </a>
   </nav>
