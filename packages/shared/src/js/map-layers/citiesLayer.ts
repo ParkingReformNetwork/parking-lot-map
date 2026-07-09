@@ -11,7 +11,7 @@ import type {
   CityEntryCollection,
   CityStatsCollection,
 } from "../model/types";
-import type { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateManager } from "../state/ViewState";
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
@@ -43,7 +43,7 @@ export function createCitiesLayer<T extends BaseCityStats>(
 }
 
 export function setCityOnBoundaryClick(
-  viewState: ViewStateObservable,
+  viewState: ViewStateManager,
   map: LeafletMap,
   cityBoundaries: GeoJSON,
 ): void {

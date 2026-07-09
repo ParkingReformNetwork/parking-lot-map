@@ -1,7 +1,7 @@
 /* global document, navigator, window */
 
 import { determineShareUrl } from "../model/cityId";
-import type { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateManager } from "../state/ViewState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
@@ -24,9 +24,7 @@ function switchShareIcons(shareIcon: HTMLButtonElement): void {
   }, 1000);
 }
 
-export default function subscribeShareLink(
-  viewState: ViewStateObservable,
-): void {
+export default function subscribeShareLink(viewState: ViewStateManager): void {
   const shareIcon = document.querySelector<HTMLButtonElement>(
     ".header-share-icon-container",
   );
@@ -44,7 +42,7 @@ export default function subscribeShareLink(
     switchShareIcons(shareIcon);
   });
 
-  viewState.subscribe(({ cityId }) => {
+  viewState.subscribeToCity("update share link", (cityId) => {
     fullScreenIcon.href = determineShareUrl(window.location.href, cityId);
-  }, "update share link");
+  });
 }

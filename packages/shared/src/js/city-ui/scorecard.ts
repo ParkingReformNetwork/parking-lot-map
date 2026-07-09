@@ -1,6 +1,6 @@
 import { iconHtml } from "../layout/icons";
 import type { BaseCityStats, CityEntryCollection } from "../model/types";
-import type { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateManager } from "../state/ViewState";
 
 export interface ScorecardValues {
   header: string;
@@ -56,15 +56,15 @@ export function formatReformLine(
 }
 
 export default function subscribeScorecard<T extends BaseCityStats>(
-  viewState: ViewStateObservable,
+  viewState: ViewStateManager,
   cityEntries: CityEntryCollection<T>,
   scorecardFormatter: ScorecardFormatter<T>,
 ): void {
-  viewState.subscribe(({ cityId }) => {
+  viewState.subscribeToCity("generate scorecard", (cityId) => {
     const scorecardContainer = document.querySelector(".scorecard-container");
     if (!scorecardContainer) return;
     scorecardContainer.innerHTML = generateScorecard(
       scorecardFormatter(cityEntries[cityId].stats),
     );
-  }, "generate scorecard");
+  });
 }
