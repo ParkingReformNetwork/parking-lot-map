@@ -1,10 +1,12 @@
+@use "colors";
+
 a {
-  color: #337ab7;
+  color: colors.$link;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: #23527c;
+    color: colors.$link-hover;
     text-decoration: underline;
   }
 }

@@ -1,8 +1,8 @@
-@use "theme/borders";
 @use "theme/breakpoints";
 @use "theme/colors";
 @use "theme/spacing";
 @use "theme/icons";
+@use "theme/mixins";
 
 // We don't use $container-edge-spacing to save vertical space.
 $header-y-padding: spacing.$element-gap;
@@ -29,17 +29,8 @@ $header-height: calc(
 }
 
 .header-icon-container {
-  height: spacing.$min-touch-target;
-  width: spacing.$min-touch-target;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover {
-    background-color: colors.$hover-gray;
-  }
+  @include mixins.icon-button-container;
+  @include mixins.hover-highlight(colors.$hover-gray);
 
   svg {
     color: colors.$white;

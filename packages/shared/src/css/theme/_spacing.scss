@@ -6,3 +6,6 @@ $map-controls-margin-top: 6px;
 
 $container-edge-spacing: 15px;
 $element-gap: 10px;
+
+// Default `padding-inline-start` for lists is 40px; use this for a tighter list.
+$list-indent: 20px;
