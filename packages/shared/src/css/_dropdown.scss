@@ -12,7 +12,7 @@
   .choices__inner {
     color: colors.$black;
     font-size: typography.$font-size-base;
-    line-height: 1.2; // To vertically center the text.
+    line-height: typography.$line-height-snug; // To vertically center the text.
 
     height: spacing.$min-touch-target;
     width: 220px;
@@ -66,6 +66,6 @@ div.choices__item.choices__item--choice.choices__item--selectable {
 .choices__list--dropdown .choices__item--selectable,
 .choices__list[aria-expanded] .choices__item--selectable {
   // Choices.js sets this to 100px to account for itemSelectText. But we disable that,
-  // so we want to use the normal padding it would otherwise use of 10px.
-  padding-right: 10px;
+  // so we want to use the normal padding it would otherwise use.
+  padding-right: spacing.$element-gap;
 }
