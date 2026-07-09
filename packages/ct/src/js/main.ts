@@ -1,8 +1,8 @@
 import bootstrapApp from "@prn-parking-lots/shared/src/js/bootstrap";
 
 import {
-  CITY_STATS_DATA,
   CITY_BOUNDARIES_GEOJSON,
+  CITY_STATS_DATA,
   PARKING_LOT_GEOJSON_MODULES,
 } from "./data";
 import createDropdownRequest from "./dropdownRequest";

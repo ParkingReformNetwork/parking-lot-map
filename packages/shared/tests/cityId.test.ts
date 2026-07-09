@@ -1,8 +1,8 @@
 import { expect, test } from "@playwright/test";
 
 import {
-  extractCityIdFromUrl,
   determineShareUrl,
+  extractCityIdFromUrl,
   parseCityIdFromJson,
 } from "../src/js/model/cityId";
 

@@ -1,0 +1,44 @@
+<header class="top-header">
+  <select
+    single
+    name="city-dropdown"
+    class="header-dropdown"
+    id="city-dropdown"
+    aria-label="select the city"
+  ></select>
+  <nav class="header-icons">
+    <button
+      type="button"
+      class="header-icon-container header-about-icon-container"
+      title="about the map"
+      aria-haspopup="dialog"
+      aria-controls="about-popup"
+    >
+      <svg aria-hidden="true"><use href="#icon-circle-question"></use></svg>
+      <span class="sr-only">toggle a popup describing the map</span>
+    </button>
+    <button
+      type="button"
+      class="header-icon-container header-share-icon-container"
+      title="copy link"
+    >
+      <svg class="share-link-icon" aria-hidden="true">
+        <use href="#icon-link"></use>
+      </svg>
+      <svg class="share-check-icon" style="display: none" aria-hidden="true">
+        <use href="#icon-check"></use>
+      </svg>
+    </button>
+    <a
+      class="header-icon-container header-full-screen-icon-container"
+      href="{{ fullscreenUrl }}"
+      title="view fullscreen"
+      target="_blank"
+    >
+      <svg aria-hidden="true">
+        <use href="#icon-up-right-from-square"></use>
+      </svg>
+      <span class="sr-only">view fullscreen (opens in new tab)</span>
+    </a>
+  </nav>
+</header>

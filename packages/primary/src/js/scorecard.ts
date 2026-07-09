@@ -1,13 +1,14 @@
 import {
-  ScorecardValues,
   formatHeader,
   formatReformLine,
+  type ScorecardValues,
 } from "@prn-parking-lots/shared/src/js/city-ui/scorecard.ts";
+import { iconHtml } from "@prn-parking-lots/shared/src/js/layout/icons.ts";
 
 import type { CityStats } from "./types.ts";
 
 export const COMMUNITY_WARNING = `<div class="community-contribution-warning">
-    <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 
+    ${iconHtml("triangle-exclamation")}
     Community-maintained map
   </div>`;
 

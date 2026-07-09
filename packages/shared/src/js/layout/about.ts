@@ -1,37 +1,15 @@
-import Observable from "../state/Observable";
-
-function updatePopupUI(visible: boolean): void {
-  const popup = document.querySelector<HTMLElement>(".about-popup");
-  const icon = document.querySelector(".header-about-icon-container");
-  if (!popup || !icon) return;
-  popup.hidden = !visible;
-  icon.setAttribute("aria-expanded", visible.toString());
-}
-
 export default function initAbout(): void {
-  const isVisible = new Observable<boolean>("about popup", false);
-  isVisible.subscribe(updatePopupUI, "update popup UI");
-
-  const popup = document.querySelector(".about-popup");
-  const headerIcon = document.querySelector(".header-about-icon-container");
-  const closeIcon = document.querySelector(".about-popup-close-icon-container");
-
-  headerIcon?.addEventListener("click", () =>
-    isVisible.setValue(!isVisible.getValue()),
+  const dialog = document.querySelector<HTMLDialogElement>("#about-popup");
+  const openButton = document.querySelector(".header-about-icon-container");
+  const closeButton = document.querySelector(
+    ".about-popup-close-icon-container",
   );
-  closeIcon?.addEventListener("click", () => isVisible.setValue(false));
+  if (!dialog || !openButton || !closeButton) return;
 
-  // Clicks outside the popup close it.
-  window.addEventListener("click", (event) => {
-    if (
-      isVisible.getValue() === true &&
-      event.target instanceof Element &&
-      !headerIcon?.contains(event.target) &&
-      !popup?.contains(event.target)
-    ) {
-      isVisible.setValue(false);
-    }
+  openButton.addEventListener("click", () => dialog.showModal());
+  closeButton.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    // Clicks on ::backdrop report the dialog itself as the target, unlike clicks on its content.
+    if (event.target === dialog) dialog.close();
   });
-
-  isVisible.initialize();
 }

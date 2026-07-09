@@ -53,7 +53,7 @@
   }
 }
 
-.scorecard-accordion-toggle {
+summary.scorecard-accordion-toggle {
   height: spacing.$min-touch-target;
   width: 100%;
   padding: 0;
@@ -64,6 +64,11 @@
   text-align: left;
   padding-left: spacing.$container-edge-spacing;
   padding-right: 0;
+
+  list-style: none;
+  &::-webkit-details-marker {
+    display: none;
+  }
 
   display: flex;
   align-items: center;
@@ -93,7 +98,22 @@
 
     svg {
       height: icons.$icon-size-sm;
+      width: icons.$icon-size-sm;
     }
+  }
+
+  .chevron-up-icon {
+    display: none;
+  }
+}
+
+details[open] > summary.scorecard-accordion-toggle {
+  .chevron-down-icon {
+    display: none;
+  }
+
+  .chevron-up-icon {
+    display: block;
   }
 }
 

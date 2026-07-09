@@ -6,17 +6,9 @@ test("about popup can be opened and closed", async ({ page }) => {
   const aboutIcon = ".header-about-icon-container";
 
   const aboutIsVisible = async () =>
-    page.$eval(".about-popup", (el) => el instanceof HTMLElement && !el.hidden);
+    page.$eval(".about-popup", (el) => (el as HTMLDialogElement).open);
 
   // before click
-  expect(await aboutIsVisible()).toBe(false);
-
-  // click about icon (open popup)
-  await page.click(aboutIcon);
-  expect(await aboutIsVisible()).toBe(true);
-
-  // click about icon (close popup)
-  await page.click(aboutIcon);
   expect(await aboutIsVisible()).toBe(false);
 
   // click about icon (open popup)
@@ -31,7 +23,7 @@ test("about popup can be opened and closed", async ({ page }) => {
   await page.click(aboutIcon);
   expect(await aboutIsVisible()).toBe(true);
 
-  // click header
-  await page.click("header");
+  // click the backdrop, outside the dialog's content box
+  await page.mouse.click(5, 5);
   expect(await aboutIsVisible()).toBe(false);
 });

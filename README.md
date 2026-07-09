@@ -33,7 +33,7 @@ You must first install the project's dependencies before running any of the belo
 ```bash
 ❯ corepack enable pnpm
 ❯ pnpm install
-❯ npx playwright install
+❯ pnpm exec playwright install
 ```
 
 ## Start the server
@@ -71,6 +71,40 @@ You can tests for a specific package with `-F`, e.g. `pnpm -F shared test`.
 ```bash
 ❯ pnpm lint
 ```
+
+## Icons
+
+All icons are inlined as an SVG sprite using symbols from Font Awesome Free 6.7.2 (CC BY 4.0). The sprite lives in [packages/shared/src/html/icon-sprite.html](packages/shared/src/html/icon-sprite.html).
+
+**Using an icon:**
+
+In TypeScript, import `iconHtml()` or `createIcon()` from [packages/shared/src/js/layout/icons.ts](packages/shared/src/js/layout/icons.ts):
+
+```typescript
+import { iconHtml, createIcon, type IconName } from "../layout/icons";
+
+// As HTML string (e.g., for setting innerHTML)
+const html = iconHtml("arrow-right");
+element.innerHTML = html;
+
+// As a DOM element
+const icon = createIcon("arrow-right", "my-class");
+element.appendChild(icon);
+```
+
+**Adding a new icon:**
+
+1. Choose an icon from [Font Awesome Free 6.7.2](https://fontawesome.com/icons) (only Free tier icons are permitted).
+2. Download or copy the SVG path data (the `d="..."` attribute).
+3. Add a new `<symbol>` with `id="icon-{name}"` to the sprite in `packages/shared/src/html/icon-sprite.html`:
+
+   ```html
+   <symbol id="icon-my-icon" viewBox="0 0 512 512">
+     <path fill="currentColor" d="..." />
+   </symbol>
+   ```
+
+4. Add the icon name to the `IconName` type in `packages/shared/src/js/layout/icons.ts`.
 
 ## Update score card for existing city
 
@@ -144,6 +178,10 @@ You can preview what a build will look like by running `pnpm -F primary build` o
 
 You can also run our integration tests on built dist folder with `pnpm -F primary test-dist` and `pnpm -F ct test-dist` (make sure the server is not already running).
 
+### Benchmark performance
+
+Against a running production build of `primary` (see above), run `pnpm -F scripts benchmark` to measure initial page load and the cost of switching cities with a headless browser. It writes `benchmark-results/latest.json`; compare two runs with `python3 packages/scripts/compare-benchmarks.py <before.json> <after.json>`. Options: `--runs N`, `--out <path>`, `--headed`, and `PORT` to override the port.
+
 ### Staging
 
 We use continuous deployment, meaning that we re-deploy the site every time we merge a pull request to staging at https://parkingreform.org/plm-staging/ and https://parkingreform.org/ct-parking-lots-staging. You can check how the site renders about ~1-2 minutes after your change merges.
@@ -156,7 +194,7 @@ Go to https://github.com/ParkingReformNetwork/parking-lot-map/actions and open t
 
 ## State diagram
 
-This shows all possible user interactions on the map, and what triggers what.
+This shows the complex user interactions on the map, and what triggers what.
 
 ```mermaid
 graph TD
@@ -177,26 +215,6 @@ graph TD
 
     G[zoom]
     R[zoom buttons]
-
-    J[scorecard accordion button]
-    K[scorecard accordion contents]
-
-    L[layer toggle]
-    M[map layer]
-
-    N[about icon]
-    O[about popup]
-    P[click outside popup]
-    Q[about popup close icon]
-
-
-    N -->|toggles| O
-    P -->|closes| O
-    Q -->|closes| O
-
-    J -->|toggles| K
-
-    L -->|controls| M
 
     F -->|controls| A
 

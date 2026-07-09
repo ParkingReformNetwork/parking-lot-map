@@ -1,7 +1,6 @@
 import ChoicesJS from "choices.js";
-
-import { DropdownRequest, convertToChoicesJs } from "./dropdownUtils";
-import { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateObservable } from "../state/ViewState";
+import { convertToChoicesJs, type DropdownRequest } from "./dropdownUtils";
 
 function createDropdown(dropdownRequest: DropdownRequest): ChoicesJS {
   const dropdown = new ChoicesJS("#city-dropdown", {

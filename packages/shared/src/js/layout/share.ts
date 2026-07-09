@@ -1,18 +1,17 @@
 /* global document, navigator, window */
 
-import { ViewStateObservable } from "../state/ViewState";
 import { determineShareUrl } from "../model/cityId";
+import type { ViewStateObservable } from "../state/ViewState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
     await navigator.clipboard.writeText(value);
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.error("Failed to write to clipboard: ", err);
   }
 }
 
-function switchShareIcons(shareIcon: HTMLAnchorElement): void {
+function switchShareIcons(shareIcon: HTMLButtonElement): void {
   const linkIcon = shareIcon.querySelector<SVGElement>("svg.share-link-icon");
   const checkIcon = shareIcon.querySelector<SVGElement>("svg.share-check-icon");
   if (!linkIcon || !checkIcon) return;
@@ -29,7 +28,7 @@ export default function subscribeShareLink(
   viewState: ViewStateObservable,
 ): void {
   viewState.subscribe(({ cityId }) => {
-    const shareIcon = document.querySelector<HTMLAnchorElement>(
+    const shareIcon = document.querySelector<HTMLButtonElement>(
       ".header-share-icon-container",
     );
     const fullScreenIcon = document.querySelector<HTMLAnchorElement>(

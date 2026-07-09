@@ -1,6 +1,6 @@
 import type {
-  Group as ChoicesJsGroup,
   Choice as ChoicesJsChoice,
+  Group as ChoicesJsGroup,
 } from "choices.js";
 
 import type { CityId } from "../model/types";

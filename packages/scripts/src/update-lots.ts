@@ -1,4 +1,5 @@
 import { determineArgs, updateParkingLots } from "./base.ts";
+import { runScript } from "./runScript.ts";
 
 async function main(): Promise<void> {
   const { pkg, cityId } = determineArgs("update-lots", process.argv.slice(2));
@@ -16,4 +17,4 @@ async function main(): Promise<void> {
   );
 }
 
-main();
+runScript(main);

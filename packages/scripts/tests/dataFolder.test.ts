@@ -1,5 +1,4 @@
-import fs from "fs/promises";
-
+import fs from "node:fs/promises";
 import { expect, test } from "@playwright/test";
 
 async function assertSortedGeojson(filePath: string): Promise<void> {

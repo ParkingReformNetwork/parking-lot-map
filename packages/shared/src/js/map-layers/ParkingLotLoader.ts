@@ -1,8 +1,7 @@
-import { geoJSON, GeoJSON, Map as LeafletMap } from "leaflet";
-
-import type { CityId, ParkingLotGeoJSONModules } from "../model/types";
-import { ViewStateObservable } from "../state/ViewState";
+import { type GeoJSON, geoJSON, type Map as LeafletMap } from "leaflet";
 import { STYLES } from "../layout/map";
+import type { CityId, ParkingLotGeoJSONModules } from "../model/types";
+import type { ViewStateObservable } from "../state/ViewState";
 
 function handleLotsToggle(map: LeafletMap, parkingLayer: GeoJSON): void {
   if (window.location.href.indexOf("#lots-toggle") === -1) return;

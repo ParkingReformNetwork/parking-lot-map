@@ -1,14 +1,12 @@
-import fs from "fs/promises";
-
-import {
+import fs from "node:fs/promises";
+import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
+import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
+import type {
+  Feature,
   FeatureCollection,
   GeoJsonProperties,
   Polygon,
-  Feature,
 } from "geojson";
-
-import { parseCityIdFromJson } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
-import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 
 export type Pkg = "primary" | "ct";
 
@@ -115,7 +113,7 @@ export async function updateParkingLots(
   originalFilePath: string,
   updateFilePath: string,
 ): Promise<void> {
-  let newData;
+  let newData: FeatureCollection<Polygon, GeoJsonProperties>;
   try {
     const rawNewData = await fs.readFile(originalFilePath, "utf8");
     newData = JSON.parse(rawNewData);
@@ -136,7 +134,7 @@ export async function updateParkingLots(
   const newGeometryType = newData.features[0].geometry.type;
 
   if (!addCity) {
-    let originalData;
+    let originalData: Feature<Polygon, GeoJsonProperties>;
     try {
       const rawOriginalData = await fs.readFile(updateFilePath, "utf8");
       originalData = JSON.parse(rawOriginalData);

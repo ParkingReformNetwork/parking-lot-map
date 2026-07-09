@@ -6,12 +6,14 @@
     "test": "playwright test",
     "add-city": "tsx src/add-city.ts",
     "update-city-boundaries": "tsx src/update-city-boundaries.ts",
-    "update-lots": "tsx src/update-lots.ts"
+    "update-lots": "tsx src/update-lots.ts",
+    "benchmark": "tsx src/benchmark.ts"
   },
   "dependencies": {
     "@prn-parking-lots/shared": "workspace:*"
   },
   "devDependencies": {
+    "@playwright/test": "^1.61.1",
     "tsx": "^4.19.2"
   }
 }
