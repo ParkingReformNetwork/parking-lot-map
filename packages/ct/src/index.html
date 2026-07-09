@@ -52,116 +52,12 @@
   </head>
 
   <body>
-    <!--
-      Icon sprite: each <symbol> holds one inlined icon from Font Awesome Free 6.7.2
-      (CC BY 4.0, https://fontawesome.com/license/free). Referenced via <use href="#icon-name">
-      from both static markup below and packages/shared/src/js/layout/icons.ts.
-    -->
-    <svg aria-hidden="true" style="display: none">
-      <symbol id="icon-arrow-right" viewBox="0 0 448 512">
-        <path
-          fill="currentColor"
-          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-        />
-      </symbol>
-      <symbol id="icon-check" viewBox="0 0 448 512">
-        <path
-          fill="currentColor"
-          d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
-        />
-      </symbol>
-      <symbol id="icon-chevron-down" viewBox="0 0 512 512">
-        <path
-          fill="currentColor"
-          d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z"
-        />
-      </symbol>
-      <symbol id="icon-chevron-up" viewBox="0 0 512 512">
-        <path
-          fill="currentColor"
-          d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
-        />
-      </symbol>
-      <symbol id="icon-circle-question" viewBox="0 0 512 512">
-        <path
-          fill="currentColor"
-          d="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"
-        />
-      </symbol>
-      <symbol id="icon-circle-xmark" viewBox="0 0 512 512">
-        <path
-          fill="currentColor"
-          d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"
-        />
-      </symbol>
-      <symbol id="icon-link" viewBox="0 0 640 512">
-        <path
-          fill="currentColor"
-          d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"
-        />
-      </symbol>
-      <symbol id="icon-triangle-exclamation" viewBox="0 0 512 512">
-        <path
-          fill="currentColor"
-          d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480L40 480c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24l0 112c0 13.3 10.7 24 24 24s24-10.7 24-24l0-112c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"
-        />
-      </symbol>
-      <symbol id="icon-up-right-from-square" viewBox="0 0 512 512">
-        <path
-          fill="currentColor"
-          d="M352 0c-12.9 0-24.6 7.8-29.6 19.8s-2.2 25.7 6.9 34.9L370.7 96 201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L416 141.3l41.4 41.4c9.2 9.2 22.9 11.9 34.9 6.9s19.8-16.6 19.8-29.6l0-128c0-17.7-14.3-32-32-32L352 0zM80 32C35.8 32 0 67.8 0 112L0 432c0 44.2 35.8 80 80 80l320 0c44.2 0 80-35.8 80-80l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 112c0 8.8-7.2 16-16 16L80 448c-8.8 0-16-7.2-16-16l0-320c0-8.8 7.2-16 16-16l112 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L80 32z"
-        />
-      </symbol>
-    </svg>
+    <include src="packages/shared/src/html/icon-sprite.html"></include>
 
-    <header class="top-header">
-      <select
-        single
-        name="city-dropdown"
-        class="header-dropdown"
-        id="city-dropdown"
-        aria-label="select the city"
-      ></select>
-      <nav class="header-icons">
-        <button
-          type="button"
-          class="header-icon-container header-about-icon-container"
-          title="about the map"
-          aria-expanded="false"
-          aria-controls="about-popup"
-        >
-          <svg aria-hidden="true"><use href="#icon-circle-question"></use></svg>
-          <span class="sr-only">toggle a popup describing the map</span>
-        </button>
-        <button
-          type="button"
-          class="header-icon-container header-share-icon-container"
-          title="copy link"
-        >
-          <svg class="share-link-icon" aria-hidden="true">
-            <use href="#icon-link"></use>
-          </svg>
-          <svg
-            class="share-check-icon"
-            style="display: none"
-            aria-hidden="true"
-          >
-            <use href="#icon-check"></use>
-          </svg>
-        </button>
-        <a
-          class="header-icon-container header-full-screen-icon-container"
-          href="https://parkingreform.org/parking-lot-map/"
-          title="view fullscreen"
-          target="_blank"
-        >
-          <svg aria-hidden="true">
-            <use href="#icon-up-right-from-square"></use>
-          </svg>
-          <span class="sr-only">view fullscreen (opens in new tab)</span>
-        </a>
-      </nav>
-    </header>
+    <include
+      src="packages/shared/src/html/header.html"
+      locals='{"fullscreenUrl": "https://parkingreform.org/ct-parking-lots/"}'
+    ></include>
 
     <section
       id="about-popup"
@@ -387,35 +283,15 @@
       <p>Copyright 2025 Parking Reform Network - All Rights Reserved</p>
     </section>
 
-    <section
-      id="scorecard-container"
-      class="scorecard-container"
-      role="region"
-    ></section>
+    <include src="packages/shared/src/html/scorecard.html"></include>
 
-    <div class="prn-logo">
-      <a
-        href="https://parkingreform.org/support/"
-        aria-label="Support Parking Reform Network"
-        target="_blank"
-        ><img
-          src="../../shared/assets/images/prn-logo.png"
-          alt="Parking Reform Network logo"
-        ></a
-      >
-    </div>
+    <include src="packages/shared/src/html/logo.html"></include>
 
     <div
       id="map"
       role="application"
       aria-label="interactive map of parking lots in Connecticut"
     ></div>
-    <script type="module">
-    import initApp from "./js/main";
-
-    window.onload = async () => {
-      await initApp();
-    };
-    </script>
+    <include src="packages/shared/src/html/bootstrap.html"></include>
   </body>
 </html>
