@@ -216,16 +216,6 @@ graph TD
     G[zoom]
     R[zoom buttons]
 
-    N[about icon]
-    O[about popup]
-    P[click outside popup]
-    Q[about popup close icon]
-
-
-    N -->|toggles| O
-    P -->|closes| O
-    Q -->|closes| O
-
     F -->|controls| A
 
     E -->|changes| B
