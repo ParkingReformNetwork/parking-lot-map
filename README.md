@@ -74,7 +74,7 @@ You can tests for a specific package with `-F`, e.g. `pnpm -F shared test`.
 
 ## Icons
 
-All icons are inlined as an SVG sprite using symbols from Font Awesome Free 6.7.2 (CC BY 4.0). Because `primary` and `ct` are separate apps with their own HTML entry points, the sprite is duplicated in both [packages/primary/src/index.html](packages/primary/src/index.html) and [packages/ct/src/index.html](packages/ct/src/index.html).
+All icons are inlined as an SVG sprite using symbols from Font Awesome Free 6.7.2 (CC BY 4.0). The sprite lives in [packages/shared/src/html/icon-sprite.html](packages/shared/src/html/icon-sprite.html).
 
 **Using an icon:**
 
@@ -96,7 +96,7 @@ element.appendChild(icon);
 
 1. Choose an icon from [Font Awesome Free 6.7.2](https://fontawesome.com/icons) (only Free tier icons are permitted).
 2. Download or copy the SVG path data (the `d="..."` attribute).
-3. Add a new `<symbol>` with `id="icon-{name}"` to the sprite in both `packages/primary/src/index.html` and `packages/ct/src/index.html`:
+3. Add a new `<symbol>` with `id="icon-{name}"` to the sprite in `packages/shared/src/html/icon-sprite.html`:
 
    ```html
    <symbol id="icon-my-icon" viewBox="0 0 512 512">
