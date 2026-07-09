@@ -21,7 +21,7 @@
   border-radius: borders.$border-radius;
   color: colors.$black;
 
-  @include breakpoints.gt-xxs {
+  @include breakpoints.gte-xs {
     width: 280px;
   }
 
@@ -48,7 +48,7 @@
   font-weight: bold;
   font-size: typography.$font-size-lg;
 
-  @include breakpoints.gt-xs {
+  @include breakpoints.gte-sm {
     font-size: typography.$font-size-xl;
   }
 }
