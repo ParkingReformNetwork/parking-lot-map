@@ -19,6 +19,7 @@ import { extractCityIdFromUrl } from "./model/cityId";
 import type { BaseCityStats, CityId, DataSet } from "./model/types";
 
 import { initViewState } from "./state/ViewState";
+import exposeTestHooks from "./testHooks";
 
 interface Args<T extends BaseCityStats> {
   data: DataSet<T>;
@@ -34,6 +35,8 @@ export default async function bootstrapApp<T extends BaseCityStats>(
   initAbout();
 
   const map = createMap();
+  exposeTestHooks(map);
+
   const [cityBoundaries, cityEntries] = createCitiesLayer(
     map,
     args.data.boundaries,

@@ -5,6 +5,7 @@ import {
   getCurrentCity,
   loadMap,
   readCityStats,
+  zoomOut,
 } from "@prn-parking-lots/shared/tests/integrationUtils.ts";
 
 import type { CityStats } from "../src/js/types";
@@ -134,33 +135,26 @@ test.describe("the share feature", () => {
 });
 
 async function dragMap(page: Page, distance: number): Promise<void> {
-  await page.waitForTimeout(1000);
   await page.mouse.move(600, 500);
   await page.mouse.down();
   await page.mouse.move(600 + distance, 500, { steps: 5 });
+
+  // Arm a one-shot `moveend` listener before releasing the mouse so we can await
+  // the map actually settling (including drag inertia).
+  await page.evaluate(() => {
+    delete document.body.dataset.mapMoved;
+    window.mapTestHandles!.map.once("moveend", () => {
+      document.body.dataset.mapMoved = "true";
+    });
+  });
   await page.mouse.up();
-  await page.waitForTimeout(2000);
+  await page.waitForFunction(() => document.body.dataset.mapMoved === "true");
 }
 
 test.describe("auto-focus city", () => {
   test("clicking on city boundary close view", async ({ page }) => {
-    await page.goto("");
-
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
-
-    // Use this code to check map zoom value
-    // const scaleValue = await page.$eval('.leaflet-proxy', (leafletProxy) => {
-    //   const styleAttribute = leafletProxy.getAttribute('style');
-    //   const scaleMatch = styleAttribute.match(/scale\((.*?)\)/); // Use regex to extract the scale value
-    //   return scaleMatch ? parseFloat(scaleMatch[1]) : null;
-    // });
-    // console.log("Map Zoom before: " +(Math.log2(scaleValue)+1));
-
-    // Zoom out.
-    await page
-      .locator(".leaflet-control-zoom-out")
-      .click({ clickCount: 6, delay: 300 });
+    await loadMap(page);
+    await zoomOut(page, 6);
 
     // Drag map to bring Birmingham into view.
     await dragMap(page, 200);
@@ -168,11 +162,9 @@ test.describe("auto-focus city", () => {
     const city = page.locator("#birmingham-al");
     await city.click({ force: true });
 
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
-
-    const { scorecardTitle } = await getCurrentCity(page);
-    expect(scorecardTitle).toEqual("Parking lots in Birmingham, AL");
+    await expect(page.locator(".scorecard-title")).toHaveText(
+      "Parking lots in Birmingham, AL",
+    );
     expect(await page.locator("#birmingham-al").isVisible()).toBe(true);
   });
 
@@ -181,18 +173,14 @@ test.describe("auto-focus city", () => {
   }) => {
     await loadMap(page);
 
-    // Zoom out.
-    await page
-      .locator(".leaflet-control-zoom-out")
-      .click({ clickCount: 10, delay: 300 });
+    // Zoom out far enough that boundary clicks are ignored.
+    await zoomOut(page, 10);
 
     // Click on Birmingham boundary.
     await page.locator("#birmingham-al").click({ force: true });
 
-    // Wait a second to make sure the site is fully loaded.
-    await page.waitForTimeout(1000);
-
-    // Scorecard should stay the default of Atlanta
+    // Scorecard should stay the default of Atlanta. The boundary-click handler
+    // runs synchronously, so if it were going to change the city it already has.
     const { scorecardTitle } = await getCurrentCity(page);
     expect(scorecardTitle).toEqual("Parking lots in Atlanta, GA");
   });
@@ -200,18 +188,15 @@ test.describe("auto-focus city", () => {
 
 test("scorecard pulls up city closest to center", async ({ page }) => {
   await loadMap(page);
-
-  // Zoom out.
-  await page
-    .locator(".leaflet-control-zoom-out")
-    .click({ clickCount: 6, delay: 300 });
+  await zoomOut(page, 6);
 
   // Drag map to Birmingham
   await dragMap(page, 300);
 
-  await page.waitForSelector(".choices");
-  const { scorecardTitle, cityId } = await getCurrentCity(page);
-  expect(scorecardTitle).toEqual("Parking lots in Birmingham, AL");
+  await expect(page.locator(".scorecard-title")).toHaveText(
+    "Parking lots in Birmingham, AL",
+  );
+  const { cityId } = await getCurrentCity(page);
   expect(cityId).toEqual("birmingham-al");
 });
 
@@ -226,11 +211,7 @@ test("map only loads parking lots for visible cities", async ({ page }) => {
   });
 
   await loadMap(page);
-
-  // Zoom out.
-  await page
-    .locator(".leaflet-control-zoom-out")
-    .click({ clickCount: 6, delay: 300 });
+  await zoomOut(page, 6);
 
   // Check that Birmingham's parking lots are not loaded
   expect(birminghamLoaded).toBe(false);
@@ -238,6 +219,6 @@ test("map only loads parking lots for visible cities", async ({ page }) => {
   // Drag map to Birmingham
   await dragMap(page, 300);
 
-  // Check that Birmingham's parking lots are not loaded
-  expect(birminghamLoaded).toBe(true);
+  // Birmingham's parking lots should now be requested.
+  await expect.poll(() => birminghamLoaded).toBe(true);
 });
