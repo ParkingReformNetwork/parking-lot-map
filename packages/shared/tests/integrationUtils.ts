@@ -11,6 +11,28 @@ export async function loadMap(page: Page, anchor?: string): Promise<void> {
   await page.waitForSelector(".choices");
 }
 
+/**
+ * Zoom the map out by `levels`, resolving once the map has actually settled.
+ *
+ * Drives Leaflet directly and awaits its `moveend` event.
+ */
+export async function zoomOut(page: Page, levels: number): Promise<void> {
+  await page.evaluate(
+    (levels) =>
+      new Promise<void>((resolve) => {
+        const { map } = window.mapTestHandles!;
+        const target = Math.max(map.getZoom() - levels, map.getMinZoom());
+        if (target === map.getZoom()) {
+          resolve();
+          return;
+        }
+        map.once("moveend", () => resolve());
+        map.setZoom(target);
+      }),
+    levels,
+  );
+}
+
 export async function readCityStats<T extends BaseCityStats>(): Promise<
   CityStatsCollection<T>
 > {
