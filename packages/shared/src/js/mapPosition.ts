@@ -1,5 +1,6 @@
 import type { ImageOverlay, Map as LeafletMap } from "leaflet";
 import type ParkingLotLoader from "./map-layers/ParkingLotLoader";
+import { cityIdEntries, getCityEntry } from "./model/cityId";
 import type { BaseCityStats, CityEntryCollection, CityId } from "./model/types";
 import type { ViewStateManager } from "./state/ViewState";
 
@@ -24,7 +25,7 @@ export function subscribeSnapToCity<T extends BaseCityStats>(
 ): void {
   viewState.subscribe("snap to city", (state) => {
     if (!state.shouldSnapMap) return;
-    snapToCity(map, cityEntries[state.cityId].layer);
+    snapToCity(map, getCityEntry(cityEntries, state.cityId).layer);
   });
 }
 
@@ -42,7 +43,7 @@ export function setCityByMapPosition<T extends BaseCityStats>(
   map.on("moveend", () => {
     let centralCityDistance: number | null = null;
     let centralCity: CityId | null = null;
-    Object.entries(cityEntries).forEach(([cityId, scorecard]) => {
+    cityIdEntries(cityEntries).forEach(([cityId, scorecard]) => {
       const bounds = scorecard.layer.getBounds();
       if (!map.getBounds().intersects(bounds)) return;
       void parkingLotLoader.load(cityId);

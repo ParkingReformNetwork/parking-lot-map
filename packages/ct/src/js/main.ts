@@ -1,4 +1,5 @@
 import bootstrapApp from "@prn-parking-lots/shared/src/js/bootstrap";
+import { parseCityId } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 
 import {
   CITY_BOUNDARIES_GEOJSON,
@@ -17,6 +18,6 @@ export default async function initApp(): Promise<void> {
     },
     dropdownRequest: createDropdownRequest(CITY_STATS_DATA),
     scorecardFormatter: formatScorecard,
-    initialCity: "stratford-center",
+    initialCity: parseCityId("stratford-center"),
   });
 }

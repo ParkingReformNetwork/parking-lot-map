@@ -74,7 +74,11 @@ export default class ParkingLotLoader {
   }
 
   private async loadCity(cityId: CityId): Promise<void> {
-    const data = await this.lotsData[`${cityId}.geojson`]();
+    const loadModule = this.lotsData[`${cityId}.geojson`];
+    if (!loadModule) {
+      throw new Error(`No parking lot data found for city id "${cityId}".`);
+    }
+    const data = await loadModule();
     this.layer.addData(data);
     // Ensure the parking lots do not cover the city boundary.
     this.layer.bringToBack();

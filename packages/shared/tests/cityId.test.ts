@@ -3,6 +3,7 @@ import { expect, test } from "@playwright/test";
 import {
   determineShareUrl,
   extractCityIdFromUrl,
+  parseCityId,
   parseCityIdFromJson,
 } from "../src/js/model/cityId";
 
@@ -47,11 +48,14 @@ test("parseCityIdFromJson() extracts the city", () => {
 
 test.describe("determineShareUrl()", () => {
   test("adds #city= if not yet present", () => {
-    expect(determineShareUrl("https://parking.org", "tempe-az")).toEqual(
-      "https://parking.org#city=tempe-az",
-    );
     expect(
-      determineShareUrl("https://parking.org", "saint-shoup-village-az"),
+      determineShareUrl("https://parking.org", parseCityId("tempe-az")),
+    ).toEqual("https://parking.org#city=tempe-az");
+    expect(
+      determineShareUrl(
+        "https://parking.org",
+        parseCityId("saint-shoup-village-az"),
+      ),
     ).toEqual("https://parking.org#city=saint-shoup-village-az");
   });
 
@@ -59,10 +63,16 @@ test.describe("determineShareUrl()", () => {
     // We may want to make this more intelligent to preserve existing hashes. But we currently
     // don't have any use for hashes other than pre-defining the city. So this is simpler.
     expect(
-      determineShareUrl("https://parking.org#already-hash", "tempe-az"),
+      determineShareUrl(
+        "https://parking.org#already-hash",
+        parseCityId("tempe-az"),
+      ),
     ).toEqual("https://parking.org#city=tempe-az");
     expect(
-      determineShareUrl("https://parking.org#city=another-city-ny", "tempe-az"),
+      determineShareUrl(
+        "https://parking.org#city=another-city-ny",
+        parseCityId("tempe-az"),
+      ),
     ).toEqual("https://parking.org#city=tempe-az");
   });
 });

@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import type { Page } from "@playwright/test";
+import { parseCityId } from "../src/js/model/cityId";
 import type {
   BaseCityStats,
   CityId,
@@ -58,5 +59,5 @@ export async function getCurrentCity(
     ).value;
     return [title, cityToggle];
   });
-  return { scorecardTitle, cityId };
+  return { scorecardTitle, cityId: parseCityId(cityId) };
 }
