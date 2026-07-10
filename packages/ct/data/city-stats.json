@@ -1238,13 +1238,6 @@
     "transitStation": null,
     "county": "Fairfield County"
   },
-  "westport-green's-farms": {
-    "name": "Westport - Green's Farms",
-    "percentage": "58%",
-    "population": "27,141",
-    "transitStation": "Green's Farms",
-    "county": "Fairfield County"
-  },
   "westport-saugatuck": {
     "name": "Westport - Saugatuck",
     "percentage": "47%",
