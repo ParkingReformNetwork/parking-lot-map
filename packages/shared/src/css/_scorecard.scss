@@ -3,6 +3,7 @@
 @use "theme/colors";
 @use "theme/spacing";
 @use "theme/icons";
+@use "theme/mixins";
 @use "theme/typography";
 @use "theme/zindex";
 @use "header";
@@ -17,11 +18,11 @@
   width: 260px;
 
   background-color: colors.$white;
-  border: borders.$component-border;
-  border-radius: borders.$border-radius;
   color: colors.$black;
 
-  @include breakpoints.gt-xxs {
+  @include mixins.panel-border;
+
+  @include breakpoints.gte-xs {
     width: 280px;
   }
 
@@ -42,13 +43,13 @@
   margin-bottom: spacing.$element-gap;
   margin-left: spacing.$container-edge-spacing;
   margin-right: spacing.$container-edge-spacing;
-  line-height: 1.1;
+  line-height: typography.$line-height-tight;
 
   color: colors.$teal;
-  font-weight: bold;
+  font-weight: typography.$font-weight-bold;
   font-size: typography.$font-size-lg;
 
-  @include breakpoints.gt-xs {
+  @include breakpoints.gte-sm {
     font-size: typography.$font-size-xl;
   }
 }
@@ -70,9 +71,7 @@ summary.scorecard-accordion-toggle {
     display: none;
   }
 
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  @include mixins.flex-center($justify: space-between);
 
   border-left: 0;
   border-right: 0;
@@ -81,20 +80,16 @@ summary.scorecard-accordion-toggle {
   border-bottom-left-radius: borders.$border-radius;
   border-bottom-right-radius: borders.$border-radius;
 
-  &:hover {
-    background-color: colors.$hover-white;
-  }
+  @include mixins.hover-highlight;
 
   .scorecard-accordion-title {
     flex: 1;
   }
 
   .scorecard-accordion-icon-container {
+    @include mixins.flex-center($display: inline-flex);
     height: spacing.$min-touch-target;
     width: spacing.$min-touch-target;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 
     svg {
       height: icons.$icon-size-sm;

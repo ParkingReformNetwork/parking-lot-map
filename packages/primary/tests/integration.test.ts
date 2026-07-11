@@ -1,5 +1,6 @@
 import { expect, type Page, test } from "@playwright/test";
 
+import { parseCityId } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 import {
   getAllDropdownValues,
   getCurrentCity,
@@ -65,7 +66,7 @@ test("correctly load the city score card", async ({ page }) => {
   expect(cityToggleValue).toEqual("albany-ny");
 
   const cityStats = await readCityStats<CityStats>();
-  const albanyExpected = cityStats["albany-ny"];
+  const albanyExpected = cityStats[parseCityId("albany-ny")];
   const expectedLines = new Set([
     `${albanyExpected.percentage} of the central city is off-street parking`,
     `${albanyExpected.parkingScore}/100 parking score (lower is better)`,

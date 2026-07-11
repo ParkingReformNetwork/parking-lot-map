@@ -1,12 +1,13 @@
-import type { ImageOverlay, Map as LeafletMap } from "leaflet";
+import type { Map as LeafletMap, Polygon } from "leaflet";
 import type ParkingLotLoader from "./map-layers/ParkingLotLoader";
+import { cityIdEntries, getCityEntry } from "./model/cityId";
 import type { BaseCityStats, CityEntryCollection, CityId } from "./model/types";
-import type { ViewStateObservable } from "./state/ViewState";
+import type { ViewStateManager } from "./state/ViewState";
 
 /**
  * Centers view to city, but translated down to account for the top UI elements.
  */
-function snapToCity(map: LeafletMap, layer: ImageOverlay): void {
+function snapToCity(map: LeafletMap, layer: Polygon): void {
   const bounds = layer.getBounds();
   // This moves the map and resets zoom.
   map.fitBounds(bounds);
@@ -18,14 +19,14 @@ function snapToCity(map: LeafletMap, layer: ImageOverlay): void {
 }
 
 export function subscribeSnapToCity<T extends BaseCityStats>(
-  viewState: ViewStateObservable,
+  viewState: ViewStateManager,
   map: LeafletMap,
   cityEntries: CityEntryCollection<T>,
 ): void {
-  viewState.subscribe((state) => {
+  viewState.subscribe("snap to city", (state) => {
     if (!state.shouldSnapMap) return;
-    snapToCity(map, cityEntries[state.cityId].layer);
-  }, "snap to city");
+    snapToCity(map, getCityEntry(cityEntries, state.cityId).layer);
+  });
 }
 
 /**
@@ -34,7 +35,7 @@ export function subscribeSnapToCity<T extends BaseCityStats>(
  * Regardless of if the city is chosen, ensure its parking lots are loaded when in view.
  */
 export function setCityByMapPosition<T extends BaseCityStats>(
-  viewState: ViewStateObservable,
+  viewState: ViewStateManager,
   map: LeafletMap,
   cityEntries: CityEntryCollection<T>,
   parkingLotLoader: ParkingLotLoader,
@@ -42,7 +43,7 @@ export function setCityByMapPosition<T extends BaseCityStats>(
   map.on("moveend", () => {
     let centralCityDistance: number | null = null;
     let centralCity: CityId | null = null;
-    Object.entries(cityEntries).forEach(([cityId, scorecard]) => {
+    cityIdEntries(cityEntries).forEach(([cityId, scorecard]) => {
       const bounds = scorecard.layer.getBounds();
       if (!map.getBounds().intersects(bounds)) return;
       void parkingLotLoader.load(cityId);

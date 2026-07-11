@@ -62,14 +62,9 @@
     <dialog id="about-popup" class="about-popup" aria-label="about the map">
       <header class="about-popup-header">
         <h2>About the Connecticut Parking Lot Map</h2>
-        <button
-          type="button"
-          class="about-popup-close-icon-container"
-          title="close the about popup"
-          aria-label="close the about popup"
-        >
-          <svg aria-hidden="true"><use href="#icon-circle-xmark"></use></svg>
-        </button>
+        <include
+          src="packages/shared/src/html/about-popup-close-button.html"
+        ></include>
       </header>
 
       <section aria-labelledby="about-popup-links-heading">
@@ -97,17 +92,9 @@
               </svg></a
             >
           </li>
-          <li>
-            <a
-              class="external-link"
-              href="https://parkingreform.org/support/"
-              target="_blank"
-              >Support this project with a donation
-              <svg aria-hidden="true">
-                <use href="#icon-arrow-right"></use>
-              </svg></a
-            >
-          </li>
+          <include
+            src="packages/shared/src/html/about-popup-support-link.html"
+          ></include>
         </ul>
       </section>
 
@@ -244,36 +231,10 @@
           target="_blank"
           >David Beers
           <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a
-        >, and Alex Mayo-Smith. The map data comes from
-        <a
-          class="external-link"
-          href="https://www.openstreetmap.org/copyright"
-          target="_blank"
-          >OpenStreetMap
-          <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a
-        >. The map is built using
-        <a class="external-link" href="https://leafletjs.com/" target="_blank"
-          >Leaflet
-          <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a
-        >. The map tiles are developed by
-        <a
-          class="external-link"
-          href="https://www.stadiamaps.com/"
-          target="_blank"
-          >Stadia Maps
-          <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a
-        >,
-        <a class="external-link" href="http://stamen.com/" target="_blank"
-          >Stamen Design
-          <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a
-        >,
-        <a
-          class="external-link"
-          href="https://openmaptiles.org/"
-          target="_blank"
-          >OpenMapTiles
-          <svg aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a
-        >, and Google Maps.
+        >, and Alex Mayo-Smith.
+        <include
+          src="packages/shared/src/html/about-popup-credits-tail.html"
+        ></include>
       </p>
       <p>Copyright 2025 Parking Reform Network - All Rights Reserved</p>
     </dialog>

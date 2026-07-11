@@ -1,26 +1,12 @@
-// These values come from packages/shared.
-$xs-width: 480px;
-$sm-width: 640px;
-
-@mixin gt-xxs() {
-  @media screen and (min-width: $xs-width) {
-    @content();
-  }
-}
-
-@mixin gt-xs() {
-  @media screen and (min-width: $sm-width) {
-    @content();
-  }
-}
+@use "../../../shared/src/css/theme/breakpoints";
 
 // Make the header wider on large breakpoints.
 .choices[data-type*="select-one"] {
   .choices__inner {
-    @include gt-xxs() {
+    @include breakpoints.gte-xs() {
       width: 245px;
     }
-    @include gt-xs() {
+    @include breakpoints.gte-sm() {
       width: 270px;
     }
   }

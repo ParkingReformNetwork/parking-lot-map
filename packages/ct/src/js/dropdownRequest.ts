@@ -1,4 +1,5 @@
 import type { DropdownRequest } from "@prn-parking-lots/shared/src/js/city-ui/dropdownUtils";
+import { cityIdEntries } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 import type { CityStatsCollection } from "@prn-parking-lots/shared/src/js/model/types";
 
 import type { CityStats } from "./types";
@@ -8,6 +9,6 @@ export default function createDropdownRequest(
 ): DropdownRequest {
   return {
     useGroups: false,
-    value: Object.entries(data).map(([id, { name }]) => ({ name, id })),
+    value: cityIdEntries(data).map(([id, { name }]) => ({ name, id })),
   };
 }

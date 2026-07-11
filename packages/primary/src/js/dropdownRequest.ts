@@ -2,6 +2,7 @@ import type {
   DropdownChoiceRequest,
   DropdownRequest,
 } from "@prn-parking-lots/shared/src/js/city-ui/dropdownUtils";
+import { cityIdEntries } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 import type { CityStatsCollection } from "@prn-parking-lots/shared/src/js/model/types";
 
 import type { CityStats } from "./types";
@@ -11,7 +12,7 @@ export default function createDropdownRequest(
 ): DropdownRequest {
   const official: DropdownChoiceRequest[] = [];
   const community: DropdownChoiceRequest[] = [];
-  Object.entries(data).forEach(([id, { name, contribution }]) => {
+  cityIdEntries(data).forEach(([id, { name, contribution }]) => {
     if (contribution) {
       community.push({ id, name });
     } else {

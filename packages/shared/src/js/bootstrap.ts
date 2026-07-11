@@ -15,7 +15,7 @@ import {
 import ParkingLotLoader from "./map-layers/ParkingLotLoader";
 import { setCityByMapPosition, subscribeSnapToCity } from "./mapPosition";
 
-import { extractCityIdFromUrl } from "./model/cityId";
+import { cityIdKeys, extractCityIdFromUrl } from "./model/cityId";
 import type { BaseCityStats, CityId, DataSet } from "./model/types";
 
 import { initViewState } from "./state/ViewState";
@@ -46,7 +46,7 @@ export default async function bootstrapApp<T extends BaseCityStats>(
 
   const initialCityId = extractCityIdFromUrl(window.location.href);
   const viewState = initViewState(
-    Object.keys(args.data.stats),
+    cityIdKeys(cityEntries),
     initialCityId,
     args.initialCity,
   );

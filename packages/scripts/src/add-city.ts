@@ -1,63 +1,65 @@
 import fs from "node:fs/promises";
-import type { CityId } from "@prn-parking-lots/shared/src/js/model/types.ts";
+import type { CityStats as CtCityStats } from "@prn-parking-lots/ct/src/js/types.ts";
+import type { CityStats as PrimaryCityStats } from "@prn-parking-lots/primary/src/js/types.ts";
+import type {
+  BaseCityStats,
+  CityId,
+} from "@prn-parking-lots/shared/src/js/model/types.ts";
 import {
+  compareIds,
   determineArgs,
   type Pkg,
+  readJson,
   updateCoordinates,
   updateParkingLots,
 } from "./base.ts";
 import { runScript } from "./runScript.ts";
 
-async function addScoreCard(
-  pkg: Pkg,
-  cityId: CityId,
-  cityName: string,
-): Promise<void> {
-  const common = {
+function buildPrimaryEntry(cityName: string): PrimaryCityStats {
+  return {
     name: cityName,
     percentage: "FILL ME IN, e.g. 23%",
     population: "FILL ME IN, e.g. 346,824",
     reforms:
       'FILL ME IN, with "repealed", "adopted", or "proposed". If none apply, remove the quotes and set to null',
     url: "FILL ME IN. If not relevant, remove the quotes and set to null",
+    cityType: "FILL ME IN, e.g. Core City",
+    urbanizedAreaPopulation: "FILL ME IN, e.g. 13,200,998",
+    parkingScore:
+      "FILL ME IN, e.g. 53. If not relevant, remove the quotes and set to null",
+    contribution:
+      "FILL ME IN with the email of the contributor. If it's an official map, remove the quotes and set to null",
   };
-  let newEntry: Record<string, string>;
-  if (pkg === "ct") {
-    newEntry = {
-      ...common,
-      group: "FILL ME IN, either 'Group 1', 'Group 2', or 'Group 3'",
-    };
-  } else {
-    newEntry = {
-      ...common,
-      cityType: "FILL ME IN, e.g. Core City",
-      urbanizedAreaPopulation: "FILL ME IN, e.g. 13,200,998",
-      parkingScore:
-        "FILL ME IN, e.g. 53. If not relevant, remove the quotes and set to null",
-      contribution:
-        "FILL ME IN with the email of the contributor. If it's an official map, remove the quotes and set to null",
-    };
-  }
+}
 
+function buildCtEntry(cityName: string): CtCityStats {
+  return {
+    name: cityName,
+    percentage: "FILL ME IN, e.g. 23%",
+    population: "FILL ME IN, e.g. 346,824",
+    transitStation:
+      "FILL ME IN with the transit station name. If none, remove the quotes and set to null",
+    county: "FILL ME IN, e.g. Hartford County",
+  };
+}
+
+async function addScoreCard<T extends BaseCityStats>(
+  pkg: Pkg,
+  cityId: CityId,
+  newEntry: T,
+): Promise<void> {
   const filePath = `packages/${pkg}/data/city-stats.json`;
-  let originalData: Record<string, Record<string, string>>;
-  try {
-    const rawOriginalData = await fs.readFile(filePath, "utf8");
-    originalData = JSON.parse(rawOriginalData);
-  } catch (err: unknown) {
-    const { message } = err as Error;
-    throw new Error(
-      `Issue reading the score card file path ${filePath}: ${message}`,
-    );
-  }
+  const originalData = await readJson<Record<string, T>>(
+    filePath,
+    "score card",
+  );
 
   originalData[cityId] = newEntry;
 
-  const sortedKeys = Object.keys(originalData).sort();
-  const sortedData: Record<string, Record<string, string>> = {};
-  sortedKeys.forEach((key) => {
+  const sortedData: Record<string, T> = {};
+  for (const key of Object.keys(originalData).sort(compareIds)) {
     sortedData[key] = originalData[key];
-  });
+  }
 
   await fs.writeFile(filePath, JSON.stringify(sortedData, null, 2));
 }
@@ -83,7 +85,11 @@ async function main(): Promise<void> {
     `packages/${pkg}/data/parking-lots/${cityId}.geojson`,
   );
 
-  await addScoreCard(pkg, cityId, cityName);
+  if (pkg === "ct") {
+    await addScoreCard(pkg, cityId, buildCtEntry(cityName));
+  } else {
+    await addScoreCard(pkg, cityId, buildPrimaryEntry(cityName));
+  }
 
   console.log(
     `Almost done! Now, fill in the score card values in packages/${pkg}/data/city-stats.json. ` +

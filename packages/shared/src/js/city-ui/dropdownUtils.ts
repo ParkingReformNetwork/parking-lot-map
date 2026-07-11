@@ -10,7 +10,7 @@ interface DropdownChoice {
   label: string;
   customProperties: {
     city: string;
-    /// E.g. "NY" or "rail station"
+    /** E.g. "NY" or "rail station" */
     context: string;
   };
 }

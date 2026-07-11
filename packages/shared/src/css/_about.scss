@@ -1,7 +1,7 @@
-@use "theme/borders";
 @use "theme/breakpoints";
 @use "theme/colors";
 @use "theme/icons";
+@use "theme/mixins";
 @use "theme/spacing";
 @use "theme/typography";
 
@@ -16,8 +16,7 @@
   font-size: typography.$font-size-base;
   padding: spacing.$container-edge-spacing;
 
-  border: borders.$component-border;
-  border-radius: borders.$border-radius;
+  @include mixins.panel-border;
 
   overflow-y: auto;
   overflow-wrap: break-word;
@@ -38,40 +37,31 @@
 }
 
 .about-popup-header {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
+
+  @include mixins.flex-center($display: inline-flex);
 
   h2 {
     flex: 1;
     margin: 0;
     margin-right: spacing.$element-gap;
-    line-height: 1.3;
+    line-height: typography.$line-height-base;
     font-size: typography.$font-size-xl;
-    font-weight: 500;
+    font-weight: typography.$font-weight-medium;
   }
 }
 
 .about-popup-close-icon-container {
-  cursor: pointer;
-  height: spacing.$min-touch-target;
-  width: spacing.$min-touch-target;
   margin-left: auto;
 
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background-color: colors.$hover-white;
-  }
+  @include mixins.icon-button-container;
+  @include mixins.hover-highlight;
 
   svg {
     height: icons.$icon-size-md;
     width: icons.$icon-size-md;
 
-    @include breakpoints.gt-sm {
+    @include breakpoints.gte-md {
       height: icons.$icon-size-lg;
       width: icons.$icon-size-lg;
     }

@@ -1,5 +1,6 @@
 @use "theme/borders";
 @use "theme/colors";
+@use "theme/mixins";
 @use "theme/spacing";
 @use "theme/typography";
 @use "theme/zindex";
@@ -16,8 +17,7 @@ $zoom-controls-top-offset: calc(
 
 .leaflet-control-zoom.leaflet-bar.leaflet-control,
 .leaflet-control-layers.leaflet-control {
-  border: borders.$component-border;
-  border-radius: borders.$border-radius;
+  @include mixins.panel-border;
 }
 
 .leaflet-control-zoom.leaflet-bar {
@@ -27,11 +27,9 @@ $zoom-controls-top-offset: calc(
     width: spacing.$min-touch-target;
     height: spacing.$min-touch-target;
     font-size: $label-font-size;
-    font-weight: normal;
+    font-weight: typography.$font-weight-regular;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include mixins.flex-center;
 
     &:hover,
     &:focus {
@@ -89,8 +87,7 @@ $zoom-controls-top-offset: calc(
     border-bottom: borders.$component-inner-divider;
   }
 
-  display: flex;
-  align-items: center;
+  @include mixins.flex-center($justify: flex-start);
 
   $padding-y: calc((spacing.$min-touch-target - $label-font-size) / 2);
   padding: $padding-y spacing.$element-gap;
@@ -100,7 +97,5 @@ $zoom-controls-top-offset: calc(
     vertical-align: middle;
   }
 
-  &:hover {
-    background-color: colors.$hover-white;
-  }
+  @include mixins.hover-highlight;
 }

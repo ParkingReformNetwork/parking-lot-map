@@ -1,7 +1,5 @@
-/* global document, navigator, window */
-
 import { determineShareUrl } from "../model/cityId";
-import type { ViewStateObservable } from "../state/ViewState";
+import type { ViewStateManager } from "../state/ViewState";
 
 async function copyToClipboard(value: string): Promise<void> {
   try {
@@ -24,23 +22,25 @@ function switchShareIcons(shareIcon: HTMLButtonElement): void {
   }, 1000);
 }
 
-export default function subscribeShareLink(
-  viewState: ViewStateObservable,
-): void {
-  viewState.subscribe(({ cityId }) => {
-    const shareIcon = document.querySelector<HTMLButtonElement>(
-      ".header-share-icon-container",
-    );
-    const fullScreenIcon = document.querySelector<HTMLAnchorElement>(
-      ".header-full-screen-icon-container",
-    );
-    if (!shareIcon || !fullScreenIcon) return;
+export default function subscribeShareLink(viewState: ViewStateManager): void {
+  const shareIcon = document.querySelector<HTMLButtonElement>(
+    ".header-share-icon-container",
+  );
+  const fullScreenIcon = document.querySelector<HTMLAnchorElement>(
+    ".header-full-screen-icon-container",
+  );
+  if (!shareIcon || !fullScreenIcon) return;
 
-    const shareUrl = determineShareUrl(window.location.href, cityId);
-    shareIcon.addEventListener("click", async () => {
-      await copyToClipboard(shareUrl);
-      switchShareIcons(shareIcon);
-    });
-    fullScreenIcon.href = shareUrl;
-  }, "update share link");
+  shareIcon.addEventListener("click", async () => {
+    const shareUrl = determineShareUrl(
+      window.location.href,
+      viewState.getValue().cityId,
+    );
+    await copyToClipboard(shareUrl);
+    switchShareIcons(shareIcon);
+  });
+
+  viewState.subscribeToCity("update share link", (cityId) => {
+    fullScreenIcon.href = determineShareUrl(window.location.href, cityId);
+  });
 }
