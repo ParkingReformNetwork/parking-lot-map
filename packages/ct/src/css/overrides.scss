@@ -1,12 +1,12 @@
-@use "../../../shared/src/css/theme/breakpoints" as bp;
+@use "../../../shared/src/css/theme/breakpoints";
 
 // Make the header wider on large breakpoints.
 .choices[data-type*="select-one"] {
   .choices__inner {
-    @include bp.gte-xs() {
+    @include breakpoints.gte-xs() {
       width: 245px;
     }
-    @include bp.gte-sm() {
+    @include breakpoints.gte-sm() {
       width: 270px;
     }
   }
