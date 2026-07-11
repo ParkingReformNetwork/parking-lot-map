@@ -1,5 +1,3 @@
-/* global document, navigator, window */
-
 import { determineShareUrl } from "../model/cityId";
 import type { ViewStateManager } from "../state/ViewState";
 

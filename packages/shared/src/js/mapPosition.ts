@@ -1,4 +1,4 @@
-import type { ImageOverlay, Map as LeafletMap } from "leaflet";
+import type { Map as LeafletMap, Polygon } from "leaflet";
 import type ParkingLotLoader from "./map-layers/ParkingLotLoader";
 import { cityIdEntries, getCityEntry } from "./model/cityId";
 import type { BaseCityStats, CityEntryCollection, CityId } from "./model/types";
@@ -7,7 +7,7 @@ import type { ViewStateManager } from "./state/ViewState";
 /**
  * Centers view to city, but translated down to account for the top UI elements.
  */
-function snapToCity(map: LeafletMap, layer: ImageOverlay): void {
+function snapToCity(map: LeafletMap, layer: Polygon): void {
   const bounds = layer.getBounds();
   // This moves the map and resets zoom.
   map.fitBounds(bounds);

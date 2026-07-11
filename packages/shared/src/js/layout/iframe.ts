@@ -1,5 +1,3 @@
-/* global document, window */
-
 function isIFrame(): boolean {
   try {
     return window.self !== window.top;

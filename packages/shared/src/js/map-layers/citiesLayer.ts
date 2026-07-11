@@ -1,10 +1,9 @@
 import {
   type GeoJSON,
   geoJSON,
-  type ImageOverlay,
   type Map as LeafletMap,
+  type Polygon,
 } from "leaflet";
-import { STYLES } from "../layout/map";
 import { parseCityId } from "../model/cityId";
 import type {
   BaseCityStats,
@@ -13,6 +12,7 @@ import type {
   CityStatsCollection,
 } from "../model/types";
 import type { ViewStateManager } from "../state/ViewState";
+import { STYLES } from "./styles";
 
 /**
  * Load the cities from GeoJson and associate each city with its layer and scorecard entry.
@@ -27,7 +27,7 @@ export function createCitiesLayer<T extends BaseCityStats>(
     style() {
       return STYLES.cities;
     },
-    onEachFeature(feature, layer: ImageOverlay) {
+    onEachFeature(feature, layer: Polygon) {
       const cityId = parseCityId(feature.properties.id as string);
       cityEntries[cityId] = {
         layer,

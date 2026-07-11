@@ -3,9 +3,9 @@ import type {
   FeatureCollection,
   GeoJsonProperties,
   Geometry,
-  Polygon,
+  Polygon as PolygonGeometry,
 } from "geojson";
-import type { ImageOverlay } from "leaflet";
+import type { Polygon } from "leaflet";
 
 /**
  * The slugified ID, e.g. `st-louis-mo` or `hartford`.
@@ -23,7 +23,7 @@ export type CityStatsCollection<T extends BaseCityStats> = Record<CityId, T>;
 
 export interface CityEntry<T extends BaseCityStats> {
   stats: T;
-  layer: ImageOverlay;
+  layer: Polygon;
 }
 
 export type CommonCityStats = BaseCityStats & {
@@ -38,7 +38,10 @@ export type CityEntryCollection<T extends BaseCityStats> = Record<
   CityEntry<T>
 >;
 
-export type CityBoundaries = FeatureCollection<Polygon, GeoJsonProperties>;
+export type CityBoundaries = FeatureCollection<
+  PolygonGeometry,
+  GeoJsonProperties
+>;
 
 export interface ParkingLotGeoJSONModules {
   [key: string]: () => Promise<Feature<Geometry>>;
