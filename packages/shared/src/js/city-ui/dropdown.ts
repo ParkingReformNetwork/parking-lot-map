@@ -1,4 +1,5 @@
 import ChoicesJS from "choices.js";
+import { parseCityId } from "../model/cityId";
 import type { ViewStateManager } from "../state/ViewState";
 import { convertToChoicesJs, type DropdownRequest } from "./dropdownUtils";
 
@@ -32,6 +33,9 @@ export default function initDropdown(
   // Note that `change` only triggers for user-driven changes, not programmatic updates.
   const selectElement = dropdown.passedElement.element as HTMLSelectElement;
   selectElement.addEventListener("change", () => {
-    viewState.setValue({ cityId: selectElement.value, shouldSnapMap: true });
+    viewState.setValue({
+      cityId: parseCityId(selectElement.value),
+      shouldSnapMap: true,
+    });
   });
 }

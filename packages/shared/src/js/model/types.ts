@@ -9,7 +9,9 @@ import type { ImageOverlay } from "leaflet";
 
 /// The slugified ID, e.g. `st-louis-mo` or `hartford`.
 /// (The state code is missing for state-specific maps like CT.)
-export type CityId = string;
+/// Branded so that only `parseCityId()` can mint one, keeping unvalidated
+/// strings from flowing into city lookups.
+export type CityId = string & { readonly __brand: "CityId" };
 
 export interface BaseCityStats {
   name: string;

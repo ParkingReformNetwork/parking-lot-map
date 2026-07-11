@@ -5,6 +5,7 @@ import {
   type Map as LeafletMap,
 } from "leaflet";
 import { STYLES } from "../layout/map";
+import { parseCityId } from "../model/cityId";
 import type {
   BaseCityStats,
   CityBoundaries,
@@ -27,7 +28,7 @@ export function createCitiesLayer<T extends BaseCityStats>(
       return STYLES.cities;
     },
     onEachFeature(feature, layer: ImageOverlay) {
-      const cityId = feature.properties.id;
+      const cityId = parseCityId(feature.properties.id as string);
       cityEntries[cityId] = {
         layer,
         stats: cityStatsData[cityId],
@@ -51,7 +52,7 @@ export function setCityOnBoundaryClick(
     const currentZoom = map.getZoom();
     // Only change cities if zoomed in enough.
     if (currentZoom <= 7) return;
-    const cityId = e.sourceTarget.feature.properties.id;
+    const cityId = parseCityId(e.sourceTarget.feature.properties.id as string);
     viewState.setValue({ cityId, shouldSnapMap: true });
   });
 }

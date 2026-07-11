@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import { expect, test } from "@playwright/test";
+import { parseCityId } from "@prn-parking-lots/shared/src/js/model/cityId.ts";
 import type { CityId } from "@prn-parking-lots/shared/src/js/model/types";
 import type { Feature, FeatureCollection, Polygon } from "geojson";
 
@@ -53,7 +54,7 @@ test.describe("updateCoordinates()", () => {
   test("updates the coordinates for an existing city", async () => {
     const updateFilePath = validUpdateFilePath;
 
-    const cityId = "shoup-ville-az";
+    const cityId = parseCityId("shoup-ville-az");
     await updateCoordinates(
       "my-script",
       cityId,
@@ -78,7 +79,7 @@ test.describe("updateCoordinates()", () => {
   test("adds a new city when add is set", async () => {
     const updateFilePath = validUpdateFilePath;
 
-    const cityId = "parking-reform-now";
+    const cityId = parseCityId("parking-reform-now");
     await updateCoordinates(
       "my-script",
       cityId,
@@ -113,7 +114,7 @@ test.describe("updateCoordinates()", () => {
     await expect(async () =>
       updateCoordinates(
         "my-script",
-        "bad-city",
+        parseCityId("bad-city"),
         false,
         originalFilePath,
         validUpdateFilePath,
@@ -125,7 +126,7 @@ test.describe("updateCoordinates()", () => {
     await expect(async () =>
       updateCoordinates(
         "my-script",
-        "shoup-ville-az",
+        parseCityId("shoup-ville-az"),
         false,
         originalFilePath,
         "tests/data/too-many-updates.geojson",
@@ -135,7 +136,7 @@ test.describe("updateCoordinates()", () => {
     await expect(async () =>
       updateCoordinates(
         "my-script",
-        "shoup-ville-az",
+        parseCityId("shoup-ville-az"),
         false,
         originalFilePath,
         "tests/data/empty-update.geojson",
@@ -147,7 +148,7 @@ test.describe("updateCoordinates()", () => {
     await expect(async () =>
       updateCoordinates(
         "my-script",
-        "shoup-ville-az",
+        parseCityId("shoup-ville-az"),
         false,
         originalFilePath,
         "tests/data/does-not-exist",
@@ -159,7 +160,7 @@ test.describe("updateCoordinates()", () => {
     await expect(async () =>
       updateCoordinates(
         "my-script",
-        "shoup-ville-az",
+        parseCityId("shoup-ville-az"),
         false,
         "tests/data/does-not-exist",
         validUpdateFilePath,
@@ -200,7 +201,7 @@ test.describe("updateParkingLots()", () => {
   };
 
   test("adds a new city", async () => {
-    const cityId = "parking-reform-now";
+    const cityId = parseCityId("parking-reform-now");
     await updateParkingLots(cityId, true, parkingLotData, addDataPath);
     await expectUpdatedFile(cityId, addDataPath);
     await fs.rm(addDataPath);
@@ -209,7 +210,7 @@ test.describe("updateParkingLots()", () => {
   test("update city lots", async () => {
     const existingDataPath = "tests/data/existing-lot-data.geojson";
     const existingData = await fs.readFile(existingDataPath);
-    const cityId = "parking-reform-now";
+    const cityId = parseCityId("parking-reform-now");
     await updateParkingLots(cityId, true, parkingLotData, existingDataPath);
     await expectUpdatedFile(cityId, existingDataPath);
     await fs.writeFile(existingDataPath, existingData);
