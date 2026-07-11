@@ -38,6 +38,8 @@ export default class ParkingLotLoader {
 
   private loadedCities: Set<CityId>;
 
+  private failedCities: Set<CityId>;
+
   // Used to track in-flight requests to load the data so that we don't have
   // multiple concurrent requests.
   private loadingPromises: Map<CityId, Promise<void>>;
@@ -46,23 +48,29 @@ export default class ParkingLotLoader {
     this.layer = createParkingLotsLayer(map);
     this.lotsData = lotsData;
     this.loadedCities = new Set();
+    this.failedCities = new Set();
     this.loadingPromises = new Map();
   }
 
   load(cityId: CityId): Promise<void> {
-    if (this.loadedCities.has(cityId)) {
+    if (this.loadedCities.has(cityId) || this.failedCities.has(cityId)) {
       return Promise.resolve();
     }
 
     let loadPromise = this.loadingPromises.get(cityId);
     if (!loadPromise) {
-      loadPromise = this.loadCity(cityId);
-      this.loadingPromises.set(cityId, loadPromise);
-      loadPromise
-        .then(() => this.loadedCities.add(cityId))
-        .finally(() => {
-          this.loadingPromises.delete(cityId);
+      loadPromise = this.loadCity(cityId)
+        .then(() => {
+          this.loadedCities.add(cityId);
+        })
+        .catch((error) => {
+          this.failedCities.add(cityId);
+          console.error(`Failed to load parking lot data for "${cityId}".`, error);
         });
+      this.loadingPromises.set(cityId, loadPromise);
+      loadPromise.finally(() => {
+        this.loadingPromises.delete(cityId);
+      });
     }
     return loadPromise;
   }
