@@ -35,6 +35,31 @@ export function determineArgs(
   return { pkg, cityName, cityId };
 }
 
+export async function readJson<T>(
+  filePath: string,
+  description: string,
+): Promise<T> {
+  try {
+    const raw = await fs.readFile(filePath, "utf8");
+    return JSON.parse(raw) as T;
+  } catch (err: unknown) {
+    const { message } = err as Error;
+    throw new Error(
+      `Issue reading the ${description} file path ${filePath}: ${message}`,
+    );
+  }
+}
+
+export function compareIds(a: string, b: string): number {
+  if (a < b) {
+    return -1;
+  }
+  if (a > b) {
+    return 1;
+  }
+  return 0;
+}
+
 export async function updateCoordinates(
   scriptCommand: string,
   cityId: CityId,
@@ -42,16 +67,10 @@ export async function updateCoordinates(
   originalFilePath: string,
   updateFilePath: string,
 ): Promise<void> {
-  let newData: FeatureCollection<Polygon, GeoJsonProperties>;
-  try {
-    const rawNewData = await fs.readFile(updateFilePath, "utf8");
-    newData = JSON.parse(rawNewData);
-  } catch (err: unknown) {
-    const { message } = err as Error;
-    throw new Error(
-      `Issue reading the update file path ${updateFilePath}: ${message}`,
-    );
-  }
+  const newData = await readJson<FeatureCollection<Polygon, GeoJsonProperties>>(
+    updateFilePath,
+    "update",
+  );
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
     throw new Error(
@@ -63,16 +82,9 @@ export async function updateCoordinates(
   const newCoordinates = polygon.coordinates;
   const newGeometryType = polygon.type;
 
-  let originalData: FeatureCollection<Polygon, GeoJsonProperties>;
-  try {
-    const rawOriginalData = await fs.readFile(originalFilePath, "utf8");
-    originalData = JSON.parse(rawOriginalData);
-  } catch (err: unknown) {
-    const { message } = err as Error;
-    throw new Error(
-      `Issue reading the original data file path ${originalFilePath}: ${message}`,
-    );
-  }
+  const originalData = await readJson<
+    FeatureCollection<Polygon, GeoJsonProperties>
+  >(originalFilePath, "original data");
 
   if (addCity) {
     const newEntry = {
@@ -94,15 +106,9 @@ export async function updateCoordinates(
   }
 
   // Make sure the data is still sorted.
-  originalData.features.sort((a, b) => {
-    if (a.properties?.id < b.properties?.id) {
-      return -1;
-    }
-    if (a.properties?.id > b.properties?.id) {
-      return 1;
-    }
-    return 0;
-  });
+  originalData.features.sort((a, b) =>
+    compareIds(a.properties?.id, b.properties?.id),
+  );
 
   await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
 }
@@ -110,19 +116,13 @@ export async function updateCoordinates(
 export async function updateParkingLots(
   cityId: CityId,
   addCity: boolean,
-  originalFilePath: string,
   updateFilePath: string,
+  originalFilePath: string,
 ): Promise<void> {
-  let newData: FeatureCollection<Polygon, GeoJsonProperties>;
-  try {
-    const rawNewData = await fs.readFile(originalFilePath, "utf8");
-    newData = JSON.parse(rawNewData);
-  } catch (err: unknown) {
-    const { message } = err as Error;
-    throw new Error(
-      `Issue reading the update file path parking-lots-update.geojson: ${message}`,
-    );
-  }
+  const newData = await readJson<FeatureCollection<Polygon, GeoJsonProperties>>(
+    updateFilePath,
+    "update",
+  );
 
   if (!Array.isArray(newData.features) || newData.features.length !== 1) {
     throw new Error(
@@ -134,19 +134,13 @@ export async function updateParkingLots(
   const newGeometryType = newData.features[0].geometry.type;
 
   if (!addCity) {
-    let originalData: Feature<Polygon, GeoJsonProperties>;
-    try {
-      const rawOriginalData = await fs.readFile(updateFilePath, "utf8");
-      originalData = JSON.parse(rawOriginalData);
-    } catch (err: unknown) {
-      const { message } = err as Error;
-      throw new Error(
-        `Issue reading the original data file path ${updateFilePath}: ${message}`,
-      );
-    }
+    const originalData = await readJson<Feature<Polygon, GeoJsonProperties>>(
+      originalFilePath,
+      "original data",
+    );
     originalData.geometry.coordinates = newCoordinates;
 
-    await fs.writeFile(updateFilePath, JSON.stringify(originalData, null, 2));
+    await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
     return;
   }
 
@@ -155,5 +149,5 @@ export async function updateParkingLots(
     properties: { id: cityId },
     geometry: { type: newGeometryType, coordinates: newCoordinates },
   };
-  await fs.writeFile(updateFilePath, JSON.stringify(newFile, null, 2));
+  await fs.writeFile(originalFilePath, JSON.stringify(newFile, null, 2));
 }
