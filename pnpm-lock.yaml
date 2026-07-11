@@ -93,6 +93,12 @@ importers:
       '@playwright/test':
         specifier: ^1.61.1
         version: 1.61.1
+      '@prn-parking-lots/ct':
+        specifier: workspace:*
+        version: link:../ct
+      '@prn-parking-lots/primary':
+        specifier: workspace:*
+        version: link:../primary
       tsx:
         specifier: ^4.19.2
         version: 4.23.0
