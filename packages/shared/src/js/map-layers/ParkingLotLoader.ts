@@ -65,7 +65,10 @@ export default class ParkingLotLoader {
         })
         .catch((error) => {
           this.failedCities.add(cityId);
-          console.error(`Failed to load parking lot data for "${cityId}".`, error);
+          console.error(
+            `Failed to load parking lot data for "${cityId}".`,
+            error,
+          );
         });
       this.loadingPromises.set(cityId, loadPromise);
       loadPromise.finally(() => {
