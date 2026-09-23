@@ -870,11 +870,11 @@
   },
   "raleigh-nc": {
     "name": "Raleigh, NC",
-    "percentage": "28%",
+    "percentage": "26%",
     "cityType": "core",
     "population": "467,665",
     "urbanizedAreaPopulation": "1,106,646",
-    "parkingScore": "57",
+    "parkingScore": "50",
     "reforms": "adopted",
     "url": "https://parkingreform.org/mandates-map/city_detail/Raleigh_NC.html",
     "contribution": null
