@@ -40,9 +40,9 @@ Some particularly important folders and files:
 
 ### Code quality
 
-- **Format code**: `pnpm fmt`
+- **Format code**: `pnpm fmt` — Biome, plus `pnpm -F scripts fmt-geojson` for the `.geojson` data files, which Biome's CLI skips
 - **Fix issues**: `pnpm fix` — Auto-fix linting and format issues
-- **Lint**: `pnpm lint` — Biome + format checks
+- **Lint**: `pnpm lint` — Biome + format checks, including GeoJSON formatting
 - **Type check**: `pnpm check`
 - **Test**: `pnpm test` — Playwright tests (see Testing section below for concurrency caveats)
 

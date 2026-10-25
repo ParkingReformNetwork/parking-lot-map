@@ -7,9 +7,9 @@
   "scripts": {
     "test": "pnpm -r --workspace-concurrency 1 test",
     "check": "tsc --noEmit",
-    "fmt": "biome check --write .",
-    "fix": "biome check --write --unsafe .",
-    "lint": "biome ci ."
+    "fmt": "biome check --write . && pnpm -F scripts fmt-geojson",
+    "fix": "biome check --write --unsafe . && pnpm -F scripts fmt-geojson",
+    "lint": "biome ci . && pnpm -F scripts fmt-geojson --check"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.2",

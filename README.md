@@ -64,6 +64,8 @@ You can tests for a specific package with `-F`, e.g. `pnpm -F shared test`.
 ❯ pnpm fmt
 ```
 
+This also formats the GeoJSON data files. Biome skips `.geojson` files, so `pnpm fmt` formats them separately with Biome's JSON formatter.
+
 ## Lint code
 
 "Linting" means using tools that check for common issues that may be bugs or low code quality.

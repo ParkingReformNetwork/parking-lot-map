@@ -7,6 +7,7 @@ import type {
   GeoJsonProperties,
   Polygon,
 } from "geojson";
+import { writeJson } from "./formatJson.ts";
 
 export type Pkg = "primary" | "ct";
 
@@ -110,7 +111,7 @@ export async function updateCoordinates(
     compareIds(a.properties?.id, b.properties?.id),
   );
 
-  await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
+  await writeJson(originalFilePath, originalData);
 }
 
 export async function updateParkingLots(
@@ -140,7 +141,7 @@ export async function updateParkingLots(
     );
     originalData.geometry.coordinates = newCoordinates;
 
-    await fs.writeFile(originalFilePath, JSON.stringify(originalData, null, 2));
+    await writeJson(originalFilePath, originalData);
     return;
   }
 
@@ -149,5 +150,5 @@ export async function updateParkingLots(
     properties: { id: cityId },
     geometry: { type: newGeometryType, coordinates: newCoordinates },
   };
-  await fs.writeFile(originalFilePath, JSON.stringify(newFile, null, 2));
+  await writeJson(originalFilePath, newFile);
 }
