@@ -12,3 +12,5 @@ dist/
 test-results/
 
 benchmark-results/
+
+.DS_Store
