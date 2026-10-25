@@ -1,4 +1,3 @@
-import fs from "node:fs/promises";
 import type { CityStats as CtCityStats } from "@prn-parking-lots/ct/src/js/types.ts";
 import type { CityStats as PrimaryCityStats } from "@prn-parking-lots/primary/src/js/types.ts";
 import type {
@@ -13,6 +12,7 @@ import {
   updateCoordinates,
   updateParkingLots,
 } from "./base.ts";
+import { writeJson } from "./formatJson.ts";
 import { runScript } from "./runScript.ts";
 
 function buildPrimaryEntry(cityName: string): PrimaryCityStats {
@@ -61,7 +61,7 @@ async function addScoreCard<T extends BaseCityStats>(
     sortedData[key] = originalData[key];
   }
 
-  await fs.writeFile(filePath, JSON.stringify(sortedData, null, 2));
+  await writeJson(filePath, sortedData);
 }
 
 async function main(): Promise<void> {
