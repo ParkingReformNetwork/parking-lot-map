@@ -23,7 +23,7 @@ export function determineArgs(
   if (processArgv.length !== 2) {
     throw new Error(
       `Must provide exactly two arguments: 1) either 'ct' or 'primary' for the app and 2) the city name. For example,
-       pnpm -F scripts ${scriptCommand} -- 'primary' 'Columbus, OH'
+       pnpm -F scripts ${scriptCommand} 'primary' 'Columbus, OH'
        `,
     );
   }
