@@ -123,7 +123,7 @@ Then, determine the city/state name. This is the same as what we show in the cit
 Now, run the following command, but replace the last part with the city/state name (in single quotes!). If you're adding to the Connecticut map, replace 'primary' with 'ct'.
 
 ```bash
-❯ pnpm -F scripts update-lots -- 'primary' 'My City, AZ'
+❯ pnpm -F scripts update-lots 'primary' 'My City, AZ'
 ```
 
 Run the site with `npm start` and make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
@@ -139,7 +139,7 @@ Then, determine the city/state name. This is the same as what we show in the cit
 Now, run the following command, but replace the last part with the city/state name (in single quotes!). If you're adding to the Connecticut map, replace 'primary' with 'ct'.
 
 ```bash
-❯ pnpm -F scripts update-city-boundaries -- 'primary' 'My City, AZ'
+❯ pnpm -F scripts update-city-boundaries 'primary' 'My City, AZ'
 ```
 
 [Start the server](#start-the-server) to make sure it's what you want. Also, autoformat the file with `pnpm fmt`.
@@ -157,7 +157,7 @@ Then, determine the city/state name, such as `St. Louis, MO`.
 Now, run the following command, but replace the last part with the city/state name (in single quotes!). If you're adding to the Connecticut map, replace 'primary' with 'ct'.
 
 ```bash
-❯ pnpm -F scripts add-city -- 'primary' 'My City, AZ'
+❯ pnpm -F scripts add-city 'primary' 'My City, AZ'
 ```
 
 Next, manually fill in the score card entries in the `city-stats.json` for the app you're adding the city to. Search for the city name and update the values.
